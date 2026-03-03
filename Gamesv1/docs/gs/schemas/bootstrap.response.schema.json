@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "slot-bootstrap-v1/bootstrap.response.schema.json",
+  "title": "slot-bootstrap-v1 bootstrap response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractVersion",
+    "session",
+    "context",
+    "assets",
+    "runtime",
+    "policies",
+    "integrity"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "const": "slot-bootstrap-v1"
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessionId",
+        "requestCounter",
+        "stateVersion"
+      ],
+      "properties": {
+        "sessionId": {
+          "type": "string"
+        },
+        "requestCounter": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stateVersion": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "bankId",
+        "subCasinoId",
+        "gameId",
+        "currencyCode",
+        "lang",
+        "mode"
+      ],
+      "properties": {
+        "bankId": {
+          "type": "integer"
+        },
+        "subCasinoId": {
+          "type": "integer"
+        },
+        "gameId": {
+          "type": "string"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assetBaseUrl",
+        "clientVersion",
+        "clientPackageVersion",
+        "assetBundleHash"
+      ],
+      "properties": {
+        "assetBaseUrl": {
+          "type": "string"
+        },
+        "clientVersion": {
+          "type": "string"
+        },
+        "clientPackageVersion": {
+          "type": "string"
+        },
+        "assetBundleHash": {
+          "type": "string"
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mathPackageVersion",
+        "rtpModelId",
+        "engineContractVersion"
+      ],
+      "properties": {
+        "mathPackageVersion": {
+          "type": "string"
+        },
+        "rtpModelId": {
+          "type": "string"
+        },
+        "engineContractVersion": {
+          "type": "string",
+          "const": "slot-runtime-v1"
+        }
+      }
+    },
+    "policies": {
+      "type": "object",
+      "required": [
+        "animationPolicy",
+        "soundPolicy",
+        "localizationPolicy",
+        "historyPolicy",
+        "walletDisplayPolicy",
+        "featurePolicy",
+        "sessionUiPolicy"
+      ],
+      "properties": {
+        "animationPolicy": {
+          "type": "object"
+        },
+        "soundPolicy": {
+          "type": "object"
+        },
+        "localizationPolicy": {
+          "type": "object"
+        },
+        "historyPolicy": {
+          "type": "object"
+        },
+        "walletDisplayPolicy": {
+          "type": "object"
+        },
+        "featurePolicy": {
+          "type": "object"
+        },
+        "sessionUiPolicy": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "configIssuedAtUtc",
+        "configId",
+        "configHash"
+      ],
+      "properties": {
+        "configIssuedAtUtc": {
+          "type": "string"
+        },
+        "configId": {
+          "type": "string"
+        },
+        "configHash": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

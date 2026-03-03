@@ -1,32 +1,23 @@
 # Gamesv1 Monorepo
 
-Gamesv1 is the client-shell and release-packaging environment for new GS slots.
+Gamesv1 is the GS slot browser client shell and release-packaging environment.
 
-## Target Architecture (Canonical)
+## Canonical Runtime Target
 
-1. Runtime transport target: GS HTTP slot-browser-v1 path.
-2. Browser is presentation-only for financial/state truth.
-3. GS owns session, wallet, DB state, restore, requestCounter, and idempotency.
-4. Static assets are loaded from CDN/static origin.
-5. Gamesv1 produces versioned release artifacts for GS registration.
-6. `abs.gs.v1` WebSocket support is legacy/experimental only.
+1. Browser -> GS HTTP runtime only (`slot-browser-v1`).
+2. Canonical browser endpoints are `/slot/v1/*`.
+3. Browser is presentation-only for financial/session truth.
+4. GS is authoritative for session, wallet, DB, restore, requestCounter, idempotency, routing, and config resolution.
+5. `abs.gs.v1` WebSocket is legacy/experimental only.
 
 ## Out Of Scope
 
-- Operator-specific messaging (Pariplay/iframe bridge) is not part of canonical runtime.
-- Multiplayer is out of scope.
+- Multiplayer.
+- Operator/Pariplay messaging in canonical runtime path.
 
-## Repository Layout
-
-- `packages/core-protocol`: transport abstraction + GS HTTP runtime client + schemas.
-- `packages/core-compliance`: runtime config resolution, compliance rules, animation policy.
-- `packages/pixi-engine`: Pixi bootstrap, asset loading, audio, resize/layout loop.
-- `packages/ui-kit`: reusable slot UI/HUD components.
-- `games/premium-slot`: reference game implementation.
-- `tools/*`: scaffolding and release/config helper tools.
-- `docs/*`: architecture, capability, release, and pipeline canon.
-
-Legacy/optional packages may exist but are not canonical runtime dependencies.
+Optional/non-canonical modules:
+- `packages/operator-pariplay/*` (integration adapter scope only)
+- `packages/core-protocol/src/ws/*` (`abs.gs.v1` legacy/experimental)
 
 ## Install
 
@@ -46,42 +37,28 @@ corepack pnpm run dev
 corepack pnpm run build
 ```
 
-## Tests
+## Test
 
 ```bash
 corepack pnpm run test
-corepack pnpm run test:config
-corepack pnpm run test:animation-policy
-corepack pnpm run test:layout
-corepack pnpm run test:contract
 ```
 
-## Create New Game (Canonical)
+## Canonical New-Game Scaffolder
 
 ```bash
 corepack pnpm run create-game -- --gameId <gameId> --name "<name>" --themeId <themeId> --languages en,es,de
 ```
 
-Authoritative scaffolder: `tools/create-game.ts`.
+Authoritative path: `tools/create-game.ts`.
 
-## Artifact Outputs
+## Release-Pack Command
 
-Per release, Gamesv1 must produce:
+```bash
+corepack pnpm run release:pack -- --game <gameId> --version <version> --static-origin <cdnBase>
+```
 
-- Client build output (`dist/`) for CDN/static hosting
-- Asset manifest/bundles
-- GS registration artifacts (`template-params.*`, release manifest, SQL artifact)
-- Versioned release metadata tied to git SHA
+## Source Of Truth
 
-Generated release-pack outputs under `games/<gameId>/release-packs/` are build artifacts and are gitignored.
-One reference example is kept under `docs/examples/release-pack/`.
-
-## Source Of Truth Docs
-
-- `docs/MasterContext.md`
-- `docs/PROJECT.md`
-- `docs/gs/bootstrap-config-contract.md`
-- `docs/gs/browser-runtime-api-contract.md`
-- `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`
-- `docs/RELEASE_PROCESS.md`
-- `docs/DOCS_MAP.md`
+- Client capability spec: `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`
+- Runtime/release contract spec: `docs/gs/README.md` and `docs/gs/*`
+- Canon docs: `docs/MasterContext.md`, `docs/PROJECT.md`, `docs/DOCS_MAP.md`, `docs/RELEASE_PROCESS.md`

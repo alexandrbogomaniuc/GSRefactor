@@ -14,7 +14,7 @@
     },
     "gs": {
         "runtimeTarget": "slot-browser-v1",
-        "mathManifestPath": "math/math-pack.manifest.json",
+        "mathManifestPath": "math/math-package-manifest.json",
         "mathModels": [
             {
                 "id": "M1",

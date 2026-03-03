@@ -2,6 +2,9 @@
 
 Canonical client capability and behavior requirements.
 
+This document is the capability/behavior spec only.
+Runtime and release wire contracts are canonical in `docs/gs/*`.
+
 ## A. Runtime Contract
 
 1. Client uses GS HTTP runtime flow as canonical transport path.
@@ -10,7 +13,7 @@ Canonical client capability and behavior requirements.
 4. Retries must preserve GS idempotency keys and sequencing metadata.
 5. Browser transport scope is `browser -> GS` only.
 6. Internal slot-engine/RNG/audit paths are server-side/private and out of browser state ownership.
-7. Client runtime transport must support: `bootstrap/openGame`, `playRound`, `featureAction`, `resumeGame`, `closeGame`, and browser-facing history access.
+7. Client runtime transport must support: `bootstrap`, `opengame`, `playround`, `featureaction`, `resumegame`, `closegame`, and browser-facing `gethistory`.
 
 ## B. Financial/State Safety
 

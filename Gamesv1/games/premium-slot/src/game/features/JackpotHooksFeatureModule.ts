@@ -1,4 +1,5 @@
-﻿import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import { readLabelBoolean } from "./types.ts";
 
 export class JackpotHooksFeatureModule implements FeatureModule {
   public readonly id = "jackpot-hooks";
@@ -12,7 +13,7 @@ export class JackpotHooksFeatureModule implements FeatureModule {
 
   public resolve(input: FeatureModuleInput) {
     const jackpotLevel = input.counters.jackpotLevel;
-    const jackpotTriggered = input.serverState.jackpotTriggered === true;
+    const jackpotTriggered = readLabelBoolean(input.round.labels, "jackpotTriggered") === true;
 
     if (!jackpotTriggered && jackpotLevel === undefined) {
       return {};
@@ -34,4 +35,3 @@ export class JackpotHooksFeatureModule implements FeatureModule {
     };
   }
 }
-

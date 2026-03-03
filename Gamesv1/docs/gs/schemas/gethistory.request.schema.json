@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "slot-browser-v1/gethistory.request.schema.json",
+  "title": "slot-browser-v1 gethistory request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractVersion",
+    "sessionId",
+    "requestCounter",
+    "historyQuery"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "const": "slot-browser-v1"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "requestCounter": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "historyQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fromRoundId",
+        "limit",
+        "includeFeatureDetails"
+      ],
+      "properties": {
+        "fromRoundId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "includeFeatureDetails": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

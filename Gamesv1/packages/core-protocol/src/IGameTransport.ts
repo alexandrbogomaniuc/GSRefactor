@@ -26,115 +26,165 @@ export interface GameInitConfig {
   internalClientCode?: string;
 }
 
-export interface RequestMetadata {
-  requestCounter?: number;
-  idempotencyKey?: string;
-  clientOperationId?: string;
-  currentStateVersion?: string;
+export interface BootstrapRef {
+  configId: string;
+  clientPackageVersion: string;
+  mathPackageVersion?: string;
+}
+
+export interface SelectedBet {
+  coinValueMinor: number;
+  lines: number;
+  multiplier: number;
+  totalBetMinor: number;
+}
+
+export interface SelectedFeatureChoice {
+  featureType: "BUY_FEATURE" | "HOLD_AND_WIN" | "RESPIN" | "FREE_SPINS";
+  action: "PICK" | "CONFIRM" | "COLLECT" | "CONTINUE";
+  priceMinor: number;
+  payload: Record<string, unknown>;
+}
+
+export interface HistoryQuery {
+  fromRoundId: string | null;
+  limit: number;
+  includeFeatureDetails: boolean;
 }
 
 export interface BootstrapRequest {
+  contractVersion: string;
   sessionId: string;
-  gameId?: number;
-  bankId?: number;
-  playerId?: string;
-  language?: string;
-  launchParams?: Record<string, unknown>;
+  bootstrapRef: BootstrapRef;
 }
 
 export interface OpenGameRequest {
+  contractVersion: string;
   sessionId: string;
-  requestCounter?: number;
-  bankId?: number;
-  playerId?: string;
-  gameId?: number;
-  gsInternalBaseUrl?: string;
-  language?: string;
-  internalClientCode?: string;
-}
-
-export interface OpenGameResponse {
-  sessionId: string;
-  balance: number;
   requestCounter: number;
-  currencyCode?: string;
-  minBet?: number;
-  maxBet?: number;
-  currentStateVersion?: string;
-  unresolvedRoundState?: unknown;
-  presentationPayload?: unknown;
-  runtimeConfig?: Record<string, unknown>;
-  capabilities?: Record<string, unknown>;
-  wallet?: Record<string, unknown>;
-  session?: Record<string, unknown>;
-  restore?: Record<string, unknown>;
+  currentStateVersion: number;
+  idempotencyKey: string;
+  clientOperationId: string;
+  bootstrapRef: BootstrapRef;
+  selectedBet: null;
+  selectedFeatureChoice: null;
 }
 
 export interface PlayRoundRequest {
-  betAmount: number;
-  betType: string;
-  roundInput?: Record<string, unknown>;
-  metadata?: RequestMetadata;
-}
-
-export interface PlayRoundResponse {
-  roundId: string;
-  balance: number;
-  winAmount: number;
+  contractVersion: string;
+  sessionId: string;
   requestCounter: number;
-  currentStateVersion?: string;
-  presentationPayload?: unknown;
-  raw: unknown;
+  currentStateVersion: number;
+  idempotencyKey: string;
+  clientOperationId: string;
+  bootstrapRef: BootstrapRef;
+  selectedBet: SelectedBet;
+  selectedFeatureChoice: null;
 }
 
 export interface FeatureActionRequest {
-  action: string;
-  payload?: Record<string, unknown>;
-  metadata?: RequestMetadata;
-}
-
-export interface FeatureActionResponse {
+  contractVersion: string;
+  sessionId: string;
   requestCounter: number;
-  currentStateVersion?: string;
-  presentationPayload?: unknown;
-  raw: unknown;
+  currentStateVersion: number;
+  idempotencyKey: string;
+  clientOperationId: string;
+  bootstrapRef: BootstrapRef;
+  selectedBet: SelectedBet | null;
+  selectedFeatureChoice: SelectedFeatureChoice;
 }
 
 export interface ResumeGameRequest {
-  sessionId?: string;
-  metadata?: RequestMetadata;
+  contractVersion: string;
+  sessionId: string;
+  requestCounter: number;
+  currentStateVersion: number;
+  idempotencyKey: string;
+  clientOperationId: string;
+  bootstrapRef: BootstrapRef;
+  selectedBet: null;
+  selectedFeatureChoice: null;
+  resumeRef?: Record<string, unknown> | string;
 }
 
 export interface CloseGameRequest {
-  reason?: string;
-  metadata?: RequestMetadata;
+  contractVersion: string;
+  sessionId: string;
+  requestCounter: number;
+  currentStateVersion: number;
+  idempotencyKey: string;
+  clientOperationId: string;
+  bootstrapRef: BootstrapRef;
+  selectedBet: null;
+  selectedFeatureChoice: null;
+  closeReason: string;
 }
 
 export interface HistoryRequest {
-  pageNumber?: number;
-  metadata?: RequestMetadata;
+  contractVersion: string;
+  sessionId: string;
+  requestCounter: number;
+  historyQuery: HistoryQuery;
 }
 
-export interface HistoryResponse {
+export interface RuntimeEnvelopeResponse {
+  ok: boolean;
+  requestId: string;
+  sessionId: string;
   requestCounter: number;
-  currentStateVersion?: string;
-  history: Array<Record<string, unknown>>;
-  raw: unknown;
+  stateVersion: number;
+  wallet: Record<string, unknown>;
+  round: Record<string, unknown>;
+  feature: Record<string, unknown>;
+  presentationPayload: Record<string, unknown>;
+  restore: Record<string, unknown>;
+  idempotency: Record<string, unknown>;
+  retry: Record<string, unknown>;
+  history?: Record<string, unknown>;
 }
+
+export interface BootstrapResponse {
+  contractVersion: "slot-bootstrap-v1";
+  session: {
+    sessionId: string;
+    requestCounter: number;
+    stateVersion: number;
+  };
+  context: Record<string, unknown>;
+  assets: Record<string, unknown>;
+  runtime: Record<string, unknown>;
+  policies: Record<string, unknown>;
+  integrity: Record<string, unknown>;
+}
+
+export type OpenGameResponse = RuntimeEnvelopeResponse;
+export type PlayRoundResponse = RuntimeEnvelopeResponse;
+export type FeatureActionResponse = RuntimeEnvelopeResponse;
+export type ResumeGameResponse = RuntimeEnvelopeResponse;
+export type CloseGameResponse = RuntimeEnvelopeResponse;
+export type HistoryResponse = RuntimeEnvelopeResponse;
 
 export interface IGameTransport {
-  bootstrap(config: GameInitConfig, request?: BootstrapRequest): Promise<OpenGameResponse>;
+  bootstrap(config: GameInitConfig, request: BootstrapRequest): Promise<BootstrapResponse>;
+  opengame(request: OpenGameRequest): Promise<OpenGameResponse>;
+  playround(request: PlayRoundRequest): Promise<PlayRoundResponse>;
+  featureaction(request: FeatureActionRequest): Promise<FeatureActionResponse>;
+  resumegame(request: ResumeGameRequest): Promise<ResumeGameResponse>;
+  closegame(request: CloseGameRequest): Promise<CloseGameResponse>;
+  gethistory(request: HistoryRequest): Promise<HistoryResponse>;
+  disconnect(): void;
+  on(event: TransportEvent, callback: (...args: any[]) => void): void;
+}
+
+// Legacy/experimental compatibility API kept outside canonical transport surface.
+export interface LegacyGameTransportAdapter extends IGameTransport {
   openGame(request: OpenGameRequest): Promise<OpenGameResponse>;
   playRound(request: PlayRoundRequest): Promise<PlayRoundResponse>;
   featureAction(request: FeatureActionRequest): Promise<FeatureActionResponse>;
-  resumeGame(request?: ResumeGameRequest): Promise<OpenGameResponse>;
-  closeGame(request?: CloseGameRequest): Promise<void>;
-  getHistory(request?: HistoryRequest): Promise<HistoryResponse>;
-  disconnect(): void;
-  on(event: TransportEvent, callback: (...args: any[]) => void): void;
-
-  // Legacy compatibility surface (deprecated).
-  connect?(config: GameInitConfig): Promise<void>;
-  spin?(betAmount: number, operationId: string): Promise<any>;
-  settle?(operationId: string): Promise<any>;
+  resumeGame(request: ResumeGameRequest): Promise<ResumeGameResponse>;
+  closeGame(request: CloseGameRequest): Promise<CloseGameResponse>;
+  getHistory(request: HistoryRequest): Promise<HistoryResponse>;
+  connect(config: GameInitConfig): Promise<void>;
+  spin(betAmount: number, operationId: string): Promise<any>;
+  settle(operationId: string): Promise<any>;
 }

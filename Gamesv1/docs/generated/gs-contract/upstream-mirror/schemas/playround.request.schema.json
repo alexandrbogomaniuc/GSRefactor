@@ -1,0 +1,38 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "playround.request.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractVersion", "sessionId", "requestCounter", "currentStateVersion", "idempotencyKey", "clientOperationId", "selectedBet"],
+  "properties": {
+    "contractVersion": { "const": "slot-browser-v1" },
+    "sessionId": { "type": "string", "minLength": 1 },
+    "requestCounter": { "type": "integer", "minimum": 0 },
+    "currentStateVersion": { "type": "integer", "minimum": 0 },
+    "idempotencyKey": { "type": "string", "minLength": 1 },
+    "clientOperationId": { "type": "string", "minLength": 1 },
+    "bootstrapRef": { "type": "object", "additionalProperties": true, "minProperties": 1 },
+    "selectedBet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coinValueMinor", "lines", "multiplier", "totalBetMinor"],
+      "properties": {
+        "coinValueMinor": { "type": "integer", "minimum": 1 },
+        "lines": { "type": "integer", "minimum": 1 },
+        "multiplier": { "type": "integer", "minimum": 1 },
+        "totalBetMinor": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "selectedFeatureChoice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["featureType", "action", "priceMinor", "payload"],
+      "properties": {
+        "featureType": { "type": "string", "minLength": 1 },
+        "action": { "type": "string", "minLength": 1 },
+        "priceMinor": { "type": "integer", "minimum": 0 },
+        "payload": { "type": "object", "additionalProperties": true }
+      }
+    }
+  }
+}

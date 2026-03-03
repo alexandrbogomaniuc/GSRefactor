@@ -1,18 +1,22 @@
 import {
-  type BootstrapRequest,
-  type CloseGameRequest,
-  type FeatureActionRequest,
-  type FeatureActionResponse,
-  type GameInitConfig,
-  type HistoryRequest,
-  type HistoryResponse,
-  type IGameTransport,
-  type OpenGameRequest,
-  type OpenGameResponse,
+    type BootstrapRequest,
+    type BootstrapResponse,
+    type CloseGameRequest,
+    type CloseGameResponse,
+    type FeatureActionRequest,
+    type FeatureActionResponse,
+    type GameInitConfig,
+    type HistoryQuery,
+    type HistoryRequest,
+    type HistoryResponse,
+    type LegacyGameTransportAdapter,
+    type OpenGameRequest,
+    type OpenGameResponse,
   type PlayRoundRequest,
   type PlayRoundResponse,
-  type ResumeGameRequest,
-  type TransportEvent,
+    type ResumeGameRequest,
+    type ResumeGameResponse,
+    type TransportEvent,
 } from "../IGameTransport.ts";
 
 // Legacy/experimental abs.gs.v1 transport only.
@@ -26,7 +30,65 @@ function uuidv4() {
     });
 }
 
-export class GsWsTransport implements IGameTransport {
+const emptyEnvelope = (
+    sessionId: string,
+    requestCounter: number,
+    stateVersion: number,
+): OpenGameResponse => ({
+    ok: true,
+    requestId: `ws-${Date.now()}`,
+    sessionId,
+    requestCounter,
+    stateVersion,
+    wallet: {
+        balanceMinor: 0,
+        previousBalanceMinor: 0,
+        currencyCode: "EUR",
+        truncateCents: false,
+        delayedWalletMessagePending: false,
+    },
+    round: {
+        roundId: null,
+        status: "NONE",
+        betMinor: 0,
+        winMinor: 0,
+        netEffectMinor: 0,
+        outcomeHash: "ws-legacy",
+    },
+    feature: {
+        mode: "NONE",
+        remainingActions: 0,
+        nextAllowedActions: [],
+        featureContext: {},
+    },
+    presentationPayload: {
+        featureMode: "NONE",
+        reelStops: [],
+        symbolGrid: [],
+        uiMessages: [],
+        animationCues: [],
+        audioCues: [],
+        counters: [],
+        labels: {},
+    },
+    restore: {
+        hasUnfinishedRound: false,
+        unfinishedRoundId: null,
+        resumeStateVersion: stateVersion,
+        opaqueRestorePayload: null,
+    },
+    idempotency: {
+        isDuplicate: false,
+        duplicateOfRequestId: null,
+        replaySafe: true,
+    },
+    retry: {
+        clientMayRetrySameKey: false,
+        clientMustIncrementCounterOnNewAction: true,
+    },
+});
+
+export class GsWsTransport implements LegacyGameTransportAdapter {
     private ws: WebSocket | null = null;
     private config!: GameInitConfig;
     private seq: number = 0;
@@ -164,24 +226,46 @@ export class GsWsTransport implements IGameTransport {
         }
     }
 
-    public async bootstrap(config: GameInitConfig, request?: BootstrapRequest): Promise<OpenGameResponse> {
+    public async bootstrap(config: GameInitConfig, request: BootstrapRequest): Promise<BootstrapResponse> {
         await this.connect({
             ...config,
-            sessionId: request?.sessionId ?? config.sessionId,
+            sessionId: request.sessionId ?? config.sessionId,
         });
 
         return {
-            sessionId: this.config.sessionId ?? "",
-            balance: 0,
-            requestCounter: this.seq,
-            currentStateVersion: undefined,
-            presentationPayload: undefined,
-            unresolvedRoundState: undefined,
-            runtimeConfig: undefined,
+            contractVersion: "slot-bootstrap-v1",
+            session: {
+                sessionId: this.config.sessionId ?? "",
+                requestCounter: this.seq,
+                stateVersion: this.seq,
+            },
+            context: {
+                gameId: this.config.gameId,
+                bankId: this.config.bankId,
+                playerId: this.config.playerId ?? null,
+                language: this.config.language ?? "en",
+            },
+            assets: {
+                assetBaseUrl: this.config.baseUrl,
+                clientVersion: "legacy-ws",
+                clientPackageVersion: "legacy-ws",
+                assetBundleHash: "legacy-ws",
+            },
+            runtime: {
+                mathPackageVersion: String(request?.bootstrapRef?.mathPackageVersion ?? "legacy"),
+                rtpModelId: "legacy",
+                engineContractVersion: "slot-runtime-v1",
+            },
+            policies: {},
+            integrity: {
+                configIssuedAtUtc: new Date().toISOString(),
+                configId: request.bootstrapRef.configId,
+                configHash: "legacy-ws",
+            },
         };
     }
 
-    public async openGame(request: OpenGameRequest): Promise<OpenGameResponse> {
+    public async opengame(request: OpenGameRequest): Promise<OpenGameResponse> {
         if (!this.config) {
             throw new Error("WS legacy transport requires bootstrap/connect before openGame.");
         }
@@ -189,47 +273,115 @@ export class GsWsTransport implements IGameTransport {
         await this.connect({
             ...this.config,
             sessionId: request.sessionId,
-            gameId: String(request.gameId ?? this.config.gameId),
+            gameId: String(this.config.gameId),
         });
 
-        return {
-            sessionId: request.sessionId,
-            balance: 0,
-            requestCounter: this.seq,
-        };
+        return emptyEnvelope(request.sessionId, this.seq, this.seq);
     }
 
-    public async playRound(request: PlayRoundRequest): Promise<PlayRoundResponse> {
-        const operationId = request.metadata?.clientOperationId ?? uuidv4();
-        const bet = await this.spin(request.betAmount, operationId);
+    public async playround(request: PlayRoundRequest): Promise<PlayRoundResponse> {
+        const operationId = request.clientOperationId ?? uuidv4();
+        const bet = await this.spin(request.selectedBet.totalBetMinor, operationId);
         const collect = await this.settle(operationId);
-        return {
-            roundId: String(bet?.roundId ?? ""),
-            balance: Number(collect?.balance ?? bet?.balance ?? 0),
-            winAmount: Number(bet?.totalWin ?? 0),
-            requestCounter: this.seq,
-            currentStateVersion: request.metadata?.currentStateVersion,
-            presentationPayload: bet,
-            raw: { bet, collect },
+        const response = emptyEnvelope(request.sessionId, this.seq, request.currentStateVersion);
+        response.wallet.balanceMinor = Number(collect?.balance ?? bet?.balance ?? 0);
+        response.round = {
+            roundId: String(bet?.roundId ?? null),
+            status: "FINAL",
+            betMinor: request.selectedBet.totalBetMinor,
+            winMinor: Number(bet?.totalWin ?? 0),
+            netEffectMinor: Number(bet?.totalWin ?? 0) - request.selectedBet.totalBetMinor,
+            outcomeHash: "ws-legacy",
         };
+        response.presentationPayload = {
+            ...response.presentationPayload,
+            labels: { source: "ws-legacy", ...(bet ?? {}) },
+        };
+        response.idempotency = {
+            isDuplicate: false,
+            duplicateOfRequestId: null,
+            replaySafe: true,
+        };
+        return response;
     }
 
-    public async featureAction(_request: FeatureActionRequest): Promise<FeatureActionResponse> {
+    public async featureaction(_request: FeatureActionRequest): Promise<FeatureActionResponse> {
         throw new Error("WS legacy transport does not implement featureAction.");
     }
 
-    public async resumeGame(request?: ResumeGameRequest): Promise<OpenGameResponse> {
-        return this.openGame({
+    public async resumegame(request: ResumeGameRequest): Promise<ResumeGameResponse> {
+        return this.opengame({
+            contractVersion: request?.contractVersion ?? "slot-browser-v1",
             sessionId: request?.sessionId ?? this.config?.sessionId ?? "",
-            gameId: Number(this.config?.gameId ?? 0),
+            requestCounter: request?.requestCounter ?? this.seq + 1,
+            currentStateVersion: request?.currentStateVersion ?? this.seq,
+            clientOperationId: request?.clientOperationId ?? `ws-resume-${Date.now()}`,
+            idempotencyKey: request?.idempotencyKey ?? `ws-resume-${Date.now()}`,
+            bootstrapRef: request?.bootstrapRef ?? {
+                configId: "legacy",
+                clientPackageVersion: "legacy",
+                mathPackageVersion: "legacy",
+            },
+            selectedBet: null,
+            selectedFeatureChoice: null,
         });
     }
 
-    public async closeGame(_request?: CloseGameRequest): Promise<void> {
+    public async closegame(request: CloseGameRequest): Promise<CloseGameResponse> {
         this.disconnect();
+        const response = emptyEnvelope(
+            request.sessionId,
+            request.requestCounter,
+            request.currentStateVersion,
+        );
+        response.idempotency = {
+            isDuplicate: false,
+            duplicateOfRequestId: null,
+            replaySafe: true,
+        };
+        return response;
     }
 
-    public async getHistory(_request?: HistoryRequest): Promise<HistoryResponse> {
-        throw new Error("WS legacy transport does not implement getHistory.");
+    public async gethistory(request: HistoryRequest): Promise<HistoryResponse> {
+        const response = emptyEnvelope(request.sessionId, request.requestCounter, this.seq);
+        response.feature = {
+            mode: "HISTORY",
+            remainingActions: 0,
+            nextAllowedActions: [],
+            featureContext: {
+                history: [],
+                historyQuery: request.historyQuery ?? ({
+                    fromRoundId: null,
+                    limit: 20,
+                    includeFeatureDetails: true,
+                } as HistoryQuery),
+            },
+        };
+        return response;
+    }
+
+    // Transitional aliases for pre-refactor call sites.
+    public async openGame(request: OpenGameRequest): Promise<OpenGameResponse> {
+        return this.opengame(request);
+    }
+
+    public async playRound(request: PlayRoundRequest): Promise<PlayRoundResponse> {
+        return this.playround(request);
+    }
+
+    public async featureAction(request: FeatureActionRequest): Promise<FeatureActionResponse> {
+        return this.featureaction(request);
+    }
+
+    public async resumeGame(request: ResumeGameRequest): Promise<ResumeGameResponse> {
+        return this.resumegame(request);
+    }
+
+    public async closeGame(request: CloseGameRequest): Promise<CloseGameResponse> {
+        return this.closegame(request);
+    }
+
+    public async getHistory(request: HistoryRequest): Promise<HistoryResponse> {
+        return this.gethistory(request);
     }
 }

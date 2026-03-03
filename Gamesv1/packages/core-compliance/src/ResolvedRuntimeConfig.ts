@@ -86,6 +86,67 @@ export const SessionUiPolicySchema = z.object({
   closeButtonPolicy: z.enum(["allow", "confirm", "hidden"]),
 });
 
+export const AnimationPolicyGroupSchema = z.object({
+  forcedSpinStopEnabled: z.boolean(),
+  forcedSkipWinPresentation: z.boolean(),
+  minReelSpinTimeMs: z.object({
+    normal: z.number().int().nonnegative(),
+    turbo: z.number().int().nonnegative(),
+  }),
+  autoplayMinDelayMs: z.number().int().nonnegative(),
+  lowPerformanceMode: z.boolean(),
+  spinProfilingEnabled: z.boolean(),
+});
+
+export const SoundPolicyGroupSchema = z.object({
+  soundModeByDefault: z.enum(["on", "off", "muted"]),
+  showToggle: z.boolean(),
+  masterVolume: Volume,
+  bgmVolume: Volume,
+  sfxVolume: Volume,
+});
+
+export const LocalizationPolicyGroupSchema = z.object({
+  defaultLanguage: z.string().min(2),
+  localizedTitleKey: z.string().min(1),
+  localizedTitle: z.string().optional(),
+  showMissingLocalizationError: z.boolean(),
+  contentPath: z.string().min(1),
+  customTranslationsEnabled: z.boolean(),
+  serverNotificationsEnabled: z.boolean(),
+});
+
+export const HistoryPolicyGroupSchema = z.object({
+  enabled: z.boolean(),
+  url: z.string().min(1),
+  openInSameWindow: z.boolean(),
+});
+
+export const WalletDisplayPolicyGroupSchema = z.object({
+  showBalance: z.boolean(),
+  showCurrencyCode: z.boolean(),
+  showDelayedIndicator: z.boolean(),
+  delayedWalletMessages: z.boolean(),
+});
+
+export const FeaturePolicyGroupSchema = z.object({
+  autoplay: z.boolean(),
+  buyFeature: z.boolean(),
+  buyFeatureForCashBonus: z.boolean(),
+  buyFeatureDisabledForCashBonus: z.boolean(),
+  freeSpins: z.boolean(),
+  respin: z.boolean(),
+  holdAndWin: z.boolean(),
+  inGameHistory: z.boolean(),
+  holidayMode: z.boolean(),
+  customSkins: z.boolean(),
+  frb: z.boolean(),
+  ofrb: z.boolean(),
+  jackpotHooksEnabled: z.boolean(),
+});
+
+export const SessionUiPolicyGroupSchema = SessionUiPolicySchema;
+
 export const JackpotHooksSchema = z.object({
   enabled: z.boolean(),
   source: z.enum(["none", "gs"]),
@@ -122,6 +183,15 @@ export const ResolvedRuntimeConfigSchema = z
     jackpotHooks: JackpotHooksSchema,
     runtimePolicies: RuntimePoliciesSchema,
     realityCheck: RealityCheckConfigSchema,
+    GL_MAX_BET: PositiveNumber.optional(),
+    exposureDerivedMaxBet: PositiveNumber.optional(),
+    animationPolicy: AnimationPolicyGroupSchema,
+    soundPolicy: SoundPolicyGroupSchema,
+    localizationPolicy: LocalizationPolicyGroupSchema,
+    historyPolicy: HistoryPolicyGroupSchema,
+    walletDisplayPolicy: WalletDisplayPolicyGroupSchema,
+    featurePolicy: FeaturePolicyGroupSchema,
+    sessionUiPolicy: SessionUiPolicyGroupSchema,
     capabilities: CapabilityMatrixSchema,
   })
   .superRefine((config, ctx) => {
@@ -214,6 +284,15 @@ export const LayerRuntimeConfigSchema = z.object({
   jackpotHooks: JackpotHooksSchema.partial().optional(),
   runtimePolicies: RuntimePoliciesSchema.partial().optional(),
   realityCheck: RealityCheckConfigSchema.partial().optional(),
+  GL_MAX_BET: PositiveNumber.optional(),
+  exposureDerivedMaxBet: PositiveNumber.optional(),
+  animationPolicy: AnimationPolicyGroupSchema.partial().optional(),
+  soundPolicy: SoundPolicyGroupSchema.partial().optional(),
+  localizationPolicy: LocalizationPolicyGroupSchema.partial().optional(),
+  historyPolicy: HistoryPolicyGroupSchema.partial().optional(),
+  walletDisplayPolicy: WalletDisplayPolicyGroupSchema.partial().optional(),
+  featurePolicy: FeaturePolicyGroupSchema.partial().optional(),
+  sessionUiPolicy: SessionUiPolicyGroupSchema.partial().optional(),
   capabilities: CapabilityMatrixPatchSchema.optional(),
 });
 
@@ -312,6 +391,64 @@ export const DefaultResolvedRuntimeConfig: ResolvedRuntimeConfig = {
   realityCheck: {
     enabled: false,
     intervalMinutes: 60,
+  },
+  animationPolicy: {
+    forcedSpinStopEnabled: true,
+    forcedSkipWinPresentation: true,
+    minReelSpinTimeMs: {
+      normal: 2000,
+      turbo: 1200,
+    },
+    autoplayMinDelayMs: 300,
+    lowPerformanceMode: false,
+    spinProfilingEnabled: false,
+  },
+  soundPolicy: {
+    soundModeByDefault: "on",
+    showToggle: true,
+    masterVolume: 0.8,
+    bgmVolume: 0.7,
+    sfxVolume: 0.8,
+  },
+  localizationPolicy: {
+    defaultLanguage: "en",
+    localizedTitleKey: "game.title",
+    localizedTitle: "",
+    showMissingLocalizationError: false,
+    contentPath: "./locales",
+    customTranslationsEnabled: false,
+    serverNotificationsEnabled: false,
+  },
+  historyPolicy: {
+    enabled: true,
+    url: "/history",
+    openInSameWindow: true,
+  },
+  walletDisplayPolicy: {
+    showBalance: true,
+    showCurrencyCode: true,
+    showDelayedIndicator: true,
+    delayedWalletMessages: false,
+  },
+  featurePolicy: {
+    autoplay: true,
+    buyFeature: false,
+    buyFeatureForCashBonus: false,
+    buyFeatureDisabledForCashBonus: true,
+    freeSpins: true,
+    respin: false,
+    holdAndWin: false,
+    inGameHistory: true,
+    holidayMode: false,
+    customSkins: false,
+    frb: false,
+    ofrb: false,
+    jackpotHooksEnabled: false,
+  },
+  sessionUiPolicy: {
+    showSessionTimer: false,
+    showRealityCheckBanner: true,
+    closeButtonPolicy: "confirm",
   },
   capabilities: DefaultCapabilityMatrix,
 };

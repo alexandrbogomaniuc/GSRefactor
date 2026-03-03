@@ -1,4 +1,5 @@
-﻿import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import { readLabelBoolean } from "./types.ts";
 
 export class RespinFeatureModule implements FeatureModule {
   public readonly id = "respin";
@@ -9,7 +10,8 @@ export class RespinFeatureModule implements FeatureModule {
 
   public resolve(input: FeatureModuleInput) {
     const remaining = input.counters.respinRemaining;
-    const active = remaining !== undefined ? remaining > 0 : input.serverState.respinActive === true;
+    const labelActive = readLabelBoolean(input.round.labels, "respinActive");
+    const active = remaining !== undefined ? remaining > 0 : labelActive === true;
 
     if (!active) {
       return {};
@@ -30,4 +32,3 @@ export class RespinFeatureModule implements FeatureModule {
     };
   }
 }
-

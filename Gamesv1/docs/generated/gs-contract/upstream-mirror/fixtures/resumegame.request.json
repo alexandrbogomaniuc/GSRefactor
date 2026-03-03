@@ -1,0 +1,12 @@
+{
+  "contractVersion": "slot-browser-v1",
+  "sessionId": "sid-demo-001",
+  "requestCounter": 6,
+  "currentStateVersion": 5,
+  "bootstrapRef": {
+    "id": "boot-ref-001"
+  },
+  "resumeRef": "resume-ref-005",
+  "idempotencyKey": "resume-6",
+  "clientOperationId": "resume-6"
+}

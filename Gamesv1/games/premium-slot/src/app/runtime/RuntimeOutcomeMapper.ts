@@ -1,4 +1,4 @@
-﻿import { z } from "zod";
+import { z } from "zod";
 
 import type { PlayRoundResponse } from "@gamesv1/core-protocol";
 import { GameConfig } from "@gamesv1/ui-kit/config";
@@ -10,19 +10,13 @@ export interface SlotPresentationOutcome {
   slotIndex: number;
 }
 
-export interface PresentationOverlay {
-  id: string;
-  type: string;
-  label: string;
-  value?: number;
-  visible: boolean;
-}
-
 export interface PresentationCounters {
   freeSpinsRemaining?: number;
   respinRemaining?: number;
   holdAndWinRemaining?: number;
   jackpotLevel?: number;
+  buyFeatureAvailable?: boolean;
+  cashBonusMode?: boolean;
 }
 
 export interface RoundPresentationModel {
@@ -32,21 +26,13 @@ export interface RoundPresentationModel {
   reels: {
     stopColumns: number[][];
   };
-  featureOverlays: PresentationOverlay[];
+  symbolGrid: number[][];
   counters: PresentationCounters;
   messages: string[];
   soundCues: string[];
   animationCues: string[];
-  serverState: Record<string, unknown>;
+  labels: Record<string, string>;
 }
-
-const OverlaySchema = z.object({
-  id: z.string().min(1),
-  type: z.string().min(1),
-  label: z.string().min(1),
-  value: z.number().optional(),
-  visible: z.boolean().default(true),
-});
 
 const CountersSchema = z
   .object({
@@ -54,21 +40,29 @@ const CountersSchema = z
     respinRemaining: z.number().int().nonnegative().optional(),
     holdAndWinRemaining: z.number().int().nonnegative().optional(),
     jackpotLevel: z.number().int().nonnegative().optional(),
+    buyFeatureAvailable: z.boolean().optional(),
+    cashBonusMode: z.boolean().optional(),
   })
   .default({});
 
+const LabelRecordSchema = z.record(z.string(), z.string()).default({});
+
+const ReelStopsSchema = z
+  .array(z.array(z.number().int().nonnegative()).min(GameConfig.numRows))
+  .length(GameConfig.numReels);
+
+const SymbolGridSchema = z
+  .array(z.array(z.number().int().nonnegative()).length(GameConfig.numReels))
+  .length(GameConfig.numRows);
+
 const PresentationPayloadSchema = z.object({
-  reelStopColumns: z
-    .array(z.array(z.number().int().nonnegative()).min(GameConfig.numRows))
-    .length(GameConfig.numReels),
-  slotIndex: z.number().int().nonnegative().optional(),
-  winAmount: z.number().nonnegative().optional(),
-  featureOverlays: z.array(OverlaySchema).default([]),
-  counters: CountersSchema,
-  messages: z.array(z.string()).default([]),
-  soundCues: z.array(z.string()).default([]),
+  reelStops: ReelStopsSchema,
+  symbolGrid: SymbolGridSchema.optional(),
+  uiMessages: z.array(z.string()).default([]),
   animationCues: z.array(z.string()).default([]),
-  serverState: z.record(z.string(), z.unknown()).default({}),
+  audioCues: z.array(z.string()).default([]),
+  counters: CountersSchema,
+  labels: LabelRecordSchema,
 });
 
 type RuntimePresentationPayload = z.infer<typeof PresentationPayloadSchema>;
@@ -76,6 +70,11 @@ type RuntimePresentationPayload = z.infer<typeof PresentationPayloadSchema>;
 const normalizeColumns = (columns: number[][]): number[][] =>
   columns.map((column) =>
     column.slice(0, GameConfig.numRows).map((id) => id % GameConfig.symbolCount),
+  );
+
+const normalizeGrid = (grid: number[][]): number[][] =>
+  grid.map((row) =>
+    row.slice(0, GameConfig.numReels).map((id) => id % GameConfig.symbolCount),
   );
 
 const toPayloadObject = (value: unknown): Record<string, unknown> =>
@@ -97,24 +96,41 @@ const parsePresentationPayload = (result: PlayRoundResponse): RuntimePresentatio
   return parsed.data;
 };
 
+const toRoundRecord = (result: PlayRoundResponse): Record<string, unknown> =>
+  typeof result.round === "object" && result.round !== null && !Array.isArray(result.round)
+    ? (result.round as Record<string, unknown>)
+    : {};
+
 export const mapPlayRoundToPresentation = (
   result: PlayRoundResponse,
 ): RoundPresentationModel => {
   const payload = parsePresentationPayload(result);
+  const round = toRoundRecord(result);
+  const normalizedStops = normalizeColumns(payload.reelStops);
+  const normalizedGrid = normalizeGrid(
+    payload.symbolGrid ??
+      Array.from({ length: GameConfig.numRows }, (_, rowIndex) =>
+        normalizedStops.map((column) => column[rowIndex] ?? 0),
+      ),
+  );
 
   return {
-    roundId: result.roundId,
-    winAmount: Math.max(0, Math.round(payload.winAmount ?? result.winAmount)),
-    slotIndex: payload.slotIndex ?? 0,
+    roundId:
+      (typeof round.roundId === "string" && round.roundId) || result.requestId,
+    winAmount:
+      typeof round.winAmountMinor === "number" && Number.isFinite(round.winAmountMinor)
+        ? Math.max(0, Math.round(round.winAmountMinor))
+        : 0,
+    slotIndex: 0,
     reels: {
-      stopColumns: normalizeColumns(payload.reelStopColumns),
+      stopColumns: normalizedStops,
     },
-    featureOverlays: payload.featureOverlays,
+    symbolGrid: normalizedGrid,
     counters: payload.counters,
-    messages: payload.messages,
-    soundCues: payload.soundCues,
+    messages: payload.uiMessages,
+    soundCues: payload.audioCues,
     animationCues: payload.animationCues,
-    serverState: payload.serverState,
+    labels: payload.labels,
   };
 };
 

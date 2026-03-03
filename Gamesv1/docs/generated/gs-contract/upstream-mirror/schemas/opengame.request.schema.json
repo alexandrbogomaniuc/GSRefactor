@@ -1,0 +1,16 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "opengame.request.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractVersion", "sessionId", "requestCounter", "currentStateVersion", "idempotencyKey", "clientOperationId"],
+  "properties": {
+    "contractVersion": { "const": "slot-browser-v1" },
+    "sessionId": { "type": "string", "minLength": 1 },
+    "requestCounter": { "type": "integer", "minimum": 0 },
+    "currentStateVersion": { "type": "integer", "minimum": 0 },
+    "idempotencyKey": { "type": "string", "minLength": 1 },
+    "clientOperationId": { "type": "string", "minLength": 1 },
+    "bootstrapRef": { "type": "object", "additionalProperties": true, "minProperties": 1 }
+  }
+}

@@ -1,4 +1,5 @@
-﻿import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import { readLabelBoolean } from "./types.ts";
 
 export class BuyFeatureModule implements FeatureModule {
   public readonly id = "buy-feature";
@@ -9,7 +10,10 @@ export class BuyFeatureModule implements FeatureModule {
 
   public resolve(input: FeatureModuleInput) {
     const features = input.runtimeConfig.capabilities.features;
-    const cashBonus = input.serverState.cashBonusMode === true;
+    const cashBonus =
+      input.counters.cashBonusMode === true ||
+      readLabelBoolean(input.round.labels, "cashBonusMode") === true;
+
     const buyAllowedForCashBonus = features.buyFeatureForCashBonus;
     const buyDisabledForCashBonus = features.buyFeatureDisabledForCashBonus;
 
@@ -17,7 +21,10 @@ export class BuyFeatureModule implements FeatureModule {
       ? features.buyFeature
       : buyAllowedForCashBonus && !buyDisabledForCashBonus;
 
-    const buyAvailable = input.serverState.buyFeatureAvailable !== false && buyAllowed;
+    const buyAvailableCounter = input.counters.buyFeatureAvailable;
+    const buyAvailableLabel = readLabelBoolean(input.round.labels, "buyFeatureAvailable");
+    const buyAvailableSignal = buyAvailableCounter ?? buyAvailableLabel ?? true;
+    const buyAvailable = buyAvailableSignal && buyAllowed;
 
     const output = {
       controlVisibility: {
@@ -48,4 +55,3 @@ export class BuyFeatureModule implements FeatureModule {
     return output;
   }
 }
-

@@ -1,0 +1,82 @@
+{
+  "fixtureVersion": "slot-release-registration-fixture-v1",
+  "name": "release-registration.sample",
+  "contractVersion": "slot-release-registration-v1",
+  "releaseId": "slot10045-r2026.03.01-01",
+  "gameId": "10045",
+  "title": "Example Slot Title",
+  "route": {
+    "routeGameId": "10045",
+    "routingEnabled": true,
+    "legacyFallbackEnabled": true
+  },
+  "client": {
+    "clientPackageVersion": "2.6.0",
+    "assetBaseUrl": "https://cdn.example.com/slots/10045/2.6.0/",
+    "assetBundleHash": "sha256:84f0e97ca2f0e24d5a4dca8f1ea4e1632f26644b4f58c1ea6d9ef5074b8ee7fa",
+    "assetManifestPath": "/manifest.json"
+  },
+  "math": {
+    "mathPackageVersion": "1.4.2",
+    "allowedRtpModels": [
+      {
+        "rtpModelId": "base-96.20",
+        "rtpPercent": 96.2,
+        "jurisdictionTags": [
+          "ROW"
+        ]
+      },
+      {
+        "rtpModelId": "regulated-94.00",
+        "rtpPercent": 94.0,
+        "jurisdictionTags": [
+          "REG_X"
+        ]
+      }
+    ],
+    "defaultRtpModelRules": {
+      "ruleType": "BANK_POLICY_THEN_RELEASE_DEFAULT",
+      "releaseDefaultRtpModelId": "base-96.20",
+      "fallbackOrder": [
+        "regulated-94.00"
+      ]
+    }
+  },
+  "capabilityProfile": {
+    "profileRef": "cap-slot10045-v5",
+    "profileHash": "sha256:af91aa3c1d1b7b17b445d9422442f2dc5ff3646f65353681df6f0f26fdd5d022",
+    "policySchemaVersion": "slot-bootstrap-v1"
+  },
+  "rollout": {
+    "state": "DISABLED",
+    "canary": {
+      "mode": "ALLOWLIST",
+      "banks": [
+        6274
+      ],
+      "subCasinoIds": [
+        507
+      ],
+      "trafficPercent": 5
+    },
+    "rollbackTargetReleaseId": "slot10045-r2026.02.20-03"
+  },
+  "compatibility": {
+    "minGsVersion": "gs-2026.03",
+    "maxGsVersion": "gs-2027.01",
+    "browserContractVersion": "slot-browser-v1",
+    "bootstrapContractVersion": "slot-bootstrap-v1",
+    "internalRuntimeContractVersion": "slot-runtime-v1"
+  },
+  "integrity": {
+    "registrationHash": "sha256:19cde4f7f154a6d8e1f49cb9bb62dc3cf6e48ced2619f2fa17bb0047f31b522e",
+    "signature": "ed25519:ab12f3c30e9f0f2f58187254f9b0f23ee58e0cf66e7e5ea1093d0d7f8129d6f2",
+    "signer": "gamesv1-release-bot",
+    "generatedAtUtc": "2026-03-01T10:00:00Z"
+  },
+  "metadata": {
+    "changeTicket": "REL-4821",
+    "notes": "Phase-1 rollout",
+    "createdBy": "gamesv1"
+  }
+}

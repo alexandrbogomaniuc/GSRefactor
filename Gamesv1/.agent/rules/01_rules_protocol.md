@@ -1,12 +1,19 @@
-﻿# Non-Negotiable Protocol Rules
+# Non-Negotiable Protocol Rules
 
-This rule file defines protocol and ownership requirements for Gamesv1.
+This rule file defines runtime ownership and transport requirements for Gamesv1.
 
-## 1. Canonical runtime source
+## Canonical sources
 
-Use `docs/gs/browser-runtime-api-contract.md` and `docs/gs/bootstrap-config-contract.md`.
+- Runtime/release contract spec: `docs/gs/*` (entry: `docs/gs/README.md`)
+- Client capability/behavior spec: `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`
 
-## 2. Canonical browser operations
+## Canonical runtime target
+
+- Browser -> GS HTTP only (`slot-browser-v1`).
+- Canonical endpoint prefix: `/slot/v1/*`.
+- Canonical history endpoint: `/slot/v1/gethistory`.
+
+## Canonical browser operations
 
 - `bootstrap`
 - `opengame`
@@ -16,32 +23,21 @@ Use `docs/gs/browser-runtime-api-contract.md` and `docs/gs/bootstrap-config-cont
 - `closegame`
 - `gethistory`
 
-## 3. Ownership and truth
+## Ownership and truth
 
 - GS owns session, wallet, DB state, restore state, requestCounter, idempotency, routing, and config resolution.
 - Browser is presentation-only for financial/session truth.
-- Browser never consumes internal slot-engine audit data as UI state truth.
+- Browser must not consume internal slot-engine audit data as UI state truth.
 
-## 4. Transport boundaries
+## Scope constraints
 
-- Canonical path is browser -> GS HTTP runtime only.
-- No direct game-level `WebSocket` runtime path.
-- Legacy `abs.gs.v1` is experimental only and not canonical.
-
-## 5. Idempotency and sequencing
-
-- Money-impacting calls must carry stable idempotency identity on retries.
-- requestCounter must be monotonic and server-authoritative.
-- currentStateVersion must be forwarded when provided.
-
-## 6. Scope constraints
-
-- Operator-specific messaging is outside canonical runtime path.
+- `abs.gs.v1` WebSocket is legacy/experimental only.
+- Operator/Pariplay messaging is out of canonical runtime scope.
 - Multiplayer is out of scope.
 
-## 7. Definition of done
+## Implementation constraints
 
-- [ ] transport methods align to slot-browser-v1 operation set
-- [ ] premium-slot renders server presentation payloads only
-- [ ] no game module owns wallet/DB state truth
-- [ ] release artifacts match `docs/gs/release-registration-contract.md`
+- No canonical game runtime path may rely on direct `WebSocket`.
+- No canonical game runtime path may rely on operator messaging bridge APIs.
+- requestCounter must be monotonic and server-authoritative.
+- idempotency identities must be stable across retries.

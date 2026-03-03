@@ -1,0 +1,47 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bootstrap.response.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ok", "requestId", "session", "context", "assets", "runtime", "policies", "uiPolicy", "integrity"],
+  "properties": {
+    "ok": { "type": "boolean" },
+    "requestId": { "type": "string", "minLength": 1 },
+    "session": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["sessionId", "requestCounter", "stateVersion"],
+      "properties": {
+        "sessionId": { "type": "string", "minLength": 1 },
+        "requestCounter": { "type": "integer", "minimum": 0 },
+        "stateVersion": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "context": { "type": "object", "additionalProperties": true },
+    "assets": { "type": "object", "additionalProperties": true },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["bootstrapRef", "wallet"],
+      "properties": {
+        "bootstrapRef": {
+          "type": "object",
+          "additionalProperties": true,
+          "minProperties": 1
+        },
+        "wallet": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["balanceMinor", "currencyCode"],
+          "properties": {
+            "balanceMinor": { "type": "integer" },
+            "currencyCode": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "policies": { "type": "object", "additionalProperties": true },
+    "uiPolicy": { "type": "object", "additionalProperties": true },
+    "integrity": { "type": "object", "additionalProperties": true }
+  }
+}

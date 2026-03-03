@@ -1,28 +1,105 @@
-﻿import assert from "node:assert/strict";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import Ajv2020, { type ValidateFunction } from "ajv/dist/2020.js";
 
 import { GsHttpRuntimeTransport } from "../../packages/core-protocol/src/http/GsHttpRuntimeTransport.ts";
 
-type RuntimeState = {
-  sessionId: string;
-  balance: number;
-  requestCounter: number;
-  currentStateVersion: string;
-  restorePayload: Record<string, unknown> | null;
-  history: Array<Record<string, unknown>>;
-  idempotencyCache: Map<string, Record<string, unknown>>;
+type JsonRecord = Record<string, unknown>;
+
+type FixtureEndpoint = {
+  method: string;
+  path: string;
+  readOnly: boolean;
 };
 
-const state: RuntimeState = {
-  sessionId: "session-123",
-  balance: 10000,
-  requestCounter: 0,
-  currentStateVersion: "v0",
-  restorePayload: {
-    roundId: "restore-round-1",
-    stage: "WAITING_PRESENTATION",
-  },
-  history: [],
-  idempotencyCache: new Map(),
+type RequestFixture = {
+  fixtureVersion: string;
+  name: string;
+  endpoint: FixtureEndpoint;
+  requestHeaders: Record<string, string>;
+  requestBody: JsonRecord;
+};
+
+type ResponseFixture = {
+  fixtureVersion: string;
+  name: string;
+  endpoint: FixtureEndpoint;
+  response: {
+    httpStatus: number;
+    body: JsonRecord;
+  };
+};
+
+type RuntimeEnvelope = {
+  ok: true;
+  requestId: string;
+  sessionId: string;
+  requestCounter: number;
+  stateVersion: number;
+  wallet: JsonRecord;
+  round: JsonRecord;
+  feature: JsonRecord;
+  presentationPayload: JsonRecord;
+  restore: JsonRecord;
+  idempotency: JsonRecord;
+  retry: JsonRecord;
+};
+
+type RuntimeState = {
+  sessionId: string;
+  requestCounter: number;
+  stateVersion: number;
+  balanceMinor: number;
+  history: Array<Record<string, unknown>>;
+  idempotencyCache: Map<string, RuntimeEnvelope>;
+};
+
+type RequestLogEntry = {
+  path: string;
+  headers: Record<string, string>;
+  body: JsonRecord;
+};
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const fixturesDir = path.resolve(__dirname, "../../docs/gs/fixtures");
+const schemasDir = path.resolve(__dirname, "../../docs/gs/schemas");
+
+const readJson = <T>(absolutePath: string): T => {
+  const raw = fs.readFileSync(absolutePath, "utf8");
+  const withoutBom = raw.charCodeAt(0) === 0xfeff ? raw.slice(1) : raw;
+  return JSON.parse(withoutBom) as T;
+};
+
+const asRecord = (value: unknown): JsonRecord =>
+  typeof value === "object" && value !== null && !Array.isArray(value)
+    ? (value as JsonRecord)
+    : {};
+
+const asString = (value: unknown): string => {
+  if (typeof value === "string") return value;
+  throw new Error(`Expected string, got ${String(value)}`);
+};
+
+const asNumber = (value: unknown): number => {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+  throw new Error(`Expected numeric value, got ${String(value)}`);
+};
+
+const normalizeHeaders = (headers: HeadersInit | undefined): Record<string, string> => {
+  if (!headers) return {};
+  if (headers instanceof Headers) return Object.fromEntries(headers.entries());
+  if (Array.isArray(headers)) {
+    return Object.fromEntries(headers.map(([key, value]) => [String(key).toLowerCase(), String(value)]));
+  }
+  return Object.fromEntries(
+    Object.entries(headers).map(([key, value]) => [key.toLowerCase(), String(value)]),
+  );
 };
 
 const mkResponse = (status: number, body: Record<string, unknown>): Response =>
@@ -31,158 +108,321 @@ const mkResponse = (status: number, body: Record<string, unknown>): Response =>
     headers: { "content-type": "application/json" },
   });
 
-const asRecord = (value: unknown): Record<string, unknown> =>
-  (typeof value === "object" && value !== null ? (value as Record<string, unknown>) : {});
+const ajv = new Ajv2020({
+  allErrors: true,
+  strict: false,
+});
+
+const compileSchema = (schemaFile: string): ValidateFunction => {
+  const schema = readJson<JsonRecord>(path.join(schemasDir, schemaFile));
+  return ajv.compile(schema);
+};
+
+const validateBootstrapRequest = compileSchema("bootstrap.request.schema.json");
+const validateBootstrapResponse = compileSchema("bootstrap.response.schema.json");
+const validateOpenGameRequest = compileSchema("opengame.request.schema.json");
+const validateOpenGameResponse = compileSchema("opengame.response.schema.json");
+const validatePlayRoundRequest = compileSchema("playround.request.schema.json");
+const validatePlayRoundResponse = compileSchema("playround.response.schema.json");
+const validateFeatureActionRequest = compileSchema("featureaction.request.schema.json");
+const validateFeatureActionResponse = compileSchema("featureaction.response.schema.json");
+const validateResumeGameRequest = compileSchema("resumegame.request.schema.json");
+const validateResumeGameResponse = compileSchema("resumegame.response.schema.json");
+const validateGetHistoryRequest = compileSchema("gethistory.request.schema.json");
+const validateGetHistoryResponse = compileSchema("gethistory.response.schema.json");
+const validateCloseGameRequest = compileSchema("closegame.request.schema.json");
+const validateCloseGameResponse = compileSchema("closegame.response.schema.json");
+
+const assertValid = (label: string, validator: ValidateFunction, payload: unknown): void => {
+  if (validator(payload)) return;
+  const issues = (validator.errors ?? [])
+    .map((err) => `${err.instancePath || "/"} ${err.message ?? "invalid"}`)
+    .join("; ");
+  throw new Error(`${label} schema validation failed: ${issues}`);
+};
+
+const readRequestFixture = (name: string): RequestFixture =>
+  readJson<RequestFixture>(path.join(fixturesDir, `${name}.request.json`));
+
+const readResponseFixture = (name: string): ResponseFixture =>
+  readJson<ResponseFixture>(path.join(fixturesDir, `${name}.response.json`));
+
+const bootstrapRequestFixture = readRequestFixture("bootstrap");
+const bootstrapResponseFixture = readResponseFixture("bootstrap");
+const openGameRequestFixture = readRequestFixture("opengame");
+const openGameResponseFixture = readResponseFixture("opengame");
+const playRoundRequestFixture = readRequestFixture("playround");
+const playRoundResponseFixture = readResponseFixture("playround");
+const playRoundDuplicateResponseFixture =
+  readResponseFixture("playround.duplicate");
+const featureActionRequestFixture = readRequestFixture("featureaction");
+const featureActionResponseFixture = readResponseFixture("featureaction");
+const resumeGameRequestFixture = readRequestFixture("resumegame");
+const resumeGameResponseFixture = readResponseFixture("resumegame");
+const getHistoryRequestFixture = readRequestFixture("gethistory");
+const getHistoryResponseFixture = readResponseFixture("gethistory");
+const closeGameRequestFixture = readRequestFixture("closegame");
+const closeGameResponseFixture = readResponseFixture("closegame");
+
+for (const fixture of [
+  bootstrapRequestFixture,
+  openGameRequestFixture,
+  playRoundRequestFixture,
+  featureActionRequestFixture,
+  resumeGameRequestFixture,
+  getHistoryRequestFixture,
+  closeGameRequestFixture,
+]) {
+  assert.equal(fixture.endpoint.path, `/slot/v1/${fixture.name.split(".")[0]}`);
+}
+
+assertValid("bootstrap.request", validateBootstrapRequest, bootstrapRequestFixture.requestBody);
+assertValid(
+  "bootstrap.response",
+  validateBootstrapResponse,
+  bootstrapResponseFixture.response.body,
+);
+assertValid("opengame.request", validateOpenGameRequest, openGameRequestFixture.requestBody);
+assertValid("opengame.response", validateOpenGameResponse, openGameResponseFixture.response.body);
+assertValid("playround.request", validatePlayRoundRequest, playRoundRequestFixture.requestBody);
+assertValid("playround.response", validatePlayRoundResponse, playRoundResponseFixture.response.body);
+assertValid("playround.duplicate.response", validatePlayRoundResponse, playRoundDuplicateResponseFixture.response.body);
+assertValid(
+  "featureaction.request",
+  validateFeatureActionRequest,
+  featureActionRequestFixture.requestBody,
+);
+assertValid(
+  "featureaction.response",
+  validateFeatureActionResponse,
+  featureActionResponseFixture.response.body,
+);
+assertValid("resumegame.request", validateResumeGameRequest, resumeGameRequestFixture.requestBody);
+assertValid("resumegame.response", validateResumeGameResponse, resumeGameResponseFixture.response.body);
+assertValid("gethistory.request", validateGetHistoryRequest, getHistoryRequestFixture.requestBody);
+assertValid("gethistory.response", validateGetHistoryResponse, getHistoryResponseFixture.response.body);
+assertValid("closegame.request", validateCloseGameRequest, closeGameRequestFixture.requestBody);
+assertValid("closegame.response", validateCloseGameResponse, closeGameResponseFixture.response.body);
+
+const bootstrapSession = asRecord(bootstrapResponseFixture.response.body.session);
+const state: RuntimeState = {
+  sessionId: asString(bootstrapSession.sessionId),
+  requestCounter: asNumber(bootstrapSession.requestCounter),
+  stateVersion: asNumber(bootstrapSession.stateVersion),
+  balanceMinor: 100000,
+  history: [],
+  idempotencyCache: new Map(),
+};
+
+const requestLog: RequestLogEntry[] = [];
+let forceHistoryStateDrift = false;
+
+const cloneEnvelope = (envelope: RuntimeEnvelope): RuntimeEnvelope =>
+  structuredClone(envelope) as RuntimeEnvelope;
+
+const assertMonotonic = (pathName: string, next: number, current: number): Response | null => {
+  if (next <= current) {
+    return mkResponse(409, {
+      error: {
+        code: "INVALID_REQUEST_COUNTER",
+        message: `${pathName}: requestCounter must be monotonic (current=${current}, got=${next})`,
+      },
+    });
+  }
+  return null;
+};
 
 (globalThis as { fetch: typeof fetch }).fetch = (async (
   input: RequestInfo | URL,
   init?: RequestInit,
 ): Promise<Response> => {
   const url = String(input);
-  const path = new URL(url).pathname;
-  const body = init?.body ? (JSON.parse(String(init.body)) as Record<string, unknown>) : {};
+  const pathName = new URL(url).pathname;
+  const body = init?.body ? (JSON.parse(String(init.body)) as JsonRecord) : {};
+  const headers = normalizeHeaders(init?.headers);
 
-  if (path === "/v1/bootstrap") {
-    state.requestCounter = 1;
-    state.currentStateVersion = "v1";
-    return mkResponse(200, {
-      session: {
-        sessionId: state.sessionId,
-        requestCounter: state.requestCounter,
-        currentStateVersion: state.currentStateVersion,
-      },
-      wallet: {
-        balance: state.balance,
-        currencyCode: "EUR",
-      },
-      runtimeConfig: {
-        currencyCode: "EUR",
-        minBet: 10,
-        maxBet: 200,
-        maxExposure: 100000,
-        defaultBet: 20,
-      },
-      capabilities: {
-        turbo: {
-          allowed: true,
-          speedId: "turbo-x2",
-          preferred: false,
-        },
-      },
-      restore: state.restorePayload,
-    });
+  requestLog.push({ path: pathName, headers, body });
+
+  if (pathName === "/slot/v1/bootstrap") {
+    assertValid("bootstrap.request", validateBootstrapRequest, body);
+    if (headers["x-idempotency-key"] || headers["x-client-operation-id"]) {
+      return mkResponse(400, {
+        error: { code: "IDEMPOTENCY_KEY_REUSE", message: "bootstrap is read-only" },
+      });
+    }
+    return mkResponse(
+      bootstrapResponseFixture.response.httpStatus,
+      bootstrapResponseFixture.response.body,
+    );
   }
 
-  if (path === "/v1/opengame") {
-    state.requestCounter += 1;
-    state.currentStateVersion = `v${state.requestCounter}`;
-    return mkResponse(200, {
-      sessionId: state.sessionId,
-      balance: state.balance,
-      requestCounter: state.requestCounter,
-      currentStateVersion: state.currentStateVersion,
-      runtimeConfig: {
-        defaultBet: 20,
-      },
-    });
+  if (pathName === "/slot/v1/opengame") {
+    assertValid("opengame.request", validateOpenGameRequest, body);
+    if (!headers["x-idempotency-key"] || !headers["x-client-operation-id"]) {
+      return mkResponse(400, {
+        error: { code: "IDEMPOTENCY_KEY_REUSE", message: "missing mutating headers" },
+      });
+    }
+
+    const monotonicError = assertMonotonic(pathName, asNumber(body.requestCounter), state.requestCounter);
+    if (monotonicError) return monotonicError;
+
+    state.requestCounter = asNumber(body.requestCounter);
+    state.stateVersion = Math.max(state.stateVersion + 1, asNumber(body.currentStateVersion) + 1);
+
+    const response = structuredClone(openGameResponseFixture.response.body) as JsonRecord;
+    response.requestCounter = state.requestCounter;
+    response.stateVersion = state.stateVersion;
+    response.sessionId = state.sessionId;
+    asRecord(response.wallet).balanceMinor = state.balanceMinor;
+
+    assertValid("opengame.response", validateOpenGameResponse, response);
+    return mkResponse(openGameResponseFixture.response.httpStatus, response);
   }
 
-  if (path === "/v1/playround") {
-    const requestCounter = Number(body.requestCounter);
-    const idempotencyKey = String(body.idempotencyKey ?? "");
-
-    if (!Number.isFinite(requestCounter)) {
-      return mkResponse(400, { error: { code: "GS_SEQUENCE_INVALID", message: "missing requestCounter" } });
+  if (pathName === "/slot/v1/playround") {
+    assertValid("playround.request", validatePlayRoundRequest, body);
+    if (!headers["x-idempotency-key"] || !headers["x-client-operation-id"]) {
+      return mkResponse(400, {
+        error: { code: "IDEMPOTENCY_KEY_REUSE", message: "missing mutating headers" },
+      });
     }
 
-    if (idempotencyKey && state.idempotencyCache.has(idempotencyKey)) {
-      return mkResponse(200, state.idempotencyCache.get(idempotencyKey)!);
+    const idempotencyKey = asString(body.idempotencyKey);
+    const cached = state.idempotencyCache.get(idempotencyKey);
+    if (cached) {
+      const duplicate = structuredClone(
+        playRoundDuplicateResponseFixture.response.body,
+      ) as JsonRecord;
+      duplicate.requestCounter = cached.requestCounter;
+      duplicate.stateVersion = cached.stateVersion;
+      duplicate.sessionId = cached.sessionId;
+      duplicate.wallet = cached.wallet;
+      duplicate.round = cached.round;
+      duplicate.feature = cached.feature;
+      duplicate.presentationPayload = cached.presentationPayload;
+      duplicate.restore = cached.restore;
+
+      assertValid("playround.duplicate.response", validatePlayRoundResponse, duplicate);
+      return mkResponse(200, duplicate);
     }
 
-    state.requestCounter = requestCounter;
-    state.currentStateVersion = `v${state.requestCounter}`;
+    const monotonicError = assertMonotonic(pathName, asNumber(body.requestCounter), state.requestCounter);
+    if (monotonicError) return monotonicError;
 
-    const betAmount = Number(body.betAmount ?? 0);
-    const winAmount = Math.max(0, Math.round(betAmount * 1.2));
-    state.balance = state.balance - betAmount + winAmount;
+    state.requestCounter = asNumber(body.requestCounter);
+    state.stateVersion = Math.max(state.stateVersion + 1, asNumber(body.currentStateVersion) + 1);
 
-    const result = {
-      roundId: `round-${state.requestCounter}`,
-      requestCounter: state.requestCounter,
-      currentStateVersion: state.currentStateVersion,
-      balance: state.balance,
-      winAmount,
-      presentationPayload: {
-        slotIndex: 3,
-        reelStopColumns: [
-          [0, 1, 2],
-          [1, 2, 3],
-          [2, 3, 4],
-          [3, 4, 5],
-          [4, 5, 6],
-        ],
-        winAmount,
-      },
+    const response = structuredClone(playRoundResponseFixture.response.body) as JsonRecord;
+    const selectedBet = asRecord(body.selectedBet);
+    const round = asRecord(response.round);
+    const wallet = asRecord(response.wallet);
+    const winMinor = asNumber(round.winMinor ?? 0);
+
+    state.balanceMinor = state.balanceMinor - asNumber(selectedBet.totalBetMinor) + winMinor;
+
+    response.requestCounter = state.requestCounter;
+    response.stateVersion = state.stateVersion;
+    response.sessionId = state.sessionId;
+    wallet.balanceMinor = state.balanceMinor;
+    wallet.previousBalanceMinor = state.balanceMinor + asNumber(selectedBet.totalBetMinor) - winMinor;
+    round.roundId = `R-${String(state.requestCounter).padStart(3, "0")}`;
+    round.betMinor = asNumber(selectedBet.totalBetMinor);
+    round.netEffectMinor = winMinor - asNumber(selectedBet.totalBetMinor);
+    asRecord(response.idempotency).isDuplicate = false;
+    asRecord(response.idempotency).duplicateOfRequestId = null;
+
+    assertValid("playround.response", validatePlayRoundResponse, response);
+    state.idempotencyCache.set(idempotencyKey, response as RuntimeEnvelope);
+
+    return mkResponse(playRoundResponseFixture.response.httpStatus, response);
+  }
+
+  if (pathName === "/slot/v1/featureaction") {
+    assertValid("featureaction.request", validateFeatureActionRequest, body);
+    const monotonicError = assertMonotonic(pathName, asNumber(body.requestCounter), state.requestCounter);
+    if (monotonicError) return monotonicError;
+
+    state.requestCounter = asNumber(body.requestCounter);
+    state.stateVersion = Math.max(state.stateVersion + 1, asNumber(body.currentStateVersion) + 1);
+
+    const response = structuredClone(featureActionResponseFixture.response.body) as JsonRecord;
+    response.requestCounter = state.requestCounter;
+    response.stateVersion = state.stateVersion;
+    response.sessionId = state.sessionId;
+    asRecord(response.wallet).balanceMinor = state.balanceMinor;
+
+    assertValid("featureaction.response", validateFeatureActionResponse, response);
+    return mkResponse(featureActionResponseFixture.response.httpStatus, response);
+  }
+
+  if (pathName === "/slot/v1/resumegame") {
+    assertValid("resumegame.request", validateResumeGameRequest, body);
+    const monotonicError = assertMonotonic(pathName, asNumber(body.requestCounter), state.requestCounter);
+    if (monotonicError) return monotonicError;
+
+    state.requestCounter = asNumber(body.requestCounter);
+    state.stateVersion = Math.max(state.stateVersion + 1, asNumber(body.currentStateVersion) + 1);
+
+    const response = structuredClone(resumeGameResponseFixture.response.body) as JsonRecord;
+    response.requestCounter = state.requestCounter;
+    response.stateVersion = state.stateVersion;
+    response.sessionId = state.sessionId;
+    asRecord(response.wallet).balanceMinor = state.balanceMinor;
+
+    assertValid("resumegame.response", validateResumeGameResponse, response);
+    return mkResponse(resumeGameResponseFixture.response.httpStatus, response);
+  }
+
+  if (pathName === "/slot/v1/gethistory") {
+    assertValid("gethistory.request", validateGetHistoryRequest, body);
+    if (headers["x-idempotency-key"] || headers["x-client-operation-id"]) {
+      return mkResponse(400, {
+        error: { code: "IDEMPOTENCY_KEY_REUSE", message: "gethistory is read-only" },
+      });
+    }
+    if (asNumber(body.requestCounter) !== state.requestCounter) {
+      return mkResponse(409, {
+        error: { code: "INVALID_REQUEST_COUNTER", message: "history must reuse accepted counter" },
+      });
+    }
+
+    const response = structuredClone(getHistoryResponseFixture.response.body) as JsonRecord;
+    response.requestCounter = forceHistoryStateDrift
+      ? state.requestCounter + 1
+      : state.requestCounter;
+    response.stateVersion = forceHistoryStateDrift
+      ? state.stateVersion + 1
+      : state.stateVersion;
+    response.sessionId = state.sessionId;
+    asRecord(response.wallet).balanceMinor = state.balanceMinor;
+    asRecord(response.feature).featureContext = {
+      ...asRecord(asRecord(response.feature).featureContext),
+      historyQuery: body.historyQuery,
     };
 
-    if (idempotencyKey) {
-      state.idempotencyCache.set(idempotencyKey, result);
-    }
-
-    state.history.unshift({
-      roundId: result.roundId,
-      winAmount,
-      balance: state.balance,
-      requestCounter: state.requestCounter,
-    });
-
-    return mkResponse(200, result);
+    assertValid("gethistory.response", validateGetHistoryResponse, response);
+    return mkResponse(getHistoryResponseFixture.response.httpStatus, response);
   }
 
-  if (path === "/v1/featureaction") {
-    const requestCounter = Number(body.requestCounter);
-    state.requestCounter = requestCounter;
-    state.currentStateVersion = `v${state.requestCounter}`;
+  if (pathName === "/slot/v1/closegame") {
+    assertValid("closegame.request", validateCloseGameRequest, body);
+    const monotonicError = assertMonotonic(pathName, asNumber(body.requestCounter), state.requestCounter);
+    if (monotonicError) return monotonicError;
 
-    return mkResponse(200, {
-      requestCounter: state.requestCounter,
-      currentStateVersion: state.currentStateVersion,
-      presentationPayload: {
-        action: body.action,
-        accepted: true,
-      },
-    });
+    state.requestCounter = asNumber(body.requestCounter);
+    state.stateVersion = Math.max(state.stateVersion + 1, asNumber(body.currentStateVersion) + 1);
+
+    const response = structuredClone(closeGameResponseFixture.response.body) as JsonRecord;
+    response.requestCounter = state.requestCounter;
+    response.stateVersion = state.stateVersion;
+    response.sessionId = state.sessionId;
+
+    assertValid("closegame.response", validateCloseGameResponse, response);
+    return mkResponse(closeGameResponseFixture.response.httpStatus, response);
   }
 
-  if (path === "/v1/resumegame") {
-    state.requestCounter = Number(body.requestCounter ?? state.requestCounter + 1);
-    state.currentStateVersion = `v${state.requestCounter}`;
-
-    return mkResponse(200, {
-      sessionId: state.sessionId,
-      balance: state.balance,
-      requestCounter: state.requestCounter,
-      currentStateVersion: state.currentStateVersion,
-      unresolvedRoundState: state.restorePayload,
-    });
-  }
-
-  if (path === "/v1/gethistory") {
-    state.requestCounter = Number(body.requestCounter ?? state.requestCounter + 1);
-    state.currentStateVersion = `v${state.requestCounter}`;
-
-    return mkResponse(200, {
-      requestCounter: state.requestCounter,
-      currentStateVersion: state.currentStateVersion,
-      history: state.history,
-    });
-  }
-
-  if (path === "/v1/closegame") {
-    return mkResponse(200, { ok: true });
-  }
-
-  return mkResponse(404, { error: { code: "NOT_FOUND", message: `No route for ${path}` } });
+  return mkResponse(404, { error: { code: "NOT_FOUND", message: `No route for ${pathName}` } });
 }) as typeof fetch;
 
 const transport = new GsHttpRuntimeTransport();
@@ -202,133 +442,157 @@ const test = async (name: string, fn: () => Promise<void>) => {
   }
 };
 
-await test("bootstrap returns runtime/session/wallet truth", async () => {
+const assertCommonHeaders = (entry: RequestLogEntry) => {
+  assert.equal(entry.headers["x-gs-client-contract"], "slot-browser-v1");
+  assert.ok(entry.headers["x-request-id"]);
+  assert.ok(entry.headers["x-session-id"]);
+};
+
+await test("bootstrap is read-only and keeps bootstrap contract separate", async () => {
   const result = await transport.bootstrap(
     {
       mode: "GS_HTTP_RUNTIME",
       baseUrl: "http://mock-runtime",
-      gameId: 10,
-      sessionId: state.sessionId,
+      gameId: 10045,
+      bankId: 6274,
+      playerId: "P-9001",
+      sessionId: "SID-123",
+      language: "en",
+      internalClientCode: "slot-browser-v1",
     },
-    { sessionId: state.sessionId },
+    bootstrapRequestFixture.requestBody as any,
   );
 
-  assert.equal(result.sessionId, state.sessionId);
-  assert.equal(result.requestCounter, 1);
-  assert.equal(result.balance, 10000);
-  assert.ok(asRecord(result.runtimeConfig).defaultBet);
+  assertValid("bootstrap.result", validateBootstrapResponse, result);
+  assert.equal(result.contractVersion, "slot-bootstrap-v1");
+
+  const last = requestLog.at(-1)!;
+  assert.equal(last.path, "/slot/v1/bootstrap");
+  assertCommonHeaders(last);
+  assert.equal(last.headers["x-idempotency-key"], undefined);
+  assert.equal(last.headers["x-client-operation-id"], undefined);
 });
 
-await test("opengame updates sequencing snapshot", async () => {
-  const result = await transport.openGame({
-    sessionId: state.sessionId,
-    gameId: 10,
-  });
+await test("opengame uses canonical mutating headers and envelope", async () => {
+  const result = await transport.opengame(openGameRequestFixture.requestBody as any);
+  assertValid("opengame.result", validateOpenGameResponse, result);
 
-  assert.equal(result.sessionId, state.sessionId);
-  assert.equal(result.requestCounter, 2);
-  assert.equal(result.currentStateVersion, "v2");
+  const last = requestLog.at(-1)!;
+  assert.equal(last.path, "/slot/v1/opengame");
+  assertCommonHeaders(last);
+  assert.equal(last.headers["x-idempotency-key"], asString(openGameRequestFixture.requestBody.idempotencyKey));
+  assert.equal(last.headers["x-client-operation-id"], asString(openGameRequestFixture.requestBody.clientOperationId));
 });
 
-await test("playround consumes requestCounter/idempotency and returns payload", async () => {
-  const result = await transport.playRound({
-    betAmount: 100,
-    betType: "DEFAULT",
-    metadata: {
-      requestCounter: 3,
-      idempotencyKey: "idem-round-3",
-      clientOperationId: "op-round-3",
-      currentStateVersion: "v2",
-    },
-  });
-
-  assert.equal(result.requestCounter, 3);
-  assert.equal(result.currentStateVersion, "v3");
-  assert.ok(asRecord(result.presentationPayload).reelStopColumns);
+await test("playround validates exact selectedBet wire shape", async () => {
+  const result = await transport.playround(playRoundRequestFixture.requestBody as any);
+  assertValid("playround.result", validatePlayRoundResponse, result);
+  assert.equal(typeof asNumber(asRecord(result.round).betMinor), "number");
+  assert.equal(typeof asNumber(asRecord(result.wallet).balanceMinor), "number");
 });
 
-await test("idempotency duplicate returns same round result", async () => {
-  const first = await transport.playRound({
-    betAmount: 50,
-    betType: "DEFAULT",
-    metadata: {
-      requestCounter: 4,
-      idempotencyKey: "idem-dup-4",
-      clientOperationId: "op-dup-4",
-      currentStateVersion: "v3",
-    },
-  });
+await test("duplicate playround is idempotent", async () => {
+  const base = playRoundRequestFixture.requestBody;
+  const first = await transport.playround({
+    ...base,
+    requestCounter: 44,
+    idempotencyKey: "idem-play-dup-44",
+    clientOperationId: "client-op-dup-44",
+  } as any);
+  const second = await transport.playround({
+    ...base,
+    requestCounter: 44,
+    idempotencyKey: "idem-play-dup-44",
+    clientOperationId: "client-op-dup-44",
+  } as any);
 
-  const second = await transport.playRound({
-    betAmount: 50,
-    betType: "DEFAULT",
-    metadata: {
-      requestCounter: 4,
-      idempotencyKey: "idem-dup-4",
-      clientOperationId: "op-dup-4",
-      currentStateVersion: "v3",
-    },
-  });
-
-  assert.equal(first.roundId, second.roundId);
-  assert.equal(first.requestCounter, second.requestCounter);
-  assert.equal(first.balance, second.balance);
+  assertValid("playround.first", validatePlayRoundResponse, first);
+  assertValid("playround.second", validatePlayRoundResponse, second);
+  assert.equal(asRecord(second.idempotency).isDuplicate, true);
 });
 
-await test("featureaction updates requestCounter/currentStateVersion", async () => {
-  const result = await transport.featureAction({
-    action: "toggle-autoplay",
-    payload: { enabled: true },
-    metadata: {
-      requestCounter: 5,
-      idempotencyKey: "idem-feature-5",
-      clientOperationId: "op-feature-5",
-      currentStateVersion: "v4",
-    },
+await test("featureaction advances sequencing", async () => {
+  const result = await transport.featureaction({
+    ...(featureActionRequestFixture.requestBody as any),
+    requestCounter: state.requestCounter + 1,
+    currentStateVersion: state.stateVersion,
+    idempotencyKey: `idem-feature-${state.requestCounter + 1}`,
+    clientOperationId: `client-op-feature-${state.requestCounter + 1}`,
   });
-
-  assert.equal(result.requestCounter, 5);
-  assert.equal(result.currentStateVersion, "v5");
-  assert.equal(asRecord(result.presentationPayload).accepted, true);
+  assertValid("featureaction.result", validateFeatureActionResponse, result);
 });
 
 await test("resumegame returns restore payload", async () => {
-  const result = await transport.resumeGame({
-    sessionId: state.sessionId,
-    metadata: {
-      requestCounter: 6,
-      idempotencyKey: "idem-resume-6",
-      clientOperationId: "op-resume-6",
-      currentStateVersion: "v5",
-    },
+  const result = await transport.resumegame({
+    ...(resumeGameRequestFixture.requestBody as any),
+    requestCounter: state.requestCounter + 1,
+    currentStateVersion: state.stateVersion,
+    idempotencyKey: `idem-resume-${state.requestCounter + 1}`,
+    clientOperationId: `client-op-resume-${state.requestCounter + 1}`,
   });
-
-  assert.equal(result.requestCounter, 6);
-  assert.ok(result.unresolvedRoundState);
+  assertValid("resumegame.result", validateResumeGameResponse, result);
+  assert.ok(asRecord(result.restore).opaqueRestorePayload !== undefined);
 });
 
-await test("gethistory returns entries and sequencing", async () => {
-  const result = await transport.getHistory({
-    pageNumber: 0,
-    metadata: {
-      requestCounter: 7,
-      currentStateVersion: "v6",
-    },
+await test("gethistory is read-only and reuses accepted counters", async () => {
+  const result = await transport.gethistory({
+    ...(getHistoryRequestFixture.requestBody as any),
+    requestCounter: state.requestCounter,
   });
+  assertValid("gethistory.result", validateGetHistoryResponse, result);
 
-  assert.equal(result.requestCounter, 7);
-  assert.ok(Array.isArray(result.history));
-  assert.ok(result.history.length >= 1);
+  const last = requestLog.at(-1)!;
+  assert.equal(last.path, "/slot/v1/gethistory");
+  assert.equal(last.headers["x-idempotency-key"], undefined);
+  assert.equal(last.headers["x-client-operation-id"], undefined);
 });
 
-await test("closegame succeeds", async () => {
-  await transport.closeGame({
-    reason: "test-close",
-    metadata: {
-      requestCounter: 8,
-      currentStateVersion: "v7",
-    },
+await test("gethistory rejects state-advancing response envelope", async () => {
+  forceHistoryStateDrift = true;
+  try {
+    await assert.rejects(
+      () =>
+        transport.gethistory({
+          ...(getHistoryRequestFixture.requestBody as any),
+          requestCounter: state.requestCounter,
+        }),
+      /gethistory must be read-only/,
+    );
+  } finally {
+    forceHistoryStateDrift = false;
+  }
+});
+
+await test("non-monotonic requestCounter is rejected", async () => {
+  await assert.rejects(
+    () =>
+      transport.playround({
+        ...(playRoundRequestFixture.requestBody as any),
+        requestCounter: 43,
+        idempotencyKey: "idem-stale-043",
+        clientOperationId: "client-op-stale-043",
+      }),
+    /requestCounter must be monotonic/,
+  );
+});
+
+await test("closegame requires idempotency headers and closes session", async () => {
+  const closeRequest = {
+    ...(closeGameRequestFixture.requestBody as any),
+    requestCounter: state.requestCounter + 1,
+    currentStateVersion: state.stateVersion,
+    idempotencyKey: `idem-close-${state.requestCounter + 1}`,
+    clientOperationId: `client-op-close-${state.requestCounter + 1}`,
+  };
+  const result = await transport.closegame({
+    ...closeRequest,
   });
+  assertValid("closegame.result", validateCloseGameResponse, result);
+
+  const last = requestLog.at(-1)!;
+  assert.equal(last.path, "/slot/v1/closegame");
+  assert.equal(last.headers["x-idempotency-key"], asString(closeRequest.idempotencyKey));
+  assert.equal(last.headers["x-client-operation-id"], asString(closeRequest.clientOperationId));
 });
 
 console.log(`\nBrowser runtime contract tests: ${passed} passed, ${failed} failed.`);

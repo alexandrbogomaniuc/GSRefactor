@@ -1,0 +1,58 @@
+{
+  "schema": "slot-release-registration-v1",
+  "gameId": "premium-slot",
+  "gameName": "TemplateSlot",
+  "version": "1.0.0",
+  "releaseId": "1.0.0+abc12345",
+  "gitSha": "abc12345",
+  "entrypointUrl": "https://cdn.example.com/games/premium-slot/1.0.0/index.html",
+  "assetManifestUrl": "https://cdn.example.com/games/premium-slot/1.0.0/artifacts/asset-manifest.json",
+  "localizationBaseUrl": "https://cdn.example.com/games/premium-slot/1.0.0/locales/",
+  "mathPackageManifestReference": {
+    "strategy": "static-manifest",
+    "path": "games/premium-slot/math/math-package-manifest.json",
+    "sha256": "placeholder",
+    "referenceLabel": "math-package-manifest.json",
+    "launchTimeInjectionAllowed": false
+  },
+  "capabilityProfile": {
+    "hash": "placeholder",
+    "path": "games/premium-slot/gs/capability-profile.json",
+    "source": "file"
+  },
+  "featureFlags": {
+    "freeSpins": true,
+    "buyFeature": false
+  },
+  "rtpModels": [
+    {
+      "id": "M1",
+      "rtp": 96.54
+    }
+  ],
+  "limits": {
+    "minBet": 10,
+    "maxBet": 5000,
+    "defaultBet": 2000,
+    "maxExposure": 100000
+  },
+  "canary": {
+    "eligible": true,
+    "checklist": "CANARY_CHECKLIST.md",
+    "previousKnownGoodReleaseId": null
+  },
+  "rollback": {
+    "checklist": "ROLLBACK_PACK.md",
+    "previousKnownGoodReleaseId": null
+  },
+  "integrity": {
+    "hashAlgorithm": "sha256",
+    "checksumsFile": "checksums.sha256.json",
+    "checksumsSha256": "placeholder",
+    "signature": {
+      "status": "unsigned",
+      "algorithm": null,
+      "reference": null
+    }
+  }
+}

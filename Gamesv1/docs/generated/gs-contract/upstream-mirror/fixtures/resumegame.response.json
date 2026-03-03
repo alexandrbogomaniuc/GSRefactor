@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "requestId": "req-resume-006",
+  "sessionId": "sid-demo-001",
+  "requestCounter": 6,
+  "stateVersion": 6,
+  "wallet": {
+    "balanceMinor": 143000,
+    "currencyCode": "EUR",
+    "delayedWalletMessages": false
+  },
+  "round": null,
+  "feature": null,
+  "presentationPayload": null,
+  "restore": {
+    "hasUnfinishedRound": true,
+    "resumeRef": "resume-ref-005",
+    "stage": "WAITING_PRESENTATION"
+  },
+  "idempotency": {
+    "key": "resume-6",
+    "clientOperationId": "resume-6",
+    "replayed": false
+  },
+  "retry": {
+    "allowed": false
+  }
+}

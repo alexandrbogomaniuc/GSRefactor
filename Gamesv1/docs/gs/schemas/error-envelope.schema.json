@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "slot-browser-v1/error-envelope.schema.json",
+  "title": "slot-browser-v1 error envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ok",
+    "requestId",
+    "sessionId",
+    "requestCounter",
+    "error",
+    "idempotency",
+    "retry"
+  ],
+  "properties": {
+    "ok": {
+      "type": "boolean",
+      "const": false
+    },
+    "requestId": {
+      "type": "string"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "requestCounter": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "message",
+        "retryable",
+        "details"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "details": {
+          "type": "object"
+        }
+      }
+    },
+    "idempotency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "isDuplicate",
+        "duplicateOfRequestId",
+        "replaySafe"
+      ],
+      "properties": {
+        "isDuplicate": {
+          "type": "boolean"
+        },
+        "duplicateOfRequestId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "replaySafe": {
+          "type": "boolean"
+        }
+      }
+    },
+    "retry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clientMayRetrySameKey",
+        "clientMustIncrementCounterOnNewAction"
+      ],
+      "properties": {
+        "clientMayRetrySameKey": {
+          "type": "boolean"
+        },
+        "clientMustIncrementCounterOnNewAction": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

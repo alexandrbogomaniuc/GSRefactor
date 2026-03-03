@@ -1,0 +1,52 @@
+﻿{
+    "fixtureVersion":  "2026-03-02",
+    "name":  "slot-browser-v1-opengame",
+    "endpoint":  "/slot/v1/opengame",
+    "requestHeaders":  {
+                           "X-GS-Client-Contract":  "slot-browser-v1",
+                           "X-Session-Id":  "sid-demo-001",
+                           "X-Idempotency-Key":  "open-2",
+                           "X-Client-Operation-Id":  "open-2"
+                       },
+    "requestBody":  {
+                        "contractVersion":  "slot-browser-v1",
+                        "sessionId":  "sid-demo-001",
+                        "requestCounter":  2,
+                        "currentStateVersion":  1,
+                        "bootstrapRef":  {
+                                             "id":  "boot-ref-001"
+                                         },
+                        "idempotencyKey":  "open-2",
+                        "clientOperationId":  "open-2"
+                    },
+    "response":  {
+                     "httpStatus":  200,
+                     "body":  {
+                                  "ok":  true,
+                                  "requestId":  "req-open-002",
+                                  "sessionId":  "sid-demo-001",
+                                  "requestCounter":  2,
+                                  "stateVersion":  2,
+                                  "wallet":  {
+                                                 "balanceMinor":  150000,
+                                                 "currencyCode":  "EUR",
+                                                 "delayedWalletMessages":  false
+                                             },
+                                  "round":  null,
+                                  "feature":  null,
+                                  "presentationPayload":  null,
+                                  "restore":  {
+                                                  "hasUnfinishedRound":  false,
+                                                  "resumeRef":  "resume-ref-001"
+                                              },
+                                  "idempotency":  {
+                                                      "key":  "open-2",
+                                                      "clientOperationId":  "open-2",
+                                                      "replayed":  false
+                                                  },
+                                  "retry":  {
+                                                "allowed":  false
+                                            }
+                              }
+                 }
+}

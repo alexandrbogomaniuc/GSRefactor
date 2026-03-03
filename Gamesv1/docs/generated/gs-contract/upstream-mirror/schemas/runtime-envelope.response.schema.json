@@ -1,0 +1,21 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "runtime-envelope.response.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ok", "requestId", "sessionId", "requestCounter", "stateVersion", "wallet", "round", "feature", "presentationPayload", "restore", "idempotency", "retry"],
+  "properties": {
+    "ok": { "type": "boolean" },
+    "requestId": { "type": "string", "minLength": 1 },
+    "sessionId": { "type": "string", "minLength": 1 },
+    "requestCounter": { "type": "integer", "minimum": 0 },
+    "stateVersion": { "type": "integer", "minimum": 0 },
+    "wallet": { "type": ["object", "null"], "additionalProperties": true },
+    "round": { "type": ["object", "null"], "additionalProperties": true },
+    "feature": { "type": ["object", "null"], "additionalProperties": true },
+    "presentationPayload": {},
+    "restore": { "type": ["object", "null"], "additionalProperties": true },
+    "idempotency": { "type": ["object", "null"], "additionalProperties": true },
+    "retry": { "type": ["object", "null"], "additionalProperties": true }
+  }
+}

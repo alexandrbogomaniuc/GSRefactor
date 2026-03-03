@@ -30,12 +30,12 @@
 ```json
 // Attach GS HTTP runtime requests/responses here (tokens redacted)
 // Example:
-// [OUT] POST /v1/bootstrap { sessionId: "...", ... }
-// [IN]  200 /v1/bootstrap { session: {...}, wallet: {...}, runtimeConfig: {...} }
-// [OUT] POST /v1/opengame { sessionId: "...", ... }
-// [IN]  200 /v1/opengame { sessionId: "...", balance: ..., requestCounter: ... }
-// [OUT] POST /v1/playround { clientOperationId: "...", idempotencyKey: "...", requestCounter: 17, ... }
-// [IN]  200 /v1/playround { roundId: "...", balance: ..., winAmount: ..., presentationPayload: {...} }
+// [OUT] POST /slot/v1/bootstrap { sessionId: "...", ... }
+// [IN]  200 /slot/v1/bootstrap { session: {...}, wallet: {...}, runtimeConfig: {...} }
+// [OUT] POST /slot/v1/opengame { sessionId: "...", ... }
+// [IN]  200 /slot/v1/opengame { sessionId: "...", balance: ..., requestCounter: ... }
+// [OUT] POST /slot/v1/playround { clientOperationId: "...", idempotencyKey: "...", requestCounter: 17, ... }
+// [IN]  200 /slot/v1/playround { roundId: "...", balance: ..., winAmount: ..., presentationPayload: {...} }
 ```
 
 ### Console Output

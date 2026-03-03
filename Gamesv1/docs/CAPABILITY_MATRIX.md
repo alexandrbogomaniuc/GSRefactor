@@ -22,16 +22,28 @@ Highest precedence wins:
 
 ## Capability families modeled
 
-1. Turbo + animation policy + min reel spin time + forced spin stop
-2. Sound defaults + sound mode by default + toggle visibility
+1. Turbo/animation policy:
+- turbo allowed/speed/preferred
+- min reel spin time
+- forced spin stop
+- forced skip win presentation
+2. Sound policy:
+- sound mode by default
+- sound toggle visibility
+- master/bgm/sfx defaults
 3. Localization policy:
 - default language
 - localized title key/value
 - missing localization error behavior
 - content path + custom translation toggle
 - server notifications toggle
+ - legacy alias mapping:
+   - `USE_JP_NOTIFICATION` -> `localization.serverNotificationsEnabled`
+   - `content_path` -> `localization.contentPath`
 4. Spin profiling (`PRECSPINSTAT`)
-5. Wallet messaging policy (delayed/external)
+5. Wallet messaging policy:
+- delayed wallet messages
+- external wallet messages
 6. Wallet display policy (balance/currency/delayed indicator)
 7. History policy (enabled/url/same-window)
 8. Runtime policies (requestCounter/idempotency/clientOperationId/currentStateVersion/restore)
@@ -45,6 +57,11 @@ Highest precedence wins:
 - FRB/OFRB
 - in-game history
 - holiday/custom skins
+ - legacy alias mapping:
+   - `BUY_FEATURE_DISABLED_FOR_CASH_BONUS` -> `features.buyFeatureDisabledForCashBonus`
+   - `FRB` -> `features.frb`
+   - `OFRB` -> `features.ofrb`
+   - `jackpotHooksEnabled` -> `features.jackpotHooks`
 12. Big/Huge/Mega win flow thresholds
 
 ## Legacy fallback behavior
@@ -62,11 +79,15 @@ Validation enforces:
 4. `defaultBet <= maxExposure`
 5. dynamic `maxStep <= maxExposure`
 
+Final runtime rule:
+- `finalMaxBet = min(GL_MAX_BET, exposureDerivedMaxBet)`
+
 ## Dev diagnostics
 
 In dev mode resolver logs:
 - layer override diff (`diffLog`)
 - unsupported config/capability keys
+- legacy alias mapping notes
 - legacy fallback application warnings
 - missing currency override warnings
 

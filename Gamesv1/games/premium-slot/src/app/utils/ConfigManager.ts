@@ -5,12 +5,14 @@
   LayerConfig,
   LayerConfigSchema,
 } from "@gamesv1/core-compliance";
+import { BootstrapConfigStore } from "../stores/BootstrapConfigStore";
 import { ResolvedRuntimeConfigStore } from "../stores/ResolvedRuntimeConfigStore";
 
 export interface ConfigManagerInitOptions {
   runtimeConfigFromGs?: Record<string, unknown>;
   capabilitiesFromGs?: Record<string, unknown>;
   currencyCodeFromGs?: string;
+  allowDevFallback?: boolean;
 }
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -18,13 +20,28 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
 
 export class ConfigManager {
   public static async init(options: ConfigManagerInitOptions = {}) {
-    const templateDefaults = await this.loadTemplateDefaults();
-    const bankProperties = await this.fetchBankProperties();
-    const gameOverrides = await this.loadGameOverrides();
-    const currencyOverrides = await this.loadCurrencyOverrides();
-
     const gsRuntimeLayer = this.buildGsRuntimeLayer(options);
-    const launchParams = this.getLaunchParams(gsRuntimeLayer);
+    const devFallbackEnabled = this.isDevFallbackEnabled(options.allowDevFallback);
+
+    if (!devFallbackEnabled && Object.keys(gsRuntimeLayer).length === 0) {
+      throw new Error(
+        "[ConfigManager] GS bootstrap runtimeConfig is required unless explicit dev fallback is enabled.",
+      );
+    }
+
+    if (devFallbackEnabled && Object.keys(gsRuntimeLayer).length === 0) {
+      console.warn(
+        "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only.",
+      );
+    }
+
+    const templateDefaults = devFallbackEnabled
+      ? await this.loadTemplateDefaults()
+      : {};
+    const bankProperties = devFallbackEnabled ? await this.fetchBankProperties() : {};
+    const gameOverrides = devFallbackEnabled ? await this.loadGameOverrides() : {};
+    const currencyOverrides = devFallbackEnabled ? await this.loadCurrencyOverrides() : {};
+    const launchParams = this.getLaunchParams(gsRuntimeLayer, devFallbackEnabled);
 
     const resolved = ConfigResolver.resolve({
       templateDefaults,
@@ -36,6 +53,15 @@ export class ConfigManager {
     });
 
     ResolvedRuntimeConfigStore.set(resolved);
+  }
+
+  private static isDevFallbackEnabled(explicit?: boolean): boolean {
+    if (explicit !== undefined) return explicit;
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("devConfig") === "1" || urlParams.get("allowDevFallback") === "1") {
+      return true;
+    }
+    return import.meta.env.DEV && import.meta.env.VITE_ALLOW_DEV_CONFIG_FALLBACK === "1";
   }
 
   private static async loadTemplateDefaults(): Promise<LayerConfig> {
@@ -127,12 +153,39 @@ export class ConfigManager {
   }
 
   private static buildGsRuntimeLayer(options: ConfigManagerInitOptions): LayerConfig {
+    const bootstrapSnapshot = BootstrapConfigStore.getSnapshot();
+    const bootstrapRuntime = isRecord(bootstrapSnapshot?.runtime)
+      ? bootstrapSnapshot.runtime
+      : {};
+    const bootstrapPolicies = isRecord(bootstrapSnapshot?.policies)
+      ? bootstrapSnapshot.policies
+      : {};
+    const bootstrapWallet = isRecord(bootstrapRuntime.wallet) ? bootstrapRuntime.wallet : {};
+
+    const runtimeConfigFromBootstrap = isRecord(bootstrapRuntime.runtimeConfig)
+      ? bootstrapRuntime.runtimeConfig
+      : {};
+    const capabilitiesFromBootstrap = isRecord(bootstrapPolicies.capabilities)
+      ? bootstrapPolicies.capabilities
+      : isRecord(runtimeConfigFromBootstrap.capabilities)
+        ? runtimeConfigFromBootstrap.capabilities
+        : {};
+
     const candidate: Record<string, unknown> = {
+      ...runtimeConfigFromBootstrap,
       ...(isRecord(options.runtimeConfigFromGs) ? options.runtimeConfigFromGs : {}),
     };
 
+    if (!isRecord(candidate.capabilities) && Object.keys(capabilitiesFromBootstrap).length > 0) {
+      candidate.capabilities = capabilitiesFromBootstrap;
+    }
+
     if (isRecord(options.capabilitiesFromGs) && !isRecord(candidate.capabilities)) {
       candidate.capabilities = options.capabilitiesFromGs;
+    }
+
+    if (!candidate.currencyCode && typeof bootstrapWallet.currencyCode === "string") {
+      candidate.currencyCode = bootstrapWallet.currencyCode;
     }
 
     if (options.currencyCodeFromGs && !candidate.currencyCode) {
@@ -153,22 +206,39 @@ export class ConfigManager {
     return {};
   }
 
-  private static getLaunchParams(gsRuntimeLayer: LayerConfig): LaunchParams {
+  private static getLaunchParams(
+    gsRuntimeLayer: LayerConfig,
+    devFallbackEnabled: boolean,
+  ): LaunchParams {
+    const launchParams: LaunchParams = {
+      devMode: devFallbackEnabled,
+      ...gsRuntimeLayer,
+      currencyCode: gsRuntimeLayer.currencyCode,
+      localization: gsRuntimeLayer.localization
+        ? {
+            ...gsRuntimeLayer.localization,
+          }
+        : undefined,
+    };
+
+    if (!devFallbackEnabled) {
+      return launchParams;
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
 
-    const currencyCode = urlParams.get("currency") ?? gsRuntimeLayer.currencyCode ?? undefined;
-    const lang = urlParams.get("lang") ?? gsRuntimeLayer.localization?.defaultLang ?? undefined;
-    const devConfig = urlParams.get("devConfig") === "1";
+    const currencyCode = urlParams.get("currency");
+    if (currencyCode) {
+      launchParams.currencyCode = currencyCode;
+    }
 
-    const launchParams: LaunchParams = {
-      devMode: devConfig,
-      ...gsRuntimeLayer,
-      currencyCode,
-      localization: {
-        ...gsRuntimeLayer.localization,
+    const lang = urlParams.get("lang");
+    if (lang) {
+      launchParams.localization = {
+        ...launchParams.localization,
         defaultLang: lang,
-      },
-    };
+      };
+    }
 
     const defaultBet = urlParams.get("defaultBet");
     if (defaultBet) {

@@ -1,4 +1,4 @@
-﻿import assert from "node:assert/strict";
+import assert from "node:assert/strict";
 
 import { DefaultResolvedRuntimeConfig } from "../../packages/core-compliance/src/ResolvedRuntimeConfig.ts";
 import {
@@ -19,12 +19,16 @@ const makeRound = (overrides: Partial<RoundPresentationModel> = {}): RoundPresen
       [4, 5, 6],
     ],
   },
-  featureOverlays: [],
+  symbolGrid: [
+    [0, 1, 2, 3, 4],
+    [1, 2, 3, 4, 5],
+    [2, 3, 4, 5, 6],
+  ],
   counters: {},
   messages: [],
   soundCues: [],
   animationCues: [],
-  serverState: {},
+  labels: {},
   ...overrides,
 });
 
@@ -67,7 +71,7 @@ test("buy feature hidden when cash bonus forbids buy", () => {
   const manager = new FeatureModuleManager(config);
   const frame = manager.resolve(
     makeRound({
-      serverState: { cashBonusMode: true, buyFeatureAvailable: true },
+      counters: { cashBonusMode: true, buyFeatureAvailable: true },
     }),
   );
 
@@ -85,7 +89,7 @@ test("jackpot module emits cues when triggered", () => {
   const frame = manager.resolve(
     makeRound({
       counters: { jackpotLevel: 3 },
-      serverState: { jackpotTriggered: true },
+      labels: { jackpotTriggered: "true" },
     }),
   );
 

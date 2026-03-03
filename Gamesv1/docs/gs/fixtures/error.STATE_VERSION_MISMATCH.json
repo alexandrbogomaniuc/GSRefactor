@@ -1,0 +1,67 @@
+{
+  "fixtureVersion": "slot-browser-fixture-v1",
+  "name": "error.STATE_VERSION_MISMATCH",
+  "endpoint": {
+    "method": "POST",
+    "path": "/slot/v1/featureaction",
+    "readOnly": false
+  },
+  "requestHeaders": {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-GS-Client-Contract": "slot-browser-v1",
+    "X-Request-Id": "req-feature-stale-state",
+    "X-Session-Id": "SID-123",
+    "X-Idempotency-Key": "idem-feature-stale-state",
+    "X-Client-Operation-Id": "client-op-stale-state"
+  },
+  "requestBody": {
+    "contractVersion": "slot-browser-v1",
+    "sessionId": "SID-123",
+    "requestCounter": 44,
+    "idempotencyKey": "idem-feature-stale-state",
+    "clientOperationId": "client-op-stale-state",
+    "currentStateVersion": 13,
+    "bootstrapRef": {
+      "configId": "cfg-8f42",
+      "clientPackageVersion": "client-pkg-2.6.0",
+      "mathPackageVersion": "1.4.2"
+    },
+    "selectedBet": null,
+    "selectedFeatureChoice": {
+      "featureType": "BUY_FEATURE",
+      "action": "CONFIRM",
+      "priceMinor": 5000,
+      "payload": {
+        "entry": "FREE_SPINS"
+      }
+    }
+  },
+  "response": {
+    "httpStatus": 409,
+    "body": {
+      "ok": false,
+      "requestId": "req-feature-stale-state",
+      "sessionId": "SID-123",
+      "requestCounter": 44,
+      "error": {
+        "code": "STATE_VERSION_MISMATCH",
+        "message": "currentStateVersion is stale",
+        "retryable": false,
+        "details": {
+          "expectedStateVersion": 14,
+          "receivedStateVersion": 13
+        }
+      },
+      "idempotency": {
+        "isDuplicate": false,
+        "duplicateOfRequestId": null,
+        "replaySafe": false
+      },
+      "retry": {
+        "clientMayRetrySameKey": false,
+        "clientMustIncrementCounterOnNewAction": false
+      }
+    }
+  }
+}

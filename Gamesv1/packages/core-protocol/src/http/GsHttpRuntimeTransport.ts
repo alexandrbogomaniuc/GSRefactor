@@ -1,6 +1,8 @@
-﻿import {
+import {
   type BootstrapRequest,
+  type BootstrapResponse,
   type CloseGameRequest,
+  type CloseGameResponse,
   type FeatureActionRequest,
   type FeatureActionResponse,
   type GameInitConfig,
@@ -11,8 +13,9 @@
   type OpenGameResponse,
   type PlayRoundRequest,
   type PlayRoundResponse,
-  type RequestMetadata,
   type ResumeGameRequest,
+  type ResumeGameResponse,
+  type RuntimeEnvelopeResponse,
   type TransportEvent,
 } from "../IGameTransport.ts";
 
@@ -23,303 +26,327 @@ type ErrorEnvelope = {
   };
 };
 
-const isRecord = (value: unknown): value is Record<string, unknown> =>
+type JsonRecord = Record<string, unknown>;
+
+const CONTRACT_HEADER_VALUE = "slot-browser-v1";
+const SLOT_PREFIX = "/slot/v1";
+
+const isRecord = (value: unknown): value is JsonRecord =>
   typeof value === "object" && value !== null && !Array.isArray(value);
+
+const asRecord = (value: unknown): JsonRecord => (isRecord(value) ? value : {});
 
 const asString = (value: unknown): string | undefined =>
   typeof value === "string" && value.length > 0 ? value : undefined;
 
-const asNumber = (value: unknown): number | undefined =>
-  typeof value === "number" && Number.isFinite(value) ? value : undefined;
+const asInteger = (value: unknown): number | undefined =>
+  typeof value === "number" && Number.isFinite(value) ? Math.trunc(value) : undefined;
 
-const asHistoryList = (value: unknown): Array<Record<string, unknown>> =>
-  Array.isArray(value)
-    ? value.filter((item): item is Record<string, unknown> => isRecord(item))
-    : [];
+const asBoolean = (value: unknown): boolean | undefined =>
+  typeof value === "boolean" ? value : undefined;
+
+const randomRequestId = (): string => {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `req-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+};
+
+const parseRuntimeEnvelope = (raw: unknown): RuntimeEnvelopeResponse => {
+  const record = asRecord(raw);
+
+  const requestId = asString(record.requestId);
+  const sessionId = asString(record.sessionId);
+  const requestCounter = asInteger(record.requestCounter);
+  const stateVersion = asInteger(record.stateVersion);
+
+  if (!requestId || !sessionId) {
+    throw new Error("GS runtime response missing requestId/sessionId.");
+  }
+  if (requestCounter === undefined || stateVersion === undefined) {
+    throw new Error("GS runtime response missing numeric requestCounter/stateVersion.");
+  }
+  if (asBoolean(record.ok) !== true) {
+    throw new Error("GS runtime response must include ok=true.");
+  }
+
+  const wallet = asRecord(record.wallet);
+  const round = asRecord(record.round);
+  const feature = asRecord(record.feature);
+  const presentationPayload = asRecord(record.presentationPayload);
+  const restore = asRecord(record.restore);
+  const idempotency = asRecord(record.idempotency);
+  const retry = asRecord(record.retry);
+  const history = isRecord(record.history) ? asRecord(record.history) : undefined;
+
+  if (
+    Object.keys(wallet).length === 0 ||
+    Object.keys(round).length === 0 ||
+    Object.keys(feature).length === 0 ||
+    Object.keys(presentationPayload).length === 0 ||
+    Object.keys(restore).length === 0 ||
+    Object.keys(idempotency).length === 0 ||
+    Object.keys(retry).length === 0
+  ) {
+    throw new Error("GS runtime response missing required envelope objects.");
+  }
+
+  return {
+    ok: true,
+    requestId,
+    sessionId,
+    requestCounter,
+    stateVersion,
+    wallet,
+    round,
+    feature,
+    presentationPayload,
+    restore,
+    idempotency,
+    retry,
+    ...(history ? { history } : {}),
+  };
+};
+
+const parseBootstrapResponse = (raw: unknown): BootstrapResponse => {
+  const record = asRecord(raw);
+  const contractVersion = asString(record.contractVersion);
+  if (contractVersion !== "slot-bootstrap-v1") {
+    throw new Error("GS bootstrap response missing contractVersion=slot-bootstrap-v1.");
+  }
+
+  const session = asRecord(record.session);
+  const context = asRecord(record.context);
+  const assets = asRecord(record.assets);
+  const runtime = asRecord(record.runtime);
+  const policies = asRecord(record.policies);
+  const integrity = asRecord(record.integrity);
+
+  const sessionId = asString(session.sessionId);
+  const requestCounter = asInteger(session.requestCounter);
+  const stateVersion = asInteger(session.stateVersion);
+
+  if (!sessionId || requestCounter === undefined || stateVersion === undefined) {
+    throw new Error(
+      "GS bootstrap response session must include sessionId/requestCounter/stateVersion.",
+    );
+  }
+  if (Object.keys(context).length === 0) {
+    throw new Error("GS bootstrap response missing context object.");
+  }
+  if (Object.keys(assets).length === 0) {
+    throw new Error("GS bootstrap response missing assets object.");
+  }
+  if (Object.keys(runtime).length === 0) {
+    throw new Error("GS bootstrap response missing runtime object.");
+  }
+  if (Object.keys(policies).length === 0) {
+    throw new Error("GS bootstrap response missing policies object.");
+  }
+  if (Object.keys(integrity).length === 0) {
+    throw new Error("GS bootstrap response missing integrity object.");
+  }
+
+  return {
+    contractVersion: "slot-bootstrap-v1",
+    session: {
+      sessionId,
+      requestCounter,
+      stateVersion,
+    },
+    context,
+    assets,
+    runtime,
+    policies,
+    integrity,
+  };
+};
 
 export class GsHttpRuntimeTransport implements IGameTransport {
   private config: GameInitConfig | null = null;
   private listeners: Map<TransportEvent, Array<(...args: any[]) => void>> = new Map();
+
   private sessionId = "";
   private requestCounter = 0;
-  private currentStateVersion: string | undefined;
-  private operationSequence = 0;
+  private stateVersion = 0;
 
   public async bootstrap(
     config: GameInitConfig,
-    request?: BootstrapRequest,
-  ): Promise<OpenGameResponse> {
+    request: BootstrapRequest,
+  ): Promise<BootstrapResponse> {
     this.config = { ...config };
 
-    const sessionId = request?.sessionId ?? config.sessionId;
-    if (!sessionId) {
-      throw new Error("GS runtime bootstrap requires sessionId.");
+    if (!request.sessionId || !request.bootstrapRef) {
+      throw new Error("bootstrap requires sessionId and bootstrapRef.");
     }
 
-    const body: Record<string, unknown> = {
-      sessionId,
-      gameId: request?.gameId ?? (config.gameId ? Number(config.gameId) : undefined),
-      bankId: request?.bankId ?? (config.bankId ? Number(config.bankId) : undefined),
-      playerId: request?.playerId ?? config.playerId,
-      language: request?.language ?? config.language,
-      launchParams: request?.launchParams ?? {},
-    };
-
-    const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
-      "/v1/bootstrap",
-      body,
-    );
-
-    return this.applySessionSnapshot(raw);
-  }
-
-  public async openGame(request: OpenGameRequest): Promise<OpenGameResponse> {
-    this.assertConfig();
-
-    const raw = await this.postJson<OpenGameRequest, Record<string, unknown>>(
-      "/v1/opengame",
+    const raw = await this.postJson<BootstrapRequest, JsonRecord>(
+      `${SLOT_PREFIX}/bootstrap`,
       request,
+      {
+        sessionId: request.sessionId,
+      },
     );
 
-    return this.applySessionSnapshot(raw);
+    const bootstrap = parseBootstrapResponse(raw);
+    this.sessionId = asString(asRecord(bootstrap.session).sessionId) ?? request.sessionId;
+    this.requestCounter =
+      asInteger(asRecord(bootstrap.session).requestCounter) ?? this.requestCounter;
+    this.stateVersion = asInteger(asRecord(bootstrap.session).stateVersion) ?? this.stateVersion;
+
+    this.emit("ready", bootstrap);
+    return bootstrap;
   }
 
-  public async playRound(request: PlayRoundRequest): Promise<PlayRoundResponse> {
-    this.assertConfig();
+  public async opengame(request: OpenGameRequest): Promise<OpenGameResponse> {
+    this.requireConfig();
     this.assertSession();
+    this.assertRequestSession(request.sessionId);
 
-    const requestCounter = this.resolveRequestCounter(request.metadata);
-    const clientOperationId =
-      request.metadata?.clientOperationId ?? this.nextOperationId("playround");
-    const idempotencyKey =
-      request.metadata?.idempotencyKey ?? `idem:${clientOperationId}`;
-
-    const body: Record<string, unknown> = {
-      sessionId: this.sessionId,
-      requestCounter,
-      clientOperationId,
-      idempotencyKey,
-      currentStateVersion:
-        request.metadata?.currentStateVersion ?? this.currentStateVersion,
-      betAmount: request.betAmount,
-      betType: request.betType,
-      roundInput: request.roundInput ?? {},
-    };
-
-    const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
-      "/v1/playround",
-      body,
+    const raw = await this.postJson<OpenGameRequest, JsonRecord>(
+      `${SLOT_PREFIX}/opengame`,
+      request,
       {
-        idempotencyKey,
-        clientOperationId,
+        sessionId: request.sessionId,
+        clientOperationId: request.clientOperationId,
+        idempotencyKey: request.idempotencyKey,
       },
     );
 
-    const nextRequestCounter =
-      asNumber(raw.requestCounter) ??
-      asNumber(isRecord(raw.session) ? raw.session.requestCounter : undefined) ??
-      requestCounter;
+    const envelope = parseRuntimeEnvelope(raw);
+    this.applyEnvelope(envelope);
 
-    this.requestCounter = nextRequestCounter;
-    this.currentStateVersion =
-      asString(raw.currentStateVersion) ??
-      asString(isRecord(raw.session) ? raw.session.currentStateVersion : undefined) ??
-      this.currentStateVersion;
-
-    const balance =
-      asNumber(raw.balance) ??
-      asNumber(isRecord(raw.wallet) ? raw.wallet.balance : undefined) ??
-      0;
-
-    const winAmount =
-      asNumber(raw.winAmount) ??
-      asNumber(isRecord(raw.round) ? raw.round.winAmount : undefined) ??
-      0;
-
-    const roundId =
-      asString(raw.roundId) ??
-      asString(isRecord(raw.round) ? raw.round.roundId : undefined) ??
-      `${clientOperationId}:round`;
-
-    const response: PlayRoundResponse = {
-      roundId,
-      balance,
-      winAmount,
-      requestCounter: this.requestCounter,
-      currentStateVersion: this.currentStateVersion,
-      presentationPayload: raw.presentationPayload,
-      raw,
-    };
-
-    this.emit("balance", balance);
-    this.emit("round", response);
-    return response;
+    this.emit("ready", envelope);
+    return envelope;
   }
 
-  public async featureAction(
-    request: FeatureActionRequest,
-  ): Promise<FeatureActionResponse> {
-    this.assertConfig();
+  public async playround(request: PlayRoundRequest): Promise<PlayRoundResponse> {
+    this.requireConfig();
     this.assertSession();
+    this.assertRequestSession(request.sessionId);
 
-    const requestCounter = this.resolveRequestCounter(request.metadata);
-    const clientOperationId =
-      request.metadata?.clientOperationId ?? this.nextOperationId(`feature-${request.action}`);
-    const idempotencyKey =
-      request.metadata?.idempotencyKey ?? `idem:${clientOperationId}`;
-
-    const body: Record<string, unknown> = {
-      sessionId: this.sessionId,
-      requestCounter,
-      action: request.action,
-      payload: request.payload ?? {},
-      clientOperationId,
-      idempotencyKey,
-      currentStateVersion:
-        request.metadata?.currentStateVersion ?? this.currentStateVersion,
-    };
-
-    const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
-      "/v1/featureaction",
-      body,
+    const raw = await this.postJson<PlayRoundRequest, JsonRecord>(
+      `${SLOT_PREFIX}/playround`,
+      request,
       {
-        idempotencyKey,
-        clientOperationId,
+        sessionId: request.sessionId,
+        clientOperationId: request.clientOperationId,
+        idempotencyKey: request.idempotencyKey,
       },
     );
 
-    this.requestCounter = asNumber(raw.requestCounter) ?? requestCounter;
-    this.currentStateVersion =
-      asString(raw.currentStateVersion) ?? this.currentStateVersion;
+    const envelope = parseRuntimeEnvelope(raw);
+    this.applyEnvelope(envelope);
 
-    const response: FeatureActionResponse = {
-      requestCounter: this.requestCounter,
-      currentStateVersion: this.currentStateVersion,
-      presentationPayload: raw.presentationPayload,
-      raw,
-    };
-
-    this.emit("round", response);
-    return response;
+    this.emit("round", envelope);
+    return envelope;
   }
 
-  public async resumeGame(request?: ResumeGameRequest): Promise<OpenGameResponse> {
-    this.assertConfig();
+  public async featureaction(request: FeatureActionRequest): Promise<FeatureActionResponse> {
+    this.requireConfig();
+    this.assertSession();
+    this.assertRequestSession(request.sessionId);
 
-    const sessionId = request?.sessionId ?? this.sessionId ?? this.config?.sessionId;
-    if (!sessionId) {
-      throw new Error("resumeGame requires an existing sessionId.");
-    }
-
-    const metadata = request?.metadata;
-    const requestCounter = this.resolveRequestCounter(metadata);
-
-    const body: Record<string, unknown> = {
-      sessionId,
-      requestCounter,
-      clientOperationId:
-        metadata?.clientOperationId ?? this.nextOperationId("resumegame"),
-      idempotencyKey:
-        metadata?.idempotencyKey ?? `idem:${metadata?.clientOperationId ?? "resumegame"}`,
-      currentStateVersion: metadata?.currentStateVersion ?? this.currentStateVersion,
-    };
-
-    const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
-      "/v1/resumegame",
-      body,
+    const raw = await this.postJson<FeatureActionRequest, JsonRecord>(
+      `${SLOT_PREFIX}/featureaction`,
+      request,
       {
-        idempotencyKey: asString(body.idempotencyKey),
-        clientOperationId: asString(body.clientOperationId),
+        sessionId: request.sessionId,
+        clientOperationId: request.clientOperationId,
+        idempotencyKey: request.idempotencyKey,
       },
     );
 
-    return this.applySessionSnapshot(raw);
+    const envelope = parseRuntimeEnvelope(raw);
+    this.applyEnvelope(envelope);
+
+    this.emit("round", envelope);
+    return envelope;
   }
 
-  public async closeGame(request?: CloseGameRequest): Promise<void> {
-    this.assertConfig();
-    if (!this.sessionId) return;
+  public async resumegame(request: ResumeGameRequest): Promise<ResumeGameResponse> {
+    this.requireConfig();
+    this.assertSession();
+    this.assertRequestSession(request.sessionId);
 
-    const requestCounter = this.resolveRequestCounter(request?.metadata);
-    const clientOperationId =
-      request?.metadata?.clientOperationId ?? this.nextOperationId("closegame");
-    const idempotencyKey =
-      request?.metadata?.idempotencyKey ?? `idem:${clientOperationId}`;
+    const raw = await this.postJson<ResumeGameRequest, JsonRecord>(
+      `${SLOT_PREFIX}/resumegame`,
+      request,
+      {
+        sessionId: request.sessionId,
+        clientOperationId: request.clientOperationId,
+        idempotencyKey: request.idempotencyKey,
+      },
+    );
 
-    const body: Record<string, unknown> = {
-      sessionId: this.sessionId,
-      requestCounter,
-      reason: request?.reason ?? "client-close",
-      clientOperationId,
-      idempotencyKey,
-      currentStateVersion:
-        request?.metadata?.currentStateVersion ?? this.currentStateVersion,
-    };
+    const envelope = parseRuntimeEnvelope(raw);
+    this.applyEnvelope(envelope);
+
+    this.emit("ready", envelope);
+    return envelope;
+  }
+
+  public async closegame(request: CloseGameRequest): Promise<CloseGameResponse> {
+    this.requireConfig();
+    this.assertSession();
+    this.assertRequestSession(request.sessionId);
 
     try {
-      await this.postJson<Record<string, unknown>, Record<string, unknown>>(
-        "/v1/closegame",
-        body,
+      const raw = await this.postJson<CloseGameRequest, JsonRecord>(
+        `${SLOT_PREFIX}/closegame`,
+        request,
         {
-          idempotencyKey,
-          clientOperationId,
+          sessionId: request.sessionId,
+          clientOperationId: request.clientOperationId,
+          idempotencyKey: request.idempotencyKey,
         },
       );
-    } catch (error) {
-      const message = String(error);
-      if (!message.includes("404")) {
-        throw error;
-      }
+
+      const envelope = parseRuntimeEnvelope(raw);
+      this.applyEnvelope(envelope);
+      return envelope;
     } finally {
       this.disconnect();
     }
   }
 
-  public async getHistory(request?: HistoryRequest): Promise<HistoryResponse> {
-    this.assertConfig();
+  public async gethistory(request: HistoryRequest): Promise<HistoryResponse> {
+    this.requireConfig();
     this.assertSession();
+    this.assertRequestSession(request.sessionId);
 
-    const requestCounter = this.resolveRequestCounter(request?.metadata);
-
-    const body: Record<string, unknown> = {
-      sessionId: this.sessionId,
-      requestCounter,
-      pageNumber: request?.pageNumber ?? 0,
-      currentStateVersion:
-        request?.metadata?.currentStateVersion ?? this.currentStateVersion,
-      clientOperationId:
-        request?.metadata?.clientOperationId ?? this.nextOperationId("gethistory"),
-      idempotencyKey:
-        request?.metadata?.idempotencyKey ?? undefined,
-    };
-
-    const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
-      "/v1/gethistory",
-      body,
+    const raw = await this.postJson<HistoryRequest, JsonRecord>(
+      `${SLOT_PREFIX}/gethistory`,
+      request,
+      {
+        sessionId: request.sessionId,
+      },
     );
 
-    this.requestCounter = asNumber(raw.requestCounter) ?? requestCounter;
-    this.currentStateVersion =
-      asString(raw.currentStateVersion) ?? this.currentStateVersion;
+    const envelope = parseRuntimeEnvelope(raw);
 
-    const response: HistoryResponse = {
-      requestCounter: this.requestCounter,
-      currentStateVersion: this.currentStateVersion,
-      history: asHistoryList(raw.history),
-      raw,
-    };
+    if (envelope.requestCounter !== request.requestCounter) {
+      throw new Error(
+        `gethistory must be read-only: response requestCounter (${envelope.requestCounter}) does not match request (${request.requestCounter}).`,
+      );
+    }
+    if (this.stateVersion > 0 && envelope.stateVersion !== this.stateVersion) {
+      throw new Error(
+        `gethistory must be read-only: response stateVersion (${envelope.stateVersion}) does not match active stateVersion (${this.stateVersion}).`,
+      );
+    }
+    if (!isRecord(envelope.history) || Object.keys(envelope.history).length === 0) {
+      throw new Error("gethistory must include history payload.");
+    }
 
-    this.emit("history", response);
-    return response;
-  }
-
-  // Deprecated alias kept for old call sites.
-  public async readHistory(request?: HistoryRequest): Promise<HistoryResponse> {
-    return this.getHistory(request);
+    this.emit("history", envelope);
+    return envelope;
   }
 
   public disconnect(): void {
     this.sessionId = "";
+    this.requestCounter = 0;
+    this.stateVersion = 0;
     this.emit("disconnect");
   }
 
@@ -330,50 +357,28 @@ export class GsHttpRuntimeTransport implements IGameTransport {
     this.listeners.get(event)!.push(callback);
   }
 
-  // Deprecated legacy API compatibility.
-  public async connect(config: GameInitConfig): Promise<void> {
-    await this.bootstrap(config, {
-      sessionId: config.sessionId ?? "legacy-session",
-      gameId: config.gameId ? Number(config.gameId) : undefined,
-      bankId: config.bankId ? Number(config.bankId) : undefined,
-      playerId: config.playerId,
-      language: config.language,
-    });
-  }
-
-  public async spin(betAmount: number, operationId: string): Promise<any> {
-    return this.playRound({
-      betAmount,
-      betType: "DEFAULT",
-      metadata: {
-        clientOperationId: operationId,
-      },
-    });
-  }
-
-  public async settle(_operationId: string): Promise<any> {
-    throw new Error("settle() is deprecated; use playRound().");
-  }
-
-  private resolveRequestCounter(metadata?: RequestMetadata): number {
-    if (typeof metadata?.requestCounter === "number") {
-      return metadata.requestCounter;
-    }
-    return this.requestCounter + 1;
-  }
-
-  private nextOperationId(prefix: string): string {
-    this.operationSequence += 1;
-    return `${prefix}-${Date.now()}-${this.operationSequence}`;
-  }
-
-  private assertConfig(): void {
-    this.requireConfig();
+  private applyEnvelope(envelope: RuntimeEnvelopeResponse): void {
+    this.sessionId = envelope.sessionId;
+    this.requestCounter = envelope.requestCounter;
+    this.stateVersion = envelope.stateVersion;
   }
 
   private assertSession(): void {
     if (!this.sessionId) {
-      throw new Error("No active GS session. Call bootstrap()/openGame()/resumeGame() first.");
+      throw new Error(
+        "No active GS session. Call bootstrap()/opengame()/resumegame() first.",
+      );
+    }
+  }
+
+  private assertRequestSession(sessionId: string): void {
+    if (!sessionId) {
+      throw new Error("sessionId is required for GS runtime operation.");
+    }
+    if (this.sessionId && sessionId !== this.sessionId) {
+      throw new Error(
+        `sessionId mismatch for GS runtime operation (active=${this.sessionId}, request=${sessionId}).`,
+      );
     }
   }
 
@@ -385,63 +390,11 @@ export class GsHttpRuntimeTransport implements IGameTransport {
     }
   }
 
-  private applySessionSnapshot(raw: Record<string, unknown>): OpenGameResponse {
-    const session = isRecord(raw.session) ? raw.session : {};
-    const wallet = isRecord(raw.wallet) ? raw.wallet : {};
-
-    const sessionId =
-      asString(raw.sessionId) ??
-      asString(session.sessionId) ??
-      this.sessionId;
-
-    const requestCounter =
-      asNumber(raw.requestCounter) ??
-      asNumber(session.requestCounter) ??
-      this.requestCounter;
-
-    const currentStateVersion =
-      asString(raw.currentStateVersion) ??
-      asString(session.currentStateVersion) ??
-      this.currentStateVersion;
-
-    const balance =
-      asNumber(raw.balance) ??
-      asNumber(wallet.balance) ??
-      0;
-
-    this.sessionId = sessionId;
-    this.requestCounter = requestCounter;
-    this.currentStateVersion = currentStateVersion;
-
-    const response: OpenGameResponse = {
-      sessionId,
-      balance,
-      requestCounter,
-      currencyCode:
-        asString(raw.currencyCode) ??
-        asString(wallet.currencyCode),
-      minBet: asNumber(raw.minBet),
-      maxBet: asNumber(raw.maxBet),
-      currentStateVersion,
-      unresolvedRoundState: raw.unresolvedRoundState ?? raw.restore,
-      presentationPayload: raw.presentationPayload,
-      runtimeConfig: isRecord(raw.runtimeConfig) ? raw.runtimeConfig : undefined,
-      capabilities: isRecord(raw.capabilities) ? raw.capabilities : undefined,
-      wallet,
-      session,
-      restore: isRecord(raw.restore) ? raw.restore : undefined,
-    };
-
-    this.emit("balance", response.balance);
-    this.emit("ready", response);
-
-    return response;
-  }
-
   private async postJson<TReq, TRes>(
     path: string,
     body: TReq,
-    metadata?: {
+    metadata: {
+      sessionId: string;
       idempotencyKey?: string;
       clientOperationId?: string;
     },
@@ -449,18 +402,22 @@ export class GsHttpRuntimeTransport implements IGameTransport {
     const config = this.requireConfig();
     const base = config.baseUrl.replace(/\/+$/, "");
     const url = `${base}${path}`;
+
     const headers: Record<string, string> = {
       "content-type": "application/json",
+      "X-GS-Client-Contract": config.internalClientCode ?? CONTRACT_HEADER_VALUE,
+      "X-Request-Id": randomRequestId(),
+      "X-Session-Id": metadata.sessionId,
     };
 
     if (config.token) {
       headers.authorization = `Bearer ${config.token}`;
     }
-    if (metadata?.idempotencyKey) {
-      headers["x-idempotency-key"] = metadata.idempotencyKey;
+    if (metadata.idempotencyKey) {
+      headers["X-Idempotency-Key"] = metadata.idempotencyKey;
     }
-    if (metadata?.clientOperationId) {
-      headers["x-client-operation-id"] = metadata.clientOperationId;
+    if (metadata.clientOperationId) {
+      headers["X-Client-Operation-Id"] = metadata.clientOperationId;
     }
 
     const response = await fetch(url, {

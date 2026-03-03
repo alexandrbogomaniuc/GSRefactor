@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
 import { createHash } from "node:crypto";
+import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { execSync } from "node:child_process";
+import Ajv2020, { type ValidateFunction } from "ajv/dist/2020.js";
+import addFormats from "ajv-formats";
 
 type CliArgs = {
   gameId: string;
@@ -27,6 +29,43 @@ type ReleaseIndexEntry = {
   createdAt: string;
   status: "candidate" | "known-good";
   outputDir: string;
+};
+
+type GameSettings = {
+  gameId: string;
+  gameName: string;
+  version?: string;
+  features?: Record<string, boolean>;
+  gs?: {
+    runtimeTarget?: string;
+    mathManifestPath?: string;
+    mathModels?: Array<Record<string, unknown>>;
+    limits?: Record<string, unknown>;
+  };
+};
+
+type CapabilityProfileRef = {
+  profilePath: string | null;
+  profileSha256: string | null;
+  profileHash: string;
+  source: "file" | "derived";
+  derivedProfile?: Record<string, unknown>;
+};
+
+type MathPackageManifestRef = {
+  strategy: "static-manifest" | "missing";
+  path: string | null;
+  sha256: string | null;
+  referenceLabel: string;
+  launchTimeInjectionAllowed: false;
+  warning?: string;
+};
+
+type ReleaseRegistrationContract = {
+  template: Record<string, unknown>;
+  validate: ValidateFunction;
+  templatePath: string;
+  schemaPath: string;
 };
 
 const parseArgs = (argv: string[]): CliArgs => {
@@ -77,9 +116,12 @@ const parseArgs = (argv: string[]): CliArgs => {
 
 const toPosix = (value: string): string => value.split(path.sep).join("/");
 
+const sha256Buffer = (content: Buffer | string): string =>
+  createHash("sha256").update(content).digest("hex");
+
 const sha256 = (filePath: string): string => {
   const content = fs.readFileSync(filePath);
-  return createHash("sha256").update(content).digest("hex");
+  return sha256Buffer(content);
 };
 
 const listFilesRecursive = (rootDir: string): string[] => {
@@ -134,9 +176,10 @@ const stableSortObject = (input: unknown): unknown => {
   return input;
 };
 
+const toStableJson = (data: unknown): string => `${JSON.stringify(stableSortObject(data), null, 2)}\n`;
+
 const writeStableJson = (target: string, data: unknown): void => {
-  const stable = stableSortObject(data);
-  fs.writeFileSync(target, `${JSON.stringify(stable, null, 2)}\n`);
+  fs.writeFileSync(target, toStableJson(data));
 };
 
 const ensureDir = (dir: string): void => {
@@ -144,7 +187,67 @@ const ensureDir = (dir: string): void => {
 };
 
 const readJson = <T>(filePath: string): T =>
-  JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
+  JSON.parse(fs.readFileSync(filePath, "utf8").replace(/^\uFEFF/, "")) as T;
+
+const asRecord = (value: unknown): Record<string, unknown> =>
+  value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+
+const loadReleaseRegistrationContract = (repoRoot: string): ReleaseRegistrationContract => {
+  const templatePath = path.join(
+    repoRoot,
+    "docs",
+    "gs",
+    "fixtures",
+    "release-registration.sample.json",
+  );
+  const schemaPath = path.join(
+    repoRoot,
+    "docs",
+    "gs",
+    "schemas",
+    "release-registration.schema.json",
+  );
+
+  if (!fs.existsSync(templatePath)) {
+    throw new Error(`Missing canonical release-registration sample: ${templatePath}`);
+  }
+  if (!fs.existsSync(schemaPath)) {
+    throw new Error(`Missing canonical release-registration schema: ${schemaPath}`);
+  }
+
+  const template = readJson<Record<string, unknown>>(templatePath);
+  const schema = readJson<Record<string, unknown>>(schemaPath);
+
+  const ajv = new Ajv2020({
+    allErrors: true,
+    strict: false,
+  });
+  addFormats(ajv);
+
+  return {
+    template,
+    validate: ajv.compile(schema),
+    templatePath,
+    schemaPath,
+  };
+};
+
+const assertSchemaValid = (
+  label: string,
+  validate: ValidateFunction,
+  payload: unknown,
+): void => {
+  if (validate(payload)) return;
+
+  const issue =
+    (validate.errors ?? [])
+      .map((error) => `${error.instancePath || "/"} ${error.message ?? "invalid"}`)
+      .join("; ") || "unknown validation error";
+
+  throw new Error(`${label} failed schema validation: ${issue}`);
+};
 
 const safeReadJson = <T>(filePath: string): T | null => {
   if (!fs.existsSync(filePath)) return null;
@@ -172,6 +275,33 @@ const deterministicTimestamp = (fallbackIso: string): string => {
   return new Date(epoch * 1000).toISOString();
 };
 
+const coerceNumber = (value: unknown, fallback: number): number => {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+  if (typeof value === "string" && value.trim().length > 0) {
+    const parsed = Number(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return fallback;
+};
+
+const normalizeRtpModels = (
+  candidate: Array<Record<string, unknown>> | undefined,
+  templateFallback: unknown,
+): Array<{ id: string; rtp: number }> => {
+  const source = Array.isArray(candidate)
+    ? candidate
+    : Array.isArray(templateFallback)
+      ? (templateFallback as Array<Record<string, unknown>>)
+      : [];
+
+  return source.map((item, index) => ({
+    id: typeof item.id === "string" && item.id.length > 0 ? item.id : `M${index + 1}`,
+    rtp: coerceNumber(item.rtp, 0),
+  }));
+};
+
 const collectPackageVersions = (
   repoRoot: string,
   gameId: string,
@@ -183,7 +313,10 @@ const collectPackageVersions = (
 
   const gamePkgPath = path.join(repoRoot, "games", gameId, "package.json");
   const gamePkg = readJson<{ name: string; version: string }>(gamePkgPath);
-  versions[gamePkg.name] = { version: gamePkg.version, source: toPosix(path.relative(repoRoot, gamePkgPath)) };
+  versions[gamePkg.name] = {
+    version: gamePkg.version,
+    source: toPosix(path.relative(repoRoot, gamePkgPath)),
+  };
 
   const packagesRoot = path.join(repoRoot, "packages");
   if (fs.existsSync(packagesRoot)) {
@@ -221,6 +354,7 @@ const buildLocalizationManifest = (gameDir: string) => {
   });
 
   return {
+    schema: "slot-localization-manifest-v1",
     sourceRoot: "locales",
     languages,
     files,
@@ -234,25 +368,26 @@ const buildAssetManifest = (gameDir: string, repoRoot: string) => {
   const publicAssetsRoot = path.join(gameDir, "public", "assets");
   const distAssetsRoot = path.join(gameDir, "dist", "assets");
 
-  const staticAssets = fs.existsSync(distAssetsRoot)
-    ? collectDigests(distAssetsRoot)
-    : collectDigests(publicAssetsRoot);
+  const runtimeAssetRoot = fs.existsSync(distAssetsRoot) ? "dist/assets" : "public/assets";
+  const runtimeRoot = fs.existsSync(distAssetsRoot) ? distAssetsRoot : publicAssetsRoot;
+  const staticAssets = collectDigests(runtimeRoot);
 
   return {
-    source: sourceManifestPath && fs.existsSync(sourceManifestPath)
+    schema: "slot-asset-manifest-v1",
+    source: fs.existsSync(sourceManifestPath)
       ? {
           path: toPosix(path.relative(repoRoot, sourceManifestPath)),
           sha256: sha256(sourceManifestPath),
         }
       : null,
-    runtimeAssetRoot: fs.existsSync(distAssetsRoot) ? "dist/assets" : "public/assets",
+    runtimeAssetRoot,
     assetCount: staticAssets.length,
     bundles: sourceManifest,
     files: staticAssets,
   };
 };
 
-const buildClientBundleManifest = (gameDir: string) => {
+const buildClientArtifactManifest = (gameDir: string) => {
   const distRoot = path.join(gameDir, "dist");
   if (!fs.existsSync(distRoot)) {
     throw new Error(`Missing build output at ${distRoot}. Run release command without --skip-build.`);
@@ -262,6 +397,7 @@ const buildClientBundleManifest = (gameDir: string) => {
   const indexPath = path.join(distRoot, "index.html");
 
   return {
+    schema: "slot-client-artifact-manifest-v1",
     distRoot: "dist",
     entrypoint: fs.existsSync(indexPath) ? "index.html" : null,
     fileCount: files.length,
@@ -269,25 +405,33 @@ const buildClientBundleManifest = (gameDir: string) => {
   };
 };
 
-const buildMathManifestReference = (gameDir: string, repoRoot: string) => {
-  const explicitMathManifest = path.join(gameDir, "math", "math-pack.manifest.json");
-  const explicitMathPack = path.join(gameDir, "math", "math-pack.json");
+const buildMathManifestReference = (
+  gameDir: string,
+  repoRoot: string,
+  gameSettings: GameSettings,
+): MathPackageManifestRef => {
+  const configuredPath = gameSettings.gs?.mathManifestPath;
+  const candidatePaths = [
+    configuredPath,
+    "math/math-package-manifest.json",
+  ]
+    .filter((value): value is string => Boolean(value))
+    .map((rel) => path.join(gameDir, rel));
 
-  if (fs.existsSync(explicitMathManifest)) {
-    return {
-      strategy: "static-math-manifest",
-      path: toPosix(path.relative(repoRoot, explicitMathManifest)),
-      sha256: sha256(explicitMathManifest),
-      launchTimeInjection: false,
-    };
-  }
+  const seen = new Set<string>();
+  for (const absoluteCandidate of candidatePaths) {
+    const normalized = path.normalize(absoluteCandidate);
+    if (seen.has(normalized)) continue;
+    seen.add(normalized);
 
-  if (fs.existsSync(explicitMathPack)) {
+    if (!fs.existsSync(normalized)) continue;
+
     return {
-      strategy: "static-math-pack",
-      path: toPosix(path.relative(repoRoot, explicitMathPack)),
-      sha256: sha256(explicitMathPack),
-      launchTimeInjection: false,
+      strategy: "static-manifest",
+      path: toPosix(path.relative(repoRoot, normalized)),
+      sha256: sha256(normalized),
+      referenceLabel: path.basename(normalized),
+      launchTimeInjectionAllowed: false,
     };
   }
 
@@ -295,8 +439,42 @@ const buildMathManifestReference = (gameDir: string, repoRoot: string) => {
     strategy: "missing",
     path: null,
     sha256: null,
-    launchTimeInjection: false,
-    warning: "No math-pack.manifest.json or math-pack.json found.",
+    referenceLabel: "missing",
+    launchTimeInjectionAllowed: false,
+    warning:
+      "No math-package-manifest.json found. Release cannot be registered until provided.",
+  };
+};
+
+const buildCapabilityProfileReference = (
+  gameDir: string,
+  repoRoot: string,
+  gameSettings: GameSettings,
+): CapabilityProfileRef => {
+  const profilePath = path.join(gameDir, "gs", "capability-profile.json");
+  if (fs.existsSync(profilePath)) {
+    const profileSha = sha256(profilePath);
+    return {
+      profilePath: toPosix(path.relative(repoRoot, profilePath)),
+      profileSha256: profileSha,
+      profileHash: profileSha,
+      source: "file",
+    };
+  }
+
+  const derivedProfile = {
+    runtimeTarget: gameSettings.gs?.runtimeTarget ?? "slot-browser-v1",
+    features: gameSettings.features ?? {},
+    mathManifestPath: gameSettings.gs?.mathManifestPath ?? null,
+  };
+  const profileHash = sha256Buffer(Buffer.from(toStableJson(derivedProfile), "utf8"));
+
+  return {
+    profilePath: null,
+    profileSha256: null,
+    profileHash,
+    source: "derived",
+    derivedProfile,
   };
 };
 
@@ -307,6 +485,7 @@ const writeMarkdown = (target: string, lines: string[]): void => {
 const main = () => {
   const args = parseArgs(process.argv);
   const repoRoot = process.cwd();
+  const releaseRegistrationContract = loadReleaseRegistrationContract(repoRoot);
   const gameDir = path.join(repoRoot, "games", args.gameId);
 
   if (!fs.existsSync(gameDir)) {
@@ -318,18 +497,7 @@ const main = () => {
     throw new Error(`Missing game.settings.json in games/${args.gameId}`);
   }
 
-  const gameSettings = readJson<{
-    gameId: string;
-    gameName: string;
-    version?: string;
-    features?: Record<string, boolean>;
-    gs?: {
-      mathModels?: Array<Record<string, unknown>>;
-      limits?: Record<string, unknown>;
-    };
-  }>(
-    gameSettingsPath,
-  );
+  const gameSettings = readJson<GameSettings>(gameSettingsPath);
 
   const releaseVersion = args.version ?? gameSettings.version ?? "0.0.0";
   const { gitSha, commitDateIso } = getGitInfo(repoRoot);
@@ -338,50 +506,33 @@ const main = () => {
 
   if (!args.skipBuild) {
     run(`corepack pnpm --filter @games/${args.gameId} build`, repoRoot);
-    run(`corepack pnpm --filter @games/${args.gameId} exec vite build`, repoRoot);
   }
 
-  const bundleManifest = buildClientBundleManifest(gameDir);
+  const outputBase = path.join(gameDir, "release-packs");
+  const outputDir = path.join(outputBase, releaseId);
+  if (fs.existsSync(outputDir)) {
+    fs.rmSync(outputDir, { recursive: true, force: true });
+  }
+  ensureDir(outputDir);
+
+  const indexPath = path.join(outputBase, "index.json");
+  const existingIndex = safeReadJson<{ releases: ReleaseIndexEntry[] }>(indexPath) ?? { releases: [] };
+  const previousKnownGood =
+    existingIndex.releases.find((entry) => entry.status === "known-good") ??
+    existingIndex.releases[0] ??
+    null;
+
+  const staticOrigin = args.staticOrigin.replace(/\/+$/, "");
+
+  const clientArtifactManifest = buildClientArtifactManifest(gameDir);
   const assetManifest = buildAssetManifest(gameDir, repoRoot);
   const localizationManifest = buildLocalizationManifest(gameDir);
-  const mathPackageManifestReference = buildMathManifestReference(gameDir, repoRoot);
+  const mathPackageManifestReference = buildMathManifestReference(gameDir, repoRoot, gameSettings);
+  const capabilityProfileReference = buildCapabilityProfileReference(gameDir, repoRoot, gameSettings);
   const packageVersions = collectPackageVersions(repoRoot, args.gameId);
 
-  const staticOrigin = args.staticOrigin.replace(/\/$/, "");
-  const gsCompatibility = {
-    runtimeTarget: "slot-browser-v1",
-    websocketSupport: "legacy-experimental",
-    launchTimeMathInjectionAllowed: false,
-    staticAssetsFromCdn: true,
-    requiredCapabilities: [
-      "idempotency",
-      "requestCounter",
-      "restore",
-      "wallet-authoritative-server",
-    ],
-    clientEntrypointUrl: `${staticOrigin}/${args.gameId}/${releaseVersion}/index.html`,
-    assetManifestUrl: `${staticOrigin}/${args.gameId}/${releaseVersion}/manifest.json`,
-    localizationBaseUrl: `${staticOrigin}/${args.gameId}/${releaseVersion}/locales/`,
-    mathPackageReferencePath: mathPackageManifestReference.path,
-  };
-
-  const registrationArtifact = {
-    gameId: args.gameId,
-    gameName: gameSettings.gameName,
-    version: releaseVersion,
-    releaseId,
-    gitSha,
-    entrypointUrl: gsCompatibility.clientEntrypointUrl,
-    assetManifestUrl: gsCompatibility.assetManifestUrl,
-    localizationBaseUrl: gsCompatibility.localizationBaseUrl,
-    mathPackageReference: mathPackageManifestReference,
-    featureFlags: gameSettings.features ?? {},
-    rtpModels: gameSettings.gs?.mathModels ?? [],
-    limits: gameSettings.gs?.limits ?? {},
-    canaryEligible: true,
-  };
-
   const releaseMetadata = {
+    schema: "slot-release-metadata-v1",
     releaseId,
     gameId: args.gameId,
     gameName: gameSettings.gameName,
@@ -393,95 +544,223 @@ const main = () => {
       launchTimeMathInjectionAllowed: false,
       staticAndMathArtifactsSeparated: true,
       noSecretsInArtifacts: true,
+      releaseSchema: "slot-release-registration-v1",
     },
   };
 
-  const outputBase = path.join(gameDir, "release-packs");
-  const outputDir = path.join(outputBase, releaseId);
-  if (fs.existsSync(outputDir)) {
-    fs.rmSync(outputDir, { recursive: true, force: true });
-  }
-  ensureDir(outputDir);
+  const compatibilityMetadata = {
+    schema: "slot-compatibility-metadata-v1",
+    runtimeTarget: gameSettings.gs?.runtimeTarget ?? "slot-browser-v1",
+    browserToGsOnly: true,
+    websocketSupport: "legacy-experimental",
+    launchTimeMathInjectionAllowed: false,
+    staticAssetsFromCdn: true,
+    clientEntrypointUrl: `${staticOrigin}/${args.gameId}/${releaseVersion}/index.html`,
+    assetManifestUrl: `${staticOrigin}/${args.gameId}/${releaseVersion}/artifacts/asset-manifest.json`,
+    localizationBaseUrl: `${staticOrigin}/${args.gameId}/${releaseVersion}/locales/`,
+    requiredCapabilities: [
+      "requestCounter",
+      "idempotency",
+      "restore",
+      "server-authoritative-wallet",
+      "server-authoritative-session",
+    ],
+  };
 
   const artifactsDir = path.join(outputDir, "artifacts");
   ensureDir(artifactsDir);
 
-  const clientBundleManifestPath = path.join(artifactsDir, "client-bundle.manifest.json");
-  const assetManifestPath = path.join(artifactsDir, "asset.manifest.json");
-  const localizationManifestPath = path.join(artifactsDir, "localization.manifest.json");
-  const mathRefPath = path.join(artifactsDir, "math-package.manifest-reference.json");
+  const clientArtifactManifestPath = path.join(artifactsDir, "client-artifact-manifest.json");
+  const assetManifestPath = path.join(artifactsDir, "asset-manifest.json");
+  const localizationManifestPath = path.join(artifactsDir, "localization-manifest.json");
+  const mathPackageReferencePath = path.join(artifactsDir, "math-package-manifest.reference.json");
   const packageVersionsPath = path.join(artifactsDir, "package-versions.json");
   const releaseMetadataPath = path.join(artifactsDir, "release-metadata.json");
-  const compatibilityPath = path.join(artifactsDir, "gs-compatibility.json");
-  const registrationArtifactPath = path.join(artifactsDir, "registration-artifact.json");
+  const compatibilityMetadataPath = path.join(artifactsDir, "compatibility-metadata.json");
+  const capabilityProfileRefPath = path.join(artifactsDir, "capability-profile.reference.json");
 
-  writeStableJson(clientBundleManifestPath, bundleManifest);
+  writeStableJson(clientArtifactManifestPath, clientArtifactManifest);
   writeStableJson(assetManifestPath, assetManifest);
   writeStableJson(localizationManifestPath, localizationManifest);
-  writeStableJson(mathRefPath, mathPackageManifestReference);
+  writeStableJson(mathPackageReferencePath, mathPackageManifestReference);
   writeStableJson(packageVersionsPath, packageVersions);
   writeStableJson(releaseMetadataPath, releaseMetadata);
-  writeStableJson(compatibilityPath, gsCompatibility);
-  writeStableJson(registrationArtifactPath, registrationArtifact);
+  writeStableJson(compatibilityMetadataPath, compatibilityMetadata);
+  writeStableJson(capabilityProfileRefPath, capabilityProfileReference);
 
   const allArtifactFiles = collectDigests(artifactsDir);
   const checksumsPath = path.join(outputDir, "checksums.sha256.json");
-  writeStableJson(checksumsPath, {
+  const checksumsPayload = {
+    schema: "slot-release-checksums-v1",
     releaseId,
+    hashAlgorithm: "sha256",
     files: allArtifactFiles,
-  });
+  };
+  writeStableJson(checksumsPath, checksumsPayload);
 
-  const indexPath = path.join(outputBase, "index.json");
-  const existingIndex = safeReadJson<{ releases: ReleaseIndexEntry[] }>(indexPath) ?? { releases: [] };
-  const previousKnownGood =
-    existingIndex.releases.find((entry) => entry.status === "known-good") ?? existingIndex.releases[0] ?? null;
-
-  const newEntry: ReleaseIndexEntry = {
+  const checksumsDigest = sha256(checksumsPath);
+  const integrityPath = path.join(artifactsDir, "integrity-metadata.json");
+  const integrityMetadata = {
+    schema: "slot-release-integrity-v1",
     releaseId,
-    gameId: args.gameId,
-    version: releaseVersion,
-    gitSha,
-    createdAt,
-    status: args.markKnownGood ? "known-good" : "candidate",
-    outputDir: toPosix(path.relative(repoRoot, outputDir)),
+    hashAlgorithm: "sha256",
+    checksumsFile: "checksums.sha256.json",
+    checksumsSha256: checksumsDigest,
+    signature: {
+      status: "unsigned",
+      algorithm: null,
+      reference: null,
+    },
+  };
+  writeStableJson(integrityPath, integrityMetadata);
+
+  const registrationPath = path.join(artifactsDir, "release-registration.json");
+  const canonicalLimits = {
+    minBet: coerceNumber(gameSettings.gs?.limits?.["minBet"], 10),
+    maxBet: coerceNumber(gameSettings.gs?.limits?.["maxBet"], 5000),
+    defaultBet: coerceNumber(gameSettings.gs?.limits?.["defaultBet"], 2000),
+    maxExposure: coerceNumber(gameSettings.gs?.limits?.["maxExposure"], 100000),
   };
 
-  const mergedEntries = [
-    newEntry,
-    ...existingIndex.releases.filter((entry) => entry.releaseId !== releaseId),
-  ];
+  if (
+    mathPackageManifestReference.strategy !== "static-manifest" ||
+    !mathPackageManifestReference.path ||
+    !mathPackageManifestReference.sha256
+  ) {
+    throw new Error(
+      "Missing canonical math-package-manifest reference. Provide games/<gameId>/math/math-package-manifest.json before packaging.",
+    );
+  }
 
-  writeStableJson(indexPath, { releases: mergedEntries });
+  const registrationTemplate = releaseRegistrationContract.template;
+  const templateRoute = asRecord(registrationTemplate.route);
+  const templateClient = asRecord(registrationTemplate.client);
+  const templateMath = asRecord(registrationTemplate.math);
+  const templateCapability = asRecord(registrationTemplate.capabilityProfile);
+  const templateRollout = asRecord(registrationTemplate.rollout);
+  const templateCompatibility = asRecord(registrationTemplate.compatibility);
+  const templateIntegrity = asRecord(registrationTemplate.integrity);
+  const templateMetadata = asRecord(registrationTemplate.metadata);
+
+  const clientBundleHash = `sha256:${sha256Buffer(
+    Buffer.from(toStableJson(clientArtifactManifest), "utf8"),
+  )}`;
+
+  const registrationPayload = {
+    contractVersion: "slot-release-registration-v1",
+    gameId: args.gameId,
+    title:
+      typeof registrationTemplate.title === "string"
+        ? registrationTemplate.title
+        : gameSettings.gameName,
+    releaseId,
+    route: {
+      ...templateRoute,
+      routeGameId: args.gameId,
+    },
+    client: {
+      ...templateClient,
+      clientPackageVersion: releaseVersion,
+      assetBaseUrl: `${staticOrigin}/${args.gameId}/${releaseVersion}/`,
+      assetBundleHash: clientBundleHash,
+      assetManifestPath: "artifacts/asset-manifest.json",
+    },
+    math: {
+      ...templateMath,
+      mathPackageVersion:
+        typeof asRecord(templateMath).mathPackageVersion === "string"
+          ? (asRecord(templateMath).mathPackageVersion as string)
+          : "unknown",
+    },
+    capabilityProfile: {
+      ...templateCapability,
+      profileRef:
+        typeof templateCapability.profileRef === "string"
+          ? templateCapability.profileRef
+          : `cap-${args.gameId}-${releaseVersion}`,
+      profileHash: capabilityProfileReference.profileHash,
+      policySchemaVersion: "slot-bootstrap-v1",
+    },
+    rollout: {
+      ...templateRollout,
+      rollbackTargetReleaseId:
+        previousKnownGood?.releaseId ??
+        (typeof templateRollout.rollbackTargetReleaseId === "string"
+          ? templateRollout.rollbackTargetReleaseId
+          : "unknown"),
+    },
+    compatibility: {
+      ...templateCompatibility,
+      browserContractVersion: "slot-browser-v1",
+      bootstrapContractVersion: "slot-bootstrap-v1",
+      internalRuntimeContractVersion: "slot-runtime-v1",
+    },
+    integrity: {
+      ...templateIntegrity,
+      registrationHash: `sha256:${checksumsDigest}`,
+      signature:
+        typeof templateIntegrity.signature === "string"
+          ? templateIntegrity.signature
+          : "unsigned",
+      signer:
+        typeof templateIntegrity.signer === "string"
+          ? templateIntegrity.signer
+          : "gamesv1-release-bot",
+      generatedAtUtc: createdAt,
+    },
+    metadata: {
+      ...templateMetadata,
+      notes:
+        typeof templateMetadata.notes === "string"
+          ? templateMetadata.notes
+          : `Release ${releaseVersion}`,
+      createdBy:
+        typeof templateMetadata.createdBy === "string"
+          ? templateMetadata.createdBy
+          : "gamesv1",
+    },
+  };
+
+  assertSchemaValid(
+    "release-registration.json",
+    releaseRegistrationContract.validate,
+    registrationPayload,
+  );
+
+  writeStableJson(registrationPath, registrationPayload);
 
   const registrationPackPath = path.join(outputDir, "GS_REGISTRATION_PACK.md");
   writeMarkdown(registrationPackPath, [
     "# GS Registration Pack",
     "",
+    `- Schema: \`slot-release-registration-v1\``,
     `- Release ID: \`${releaseId}\``,
     `- Game: \`${args.gameId}\` (${gameSettings.gameName})`,
     `- Version: \`${releaseVersion}\``,
     `- Git SHA: \`${gitSha}\``,
     `- Created At: \`${createdAt}\``,
     "",
-    "## Artifact Set",
+    "## Required Files",
     "",
-    "- client bundle manifest",
-    "- asset manifest",
-    "- localization manifest",
-    "- math package manifest reference",
-    "- package versions",
-    "- release metadata",
-    "- GS compatibility metadata",
-    "- registration artifact",
-    "- checksums",
+    "- artifacts/release-registration.json",
+    "- artifacts/client-artifact-manifest.json",
+    "- artifacts/asset-manifest.json",
+    "- artifacts/localization-manifest.json",
+    "- artifacts/math-package-manifest.reference.json",
+    "- artifacts/capability-profile.reference.json",
+    "- artifacts/compatibility-metadata.json",
+    "- artifacts/package-versions.json",
+    "- artifacts/release-metadata.json",
+    "- artifacts/integrity-metadata.json",
+    "- checksums.sha256.json",
     "",
     "## GS Ops Actions",
     "",
     "1. Verify checksums from `checksums.sha256.json`.",
     "2. Upload client/static assets to the versioned CDN path.",
-    "3. Register release metadata and compatibility payload in GS registration workflow.",
-    "4. Enable for canary environment first.",
-    "5. Promote after smoke checklist passes.",
+    "3. Register `artifacts/release-registration.json` and linked manifest refs.",
+    "4. Enable via canary checklist.",
+    "5. Promote only after smoke checklist passes.",
     "",
     "## No-Secret Guarantee",
     "",
@@ -503,29 +782,22 @@ const main = () => {
     previousKnownGood
       ? `2. Re-enable previous known-good release \`${previousKnownGood.releaseId}\`.`
       : "2. Re-enable last validated release recorded by GS Ops.",
-    "3. Verify launch URL and one normal round transaction.",
-    "4. Verify reconnect restore path and wallet consistency.",
-    "",
-    "## Rollback Validation",
-    "",
-    "- Launch success",
-    "- Normal round request/response",
-    "- Reconnect restore",
-    "- Balance consistency",
+    "3. Re-run launch + normal round + reconnect checks.",
+    "4. Confirm wallet/session consistency before full traffic restore.",
   ]);
 
   const canaryChecklistPath = path.join(outputDir, "CANARY_CHECKLIST.md");
   writeMarkdown(canaryChecklistPath, [
     "# Canary Checklist",
     "",
-    "- [ ] GS registration created for candidate release",
-    "- [ ] CDN/static assets reachable for candidate version",
-    "- [ ] Guest launch URL opens and initializes",
-    "- [ ] Free launch URL opens and initializes",
-    "- [ ] Real launch URL opens and initializes",
-    "- [ ] One normal transaction path validated",
-    "- [ ] Error logs monitored for first canary window",
-    "- [ ] Rollback path prepared and tested",
+    "- [ ] Candidate registration created in GS",
+    "- [ ] CDN assets reachable for candidate version",
+    "- [ ] Guest launch URL initializes",
+    "- [ ] Free launch URL initializes",
+    "- [ ] Real launch URL initializes",
+    "- [ ] Normal round path validated",
+    "- [ ] Error logs monitored during canary window",
+    "- [ ] Rollback path prepared and verified",
   ]);
 
   const smokeChecklistPath = path.join(outputDir, "SMOKE_TEST_CHECKLIST.md");
@@ -550,14 +822,16 @@ const main = () => {
     releaseId,
     outputDir: toPosix(path.relative(repoRoot, outputDir)),
     artifacts: {
-      clientBundleManifest: toPosix(path.relative(outputDir, clientBundleManifestPath)),
+      releaseRegistration: toPosix(path.relative(outputDir, registrationPath)),
+      clientArtifactManifest: toPosix(path.relative(outputDir, clientArtifactManifestPath)),
       assetManifest: toPosix(path.relative(outputDir, assetManifestPath)),
       localizationManifest: toPosix(path.relative(outputDir, localizationManifestPath)),
-      mathPackageManifestReference: toPosix(path.relative(outputDir, mathRefPath)),
+      mathPackageManifestReference: toPosix(path.relative(outputDir, mathPackageReferencePath)),
+      capabilityProfileReference: toPosix(path.relative(outputDir, capabilityProfileRefPath)),
+      compatibilityMetadata: toPosix(path.relative(outputDir, compatibilityMetadataPath)),
       packageVersions: toPosix(path.relative(outputDir, packageVersionsPath)),
       releaseMetadata: toPosix(path.relative(outputDir, releaseMetadataPath)),
-      gsCompatibility: toPosix(path.relative(outputDir, compatibilityPath)),
-      registrationArtifact: toPosix(path.relative(outputDir, registrationArtifactPath)),
+      integrityMetadata: toPosix(path.relative(outputDir, integrityPath)),
       checksums: toPosix(path.relative(outputDir, checksumsPath)),
       registrationPack: toPosix(path.relative(outputDir, registrationPackPath)),
       rollbackPack: toPosix(path.relative(outputDir, rollbackPackPath)),
@@ -566,8 +840,26 @@ const main = () => {
     },
   });
 
+  const newEntry: ReleaseIndexEntry = {
+    releaseId,
+    gameId: args.gameId,
+    version: releaseVersion,
+    gitSha,
+    createdAt,
+    status: args.markKnownGood ? "known-good" : "candidate",
+    outputDir: toPosix(path.relative(repoRoot, outputDir)),
+  };
+
+  const mergedEntries = [
+    newEntry,
+    ...existingIndex.releases.filter((entry) => entry.releaseId !== releaseId),
+  ];
+
+  writeStableJson(indexPath, { releases: mergedEntries });
+
   console.log(`\nRelease pack created: ${toPosix(path.relative(repoRoot, outputDir))}`);
   console.log(`Summary: ${toPosix(path.relative(repoRoot, summaryPath))}`);
 };
 
 main();
+

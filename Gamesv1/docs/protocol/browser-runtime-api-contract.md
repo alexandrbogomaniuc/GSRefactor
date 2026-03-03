@@ -1,4 +1,8 @@
-﻿# Browser Runtime API Contract (Compatibility Pointer)
+# Browser Runtime API Contract (Compatibility Pointer)
+
+> [!WARNING]
+> Compatibility pointer only. Do not treat this file as contract authority.
+> Canonical runtime and release contracts live in `docs/gs/*`.
 
 This file is kept for backward link compatibility.
 The canonical contract is:
@@ -17,4 +21,5 @@ Sequence canon:
 ## Deprecation
 
 Legacy `/v1/placebet` + `/v1/collect` assumptions are deprecated for canonical Gamesv1 runtime.
-Use `/v1/playround` per `docs/gs/browser-runtime-api-contract.md`.
+Legacy `/v1/readhistory` naming is deprecated and replaced by `/slot/v1/gethistory`.
+Use `/slot/v1/playround` per `docs/gs/browser-runtime-api-contract.md`.

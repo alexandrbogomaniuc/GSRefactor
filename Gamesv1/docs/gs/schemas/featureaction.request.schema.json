@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "slot-browser-v1/featureaction.request.schema.json",
+  "title": "slot-browser-v1 featureaction request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractVersion",
+    "sessionId",
+    "requestCounter",
+    "idempotencyKey",
+    "clientOperationId",
+    "currentStateVersion",
+    "bootstrapRef",
+    "selectedBet",
+    "selectedFeatureChoice"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "const": "slot-browser-v1"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "requestCounter": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "idempotencyKey": {
+      "type": "string"
+    },
+    "clientOperationId": {
+      "type": "string"
+    },
+    "currentStateVersion": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "bootstrapRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "configId",
+        "clientPackageVersion",
+        "mathPackageVersion"
+      ],
+      "properties": {
+        "configId": {
+          "type": "string"
+        },
+        "clientPackageVersion": {
+          "type": "string"
+        },
+        "mathPackageVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "selectedBet": {
+      "type": [
+        "null",
+        "object"
+      ]
+    },
+    "selectedFeatureChoice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "featureType",
+        "action",
+        "priceMinor",
+        "payload"
+      ],
+      "properties": {
+        "featureType": {
+          "type": "string",
+          "enum": [
+            "BUY_FEATURE",
+            "HOLD_AND_WIN",
+            "RESPIN",
+            "FREE_SPINS"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "PICK",
+            "CONFIRM",
+            "COLLECT",
+            "CONTINUE"
+          ]
+        },
+        "priceMinor": {
+          "type": "integer"
+        },
+        "payload": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

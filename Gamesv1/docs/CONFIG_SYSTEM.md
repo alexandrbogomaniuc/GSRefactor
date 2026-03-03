@@ -37,20 +37,38 @@ Primary families:
 1. Betting/limits:
 - `betConfig` (ladder or dynamic constraints)
 - `minBet`, `maxBet`, `defaultBet`, `maxExposure`
+ - `GL_MAX_BET`, `exposureDerivedMaxBet`, final `maxBet=min(GL_MAX_BET, exposureDerivedMaxBet)`
 2. Timing/animation:
 - `turboplay`
 - `minReelSpinTime`
-- `capabilities.animationPolicy`
+- `capabilities.animationPolicy` + `animationPolicy` group (forced spin stop, spin profiling)
 3. Localization:
 - `localization.defaultLang`
 - `localization.localizedTitleKey`
+- `localization.localizedTitle`
 - `localization.contentPath`
 - `localization.showMissingLocalizationError`
+ - `localization.serverNotificationsEnabled`
+ - legacy alias mappings:
+ - `USE_JP_NOTIFICATION` -> `localization.serverNotificationsEnabled`
+ - `content_path` -> `localization.contentPath`
 4. History behavior:
 - `history.url`
 - `history.openInSameWindow`
 5. Feature/capability flags:
-- buy feature, free spins/respin/Hold&Win, big win flow, delayed wallet messages, spin profiling, etc.
+- buy feature, buy feature disabled for cash bonus, free spins/respin/Hold&Win
+- FRB/OFRB
+- jackpot hooks
+- delayed wallet messages
+- spin profiling (`PRECSPINSTAT`)
+- session UI policy
+- big/huge/mega win flow thresholds
+ - legacy alias mappings:
+ - `spinProfilingEnabled` / `PRECSPINSTAT` -> `animationPolicy.spinProfilingEnabled`
+ - `delayedWalletMessages` -> `walletDisplayPolicy.delayedWalletMessages`
+ - `BUY_FEATURE_DISABLED_FOR_CASH_BONUS` -> `featurePolicy.buyFeatureDisabledForCashBonus`
+ - `FRB` / `OFRB` -> `featurePolicy.frb` / `featurePolicy.ofrb`
+ - `jackpotHooksEnabled` -> `featurePolicy.jackpotHooksEnabled`
 
 ## Legacy Fallbacks
 
@@ -75,7 +93,8 @@ Resolver schema enforces:
 In dev mode, resolver emits:
 1. per-layer override diff log
 2. unsupported key warnings
-3. legacy fallback warnings
-4. missing currency override warnings
+3. legacy alias mapping notes
+4. legacy fallback warnings
+5. missing currency override warnings
 
 This is for troubleshooting only and does not alter GS authority model.

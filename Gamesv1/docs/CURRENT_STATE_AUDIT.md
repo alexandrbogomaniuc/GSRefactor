@@ -1,87 +1,64 @@
 ﻿# CURRENT_STATE_AUDIT
 
-Code-grounded audit of Gamesv1 based on commands run on 2026-03-01.
+Audit regenerated from actual commands on 2026-03-03 from `E:\Dev\GSRefactor\Gamesv1`.
 
-## 1) Commands executed and results
+Raw command outputs are captured in `docs/generated/COMMAND_PROOF_2026-03-03.md`.
 
-### Build
-Command:
-```bash
-corepack pnpm run build
-```
-Result: PASS (`exit 0`)
+## Source-of-truth split
 
-Observed output summary:
-- Root script executed `corepack pnpm --filter @games/premium-slot build`
-- `@games/premium-slot` build executed `tsc`
+- Client capability spec: `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`
+- Runtime/release contract spec: `docs/gs/*`
+- Export truth docs: `docs/EXPORT_PROOF.md`, `docs/EXPORT_FILE_CHECKLIST.md`
 
-### Tests
-Command:
-```bash
-corepack pnpm run test
-```
-Result: PASS (`exit 0`)
+## Command proof (actual runs)
 
-Observed output summary:
-- `test:config`: 8 passed, 0 failed
-- `test:animation-policy`: 6 passed, 0 failed
-- `test:contract`: 8 passed, 0 failed
-- Contract suite now validates browser runtime operations (`bootstrap`, `opengame`, `playround`, `featureaction`, `resumegame`, `gethistory`) including requestCounter/idempotency/restore behavior.
+1. `corepack pnpm run verify:gs-contract-pack -- --strict-upstream --upstream e:\Dev\GSRefactor\docs\gs --repo e:\Dev\GSRefactor\Gamesv1\docs\gs`
+- PASS
+- Upstream lock semantics verification passed
+- Canonical entries: 43
+- Repo files compared: 60
 
-### Output capture file
-Command outputs and root tree are recorded in:
-- `docs/generated/ORCHESTRATOR_OUTPUTS.md`
+2. `corepack pnpm run test:contract`
+- PASS (10 passed, 0 failed)
 
-## 2) Repo hygiene checks
+3. `corepack pnpm run test`
+- PASS
+- Includes: verify + config + animation-policy + contract + template tests
 
-### Tracked generated/dependency paths
-Command:
-```bash
-git ls-files | rg "(^|/)node_modules/|(^|/)dist/|(^|/)build/|(^|/)\.cache/|(^|/)release-packs/"
-```
-Result: no matches (command exit 1 due no matches)
+4. `corepack pnpm run build`
+- PASS (`@games/premium-slot` build succeeded)
 
-### Canonical scaffolder path
-Command:
-```bash
-Test-Path tools/create-game.ts
-Test-Path tools/create-game
-```
-Result:
-- `tools/create-game.ts`: `True`
-- `tools/create-game`: `False`
+5. `corepack pnpm run release:pack -- --game premium-slot`
+- PASS
+- Output: `games/premium-slot/release-packs/1.0.0+7ec5ebb1`
 
-## 3) Canonical vs legacy scope
+6. `corepack pnpm run create-game -- --dry-run --gameId dryrun-slot --name "Dry Run Slot" --themeId neon`
+- PASS
 
-Canonical runtime docs:
-- `docs/gs/bootstrap-config-contract.md`
-- `docs/gs/browser-runtime-api-contract.md`
-- `docs/gs/browser-error-codes.md`
-- `docs/gs/browser-runtime-sequence-diagrams.md`
+## Export proof
 
-Legacy/experimental transport adapters still present:
-- `packages/core-protocol/src/ws/GsWsTransport.ts`
-- `packages/core-protocol/src/http/ExtGameTransport.ts`
+- Archive: `E:\Dev\GSRefactor\exports\Gamesv1_export_20260303T091017Z.zip`
+- SHA-256: `0e87b0d703853926c378206e47af977a31bce16cb52231ded0bb95a0a8bb5920`
+- Exclusion check: PASS
+- Required-file checklist: PASS (17/17 present)
 
-Status: legacy adapters are retained but non-canonical.
+## Workspace tree summary (root)
 
-## 4) Runtime boundary checks in premium-slot
+- `.agent/`
+- `docs/`
+- `games/`
+- `packages/`
+- `tests/`
+- `tools/`
+- `README.md`, `package.json`, `pnpm-workspace.yaml`, `tsconfig.json`
 
-Command:
-```bash
-rg -n "@gamesv1/operator-pariplay|window\.postMessage|new WebSocket" games/premium-slot/src games/premium-slot/package.json games/premium-slot/vite.config.ts
-```
-Result: no matches (command exit 1 due no matches)
+## Hygiene checks
 
-Interpretation:
-- Canonical premium-slot runtime path does not directly depend on operator bridge APIs.
-- No direct `window.postMessage` or raw `WebSocket` calls in premium-slot source.
+Tracked-source ban check (`node_modules`, `dist`, `build`, `.cache`, `release-packs`, `~$*.docx`) against git index:
+- PASS (no tracked banned paths)
 
-## 5) Current honest status
+## Exactness state
 
-Confirmed by command output in this audit:
-1. Build passes.
-2. Test suite passes.
-3. Browser-runtime contract tests replace canonical WS/ExtGame contract dependency.
-4. Canonical docs point to `docs/gs/*` contract set.
-5. Legacy WS/ExtGame/operator tests are moved under `tests/_archive/` and removed from canonical test scripts.
+- `upstream-exact`: PASS (strict upstream mirror verify passed)
+- `runtime-exact`: PASS (contract tests green)
+- `release/scaffold-exact`: PASS (`release:pack` and `create-game --dry-run` green)

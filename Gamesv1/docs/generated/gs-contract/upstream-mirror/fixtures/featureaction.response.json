@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "requestId": "req-feature-005",
+  "sessionId": "sid-demo-001",
+  "requestCounter": 5,
+  "stateVersion": 5,
+  "wallet": {
+    "balanceMinor": 143000,
+    "currencyCode": "EUR",
+    "delayedWalletMessages": false
+  },
+  "round": null,
+  "feature": {
+    "featureType": "BUY_FEATURE",
+    "action": "PURCHASE",
+    "accepted": true
+  },
+  "presentationPayload": {
+    "uiMessages": ["FEATURE_ACCEPTED"],
+    "animationCues": ["feature-enter"],
+    "audioCues": ["feature-sting"],
+    "counters": {},
+    "labels": {
+      "feature": "BUY_FEATURE"
+    }
+  },
+  "restore": {
+    "hasUnfinishedRound": true,
+    "resumeRef": "resume-ref-005"
+  },
+  "idempotency": {
+    "key": "feature-buy-5",
+    "clientOperationId": "feature-buy-5",
+    "replayed": false
+  },
+  "retry": {
+    "allowed": false
+  }
+}

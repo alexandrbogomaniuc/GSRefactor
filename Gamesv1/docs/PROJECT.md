@@ -1,51 +1,51 @@
-﻿# PROJECT
+# PROJECT
 
 High-level architecture charter for Gamesv1.
 
-## 1. Mission
+## Mission
 
 Build and maintain the reference GS slot browser client shell and deterministic release-packaging stack.
 
-## 2. Locked Architecture
+## Canonical specifications
+
+- Client capability/behavior spec: `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`
+- Runtime/release contract spec: `docs/gs/README.md` and `docs/gs/*`
+
+## Locked architecture
 
 ### Runtime ownership
-- GS owns session, wallet, DB state, restore behavior, requestCounter, idempotency, routing, and config resolution.
-- Browser is presentation-only and renders GS-provided truth.
-- Internal slot-engine sidecar and RNG are GS-private/internal.
+
+- GS owns session, wallet, DB persistence, restore behavior, requestCounter, idempotency, routing, and config resolution.
+- Browser is presentation-only for financial/session truth.
+- Internal slot-engine and RNG are private/internal GS concerns.
 
 ### Canonical transport
-- Browser -> GS only, using slot-browser-v1 HTTP operations.
+
+- Browser -> GS only.
+- Canonical endpoint prefix: `/slot/v1/*`.
 - Canonical operations: `bootstrap`, `opengame`, `playround`, `featureaction`, `resumegame`, `closegame`, `gethistory`.
-- Legacy `abs.gs.v1` WebSocket is non-canonical, experimental only.
+- Canonical history endpoint: `/slot/v1/gethistory`.
+- `abs.gs.v1` WebSocket is legacy/experimental only.
 
 ### Assets and release
+
 - Static client assets are served from CDN/static origin.
 - Each release produces immutable, versioned artifacts for GS registration, canary, and rollback.
 
-## 3. Scope
+## Scope
 
 In scope:
 - single-player slot browser client shell
-- capability/config compliance runtime behavior
+- capability/config compliance behavior
 - deterministic release artifact generation
 
 Out of scope:
-- operator-specific messaging as canonical runtime path
+- operator-specific runtime messaging
 - multiplayer
-- browser-direct internal slot-engine integrations
+- browser-direct communication with internal slot-engine
 
-## 4. Core layers
-
-1. Protocol layer: `packages/core-protocol`
-2. Compliance layer: `packages/core-compliance`
-3. Engine layer: `packages/pixi-engine`
-4. UI layer: `packages/ui-kit`
-5. Game layer: `games/premium-slot`
-
-## 5. Non-negotiable constraints
+## Non-negotiable constraints
 
 1. Browser never authoritatively mutates wallet/session/DB truth.
 2. Game code must not directly use `window.postMessage` or `WebSocket` for canonical runtime.
-3. Browser transport contracts come from `docs/gs/browser-runtime-api-contract.md`.
-4. Bootstrap config truth comes from `docs/gs/bootstrap-config-contract.md`.
-5. Release registration artifact contract comes from `docs/gs/release-registration-contract.md`.
+3. Runtime transport and release contracts come from `docs/gs/*`.

@@ -1,0 +1,26 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fixture-wrapper.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["fixtureVersion", "name", "endpoint", "requestHeaders", "requestBody", "response"],
+  "properties": {
+    "fixtureVersion": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "endpoint": { "type": "string", "pattern": "^/slot/v1/[a-z]+$" },
+    "requestHeaders": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "requestBody": { "type": "object" },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["httpStatus", "body"],
+      "properties": {
+        "httpStatus": { "type": "integer", "minimum": 100, "maximum": 599 },
+        "body": { "type": "object" }
+      }
+    }
+  }
+}

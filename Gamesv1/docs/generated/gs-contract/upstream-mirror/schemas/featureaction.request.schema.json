@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "featureaction.request.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractVersion", "sessionId", "requestCounter", "currentStateVersion", "idempotencyKey", "clientOperationId"],
+  "properties": {
+    "contractVersion": { "const": "slot-browser-v1" },
+    "sessionId": { "type": "string", "minLength": 1 },
+    "requestCounter": { "type": "integer", "minimum": 0 },
+    "currentStateVersion": { "type": "integer", "minimum": 0 },
+    "idempotencyKey": { "type": "string", "minLength": 1 },
+    "clientOperationId": { "type": "string", "minLength": 1 },
+    "bootstrapRef": { "type": "object", "additionalProperties": true, "minProperties": 1 },
+    "selectedBet": { "type": "object", "additionalProperties": true },
+    "selectedFeatureChoice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["featureType", "action", "priceMinor", "payload"],
+      "properties": {
+        "featureType": { "type": "string", "minLength": 1 },
+        "action": { "type": "string", "minLength": 1 },
+        "priceMinor": { "type": "integer", "minimum": 0 },
+        "payload": { "type": "object", "additionalProperties": true }
+      }
+    }
+  }
+}

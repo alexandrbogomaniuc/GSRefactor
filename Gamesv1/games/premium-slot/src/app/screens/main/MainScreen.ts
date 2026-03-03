@@ -254,7 +254,11 @@ export class MainScreen extends Container {
 
   private async handleHistory(): Promise<void> {
     try {
-      const history = await gsRuntimeClient.getHistory(0);
+      const history = await gsRuntimeClient.gethistory({
+        fromRoundId: null,
+        limit: 20,
+        includeFeatureDetails: true,
+      });
       this.showStatus(`HISTORY ITEMS: ${history.length}`);
     } catch (error) {
       this.showStatus(`HISTORY FAILED: ${String(error)}`);
@@ -263,8 +267,21 @@ export class MainScreen extends Container {
 
   private async handleBuyFeature(): Promise<void> {
     try {
-      await gsRuntimeClient.featureAction("buy-feature", {
-        betAmount: ResolvedRuntimeConfigStore.limits.defaultBet,
+      const totalBetMinor = Math.max(1, Math.round(ResolvedRuntimeConfigStore.limits.defaultBet));
+      const lines = 20;
+      const multiplier = 1;
+      const coinValueMinor = Math.max(1, Math.floor(totalBetMinor / (lines * multiplier)));
+
+      await gsRuntimeClient.featureaction("buy-feature", {
+        selectedBet: {
+          coinValueMinor,
+          lines,
+          multiplier,
+          totalBetMinor,
+        },
+        featureType: "BUY_FEATURE",
+        priceMinor: totalBetMinor,
+        payload: { source: "hud" },
       });
       this.showStatus("BUY FEATURE ACTION SENT");
     } catch (error) {
@@ -289,17 +306,25 @@ export class MainScreen extends Container {
     PresentationStateStore.patch({ isSpinning: true, statusText: "ROUND_REQUESTED" });
 
     const timing = this.animationPolicy.resolveSpinTiming(this.turboSelected);
-    const betAmount = ResolvedRuntimeConfigStore.limits.defaultBet;
+    const totalBetMinor = Math.max(1, Math.round(ResolvedRuntimeConfigStore.limits.defaultBet));
+    const lines = 20;
+    const multiplier = 1;
+    const selectedBet = {
+      coinValueMinor: Math.max(1, Math.floor(totalBetMinor / (lines * multiplier))),
+      lines,
+      multiplier,
+      totalBetMinor,
+    };
 
     try {
-      const round = await gsRuntimeClient.playRound(betAmount, this.resolveBetTypeFromRuntime());
+      const round = await gsRuntimeClient.playround(selectedBet);
       const presentation = mapPlayRoundToPresentation(round);
       const featureFrame = this.featureModules.resolve(presentation);
 
       this.pendingRound = {
         presentation,
         featureFrame,
-        balance: round.balance,
+        balance: SessionRuntimeStore.get().balance,
       };
 
       this.slotMachine.spin({
@@ -339,7 +364,6 @@ export class MainScreen extends Container {
     const mergedMessages = [
       ...presentation.messages,
       ...featureFrame.messages,
-      ...presentation.featureOverlays.map((overlay) => overlay.label),
       ...featureFrame.overlays.map((overlay) => overlay.label),
     ];
     this.showStatus(formatMessages(mergedMessages));
@@ -492,13 +516,6 @@ export class MainScreen extends Container {
   }
 
   public reset() {}
-
-  private resolveBetTypeFromRuntime(): string {
-    const session = SessionRuntimeStore.getSnapshot();
-    const sessionHint = session?.sessionId ? "SESSION" : "NOSESSION";
-    const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
-    return `${sessionHint}:BET_${defaultBet}`;
-  }
 
   public resize(width: number, height: number) {
     const viewport = engine().layout.getViewport();

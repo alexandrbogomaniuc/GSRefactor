@@ -1,8 +1,14 @@
+import type { BootstrapRef } from "@gamesv1/core-protocol";
+
+// Canonical mutating runtime envelope store.
+// This store intentionally excludes bootstrap config/policy/auth context.
 export interface SessionRuntimeState {
   sessionId: string;
   balance: number;
   requestCounter: number;
-  currentStateVersion?: string;
+  stateVersion: number;
+  bootstrapRef: BootstrapRef;
+  resumeRef?: string | Record<string, unknown>;
   unfinishedRound?: unknown;
   lastRoundId?: string;
 }

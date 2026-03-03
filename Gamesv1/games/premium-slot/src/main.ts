@@ -21,20 +21,38 @@ setEngine(appEngine);
     assetBasePath: "assets",
   });
 
-  let bootstrapSnapshot: Awaited<ReturnType<typeof gsRuntimeClient.bootstrap>> | null = null;
+  const urlParams = new URLSearchParams(window.location.search);
+  const explicitDevFallback =
+    urlParams.get("devConfig") === "1" ||
+    urlParams.get("allowDevFallback") === "1" ||
+    (import.meta.env.DEV && import.meta.env.VITE_ALLOW_DEV_CONFIG_FALLBACK === "1");
+
+  let bootstrapFlow: Awaited<ReturnType<typeof gsRuntimeClient.bootstrap>> | null = null;
   try {
-    bootstrapSnapshot = await gsRuntimeClient.bootstrap();
+    bootstrapFlow = await gsRuntimeClient.bootstrap();
   } catch (error) {
-    console.error("[GS Runtime Bootstrap] Failed:", error);
+    if (!explicitDevFallback) {
+      throw error;
+    }
+    console.warn("[GS Runtime Bootstrap] Failed; explicit dev fallback enabled:", error);
   }
   await ConfigManager.init({
-    runtimeConfigFromGs: bootstrapSnapshot?.runtimeConfig,
-    capabilitiesFromGs: bootstrapSnapshot?.capabilities,
-    currencyCodeFromGs: bootstrapSnapshot?.currencyCode,
+    runtimeConfigFromGs:
+      (bootstrapFlow?.bootstrap.runtime as Record<string, unknown> | null)?.runtimeConfig as
+        | Record<string, unknown>
+        | undefined,
+    capabilitiesFromGs:
+      (bootstrapFlow?.bootstrap.policies as Record<string, unknown> | null)?.capabilities as
+        | Record<string, unknown>
+        | undefined,
+    currencyCodeFromGs:
+      ((bootstrapFlow?.bootstrap.runtime as Record<string, unknown> | null)?.wallet as
+        | Record<string, unknown>
+        | null)?.currencyCode as string | undefined,
+    allowDevFallback: explicitDevFallback,
   });
   userSettings.init();
 
-  const urlParams = new URLSearchParams(window.location.search);
   const devLang = urlParams.get("lang");
   const brandName = urlParams.get("brand") || "Casino";
   const language = devLang || ResolvedRuntimeConfigStore.localization.defaultLang || "en";

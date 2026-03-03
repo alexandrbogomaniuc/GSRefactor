@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "release-registration.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "gameId",
+    "gameName",
+    "version",
+    "releaseId",
+    "gitSha",
+    "entrypointUrl",
+    "assetManifestUrl",
+    "localizationBaseUrl",
+    "mathPackageManifestReference",
+    "capabilityProfile",
+    "featureFlags",
+    "rtpModels",
+    "limits",
+    "canary",
+    "rollback",
+    "integrity"
+  ],
+  "properties": {
+    "schema": {
+      "const": "slot-release-registration-v1"
+    },
+    "gameId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gameName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releaseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gitSha": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entrypointUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "assetManifestUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "localizationBaseUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "mathPackageManifestReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "path",
+        "sha256",
+        "referenceLabel",
+        "launchTimeInjectionAllowed"
+      ],
+      "properties": {
+        "strategy": {
+          "const": "static-manifest"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "referenceLabel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "launchTimeInjectionAllowed": {
+          "const": false
+        }
+      }
+    },
+    "capabilityProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hash",
+        "path",
+        "source"
+      ],
+      "properties": {
+        "hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "file",
+            "derived"
+          ]
+        }
+      }
+    },
+    "featureFlags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "rtpModels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "rtp"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rtp": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minBet",
+        "maxBet",
+        "defaultBet",
+        "maxExposure"
+      ],
+      "properties": {
+        "minBet": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxBet": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "defaultBet": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxExposure": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "canary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eligible",
+        "checklist",
+        "previousKnownGoodReleaseId"
+      ],
+      "properties": {
+        "eligible": {
+          "type": "boolean"
+        },
+        "checklist": {
+          "type": "string",
+          "minLength": 1
+        },
+        "previousKnownGoodReleaseId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checklist",
+        "previousKnownGoodReleaseId"
+      ],
+      "properties": {
+        "checklist": {
+          "type": "string",
+          "minLength": 1
+        },
+        "previousKnownGoodReleaseId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hashAlgorithm",
+        "checksumsFile",
+        "checksumsSha256",
+        "signature"
+      ],
+      "properties": {
+        "hashAlgorithm": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checksumsFile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checksumsSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "signature": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "algorithm",
+            "reference"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "minLength": 1
+            },
+            "algorithm": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "reference": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

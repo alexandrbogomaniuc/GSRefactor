@@ -1,4 +1,5 @@
-﻿import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import { readLabelBoolean } from "./types.ts";
 
 export class HoldAndWinFeatureModule implements FeatureModule {
   public readonly id = "hold-and-win";
@@ -9,7 +10,8 @@ export class HoldAndWinFeatureModule implements FeatureModule {
 
   public resolve(input: FeatureModuleInput) {
     const remaining = input.counters.holdAndWinRemaining;
-    const active = remaining !== undefined ? remaining > 0 : input.serverState.holdAndWinActive === true;
+    const labelActive = readLabelBoolean(input.round.labels, "holdAndWinActive");
+    const active = remaining !== undefined ? remaining > 0 : labelActive === true;
 
     if (!active) {
       return {};
@@ -25,9 +27,10 @@ export class HoldAndWinFeatureModule implements FeatureModule {
           visible: true,
         },
       ],
-      messages: [remaining !== undefined ? `HOLD & WIN REMAINING: ${remaining}` : "HOLD & WIN ACTIVE"],
+      messages: [
+        remaining !== undefined ? `HOLD & WIN REMAINING: ${remaining}` : "HOLD & WIN ACTIVE",
+      ],
       animationCues: ["hold-and-win-frame"],
     };
   }
 }
-

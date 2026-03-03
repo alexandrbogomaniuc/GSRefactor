@@ -1,0 +1,23 @@
+{
+  "contractVersion": "slot-browser-v1",
+  "sessionId": "sid-demo-001",
+  "requestCounter": 3,
+  "currentStateVersion": 2,
+  "bootstrapRef": {
+    "id": "boot-ref-001"
+  },
+  "idempotencyKey": "round-3",
+  "clientOperationId": "round-3",
+  "selectedBet": {
+    "coinValueMinor": 100,
+    "lines": 20,
+    "multiplier": 1,
+    "totalBetMinor": 2000
+  },
+  "selectedFeatureChoice": {
+    "featureType": "BASE_GAME",
+    "action": "SPIN",
+    "priceMinor": 0,
+    "payload": {}
+  }
+}

@@ -130,6 +130,113 @@ test("surfaces unsupported config keys in warnings", () => {
   );
 });
 
+test("maps legacy capability aliases into canonical phase-1 fields", () => {
+  const input = createInput();
+  (input.launchParams as Record<string, unknown>) = {
+    USE_JP_NOTIFICATION: 1,
+    content_path: "/cdn/custom-locales",
+    spinProfilingEnabled: true,
+    delayedWalletMessages: "true",
+    BUY_FEATURE_DISABLED_FOR_CASH_BONUS: true,
+    FRB: true,
+    OFRB: false,
+    jackpotHooksEnabled: true,
+  };
+
+  const resolved = resolveConfig(input);
+  assert.equal(resolved.localization.serverNotificationsEnabled, true);
+  assert.equal(resolved.localization.contentPath, "/cdn/custom-locales");
+  assert.equal(resolved.capabilities.spinProfiling.enabled, true);
+  assert.equal(resolved.walletDisplayPolicy.delayedWalletMessages, true);
+  assert.equal(resolved.capabilities.features.buyFeatureDisabledForCashBonus, true);
+  assert.equal(resolved.capabilities.features.frb, true);
+  assert.equal(resolved.capabilities.features.ofrb, false);
+  assert.equal(resolved.capabilities.features.jackpotHooks, true);
+  assert.equal(resolved.jackpotHooks.enabled, true);
+});
+
+test("maps GS policy groups into runtime fields and capabilities", () => {
+  const input = createInput();
+  input.launchParams = {
+    animationPolicy: {
+      forcedSpinStopEnabled: true,
+      forcedSkipWinPresentation: true,
+      minReelSpinTimeMs: { normal: 2100, turbo: 1300 },
+      autoplayMinDelayMs: 275,
+      lowPerformanceMode: false,
+      spinProfilingEnabled: true,
+    },
+    soundPolicy: {
+      soundModeByDefault: "muted",
+      showToggle: true,
+      masterVolume: 0.4,
+      bgmVolume: 0.2,
+      sfxVolume: 0.3,
+    },
+    localizationPolicy: {
+      defaultLanguage: "de",
+      localizedTitleKey: "game.title.de",
+      localizedTitle: "Premium Slot DE",
+      showMissingLocalizationError: true,
+      contentPath: "/cdn/de",
+      customTranslationsEnabled: true,
+      serverNotificationsEnabled: true,
+    },
+    walletDisplayPolicy: {
+      showBalance: true,
+      showCurrencyCode: true,
+      showDelayedIndicator: true,
+      delayedWalletMessages: true,
+    },
+    featurePolicy: {
+      autoplay: true,
+      buyFeature: true,
+      buyFeatureForCashBonus: false,
+      buyFeatureDisabledForCashBonus: true,
+      freeSpins: true,
+      respin: true,
+      holdAndWin: true,
+      inGameHistory: true,
+      holidayMode: false,
+      customSkins: true,
+      frb: true,
+      ofrb: false,
+      jackpotHooksEnabled: true,
+    },
+    sessionUiPolicy: {
+      showSessionTimer: true,
+      showRealityCheckBanner: true,
+      closeButtonPolicy: "confirm",
+    },
+  };
+
+  const resolved = resolveConfig(input);
+  assert.equal(resolved.minReelSpinTime.normalMs, 2100);
+  assert.equal(resolved.minReelSpinTime.turboMs, 1300);
+  assert.equal(resolved.capabilities.spinProfiling.enabled, true);
+  assert.equal(resolved.soundDefaults.modeByDefault, "muted");
+  assert.equal(resolved.localization.defaultLang, "de");
+  assert.equal(resolved.localization.localizedTitle, "Premium Slot DE");
+  assert.equal(resolved.capabilities.walletMessaging.delayedWalletMessages, true);
+  assert.equal(resolved.capabilities.features.jackpotHooks, true);
+  assert.equal(resolved.jackpotHooks.enabled, true);
+  assert.equal(resolved.sessionUi.showSessionTimer, true);
+});
+
+test("resolves final maxBet with min(GL_MAX_BET, exposureDerivedMaxBet)", () => {
+  const input = createInput();
+  input.launchParams = {
+    maxBet: 5000,
+    defaultBet: 1200,
+    GL_MAX_BET: 1000,
+    exposureDerivedMaxBet: 750,
+  };
+
+  const resolved = resolveConfig(input);
+  assert.equal(resolved.maxBet, 750);
+  assert.equal(resolved.defaultBet, 750);
+});
+
 test("throws on invalid constraints", () => {
   const input = createInput();
   input.bankProperties.minBet = 6000;
@@ -138,12 +245,13 @@ test("throws on invalid constraints", () => {
   assert.throws(() => resolveConfig(input), /minBet cannot be greater than maxBet/);
 });
 
-test("throws when maxBet exceeds maxExposure", () => {
+test("clamps maxBet when maxBet exceeds exposure-derived cap", () => {
   const input = createInput();
   input.bankProperties.maxBet = 6000;
   input.bankProperties.maxExposure = 5000;
 
-  assert.throws(() => resolveConfig(input), /maxBet cannot exceed maxExposure/);
+  const resolved = resolveConfig(input);
+  assert.equal(resolved.maxBet, 5000);
 });
 
 test("throws when history URL uses javascript scheme", () => {

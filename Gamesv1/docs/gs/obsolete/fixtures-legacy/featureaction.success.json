@@ -1,0 +1,122 @@
+{
+  "fixtureVersion": "slot-browser-fixture-v1",
+  "name": "featureaction.success",
+  "endpoint": {
+    "method": "POST",
+    "path": "/slot/v1/featureaction",
+    "readOnly": false
+  },
+  "requestHeaders": {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-GS-Client-Contract": "slot-browser-v1",
+    "X-Request-Id": "req-feature-044",
+    "X-Session-Id": "SID-123",
+    "X-Idempotency-Key": "idem-feature-044",
+    "X-Client-Operation-Id": "client-op-044"
+  },
+  "requestBody": {
+    "contractVersion": "slot-browser-v1",
+    "sessionId": "SID-123",
+    "requestCounter": 44,
+    "idempotencyKey": "idem-feature-044",
+    "clientOperationId": "client-op-044",
+    "currentStateVersion": 14,
+    "bootstrapRef": {
+      "configId": "cfg-8f42",
+      "clientPackageVersion": "client-pkg-2.6.0",
+      "mathPackageVersion": "1.4.2"
+    },
+    "selectedBet": null,
+    "selectedFeatureChoice": {
+      "featureType": "BUY_FEATURE",
+      "action": "CONFIRM",
+      "priceMinor": 5000,
+      "payload": {
+        "entry": "FREE_SPINS"
+      }
+    }
+  },
+  "response": {
+    "httpStatus": 200,
+    "body": {
+      "ok": true,
+      "requestId": "req-feature-044",
+      "sessionId": "SID-123",
+      "requestCounter": 44,
+      "stateVersion": 15,
+      "wallet": {
+        "balanceMinor": 95500,
+        "previousBalanceMinor": 100500,
+        "currencyCode": "USD",
+        "truncateCents": false,
+        "delayedWalletMessagePending": false
+      },
+      "round": {
+        "roundId": "R-044",
+        "status": "IN_PROGRESS",
+        "betMinor": 5000,
+        "winMinor": 0,
+        "netEffectMinor": -5000,
+        "outcomeHash": "sha256:3f1f2ecf4e7b4cf09d98fddce652c59124789ce2f84a1eb7cf9adf4f6cb72da4"
+      },
+      "feature": {
+        "mode": "FREE_SPINS",
+        "remainingActions": 10,
+        "nextAllowedActions": [
+          "CONTINUE"
+        ],
+        "featureContext": {
+          "awardedSpins": 10,
+          "spinsLeft": 10
+        }
+      },
+      "presentationPayload": {
+        "featureMode": "FREE_SPINS",
+        "reelStops": [],
+        "symbolGrid": [],
+        "uiMessages": [
+          {
+            "code": "FEATURE_STARTED",
+            "text": "10 free spins awarded"
+          }
+        ],
+        "animationCues": [
+          {
+            "name": "FEATURE_INTRO",
+            "durationMs": 1500
+          }
+        ],
+        "audioCues": [
+          {
+            "name": "FEATURE_START"
+          }
+        ],
+        "counters": [
+          {
+            "name": "freeSpinsLeft",
+            "value": 10
+          }
+        ],
+        "labels": {
+          "featureTitle": "Free Spins"
+        }
+      },
+      "restore": {
+        "hasUnfinishedRound": true,
+        "unfinishedRoundId": "R-044",
+        "resumeStateVersion": 15,
+        "opaqueRestorePayload": "eyJmZWF0dXJlTW9kZSI6IkZSRUVfU1BJTlMiLCJzcGluc0xlZnQiOjEwfQ=="
+      },
+      "idempotency": {
+        "isDuplicate": false,
+        "duplicateOfRequestId": null,
+        "replaySafe": true
+      },
+      "retry": {
+        "clientMayRetrySameKey": true,
+        "clientMustIncrementCounterOnNewAction": true
+      }
+    }
+  }
+}

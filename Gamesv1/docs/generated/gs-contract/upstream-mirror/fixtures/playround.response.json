@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "requestId": "req-round-003",
+  "sessionId": "sid-demo-001",
+  "requestCounter": 3,
+  "stateVersion": 3,
+  "wallet": {
+    "balanceMinor": 148000,
+    "currencyCode": "EUR",
+    "delayedWalletMessages": false
+  },
+  "round": {
+    "roundId": "round-0003",
+    "totalBetMinor": 2000,
+    "winAmountMinor": 0,
+    "status": "SETTLED"
+  },
+  "feature": null,
+  "presentationPayload": {
+    "reelStops": [
+      [0, 1, 2],
+      [1, 2, 3],
+      [2, 3, 4],
+      [3, 4, 5],
+      [4, 5, 6]
+    ],
+    "symbolGrid": [
+      [0, 1, 2, 3, 4],
+      [1, 2, 3, 4, 5],
+      [2, 3, 4, 5, 6]
+    ],
+    "uiMessages": ["ROUND_COMPLETED"],
+    "animationCues": ["win-line-highlight"],
+    "audioCues": ["reel-stop"],
+    "counters": {
+      "freeSpinsRemaining": 0
+    },
+    "labels": {
+      "resultType": "base"
+    }
+  },
+  "restore": {
+    "hasUnfinishedRound": false,
+    "resumeRef": "resume-ref-001"
+  },
+  "idempotency": {
+    "key": "round-3",
+    "clientOperationId": "round-3",
+    "replayed": false
+  },
+  "retry": {
+    "allowed": false
+  }
+}

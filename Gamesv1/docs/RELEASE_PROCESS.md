@@ -1,8 +1,8 @@
-﻿# RELEASE_PROCESS
+# RELEASE_PROCESS
 
-Production release process for Gamesv1 aligned to locked GS Phase-1 architecture.
+Production release process for Gamesv1 aligned to GS slot-browser-v1 canon.
 
-## 0) Required inputs
+## Required inputs
 
 1. `gameId`
 2. target environment
@@ -10,59 +10,54 @@ Production release process for Gamesv1 aligned to locked GS Phase-1 architecture
 4. CDN/static origin
 5. launch URL set (`guest`, `free`, `real`)
 
-## 1) Canonical contracts
+## Canonical contracts
 
-Before release execution, validate against:
+Validate against:
+- `docs/gs/README.md`
 - `docs/gs/release-registration-contract.md`
 - `docs/gs/enable-disable-canary-rollback.md`
 - `docs/gs/browser-runtime-api-contract.md`
 - `docs/gs/bootstrap-config-contract.md`
+- `docs/gs/fixtures/*`
 
-## 2) Build and package
+Spec split:
+- `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md` = capability/behavior spec.
+- `docs/gs/*` = runtime/release wire and operations contract spec.
+
+## Build and package
 
 ```bash
 corepack pnpm --filter @games/<gameId> build
 corepack pnpm run release:pack -- --game <gameId> --version <version> --static-origin <cdnBase>
 ```
 
-Release-pack output must satisfy the artifact list in `docs/gs/release-registration-contract.md`.
-
-## 3) Register in GS
+## Register in GS
 
 1. Upload bundle/static assets to CDN.
-2. Register `registration-artifact.json` and referenced manifests.
+2. Register `artifacts/release-registration.json` and referenced manifests.
 3. Confirm checksum validation from `checksums.sha256.json`.
 
-## 4) Canary and promote
+## Canary and promote
 
-Execute `CANARY_CHECKLIST.md` and then promote only after successful checks.
+Execute `CANARY_CHECKLIST.md` then promote only after successful checks.
 
-## 5) Smoke verification
+## Smoke verification
 
 Execute `SMOKE_TEST_CHECKLIST.md` and verify at minimum:
-- bootstrap
-- opengame
-- playround
-- featureaction (if enabled)
-- resumegame/restore
-- gethistory
-- requestCounter and idempotency duplicate behavior
-- localization/content-path overrides
+- `/slot/v1/bootstrap`
+- `/slot/v1/opengame`
+- `/slot/v1/playround`
+- `/slot/v1/featureaction` (if enabled)
+- `/slot/v1/resumegame`
+- `/slot/v1/gethistory`
+- requestCounter monotonic behavior
+- idempotency duplicate behavior
+- restore and localization/content-path behavior
 
-## 6) Rollback
+## Rollback
 
-If required, execute rollback from `ROLLBACK_PACK.md` and `docs/gs/enable-disable-canary-rollback.md`.
-
-## Code map
-
-- Runtime transport: `packages/core-protocol/src/http/GsHttpRuntimeTransport.ts`
-- Runtime contract types: `packages/core-protocol/src/IGameTransport.ts`
-- Config/capability resolver: `packages/core-compliance/src/ConfigResolver.ts`
-- Runtime config schema: `packages/core-compliance/src/ResolvedRuntimeConfig.ts`
-- Reference runtime client: `games/premium-slot/src/app/runtime/GsRuntimeClient.ts`
-- Release pack generator: `tools/release-pack/create-release.ts`
+Execute rollback from `ROLLBACK_PACK.md` and `docs/gs/enable-disable-canary-rollback.md`.
 
 ## Deprecated note
 
-Legacy `/v1/placebet` + `/v1/collect` browser contract is obsolete in canonical path.
-Use slot-browser-v1 `/v1/playround` instead.
+`/v1/placebet`, `/v1/collect`, `/v1/readhistory`, and `/v1/*` canonical endpoint assumptions are obsolete.

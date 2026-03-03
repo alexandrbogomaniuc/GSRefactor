@@ -1,0 +1,166 @@
+{
+  "ok": true,
+  "requestId": "req-bootstrap-001",
+  "session": {
+    "sessionId": "sid-demo-001",
+    "requestCounter": 1,
+    "stateVersion": 1
+  },
+  "context": {
+    "gameId": 10,
+    "bankId": 6275,
+    "playerId": "player-123",
+    "language": "en",
+    "launchParams": {
+      "mode": "real",
+      "currency": "EUR"
+    }
+  },
+  "assets": {
+    "staticOrigin": "https://cdn.example.com/games/premium-slot",
+    "contentPath": "https://cdn.example.com/games/premium-slot/locales",
+    "bundles": {
+      "core": "assets/core.bundle.json",
+      "game": "assets/game.bundle.json"
+    }
+  },
+  "runtime": {
+    "bootstrapRef": {
+      "id": "boot-ref-001"
+    },
+    "wallet": {
+      "balanceMinor": 150000,
+      "currencyCode": "EUR",
+      "truncCents": true,
+      "delayedWalletMessages": false
+    },
+    "unfinishedRound": {
+      "hasUnfinishedRound": false,
+      "resumeRef": "resume-ref-001"
+    },
+    "runtimeConfig": {
+      "currencyCode": "EUR",
+      "minBet": 10,
+      "maxBet": 5000,
+      "maxExposure": 100000,
+      "defaultBet": 2000,
+      "betConfig": {
+        "mode": "ladder",
+        "betLadder": [1000, 2000, 5000],
+        "coinValues": [100, 200, 500]
+      },
+      "turboplay": {
+        "allowed": true,
+        "speedId": "turbo-x2",
+        "preferred": false
+      },
+      "minReelSpinTime": {
+        "normalMs": 2000,
+        "turboMs": 1200
+      },
+      "soundDefaults": {
+        "enabled": true,
+        "modeByDefault": "on",
+        "masterVolume": 0.8,
+        "bgmVolume": 0.7,
+        "sfxVolume": 0.8
+      },
+      "localization": {
+        "defaultLang": "en",
+        "localizedTitleKey": "game.title",
+        "localizedTitle": "Premium Slot",
+        "showMissingLocalizationError": false,
+        "contentPath": "https://cdn.example.com/games/premium-slot/locales",
+        "customTranslationsEnabled": true,
+        "serverNotificationsEnabled": true
+      },
+      "history": {
+        "enabled": true,
+        "url": "/history",
+        "openInSameWindow": true
+      },
+      "walletDisplay": {
+        "showBalance": true,
+        "showCurrencyCode": true,
+        "showDelayedIndicator": true
+      },
+      "sessionUi": {
+        "showSessionTimer": true,
+        "showRealityCheckBanner": true,
+        "closeButtonPolicy": "confirm"
+      },
+      "runtimePolicies": {
+        "requestCounterRequired": true,
+        "idempotencyKeyRequired": true,
+        "clientOperationIdRequired": true,
+        "currentStateVersionSupported": true,
+        "unfinishedRoundRestoreSupported": true
+      },
+      "capabilities": {
+        "spinProfiling": {
+          "enabled": true,
+          "payloadKey": "PRECSPINSTAT"
+        },
+        "walletMessaging": {
+          "delayedWalletMessages": false,
+          "externalWalletMessages": false
+        },
+        "features": {
+          "autoplay": true,
+          "buyFeature": true,
+          "buyFeatureForCashBonus": false,
+          "buyFeatureDisabledForCashBonus": true,
+          "freeSpins": true,
+          "respin": true,
+          "holdAndWin": true,
+          "inGameHistory": true,
+          "holidayMode": false,
+          "customSkins": true,
+          "frb": true,
+          "ofrb": false,
+          "jackpotHooks": true
+        }
+      }
+    }
+  },
+  "policies": {
+    "capabilities": {
+      "spinProfiling": {
+        "enabled": true,
+        "payloadKey": "PRECSPINSTAT"
+      }
+    },
+    "runtimePolicies": {
+      "requestCounterRequired": true,
+      "idempotencyKeyRequired": true,
+      "clientOperationIdRequired": true,
+      "currentStateVersionSupported": true,
+      "unfinishedRoundRestoreSupported": true
+    },
+    "historyPolicy": {
+      "enabled": true,
+      "url": "/history",
+      "openInSameWindow": true
+    },
+    "walletDisplayPolicy": {
+      "showBalance": true,
+      "showCurrencyCode": true,
+      "showDelayedIndicator": true
+    },
+    "sessionUiPolicy": {
+      "showSessionTimer": true,
+      "showRealityCheckBanner": true,
+      "closeButtonPolicy": "confirm"
+    }
+  },
+  "uiPolicy": {
+    "showHistory": true,
+    "showSoundToggle": true,
+    "closeButtonPolicy": "confirm"
+  },
+  "integrity": {
+    "contractVersion": "slot-browser-v1",
+    "fixtureSource": "docs/gs/fixtures/bootstrap.fixture.json",
+    "schema": "bootstrap.response.schema.json"
+  }
+}

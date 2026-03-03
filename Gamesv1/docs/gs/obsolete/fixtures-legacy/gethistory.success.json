@@ -1,0 +1,88 @@
+{
+  "fixtureVersion": "slot-browser-fixture-v1",
+  "name": "gethistory.success",
+  "endpoint": {
+    "method": "POST",
+    "path": "/slot/v1/gethistory",
+    "readOnly": true
+  },
+  "requestHeaders": {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-GS-Client-Contract": "slot-browser-v1",
+    "X-Request-Id": "req-history-046",
+    "X-Session-Id": "SID-123"
+  },
+  "requestBody": {
+    "contractVersion": "slot-browser-v1",
+    "sessionId": "SID-123",
+    "requestCounter": 46,
+    "historyQuery": {
+      "fromRoundId": null,
+      "limit": 50,
+      "includeFeatureDetails": true
+    }
+  },
+  "response": {
+    "httpStatus": 200,
+    "body": {
+      "ok": true,
+      "requestId": "req-history-046",
+      "sessionId": "SID-123",
+      "requestCounter": 46,
+      "stateVersion": 17,
+      "history": {
+        "items": [
+          {
+            "roundId": "R-043",
+            "completedAtUtc": "2026-03-01T12:10:00Z",
+            "betMinor": 2000,
+            "winMinor": 2500,
+            "netEffectMinor": 500,
+            "status": "FINAL",
+            "featureMode": "BASE",
+            "presentationPayload": {
+              "featureMode": "BASE",
+              "reelStops": [12, 4, 18, 6, 1],
+              "symbolGrid": [
+                ["K", "A", "W", "A", "K"],
+                ["Q", "SCATTER", "A", "Q", "J"],
+                ["J", "10", "W", "10", "J"]
+              ],
+              "uiMessages": [],
+              "animationCues": [],
+              "audioCues": [],
+              "counters": [],
+              "labels": {}
+            }
+          },
+          {
+            "roundId": "R-044",
+            "completedAtUtc": "2026-03-01T12:12:00Z",
+            "betMinor": 5000,
+            "winMinor": 0,
+            "netEffectMinor": -5000,
+            "status": "FINAL",
+            "featureMode": "FREE_SPINS",
+            "presentationPayload": {
+              "featureMode": "FREE_SPINS",
+              "reelStops": [],
+              "symbolGrid": [],
+              "uiMessages": [],
+              "animationCues": [],
+              "audioCues": [],
+              "counters": [
+                {
+                  "name": "freeSpinsAwarded",
+                  "value": 10
+                }
+              ],
+              "labels": {}
+            }
+          }
+        ],
+        "nextCursor": null
+      }
+    }
+  }
+}

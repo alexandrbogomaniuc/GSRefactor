@@ -68,7 +68,7 @@ Enablement source:
   - `locales/<lang>/paytable.json`
   - `locales/<lang>/rules.json`
 - Math package reference:
-  - `math/math-pack.manifest.json`
+  - `math/math-package-manifest.json`
 
 ## Release-pack quality gate
 

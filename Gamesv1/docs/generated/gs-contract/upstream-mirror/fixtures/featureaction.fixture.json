@@ -1,0 +1,86 @@
+﻿{
+    "fixtureVersion":  "2026-03-02",
+    "name":  "slot-browser-v1-featureaction",
+    "endpoint":  "/slot/v1/featureaction",
+    "requestHeaders":  {
+                           "X-GS-Client-Contract":  "slot-browser-v1",
+                           "X-Session-Id":  "sid-demo-001",
+                           "X-Idempotency-Key":  "feature-buy-5",
+                           "X-Client-Operation-Id":  "feature-buy-5"
+                       },
+    "requestBody":  {
+                        "contractVersion":  "slot-browser-v1",
+                        "sessionId":  "sid-demo-001",
+                        "requestCounter":  5,
+                        "currentStateVersion":  4,
+                        "bootstrapRef":  {
+                                             "id":  "boot-ref-001"
+                                         },
+                        "idempotencyKey":  "feature-buy-5",
+                        "clientOperationId":  "feature-buy-5",
+                        "selectedBet":  {
+                                            "coinValueMinor":  100,
+                                            "lines":  20,
+                                            "multiplier":  1,
+                                            "totalBetMinor":  2000
+                                        },
+                        "selectedFeatureChoice":  {
+                                                      "featureType":  "BUY_FEATURE",
+                                                      "action":  "PURCHASE",
+                                                      "priceMinor":  5000,
+                                                      "payload":  {
+                                                                      "source":  "hud"
+                                                                  }
+                                                  }
+                    },
+    "response":  {
+                     "httpStatus":  200,
+                     "body":  {
+                                  "ok":  true,
+                                  "requestId":  "req-feature-005",
+                                  "sessionId":  "sid-demo-001",
+                                  "requestCounter":  5,
+                                  "stateVersion":  5,
+                                  "wallet":  {
+                                                 "balanceMinor":  143000,
+                                                 "currencyCode":  "EUR",
+                                                 "delayedWalletMessages":  false
+                                             },
+                                  "round":  null,
+                                  "feature":  {
+                                                  "featureType":  "BUY_FEATURE",
+                                                  "action":  "PURCHASE",
+                                                  "accepted":  true
+                                              },
+                                  "presentationPayload":  {
+                                                              "uiMessages":  [
+                                                                                 "FEATURE_ACCEPTED"
+                                                                             ],
+                                                              "animationCues":  [
+                                                                                    "feature-enter"
+                                                                                ],
+                                                              "audioCues":  [
+                                                                                "feature-sting"
+                                                                            ],
+                                                              "counters":  {
+
+                                                                           },
+                                                              "labels":  {
+                                                                             "feature":  "BUY_FEATURE"
+                                                                         }
+                                                          },
+                                  "restore":  {
+                                                  "hasUnfinishedRound":  true,
+                                                  "resumeRef":  "resume-ref-005"
+                                              },
+                                  "idempotency":  {
+                                                      "key":  "feature-buy-5",
+                                                      "clientOperationId":  "feature-buy-5",
+                                                      "replayed":  false
+                                                  },
+                                  "retry":  {
+                                                "allowed":  false
+                                            }
+                              }
+                 }
+}

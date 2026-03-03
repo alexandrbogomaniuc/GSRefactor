@@ -1,4 +1,5 @@
-﻿import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import type { FeatureModule, FeatureModuleContext, FeatureModuleInput } from "./types.ts";
+import { readLabelBoolean } from "./types.ts";
 
 export class FreeSpinsFeatureModule implements FeatureModule {
   public readonly id = "free-spins";
@@ -9,7 +10,8 @@ export class FreeSpinsFeatureModule implements FeatureModule {
 
   public resolve(input: FeatureModuleInput) {
     const remaining = input.counters.freeSpinsRemaining;
-    const active = remaining !== undefined ? remaining > 0 : input.serverState.freeSpinsActive === true;
+    const labelActive = readLabelBoolean(input.round.labels, "freeSpinsActive");
+    const active = remaining !== undefined ? remaining > 0 : labelActive === true;
 
     if (!active) {
       return {};
@@ -25,9 +27,10 @@ export class FreeSpinsFeatureModule implements FeatureModule {
           visible: true,
         },
       ],
-      messages: [remaining !== undefined ? `FREE SPINS REMAINING: ${remaining}` : "FREE SPINS ACTIVE"],
+      messages: [
+        remaining !== undefined ? `FREE SPINS REMAINING: ${remaining}` : "FREE SPINS ACTIVE",
+      ],
       animationCues: ["free-spins-pulse"],
     };
   }
 }
-

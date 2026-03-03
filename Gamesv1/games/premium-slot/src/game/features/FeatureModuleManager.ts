@@ -1,9 +1,6 @@
-﻿import type { ResolvedConfig } from "@gamesv1/core-compliance";
+import type { ResolvedConfig } from "@gamesv1/core-compliance";
 
-import type {
-  PresentationOverlay,
-  RoundPresentationModel,
-} from "../../app/runtime/RuntimeOutcomeMapper.ts";
+import type { RoundPresentationModel } from "../../app/runtime/RuntimeOutcomeMapper.ts";
 import { BuyFeatureModule } from "./BuyFeatureModule.ts";
 import { FreeSpinsFeatureModule } from "./FreeSpinsModule.ts";
 import { HoldAndWinFeatureModule } from "./HoldAndWinFeatureModule.ts";
@@ -13,10 +10,11 @@ import type {
   FeatureModule,
   FeatureModuleInput,
   FeatureModuleOutput,
+  FeatureOverlay,
 } from "./types.ts";
 
 export interface FeatureFrame {
-  overlays: PresentationOverlay[];
+  overlays: FeatureOverlay[];
   messages: string[];
   soundCues: string[];
   animationCues: string[];
@@ -66,7 +64,6 @@ export class FeatureModuleManager {
       const input: FeatureModuleInput = {
         runtimeConfig: this.runtimeConfig,
         counters: round.counters,
-        serverState: round.serverState,
         round,
       };
       outputs.push(module.resolve(input));
@@ -83,4 +80,3 @@ export class FeatureModuleManager {
       .map((module) => module.id);
   }
 }
-

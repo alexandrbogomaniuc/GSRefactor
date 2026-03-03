@@ -1,0 +1,54 @@
+﻿{
+    "fixtureVersion":  "2026-03-02",
+    "name":  "slot-browser-v1-resumegame",
+    "endpoint":  "/slot/v1/resumegame",
+    "requestHeaders":  {
+                           "X-GS-Client-Contract":  "slot-browser-v1",
+                           "X-Session-Id":  "sid-demo-001",
+                           "X-Idempotency-Key":  "resume-6",
+                           "X-Client-Operation-Id":  "resume-6"
+                       },
+    "requestBody":  {
+                        "contractVersion":  "slot-browser-v1",
+                        "sessionId":  "sid-demo-001",
+                        "requestCounter":  6,
+                        "currentStateVersion":  5,
+                        "bootstrapRef":  {
+                                             "id":  "boot-ref-001"
+                                         },
+                        "resumeRef":  "resume-ref-005",
+                        "idempotencyKey":  "resume-6",
+                        "clientOperationId":  "resume-6"
+                    },
+    "response":  {
+                     "httpStatus":  200,
+                     "body":  {
+                                  "ok":  true,
+                                  "requestId":  "req-resume-006",
+                                  "sessionId":  "sid-demo-001",
+                                  "requestCounter":  6,
+                                  "stateVersion":  6,
+                                  "wallet":  {
+                                                 "balanceMinor":  143000,
+                                                 "currencyCode":  "EUR",
+                                                 "delayedWalletMessages":  false
+                                             },
+                                  "round":  null,
+                                  "feature":  null,
+                                  "presentationPayload":  null,
+                                  "restore":  {
+                                                  "hasUnfinishedRound":  true,
+                                                  "resumeRef":  "resume-ref-005",
+                                                  "stage":  "WAITING_PRESENTATION"
+                                              },
+                                  "idempotency":  {
+                                                      "key":  "resume-6",
+                                                      "clientOperationId":  "resume-6",
+                                                      "replayed":  false
+                                                  },
+                                  "retry":  {
+                                                "allowed":  false
+                                            }
+                              }
+                 }
+}

@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "requestId": "req-close-007",
+  "sessionId": "sid-demo-001",
+  "requestCounter": 7,
+  "stateVersion": 7,
+  "wallet": {
+    "balanceMinor": 143000,
+    "currencyCode": "EUR",
+    "delayedWalletMessages": false
+  },
+  "round": null,
+  "feature": {
+    "closed": true,
+    "closeReason": "client-close"
+  },
+  "presentationPayload": null,
+  "restore": {
+    "hasUnfinishedRound": false,
+    "resumeRef": null
+  },
+  "idempotency": {
+    "key": "close-7",
+    "clientOperationId": "close-7",
+    "replayed": false
+  },
+  "retry": {
+    "allowed": false
+  }
+}

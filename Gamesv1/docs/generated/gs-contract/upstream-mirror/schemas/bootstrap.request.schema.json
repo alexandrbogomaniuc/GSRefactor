@@ -1,0 +1,32 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bootstrap.request.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractVersion", "sessionId", "requestCounter", "currentStateVersion", "bootstrapRef"],
+  "properties": {
+    "contractVersion": { "const": "slot-browser-v1" },
+    "sessionId": { "type": "string", "minLength": 1 },
+    "requestCounter": { "type": "integer", "minimum": 0 },
+    "currentStateVersion": { "type": "integer", "minimum": 0 },
+    "bootstrapRef": {
+      "type": "object",
+      "additionalProperties": true,
+      "minProperties": 1
+    },
+    "launchContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gameId": { "type": "number" },
+        "bankId": { "type": "number" },
+        "playerId": { "type": "string" },
+        "language": { "type": "string" },
+        "launchParams": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}

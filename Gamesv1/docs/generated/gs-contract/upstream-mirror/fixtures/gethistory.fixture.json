@@ -1,0 +1,62 @@
+﻿{
+    "fixtureVersion":  "2026-03-02",
+    "name":  "slot-browser-v1-gethistory",
+    "endpoint":  "/slot/v1/gethistory",
+    "requestHeaders":  {
+                           "X-GS-Client-Contract":  "slot-browser-v1",
+                           "X-Session-Id":  "sid-demo-001"
+                       },
+    "requestBody":  {
+                        "contractVersion":  "slot-browser-v1",
+                        "sessionId":  "sid-demo-001",
+                        "requestCounter":  6,
+                        "currentStateVersion":  6,
+                        "historyQuery":  {
+                                             "pageNumber":  0,
+                                             "pageSize":  20
+                                         }
+                    },
+    "response":  {
+                     "httpStatus":  200,
+                     "body":  {
+                                  "ok":  true,
+                                  "requestId":  "req-history-006",
+                                  "sessionId":  "sid-demo-001",
+                                  "requestCounter":  6,
+                                  "stateVersion":  6,
+                                  "wallet":  {
+                                                 "balanceMinor":  143000,
+                                                 "currencyCode":  "EUR",
+                                                 "delayedWalletMessages":  false
+                                             },
+                                  "round":  null,
+                                  "feature":  {
+                                                  "history":  [
+                                                                  {
+                                                                      "roundId":  "round-0003",
+                                                                      "totalBetMinor":  2000,
+                                                                      "winAmountMinor":  0,
+                                                                      "timestampUtc":  "2026-03-01T16:00:00Z"
+                                                                  }
+                                                              ],
+                                                  "historyQuery":  {
+                                                                       "pageNumber":  0,
+                                                                       "pageSize":  20
+                                                                   }
+                                              },
+                                  "presentationPayload":  null,
+                                  "restore":  {
+                                                  "hasUnfinishedRound":  true,
+                                                  "resumeRef":  "resume-ref-005"
+                                              },
+                                  "idempotency":  {
+                                                      "key":  null,
+                                                      "clientOperationId":  null,
+                                                      "replayed":  false
+                                                  },
+                                  "retry":  {
+                                                "allowed":  false
+                                            }
+                              }
+                 }
+}

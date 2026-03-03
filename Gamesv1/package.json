@@ -2,13 +2,15 @@
   "name": "gamesv1-monorepo",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@10.30.3",
   "scripts": {
     "dev": "corepack pnpm --filter @games/premium-slot dev",
     "build": "corepack pnpm --filter @games/premium-slot build",
     "lint": "corepack pnpm --filter @games/premium-slot lint",
-    "test": "corepack pnpm run test:config && corepack pnpm run test:animation-policy && corepack pnpm run test:contract && corepack pnpm run test:template",
+    "test": "corepack pnpm run verify:gs-contract-pack && corepack pnpm run test:config && corepack pnpm run test:animation-policy && corepack pnpm run test:contract && corepack pnpm run test:template",
     "test:contract": "node --experimental-strip-types tests/contract/browser-runtime.contract.test.ts",
+    "verify:gs-contract-pack": "node --experimental-strip-types tools/verify-gs-contract-pack.ts",
     "create-game": "node --experimental-strip-types tools/create-game.ts",
     "config:gen": "npx tsx tools/config-gen/src/index.ts",
     "config:check": "npx tsx tools/config-gen/src/index.ts --check",
@@ -21,6 +23,8 @@
     "release:pack": "node --experimental-strip-types tools/release-pack/create-release.ts"
   },
   "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "@types/node": "^25.3.2",
     "@types/uuid": "^10.0.0",
     "@types/ws": "^8.18.1",
