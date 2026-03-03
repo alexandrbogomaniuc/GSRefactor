@@ -1,6 +1,6 @@
-[2026-03-03T08:32:50Z] START bots
-[2026-03-03T08:32:50Z] DIR mp-server
-[2026-03-03T08:32:50Z] CMD mvn -f pom.xml -pl bots -am -DskipTests compile
+[2026-03-03T08:33:47Z] START bots
+[2026-03-03T08:33:47Z] DIR mp-server
+[2026-03-03T08:33:47Z] CMD mvn -f pom.xml -pl bots -am -DskipTests compile
 [INFO] Scanning for projects...
 [WARNING] 
 [WARNING] Some problems were encountered while building the effective model for com.betsoft.casino:mp-bots:jar:1.0.0-SNAPSHOT
@@ -618,30 +618,30 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
 [INFO] 
-[INFO] Tektosyne 6.0.1-BSG ................................ SUCCESS [  1.639 s]
-[INFO] mp-casino 1.0.0-SNAPSHOT ........................... SUCCESS [  0.001 s]
-[INFO] Casino MP Games core interfaces 1.0.0-SNAPSHOT ..... SUCCESS [  0.301 s]
-[INFO] Casino MP Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.000 s]
-[INFO] MP Common Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.832 s]
-[INFO] Max Quest: Crash. Math model 1.0.0-SNAPSHOT ........ SUCCESS [  0.038 s]
-[INFO] Max Quest: Crash 1.0.0-SNAPSHOT .................... SUCCESS [  0.107 s]
-[INFO] Max Quest: Max Blast Champions Model data 1.0.0-SNAPSHOT SUCCESS [  0.031 s]
-[INFO] Max Quest: Max Blast Champions 1.0.0-SNAPSHOT ...... SUCCESS [  0.031 s]
-[INFO] Casino MP Games core 1.0.0-SNAPSHOT ................ SUCCESS [  0.209 s]
-[INFO] Max Quest: BG Dragonstone. Math model 1.0.0-SNAPSHOT SUCCESS [  0.038 s]
-[INFO] Max Quest: BG Dragonstone 1.0.0-SNAPSHOT ........... SUCCESS [  0.037 s]
-[INFO] BG Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SUCCESS [  0.032 s]
-[INFO] BG Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........ SUCCESS [  0.037 s]
-[INFO] Max Quest: Sector X. Math model 1.0.0-SNAPSHOT ..... SUCCESS [  0.039 s]
-[INFO] Max Quest: Sector X 1.0.0-SNAPSHOT ................. SUCCESS [  0.146 s]
-[INFO] BG Max Quest: Sector X. Math model 1.0.0-SNAPSHOT .. SUCCESS [  0.066 s]
-[INFO] BG Max Quest: Sector X 1.0.0-SNAPSHOT .............. SUCCESS [  0.065 s]
-[INFO] Kafka interfaces 1.0.0-SNAPSHOT .................... SUCCESS [  2.119 s]
-[INFO] mp-bots 1.0.0-SNAPSHOT ............................. SUCCESS [  1.574 s]
+[INFO] Tektosyne 6.0.1-BSG ................................ SUCCESS [  1.428 s]
+[INFO] mp-casino 1.0.0-SNAPSHOT ........................... SUCCESS [  0.000 s]
+[INFO] Casino MP Games core interfaces 1.0.0-SNAPSHOT ..... SUCCESS [  0.328 s]
+[INFO] Casino MP Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.007 s]
+[INFO] MP Common Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.922 s]
+[INFO] Max Quest: Crash. Math model 1.0.0-SNAPSHOT ........ SUCCESS [  0.041 s]
+[INFO] Max Quest: Crash 1.0.0-SNAPSHOT .................... SUCCESS [  0.047 s]
+[INFO] Max Quest: Max Blast Champions Model data 1.0.0-SNAPSHOT SUCCESS [  0.052 s]
+[INFO] Max Quest: Max Blast Champions 1.0.0-SNAPSHOT ...... SUCCESS [  0.038 s]
+[INFO] Casino MP Games core 1.0.0-SNAPSHOT ................ SUCCESS [  0.197 s]
+[INFO] Max Quest: BG Dragonstone. Math model 1.0.0-SNAPSHOT SUCCESS [  0.040 s]
+[INFO] Max Quest: BG Dragonstone 1.0.0-SNAPSHOT ........... SUCCESS [  0.036 s]
+[INFO] BG Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SUCCESS [  0.031 s]
+[INFO] BG Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........ SUCCESS [  0.053 s]
+[INFO] Max Quest: Sector X. Math model 1.0.0-SNAPSHOT ..... SUCCESS [  0.071 s]
+[INFO] Max Quest: Sector X 1.0.0-SNAPSHOT ................. SUCCESS [  0.117 s]
+[INFO] BG Max Quest: Sector X. Math model 1.0.0-SNAPSHOT .. SUCCESS [  0.041 s]
+[INFO] BG Max Quest: Sector X 1.0.0-SNAPSHOT .............. SUCCESS [  0.036 s]
+[INFO] Kafka interfaces 1.0.0-SNAPSHOT .................... SUCCESS [  1.318 s]
+[INFO] mp-bots 1.0.0-SNAPSHOT ............................. SUCCESS [  1.197 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  7.743 s
-[INFO] Finished at: 2026-03-03T08:32:59Z
+[INFO] Total time:  6.252 s
+[INFO] Finished at: 2026-03-03T08:33:54Z
 [INFO] ------------------------------------------------------------------------
-[2026-03-03T08:32:59Z] PASS bots rc=0
+[2026-03-03T08:33:54Z] PASS bots rc=0

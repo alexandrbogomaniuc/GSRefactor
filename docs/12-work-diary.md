@@ -11167,3 +11167,18 @@
   - `fc6c1b897`
 - Branch state:
   - working tree clean after push.
+
+### 2026-03-03 08:38 UTC
+- Continued closure with post-signoff observation checkpoint (`Batch CZ`) in `/Users/alexb/Documents/Dev/Dev_new`.
+- Executed:
+  - full matrix rerun in fresh evidence folder (PASS),
+  - soak cycle 1 (`REFACTOR_SOAK_RUNS=2`) all-pass (`final_rc=0`),
+  - soak cycle 2 (`REFACTOR_SOAK_RUNS=2`) all-pass (`final_rc=0`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-082818-hardcut-live-final-observation-checkpoint/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/299-hard-cut-live-final-observation-checkpoint-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - remaining refactor work `~0.00h`; optional observation-only window `~0.00-0.10h` (`~0.00-0.01` workdays).
