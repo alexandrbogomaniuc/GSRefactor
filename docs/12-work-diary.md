@@ -10894,3 +10894,16 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.01-0.20h` (`~0.00-0.03` workdays), dominated by known external `STEP09` smoke lane.
+
+### 2026-03-03 05:31 UTC
+- Push checkpoint for `Batch CJ+CK` completed.
+- Commit pushed to `origin/main`:
+  - `1d8f1c509` (`refactor: hard-cut batchCJCK cotg test namespace bridge`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-051911-hardcut-live-batchCJCK-cotg-test-namespace-bridge-rewire8/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/290-hard-cut-live-batchCJCK-cotg-test-namespace-bridge-rewire8-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.01-0.18h` (`~0.00-0.03` workdays), dominated by known external `STEP09` smoke lane.
