@@ -76,12 +76,24 @@ curl -sS http://127.0.0.1:18078/health
 - `node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke` exit code semantics:
   - `0`: smoke checks passed.
   - `2`: functional smoke failure (required checks failed and launch alias did not show upstream/downstream infra signals).
-  - `3`: infra-blocked smoke failure (launch alias failed while GS direct/support probe and/or dependency health probes are down).
+  - `3`: infra-blocked smoke failure (launch alias failed while GS direct/support probe and/or dependency health probes are down, including failed bounded auto-recovery).
+- Infra auto-recovery knobs (default enabled):
+  - `REFACTOR_SMOKE_AUTORECOVER=1` enables recovery when infra signals are detected (`0` disables).
+  - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=1` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
+- Infra diagnostics emitted on infra-blocked path:
+  - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
+  - `docker inspect` state checks for exited core containers, including `OOMKilled`, `ExitCode`, and `FinishedAt`.
+- Recovery behavior when infra signals are present:
+  - Runs `docker compose up -d c1-refactor zookeeper kafka mp gs static`.
+  - Waits briefly, then re-runs smoke probes.
+  - If recovery clears failures, smoke continues and can return `0`.
+  - If recovery does not clear failures, smoke stays infra-blocked and returns `3` with diagnostics.
 - Quick triage order when launch alias fails:
   1. Check GS direct launch probe (`:18081/cwstartgamev2.do?...`) from smoke output.
   2. Check GS support probe (`:18081/support/bankSelectAction.do?...`) from smoke output.
   3. Check dependency probe lines (`session-service`, `gameplay-orchestrator`, `wallet-adapter`, `protocol-adapter`).
-  4. If infra signals appear, inspect nginx error hints for `could not be resolved` and `connect() failed` messages.
+  4. Read the `INFRA-DIAG` compose summary and exited-container `OOMKilled` lines.
+  5. If infra signals appear, inspect nginx error hints for `could not be resolved` and `connect() failed` messages.
 
 ## Isolation policy
 - No mounts from outside the `Dev_new` repository are required for the default refactor-only startup path.

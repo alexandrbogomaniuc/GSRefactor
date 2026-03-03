@@ -174,7 +174,58 @@ start_stack() {
     run docker compose -p refactor --env-file .env up -d \
       config-service session-service gameplay-orchestrator wallet-adapter \
       bonus-frb-service history-service multiplayer-service protocol-adapter \
-      mp gs static
+      mp
+  )
+}
+
+service_running() {
+  local service="$1"
+  local cid
+  cid="$(cd "$REFACTOR_DIR" && docker compose -p refactor --env-file .env ps -q "$service" 2>/dev/null | head -n1 || true)"
+  [[ -n "$cid" ]] || return 1
+  [[ "$(docker inspect -f '{{.State.Running}}' "$cid" 2>/dev/null || echo false)" == "true" ]]
+}
+
+verify_core_services_running() {
+  local core_services=(c1-refactor zookeeper kafka mp)
+  local down=()
+  local service
+
+  for service in "${core_services[@]}"; do
+    if ! service_running "$service"; then
+      down+=("$service")
+    fi
+  done
+
+  if (( ${#down[@]} == 0 )); then
+    log "core services are running: ${core_services[*]}"
+    return 0
+  fi
+
+  log "warn: core services not running: ${down[*]} (attempting one recovery up)"
+  (
+    cd "$REFACTOR_DIR"
+    run docker compose -p refactor --env-file .env up -d "${down[@]}"
+  )
+  sleep 4
+
+  local still_down=()
+  for service in "${down[@]}"; do
+    if ! service_running "$service"; then
+      still_down+=("$service")
+    fi
+  done
+
+  if (( ${#still_down[@]} > 0 )); then
+    die "core services failed to recover: ${still_down[*]}"
+  fi
+  log "core services recovered: ${down[*]}"
+}
+
+start_edge_services() {
+  (
+    cd "$REFACTOR_DIR"
+    run docker compose -p refactor --env-file .env up -d gs static
   )
 }
 
@@ -253,6 +304,8 @@ case "$ACTION" in
     preflight
     ensure_runtime_assets
     start_stack
+    verify_core_services_running
+    start_edge_services
     wait_for_refactor_readiness
     warm_launch_alias_probe || true
     post_checks

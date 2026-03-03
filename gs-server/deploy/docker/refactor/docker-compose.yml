@@ -33,6 +33,7 @@ services:
   mp:
     build: ../configs/gs
     image: refactor-jetty-gs
+    restart: unless-stopped
     working_dir: /app
     environment:
       - CASSANDRA_HOST=${CASSANDRA_HOST}
@@ -52,7 +53,13 @@ services:
     command: >
       sh -lc "MP_WEBROOT=/tmp/web-mp-casino;
       rm -rf $$MP_WEBROOT
-      && cp -R /legacy-mp-target/web-mp-casino $$MP_WEBROOT
+      && COPY_OK=0
+      && for ATTEMPT in 1 2 3; do
+           cp -R /legacy-mp-target/web-mp-casino $$MP_WEBROOT && COPY_OK=1 && break;
+           echo mp bootstrap copy failed attempt $$ATTEMPT >&2;
+           sleep 2;
+         done
+      && [ $$COPY_OK -eq 1 ]
       && sed -i 's#<hosts>.*</hosts>#<hosts>${CASSANDRA_HOST}:${CASSANDRA_PORT}</hosts>#' $$MP_WEBROOT/WEB-INF/classes/mp-keyspace-config.xml
       && /wait-for-cassandra-and-start.sh
       && java -DMP_SERVER_ID=1
@@ -89,22 +96,26 @@ services:
 
   c1-refactor:
     image: ${CASSANDRA_REFACTOR_TARGET_IMAGE:-cassandra:4.1}
+    restart: unless-stopped
     volumes:
       - "../../../../Doker/runtime-gs/logs/cassandra-refactor:/var/log/cassandra"
       - "refactor-cassandra-target-data:/var/lib/cassandra"
     networks:
       - refactor-network
     environment:
-      - MAX_HEAP_SIZE=800M
-      - HEAP_NEWSIZE=300M
+      - MAX_HEAP_SIZE=512M
+      - HEAP_NEWSIZE=128M
       - CASSANDRA_CLUSTER_NAME=refactor-target-upgrade
     ports:
       - "19412:9042"
 
   zookeeper:
     image: zookeeper:3.8
+    restart: unless-stopped
     networks:
       - refactor-network
+    environment:
+      - JVMFLAGS=-Xms128m -Xmx256m
     ports:
       - "12181:2181"
 
@@ -126,6 +137,7 @@ services:
       - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
       - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
       - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+      - KAFKA_HEAP_OPTS=-Xms256m -Xmx512m
     ports:
       - "19092:29092"
 

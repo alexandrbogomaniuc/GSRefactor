@@ -1,0 +1,514 @@
+diff --git a/gs-server/deploy/docker/refactor/README.md b/gs-server/deploy/docker/refactor/README.md
+index 75f5536aa..322eae4aa 100644
+--- a/gs-server/deploy/docker/refactor/README.md
++++ b/gs-server/deploy/docker/refactor/README.md
+@@ -76,12 +76,24 @@ curl -sS http://127.0.0.1:18078/health
+ - `node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke` exit code semantics:
+   - `0`: smoke checks passed.
+   - `2`: functional smoke failure (required checks failed and launch alias did not show upstream/downstream infra signals).
+-  - `3`: infra-blocked smoke failure (launch alias failed while GS direct/support probe and/or dependency health probes are down).
++  - `3`: infra-blocked smoke failure (launch alias failed while GS direct/support probe and/or dependency health probes are down, including failed bounded auto-recovery).
++- Infra auto-recovery knobs (default enabled):
++  - `REFACTOR_SMOKE_AUTORECOVER=1` enables recovery when infra signals are detected (`0` disables).
++  - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=1` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
++- Infra diagnostics emitted on infra-blocked path:
++  - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
++  - `docker inspect` state checks for exited core containers, including `OOMKilled`, `ExitCode`, and `FinishedAt`.
++- Recovery behavior when infra signals are present:
++  - Runs `docker compose up -d c1-refactor zookeeper kafka mp gs static`.
++  - Waits briefly, then re-runs smoke probes.
++  - If recovery clears failures, smoke continues and can return `0`.
++  - If recovery does not clear failures, smoke stays infra-blocked and returns `3` with diagnostics.
+ - Quick triage order when launch alias fails:
+   1. Check GS direct launch probe (`:18081/cwstartgamev2.do?...`) from smoke output.
+   2. Check GS support probe (`:18081/support/bankSelectAction.do?...`) from smoke output.
+   3. Check dependency probe lines (`session-service`, `gameplay-orchestrator`, `wallet-adapter`, `protocol-adapter`).
+-  4. If infra signals appear, inspect nginx error hints for `could not be resolved` and `connect() failed` messages.
++  4. Read the `INFRA-DIAG` compose summary and exited-container `OOMKilled` lines.
++  5. If infra signals appear, inspect nginx error hints for `could not be resolved` and `connect() failed` messages.
+ 
+ ## Isolation policy
+ - No mounts from outside the `Dev_new` repository are required for the default refactor-only startup path.
+diff --git a/gs-server/deploy/docker/refactor/docker-compose.yml b/gs-server/deploy/docker/refactor/docker-compose.yml
+index afb1e0d01..66bc784a1 100644
+--- a/gs-server/deploy/docker/refactor/docker-compose.yml
++++ b/gs-server/deploy/docker/refactor/docker-compose.yml
+@@ -33,6 +33,7 @@ services:
+   mp:
+     build: ../configs/gs
+     image: refactor-jetty-gs
++    restart: unless-stopped
+     working_dir: /app
+     environment:
+       - CASSANDRA_HOST=${CASSANDRA_HOST}
+@@ -52,7 +53,13 @@ services:
+     command: >
+       sh -lc "MP_WEBROOT=/tmp/web-mp-casino;
+       rm -rf $$MP_WEBROOT
+-      && cp -R /legacy-mp-target/web-mp-casino $$MP_WEBROOT
++      && COPY_OK=0
++      && for ATTEMPT in 1 2 3; do
++           cp -R /legacy-mp-target/web-mp-casino $$MP_WEBROOT && COPY_OK=1 && break;
++           echo mp bootstrap copy failed attempt $$ATTEMPT >&2;
++           sleep 2;
++         done
++      && [ $$COPY_OK -eq 1 ]
+       && sed -i 's#<hosts>.*</hosts>#<hosts>${CASSANDRA_HOST}:${CASSANDRA_PORT}</hosts>#' $$MP_WEBROOT/WEB-INF/classes/mp-keyspace-config.xml
+       && /wait-for-cassandra-and-start.sh
+       && java -DMP_SERVER_ID=1
+@@ -89,22 +96,26 @@ services:
+ 
+   c1-refactor:
+     image: ${CASSANDRA_REFACTOR_TARGET_IMAGE:-cassandra:4.1}
++    restart: unless-stopped
+     volumes:
+       - "../../../../Doker/runtime-gs/logs/cassandra-refactor:/var/log/cassandra"
+       - "refactor-cassandra-target-data:/var/lib/cassandra"
+     networks:
+       - refactor-network
+     environment:
+-      - MAX_HEAP_SIZE=800M
+-      - HEAP_NEWSIZE=300M
++      - MAX_HEAP_SIZE=512M
++      - HEAP_NEWSIZE=128M
+       - CASSANDRA_CLUSTER_NAME=refactor-target-upgrade
+     ports:
+       - "19412:9042"
+ 
+   zookeeper:
+     image: zookeeper:3.8
++    restart: unless-stopped
+     networks:
+       - refactor-network
++    environment:
++      - JVMFLAGS=-Xms128m -Xmx256m
+     ports:
+       - "12181:2181"
+ 
+@@ -126,6 +137,7 @@ services:
+       - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+       - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+       - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
++      - KAFKA_HEAP_OPTS=-Xms256m -Xmx512m
+     ports:
+       - "19092:29092"
+ 
+diff --git a/gs-server/deploy/scripts/refactor-onboard.mjs b/gs-server/deploy/scripts/refactor-onboard.mjs
+index 751301196..5579faf51 100755
+--- a/gs-server/deploy/scripts/refactor-onboard.mjs
++++ b/gs-server/deploy/scripts/refactor-onboard.mjs
+@@ -66,11 +66,18 @@ const DEFAULT_NGINX_ERROR_LOG_PATH = cfg(
+   'NGINX_ERROR_LOG_PATH',
+   path.join(DEV_NEW_ROOT, 'Doker', 'runtime-gs', 'logs', 'nginx', 'error.log')
+ );
++const REFACTOR_COMPOSE_PROJECT = 'refactor';
++const CORE_INFRA_SERVICES = ['c1-refactor', 'zookeeper', 'kafka', 'mp', 'gs', 'static'];
++const SMOKE_RECOVERY_WAIT_MS = 3000;
+ 
+ function log(msg) {
+   process.stdout.write(`[refactor-onboard] ${msg}\n`);
+ }
+ 
++function logErr(msg) {
++  process.stderr.write(`[refactor-onboard] ${msg}\n`);
++}
++
+ function fail(msg, code = 1) {
+   process.stderr.write(`[refactor-onboard] ERROR: ${msg}\n`);
+   process.exit(code);
+@@ -97,6 +104,75 @@ function run(bin, args, opts = {}) {
+   return res;
+ }
+ 
++function toText(output) {
++  if (output == null) return '';
++  if (Buffer.isBuffer(output)) return output.toString('utf8');
++  return String(output);
++}
++
++function runCapture(bin, args, opts = {}) {
++  const res = spawnSync(bin, args, {
++    cwd: opts.cwd ?? REPO_ROOT,
++    env: { ...process.env, ...(opts.env ?? {}) },
++    stdio: 'pipe',
++    shell: false,
++  });
++
++  if (res.error) {
++    return {
++      ok: false,
++      status: res.status ?? 1,
++      stdout: toText(res.stdout),
++      stderr: toText(res.stderr),
++      error: res.error,
++    };
++  }
++
++  const status = res.status ?? 1;
++  return {
++    ok: status === 0,
++    status,
++    stdout: toText(res.stdout),
++    stderr: toText(res.stderr),
++  };
++}
++
++function parseBooleanEnv(name, fallback) {
++  const raw = process.env[name];
++  if (raw == null || raw.trim() === '') return fallback;
++  const normalized = raw.trim().toLowerCase();
++  if (['1', 'true', 'yes', 'on'].includes(normalized)) return true;
++  if (['0', 'false', 'no', 'off'].includes(normalized)) return false;
++  return fallback;
++}
++
++function parsePositiveIntEnv(name, fallback) {
++  const raw = process.env[name];
++  if (raw == null || raw.trim() === '') return fallback;
++  const parsed = Number.parseInt(raw, 10);
++  if (!Number.isFinite(parsed) || parsed < 0) return fallback;
++  return parsed;
++}
++
++function composeArgs(extraArgs = []) {
++  return ['compose', '-p', REFACTOR_COMPOSE_PROJECT, '-f', COMPOSE_FILE, ...extraArgs];
++}
++
++function logOutputLines(prefix, text, maxLines = 40, writer = log) {
++  if (!text || text.trim() === '') return;
++  const lines = text
++    .split(/\r?\n/)
++    .map((line) => line.trim())
++    .filter(Boolean);
++  const shown = lines.slice(0, maxLines);
++  for (const line of shown) {
++    writer(`${prefix}${line}`);
++  }
++  if (lines.length > shown.length) {
++    writer(`${prefix}... (${lines.length - shown.length} more line(s) omitted)`);
++  }
++}
++
+ function hasCommand(cmd) {
+   const checker = process.platform === 'win32' ? 'where' : 'command';
+   const checkerArgs = process.platform === 'win32' ? [cmd] : ['-v', cmd];
+@@ -304,6 +380,142 @@ function emitNginxUpstreamHints() {
+   }
+ }
+ 
++function collectInfraSignals(outcome) {
++  const signals = new Set(outcome.downDependencies ?? []);
++  if (outcome.gsDirectFailed) {
++    signals.add('GS direct launch probe');
++  }
++  if (outcome.gsSupportFailed) {
++    signals.add('GS support route probe');
++  }
++  return [...signals];
++}
++
++function emitInfraDiagnostics() {
++  if (!hasCommand('docker')) {
++    logErr('INFRA-DIAG: docker command not found; cannot emit compose diagnostics.');
++    return;
++  }
++
++  logErr(`INFRA-DIAG: docker compose ps summary (core: ${CORE_INFRA_SERVICES.join(', ')})`);
++  const ps = runCapture('docker', composeArgs(['ps', ...CORE_INFRA_SERVICES]));
++  if (ps.ok) {
++    logOutputLines('INFRA-DIAG: ', ps.stdout, 80, logErr);
++  } else {
++    logErr(`INFRA-DIAG: docker compose ps failed (exit ${ps.status}).`);
++    logOutputLines('INFRA-DIAG: ', ps.stderr || ps.stdout, 40, logErr);
++  }
++
++  let exitedInspected = 0;
++  for (const service of CORE_INFRA_SERVICES) {
++    const idsRes = runCapture('docker', composeArgs(['ps', '-q', service]));
++    if (!idsRes.ok) {
++      logErr(`INFRA-DIAG: unable to resolve container id for ${service} (exit ${idsRes.status}).`);
++      continue;
++    }
++    const ids = idsRes.stdout
++      .split(/\r?\n/)
++      .map((line) => line.trim())
++      .filter(Boolean);
++    for (const id of ids) {
++      const inspectRes = runCapture('docker', ['inspect', '--format', '{{json .State}}', id]);
++      if (!inspectRes.ok) {
++        logErr(`INFRA-DIAG: docker inspect failed for ${service} (${id.slice(0, 12)}) (exit ${inspectRes.status}).`);
++        continue;
++      }
++      let state;
++      try {
++        state = JSON.parse(inspectRes.stdout.trim());
++      } catch {
++        logErr(`INFRA-DIAG: could not parse state for ${service} (${id.slice(0, 12)}).`);
++        continue;
++      }
++      const status = String(state?.Status ?? '').toLowerCase();
++      if (status !== 'exited') {
++        continue;
++      }
++      exitedInspected += 1;
++      const oomKilled = Boolean(state?.OOMKilled);
++      const exitCode = state?.ExitCode ?? 'n/a';
++      const finishedAt = state?.FinishedAt ?? 'n/a';
++      const stateError = state?.Error ? String(state.Error) : '';
++      logErr(
++        `INFRA-DIAG: exited ${service} (${id.slice(0, 12)}) OOMKilled=${oomKilled} exitCode=${exitCode} finishedAt=${finishedAt}${
++          stateError ? ` error=${stateError}` : ''
++        }`
++      );
++    }
++  }
++  if (exitedInspected === 0) {
++    logErr('INFRA-DIAG: no exited core containers found for OOMKilled inspection.');
++  }
++}
++
++function runSmokeAutoRecovery(attempt, totalAttempts) {
++  logErr(
++    `SMOKE-RECOVERY: attempt ${attempt}/${totalAttempts} running docker compose up -d ${CORE_INFRA_SERVICES.join(' ')}`
++  );
++  const upRes = runCapture('docker', composeArgs(['up', '-d', ...CORE_INFRA_SERVICES]));
++  if (!upRes.ok) {
++    logErr(`SMOKE-RECOVERY: compose up failed (exit ${upRes.status}).`);
++    logOutputLines('SMOKE-RECOVERY: ', upRes.stderr || upRes.stdout, 40, logErr);
++    return false;
++  }
++  logOutputLines('SMOKE-RECOVERY: ', upRes.stdout, 20, logErr);
++  return true;
++}
++
++async function runSmokePass(checks, { maxAttempts, retryDelayMs }) {
++  let failures = 0;
++  let launchAliasFailed = false;
++  let gsSupportFailed = false;
++  let gsDirectFailed = false;
++  const downDependencies = [];
++
++  for (const check of checks) {
++    const outcome = await retryingHttpCheck(check, {
++      attempts: maxAttempts,
++      delayMs: retryDelayMs,
++      timeoutMs: 8000,
++    });
++    const required = check.required !== false;
++    if (outcome.ok) {
++      const suffix = outcome.attempt > 1 ? ` (attempt ${outcome.attempt}/${maxAttempts})` : '';
++      log(`PASS: ${check.label} (${check.url}) -> HTTP ${outcome.result.status}${suffix}`);
++    } else {
++      if (required) {
++        failures += 1;
++      }
++      if (check.isLaunchAlias) {
++        launchAliasFailed = true;
++      }
++      if (check.dependency) {
++        downDependencies.push(check.label);
++      }
++      if (check.supportProbe) {
++        gsSupportFailed = true;
++      }
++      if (check.gsDirectProbe) {
++        gsDirectFailed = true;
++      }
++      const prefix = required ? 'FAIL' : 'WARN';
++      if (outcome.result) {
++        log(`${prefix}: ${check.label} (${check.url}) -> HTTP ${outcome.result.status} after ${maxAttempts} attempts`);
++      } else {
++        log(`${prefix}: ${check.label} (${check.url}) -> ${outcome.error?.message ?? 'unknown error'} after ${maxAttempts} attempts`);
++      }
++    }
++  }
++
++  return {
++    failures,
++    launchAliasFailed,
++    gsSupportFailed,
++    gsDirectFailed,
++    downDependencies,
++  };
++}
++
+ async function smokeChecks() {
+   const primaryLaunchUrl = buildLaunchUrl();
+   const gsDirectLaunchUrl = buildGsDirectLaunchUrl();
+@@ -364,67 +576,51 @@ async function smokeChecks() {
+   const maxAttempts = Math.max(1, Number(process.env.REFACTOR_SMOKE_RETRIES ?? '10'));
+   const retryDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_DELAY_MS ?? '3000'));
+ 
+-  let failures = 0;
+-  let launchAliasFailed = false;
+-  let gsSupportFailed = false;
+-  let gsDirectFailed = false;
+-  const downDependencies = [];
+-  for (const check of checks) {
+-    const outcome = await retryingHttpCheck(check, {
+-      attempts: maxAttempts,
+-      delayMs: retryDelayMs,
+-      timeoutMs: 8000,
+-    });
+-    const required = check.required !== false;
+-    if (outcome.ok) {
+-      const suffix = outcome.attempt > 1 ? ` (attempt ${outcome.attempt}/${maxAttempts})` : '';
+-      log(`PASS: ${check.label} (${check.url}) -> HTTP ${outcome.result.status}${suffix}`);
+-    } else {
+-      if (required) {
+-        failures += 1;
+-      }
+-      if (check.isLaunchAlias) {
+-        launchAliasFailed = true;
+-      }
+-      if (check.dependency) {
+-        downDependencies.push(check.label);
+-      }
+-      if (check.supportProbe) {
+-        gsSupportFailed = true;
+-      }
+-      if (check.gsDirectProbe) {
+-        gsDirectFailed = true;
+-      }
+-      const prefix = required ? 'FAIL' : 'WARN';
+-      if (outcome.result) {
+-        log(`${prefix}: ${check.label} (${check.url}) -> HTTP ${outcome.result.status} after ${maxAttempts} attempts`);
+-      } else {
+-        log(`${prefix}: ${check.label} (${check.url}) -> ${outcome.error?.message ?? 'unknown error'} after ${maxAttempts} attempts`);
+-      }
+-    }
+-  }
++  const autoRecoverEnabled = parseBooleanEnv('REFACTOR_SMOKE_AUTORECOVER', true);
++  const maxRecoveryAttempts = parsePositiveIntEnv('REFACTOR_SMOKE_RECOVERY_ATTEMPTS', 1);
+ 
+-  if (launchAliasFailed) {
+-    const infraSignals = [...downDependencies];
+-    if (gsDirectFailed) {
+-      infraSignals.push('GS direct launch probe');
+-    }
+-    if (gsSupportFailed) {
+-      infraSignals.push('GS support route probe');
+-    }
++  let outcome = await runSmokePass(checks, { maxAttempts, retryDelayMs });
++  if (outcome.launchAliasFailed) {
++    let infraSignals = collectInfraSignals(outcome);
+     if (infraSignals.length > 0) {
+       emitNginxUpstreamHints();
+-      log(`INFRA-BLOCKED: Launch alias failed while infrastructure probes are down (${infraSignals.join(', ')}).`);
+-      fail(`Smoke checks infra-blocked by upstream/runtime outage (${infraSignals.length} signals). See lines above.`, 3);
++      emitInfraDiagnostics();
++      if (autoRecoverEnabled && maxRecoveryAttempts > 0) {
++        for (let attempt = 1; attempt <= maxRecoveryAttempts; attempt += 1) {
++          const upOk = runSmokeAutoRecovery(attempt, maxRecoveryAttempts);
++          if (!upOk) {
++            continue;
++          }
++          log(`SMOKE-RECOVERY: waiting ${SMOKE_RECOVERY_WAIT_MS}ms before re-probing smoke checks.`);
++          await sleep(SMOKE_RECOVERY_WAIT_MS);
++          outcome = await runSmokePass(checks, { maxAttempts, retryDelayMs });
++          if (outcome.failures === 0) {
++            log(`SMOKE-RECOVERY: recovery succeeded on attempt ${attempt}/${maxRecoveryAttempts}.`);
++            log('Smoke checks passed. The refactor launch alias is reachable.');
++            return;
++          }
++          infraSignals = collectInfraSignals(outcome);
++          emitNginxUpstreamHints();
++          emitInfraDiagnostics();
++        }
++      } else if (!autoRecoverEnabled) {
++        log('SMOKE-RECOVERY: disabled via REFACTOR_SMOKE_AUTORECOVER=0.');
++      }
++      const attemptLabel = autoRecoverEnabled ? maxRecoveryAttempts : 0;
++      const signalLabel = infraSignals.length > 0 ? infraSignals.join(', ') : 'none observed after recovery attempt(s)';
++      log(
++        `INFRA-BLOCKED: Launch alias failed with infrastructure signals after ${attemptLabel} recovery attempt(s) (${signalLabel}).`
++      );
++      fail('Smoke checks infra-blocked by upstream/runtime outage. See diagnostics above.', 3);
+     }
+     log('WARN: Launch alias failed while GS direct/support probes remained healthy; keeping functional classification (rc=2).');
+   }
+ 
+-  if (failures > 0) {
+-    if (launchAliasFailed) {
++  if (outcome.failures > 0) {
++    if (outcome.launchAliasFailed) {
+       emitNginxUpstreamHints();
+     }
+-    fail(`Smoke checks failed (${failures} failure(s)). See lines above.`, 2);
++    fail(`Smoke checks failed (${outcome.failures} failure(s)). See lines above.`, 2);
+   }
+ 
+   log('Smoke checks passed. The refactor launch alias is reachable.');
+diff --git a/gs-server/deploy/scripts/refactor-start.sh b/gs-server/deploy/scripts/refactor-start.sh
+index af0ab5e6a..9ed35e22f 100755
+--- a/gs-server/deploy/scripts/refactor-start.sh
++++ b/gs-server/deploy/scripts/refactor-start.sh
+@@ -174,7 +174,58 @@ start_stack() {
+     run docker compose -p refactor --env-file .env up -d \
+       config-service session-service gameplay-orchestrator wallet-adapter \
+       bonus-frb-service history-service multiplayer-service protocol-adapter \
+-      mp gs static
++      mp
++  )
++}
++
++service_running() {
++  local service="$1"
++  local cid
++  cid="$(cd "$REFACTOR_DIR" && docker compose -p refactor --env-file .env ps -q "$service" 2>/dev/null | head -n1 || true)"
++  [[ -n "$cid" ]] || return 1
++  [[ "$(docker inspect -f '{{.State.Running}}' "$cid" 2>/dev/null || echo false)" == "true" ]]
++}
++
++verify_core_services_running() {
++  local core_services=(c1-refactor zookeeper kafka mp)
++  local down=()
++  local service
++
++  for service in "${core_services[@]}"; do
++    if ! service_running "$service"; then
++      down+=("$service")
++    fi
++  done
++
++  if (( ${#down[@]} == 0 )); then
++    log "core services are running: ${core_services[*]}"
++    return 0
++  fi
++
++  log "warn: core services not running: ${down[*]} (attempting one recovery up)"
++  (
++    cd "$REFACTOR_DIR"
++    run docker compose -p refactor --env-file .env up -d "${down[@]}"
++  )
++  sleep 4
++
++  local still_down=()
++  for service in "${down[@]}"; do
++    if ! service_running "$service"; then
++      still_down+=("$service")
++    fi
++  done
++
++  if (( ${#still_down[@]} > 0 )); then
++    die "core services failed to recover: ${still_down[*]}"
++  fi
++  log "core services recovered: ${down[*]}"
++}
++
++start_edge_services() {
++  (
++    cd "$REFACTOR_DIR"
++    run docker compose -p refactor --env-file .env up -d gs static
+   )
+ }
+ 
+@@ -253,6 +304,8 @@ case "$ACTION" in
+     preflight
+     ensure_runtime_assets
+     start_stack
++    verify_core_services_running
++    start_edge_services
+     wait_for_refactor_readiness
+     warm_launch_alias_probe || true
+     post_checks

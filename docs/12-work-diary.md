@@ -10956,3 +10956,21 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - residual runtime closure (`STEP09` upstream stability) `~0.25-4.00h` (`~0.03-0.50` workdays), now with deterministic infra-blocked classification (`rc=3`) when upstream probes are down.
+
+### 2026-03-03 06:54 UTC
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with integrated hard-cut wave `CP+CQ`.
+- Batch content:
+  - `CP` (`12` edits): core survivability hardening (`restart` policy for `mp/c1-refactor/zookeeper`, heap/JVM tuning for `c1-refactor/zookeeper/kafka`, bounded `mp` copy retry, start-flow core service gate in `refactor-start.sh`).
+  - `CQ` (`8` edits): smoke recovery/diagnostics hardening (`REFACTOR_SMOKE_AUTORECOVER`, `REFACTOR_SMOKE_RECOVERY_ATTEMPTS`, compose/inspect infra diagnostics, bounded in-run recovery + re-probe, README triage update).
+- Validation outcomes:
+  - targeted fast gates: `common-games PASS`, `bots PASS`, `web PASS`, `clashofthegods PASS`.
+  - full matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=3`.
+  - retry log now includes deterministic infra diagnostics and recovery trace; unresolved lane remains infra (`c1-refactor` restart/137 observed during retry window).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-062945-hardcut-live-batchCPCQ-step09-autorecovery-hardening/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/293-hard-cut-live-batchCPCQ-step09-autorecovery-hardening-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - residual runtime closure (`STEP09` core-infra stability) `~0.50-6.00h` (`~0.06-0.75` workdays).

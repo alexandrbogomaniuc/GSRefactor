@@ -5720,3 +5720,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - compile lane remains fully green; `STEP09` failure mode is now consistently separated as infrastructure/upstream outage instead of functional ambiguity.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 06:54 UTC (Hard-cut live Batch CP+CQ)
+- Continued Project 02 stabilization with integrated live batches `CP+CQ` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `CP` (`12` edits): core-survivability hardening (`restart` policy for `mp/c1-refactor/zookeeper`, JVM/heap tuning for `c1-refactor/zookeeper/kafka`, bounded `mp` startup copy retry, start-flow core gate in `refactor-start.sh`).
+  - `CQ` (`8` edits): STEP09 smoke hardening (compose-state diagnostics, exited/OOM inspection, bounded auto-recovery pass, documented knobs/triage).
+  - retained total: `20` targeted edits across infra scripts/config/docs.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` PASS, `clashofthegods` PASS.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=3`.
+  - retry evidence now contains deterministic infra diagnostics and recovery-attempt trace; unresolved lane remains infrastructure (`c1-refactor` restart/137 observed during retry window).
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-062945-hardcut-live-batchCPCQ-step09-autorecovery-hardening/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/293-hard-cut-live-batchCPCQ-step09-autorecovery-hardening-report-20260303.md`
+- Measured movement:
+  - compile lane remains fully green; STEP09 lane now self-diagnoses and self-attempts recovery in-run, reducing manual forensics overhead.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).
