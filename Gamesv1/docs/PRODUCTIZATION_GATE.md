@@ -30,3 +30,7 @@ Gate rule:
 5. Final upload bundle
 - `E:\Dev\GSRefactor\exports\AUDIT_BUNDLE_FINAL_20260303T120816Z.zip`
 - SHA-256: `ff8e894ab2f7dc79869ba82c12bc15c6b9b5592a8d5caf7310517571a9f4ed8c`
+
+6. Included GS pack artifact (strict upstream source)
+- `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gs_pack\gs_pack_upload.zip`
+- SHA-256: `adda98196cec7f0f34ac41623fd8cfe9a3bc0299ac266000c90afa941eaeadd1`

@@ -25,3 +25,9 @@ Status: **UPSTREAM-EXACT (VERIFIED)**
 - Missing canonical files: 0
 - Extra files in canonical scope: 0
 - Hash mismatches vs included upstream pack: 0
+
+## Final artifact references
+
+- Included GS pack: `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gs_pack\gs_pack_upload.zip`
+- GS pack SHA-256: `adda98196cec7f0f34ac41623fd8cfe9a3bc0299ac266000c90afa941eaeadd1`
+- Final audit bundle: `E:\Dev\GSRefactor\exports\AUDIT_BUNDLE_FINAL_20260303T120816Z.zip`
