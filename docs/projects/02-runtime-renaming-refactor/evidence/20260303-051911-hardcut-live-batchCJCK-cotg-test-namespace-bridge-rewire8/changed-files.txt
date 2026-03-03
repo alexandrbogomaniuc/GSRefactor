@@ -1,0 +1,4 @@
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java

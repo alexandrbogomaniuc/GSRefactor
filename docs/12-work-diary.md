@@ -10875,3 +10875,22 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.01-0.20h` (`~0.00-0.03` workdays), targeted web compile lane now green.
+
+### 2026-03-03 05:28 UTC
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with integrated hard-cut wave `CJ+CK`.
+- Batch content:
+  - `TestModel`: migrated `LongIdGenerator` import to `com.abs`, bridged test currency object to `com.abs...ICurrency`, and added local `sitIn(...)` override in anonymous `StubSocketService` for signature compatibility.
+  - `SeatStat`: removed duplicate conflicting `ICurrency` import.
+  - `TestWrongWeapons`: aligned `Pair` to `com.dgphoenix...Pair` expected by current COTG math API.
+  - `TestMathModel`: aligned `CommonException` namespace to `com.abs` and bridged test currency object to `com.abs...ICurrency`.
+- Validation outcomes:
+  - targeted fast gates: `common-games PASS`, `bots PASS`, `web PASS`, `clashofthegods PASS`.
+  - full matrix profile unchanged in known lane: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-051911-hardcut-live-batchCJCK-cotg-test-namespace-bridge-rewire8/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/290-hard-cut-live-batchCJCK-cotg-test-namespace-bridge-rewire8-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.01-0.20h` (`~0.00-0.03` workdays), dominated by known external `STEP09` smoke lane.

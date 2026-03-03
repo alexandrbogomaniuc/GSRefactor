@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.common.WeaponSource;
 import com.betsoft.casino.mp.common.math.MathEnemy;
 import com.betsoft.casino.mp.common.testmodel.*;
 import com.betsoft.casino.mp.model.*;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.RNG;
 import com.google.gson.Gson;
@@ -191,7 +191,35 @@ public class TestMathModel {
                 "testUser_" + accountId,
                 new StubAvatar(0, 1, 2),
                 System.currentTimeMillis(),
-                new StubCurrency("USD", "$"),
+                new com.abs.casino.common.cache.data.currency.ICurrency() {
+                    private String code = "USD";
+                    private String symbol = "$";
+
+                    @Override
+                    public String getCode() {
+                        return code;
+                    }
+
+                    @Override
+                    public void setCode(String code) {
+                        this.code = code;
+                    }
+
+                    @Override
+                    public String getSymbol() {
+                        return symbol;
+                    }
+
+                    @Override
+                    public void setSymbol(String symbol) {
+                        this.symbol = symbol;
+                    }
+
+                    @Override
+                    public boolean isDefault(long casinoBrandId) {
+                        return true;
+                    }
+                },
                 new StubPlayerStatsService().load(271, gameType.getGameId(), 1), false,
                 null,
                 null, stake.toCents(),

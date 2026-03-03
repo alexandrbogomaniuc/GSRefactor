@@ -1,0 +1,21 @@
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:17:import com.abs.casino.common.util.LongIdGenerator;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:18:import com.abs.casino.common.util.RNG;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:232:            long accountId = LongIdGenerator.getInstance().getNext(Seat.class);
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:240:                    new com.abs.casino.common.cache.data.currency.ICurrency() {
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:623:        LongIdGenerator.getInstance().init(new StubSequencerPersister());
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:13:import com.abs.casino.common.exception.CommonException;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:14:import com.abs.casino.common.util.Pair;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:15:import com.abs.casino.common.util.RNG;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:194:                new com.abs.casino.common.cache.data.currency.ICurrency() {
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:251:            Pair<Integer, Integer> randomWeaponId = getRandomWeapon(allowSpecialWeaponsShoots);
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:266:                randomWeaponId = new Pair<>(specialWeaponType.getId(), -2);
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:428:    Pair<Integer, Integer> getRandomWeapon(boolean allowSpecialWeaponsShoots) {
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:434:                    return new Pair<>(weapon.getKey(), WeaponSource.DROP_ON_SHOOT.ordinal());
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:442:                    return new Pair<>(weapon.getKey(), WeaponSource.KILL_AWARD.ordinal());
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:446:        return new Pair<>(-1, -1);
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java:9:import com.dgphoenix.casino.common.util.Pair;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java:23:                Pair<Double, Double> weaponDropData = MathData.getWeaponDropData(value.getId(), -1);
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java:39:                        Pair<Double, Double> weaponDropData = MathData.getWeaponDropData(value.getId(), specialWeaponType.getId());
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java:3:import com.betsoft.casino.mp.model.ICurrency;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java:11:    ICurrency currency;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java:15:    public SeatStat(long seatId, ICurrency currency) {

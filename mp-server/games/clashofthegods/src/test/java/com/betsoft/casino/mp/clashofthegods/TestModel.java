@@ -14,7 +14,7 @@ import com.betsoft.casino.mp.model.movement.Point;
 import com.betsoft.casino.mp.model.movement.Trajectory;
 import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
 import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
-import com.dgphoenix.casino.common.util.LongIdGenerator;
+import com.abs.casino.common.util.LongIdGenerator;
 import com.abs.casino.common.util.RNG;
 import com.google.gson.Gson;
 import reactor.core.publisher.Mono;
@@ -237,7 +237,35 @@ public class TestModel {
                     "testUser_" + accountId,
                     new StubAvatar(0, 1, 2),
                     System.currentTimeMillis(),
-                    new StubCurrency("USD", "$"),
+                    new com.abs.casino.common.cache.data.currency.ICurrency() {
+                        private String code = "USD";
+                        private String symbol = "$";
+
+                        @Override
+                        public String getCode() {
+                            return code;
+                        }
+
+                        @Override
+                        public void setCode(String code) {
+                            this.code = code;
+                        }
+
+                        @Override
+                        public String getSymbol() {
+                            return symbol;
+                        }
+
+                        @Override
+                        public void setSymbol(String symbol) {
+                            this.symbol = symbol;
+                        }
+
+                        @Override
+                        public boolean isDefault(long bankId) {
+                            return false;
+                        }
+                    },
                     new StubPlayerStatsService().load(271, gameType.getGameId(), 1), false,
                     null,
                     null, stake.toCents(),
@@ -542,6 +570,13 @@ public class TestModel {
 
     private GameRoom getCurrentRoom(ISingleNodeRoomInfo roomInfo, List<Seat> seats, GameMap currentMap) {
         TestApplicationContext ctx = TestApplicationContext.createContextWithStubBeans(new StubSocketService() {
+            @Override
+            public ISitInResult sitIn(String sessionId, long gameId, String mode, String lang, Long bonusId,
+                                      long oldGameSessionId, long oldRoundId, long roomId, int betNumber,
+                                      Long tournamentId, String nickname) {
+                return null;
+            }
+
             @Override
             public Mono<IAddWinResult> addWin(int serverId, String sessionId, long gameSessionId,
                                               Money winAmount, Money returnedBet, long roundId, long roomId,

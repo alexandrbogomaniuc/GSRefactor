@@ -5669,3 +5669,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared localized `BotOpenRoomHandler` fail-head; targeted web gate is now green.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 05:28 UTC (Hard-cut live Batch CJ+CK)
+- Continued Project 02 stabilization with integrated live batches `CJ+CK` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `CJ` (`4` rewires): `clashofthegods` test boundary harmonization in `TestModel` (`LongIdGenerator` import alignment, ABS currency adapter object, local `sitIn(...)` signature bridge in anonymous `StubSocketService`).
+  - `CK` (`4` rewires): residual COTG test namespace/type fixes in `SeatStat`, `TestWrongWeapons`, and `TestMathModel` (duplicate import cleanup, `Pair` namespace alignment, ABS currency adapter object, exception namespace alignment).
+  - retained total: `8` targeted rewires across `4` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` PASS, `clashofthegods` compile PASS.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not CJ/CK local test semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-051911-hardcut-live-batchCJCK-cotg-test-namespace-bridge-rewire8/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/290-hard-cut-live-batchCJCK-cotg-test-namespace-bridge-rewire8-report-20260303.md`
+- Measured movement:
+  - cleared localized COTG compile fail-head; all targeted compile gates are green.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

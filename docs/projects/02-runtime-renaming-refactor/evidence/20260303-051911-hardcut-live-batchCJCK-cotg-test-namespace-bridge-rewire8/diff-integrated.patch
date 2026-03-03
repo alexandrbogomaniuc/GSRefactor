@@ -1,0 +1,193 @@
+diff --git a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java
+index 2420408ed..8bd6fb585 100644
+--- a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java
++++ b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java
+@@ -1,6 +1,5 @@
+ package com.betsoft.casino.mp.clashofthegods;
+ 
+-import com.abs.casino.common.cache.data.currency.ICurrency;
+ import com.betsoft.casino.mp.model.ICurrency;
+ import com.betsoft.casino.mp.clashofthegods.model.PlayerRoundInfo;
+ 
+diff --git a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java
+index 9ba71bc36..7f4db9f7b 100644
+--- a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java
++++ b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java
+@@ -10,14 +10,14 @@ import com.betsoft.casino.mp.common.math.TimeMeasure;
+ import com.betsoft.casino.mp.common.testmodel.*;
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.battleground.IBattlegroundRoundInfo;
+-import com.betsoft.casino.mp.model.movement.Point;
+-import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
+-import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+-import com.dgphoenix.casino.common.util.LongIdGenerator;
++import com.betsoft.casino.mp.model.movement.Point;
++import com.betsoft.casino.mp.model.movement.Trajectory;
++import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
++import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
++import com.abs.casino.common.util.LongIdGenerator;
+ import com.abs.casino.common.util.RNG;
+-import com.google.gson.Gson;
+-import reactor.core.publisher.Mono;
++import com.google.gson.Gson;
++import reactor.core.publisher.Mono;
+ 
+ import java.io.FileOutputStream;
+ import java.io.OutputStreamWriter;
+@@ -230,18 +230,46 @@ public class TestModel {
+         GameRoom currentRoom = getCurrentRoom(roomInfo, seats, currentMap);
+         for (StubPlayerInfo player : players) {
+             long accountId = LongIdGenerator.getInstance().getNext(Seat.class);
+-            StubRoomPlayerInfo roomPlayerInfo = new StubRoomPlayerInfo(accountId, 271,
+-                    currentRoom.getId(),
+-                    1,
+-                    "sid_123123", 11,
+-                    "testUser_" + accountId,
+-                    new StubAvatar(0, 1, 2),
+-                    System.currentTimeMillis(),
+-                    new StubCurrency("USD", "$"),
+-                    new StubPlayerStatsService().load(271, gameType.getGameId(), 1), false,
+-                    null,
+-                    null, stake.toCents(),
+-                    10,
++            StubRoomPlayerInfo roomPlayerInfo = new StubRoomPlayerInfo(accountId, 271,
++                    currentRoom.getId(),
++                    1,
++                    "sid_123123", 11,
++                    "testUser_" + accountId,
++                    new StubAvatar(0, 1, 2),
++                    System.currentTimeMillis(),
++                    new com.abs.casino.common.cache.data.currency.ICurrency() {
++                        private String code = "USD";
++                        private String symbol = "$";
++
++                        @Override
++                        public String getCode() {
++                            return code;
++                        }
++
++                        @Override
++                        public void setCode(String code) {
++                            this.code = code;
++                        }
++
++                        @Override
++                        public String getSymbol() {
++                            return symbol;
++                        }
++
++                        @Override
++                        public void setSymbol(String symbol) {
++                            this.symbol = symbol;
++                        }
++
++                        @Override
++                        public boolean isDefault(long bankId) {
++                            return false;
++                        }
++                    },
++                    new StubPlayerStatsService().load(271, gameType.getGameId(), 1), false,
++                    null,
++                    null, stake.toCents(),
++                    10,
+                     0.02, MaxQuestWeaponMode.LOOT_BOX, false);
+             StubGameSocketClient client = new StubGameSocketClient(accountId, 271L, "", getConnection(),
+                     new StubGsonMessageSerializer(new Gson()), gameType);
+@@ -541,11 +569,18 @@ public class TestModel {
+     }
+ 
+     private GameRoom getCurrentRoom(ISingleNodeRoomInfo roomInfo, List<Seat> seats, GameMap currentMap) {
+-        TestApplicationContext ctx = TestApplicationContext.createContextWithStubBeans(new StubSocketService() {
+-            @Override
+-            public Mono<IAddWinResult> addWin(int serverId, String sessionId, long gameSessionId,
+-                                              Money winAmount, Money returnedBet, long roundId, long roomId,
+-                                              long accountId, IPlayerBet playerBet, IBattlegroundRoundInfo bgRoundInfo) {
++        TestApplicationContext ctx = TestApplicationContext.createContextWithStubBeans(new StubSocketService() {
++            @Override
++            public ISitInResult sitIn(String sessionId, long gameId, String mode, String lang, Long bonusId,
++                                      long oldGameSessionId, long oldRoundId, long roomId, int betNumber,
++                                      Long tournamentId, String nickname) {
++                return null;
++            }
++
++            @Override
++            public Mono<IAddWinResult> addWin(int serverId, String sessionId, long gameSessionId,
++                                              Money winAmount, Money returnedBet, long roundId, long roomId,
++                                              long accountId, IPlayerBet playerBet, IBattlegroundRoundInfo bgRoundInfo) {
+                 synchronized (seatStats) {
+                     try {
+                         if (fullDebug) {
+diff --git a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java
+index 2e5655efc..28be5df5c 100644
+--- a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java
++++ b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.clashofthegods.model.math.enemies.IEnemyData;
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.abs.casino.common.util.Pair;
++import com.dgphoenix.casino.common.util.Pair;
+ 
+ import java.util.Comparator;
+ import java.util.Optional;
+diff --git a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java
+index 3d4bb0dbb..65df03363 100644
+--- a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java
++++ b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java
+@@ -6,11 +6,11 @@ import com.betsoft.casino.mp.clashofthegods.model.math.MathData;
+ import com.betsoft.casino.mp.common.GameMapStore;
+ import com.betsoft.casino.mp.common.ShootResult;
+ import com.betsoft.casino.mp.common.Weapon;
+-import com.betsoft.casino.mp.common.WeaponSource;
+-import com.betsoft.casino.mp.common.math.MathEnemy;
++import com.betsoft.casino.mp.common.WeaponSource;
++import com.betsoft.casino.mp.common.math.MathEnemy;
+ import com.betsoft.casino.mp.common.testmodel.*;
+ import com.betsoft.casino.mp.model.*;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.Pair;
+ import com.abs.casino.common.util.RNG;
+ import com.google.gson.Gson;
+@@ -189,9 +189,37 @@ public class TestMathModel {
+                 1,
+                 "sid_123123", 11,
+                 "testUser_" + accountId,
+-                new StubAvatar(0, 1, 2),
+-                System.currentTimeMillis(),
+-                new StubCurrency("USD", "$"),
++                new StubAvatar(0, 1, 2),
++                System.currentTimeMillis(),
++                new com.abs.casino.common.cache.data.currency.ICurrency() {
++                    private String code = "USD";
++                    private String symbol = "$";
++
++                    @Override
++                    public String getCode() {
++                        return code;
++                    }
++
++                    @Override
++                    public void setCode(String code) {
++                        this.code = code;
++                    }
++
++                    @Override
++                    public String getSymbol() {
++                        return symbol;
++                    }
++
++                    @Override
++                    public void setSymbol(String symbol) {
++                        this.symbol = symbol;
++                    }
++
++                    @Override
++                    public boolean isDefault(long casinoBrandId) {
++                        return true;
++                    }
++                },
+                 new StubPlayerStatsService().load(271, gameType.getGameId(), 1), false,
+                 null,
+                 null, stake.toCents(),
