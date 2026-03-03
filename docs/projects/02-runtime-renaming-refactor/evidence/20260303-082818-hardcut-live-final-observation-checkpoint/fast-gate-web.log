@@ -1,0 +1,891 @@
+[2026-03-03T08:28:55Z] START web
+[2026-03-03T08:28:55Z] DIR mp-server
+[2026-03-03T08:28:55Z] CMD mvn -DskipTests -pl web -am compile
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.betsoft.casino:mp-bots:jar:1.0.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.springframework.boot:spring-boot-maven-plugin is missing. @ line 236, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.betsoft.casino:mp-casino:pom:1.0.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Tektosyne                                                          [jar]
+[INFO] mp-casino                                                          [pom]
+[INFO] Casino MP Games core interfaces                                    [jar]
+[INFO] Casino MP Games                                                    [pom]
+[INFO] MP Common Games                                                    [jar]
+[INFO] Max Quest: Crash. Math model                                       [jar]
+[INFO] Max Quest: Crash                                                   [jar]
+[INFO] Max Quest: Max Blast Champions Model data                          [jar]
+[INFO] Max Quest: Max Blast Champions                                     [jar]
+[INFO] Casino MP Games core                                               [jar]
+[INFO] Pirates math model                                                 [jar]
+[INFO] Pirates: Dead Mans Cove                                            [jar]
+[INFO] Max Quest: Amazon. Math model                                      [jar]
+[INFO] Max Quest: Amazon                                                  [jar]
+[INFO] Pirates common math model                                          [jar]
+[INFO] Pirates: POV                                                       [jar]
+[INFO] Pirates: DMC                                                       [jar]
+[INFO] MQ: Revenge of Ra. Math model                                      [jar]
+[INFO] MQ: Revenge of Ra                                                  [jar]
+[INFO] Max Quest: Dragonstone. Math model                                 [jar]
+[INFO] Max Quest: Dragonstone                                             [jar]
+[INFO] Max Quest: Clash of the Gods. Math model                           [jar]
+[INFO] Max Quest: Clash of the Gods                                       [jar]
+[INFO] Max Quest: BG Dragonstone. Math model                              [jar]
+[INFO] Max Quest: BG Dragonstone                                          [jar]
+[INFO] Max Quest: Mission Amazon. Math model                              [jar]
+[INFO] Max Quest: Mission Amazon                                          [jar]
+[INFO] BG Max Quest: Mission Amazon. Math model                           [jar]
+[INFO] BG Max Quest: Mission Amazon                                       [jar]
+[INFO] Max Quest: Sector X. Math model                                    [jar]
+[INFO] Max Quest: Sector X                                                [jar]
+[INFO] BG Max Quest: Sector X. Math model                                 [jar]
+[INFO] BG Max Quest: Sector X                                             [jar]
+[INFO] Casino MP Games persistance layer                                  [jar]
+[INFO] Kafka interfaces                                                   [jar]
+[INFO] mp-bots                                                            [jar]
+[INFO] Casino MP Games Web                                                [war]
+[INFO] 
+[INFO] ----------------------< org.kynosarges:tektosyne >----------------------
+[INFO] Building Tektosyne 6.0.1-BSG                                      [1/37]
+[INFO]   from tektosyne/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ tektosyne ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ tektosyne ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 62 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/target/classes
+[INFO] 
+[INFO] --------------------< com.betsoft.casino:mp-casino >--------------------
+[INFO] Building mp-casino 1.0.0-SNAPSHOT                                 [2/37]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:core-interfaces >----------------
+[INFO] Building Casino MP Games core interfaces 1.0.0-SNAPSHOT           [3/37]
+[INFO]   from core-interfaces/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ core-interfaces ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ core-interfaces ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------------< com.betsoft.casino.mp:games >---------------------
+[INFO] Building Casino MP Games 1.0.0-SNAPSHOT                           [4/37]
+[INFO]   from games/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:mp-common-games >----------------
+[INFO] Building MP Common Games 1.0.0-SNAPSHOT                           [5/37]
+[INFO]   from games/common-games/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-common-games ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 100 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ mp-common-games ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------< com.betsoft.casino.mp:maxcrashgame-math >---------------
+[INFO] Building Max Quest: Crash. Math model 1.0.0-SNAPSHOT              [6/37]
+[INFO]   from games/maxcrashgame-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ maxcrashgame-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/maxcrashgame-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ maxcrashgame-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:maxcrashgame >-----------------
+[INFO] Building Max Quest: Crash 1.0.0-SNAPSHOT                          [7/37]
+[INFO]   from games/maxcrashgame/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ maxcrashgame ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/maxcrashgame/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ maxcrashgame ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------< com.betsoft.casino.mp:bg_maxblastchampions-math >-----------
+[INFO] Building Max Quest: Max Blast Champions Model data 1.0.0-SNAPSHOT [8/37]
+[INFO]   from games/bg_maxblastchampions-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_maxblastchampions-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_maxblastchampions-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------< com.betsoft.casino.mp:bg_maxblastchampions >-------------
+[INFO] Building Max Quest: Max Blast Champions 1.0.0-SNAPSHOT            [9/37]
+[INFO]   from games/bg_maxblastchampions/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_maxblastchampions ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_maxblastchampions ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------------< com.betsoft.casino.mp:core >---------------------
+[INFO] Building Casino MP Games core 1.0.0-SNAPSHOT                     [10/37]
+[INFO]   from core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 28 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:pirates-math >-----------------
+[INFO] Building Pirates math model 1.0.0-SNAPSHOT                       [11/37]
+[INFO]   from games/pirates-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ pirates-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ pirates-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------------< com.betsoft.casino.mp:pirates >--------------------
+[INFO] Building Pirates: Dead Mans Cove 1.0.0-SNAPSHOT                  [12/37]
+[INFO]   from games/pirates/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ pirates ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ pirates ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:amazon-math >------------------
+[INFO] Building Max Quest: Amazon. Math model 1.0.0-SNAPSHOT            [13/37]
+[INFO]   from games/amazon-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ amazon-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/amazon-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ amazon-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------------< com.betsoft.casino.mp:amazon >--------------------
+[INFO] Building Max Quest: Amazon 1.0.0-SNAPSHOT                        [14/37]
+[INFO]   from games/amazon/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ amazon ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/amazon/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ amazon ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------< com.betsoft.casino.mp:pirates-common-math >--------------
+[INFO] Building Pirates common math model 1.0.0-SNAPSHOT                [15/37]
+[INFO]   from games/pirates-common-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ pirates-common-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-common-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ pirates-common-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ------------------< com.betsoft.casino.mp:piratespov >------------------
+[INFO] Building Pirates: POV 1.0.0-SNAPSHOT                             [16/37]
+[INFO]   from games/piratespov/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ piratespov ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratespov/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ piratespov ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ------------------< com.betsoft.casino.mp:piratesdmc >------------------
+[INFO] Building Pirates: DMC 1.0.0-SNAPSHOT                             [17/37]
+[INFO]   from games/piratesdmc/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ piratesdmc ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ piratesdmc ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:revengeofra-math >---------------
+[INFO] Building MQ: Revenge of Ra. Math model 1.0.0-SNAPSHOT            [18/37]
+[INFO]   from games/revengeofra-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ revengeofra-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/revengeofra-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ revengeofra-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:revengeofra >------------------
+[INFO] Building MQ: Revenge of Ra 1.0.0-SNAPSHOT                        [19/37]
+[INFO]   from games/revengeofra/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ revengeofra ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/revengeofra/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ revengeofra ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:dragonstone-math >---------------
+[INFO] Building Max Quest: Dragonstone. Math model 1.0.0-SNAPSHOT       [20/37]
+[INFO]   from games/dragonstone-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ dragonstone-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/dragonstone-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ dragonstone-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:dragonstone >------------------
+[INFO] Building Max Quest: Dragonstone 1.0.0-SNAPSHOT                   [21/37]
+[INFO]   from games/dragonstone/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ dragonstone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/dragonstone/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ dragonstone ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------< com.betsoft.casino.mp:clashofthegods-math >--------------
+[INFO] Building Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT [22/37]
+[INFO]   from games/clashofthegods-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ clashofthegods-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ clashofthegods-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------------< com.betsoft.casino.mp:clashofthegods >----------------
+[INFO] Building Max Quest: Clash of the Gods 1.0.0-SNAPSHOT             [23/37]
+[INFO]   from games/clashofthegods/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ clashofthegods ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ clashofthegods ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------< com.betsoft.casino.mp:bg_dragonstone-math >--------------
+[INFO] Building Max Quest: BG Dragonstone. Math model 1.0.0-SNAPSHOT    [24/37]
+[INFO]   from games/bg_dragonstone-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_dragonstone-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_dragonstone-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_dragonstone-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------------< com.betsoft.casino.mp:bg_dragonstone >----------------
+[INFO] Building Max Quest: BG Dragonstone 1.0.0-SNAPSHOT                [25/37]
+[INFO]   from games/bg_dragonstone/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_dragonstone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_dragonstone/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_dragonstone ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------< com.betsoft.casino.mp:missionamazon-math >--------------
+[INFO] Building Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT    [26/37]
+[INFO]   from games/missionamazon-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ missionamazon-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/missionamazon-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ missionamazon-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------------< com.betsoft.casino.mp:missionamazon >-----------------
+[INFO] Building Max Quest: Mission Amazon 1.0.0-SNAPSHOT                [27/37]
+[INFO]   from games/missionamazon/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ missionamazon ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/missionamazon/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ missionamazon ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ------------< com.betsoft.casino.mp:bg_missionamazon-math >-------------
+[INFO] Building BG Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT [28/37]
+[INFO]   from games/bg_missionamazon-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_missionamazon-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_missionamazon-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_missionamazon-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:bg_missionamazon >---------------
+[INFO] Building BG Max Quest: Mission Amazon 1.0.0-SNAPSHOT             [29/37]
+[INFO]   from games/bg_missionamazon/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_missionamazon ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_missionamazon/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_missionamazon ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:sectorx-math >-----------------
+[INFO] Building Max Quest: Sector X. Math model 1.0.0-SNAPSHOT          [30/37]
+[INFO]   from games/sectorx-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ sectorx-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/sectorx-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ sectorx-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------------< com.betsoft.casino.mp:sectorx >--------------------
+[INFO] Building Max Quest: Sector X 1.0.0-SNAPSHOT                      [31/37]
+[INFO]   from games/sectorx/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ sectorx ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/sectorx/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ sectorx ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:bg_sectorx-math >----------------
+[INFO] Building BG Max Quest: Sector X. Math model 1.0.0-SNAPSHOT       [32/37]
+[INFO]   from games/bg_sectorx-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_sectorx-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_sectorx-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_sectorx-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ------------------< com.betsoft.casino.mp:bg_sectorx >------------------
+[INFO] Building BG Max Quest: Sector X 1.0.0-SNAPSHOT                   [33/37]
+[INFO]   from games/bg_sectorx/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_sectorx ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_sectorx/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_sectorx ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:persistance >------------------
+[INFO] Building Casino MP Games persistance layer 1.0.0-SNAPSHOT        [34/37]
+[INFO]   from persistance/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ persistance ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ persistance ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------------< com.betsoft.casino.mp:mp-kafka >-------------------
+[INFO] Building Kafka interfaces 1.0.0-SNAPSHOT                         [35/37]
+[INFO]   from kafka/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-kafka ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ mp-kafka ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 146 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/target/classes
+[INFO] 
+[INFO] ---------------------< com.betsoft.casino:mp-bots >---------------------
+[INFO] Building mp-bots 1.0.0-SNAPSHOT                                  [36/37]
+[INFO]   from bots/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.7.0:sources (default) @ mp-bots ---
+[WARNING]  Goal 'sources' is deprecated: in favor of resolve-sources goal and will be removed in a future version
+[INFO] 
+[INFO] The following files have been resolved:
+[INFO]    commons-codec:commons-codec:jar:sources:1.11
+[INFO]    com.hazelcast:hazelcast:jar:sources:3.12.12
+[INFO]    com.hazelcast:hazelcast-spring:jar:sources:3.12.12
+[INFO]    com.hazelcast:hazelcast-gcp:jar:sources:1.1.1
+[INFO]    com.hazelcast:hazelcast-kubernetes:jar:sources:1.5.6
+[INFO]    org.apache.logging.log4j:log4j-api:jar:sources:2.10.0
+[INFO]    com.google.code.gson:gson:jar:sources:2.8.5
+[INFO]    io.netty:netty-buffer:jar:sources:4.1.59.Final
+[INFO]    com.dgphoenix.casino:utils-restricted:jar:sources:1.1.0
+[INFO]    com.dgphoenix.casino:rng:jar:sources:2.0
+[INFO]    org.bouncycastle:bcprov-jdk15on:jar:sources:1.58
+[INFO]    io.github.classgraph:classgraph:jar:sources:4.8.179
+[INFO]    javax.servlet.jsp:jsp-api:jar:sources:2.2
+[INFO]    javax.mail:mail:jar:sources:1.4
+[INFO]    javax.activation:activation:jar:sources:1.1
+[INFO]    xerces:xercesImpl:jar:sources:2.12.2
+[INFO]    xml-apis:xml-apis:jar:sources:1.4.01
+[INFO]    com.thoughtworks.xstream:xstream:jar:sources:1.4.15
+[INFO]    xpp3:xpp3_min:jar:sources:1.1.4c
+[INFO]    com.esotericsoftware:kryo:jar:sources:3.0.0
+[INFO]    com.esotericsoftware:reflectasm:jar:sources:1.10.0
+[INFO]    org.ow2.asm:asm:jar:sources:4.2
+[INFO]    com.esotericsoftware:minlog:jar:sources:1.3.0
+[INFO]    commons-configuration:commons-configuration:jar:sources:1.7
+[INFO]    commons-lang:commons-lang:jar:sources:2.6
+[INFO]    commons-digester:commons-digester:jar:sources:1.8.1
+[INFO]    commons-beanutils:commons-beanutils:jar:sources:1.8.3
+[INFO]    commons-collections:commons-collections:jar:sources:3.2.2
+[INFO]    org.apache.httpcomponents:httpcore:jar:sources:4.4.11
+[INFO]    commons-net:commons-net:jar:sources:3.2
+[INFO]    commons-io:commons-io:jar:sources:2.4
+[INFO]    org.reflections:reflections:jar:sources:0.9.9
+[INFO]    org.javassist:javassist:jar:sources:3.18.2-GA
+[INFO]    com.jcraft:jsch:jar:sources:0.1.54
+[INFO]    com.maxmind.geoip2:geoip2:jar:sources:2.15.0
+[INFO]    com.maxmind.db:maxmind-db:jar:sources:2.0.0
+[INFO]    org.javamoney.moneta:moneta-core:jar:sources:1.3
+[INFO]    javax.money:money-api:jar:sources:1.0.3
+[INFO]    javax.annotation:javax.annotation-api:jar:sources:1.3.2
+[INFO]    org.javamoney.moneta:moneta-convert:jar:sources:1.3
+[INFO]    org.bouncycastle:bcpkix-jdk15on:jar:sources:1.70
+[INFO]    org.bouncycastle:bcutil-jdk15on:jar:sources:1.70
+[INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:sources:2.9.8
+[INFO]    org.apache.curator:curator-framework:jar:sources:5.8.0
+[INFO]    org.apache.curator:curator-client:jar:sources:5.8.0
+[INFO]    org.apache.zookeeper:zookeeper:jar:sources:3.9.2
+[INFO]    org.apache.zookeeper:zookeeper-jute:jar:sources:3.9.2
+[INFO]    org.apache.yetus:audience-annotations:jar:sources:0.12.0
+[INFO]    io.netty:netty-tcnative-classes:jar:sources:2.0.61.Final
+[INFO]    org.apache.curator:curator-recipes:jar:sources:5.8.0
+[INFO]    com.dgphoenix.casino:gsn-utils-restricted:jar:sources:1.0-SNAPSHOT
+[INFO]    net.jpountz.lz4:lz4:jar:sources:1.3.0
+[INFO]    org.apache.httpcomponents:httpclient:jar:sources:4.5.8
+[INFO]    org.apache.commons:commons-math3:jar:sources:3.5
+[INFO]    de.javakaffee:kryo-serializers:jar:sources:0.45
+[INFO]    com.dgphoenix.casino:common-promo:jar:sources:1.1.0
+[INFO]    com.github.stephenc.high-scale-lib:high-scale-lib:jar:sources:1.1.2
+[INFO]    org.apache.struts:struts-core:jar:sources:1.3.10
+[INFO]    commons-chain:commons-chain:jar:sources:1.2
+[INFO]    commons-validator:commons-validator:jar:sources:1.3.1
+[INFO]    oro:oro:jar:sources:2.0.8
+[INFO]    org.apache.struts:struts-tiles:jar:sources:1.3.10
+[INFO]    org.apache.struts:struts-taglib:jar:sources:1.3.10
+[INFO]    org.fusesource:sigar:jar:sources:1.6.4
+[INFO]    org.apache.commons:commons-pool2:jar:sources:2.6.2
+[INFO]    one.util:streamex:jar:sources:0.7.0
+[INFO]    org.apache.kafka:kafka-clients:jar:sources:3.0.0
+[INFO]    com.github.luben:zstd-jni:jar:sources:1.5.0-2
+[INFO]    org.lz4:lz4-java:jar:sources:1.7.1
+[INFO]    org.xerial.snappy:snappy-java:jar:sources:1.1.8.1
+[INFO]    org.slf4j:slf4j-api:jar:sources:1.7.26
+[INFO]    org.apache.kafka:connect-json:jar:sources:3.0.0
+[INFO]    org.apache.kafka:connect-api:jar:sources:1.0.2
+[INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:sources:2.9.8
+[INFO]    org.springframework.boot:spring-boot-starter-webflux:jar:sources:2.0.9.RELEASE
+[INFO]    org.springframework.boot:spring-boot-starter:jar:sources:2.0.9.RELEASE
+[INFO]    org.springframework.boot:spring-boot:jar:sources:2.0.9.RELEASE
+[INFO]    org.springframework.boot:spring-boot-autoconfigure:jar:sources:2.0.9.RELEASE
+[INFO]    org.yaml:snakeyaml:jar:sources:1.19
+[INFO]    org.springframework.boot:spring-boot-starter-json:jar:sources:2.0.9.RELEASE
+[INFO]    com.fasterxml.jackson.module:jackson-module-parameter-names:jar:sources:2.9.8
+[INFO]    org.springframework.boot:spring-boot-starter-reactor-netty:jar:sources:2.0.9.RELEASE
+[INFO]    org.hibernate.validator:hibernate-validator:jar:sources:6.0.16.Final
+[INFO]    org.jboss.logging:jboss-logging:jar:sources:3.3.2.Final
+[INFO]    com.fasterxml:classmate:jar:sources:1.3.4
+[INFO]    org.synchronoss.cloud:nio-multipart-parser:jar:sources:1.1.0
+[INFO]    org.synchronoss.cloud:nio-stream-storage:jar:sources:1.1.3
+[INFO]    org.springframework.boot:spring-boot-starter-log4j2:jar:sources:2.0.9.RELEASE
+[INFO]    org.apache.logging.log4j:log4j-jul:jar:sources:2.10.0
+[INFO]    org.slf4j:jul-to-slf4j:jar:sources:1.7.26
+[INFO]    com.google.cloud:google-cloud-bigquery:jar:sources:1.102.0
+[INFO]    com.google.cloud:google-cloud-core:jar:sources:1.91.3
+[INFO]    com.google.api:gax:jar:sources:1.49.1
+[INFO]    com.google.protobuf:protobuf-java-util:jar:sources:3.10.0
+[INFO]    com.google.errorprone:error_prone_annotations:jar:sources:2.3.2
+[INFO]    com.google.api.grpc:proto-google-common-protos:jar:sources:1.17.0
+[INFO]    com.google.api.grpc:proto-google-iam-v1:jar:sources:0.13.0
+[INFO]    org.threeten:threetenbp:jar:sources:1.3.3
+[INFO]    com.google.api:api-common:jar:sources:1.8.1
+[INFO]    com.google.auth:google-auth-library-credentials:jar:sources:0.18.0
+[INFO]    com.google.auth:google-auth-library-oauth2-http:jar:sources:0.18.0
+[INFO]    com.google.auto.value:auto-value-annotations:jar:sources:1.6.6
+[INFO]    com.google.http-client:google-http-client:jar:sources:1.32.1
+[INFO]    com.google.j2objc:j2objc-annotations:jar:sources:1.3
+[INFO]    com.google.http-client:google-http-client-jackson2:jar:sources:1.32.1
+[INFO]    com.google.protobuf:protobuf-java:jar:sources:3.10.0
+[INFO]    com.google.cloud:google-cloud-core-http:jar:sources:1.91.3
+[INFO]    com.google.api-client:google-api-client:jar:sources:1.30.4
+[INFO]    com.google.oauth-client:google-oauth-client:jar:sources:1.30.3
+[INFO]    com.google.http-client:google-http-client-appengine:jar:sources:1.32.1
+[INFO]    com.google.api:gax-httpjson:jar:sources:0.66.1
+[INFO]    com.google.code.findbugs:jsr305:jar:sources:3.0.2
+[INFO]    io.opencensus:opencensus-api:jar:sources:0.24.0
+[INFO]    io.grpc:grpc-context:jar:sources:1.22.1
+[INFO]    io.opencensus:opencensus-contrib-http-util:jar:sources:0.24.0
+[INFO]    com.google.apis:google-api-services-bigquery:jar:sources:v2-rev20190917-1.30.3
+[INFO]    org.springframework:spring-web:jar:sources:5.0.13.RELEASE
+[INFO]    org.springframework:spring-beans:jar:sources:5.0.13.RELEASE
+[INFO]    io.projectreactor.ipc:reactor-netty:jar:sources:0.7.15.RELEASE
+[INFO]    io.netty:netty-codec-http:jar:sources:4.1.59.Final
+[INFO]    io.netty:netty-common:jar:sources:4.1.59.Final
+[INFO]    io.netty:netty-transport:jar:sources:4.1.59.Final
+[INFO]    io.netty:netty-codec:jar:sources:4.1.59.Final
+[INFO]    io.netty:netty-handler:jar:sources:4.1.59.Final
+[INFO]    io.netty:netty-resolver:jar:sources:4.1.59.Final
+[INFO]    io.netty:netty-handler-proxy:jar:sources:4.1.59.Final
+[INFO]    io.netty:netty-codec-socks:jar:sources:4.1.59.Final
+[INFO]    io.netty:netty-transport-native-epoll:jar:sources:4.1.34.Final
+[INFO]    io.netty:netty-transport-native-unix-common:jar:sources:4.1.34.Final
+[INFO]    io.projectreactor:reactor-core:jar:sources:3.1.16.RELEASE
+[INFO]    org.reactivestreams:reactive-streams:jar:sources:1.0.2
+[INFO]    commons-cli:commons-cli:jar:sources:1.4
+[INFO]    org.json:json:jar:sources:20240303
+[INFO]    com.googlecode.json-simple:json-simple:jar:sources:1.1
+[INFO]    com.fasterxml.jackson.core:jackson-core:jar:sources:2.14.3
+[INFO]    com.fasterxml.jackson.core:jackson-databind:jar:sources:2.14.3
+[INFO]    com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.18.3
+[INFO]    org.apache.logging.log4j:log4j-core:jar:sources:2.10.0
+[INFO]    org.apache.logging.log4j:log4j-slf4j-impl:jar:sources:2.10.0
+[INFO]    org.apache.logging.log4j:log4j-jcl:jar:sources:2.10.0
+[INFO]    commons-logging:commons-logging:jar:sources:1.2
+[INFO]    org.apache.commons:commons-lang3:jar:sources:3.5
+[INFO]    com.google.guava:guava:jar:sources:19.0
+[INFO]    org.springframework:spring-core:jar:sources:5.0.13.RELEASE
+[INFO]    org.springframework:spring-jcl:jar:sources:5.0.13.RELEASE
+[INFO]    org.springframework:spring-context:jar:sources:5.0.13.RELEASE
+[INFO]    org.springframework:spring-aop:jar:sources:5.0.13.RELEASE
+[INFO]    org.springframework:spring-expression:jar:sources:5.0.13.RELEASE
+[INFO]    org.springframework:spring-webflux:jar:sources:5.0.13.RELEASE
+[INFO]    javax.validation:validation-api:jar:sources:2.0.1.Final
+[INFO]    junit:junit:jar:sources:4.12
+[INFO]    org.hamcrest:hamcrest-core:jar:sources:1.3
+[INFO]    org.mockito:mockito-core:jar:sources:2.7.21
+[INFO]    net.bytebuddy:byte-buddy:jar:sources:1.7.11
+[INFO]    net.bytebuddy:byte-buddy-agent:jar:sources:1.7.11
+[INFO]    org.objenesis:objenesis:jar:sources:2.5
+[INFO]    org.springframework:spring-test:jar:sources:5.0.13.RELEASE
+[INFO]    org.apache.logging.log4j:log4j-1.2-api:jar:sources:2.10.0
+[INFO] 
+[INFO] The following files have NOT been resolved:
+[INFO]    com.betsoft.casino.mp:core:jar:1.0.0-SNAPSHOT:compile
+[INFO]    commons-codec:commons-codec:jar:1.11:compile
+[INFO]    com.hazelcast:hazelcast:jar:3.12.12:compile
+[INFO]    com.hazelcast:hazelcast-spring:jar:3.12.12:compile
+[INFO]    com.hazelcast:hazelcast-gcp:jar:1.1.1:compile
+[INFO]    com.hazelcast:hazelcast-kubernetes:jar:1.5.6:compile
+[INFO]    org.apache.logging.log4j:log4j-api:jar:2.10.0:compile
+[INFO]    org.kynosarges:tektosyne:jar:6.0.1-BSG:compile
+[INFO]    com.betsoft.casino.mp:core-interfaces:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.google.code.gson:gson:jar:2.8.5:compile
+[INFO]    io.netty:netty-buffer:jar:4.1.59.Final:compile
+[INFO]    com.dgphoenix.casino:utils-restricted:jar:1.1.0:compile
+[INFO]    com.dgphoenix.casino:rng:jar:2.0:compile
+[INFO]    org.bouncycastle:bcprov-jdk15on:jar:1.58:compile
+[INFO]    io.github.classgraph:classgraph:jar:4.8.179:compile
+[INFO]    javax.servlet.jsp:jsp-api:jar:2.2:compile
+[INFO]    logkit:logkit:jar:1.2:compile
+[INFO]    javax.mail:mail:jar:1.4:compile
+[INFO]    javax.activation:activation:jar:1.1:compile
+[INFO]    xerces:xercesImpl:jar:2.12.2:compile
+[INFO]    xml-apis:xml-apis:jar:1.4.01:compile
+[INFO]    com.thoughtworks.xstream:xstream:jar:1.4.15:compile
+[INFO]    xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO]    xpp3:xpp3_min:jar:1.1.4c:compile
+[INFO]    com.esotericsoftware:kryo:jar:3.0.0:compile
+[INFO]    com.esotericsoftware:reflectasm:jar:1.10.0:compile
+[INFO]    org.ow2.asm:asm:jar:4.2:compile
+[INFO]    com.esotericsoftware:minlog:jar:1.3.0:compile
+[INFO]    colt:colt:jar:1.0.3:compile
+[INFO]    commons-configuration:commons-configuration:jar:1.7:compile
+[INFO]    commons-lang:commons-lang:jar:2.6:compile
+[INFO]    commons-digester:commons-digester:jar:1.8.1:compile
+[INFO]    commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO]    commons-collections:commons-collections:jar:3.2.2:compile
+[INFO]    org.apache.httpcomponents:httpcore:jar:4.4.11:compile
+[INFO]    commons-net:commons-net:jar:3.2:compile
+[INFO]    commons-io:commons-io:jar:2.4:compile
+[INFO]    org.reflections:reflections:jar:0.9.9:compile
+[INFO]    org.javassist:javassist:jar:3.18.2-GA:compile
+[INFO]    com.google.code.findbugs:annotations:jar:2.0.1:compile
+[INFO]    com.jcraft:jsch:jar:0.1.54:compile
+[INFO]    com.maxmind.geoip2:geoip2:jar:2.15.0:compile
+[INFO]    com.maxmind.db:maxmind-db:jar:2.0.0:compile
+[INFO]    org.javamoney.moneta:moneta-core:jar:1.3:compile
+[INFO]    javax.money:money-api:jar:1.0.3:compile
+[INFO]    javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO]    org.javamoney.moneta:moneta-convert:jar:1.3:compile
+[INFO]    com.betsoft.casino.mp:maxcrashgame:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.betsoft.casino.mp:maxcrashgame-math:jar:1.0.0-SNAPSHOT:compile
+[INFO]    org.bouncycastle:bcpkix-jdk15on:jar:1.70:compile
+[INFO]    org.bouncycastle:bcutil-jdk15on:jar:1.70:compile
+[INFO]    com.betsoft.casino.mp:bg_maxblastchampions:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.betsoft.casino.mp:bg_maxblastchampions-math:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.8:compile
+[INFO]    org.apache.curator:curator-framework:jar:5.8.0:compile
+[INFO]    org.apache.curator:curator-client:jar:5.8.0:compile
+[INFO]    org.apache.zookeeper:zookeeper:jar:3.9.2:compile
+[INFO]    org.apache.zookeeper:zookeeper-jute:jar:3.9.2:compile
+[INFO]    org.apache.yetus:audience-annotations:jar:0.12.0:compile
+[INFO]    io.netty:netty-tcnative-boringssl-static:jar:2.0.61.Final:compile
+[INFO]    io.netty:netty-tcnative-classes:jar:2.0.61.Final:compile
+[INFO]    io.netty:netty-tcnative-boringssl-static:jar:linux-x86_64:2.0.61.Final:compile
+[INFO]    io.netty:netty-tcnative-boringssl-static:jar:linux-aarch_64:2.0.61.Final:compile
+[INFO]    io.netty:netty-tcnative-boringssl-static:jar:osx-x86_64:2.0.61.Final:compile
+[INFO]    io.netty:netty-tcnative-boringssl-static:jar:osx-aarch_64:2.0.61.Final:compile
+[INFO]    io.netty:netty-tcnative-boringssl-static:jar:windows-x86_64:2.0.61.Final:compile
+[INFO]    org.apache.curator:curator-recipes:jar:5.8.0:compile
+[INFO]    com.betsoft.casino.mp:mp-kafka:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.dgphoenix.casino:gsn-common:jar:1.0-SNAPSHOT:compile
+[INFO]    com.dgphoenix.casino:gsn-utils-restricted:jar:1.0-SNAPSHOT:compile
+[INFO]    net.jpountz.lz4:lz4:jar:1.3.0:compile
+[INFO]    org.apache.httpcomponents:httpclient:jar:4.5.8:compile
+[INFO]    org.apache.commons:commons-math3:jar:3.5:compile
+[INFO]    de.javakaffee:kryo-serializers:jar:0.45:compile
+[INFO]    com.dgphoenix.casino:common-promo:jar:1.1.0:compile
+[INFO]    com.github.stephenc.high-scale-lib:high-scale-lib:jar:1.1.2:compile
+[INFO]    org.apache.struts:struts-core:jar:1.3.10:compile
+[INFO]    commons-chain:commons-chain:jar:1.2:compile
+[INFO]    commons-validator:commons-validator:jar:1.3.1:compile
+[INFO]    oro:oro:jar:2.0.8:compile
+[INFO]    org.apache.struts:struts-tiles:jar:1.3.10:runtime
+[INFO]    org.apache.struts:struts-taglib:jar:1.3.10:runtime
+[INFO]    org.fusesource:sigar:jar:1.6.4:compile
+[INFO]    org.apache.commons:commons-pool2:jar:2.6.2:compile
+[INFO]    one.util:streamex:jar:0.7.0:compile
+[INFO]    com.dgphoenix.casino.tools:annotations:jar:1.1.0:compile
+[INFO]    org.apache.kafka:kafka-clients:jar:3.0.0:compile
+[INFO]    com.github.luben:zstd-jni:jar:1.5.0-2:runtime
+[INFO]    org.lz4:lz4-java:jar:1.7.1:runtime
+[INFO]    org.xerial.snappy:snappy-java:jar:1.1.8.1:runtime
+[INFO]    org.slf4j:slf4j-api:jar:1.7.26:compile
+[INFO]    org.apache.kafka:connect-json:jar:3.0.0:compile
+[INFO]    org.apache.kafka:connect-api:jar:1.0.2:compile
+[INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.8:compile
+[INFO]    org.springframework.boot:spring-boot-starter-webflux:jar:2.0.9.RELEASE:compile
+[INFO]    org.springframework.boot:spring-boot-starter:jar:2.0.9.RELEASE:compile
+[INFO]    org.springframework.boot:spring-boot:jar:2.0.9.RELEASE:compile
+[INFO]    org.springframework.boot:spring-boot-autoconfigure:jar:2.0.9.RELEASE:compile
+[INFO]    org.yaml:snakeyaml:jar:1.19:runtime
+[INFO]    org.springframework.boot:spring-boot-starter-json:jar:2.0.9.RELEASE:compile
+[INFO]    com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.8:compile
+[INFO]    org.springframework.boot:spring-boot-starter-reactor-netty:jar:2.0.9.RELEASE:compile
+[INFO]    org.hibernate.validator:hibernate-validator:jar:6.0.16.Final:compile
+[INFO]    org.jboss.logging:jboss-logging:jar:3.3.2.Final:compile
+[INFO]    com.fasterxml:classmate:jar:1.3.4:compile
+[INFO]    org.synchronoss.cloud:nio-multipart-parser:jar:1.1.0:compile
+[INFO]    org.synchronoss.cloud:nio-stream-storage:jar:1.1.3:compile
+[INFO]    org.springframework.boot:spring-boot-starter-log4j2:jar:2.0.9.RELEASE:compile
+[INFO]    org.apache.logging.log4j:log4j-jul:jar:2.10.0:compile
+[INFO]    org.slf4j:jul-to-slf4j:jar:1.7.26:compile
+[INFO]    com.betsoft.casino.mp:sectorx:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.betsoft.casino.mp:mp-common-games:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.google.cloud:google-cloud-bigquery:jar:1.102.0:compile
+[INFO]    com.google.cloud:google-cloud-core:jar:1.91.3:compile
+[INFO]    com.google.api:gax:jar:1.49.1:compile
+[INFO]    com.google.protobuf:protobuf-java-util:jar:3.10.0:compile
+[INFO]    com.google.errorprone:error_prone_annotations:jar:2.3.2:compile
+[INFO]    com.google.api.grpc:proto-google-common-protos:jar:1.17.0:compile
+[INFO]    com.google.api.grpc:proto-google-iam-v1:jar:0.13.0:compile
+[INFO]    org.threeten:threetenbp:jar:1.3.3:compile
+[INFO]    com.google.api:api-common:jar:1.8.1:compile
+[INFO]    com.google.auth:google-auth-library-credentials:jar:0.18.0:compile
+[INFO]    com.google.auth:google-auth-library-oauth2-http:jar:0.18.0:compile
+[INFO]    com.google.auto.value:auto-value-annotations:jar:1.6.6:compile
+[INFO]    com.google.http-client:google-http-client:jar:1.32.1:compile
+[INFO]    com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO]    com.google.http-client:google-http-client-jackson2:jar:1.32.1:compile
+[INFO]    com.google.protobuf:protobuf-java:jar:3.10.0:compile
+[INFO]    com.google.cloud:google-cloud-core-http:jar:1.91.3:compile
+[INFO]    com.google.api-client:google-api-client:jar:1.30.4:compile
+[INFO]    com.google.oauth-client:google-oauth-client:jar:1.30.3:compile
+[INFO]    com.google.http-client:google-http-client-appengine:jar:1.32.1:compile
+[INFO]    com.google.api:gax-httpjson:jar:0.66.1:compile
+[INFO]    com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO]    io.opencensus:opencensus-api:jar:0.24.0:compile
+[INFO]    io.grpc:grpc-context:jar:1.22.1:compile
+[INFO]    io.opencensus:opencensus-contrib-http-util:jar:0.24.0:compile
+[INFO]    com.google.apis:google-api-services-bigquery:jar:v2-rev20190917-1.30.3:compile
+[INFO]    com.betsoft.casino.mp:sectorx-math:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.betsoft.casino.mp:bg_sectorx:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.betsoft.casino.mp:bg_sectorx-math:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.betsoft.casino.mp:bg_dragonstone:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.betsoft.casino.mp:bg_dragonstone-math:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.betsoft.casino.mp:bg_missionamazon:jar:1.0.0-SNAPSHOT:compile
+[INFO]    com.betsoft.casino.mp:bg_missionamazon-math:jar:1.0.0-SNAPSHOT:compile
+[INFO]    org.springframework:spring-web:jar:5.0.13.RELEASE:compile
+[INFO]    org.springframework:spring-beans:jar:5.0.13.RELEASE:compile
+[INFO]    io.projectreactor.ipc:reactor-netty:jar:0.7.15.RELEASE:compile
+[INFO]    io.netty:netty-codec-http:jar:4.1.59.Final:compile
+[INFO]    io.netty:netty-common:jar:4.1.59.Final:compile
+[INFO]    io.netty:netty-transport:jar:4.1.59.Final:compile
+[INFO]    io.netty:netty-codec:jar:4.1.59.Final:compile
+[INFO]    io.netty:netty-handler:jar:4.1.59.Final:compile
+[INFO]    io.netty:netty-resolver:jar:4.1.59.Final:compile
+[INFO]    io.netty:netty-handler-proxy:jar:4.1.59.Final:compile
+[INFO]    io.netty:netty-codec-socks:jar:4.1.59.Final:compile
+[INFO]    io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.34.Final:compile
+[INFO]    io.netty:netty-transport-native-unix-common:jar:4.1.34.Final:compile
+[INFO]    io.projectreactor:reactor-core:jar:3.1.16.RELEASE:compile
+[INFO]    org.reactivestreams:reactive-streams:jar:1.0.2:compile
+[INFO]    commons-cli:commons-cli:jar:1.4:compile
+[INFO]    org.json:json:jar:20240303:compile
+[INFO]    com.googlecode.json-simple:json-simple:jar:1.1:compile
+[INFO]    com.fasterxml.jackson.core:jackson-core:jar:2.14.3:compile
+[INFO]    com.fasterxml.jackson.core:jackson-databind:jar:2.14.3:compile
+[INFO]    com.fasterxml.jackson.core:jackson-annotations:jar:2.18.3:compile
+[INFO]    org.apache.logging.log4j:log4j-core:jar:2.10.0:compile
+[INFO]    org.apache.logging.log4j:log4j-slf4j-impl:jar:2.10.0:compile
+[INFO]    org.apache.logging.log4j:log4j-jcl:jar:2.10.0:compile
+[INFO]    commons-logging:commons-logging:jar:1.2:compile
+[INFO]    org.apache.commons:commons-lang3:jar:3.5:compile
+[INFO]    com.google.guava:guava:jar:19.0:compile
+[INFO]    org.springframework:spring-core:jar:5.0.13.RELEASE:compile
+[INFO]    org.springframework:spring-jcl:jar:5.0.13.RELEASE:compile
+[INFO]    org.springframework:spring-context:jar:5.0.13.RELEASE:compile
+[INFO]    org.springframework:spring-aop:jar:5.0.13.RELEASE:compile
+[INFO]    org.springframework:spring-expression:jar:5.0.13.RELEASE:compile
+[INFO]    org.springframework:spring-webflux:jar:5.0.13.RELEASE:compile
+[INFO]    javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO]    junit:junit:jar:4.12:test
+[INFO]    org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    org.mockito:mockito-core:jar:2.7.21:test
+[INFO]    net.bytebuddy:byte-buddy:jar:1.7.11:test
+[INFO]    net.bytebuddy:byte-buddy-agent:jar:1.7.11:test
+[INFO]    org.objenesis:objenesis:jar:2.5:compile
+[INFO]    org.springframework:spring-test:jar:5.0.13.RELEASE:test
+[INFO]    org.apache.logging.log4j:log4j-1.2-api:jar:2.10.0:compile
+[INFO] 
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-bots ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/test/main/resources
+[INFO] 
+[INFO] --- compiler:3.7.0:compile (default-compile) @ mp-bots ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------------< com.betsoft.casino.mp:web >----------------------
+[INFO] Building Casino MP Games Web 1.0.0-SNAPSHOT                      [37/37]
+[INFO]   from web/pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ web ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/web/test/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ web ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 139 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/web/target/classes
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebApplicationFluxInitializer.java: Some input files use or override a deprecated API.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebApplicationFluxInitializer.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Tektosyne 6.0.1-BSG ................................ SUCCESS [  1.299 s]
+[INFO] mp-casino 1.0.0-SNAPSHOT ........................... SUCCESS [  0.002 s]
+[INFO] Casino MP Games core interfaces 1.0.0-SNAPSHOT ..... SUCCESS [  0.466 s]
+[INFO] Casino MP Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.001 s]
+[INFO] MP Common Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.793 s]
+[INFO] Max Quest: Crash. Math model 1.0.0-SNAPSHOT ........ SUCCESS [  0.040 s]
+[INFO] Max Quest: Crash 1.0.0-SNAPSHOT .................... SUCCESS [  0.043 s]
+[INFO] Max Quest: Max Blast Champions Model data 1.0.0-SNAPSHOT SUCCESS [  0.035 s]
+[INFO] Max Quest: Max Blast Champions 1.0.0-SNAPSHOT ...... SUCCESS [  0.034 s]
+[INFO] Casino MP Games core 1.0.0-SNAPSHOT ................ SUCCESS [  0.120 s]
+[INFO] Pirates math model 1.0.0-SNAPSHOT .................. SUCCESS [  0.044 s]
+[INFO] Pirates: Dead Mans Cove 1.0.0-SNAPSHOT ............. SUCCESS [  0.043 s]
+[INFO] Max Quest: Amazon. Math model 1.0.0-SNAPSHOT ....... SUCCESS [  0.041 s]
+[INFO] Max Quest: Amazon 1.0.0-SNAPSHOT ................... SUCCESS [  0.038 s]
+[INFO] Pirates common math model 1.0.0-SNAPSHOT ........... SUCCESS [  0.034 s]
+[INFO] Pirates: POV 1.0.0-SNAPSHOT ........................ SUCCESS [  0.038 s]
+[INFO] Pirates: DMC 1.0.0-SNAPSHOT ........................ SUCCESS [  0.044 s]
+[INFO] MQ: Revenge of Ra. Math model 1.0.0-SNAPSHOT ....... SUCCESS [  0.037 s]
+[INFO] MQ: Revenge of Ra 1.0.0-SNAPSHOT ................... SUCCESS [  0.038 s]
+[INFO] Max Quest: Dragonstone. Math model 1.0.0-SNAPSHOT .. SUCCESS [  0.033 s]
+[INFO] Max Quest: Dragonstone 1.0.0-SNAPSHOT .............. SUCCESS [  0.031 s]
+[INFO] Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT SUCCESS [  0.042 s]
+[INFO] Max Quest: Clash of the Gods 1.0.0-SNAPSHOT ........ SUCCESS [  0.032 s]
+[INFO] Max Quest: BG Dragonstone. Math model 1.0.0-SNAPSHOT SUCCESS [  0.031 s]
+[INFO] Max Quest: BG Dragonstone 1.0.0-SNAPSHOT ........... SUCCESS [  0.034 s]
+[INFO] Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SUCCESS [  0.031 s]
+[INFO] Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........... SUCCESS [  0.030 s]
+[INFO] BG Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SUCCESS [  0.030 s]
+[INFO] BG Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........ SUCCESS [  0.030 s]
+[INFO] Max Quest: Sector X. Math model 1.0.0-SNAPSHOT ..... SUCCESS [  0.038 s]
+[INFO] Max Quest: Sector X 1.0.0-SNAPSHOT ................. SUCCESS [  0.044 s]
+[INFO] BG Max Quest: Sector X. Math model 1.0.0-SNAPSHOT .. SUCCESS [  0.025 s]
+[INFO] BG Max Quest: Sector X 1.0.0-SNAPSHOT .............. SUCCESS [  0.024 s]
+[INFO] Casino MP Games persistance layer 1.0.0-SNAPSHOT ... SUCCESS [  0.763 s]
+[INFO] Kafka interfaces 1.0.0-SNAPSHOT .................... SUCCESS [  0.586 s]
+[INFO] mp-bots 1.0.0-SNAPSHOT ............................. SUCCESS [  1.147 s]
+[INFO] Casino MP Games Web 1.0.0-SNAPSHOT ................. SUCCESS [  4.270 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.644 s
+[INFO] Finished at: 2026-03-03T08:29:06Z
+[INFO] ------------------------------------------------------------------------
+[2026-03-03T08:29:06Z] PASS web rc=0

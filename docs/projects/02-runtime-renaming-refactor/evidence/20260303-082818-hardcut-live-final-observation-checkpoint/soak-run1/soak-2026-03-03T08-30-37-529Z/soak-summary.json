@@ -1,0 +1,32 @@
+{
+  "startedAt": "2026-03-03T08:30:37.546Z",
+  "endedAt": "2026-03-03T08:30:42.573Z",
+  "gitSha": "6d298c2f32938958cb1078013955f61eb38714c7",
+  "totalRuns": 2,
+  "gapMs": 1000,
+  "artifactDir": "/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-082818-hardcut-live-final-observation-checkpoint/soak-run1/soak-2026-03-03T08-30-37-529Z",
+  "passCount": 2,
+  "functionalFailCount": 0,
+  "infraBlockedFailCount": 0,
+  "finalRc": 0,
+  "runs": [
+    {
+      "runIndex": 1,
+      "startedAt": "2026-03-03T08:30:37.547Z",
+      "endedAt": "2026-03-03T08:30:39.642Z",
+      "durationMs": 2095,
+      "rawRc": 0,
+      "rc": 0,
+      "outcome": "pass"
+    },
+    {
+      "runIndex": 2,
+      "startedAt": "2026-03-03T08:30:40.643Z",
+      "endedAt": "2026-03-03T08:30:42.573Z",
+      "durationMs": 1930,
+      "rawRc": 0,
+      "rc": 0,
+      "outcome": "pass"
+    }
+  ]
+}
