@@ -33,7 +33,7 @@ import com.betsoft.casino.mp.web.service.ChangeTournamentStateTask;
 import com.betsoft.casino.mp.web.service.RoomServiceFactory;
 import com.betsoft.casino.utils.ITransportObject;
 import com.abs.casino.cassandra.CassandraPersistenceManager;
-import com.abs.casino.common.cache.Identifiable;
+import com.dgphoenix.casino.common.cache.Identifiable;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.string.StringUtils;

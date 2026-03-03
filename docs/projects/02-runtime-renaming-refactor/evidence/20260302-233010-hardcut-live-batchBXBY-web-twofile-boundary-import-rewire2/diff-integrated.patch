@@ -1,0 +1,74 @@
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+index 7ad719395..cad55c965 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+@@ -33,7 +33,7 @@ import com.betsoft.casino.mp.web.service.ChangeTournamentStateTask;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.utils.ITransportObject;
+ import com.abs.casino.cassandra.CassandraPersistenceManager;
+-import com.abs.casino.common.cache.Identifiable;
++import com.dgphoenix.casino.common.cache.Identifiable;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+index dd7a15565..e24fd2da1 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+@@ -31,7 +31,7 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.utils.ITransportObject;
+ import com.abs.casino.cassandra.CassandraPersistenceManager;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.dgphoenix.casino.common.exception.CommonException;
+ import com.abs.casino.kafka.dto.RunningRoomDto;
+ import com.abs.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;
+ import com.hazelcast.core.*;
+@@ -243,7 +243,7 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
+ 
+         try {
+             roomService = this.getRoomServiceWithCheck(roomInfo.getGameType());
+-        } catch (CommonException e) {
++        } catch (CommonException e) {
+             LOG.error("startSingleNodeRooms: Cannot load RoomService for start room={}", roomId, e);
+             return;
+         }
+@@ -306,7 +306,7 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
+ 
+         try {
+             roomService = this.getRoomServiceWithCheck(roomInfo.getGameType());
+-        } catch (CommonException e) {
++        } catch (CommonException e) {
+             LOG.error("startMultiNodeRooms: Cannot load RoomService for start room={}", roomId, e);
+             return;
+         }
+@@ -1039,10 +1039,10 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
+ 
+         try {
+             roomService = this.getRoomServiceWithCheck(gameType);
+-        } catch (CommonException e) {
+-            LOG.error("getRoom: Cannot load RoomService for GameType={}", gameType.name(), e);
+-            throw new CommonException("Cannot load RoomService for GameType=" + gameType.name());
+-        }
++        } catch (CommonException e) {
++            LOG.error("getRoom: Cannot load RoomService for GameType={}", gameType.name(), e);
++            throw new CommonException("Cannot load RoomService for GameType=" + gameType.name());
++        }
+ 
+         boolean locked;
+         try {
+@@ -1183,10 +1183,10 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
+             LOG.debug("createRoom: start roomSaved");
+             roomSaved.start();
+             LOG.debug("createRoom: started roomSaved");
+-        } catch (CommonException e) {
+-            LOG.error("createRoom: Cannot start roomSaved: {}, roomInfo={}", roomSaved, roomInfo, e);
+-            //rollback changes
+-            roomService.remove(id);
++        } catch (com.abs.casino.common.exception.CommonException e) {
++            LOG.error("createRoom: Cannot start roomSaved: {}, roomInfo={}", roomSaved, roomInfo, e);
++            //rollback changes
++            roomService.remove(id);
+             if (roomInfo instanceof SingleNodeRoomInfo) {
+                 ((SingleNodeRoomInfo) roomInfo).setGameServerId(IRoomInfo.NOT_ASSIGNED_ID);
+             }

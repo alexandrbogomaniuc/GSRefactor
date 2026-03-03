@@ -5530,3 +5530,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - narrowed web fail-head from broad signature/type drift to two localized files.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 00:59 UTC (Hard-cut live Batch BX+BY)
+- Continued Project 02 stabilization with integrated live batches `BX+BY` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BX: `RoomServiceFactory` exception boundary harmonization (retain `com.dgphoenix` service/factory contract catches; catch `com.abs` for `roomSaved.start()` path).
+  - BY: `KafkaMultiPlayerResponseService` `Identifiable` import normalization to `com.dgphoenix` to match `IRoomPlayerInfo` inheritance.
+  - retained total: `2` targeted rewires across `2` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted from `RoomServiceFactory`/`KafkaMultiPlayerResponseService` lane into `SitInHandler` exception boundary lane (`lines 573/576/582/846`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BX/BY import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-233010-hardcut-live-batchBXBY-web-twofile-boundary-import-rewire2/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/282-hard-cut-live-batchBXBY-web-twofile-boundary-import-rewire2-report-20260303.md`
+- Measured movement:
+  - cleared previous two-file fail lane and narrowed to localized `SitInHandler` boundary harmonization.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

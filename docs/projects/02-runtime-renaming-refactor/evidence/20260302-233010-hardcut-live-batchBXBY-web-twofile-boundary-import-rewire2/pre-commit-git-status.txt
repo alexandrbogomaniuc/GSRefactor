@@ -1,0 +1,16 @@
+## main...origin/main
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+?? docs/gs-canonical-pack-clean-20260302T163759Z.tar.gz
+?? docs/gs-canonical-pack-clean-final-20260302T183537Z.tar.gz
+?? docs/gs.zip
+?? docs/gs/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-233010-hardcut-live-batchBXBY-web-twofile-boundary-import-rewire2/
+
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+?? docs/gs-canonical-pack-clean-20260302T163759Z.tar.gz
+?? docs/gs-canonical-pack-clean-final-20260302T183537Z.tar.gz
+?? docs/gs.zip
+?? docs/gs/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-233010-hardcut-live-batchBXBY-web-twofile-boundary-import-rewire2/

@@ -1183,7 +1183,7 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
             LOG.debug("createRoom: start roomSaved");
             roomSaved.start();
             LOG.debug("createRoom: started roomSaved");
-        } catch (CommonException e) {
+        } catch (com.abs.casino.common.exception.CommonException e) {
             LOG.error("createRoom: Cannot start roomSaved: {}, roomInfo={}", roomSaved, roomInfo, e);
             //rollback changes
             roomService.remove(id);

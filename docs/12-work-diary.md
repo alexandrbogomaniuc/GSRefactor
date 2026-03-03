@@ -10651,3 +10651,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.10-1.80h` (`~0.01-0.23` workdays), next lane is bounded two-file harmonization (`RoomServiceFactory`, `KafkaMultiPlayerResponseService`).
+
+### 2026-03-03 00:59 UTC
+- Continued Project 02 stabilization with integrated `BX+BY` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `RoomServiceFactory` exception boundary alignment to maintain mixed namespace compatibility at service-loading and room-start call sites.
+  - `KafkaMultiPlayerResponseService` `Identifiable` import alignment to current `IRoomPlayerInfo` hierarchy.
+  - retained total: `2` targeted rewires across `2` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized COTG compile PASS.
+  - web compile no longer fails on `RoomServiceFactory`/`KafkaMultiPlayerResponseService`; first-fail is now narrowed to `SitInHandler` exception namespace boundary mismatch.
+  - canonical rerun profile remains `STEP09` FAIL (known smoke-stage external/runtime lane), with prewarm PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-233010-hardcut-live-batchBXBY-web-twofile-boundary-import-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/282-hard-cut-live-batchBXBY-web-twofile-boundary-import-rewire2-report-20260303.md`
+- Result: web fail frontier reduced to localized `SitInHandler` lane for next bounded pass.
