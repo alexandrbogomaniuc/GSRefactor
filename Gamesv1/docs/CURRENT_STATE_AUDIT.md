@@ -1,64 +1,34 @@
 ﻿# CURRENT_STATE_AUDIT
 
-Audit regenerated from actual commands on 2026-03-03 from `E:\Dev\GSRefactor\Gamesv1`.
+Audit snapshot date: 2026-03-03
+Repo root: `E:\Dev\GSRefactor\Gamesv1`
 
-Raw command outputs are captured in `docs/generated/COMMAND_PROOF_2026-03-03.md`.
+## Scope
 
-## Source-of-truth split
+This run produced export/proof artifacts only (no new product features).
 
-- Client capability spec: `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`
-- Runtime/release contract spec: `docs/gs/*`
-- Export truth docs: `docs/EXPORT_PROOF.md`, `docs/EXPORT_FILE_CHECKLIST.md`
+## Canonical mirror proof
 
-## Command proof (actual runs)
-
-1. `corepack pnpm run verify:gs-contract-pack -- --strict-upstream --upstream e:\Dev\GSRefactor\docs\gs --repo e:\Dev\GSRefactor\Gamesv1\docs\gs`
-- PASS
-- Upstream lock semantics verification passed
-- Canonical entries: 43
-- Repo files compared: 60
-
-2. `corepack pnpm run test:contract`
-- PASS (10 passed, 0 failed)
-
-3. `corepack pnpm run test`
-- PASS
-- Includes: verify + config + animation-policy + contract + template tests
-
-4. `corepack pnpm run build`
-- PASS (`@games/premium-slot` build succeeded)
-
-5. `corepack pnpm run release:pack -- --game premium-slot`
-- PASS
-- Output: `games/premium-slot/release-packs/1.0.0+7ec5ebb1`
-
-6. `corepack pnpm run create-game -- --dry-run --gameId dryrun-slot --name "Dry Run Slot" --themeId neon`
-- PASS
+- Strict upstream check against included GS pack artifact: PASS
+- Command: `pnpm run verify:gs-contract-pack -- --strict-upstream --upstream E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gs_pack\gs --repo E:\Dev\GSRefactor\Gamesv1\docs\gs`
 
 ## Export proof
 
-- Archive: `E:\Dev\GSRefactor\exports\Gamesv1_export_20260303T091017Z.zip`
-- SHA-256: `0e87b0d703853926c378206e47af977a31bce16cb52231ded0bb95a0a8bb5920`
+- Clean export zip: `E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gamesv1\Gamesv1_export_20260303T112426Z.zip`
+- SHA-256: `b43d90f901b3bddcd1350c36763960fdbff1c1b60cef07ad54ce1408888de6ac`
 - Exclusion check: PASS
-- Required-file checklist: PASS (17/17 present)
 
-## Workspace tree summary (root)
+## Audit bundle
 
-- `.agent/`
-- `docs/`
-- `games/`
-- `packages/`
-- `tests/`
-- `tools/`
-- `README.md`, `package.json`, `pnpm-workspace.yaml`, `tsconfig.json`
+- Bundle: `E:\Dev\GSRefactor\exports\AUDIT_BUNDLE_20260303T112544Z.zip`
+- SHA-256: `dd2c4659006f9f229b9131e97333e77f12e5fe58168b4c2513fa779cade8b6aa`
 
-## Hygiene checks
+## Proof commands
 
-Tracked-source ban check (`node_modules`, `dist`, `build`, `.cache`, `release-packs`, `~$*.docx`) against git index:
-- PASS (no tracked banned paths)
+- `pnpm run test:contract`: PASS
+- `pnpm run test`: PASS
+- `pnpm run build`: PASS
+- `pnpm run release:pack -- --game premium-slot`: PASS
+- `pnpm run create-game --dry-run`: PASS
 
-## Exactness state
-
-- `upstream-exact`: PASS (strict upstream mirror verify passed)
-- `runtime-exact`: PASS (contract tests green)
-- `release/scaffold-exact`: PASS (`release:pack` and `create-game --dry-run` green)
+Raw outputs are in `proof/command_outputs.txt` and `proof/verify_gs_contract_pack_output.txt` inside the audit bundle.

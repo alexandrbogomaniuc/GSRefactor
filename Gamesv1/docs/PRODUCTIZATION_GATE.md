@@ -1,41 +1,28 @@
 ﻿# PRODUCTIZATION_GATE
 
-This gate defines what must be green before starting productization/polish work.
+Gate rule for this audit sprint:
+- Gate is **GREEN** only if strict upstream verification passes and the clean export is clean.
 
-## Current gate status (2026-03-03)
+## Current status (2026-03-03)
 
 - **GREEN**
 
-All required preparation exactness proofs are green in this repo state:
-1. Upstream mirror proof
-- `verify:gs-contract-pack` strict upstream mode: PASS
-- `docs/gs` mirror verified against real upstream lock format
+## Required evidence
 
-2. Runtime contract proof
-- `test:contract`: PASS
-- Canonical transport operations and wire shapes validated
+1. Strict upstream mirror check
+- Command: `pnpm run verify:gs-contract-pack -- --strict-upstream --upstream E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gs_pack\gs --repo E:\Dev\GSRefactor\Gamesv1\docs\gs`
+- Result: PASS
 
-3. Build/test/release/scaffold proof
-- `test`: PASS
-- `build`: PASS
-- `release:pack -- --game premium-slot`: PASS
-- `create-game -- --dry-run ...`: PASS
+2. Clean export check
+- Export: `E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gamesv1\Gamesv1_export_20260303T112426Z.zip`
+- SHA-256: `b43d90f901b3bddcd1350c36763960fdbff1c1b60cef07ad54ce1408888de6ac`
+- Exclusion check: PASS (`node_modules`, `dist`, `build`, `.cache`, `release-packs`, `~$*.docx` excluded)
 
-4. Export and artifact truth
-- Export archive and hash recorded in `docs/EXPORT_PROOF.md`
-- Required-file checklist is 17/17 PRESENT in `docs/EXPORT_FILE_CHECKLIST.md`
+3. Proof command run set
+- `pnpm run test:contract`: PASS
+- `pnpm run test`: PASS
+- `pnpm run build`: PASS
+- `pnpm run release:pack -- --game premium-slot`: PASS
+- `pnpm run create-game --dry-run`: PASS
 
-## Gate conditions (must remain green)
-
-1. Contract and runtime baseline
-- `docs/gs/*` remains canonical runtime/release contract source.
-- Bootstrap and runtime envelope flows remain separated.
-
-2. Reproducibility baseline
-- `verify:gs-contract-pack`, `test:contract`, `test`, `build`, `release:pack`, and `create-game --dry-run` continue to pass.
-
-3. Hygiene baseline
-- No tracked generated junk in canonical source (`node_modules`, `dist`, `build`, `.cache`, release outputs, Office temp files).
-
-4. Scope baseline
-- WS/ExtGame/operator-specific paths remain non-canonical/legacy scope.
+Raw outputs are included in the audit bundle under `proof/`.

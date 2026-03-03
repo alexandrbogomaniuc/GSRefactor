@@ -2,7 +2,7 @@
 
 Verification root: `E:\Dev\GSRefactor\Gamesv1`  
 Verification date: 2026-03-03
-Archive checked: `E:\Dev\GSRefactor\exports\Gamesv1_export_20260303T091017Z.zip`
+Archive checked: `E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gamesv1\Gamesv1_export_20260303T112426Z.zip`
 
 | Status | File |
 | --- | --- |
