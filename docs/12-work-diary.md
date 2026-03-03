@@ -10943,3 +10943,16 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - residual runtime closure (`STEP09` upstream stability) `~0.25-4.00h` (`~0.03-0.50` workdays).
+
+### 2026-03-03 06:18 UTC
+- Push checkpoint for `Batch CN+CO` completed.
+- Commit pushed to `origin/main`:
+  - `6c61dad43` (`refactor: hard-cut batchCNCO step09 upstream resilience`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-060341-hardcut-live-batchCNCO-step09-upstream-resilience/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/292-hard-cut-live-batchCNCO-step09-upstream-resilience-rewire17-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - residual runtime closure (`STEP09` upstream stability) `~0.25-4.00h` (`~0.03-0.50` workdays), now with deterministic infra-blocked classification (`rc=3`) when upstream probes are down.
