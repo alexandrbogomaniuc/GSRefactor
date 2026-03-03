@@ -11195,3 +11195,17 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - remaining refactor work `~0.00h`; optional observation-only window `~0.00-0.10h` (`~0.00-0.01` workdays).
+
+### 2026-03-03 11:06 UTC
+- Gamesv1 pre-step pull completed before packaging:
+  - pulled latest in `/Users/alexb/Documents/Dev/Dev_new/Gamesv1` (`main` advanced to `9ce713bd0`).
+- Produced upload-ready GS canonical pack artifacts from single canonical source:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/gs/`
+  - artifacts: `docs/gs_pack_upload.zip` and `docs/gs_pack_upload.tar.gz`
+- Hygiene/proof results:
+  - archive junk scan PASS (no `__MACOSX`, `.DS_Store`, `._*`, temp/swap files),
+  - required proof files present (`UPSTREAM_PACK_STATUS.md`, `PACK_INTEGRITY_REPORT.md`, `FILE_HASH_MANIFEST.sha256`, `contract-lock.json`),
+  - JSON parse PASS and contract-lock verify PASS,
+  - printed SHA-256 + full tree summary (60 files).
+- Push checkpoint:
+  - commit `eab0b4bd5` pushed to `origin/main` with proof file refresh + upload artifacts.
