@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.common.SharedCrashGameState;
 import com.betsoft.casino.mp.model.ISharedGameStateService;
 import com.betsoft.casino.mp.model.RoomState;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

@@ -13,7 +13,7 @@ import com.betsoft.casino.mp.service.ISpawnConfigProvider;
 import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
 import com.betsoft.casino.teststand.TestStandFeature;
 import com.betsoft.casino.teststand.TestStandLocal;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.apache.logging.log4j.Logger;
 import java.util.*;
 

@@ -1962,7 +1962,7 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
 
     public String getCustomerSettingsUrl() {
         String settingUrl = PropertyUtils.getStringProperty(properties, KEY_CUSTOMER_SETTINGS_URL);
-        if (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(settingUrl)) {
+        if (StringUtils.isTrimmedEmpty(settingUrl)) {
             settingUrl = "/common/standard/settings/customerspec_descriptor.xml";
         }
         return settingUrl;
@@ -1970,7 +1970,7 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
 
     public String getCustomerSettingsHtml5Pc() {
         String settingPath = PropertyUtils.getStringProperty(properties, KEY_CUSTOMER_SETTINGS_HTML5PC);
-        if (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(settingPath)) {
+        if (StringUtils.isTrimmedEmpty(settingPath)) {
             settingPath = "/html5pc/common/_standard/settings/";
         }
         return settingPath;

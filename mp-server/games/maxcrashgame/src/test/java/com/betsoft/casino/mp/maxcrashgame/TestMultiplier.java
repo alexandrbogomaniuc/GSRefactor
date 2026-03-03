@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.maxcrashgame;
 
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.google.common.util.concurrent.AtomicDouble;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
