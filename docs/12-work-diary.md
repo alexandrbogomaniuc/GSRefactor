@@ -10807,3 +10807,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/287-hard-cut-live-batchCG-nickname-exception-bridge-rewire3-report-20260303.md`
 - Result:
   - NicknameService boundary lane is cleared; next bounded pass should target `GetBattlegroundStartGameUrlHandler` boundary point.
+
+### 2026-03-03 03:39 UTC
+- Push checkpoint for `Batch CG` completed.
+- Commit pushed to `origin/main`:
+  - `0d48bc0a2` (`refactor: hard-cut batchCG nickname exception bridge`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-031511-hardcut-live-batchCG-nickname-exception-bridge-rewire3/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/287-hard-cut-live-batchCG-nickname-exception-bridge-rewire3-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.01-0.35h` (`~0.00-0.04` workdays), next lane is localized `GetBattlegroundStartGameUrlHandler` exception-boundary harmonization.
