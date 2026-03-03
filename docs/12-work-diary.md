@@ -10751,3 +10751,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/285-hard-cut-live-batchCDCE-sitout-exception-boundary-rewire5-report-20260303.md`
 - Result:
   - sit-out exception lane is cleared; next bounded pass should target `EnterLobbyHandler` boundary points.
+
+### 2026-03-03 02:50 UTC
+- Push checkpoint for `Batch CD+CE` completed.
+- Commit pushed to `origin/main`:
+  - `480a5a659` (`refactor: hard-cut batchCDCE sitout exception boundaries`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-022647-hardcut-live-batchCDCE-sitout-exception-boundary-rewire5/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/285-hard-cut-live-batchCDCE-sitout-exception-boundary-rewire5-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.01-0.60h` (`~0.00-0.08` workdays), next lane is localized `EnterLobbyHandler` exception-boundary harmonization.
