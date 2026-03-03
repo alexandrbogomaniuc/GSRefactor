@@ -10862,3 +10862,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/289-hard-cut-live-batchCI-botopenroom-exception-bridge-rewire2-report-20260303.md`
 - Result:
   - localized bot-open-room boundary lane is cleared; targeted web compile gate is green.
+
+### 2026-03-03 05:08 UTC
+- Push checkpoint for `Batch CI` completed.
+- Commit pushed to `origin/main`:
+  - `29f56f2dd` (`refactor: hard-cut batchCI botopenroom exception bridge`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-040534-hardcut-live-batchCI-botopenroom-exception-bridge-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/289-hard-cut-live-batchCI-botopenroom-exception-bridge-rewire2-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.01-0.20h` (`~0.00-0.03` workdays), targeted web compile lane now green.
