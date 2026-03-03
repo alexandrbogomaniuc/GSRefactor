@@ -26,6 +26,7 @@ This is the gold-standard reference architecture for future Gamesv1 slot games.
 
 - `@gamesv1/ui-kit` reusable HUD:
   - `packages/ui-kit/src/hud/PremiumTemplateHud.ts`
+  - `packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts`
 
 Controls:
 - spin
@@ -41,17 +42,37 @@ HUD visibility and layout are driven by resolved runtime config and feature modu
 ## Feature module pipeline
 
 - Module manager:
-  - `src/game/features/FeatureModuleManager.ts`
+  - `packages/ui-kit/src/shell/features/FeatureModuleManager.ts`
 - Modules:
-  - `FreeSpinsFeatureModule`
-  - `RespinFeatureModule`
-  - `HoldAndWinFeatureModule`
-  - `BuyFeatureModule`
-  - `JackpotHooksFeatureModule`
+  - `packages/ui-kit/src/shell/features/FreeSpinsFeatureModule.ts`
+  - `packages/ui-kit/src/shell/features/RespinFeatureModule.ts`
+  - `packages/ui-kit/src/shell/features/HoldAndWinFeatureModule.ts`
+  - `packages/ui-kit/src/shell/features/BuyFeatureModule.ts`
+  - `packages/ui-kit/src/shell/features/JackpotHooksFeatureModule.ts`
 
 Enablement source:
 - resolved runtime config capabilities
 - server feature state from mapped `presentationPayload`
+
+## Presentation mapper
+
+- Canonical mapper:
+  - `packages/ui-kit/src/shell/presentation/PremiumPresentationMapper.ts`
+- premium-slot compatibility export:
+  - `src/app/runtime/RuntimeOutcomeMapper.ts`
+
+## WOW / VFX orchestration
+
+- Canonical tiers:
+  - `packages/ui-kit/src/shell/vfx/WinPresentationTiers.ts`
+- Canonical orchestrator:
+  - `packages/ui-kit/src/shell/vfx/WowVfxOrchestrator.ts`
+- Premium implementation adapters:
+  - `src/game/fx/WinHighlight.ts`
+  - `src/game/fx/ParticleBurst.ts`
+  - `src/game/ui/WinCounter.ts`
+
+VFX timing and low-performance behavior are driven by `AnimationPolicyEngine` and runtime config.
 
 ## Asset and localization handoff paths
 

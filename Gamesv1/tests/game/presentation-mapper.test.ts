@@ -1,7 +1,13 @@
 import assert from "node:assert/strict";
 
-import { mapPlayRoundToPresentation } from "../../games/premium-slot/src/app/runtime/RuntimeOutcomeMapper.ts";
+import { mapPlayRoundToPresentation } from "../../packages/ui-kit/src/shell/presentation/PremiumPresentationMapper.ts";
 import type { PlayRoundResponse } from "../../packages/core-protocol/src/IGameTransport.ts";
+
+const defaultLayout = {
+  reelCount: 5,
+  rowCount: 3,
+  symbolModulo: 12,
+} as const;
 
 const makeRound = (presentationPayload: unknown): PlayRoundResponse => ({
   ok: true,
@@ -62,6 +68,7 @@ test("maps canonical payload fields into presentation model", () => {
       animationCues: ["free-spins-pulse"],
       labels: { jackpotTriggered: "true" },
     }),
+    defaultLayout,
   );
 
   assert.equal(mapped.roundId, "round-42");
@@ -74,8 +81,64 @@ test("maps canonical payload fields into presentation model", () => {
 
 test("throws on missing reel stops", () => {
   assert.throws(
-    () => mapPlayRoundToPresentation(makeRound({ uiMessages: ["invalid"] })),
+    () => mapPlayRoundToPresentation(makeRound({ uiMessages: ["invalid"] }), defaultLayout),
     /Invalid presentationPayload/,
+  );
+});
+
+test("supports alternate reel/grid layout constraints", () => {
+  const mapped = mapPlayRoundToPresentation(
+    makeRound({
+      reelStops: [
+        [0, 1, 2, 3],
+        [1, 2, 3, 4],
+        [2, 3, 4, 5],
+      ],
+      symbolGrid: [
+        [0, 1, 2],
+        [1, 2, 3],
+        [2, 3, 4],
+        [3, 4, 5],
+      ],
+      counters: {},
+      uiMessages: [],
+      audioCues: [],
+      animationCues: [],
+      labels: {},
+    }),
+    {
+      reelCount: 3,
+      rowCount: 4,
+      symbolModulo: 8,
+    },
+  );
+
+  assert.equal(mapped.reels.stopColumns.length, 3);
+  assert.equal(mapped.reels.stopColumns[0].length, 4);
+  assert.equal(mapped.symbolGrid.length, 4);
+  assert.equal(mapped.symbolGrid[0].length, 3);
+});
+
+test("throws when payload shape does not match provided constraints", () => {
+  assert.throws(
+    () =>
+      mapPlayRoundToPresentation(
+        makeRound({
+          reelStops: [
+            [0, 1, 2],
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+          ],
+          counters: {},
+          uiMessages: [],
+          audioCues: [],
+          animationCues: [],
+          labels: {},
+        }),
+        defaultLayout,
+      ),
+    /Invalid reelStops width/,
   );
 });
 

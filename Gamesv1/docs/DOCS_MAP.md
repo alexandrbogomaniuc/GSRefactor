@@ -15,6 +15,19 @@ Canonical and archived documentation index.
 - `docs/PHASE1_PREPARATION_CLOSEOUT.md`: prep sprint closeout status.
 - `docs/PRODUCTIZATION_GATE.md`: explicit gate conditions before polish/productization.
 - `docs/HANDOFF_TO_PRODUCTIZATION.md`: frozen boundaries and next-sprint handoff.
+- `docs/SHARED_HUD_ARCHITECTURE.md`: reusable premium HUD/control panel architecture.
+- `docs/HUD_CONFIG_SCHEMA.md`: HUD visibility/config schema and capability mapping.
+- `docs/PRESENTATION_LAYER_ARCHITECTURE.md`: canonical payload-to-UI mapping architecture.
+- `docs/FEATURE_MODULE_SYSTEM.md`: pluggable feature-module system for template reuse.
+- `docs/RESPONSIVE_SCALING_STRATEGY.md`: shared scaling strategy and layout matrix expectations.
+- `docs/SAFE_AREA_POLICY.md`: safe-area/notch handling policy for all game shells.
+- `docs/WOW_VFX_ARCHITECTURE.md`: shared win/VFX orchestration architecture.
+- `docs/WIN_PRESENTATION_TIERS.md`: canonical win tier mapping and timing rules.
+- `docs/ART_PIPELINE_PRODUCTIZATION.md`: reusable art integration contract for new games.
+- `docs/PROMO_ASSET_PIPELINE.md`: promo asset flow and release handoff policy.
+- `docs/VIDEO_OVERLAY_GUIDELINES.md`: video overlay integration and fallback rules.
+- `docs/PERFORMANCE_GUARDRAILS.md`: frontend performance guardrails for productization.
+- `docs/CODE_SPLITTING_PLAN.md`: concrete chunking mitigation and follow-up plan.
 
 ## Canonical GS Contract Pack
 

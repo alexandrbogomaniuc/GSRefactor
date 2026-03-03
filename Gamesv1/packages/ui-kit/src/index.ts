@@ -3,6 +3,7 @@ export * from "./config/GameConfig";
 export * from "./config/HudSchema";
 export * from "./hud/PremiumTemplateHud";
 export * from "./layout/HudLayout";
+export * from "./shell";
 export * from "./popups/PausePopup";
 export * from "./popups/SettingsPopup";
 export * from "./slots/Reel";

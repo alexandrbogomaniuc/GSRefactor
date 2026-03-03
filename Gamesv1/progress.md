@@ -21,3 +21,43 @@ Original prompt: TASK: Implement responsive layout using @pixi/layout in package
 - Replaced premium-slot MainScreen HUD wiring to use shared HUD + config-driven visibility.
 - Added canonical presentation mapper model in RuntimeOutcomeMapper covering reels, overlays, counters, messages, sound cues, animation cues, server state.
 - Added pluggable feature module system (FeatureModuleManager) with free-spins/respin/hold-and-win/buy/jackpot modules driven by resolved config + server state.
+- 2026-03-03: Productization shell pass executed.
+- Added shared ui-kit shell modules under packages/ui-kit/src/shell:
+  - hud policy resolver (`resolvePremiumHudVisibility`)
+  - presentation mapper (`PremiumPresentationMapper`)
+  - reusable feature module manager + free-spins/respin/hold-and-win/buy/jackpot modules.
+- Converted premium-slot local mapper/features to thin compatibility wrappers and switched MainScreen to use shared ui-kit modules directly.
+- Added premium shell smoke coverage (`tests/game/premium-shell-smoke.test.ts`) for hidden-control reflow, config-driven module behavior, and presentation payload discipline.
+- Added productization docs:
+  - docs/SHARED_HUD_ARCHITECTURE.md
+  - docs/HUD_CONFIG_SCHEMA.md
+  - docs/PRESENTATION_LAYER_ARCHITECTURE.md
+  - docs/FEATURE_MODULE_SYSTEM.md
+  - docs/RESPONSIVE_SCALING_STRATEGY.md
+  - docs/SAFE_AREA_POLICY.md
+- Updated docs index and premium-slot architecture map to point to shared modules.
+- Validation:
+  - corepack pnpm run test:template (pass)
+  - corepack pnpm run test:layout (pass)
+  - corepack pnpm run test (pass)
+  - corepack pnpm run build (pass)
+- 2026-03-03: WOW/VFX + art/perf productization pass completed.
+- Added shared VFX modules in ui-kit shell:
+  - WinPresentationTiers
+  - WowVfxOrchestrator (audio/animation cue orchestration, low-perf fallback, config-driven timing)
+- Wired premium-slot MainScreen to shared orchestrator while keeping GS-authoritative runtime flow unchanged.
+- Added VFX tests: tests/game/wow-vfx-orchestrator.test.ts.
+- Added productization docs:
+  - docs/WOW_VFX_ARCHITECTURE.md
+  - docs/WIN_PRESENTATION_TIERS.md
+  - docs/ART_PIPELINE_PRODUCTIZATION.md
+  - docs/PROMO_ASSET_PIPELINE.md
+  - docs/VIDEO_OVERLAY_GUIDELINES.md
+  - docs/PERFORMANCE_GUARDRAILS.md
+  - docs/CODE_SPLITTING_PLAN.md
+- Added concrete chunking implementation in games/premium-slot/vite.config.ts (manualChunks).
+- Build outcome: app/runtime/ui chunks split; vendor-pixi chunk still >500k warning, documented with follow-up mitigation plan.
+- Validation:
+  - corepack pnpm run test:template (pass)
+  - corepack pnpm run test (pass)
+  - corepack pnpm run build (pass, single vendor warning remains)

@@ -4,17 +4,23 @@ import {
   AnimationPolicyEngine,
   createAnimationPolicy,
   type ResolvedConfig,
-  type WinTier,
 } from "@gamesv1/core-compliance";
 import { engine } from "@gamesv1/pixi-engine";
 import {
+  createAudioCueRegistry,
+  FeatureModuleManager,
+  type FeatureFrame,
   GameConfig,
   PremiumTemplateHud,
+  type AudioCueRegistry,
   type PremiumHudControlId,
+  type PremiumHudFeatureFlags,
   type PremiumHudVisibility,
+  resolvePremiumHudVisibility,
   SettingsPopup,
   SlotMachine,
-  UiAssetKeys,
+  resolveAudioCueActions,
+  WowVfxOrchestrator,
 } from "@gamesv1/ui-kit";
 import {
   gsRuntimeClient,
@@ -29,10 +35,6 @@ import {
 
 import { AppAssetKeys } from "../../assets/assetKeys";
 import { userSettings } from "../../utils/userSettings";
-import {
-  FeatureModuleManager,
-  type FeatureFrame,
-} from "../../../game/features";
 import { ParticleBurst } from "../../../game/fx/ParticleBurst";
 import { WinHighlight } from "../../../game/fx/WinHighlight";
 import { WinCounter } from "../../../game/ui/WinCounter";
@@ -44,29 +46,9 @@ type PendingRoundResolution = {
   balance: number;
 };
 
-const buildBaseHudVisibility = (runtimeConfig: ResolvedConfig): PremiumHudVisibility => ({
-  controls: {
-    spin: true,
-    turbo: runtimeConfig.capabilities.turbo.allowed,
-    autoplay: runtimeConfig.capabilities.features.autoplay,
-    buyFeature:
-      runtimeConfig.capabilities.features.buyFeature ||
-      runtimeConfig.capabilities.features.buyFeatureForCashBonus,
-    sound: runtimeConfig.capabilities.sound.showToggle,
-    settings: runtimeConfig.capabilities.sessionUi.closeButtonPolicy !== "hidden",
-    history:
-      runtimeConfig.capabilities.features.inGameHistory && runtimeConfig.capabilities.history.enabled,
-  },
-  metrics: {
-    balance: runtimeConfig.walletDisplay.showBalance,
-    bet: true,
-    win: true,
-  },
-});
-
-const applyQueryOverrides = (visibility: PremiumHudVisibility): PremiumHudVisibility => {
+const readHudFeatureFlagsFromQuery = (): PremiumHudFeatureFlags => {
   const params = new URLSearchParams(window.location.search);
-  const controls = { ...visibility.controls };
+  const controls: PremiumHudFeatureFlags["controls"] = {};
 
   const maybeOverride = (key: PremiumHudControlId, queryKey?: string) => {
     const resolvedQueryKey = queryKey ?? key;
@@ -85,7 +67,6 @@ const applyQueryOverrides = (visibility: PremiumHudVisibility): PremiumHudVisibi
 
   return {
     controls,
-    metrics: { ...visibility.metrics },
   };
 };
 
@@ -114,10 +95,11 @@ export class MainScreen extends Container {
   private isPresentingWin = false;
   private turboSelected = false;
   private soundEnabled = true;
-  private suppressHeavyFxForRound = false;
   private currentWinPresentationTimeout: ReturnType<typeof setTimeout> | null = null;
 
   private readonly animationPolicy: AnimationPolicyEngine;
+  private readonly audioCueRegistry: AudioCueRegistry;
+  private readonly wowVfx: WowVfxOrchestrator;
   private readonly featureModules: FeatureModuleManager;
   private readonly baseHudVisibility: PremiumHudVisibility;
 
@@ -137,7 +119,20 @@ export class MainScreen extends Container {
     );
 
     this.featureModules = new FeatureModuleManager(this.runtimeConfig);
-    this.baseHudVisibility = applyQueryOverrides(buildBaseHudVisibility(this.runtimeConfig));
+    this.audioCueRegistry = createAudioCueRegistry();
+    this.wowVfx = new WowVfxOrchestrator(this.animationPolicy, {
+      onAudioCue: (cue) => this.applySoundCue(cue),
+      onAnimationCue: (cue) => this.applyAnimationCue(cue),
+      showWinCounter: (amountMinor, title) => this.winCounter.showWin(amountMinor, title),
+      hideWinCounter: () => this.winCounter.hideNow(),
+      showHeavyWinFx: (symbols) => this.winHighlight.showWin(symbols),
+      clearHeavyWinFx: () => this.winHighlight.clear(),
+      playCoinBurst: (origin) => this.particleBurst.play(origin.x, origin.y),
+    });
+    this.baseHudVisibility = resolvePremiumHudVisibility(
+      this.runtimeConfig,
+      readHudFeatureFlagsFromQuery(),
+    );
 
     this.turboSelected = this.animationPolicy.value.turbo.selected;
     this.soundEnabled = this.runtimeConfig.soundDefaults.modeByDefault !== "off";
@@ -196,7 +191,7 @@ export class MainScreen extends Container {
       turboSelected: this.turboSelected,
       soundEnabled: this.soundEnabled,
       lastMessages: [],
-      activeFeatureModules: this.featureModules.listEnabledModules(),
+      activeFeatureModules: [],
     });
     this.showStatus(`FEATURE MODULES: ${this.featureModules.listEnabledModules().join(", ")}`);
   }
@@ -299,7 +294,6 @@ export class MainScreen extends Container {
 
     this.isSpinning = true;
     this.pendingRound = null;
-    this.suppressHeavyFxForRound = false;
 
     this.winHighlight.clear();
     this.showStatus("ROUND REQUESTED");
@@ -368,9 +362,6 @@ export class MainScreen extends Container {
     ];
     this.showStatus(formatMessages(mergedMessages));
 
-    this.applySoundCues([...presentation.soundCues, ...featureFrame.soundCues]);
-    this.applyAnimationCues([...presentation.animationCues, ...featureFrame.animationCues]);
-
     const reels = this.slotMachine.getReels();
     const winSymbols = [
       reels[0].getVisibleSymbols()[1],
@@ -380,36 +371,42 @@ export class MainScreen extends Container {
 
     const winAmount = presentation.winAmount;
     const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
-    const multiplier = defaultBet > 0 ? winAmount / defaultBet : 0;
-    const tier = this.animationPolicy.classifyWinByMultiplier(multiplier);
-
-    if (!this.suppressHeavyFxForRound && this.animationPolicy.shouldPlayHeavyWinFx(tier)) {
-      this.winHighlight.showWin(winSymbols);
-      this.particleBurst.play(0, -100);
-    } else {
-      this.winHighlight.clear();
-    }
-
-    this.winCounter.showWin(winAmount, this.getTierLabel(tier));
+    const vfxState = this.wowVfx.startWinPresentation({
+      winAmountMinor: winAmount,
+      defaultBetMinor: defaultBet,
+      winSymbols,
+      soundCues: [...presentation.soundCues, ...featureFrame.soundCues],
+      animationCues: [...presentation.animationCues, ...featureFrame.animationCues],
+      burstOrigin: { x: 0, y: -100 },
+    });
 
     this.isSpinning = false;
-    this.isPresentingWin = true;
+    this.isPresentingWin = vfxState.hasWinPresentation;
     PresentationStateStore.patch({
       isSpinning: false,
-      isPresentingWin: true,
+      isPresentingWin: vfxState.hasWinPresentation,
       lastWinAmount: winAmount,
       soundEnabled: this.soundEnabled,
       lastMessages: mergedMessages,
-      activeFeatureModules: featureFrame.activeModules,
+      activeFeatureModules: featureFrame.activeModuleIds,
       statusText: `ROUND_SETTLED:${presentation.roundId}`,
     });
 
     this.refreshHudState(winAmount);
 
-    const presentationMs = this.animationPolicy.getWinPresentationDurationMs(tier, false);
+    if (!vfxState.hasWinPresentation) {
+      return;
+    }
+
+    const presentationMs = vfxState.durationMs;
     this.clearWinPresentationTimeout();
+    if (presentationMs <= 0) {
+      this.finishWinPresentation(vfxState.forcedSkip);
+      return;
+    }
+
     this.currentWinPresentationTimeout = setTimeout(() => {
-      this.finishWinPresentation();
+      this.finishWinPresentation(vfxState.forcedSkip);
     }, presentationMs);
   }
 
@@ -423,23 +420,27 @@ export class MainScreen extends Container {
     }
   }
 
-  private applySoundCues(cues: string[]): void {
-    for (const cue of cues) {
-      if (cue === "jackpot-stinger" && this.soundEnabled) {
-        engine().audio.sfx.play(UiAssetKeys.SFX_PRESS, { volume: 1 });
+  private applySoundCue(cue: string): void {
+    for (const action of resolveAudioCueActions(cue, this.audioCueRegistry)) {
+      if (action.type === "sfx") {
+        if (action.respectSoundEnabled && !this.soundEnabled) {
+          continue;
+        }
+        engine().audio.sfx.play(action.assetKey, {
+          volume: action.volume ?? 1,
+        });
+        continue;
       }
 
-      if (cue === "mute-bgm") {
-        userSettings.setBgmVolume(0);
+      if (action.type === "bgmVolume") {
+        userSettings.setBgmVolume(action.volume);
       }
     }
   }
 
-  private applyAnimationCues(cues: string[]): void {
-    this.suppressHeavyFxForRound = cues.includes("disable-heavy-win-fx");
-
-    if (cues.includes("force-skip-presentation")) {
-      this.skipWinPresentation();
+  private applyAnimationCue(cue: string): void {
+    if (cue === "focus-status-banner") {
+      this.showStatus("FEATURE EVENT");
     }
   }
 
@@ -454,13 +455,6 @@ export class MainScreen extends Container {
     });
   }
 
-  private getTierLabel(tier: WinTier): string {
-    if (tier === "mega") return "MEGA WIN";
-    if (tier === "huge") return "HUGE WIN";
-    if (tier === "big") return "BIG WIN";
-    return "WIN";
-  }
-
   private showStatus(text: string): void {
     this.statusText.text = text;
     this.statusText.visible = text.length > 0;
@@ -473,8 +467,7 @@ export class MainScreen extends Container {
   }
 
   private finishWinPresentation(skipped = false) {
-    this.winHighlight.clear();
-    this.winCounter.hideNow();
+    this.wowVfx.finishWinPresentation();
     this.isPresentingWin = false;
     PresentationStateStore.patch({
       isPresentingWin: false,

@@ -13,6 +13,42 @@ export default defineConfig({
     port: 8080,
     open: true,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          const normalized = id.replaceAll("\\", "/");
+
+          if (
+            normalized.includes("/node_modules/pixi.js/") ||
+            normalized.includes("/node_modules/@pixi/")
+          ) {
+            return "vendor-pixi";
+          }
+
+          if (normalized.includes("/node_modules/motion/")) {
+            return "vendor-motion";
+          }
+
+          if (
+            normalized.includes("/packages/core-protocol/") ||
+            normalized.includes("/packages/core-compliance/")
+          ) {
+            return "runtime-core";
+          }
+
+          if (
+            normalized.includes("/packages/ui-kit/") ||
+            normalized.includes("/packages/pixi-engine/")
+          ) {
+            return "ui-engine";
+          }
+
+          return undefined;
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       "@gamesv1/core-protocol": pkg("core-protocol"),

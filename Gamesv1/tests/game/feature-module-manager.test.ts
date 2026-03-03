@@ -1,10 +1,9 @@
 import assert from "node:assert/strict";
 
 import { DefaultResolvedRuntimeConfig } from "../../packages/core-compliance/src/ResolvedRuntimeConfig.ts";
-import {
-  FeatureModuleManager,
-} from "../../games/premium-slot/src/game/features/FeatureModuleManager.ts";
-import type { RoundPresentationModel } from "../../games/premium-slot/src/app/runtime/RuntimeOutcomeMapper.ts";
+import { FeatureModuleManager } from "../../packages/ui-kit/src/shell/features/FeatureModuleManager.ts";
+import { resolvePremiumHudVisibility } from "../../packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts";
+import type { RoundPresentationModel } from "../../packages/ui-kit/src/shell/presentation/PremiumPresentationMapper.ts";
 
 const makeRound = (overrides: Partial<RoundPresentationModel> = {}): RoundPresentationModel => ({
   roundId: "round-1",
@@ -60,6 +59,46 @@ test("free-spins module produces overlay when counter present", () => {
 
   assert.ok(frame.overlays.some((overlay) => overlay.type === "free-spins"));
   assert.ok(frame.messages.some((message) => message.includes("FREE SPINS")));
+  assert.ok(frame.enabledModuleIds.includes("free-spins"));
+  assert.ok(frame.activeModuleIds.includes("free-spins"));
+});
+
+test("buy feature enabled in normal mode when allowed and available", () => {
+  const config = structuredClone(DefaultResolvedRuntimeConfig);
+  config.capabilities.features.buyFeature = true;
+  config.capabilities.features.buyFeatureForCashBonus = false;
+  config.capabilities.features.buyFeatureDisabledForCashBonus = true;
+
+  const manager = new FeatureModuleManager(config);
+  const frame = manager.resolve(
+    makeRound({
+      counters: { cashBonusMode: false, buyFeatureAvailable: true },
+    }),
+  );
+
+  assert.equal(frame.controlVisibility.buyFeature, true);
+  assert.ok(frame.overlays.some((overlay) => overlay.type === "buy-feature"));
+  assert.ok(frame.enabledModuleIds.includes("buy-feature"));
+  assert.ok(frame.activeModuleIds.includes("buy-feature"));
+});
+
+test("cash-bonus-only buy feature is enabled when cash bonus mode is active", () => {
+  const config = structuredClone(DefaultResolvedRuntimeConfig);
+  config.capabilities.features.buyFeature = false;
+  config.capabilities.features.buyFeatureForCashBonus = true;
+  config.capabilities.features.buyFeatureDisabledForCashBonus = false;
+
+  const manager = new FeatureModuleManager(config);
+  const frame = manager.resolve(
+    makeRound({
+      counters: { cashBonusMode: true, buyFeatureAvailable: true },
+    }),
+  );
+
+  assert.equal(frame.controlVisibility.buyFeature, true);
+  assert.ok(frame.overlays.some((overlay) => overlay.type === "buy-feature"));
+  assert.ok(frame.enabledModuleIds.includes("buy-feature"));
+  assert.ok(frame.activeModuleIds.includes("buy-feature"));
 });
 
 test("buy feature hidden when cash bonus forbids buy", () => {
@@ -77,6 +116,33 @@ test("buy feature hidden when cash bonus forbids buy", () => {
 
   assert.equal(frame.controlVisibility.buyFeature, false);
   assert.ok(frame.messages.some((message) => message.includes("DISABLED FOR CASH BONUS")));
+  assert.ok(frame.enabledModuleIds.includes("buy-feature"));
+  assert.ok(frame.activeModuleIds.includes("buy-feature"));
+});
+
+test("HUD buy-feature visibility is consistent with buy-feature capability policy", () => {
+  const config = structuredClone(DefaultResolvedRuntimeConfig);
+  config.capabilities.features.buyFeature = false;
+  config.capabilities.features.buyFeatureForCashBonus = true;
+  config.capabilities.features.buyFeatureDisabledForCashBonus = false;
+
+  const hudVisibility = resolvePremiumHudVisibility(config);
+  assert.equal(hudVisibility.controls.buyFeature, true);
+
+  const manager = new FeatureModuleManager(config);
+  const nonCashBonusRound = manager.resolve(
+    makeRound({
+      counters: { cashBonusMode: false, buyFeatureAvailable: true },
+    }),
+  );
+  const cashBonusRound = manager.resolve(
+    makeRound({
+      counters: { cashBonusMode: true, buyFeatureAvailable: true },
+    }),
+  );
+
+  assert.equal(nonCashBonusRound.controlVisibility.buyFeature, false);
+  assert.equal(cashBonusRound.controlVisibility.buyFeature, true);
 });
 
 test("jackpot module emits cues when triggered", () => {
@@ -96,6 +162,32 @@ test("jackpot module emits cues when triggered", () => {
   assert.ok(frame.soundCues.includes("jackpot-stinger"));
   assert.ok(frame.animationCues.includes("jackpot-overlay"));
   assert.ok(frame.overlays.some((overlay) => overlay.type === "jackpot"));
+  assert.ok(frame.enabledModuleIds.includes("jackpot-hooks"));
+  assert.ok(frame.activeModuleIds.includes("jackpot-hooks"));
+});
+
+test("activeModuleIds tracks current-round active modules, not all enabled modules", () => {
+  const config = structuredClone(DefaultResolvedRuntimeConfig);
+  config.capabilities.features.freeSpins = true;
+  config.capabilities.features.buyFeature = true;
+
+  const manager = new FeatureModuleManager(config);
+  const frame = manager.resolve(
+    makeRound({
+      counters: {
+        freeSpinsRemaining: 0,
+        buyFeatureAvailable: false,
+      },
+      labels: {
+        freeSpinsActive: "false",
+      },
+    }),
+  );
+
+  assert.ok(frame.enabledModuleIds.includes("free-spins"));
+  assert.ok(frame.enabledModuleIds.includes("buy-feature"));
+  assert.equal(frame.activeModuleIds.includes("free-spins"), false);
+  assert.ok(frame.activeModuleIds.includes("buy-feature"));
 });
 
 console.log(`\nFeature module tests: ${passed} passed, ${failed} failed.`);
