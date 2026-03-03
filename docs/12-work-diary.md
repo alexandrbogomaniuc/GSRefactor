@@ -10666,3 +10666,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-233010-hardcut-live-batchBXBY-web-twofile-boundary-import-rewire2/`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/282-hard-cut-live-batchBXBY-web-twofile-boundary-import-rewire2-report-20260303.md`
 - Result: web fail frontier reduced to localized `SitInHandler` lane for next bounded pass.
+
+### 2026-03-03 01:01 UTC
+- Push checkpoint for `Batch BX+BY` completed.
+- Commit pushed to `origin/main`:
+  - `ccc7d2929` (`refactor: hard-cut batchBXBY web two-file boundary`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-233010-hardcut-live-batchBXBY-web-twofile-boundary-import-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/282-hard-cut-live-batchBXBY-web-twofile-boundary-import-rewire2-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.05-1.20h` (`~0.01-0.15` workdays), next lane is localized `SitInHandler` exception-namespace boundary harmonization.
