@@ -1,6 +1,6 @@
-[2026-03-03T08:31:35Z] START web
-[2026-03-03T08:31:35Z] DIR mp-server
-[2026-03-03T08:31:35Z] CMD mvn -DskipTests -pl web -am compile
+[2026-03-03T08:32:59Z] START web
+[2026-03-03T08:32:59Z] DIR mp-server
+[2026-03-03T08:32:59Z] CMD mvn -DskipTests -pl web -am compile
 [INFO] Scanning for projects...
 [WARNING] 
 [WARNING] Some problems were encountered while building the effective model for com.betsoft.casino:mp-bots:jar:1.0.0-SNAPSHOT
@@ -282,3 +282,187 @@
 [INFO] Building Max Quest: Dragonstone 1.0.0-SNAPSHOT                   [21/37]
 [INFO]   from games/dragonstone/pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ dragonstone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/dragonstone/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ dragonstone ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------< com.betsoft.casino.mp:clashofthegods-math >--------------
+[INFO] Building Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT [22/37]
+[INFO]   from games/clashofthegods-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ clashofthegods-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ clashofthegods-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------------< com.betsoft.casino.mp:clashofthegods >----------------
+[INFO] Building Max Quest: Clash of the Gods 1.0.0-SNAPSHOT             [23/37]
+[INFO]   from games/clashofthegods/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ clashofthegods ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ clashofthegods ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------< com.betsoft.casino.mp:bg_dragonstone-math >--------------
+[INFO] Building Max Quest: BG Dragonstone. Math model 1.0.0-SNAPSHOT    [24/37]
+[INFO]   from games/bg_dragonstone-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_dragonstone-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_dragonstone-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_dragonstone-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------------< com.betsoft.casino.mp:bg_dragonstone >----------------
+[INFO] Building Max Quest: BG Dragonstone 1.0.0-SNAPSHOT                [25/37]
+[INFO]   from games/bg_dragonstone/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_dragonstone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_dragonstone/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_dragonstone ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------< com.betsoft.casino.mp:missionamazon-math >--------------
+[INFO] Building Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT    [26/37]
+[INFO]   from games/missionamazon-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ missionamazon-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/missionamazon-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ missionamazon-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------------< com.betsoft.casino.mp:missionamazon >-----------------
+[INFO] Building Max Quest: Mission Amazon 1.0.0-SNAPSHOT                [27/37]
+[INFO]   from games/missionamazon/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ missionamazon ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/missionamazon/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ missionamazon ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ------------< com.betsoft.casino.mp:bg_missionamazon-math >-------------
+[INFO] Building BG Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT [28/37]
+[INFO]   from games/bg_missionamazon-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_missionamazon-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_missionamazon-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_missionamazon-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:bg_missionamazon >---------------
+[INFO] Building BG Max Quest: Mission Amazon 1.0.0-SNAPSHOT             [29/37]
+[INFO]   from games/bg_missionamazon/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_missionamazon ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_missionamazon/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_missionamazon ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:sectorx-math >-----------------
+[INFO] Building Max Quest: Sector X. Math model 1.0.0-SNAPSHOT          [30/37]
+[INFO]   from games/sectorx-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ sectorx-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/sectorx-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ sectorx-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------------< com.betsoft.casino.mp:sectorx >--------------------
+[INFO] Building Max Quest: Sector X 1.0.0-SNAPSHOT                      [31/37]
+[INFO]   from games/sectorx/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ sectorx ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/sectorx/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ sectorx ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:bg_sectorx-math >----------------
+[INFO] Building BG Max Quest: Sector X. Math model 1.0.0-SNAPSHOT       [32/37]
+[INFO]   from games/bg_sectorx-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_sectorx-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_sectorx-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_sectorx-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ------------------< com.betsoft.casino.mp:bg_sectorx >------------------
+[INFO] Building BG Max Quest: Sector X 1.0.0-SNAPSHOT                   [33/37]
+[INFO]   from games/bg_sectorx/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_sectorx ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_sectorx/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_sectorx ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:persistance >------------------
+[INFO] Building Casino MP Games persistance layer 1.0.0-SNAPSHOT        [34/37]
+[INFO]   from persistance/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ persistance ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ persistance ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------------< com.betsoft.casino.mp:mp-kafka >-------------------
+[INFO] Building Kafka interfaces 1.0.0-SNAPSHOT                         [35/37]
+[INFO]   from kafka/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-kafka ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ mp-kafka ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 146 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/target/classes
+[INFO] 
+[INFO] ---------------------< com.betsoft.casino:mp-bots >---------------------
+[INFO] Building mp-bots 1.0.0-SNAPSHOT                                  [36/37]
+[INFO]   from bots/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.7.0:sources (default) @ mp-bots ---
+[WARNING]  Goal 'sources' is deprecated: in favor of resolve-sources goal and will be removed in a future version
