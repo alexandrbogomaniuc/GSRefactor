@@ -1,0 +1,15 @@
+Refactor Soak Summary
+started_at=2026-03-03T08:22:54.588Z
+ended_at=2026-03-03T08:22:59.512Z
+git_sha=49f4d7d4cb13afc11daed4f45361eb67acb17c68
+total_runs=2
+pass_count=2
+functional_fail_count=0
+infra_blocked_fail_count=0
+final_rc=0
+gap_ms=1000
+artifact_dir=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-081828-hardcut-live-final-signoff-evidence/soak-run2/soak-2026-03-03T08-22-54-570Z
+
+Runs:
+run=1 started_at=2026-03-03T08:22:54.589Z ended_at=2026-03-03T08:22:56.529Z duration_ms=1940 raw_rc=0 rc=0 outcome=pass
+run=2 started_at=2026-03-03T08:22:57.531Z ended_at=2026-03-03T08:22:59.512Z duration_ms=1981 raw_rc=0 rc=0 outcome=pass

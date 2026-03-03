@@ -1,0 +1,5 @@
+fast_gate_batchA=status=PASS;first_failed_step=NONE;failed_command=NONE
+fast_gate_batchB=status=PASS;first_failed_step=NONE;failed_command=NONE
+prewarm=status=PASS;first_failed_step=NONE;failed_command=NONE
+validation=status=PASS;first_failed_step=NONE;failed_command=NONE
+step09_retry1=status=FAIL;rc=SKIP
