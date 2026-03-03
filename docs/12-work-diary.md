@@ -11158,3 +11158,12 @@
 - Git commits/pushes completed on `main`:
   - `e58d70a8f`, `9fa347a9f`, `012fc3208`, `78f80cdd9`, `df6ad0952`, `a4ddd4145`.
 - Note: background `run-validation.sh` loops were observed mutating evidence logs during commit window; processes were terminated and remaining evidence deltas were committed/pushed.
+
+### 2026-03-03 08:39 UTC
+- Final git hygiene pass after export push:
+  - pulled latest first (already done), then pushed full pending set on `main`.
+  - observed background `run-validation.sh` repeatedly mutating evidence logs; terminated loops and committed final frozen evidence snapshot.
+- Final pushed head:
+  - `fc6c1b897`
+- Branch state:
+  - working tree clean after push.
