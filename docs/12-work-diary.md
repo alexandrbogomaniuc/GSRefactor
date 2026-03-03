@@ -11080,3 +11080,21 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - residual runtime closure (`STEP09` repeated-run soak and final signoff) `~0.05-1.00h` (`~0.01-0.13` workdays), with full matrix pass retained under tighter startup/smoke controls.
+
+### 2026-03-03 08:11 UTC
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with integrated hard-cut wave `CW+CX`.
+- Batch content:
+  - `CW`: added `refactor-onboard.mjs soak` command with knobs (`REFACTOR_SOAK_RUNS`, `REFACTOR_SOAK_GAP_MS`, `REFACTOR_SOAK_ARTIFACT_DIR`) and summary artifacts (`soak-summary.json`/`soak-summary.txt`) using smoke rc semantics.
+  - `CX`: added strict-fail diagnostics and restart-count surface in `refactor-start.sh` (`REFACTOR_DIAG_ON_FAIL`, `REFACTOR_DIAG_TAIL_LINES`) and updated README triage guidance.
+- Validation outcomes:
+  - targeted fast gates: `common-games PASS`, `bots PASS`, `web PASS`, `clashofthegods PASS`.
+  - full matrix profile: `fast_gate_batchA PASS`, `fast_gate_batchB PASS`, `prewarm PASS`, `validation PASS`, `STEP09 retry1 SKIP`.
+  - soak signoff runs: two cycles (`REFACTOR_SOAK_RUNS=2`) both all-pass (`final_rc=0`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-080606-hardcut-live-batchCWCX-step09-soak-signoff/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/297-hard-cut-live-batchCWCX-step09-soak-signoff-rewire17-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - runtime closure/signoff remaining `~0.00-0.50h` (`~0.00-0.06` workdays).
