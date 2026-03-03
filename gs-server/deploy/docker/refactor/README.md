@@ -79,23 +79,23 @@ curl -sS http://127.0.0.1:18078/health
   - `3`: infra-blocked smoke failure (launch alias failed while GS direct/support probe and/or dependency health probes are down, including failed bounded auto-recovery).
 - Infra auto-recovery knobs (default enabled):
   - `REFACTOR_SMOKE_AUTORECOVER=1` enables recovery when infra signals are detected (`0` disables).
-  - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=1` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
+  - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=2` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
 - Infra diagnostics emitted on infra-blocked path:
   - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
-  - Per-core-service diagnostics include `status` + `restartCount` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
-  - `restarting` is emitted as an explicit unhealthy infra signal.
+  - Per-core-service diagnostics include `status`, `restartCount`, and `uptimeSeconds` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
+  - `restarting` and `recently restarted` (running with low uptime + nonzero restart count) are emitted as explicit unhealthy infra signals.
   - `docker inspect` state checks for exited core containers include `OOMKilled`, `ExitCode`, and `FinishedAt`.
 - Recovery behavior when infra signals are present:
   - Builds recovery targets from unhealthy core services (`restarting`/`exited`/`not-running`), then always includes `gs` and `static`.
   - Runs `docker compose up -d <targeted-services>`.
-  - Waits briefly, then re-runs smoke probes.
+  - Waits (`3s` for `gs/static`-only recovery, `10s` when core services are included), then re-runs smoke probes.
   - If recovery clears failures, smoke continues and can return `0`.
   - If recovery does not clear failures, smoke stays infra-blocked and returns `3` with diagnostics.
 - Quick triage order when launch alias fails:
   1. Check GS direct launch probe (`:18081/cwstartgamev2.do?...`) from smoke output.
   2. Check GS support probe (`:18081/support/bankSelectAction.do?...`) from smoke output.
   3. Check dependency probe lines (`session-service`, `gameplay-orchestrator`, `wallet-adapter`, `protocol-adapter`).
-  4. Read the `INFRA-DIAG` compose summary plus per-service `status`/`restartCount` lines (especially `restarting`).
+  4. Read the `INFRA-DIAG` compose summary plus per-service `status`/`restartCount`/`uptimeSeconds` lines (especially `restarting` or `recently restarted`).
   5. If infra signals appear, inspect nginx error hints for `could not be resolved` and `connect() failed` messages.
 
 ## Isolation policy

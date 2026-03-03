@@ -11018,3 +11018,21 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - residual runtime closure (`STEP09` first-pass stability and repeated-run consistency) `~0.25-3.00h` (`~0.03-0.38` workdays), with observed retry PASS (`rc=0`).
+
+### 2026-03-03 07:40 UTC
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with integrated hard-cut wave `CT`.
+- Batch content:
+  - `refactor-onboard.mjs` (`12` edits): added `uptimeSeconds`-based restart-window detection, classified `recently restarted` core services as unhealthy, expanded targeted recovery selection, made recovery wait adaptive (`3s`/`10s`), and increased default recovery attempts to `2`.
+  - `README.md`: documented the new diagnostics and recovery behavior.
+- Validation outcomes:
+  - targeted fast gates: `common-games PASS`, `bots PASS`, `web PASS`, `clashofthegods PASS`.
+  - full matrix profile: `fast_gate_batchA PASS`, `fast_gate_batchB PASS`, `prewarm PASS`, `validation PASS`, `STEP09 retry1 SKIP`.
+  - key movement: full matrix now passes with first-pass STEP09 success (retry not needed).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-073447-hardcut-live-batchCT-step09-firstpass-stability/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/295-hard-cut-live-batchCT-step09-firstpass-stability-rewire12-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - residual runtime closure (`STEP09` repeated-run consistency / soak) `~0.10-1.50h` (`~0.01-0.19` workdays).

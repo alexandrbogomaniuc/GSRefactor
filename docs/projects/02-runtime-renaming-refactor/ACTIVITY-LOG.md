@@ -5754,3 +5754,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - first reproducible STEP09 retry pass (`rc=0`) after targeted recovery diagnostics.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 07:40 UTC
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with integrated hard-cut wave `CT`.
+- Batch content:
+  - `refactor-onboard.mjs` (`12` edits): restart-window heuristics (`uptimeSeconds`, `recently restarted`), recovery target expansion for transient restart loops, adaptive recovery wait (`3s` vs `10s`), default recovery attempts `1 -> 2`.
+  - `README.md`: aligned infra triage docs with new diagnostics and recovery semantics.
+- Validation outcomes:
+  - targeted fast gates: `common-games PASS`, `bots PASS`, `web PASS`, `clashofthegods PASS`.
+  - full matrix profile: `fast_gate_batchA PASS`, `fast_gate_batchB PASS`, `prewarm PASS`, `validation PASS`, `STEP09 retry1 SKIP`.
+  - key movement: `STEP09` first-pass lane passed with no retry requirement.
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-073447-hardcut-live-batchCT-step09-firstpass-stability/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/295-hard-cut-live-batchCT-step09-firstpass-stability-rewire12-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - residual runtime closure (`STEP09` repeated-run consistency / soak) `~0.10-1.50h` (`~0.01-0.19` workdays).

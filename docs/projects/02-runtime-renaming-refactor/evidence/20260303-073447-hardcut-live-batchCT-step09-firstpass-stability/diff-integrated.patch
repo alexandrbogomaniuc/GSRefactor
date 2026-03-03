@@ -1,0 +1,184 @@
+diff --git a/gs-server/deploy/docker/refactor/README.md b/gs-server/deploy/docker/refactor/README.md
+index 7e66c6a34..ba7bc4b4e 100644
+--- a/gs-server/deploy/docker/refactor/README.md
++++ b/gs-server/deploy/docker/refactor/README.md
+@@ -79,23 +79,23 @@ curl -sS http://127.0.0.1:18078/health
+   - `3`: infra-blocked smoke failure (launch alias failed while GS direct/support probe and/or dependency health probes are down, including failed bounded auto-recovery).
+ - Infra auto-recovery knobs (default enabled):
+   - `REFACTOR_SMOKE_AUTORECOVER=1` enables recovery when infra signals are detected (`0` disables).
+-  - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=1` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
++  - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=2` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
+ - Infra diagnostics emitted on infra-blocked path:
+   - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
+-  - Per-core-service diagnostics include `status` + `restartCount` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
+-  - `restarting` is emitted as an explicit unhealthy infra signal.
++  - Per-core-service diagnostics include `status`, `restartCount`, and `uptimeSeconds` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
++  - `restarting` and `recently restarted` (running with low uptime + nonzero restart count) are emitted as explicit unhealthy infra signals.
+   - `docker inspect` state checks for exited core containers include `OOMKilled`, `ExitCode`, and `FinishedAt`.
+ - Recovery behavior when infra signals are present:
+   - Builds recovery targets from unhealthy core services (`restarting`/`exited`/`not-running`), then always includes `gs` and `static`.
+   - Runs `docker compose up -d <targeted-services>`.
+-  - Waits briefly, then re-runs smoke probes.
++  - Waits (`3s` for `gs/static`-only recovery, `10s` when core services are included), then re-runs smoke probes.
+   - If recovery clears failures, smoke continues and can return `0`.
+   - If recovery does not clear failures, smoke stays infra-blocked and returns `3` with diagnostics.
+ - Quick triage order when launch alias fails:
+   1. Check GS direct launch probe (`:18081/cwstartgamev2.do?...`) from smoke output.
+   2. Check GS support probe (`:18081/support/bankSelectAction.do?...`) from smoke output.
+   3. Check dependency probe lines (`session-service`, `gameplay-orchestrator`, `wallet-adapter`, `protocol-adapter`).
+-  4. Read the `INFRA-DIAG` compose summary plus per-service `status`/`restartCount` lines (especially `restarting`).
++  4. Read the `INFRA-DIAG` compose summary plus per-service `status`/`restartCount`/`uptimeSeconds` lines (especially `restarting` or `recently restarted`).
+   5. If infra signals appear, inspect nginx error hints for `could not be resolved` and `connect() failed` messages.
+ 
+ ## Isolation policy
+diff --git a/gs-server/deploy/scripts/refactor-onboard.mjs b/gs-server/deploy/scripts/refactor-onboard.mjs
+index bacf9b760..ba00e0f66 100755
+--- a/gs-server/deploy/scripts/refactor-onboard.mjs
++++ b/gs-server/deploy/scripts/refactor-onboard.mjs
+@@ -70,6 +70,8 @@ const REFACTOR_COMPOSE_PROJECT = 'refactor';
+ const CORE_INFRA_SERVICES = ['c1-refactor', 'zookeeper', 'kafka', 'mp', 'gs', 'static'];
+ const RECOVERY_ALWAYS_INCLUDE = ['gs', 'static'];
+ const SMOKE_RECOVERY_WAIT_MS = 3000;
++const CORE_RECOVERY_WAIT_MS = 10000;
++const RECENT_RESTART_WINDOW_SEC = 120;
+ 
+ function log(msg) {
+   process.stdout.write(`[refactor-onboard] ${msg}\n`);
+@@ -393,10 +395,37 @@ function normalizeCoreServiceStatus(rawStatus) {
+   return status;
+ }
+ 
++function parseStartedAtToAgeSeconds(startedAt) {
++  const raw = String(startedAt ?? '').trim();
++  if (!raw || raw.startsWith('0001-01-01')) {
++    return null;
++  }
++  const ts = Date.parse(raw);
++  if (!Number.isFinite(ts)) {
++    return null;
++  }
++  const ageSeconds = Math.floor((Date.now() - ts) / 1000);
++  return ageSeconds >= 0 ? ageSeconds : 0;
++}
++
+ function isUnhealthyCoreStatus(status) {
+   return status === 'restarting' || status === 'exited' || status === 'not-running';
+ }
+ 
++function isRecentRestartState(state) {
++  return (
++    state.status === 'running' &&
++    Number.isFinite(state.restartCount) &&
++    state.restartCount > 0 &&
++    Number.isFinite(state.uptimeSeconds) &&
++    state.uptimeSeconds <= RECENT_RESTART_WINDOW_SEC
++  );
++}
++
++function isUnhealthyCoreState(state) {
++  return isUnhealthyCoreStatus(state.status) || isRecentRestartState(state);
++}
++
+ function inspectCoreInfraServices() {
+   if (!hasCommand('docker')) {
+     return {
+@@ -440,6 +469,7 @@ function inspectCoreInfraServices() {
+     let selectedContainerId = ids[0];
+     let selectedExitDetails = null;
+     let selectedInspectError = null;
++    let latestUptimeSeconds = null;
+ 
+     for (const id of ids) {
+       const inspectRes = runCapture('docker', ['inspect', id]);
+@@ -462,6 +492,10 @@ function inspectCoreInfraServices() {
+       }
+ 
+       const status = normalizeCoreServiceStatus(inspectObj?.State?.Status);
++      const uptimeSeconds = parseStartedAtToAgeSeconds(inspectObj?.State?.StartedAt);
++      if (Number.isFinite(uptimeSeconds)) {
++        latestUptimeSeconds = uptimeSeconds;
++      }
+       const parsedRestartCount = Number(inspectObj?.RestartCount);
+       if (Number.isFinite(parsedRestartCount)) {
+         hasRestartCount = true;
+@@ -493,6 +527,7 @@ function inspectCoreInfraServices() {
+       containerId: selectedContainerId,
+       exitDetails: selectedExitDetails,
+       inspectError: selectedInspectError,
++      uptimeSeconds: latestUptimeSeconds,
+     });
+   }
+ 
+@@ -517,6 +552,8 @@ function collectInfraSignals(outcome, coreInfra = null) {
+       signals.add(`core service exited: ${state.service}`);
+     } else if (state.status === 'not-running') {
+       signals.add(`core service not-running: ${state.service}`);
++    } else if (isRecentRestartState(state)) {
++      signals.add(`core service recently restarted: ${state.service}`);
+     }
+   }
+   return [...signals];
+@@ -539,15 +576,20 @@ function emitInfraDiagnostics(coreInfra = inspectCoreInfraServices()) {
+ 
+   let exitedInspected = 0;
+   for (const state of coreInfra.serviceStates) {
+-    const unhealthy = isUnhealthyCoreStatus(state.status);
++    const unhealthy = isUnhealthyCoreState(state);
+     const containerLabel = state.containerId ? ` container=${state.containerId.slice(0, 12)}` : '';
++    const uptimeLabel = Number.isFinite(state.uptimeSeconds) ? ` uptimeSeconds=${state.uptimeSeconds}` : '';
+     logErr(
+-      `INFRA-DIAG: service ${state.service} status=${state.status} restartCount=${state.restartCount}${containerLabel}${
++      `INFRA-DIAG: service ${state.service} status=${state.status} restartCount=${state.restartCount}${uptimeLabel}${containerLabel}${
+         unhealthy ? ' unhealthy=true' : ' unhealthy=false'
+       }`
+     );
+     if (state.status === 'restarting') {
+       logErr(`INFRA-DIAG: unhealthy signal -> ${state.service} is restarting (restartCount=${state.restartCount}).`);
++    } else if (isRecentRestartState(state)) {
++      logErr(
++        `INFRA-DIAG: unhealthy signal -> ${state.service} recently restarted (uptimeSeconds=${state.uptimeSeconds}, restartCount=${state.restartCount}).`
++      );
+     }
+     if (state.inspectError) {
+       logErr(`INFRA-DIAG: ${state.service} inspect warning: ${state.inspectError}`);
+@@ -572,13 +614,18 @@ function emitInfraDiagnostics(coreInfra = inspectCoreInfraServices()) {
+ function buildSmokeRecoveryTargets(coreInfra = null) {
+   const targets = new Set(RECOVERY_ALWAYS_INCLUDE);
+   for (const state of coreInfra?.serviceStates ?? []) {
+-    if (isUnhealthyCoreStatus(state.status)) {
++    if (isUnhealthyCoreState(state)) {
+       targets.add(state.service);
+     }
+   }
+   return CORE_INFRA_SERVICES.filter((service) => targets.has(service));
+ }
+ 
++function getSmokeRecoveryWaitMs(targets) {
++  const hasCoreTargets = targets.some((service) => !RECOVERY_ALWAYS_INCLUDE.includes(service));
++  return hasCoreTargets ? CORE_RECOVERY_WAIT_MS : SMOKE_RECOVERY_WAIT_MS;
++}
++
+ function runSmokeAutoRecovery(attempt, totalAttempts, targets) {
+   const services = targets.length > 0 ? targets : RECOVERY_ALWAYS_INCLUDE;
+   logErr(
+@@ -706,7 +753,7 @@ async function smokeChecks() {
+   const retryDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_DELAY_MS ?? '3000'));
+ 
+   const autoRecoverEnabled = parseBooleanEnv('REFACTOR_SMOKE_AUTORECOVER', true);
+-  const maxRecoveryAttempts = parsePositiveIntEnv('REFACTOR_SMOKE_RECOVERY_ATTEMPTS', 1);
++  const maxRecoveryAttempts = parsePositiveIntEnv('REFACTOR_SMOKE_RECOVERY_ATTEMPTS', 2);
+ 
+   let outcome = await runSmokePass(checks, { maxAttempts, retryDelayMs });
+   if (outcome.launchAliasFailed) {
+@@ -722,8 +769,9 @@ async function smokeChecks() {
+           if (!upOk) {
+             continue;
+           }
+-          log(`SMOKE-RECOVERY: waiting ${SMOKE_RECOVERY_WAIT_MS}ms before re-probing smoke checks.`);
+-          await sleep(SMOKE_RECOVERY_WAIT_MS);
++          const recoveryWaitMs = getSmokeRecoveryWaitMs(recoveryTargets);
++          log(`SMOKE-RECOVERY: waiting ${recoveryWaitMs}ms before re-probing smoke checks.`);
++          await sleep(recoveryWaitMs);
+           outcome = await runSmokePass(checks, { maxAttempts, retryDelayMs });
+           if (outcome.failures === 0) {
+             log(`SMOKE-RECOVERY: recovery succeeded on attempt ${attempt}/${maxRecoveryAttempts}.`);

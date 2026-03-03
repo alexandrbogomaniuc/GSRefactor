@@ -70,6 +70,8 @@ const REFACTOR_COMPOSE_PROJECT = 'refactor';
 const CORE_INFRA_SERVICES = ['c1-refactor', 'zookeeper', 'kafka', 'mp', 'gs', 'static'];
 const RECOVERY_ALWAYS_INCLUDE = ['gs', 'static'];
 const SMOKE_RECOVERY_WAIT_MS = 3000;
+const CORE_RECOVERY_WAIT_MS = 10000;
+const RECENT_RESTART_WINDOW_SEC = 120;
 
 function log(msg) {
   process.stdout.write(`[refactor-onboard] ${msg}\n`);
@@ -393,8 +395,35 @@ function normalizeCoreServiceStatus(rawStatus) {
   return status;
 }
 
+function parseStartedAtToAgeSeconds(startedAt) {
+  const raw = String(startedAt ?? '').trim();
+  if (!raw || raw.startsWith('0001-01-01')) {
+    return null;
+  }
+  const ts = Date.parse(raw);
+  if (!Number.isFinite(ts)) {
+    return null;
+  }
+  const ageSeconds = Math.floor((Date.now() - ts) / 1000);
+  return ageSeconds >= 0 ? ageSeconds : 0;
+}
+
 function isUnhealthyCoreStatus(status) {
   return status === 'restarting' || status === 'exited' || status === 'not-running';
+}
+
+function isRecentRestartState(state) {
+  return (
+    state.status === 'running' &&
+    Number.isFinite(state.restartCount) &&
+    state.restartCount > 0 &&
+    Number.isFinite(state.uptimeSeconds) &&
+    state.uptimeSeconds <= RECENT_RESTART_WINDOW_SEC
+  );
+}
+
+function isUnhealthyCoreState(state) {
+  return isUnhealthyCoreStatus(state.status) || isRecentRestartState(state);
 }
 
 function inspectCoreInfraServices() {
@@ -440,6 +469,7 @@ function inspectCoreInfraServices() {
     let selectedContainerId = ids[0];
     let selectedExitDetails = null;
     let selectedInspectError = null;
+    let latestUptimeSeconds = null;
 
     for (const id of ids) {
       const inspectRes = runCapture('docker', ['inspect', id]);
@@ -462,6 +492,10 @@ function inspectCoreInfraServices() {
       }
 
       const status = normalizeCoreServiceStatus(inspectObj?.State?.Status);
+      const uptimeSeconds = parseStartedAtToAgeSeconds(inspectObj?.State?.StartedAt);
+      if (Number.isFinite(uptimeSeconds)) {
+        latestUptimeSeconds = uptimeSeconds;
+      }
       const parsedRestartCount = Number(inspectObj?.RestartCount);
       if (Number.isFinite(parsedRestartCount)) {
         hasRestartCount = true;
@@ -493,6 +527,7 @@ function inspectCoreInfraServices() {
       containerId: selectedContainerId,
       exitDetails: selectedExitDetails,
       inspectError: selectedInspectError,
+      uptimeSeconds: latestUptimeSeconds,
     });
   }
 
@@ -517,6 +552,8 @@ function collectInfraSignals(outcome, coreInfra = null) {
       signals.add(`core service exited: ${state.service}`);
     } else if (state.status === 'not-running') {
       signals.add(`core service not-running: ${state.service}`);
+    } else if (isRecentRestartState(state)) {
+      signals.add(`core service recently restarted: ${state.service}`);
     }
   }
   return [...signals];
@@ -539,15 +576,20 @@ function emitInfraDiagnostics(coreInfra = inspectCoreInfraServices()) {
 
   let exitedInspected = 0;
   for (const state of coreInfra.serviceStates) {
-    const unhealthy = isUnhealthyCoreStatus(state.status);
+    const unhealthy = isUnhealthyCoreState(state);
     const containerLabel = state.containerId ? ` container=${state.containerId.slice(0, 12)}` : '';
+    const uptimeLabel = Number.isFinite(state.uptimeSeconds) ? ` uptimeSeconds=${state.uptimeSeconds}` : '';
     logErr(
-      `INFRA-DIAG: service ${state.service} status=${state.status} restartCount=${state.restartCount}${containerLabel}${
+      `INFRA-DIAG: service ${state.service} status=${state.status} restartCount=${state.restartCount}${uptimeLabel}${containerLabel}${
         unhealthy ? ' unhealthy=true' : ' unhealthy=false'
       }`
     );
     if (state.status === 'restarting') {
       logErr(`INFRA-DIAG: unhealthy signal -> ${state.service} is restarting (restartCount=${state.restartCount}).`);
+    } else if (isRecentRestartState(state)) {
+      logErr(
+        `INFRA-DIAG: unhealthy signal -> ${state.service} recently restarted (uptimeSeconds=${state.uptimeSeconds}, restartCount=${state.restartCount}).`
+      );
     }
     if (state.inspectError) {
       logErr(`INFRA-DIAG: ${state.service} inspect warning: ${state.inspectError}`);
@@ -572,11 +614,16 @@ function emitInfraDiagnostics(coreInfra = inspectCoreInfraServices()) {
 function buildSmokeRecoveryTargets(coreInfra = null) {
   const targets = new Set(RECOVERY_ALWAYS_INCLUDE);
   for (const state of coreInfra?.serviceStates ?? []) {
-    if (isUnhealthyCoreStatus(state.status)) {
+    if (isUnhealthyCoreState(state)) {
       targets.add(state.service);
     }
   }
   return CORE_INFRA_SERVICES.filter((service) => targets.has(service));
+}
+
+function getSmokeRecoveryWaitMs(targets) {
+  const hasCoreTargets = targets.some((service) => !RECOVERY_ALWAYS_INCLUDE.includes(service));
+  return hasCoreTargets ? CORE_RECOVERY_WAIT_MS : SMOKE_RECOVERY_WAIT_MS;
 }
 
 function runSmokeAutoRecovery(attempt, totalAttempts, targets) {
@@ -706,7 +753,7 @@ async function smokeChecks() {
   const retryDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_DELAY_MS ?? '3000'));
 
   const autoRecoverEnabled = parseBooleanEnv('REFACTOR_SMOKE_AUTORECOVER', true);
-  const maxRecoveryAttempts = parsePositiveIntEnv('REFACTOR_SMOKE_RECOVERY_ATTEMPTS', 1);
+  const maxRecoveryAttempts = parsePositiveIntEnv('REFACTOR_SMOKE_RECOVERY_ATTEMPTS', 2);
 
   let outcome = await runSmokePass(checks, { maxAttempts, retryDelayMs });
   if (outcome.launchAliasFailed) {
@@ -722,8 +769,9 @@ async function smokeChecks() {
           if (!upOk) {
             continue;
           }
-          log(`SMOKE-RECOVERY: waiting ${SMOKE_RECOVERY_WAIT_MS}ms before re-probing smoke checks.`);
-          await sleep(SMOKE_RECOVERY_WAIT_MS);
+          const recoveryWaitMs = getSmokeRecoveryWaitMs(recoveryTargets);
+          log(`SMOKE-RECOVERY: waiting ${recoveryWaitMs}ms before re-probing smoke checks.`);
+          await sleep(recoveryWaitMs);
           outcome = await runSmokePass(checks, { maxAttempts, retryDelayMs });
           if (outcome.failures === 0) {
             log(`SMOKE-RECOVERY: recovery succeeded on attempt ${attempt}/${maxRecoveryAttempts}.`);
