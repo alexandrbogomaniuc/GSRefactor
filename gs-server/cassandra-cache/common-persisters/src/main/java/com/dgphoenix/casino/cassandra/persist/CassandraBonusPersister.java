@@ -17,6 +17,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 16.10.13
@@ -41,17 +45,17 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
 
     private static final TableDefinition TABLE = new TableDefinition(BONUS_CF,
             Arrays.asList(
-                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(EXPIRATION_DATE_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(BONUS_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(EXPIRATION_DATE_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), BONUS_ID_FIELD);
 
     private static final TableDefinition ACCOUNT_INDEX_TABLE = new TableDefinition(BONUS_ACC_INDX,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true)
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(BONUS_ID_FIELD, bigint(), false, false, true)
             ), ACCOUNT_ID_FIELD);
 
     private CassandraBonusPersister() {

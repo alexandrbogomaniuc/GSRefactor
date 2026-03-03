@@ -14,6 +14,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.google.common.base.Preconditions.checkState;
 
 /**
@@ -38,14 +42,14 @@ public class CassandraFrBonusArchivePersister extends AbstractCassandraPersister
     //Primary key (accountId), timeAwarded clustered order by timeAwarded desc
     private static final TableDefinition BONUS_ARCHIVE_TABLE = new TableDefinition(FRBONUS_ARCH_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(AWARD_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(STATUS_FIELD, com.datastax.driver.core.DataType.cint(), false, false, false),
-                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(PERSIST_DAY, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(AWARD_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(STATUS_FIELD, cint(), false, false, false),
+                    new ColumnDefinition(BONUS_ID_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(PERSIST_DAY, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), ACCOUNT_ID_FIELD)
             .clusteringOrder(AWARD_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
 
