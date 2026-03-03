@@ -11067,3 +11067,16 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - residual runtime closure (`STEP09` repeated-run soak and final signoff) `~0.05-1.00h` (`~0.01-0.13` workdays).
+
+### 2026-03-03 07:59 UTC
+- Push checkpoint for `Batch CU+CV` completed.
+- Commit pushed to `origin/main`:
+  - `1f7f152eb` (`refactor: hard-cut batchCUCV step09 soak quiescence`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-075103-hardcut-live-batchCUCV-step09-soak-quiescence/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/296-hard-cut-live-batchCUCV-step09-soak-quiescence-rewire20-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - residual runtime closure (`STEP09` repeated-run soak and final signoff) `~0.05-1.00h` (`~0.01-0.13` workdays), with full matrix pass retained under tighter startup/smoke controls.
