@@ -46,6 +46,13 @@ SECONDARY_LAUNCH_GAME_ID="${SECONDARY_LAUNCH_GAME_ID:-$(cluster_cfg_or_default S
 SECONDARY_LAUNCH_MODE="${SECONDARY_LAUNCH_MODE:-$(cluster_cfg_or_default SECONDARY_LAUNCH_MODE "$LAUNCH_MODE")}"
 SECONDARY_LAUNCH_TOKEN="${SECONDARY_LAUNCH_TOKEN:-$(cluster_cfg_or_default SECONDARY_LAUNCH_TOKEN "$LAUNCH_TOKEN")}"
 SECONDARY_LAUNCH_LANG="${SECONDARY_LAUNCH_LANG:-$(cluster_cfg_or_default SECONDARY_LAUNCH_LANG "$LAUNCH_LANG")}"
+CONFIG_SERVICE_PORT="${CONFIG_SERVICE_PORT:-$(cluster_cfg_or_default CONFIG_SERVICE_PORT "18072")}"
+SESSION_SERVICE_PORT="${SESSION_SERVICE_PORT:-$(cluster_cfg_or_default SESSION_SERVICE_PORT "18073")}"
+GAMEPLAY_ORCHESTRATOR_PORT="${GAMEPLAY_ORCHESTRATOR_PORT:-$(cluster_cfg_or_default GAMEPLAY_ORCHESTRATOR_PORT "18074")}"
+WALLET_ADAPTER_PORT="${WALLET_ADAPTER_PORT:-$(cluster_cfg_or_default WALLET_ADAPTER_PORT "18075")}"
+PROTOCOL_ADAPTER_PORT="${PROTOCOL_ADAPTER_PORT:-$(cluster_cfg_or_default PROTOCOL_ADAPTER_PORT "18078")}"
+REFACTOR_READY_RETRIES="${REFACTOR_READY_RETRIES:-30}"
+REFACTOR_READY_DELAY_SEC="${REFACTOR_READY_DELAY_SEC:-2}"
 
 log() { printf '[refactor-start] %s\n' "$*"; }
 die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
@@ -178,13 +185,42 @@ build_launch_url() {
     "$LAUNCH_BASE_URL" "$bank_id" "$subcasino_id" "$game_id" "$mode" "$token" "$lang"
 }
 
+wait_for_health() {
+  local name="$1"
+  local url="$2"
+  local retries="${3:-$REFACTOR_READY_RETRIES}"
+  local delay="${4:-$REFACTOR_READY_DELAY_SEC}"
+  local attempt=1
+  while (( attempt <= retries )); do
+    if curl -fsS --max-time 3 "$url" >/dev/null 2>&1; then
+      log "ready: ${name} (${url})"
+      return 0
+    fi
+    if (( attempt < retries )); then
+      sleep "$delay"
+    fi
+    ((attempt++))
+  done
+  log "warn: ${name} not ready after ${retries} attempts (${url})"
+  return 1
+}
+
+wait_for_refactor_readiness() {
+  log "Waiting for refactor service readiness"
+  wait_for_health "config-service" "http://127.0.0.1:${CONFIG_SERVICE_PORT}/health" || true
+  wait_for_health "session-service" "http://127.0.0.1:${SESSION_SERVICE_PORT}/health" || true
+  wait_for_health "gameplay-orchestrator" "http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health" || true
+  wait_for_health "wallet-adapter" "http://127.0.0.1:${WALLET_ADAPTER_PORT}/health" || true
+  wait_for_health "protocol-adapter" "http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health" || true
+}
+
 post_checks() {
   local launch_url
   launch_url="$(build_launch_url "$LAUNCH_BANK_ID" "$LAUNCH_SUBCASINO_ID" "$LAUNCH_GAME_ID" "$LAUNCH_MODE" "$LAUNCH_TOKEN" "$LAUNCH_LANG")"
   log "Quick health checks"
-  curl -fsS http://127.0.0.1:18080/ >/dev/null && log "static facade ok" || log "static facade check failed"
-  curl -fsS http://127.0.0.1:18072/health >/dev/null && log "config-service ok" || log "config-service check failed"
-  curl -fsS http://127.0.0.1:18081 >/dev/null && log "gs http ok" || log "gs http check failed"
+  curl -fsS "http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json" >/dev/null && log "static facade ok" || log "static facade check failed"
+  curl -fsS "http://127.0.0.1:${CONFIG_SERVICE_PORT}/health" >/dev/null && log "config-service ok" || log "config-service check failed"
+  curl -fsS "http://127.0.0.1:18081/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}" >/dev/null && log "gs support route ok" || log "gs support route warn (diagnostic)"
   log "Launch alias URL (refactor static facade): $launch_url"
   if [[ -n "$SECONDARY_LAUNCH_BANK_ID" && -n "$SECONDARY_LAUNCH_SUBCASINO_ID" ]]; then
     local secondary_launch_url
@@ -200,6 +236,7 @@ case "$ACTION" in
     preflight
     ensure_runtime_assets
     start_stack
+    wait_for_refactor_readiness
     post_checks
     ;;
   preflight)

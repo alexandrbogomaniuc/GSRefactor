@@ -1,0 +1,31 @@
+gs-server/deploy/scripts/refactor-start.sh:54:REFACTOR_READY_RETRIES="${REFACTOR_READY_RETRIES:-30}"
+gs-server/deploy/scripts/refactor-start.sh:55:REFACTOR_READY_DELAY_SEC="${REFACTOR_READY_DELAY_SEC:-2}"
+gs-server/deploy/scripts/refactor-start.sh:135:    session-outbox-health.json
+gs-server/deploy/scripts/refactor-start.sh:188:wait_for_health() {
+gs-server/deploy/scripts/refactor-start.sh:191:  local retries="${3:-$REFACTOR_READY_RETRIES}"
+gs-server/deploy/scripts/refactor-start.sh:192:  local delay="${4:-$REFACTOR_READY_DELAY_SEC}"
+gs-server/deploy/scripts/refactor-start.sh:208:wait_for_refactor_readiness() {
+gs-server/deploy/scripts/refactor-start.sh:210:  wait_for_health "config-service" "http://127.0.0.1:${CONFIG_SERVICE_PORT}/health" || true
+gs-server/deploy/scripts/refactor-start.sh:211:  wait_for_health "session-service" "http://127.0.0.1:${SESSION_SERVICE_PORT}/health" || true
+gs-server/deploy/scripts/refactor-start.sh:212:  wait_for_health "gameplay-orchestrator" "http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health" || true
+gs-server/deploy/scripts/refactor-start.sh:213:  wait_for_health "wallet-adapter" "http://127.0.0.1:${WALLET_ADAPTER_PORT}/health" || true
+gs-server/deploy/scripts/refactor-start.sh:214:  wait_for_health "protocol-adapter" "http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health" || true
+gs-server/deploy/scripts/refactor-start.sh:220:  log "Quick health checks"
+gs-server/deploy/scripts/refactor-start.sh:222:  curl -fsS "http://127.0.0.1:${CONFIG_SERVICE_PORT}/health" >/dev/null && log "config-service ok" || log "config-service check failed"
+gs-server/deploy/scripts/refactor-start.sh:224:  log "Launch alias URL (refactor static facade): $launch_url"
+gs-server/deploy/scripts/refactor-start.sh:239:    wait_for_refactor_readiness
+gs-server/deploy/scripts/refactor-onboard.mjs:57:const SESSION_SERVICE_HEALTH_URL = `http://${cfg('SESSION_SERVICE_EXTERNAL_HOST', '127.0.0.1')}:${cfg('SESSION_SERVICE_EXTERNAL_PORT', '18073')}/health`;
+gs-server/deploy/scripts/refactor-onboard.mjs:58:const GAMEPLAY_SERVICE_HEALTH_URL = `http://${cfg('GAMEPLAY_ORCHESTRATOR_EXTERNAL_HOST', '127.0.0.1')}:${cfg('GAMEPLAY_ORCHESTRATOR_EXTERNAL_PORT', '18074')}/health`;
+gs-server/deploy/scripts/refactor-onboard.mjs:59:const WALLET_SERVICE_HEALTH_URL = `http://${cfg('WALLET_ADAPTER_EXTERNAL_HOST', '127.0.0.1')}:${cfg('WALLET_ADAPTER_EXTERNAL_PORT', '18075')}/health`;
+gs-server/deploy/scripts/refactor-onboard.mjs:60:const PROTOCOL_SERVICE_HEALTH_URL = `http://${cfg('PROTOCOL_ADAPTER_EXTERNAL_HOST', '127.0.0.1')}:${cfg('PROTOCOL_ADAPTER_EXTERNAL_PORT', '18078')}/health`;
+gs-server/deploy/scripts/refactor-onboard.mjs:266:    // Diagnostic-only signal: can flap during startup even when launch path is healthy.
+gs-server/deploy/scripts/refactor-onboard.mjs:268:    { label: 'Config service health', url: 'http://127.0.0.1:18072/health', okStatuses: [200] },
+gs-server/deploy/scripts/refactor-onboard.mjs:269:    { label: 'Dependency health: session-service', url: SESSION_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+gs-server/deploy/scripts/refactor-onboard.mjs:270:    { label: 'Dependency health: gameplay-orchestrator', url: GAMEPLAY_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+gs-server/deploy/scripts/refactor-onboard.mjs:271:    { label: 'Dependency health: wallet-adapter', url: WALLET_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+gs-server/deploy/scripts/refactor-onboard.mjs:272:    { label: 'Dependency health: protocol-adapter', url: PROTOCOL_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+gs-server/deploy/scripts/refactor-onboard.mjs:274:      label: 'Launch alias (startgame)',
+gs-server/deploy/scripts/refactor-onboard.mjs:295:      label: 'Launch alias (secondary)',
+gs-server/deploy/scripts/refactor-onboard.mjs:325:      if (check.dependency) {
+gs-server/deploy/scripts/refactor-onboard.mjs:338:    log(`INFRA-BLOCKED: Launch alias failed while dependency probes are down (${downDependencies.join(', ')}).`);
+gs-server/deploy/scripts/refactor-onboard.mjs:339:    fail(`Smoke checks infra-blocked by dependency outage (${downDependencies.length} down). See lines above.`, 3);

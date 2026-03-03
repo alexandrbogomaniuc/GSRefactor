@@ -1,0 +1,2 @@
+gs-server/deploy/scripts/refactor-onboard.mjs
+gs-server/deploy/scripts/refactor-start.sh

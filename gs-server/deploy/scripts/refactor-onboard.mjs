@@ -54,6 +54,10 @@ const DEFAULT_SECONDARY_LAUNCH_GAME_ID = cfg('SECONDARY_LAUNCH_GAME_ID', DEFAULT
 const DEFAULT_SECONDARY_LAUNCH_MODE = cfg('SECONDARY_LAUNCH_MODE', DEFAULT_LAUNCH_MODE);
 const DEFAULT_SECONDARY_LAUNCH_TOKEN = cfg('SECONDARY_LAUNCH_TOKEN', DEFAULT_LAUNCH_TOKEN);
 const DEFAULT_SECONDARY_LAUNCH_LANG = cfg('SECONDARY_LAUNCH_LANG', DEFAULT_LAUNCH_LANG);
+const SESSION_SERVICE_HEALTH_URL = `http://${cfg('SESSION_SERVICE_EXTERNAL_HOST', '127.0.0.1')}:${cfg('SESSION_SERVICE_EXTERNAL_PORT', '18073')}/health`;
+const GAMEPLAY_SERVICE_HEALTH_URL = `http://${cfg('GAMEPLAY_ORCHESTRATOR_EXTERNAL_HOST', '127.0.0.1')}:${cfg('GAMEPLAY_ORCHESTRATOR_EXTERNAL_PORT', '18074')}/health`;
+const WALLET_SERVICE_HEALTH_URL = `http://${cfg('WALLET_ADAPTER_EXTERNAL_HOST', '127.0.0.1')}:${cfg('WALLET_ADAPTER_EXTERNAL_PORT', '18075')}/health`;
+const PROTOCOL_SERVICE_HEALTH_URL = `http://${cfg('PROTOCOL_ADAPTER_EXTERNAL_HOST', '127.0.0.1')}:${cfg('PROTOCOL_ADAPTER_EXTERNAL_PORT', '18078')}/health`;
 
 function log(msg) {
   process.stdout.write(`[refactor-onboard] ${msg}\n`);
@@ -262,10 +266,15 @@ async function smokeChecks() {
     // Diagnostic-only signal: can flap during startup even when launch path is healthy.
     { label: 'GS support route (diagnostic)', url: `http://127.0.0.1:18081/support/bankSelectAction.do?bankId=${encodeURIComponent(DEFAULT_LAUNCH_BANK_ID)}`, okStatuses: [200], required: false },
     { label: 'Config service health', url: 'http://127.0.0.1:18072/health', okStatuses: [200] },
+    { label: 'Dependency health: session-service', url: SESSION_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+    { label: 'Dependency health: gameplay-orchestrator', url: GAMEPLAY_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+    { label: 'Dependency health: wallet-adapter', url: WALLET_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+    { label: 'Dependency health: protocol-adapter', url: PROTOCOL_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
     {
       label: 'Launch alias (startgame)',
       url: primaryLaunchUrl,
       okStatuses: [200],
+      isLaunchAlias: true,
     },
   );
 
@@ -294,6 +303,8 @@ async function smokeChecks() {
   const retryDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_DELAY_MS ?? '3000'));
 
   let failures = 0;
+  let launchAliasFailed = false;
+  const downDependencies = [];
   for (const check of checks) {
     const outcome = await retryingHttpCheck(check, {
       attempts: maxAttempts,
@@ -308,6 +319,12 @@ async function smokeChecks() {
       if (required) {
         failures += 1;
       }
+      if (check.isLaunchAlias) {
+        launchAliasFailed = true;
+      }
+      if (check.dependency) {
+        downDependencies.push(check.label);
+      }
       const prefix = required ? 'FAIL' : 'WARN';
       if (outcome.result) {
         log(`${prefix}: ${check.label} (${check.url}) -> HTTP ${outcome.result.status} after ${maxAttempts} attempts`);
@@ -315,6 +332,11 @@ async function smokeChecks() {
         log(`${prefix}: ${check.label} (${check.url}) -> ${outcome.error?.message ?? 'unknown error'} after ${maxAttempts} attempts`);
       }
     }
+  }
+
+  if (launchAliasFailed && downDependencies.length > 0) {
+    log(`INFRA-BLOCKED: Launch alias failed while dependency probes are down (${downDependencies.join(', ')}).`);
+    fail(`Smoke checks infra-blocked by dependency outage (${downDependencies.length} down). See lines above.`, 3);
   }
 
   if (failures > 0) {

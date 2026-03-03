@@ -10907,3 +10907,21 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.01-0.18h` (`~0.00-0.03` workdays), dominated by known external `STEP09` smoke lane.
+
+### 2026-03-03 05:52 UTC
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with integrated hard-cut wave `CL+CM`.
+- Batch content:
+  - `refactor-onboard.mjs`: added dependency health probes (session/gameplay/wallet/protocol) and explicit infra-blocked classification path for launch-alias failures under dependency outage.
+  - `refactor-start.sh`: added bounded readiness waits in `up` flow and switched quick checks to stable endpoints (static asset JSON, config `/health`, GS support diagnostic route).
+- Validation outcomes:
+  - targeted fast gates: `common-games PASS`, `bots PASS`, `web PASS`, `clashofthegods PASS`.
+  - full matrix profile remains `STEP09`-only fail: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - `STEP09` retry now logs dependency probes as PASS while launch alias remains `HTTP 502`, so classification remains functional lane (`rc=2`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-054225-hardcut-live-batchCLCM-step09-infra-classification-hardening2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/291-hard-cut-live-batchCLCM-step09-infra-classification-hardening2-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.01-0.15h` (`~0.00-0.02` workdays), dominated by persistent launch-alias `HTTP 502` in `STEP09`.

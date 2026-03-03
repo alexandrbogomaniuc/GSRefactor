@@ -5686,3 +5686,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared localized COTG compile fail-head; all targeted compile gates are green.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 05:52 UTC (Hard-cut live Batch CL+CM)
+- Continued Project 02 stabilization with integrated live batches `CL+CM` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `CL` (`1` hardening edit): `refactor-onboard.mjs` dependency-health probes + `STEP09` infra-blocked classification path (`rc=3`) when launch alias fails under dependency outage.
+  - `CM` (`1` hardening edit): `refactor-start.sh` bounded readiness wait and stable quick-check endpoint alignment for startup/post-check ergonomics.
+  - retained total: `2` targeted edits across `2` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` PASS, `clashofthegods` compile PASS.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - `STEP09` retry evidence now includes dependency probe lines (all PASS) with launch alias still `HTTP 502`, preserving `rc=2` classification (not infra-blocked).
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-054225-hardcut-live-batchCLCM-step09-infra-classification-hardening2/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/291-hard-cut-live-batchCLCM-step09-infra-classification-hardening2-report-20260303.md`
+- Measured movement:
+  - improved `STEP09` diagnostic fidelity while preserving compile-green posture and runtime safety.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).
