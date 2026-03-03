@@ -10835,3 +10835,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/288-hard-cut-live-batchCH-bgbstarturl-exception-bridge-rewire2-report-20260303.md`
 - Result:
   - GetBattlegroundStartGameUrlHandler boundary lane is cleared; next bounded pass should target `BotOpenRoomHandler` boundary point.
+
+### 2026-03-03 04:04 UTC
+- Push checkpoint for `Batch CH` completed.
+- Commit pushed to `origin/main`:
+  - `59afb58d7` (`refactor: hard-cut batchCH bgb start-url exception bridge`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-033915-hardcut-live-batchCH-bgbstarturl-exception-bridge-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/288-hard-cut-live-batchCH-bgbstarturl-exception-bridge-rewire2-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.01-0.30h` (`~0.00-0.04` workdays), next lane is localized `BotOpenRoomHandler` exception-boundary harmonization.
