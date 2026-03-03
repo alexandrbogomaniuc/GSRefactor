@@ -10779,3 +10779,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/286-hard-cut-live-batchCF-enterlobby-sid-exception-bridge-rewire2-report-20260303.md`
 - Result:
   - EnterLobby boundary lane is cleared; next bounded pass should target `NicknameService` exception-boundary points.
+
+### 2026-03-03 03:14 UTC
+- Push checkpoint for `Batch CF` completed.
+- Commit pushed to `origin/main`:
+  - `ebf9ff357` (`refactor: hard-cut batchCF enterlobby sid exception bridge`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-025130-hardcut-live-batchCF-enterlobby-sid-exception-bridge-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/286-hard-cut-live-batchCF-enterlobby-sid-exception-bridge-rewire2-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.01-0.45h` (`~0.00-0.06` workdays), next lane is localized `NicknameService` exception-boundary harmonization.
