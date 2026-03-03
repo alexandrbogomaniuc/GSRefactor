@@ -10693,3 +10693,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-011018-hardcut-live-batchBZ-sitinhandler-exception-boundary-rewire2/`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/283-hard-cut-live-batchBZ-sitinhandler-exception-boundary-rewire2-report-20260303.md`
 - Result: fail frontier remains confined to `SitInHandler`; next bounded pass can finish this lane.
+
+### 2026-03-03 01:34 UTC
+- Push checkpoint for `Batch BZ` completed.
+- Commit pushed to `origin/main`:
+  - `7d5aba52b` (`refactor: hard-cut batchBZ sitinhandler boundary`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-011018-hardcut-live-batchBZ-sitinhandler-exception-boundary-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/283-hard-cut-live-batchBZ-sitinhandler-exception-boundary-rewire2-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.03-0.90h` (`~0.00-0.11` workdays), next lane remains localized `SitInHandler` boundary harmonization (`BuyInFailedException` + residual legacy exception point).
