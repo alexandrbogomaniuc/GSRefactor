@@ -1,0 +1,100 @@
+{
+  "fixtureVersion": "slot-browser-fixture-v1",
+  "name": "playround.duplicate.response",
+  "endpoint": {
+    "method": "POST",
+    "path": "/slot/v1/playround",
+    "readOnly": false
+  },
+  "response": {
+    "httpStatus": 200,
+    "body": {
+      "ok": true,
+      "requestId": "req-playround-043-dup",
+      "sessionId": "SID-123",
+      "requestCounter": 43,
+      "stateVersion": 14,
+      "wallet": {
+        "balanceMinor": 100500,
+        "previousBalanceMinor": 100000,
+        "currencyCode": "USD",
+        "truncateCents": false,
+        "delayedWalletMessagePending": false
+      },
+      "round": {
+        "roundId": "R-043",
+        "status": "FINAL",
+        "betMinor": 2000,
+        "winMinor": 2500,
+        "netEffectMinor": 500,
+        "outcomeHash": "sha256:2e04af47d2c6e1f6f9d4115350180a3c8a06cf936d8f98cd53ab64b2fbf8a0e4"
+      },
+      "feature": {
+        "mode": "BASE",
+        "remainingActions": 0,
+        "nextAllowedActions": [
+          "SPIN"
+        ],
+        "featureContext": {}
+      },
+      "presentationPayload": {
+        "featureMode": "BASE",
+        "reelStops": [
+          12,
+          4,
+          18,
+          6,
+          1
+        ],
+        "symbolGrid": [
+          [
+            "K",
+            "A",
+            "W",
+            "A",
+            "K"
+          ],
+          [
+            "Q",
+            "SCATTER",
+            "A",
+            "Q",
+            "J"
+          ],
+          [
+            "J",
+            "10",
+            "W",
+            "10",
+            "J"
+          ]
+        ],
+        "uiMessages": [
+          {
+            "code": "ROUND_WIN",
+            "text": "You won 25.00"
+          }
+        ],
+        "animationCues": [],
+        "audioCues": [],
+        "counters": [],
+        "labels": {}
+      },
+      "restore": {
+        "hasUnfinishedRound": false,
+        "unfinishedRoundId": null,
+        "resumeStateVersion": 14,
+        "opaqueRestorePayload": null
+      },
+      "idempotency": {
+        "isDuplicate": true,
+        "duplicateOfRequestId": "req-playround-043",
+        "replaySafe": true
+      },
+      "retry": {
+        "clientMayRetrySameKey": true,
+        "clientMustIncrementCounterOnNewAction": true
+      }
+    }
+  }
+}

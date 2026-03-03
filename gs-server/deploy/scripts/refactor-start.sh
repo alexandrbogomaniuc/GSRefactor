@@ -64,6 +64,9 @@ REFACTOR_EDGE_STABILITY_CHECKS="${REFACTOR_EDGE_STABILITY_CHECKS:-3}"
 REFACTOR_EDGE_STABILITY_DELAY_SEC="${REFACTOR_EDGE_STABILITY_DELAY_SEC:-3}"
 REFACTOR_WARM_ALIAS_RETRIES="${REFACTOR_WARM_ALIAS_RETRIES:-3}"
 REFACTOR_WARM_ALIAS_DELAY_SEC="${REFACTOR_WARM_ALIAS_DELAY_SEC:-2}"
+REFACTOR_DIAG_ON_FAIL="${REFACTOR_DIAG_ON_FAIL:-1}"
+REFACTOR_DIAG_TAIL_LINES="${REFACTOR_DIAG_TAIL_LINES:-80}"
+NGINX_ERROR_LOG_PATH="${NGINX_ERROR_LOG_PATH:-$DEV_NEW_ROOT/Doker/runtime-gs/logs/nginx/error.log}"
 
 log() { printf '[refactor-start] %s\n' "$*"; }
 die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
@@ -353,6 +356,50 @@ wait_for_health() {
   return 1
 }
 
+emit_failure_diagnostics() {
+  local reason="$1"
+  if ! is_truthy "$REFACTOR_DIAG_ON_FAIL"; then
+    return 0
+  fi
+
+  log "diag: failure context -> $reason"
+  (
+    cd "$REFACTOR_DIR"
+    if ! docker compose -p refactor --env-file .env ps c1-refactor zookeeper kafka mp gs static; then
+      log "diag: docker compose ps failed"
+    fi
+  )
+
+  if [[ -f "$NGINX_ERROR_LOG_PATH" ]]; then
+    log "diag: nginx error log tail (${REFACTOR_DIAG_TAIL_LINES} lines) from $NGINX_ERROR_LOG_PATH"
+    if ! tail -n "$REFACTOR_DIAG_TAIL_LINES" "$NGINX_ERROR_LOG_PATH" | sed 's/^/[refactor-start] diag nginx: /' >&2; then
+      log "diag: failed to tail nginx error log"
+    fi
+  else
+    log "diag: nginx error log not found at $NGINX_ERROR_LOG_PATH"
+  fi
+
+  log "diag probe: curl -fsS \"http://${STATIC_EXTERNAL_HOST}:${STATIC_EXTERNAL_PORT}/html5pc/actiongames/dragonstone/lobby/version.json\""
+  log "diag probe: curl -fsS \"http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}\""
+  log "diag probe: curl -fsS \"http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/cwstartgamev2.do?bankId=${LAUNCH_BANK_ID}&subCasinoId=${LAUNCH_SUBCASINO_ID}&gameId=${LAUNCH_GAME_ID}&mode=${LAUNCH_MODE}&token=${LAUNCH_TOKEN}&lang=${LAUNCH_LANG}\""
+  log "diag probe: curl -fsS \"http://127.0.0.1:${CONFIG_SERVICE_PORT}/health\""
+  log "diag probe: curl -fsS \"http://127.0.0.1:${SESSION_SERVICE_PORT}/health\""
+  log "diag probe: curl -fsS \"http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health\""
+  log "diag probe: curl -fsS \"http://127.0.0.1:${WALLET_ADAPTER_PORT}/health\""
+  log "diag probe: curl -fsS \"http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health\""
+}
+
+warn_on_restart_counts() {
+  local service
+  local restart_count
+  for service in c1-refactor zookeeper kafka mp gs static; do
+    restart_count="$(service_restart_count "$service")"
+    if [[ "$restart_count" =~ ^[0-9]+$ ]] && (( restart_count > 0 )); then
+      log "warn: service ${service} restartCount=${restart_count} (consider inspecting logs if instability persists)"
+    fi
+  done
+}
+
 wait_for_refactor_readiness() {
   local strict="${REFACTOR_STRICT_READINESS}"
   local readiness_failures=()
@@ -368,6 +415,7 @@ wait_for_refactor_readiness() {
 
   if (( ${#readiness_failures[@]} > 0 )); then
     if is_truthy "$strict"; then
+      emit_failure_diagnostics "strict readiness failed for: ${readiness_failures[*]}"
       die "strict readiness failed for: ${readiness_failures[*]}"
     fi
     log "warn: non-strict readiness mode; continuing with failed checks: ${readiness_failures[*]}"
@@ -422,11 +470,13 @@ case "$ACTION" in
     wait_for_refactor_readiness
     if ! warm_launch_alias_probe; then
       if is_truthy "$REFACTOR_STRICT_READINESS"; then
+        emit_failure_diagnostics "strict readiness failed: warm alias probe"
         die "strict readiness failed: warm alias probe"
       fi
       log "warn: non-strict readiness mode; continuing despite warm alias probe failure"
     fi
     post_checks
+    warn_on_restart_counts
     ;;
   preflight)
     preflight

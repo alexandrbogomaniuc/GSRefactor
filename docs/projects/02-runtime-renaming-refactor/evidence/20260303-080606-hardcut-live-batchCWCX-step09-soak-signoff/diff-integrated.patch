@@ -1,0 +1,311 @@
+diff --git a/gs-server/deploy/docker/refactor/README.md b/gs-server/deploy/docker/refactor/README.md
+index c80ba7805..b86d6648c 100644
+--- a/gs-server/deploy/docker/refactor/README.md
++++ b/gs-server/deploy/docker/refactor/README.md
+@@ -73,6 +73,14 @@ curl -sS http://127.0.0.1:18078/health
+ ```
+ 
+ ## Smoke exit codes and triage
++- Startup diagnostics knobs (`refactor-start.sh up`):
++  - `REFACTOR_DIAG_ON_FAIL=1` enables automatic diagnostic bundle on strict readiness failures (`0` disables).
++  - `REFACTOR_DIAG_TAIL_LINES=80` controls nginx error log tail length in diagnostics.
++  - Diagnostics bundle prints:
++    - `docker compose ps` for `c1-refactor zookeeper kafka mp gs static`,
++    - nginx error log tail from `NGINX_ERROR_LOG_PATH` (default `Doker/runtime-gs/logs/nginx/error.log`),
++    - direct copy/paste probe `curl` commands for static, GS support/direct launch, and service health endpoints.
++  - Successful `up` now emits warn-only restart-count hints for core services when restart count is nonzero.
+ - `node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke` exit code semantics:
+   - `0`: smoke checks passed.
+   - `2`: functional smoke failure (required checks failed and launch alias did not show upstream/downstream infra signals).
+@@ -86,6 +94,11 @@ curl -sS http://127.0.0.1:18078/health
+   - `REFACTOR_SMOKE_STABILITY_RETRIES=2` retry count per stability pass check.
+   - `REFACTOR_SMOKE_STABILITY_DELAY_MS=1000` delay between retries during stability passes.
+   - Set `REFACTOR_SMOKE_STABILITY_PASSES=1` to disable additional stability passes when quick triage speed is preferred.
++- Soak command (`node ./gs-server/deploy/scripts/refactor-onboard.mjs soak`):
++  - `REFACTOR_SOAK_RUNS=5` controls repeated smoke iterations.
++  - `REFACTOR_SOAK_GAP_MS=2000` controls wait between soak iterations.
++  - `REFACTOR_SOAK_ARTIFACT_DIR=/path` overrides soak artifact output directory.
++  - Soak writes `soak-summary.json` and `soak-summary.txt` and exits with `0/2/3` using the same smoke classification semantics.
+ - Infra diagnostics emitted on infra-blocked path:
+   - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
+   - Per-core-service diagnostics include `status`, `restartCount`, and `uptimeSeconds` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
+diff --git a/gs-server/deploy/scripts/refactor-onboard.mjs b/gs-server/deploy/scripts/refactor-onboard.mjs
+index 2b4847d3c..d9df31286 100755
+--- a/gs-server/deploy/scripts/refactor-onboard.mjs
++++ b/gs-server/deploy/scripts/refactor-onboard.mjs
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env node
+ 
+ import { spawnSync } from 'node:child_process';
+-import { existsSync, readFileSync } from 'node:fs';
++import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+ import http from 'node:http';
+ import https from 'node:https';
+ import path from 'node:path';
+@@ -72,6 +72,9 @@ const RECOVERY_ALWAYS_INCLUDE = ['gs', 'static'];
+ const SMOKE_RECOVERY_WAIT_MS = 3000;
+ const CORE_RECOVERY_WAIT_MS = 10000;
+ const RECENT_RESTART_WINDOW_SEC = 120;
++const DEFAULT_SOAK_RUNS = 5;
++const DEFAULT_SOAK_GAP_MS = 2000;
++const DEFAULT_SOAK_ARTIFACT_ROOT = path.join(DEPLOY_DIR, 'artifacts', 'refactor-soak');
+ 
+ function log(msg) {
+   process.stdout.write(`[refactor-onboard] ${msg}\n`);
+@@ -87,7 +90,7 @@ function fail(msg, code = 1) {
+ }
+ 
+ function usage() {
+-  process.stdout.write(`Usage: node gs-server/deploy/scripts/refactor-onboard.mjs <command>\n\nCommands:\n  preflight  Check tools and local files, then run refactor preflight\n  up         Start the refactor-only Docker environment (includes preflight)\n  down       Stop the refactor-only Docker environment\n  smoke      Run simple HTTP checks against a running refactor environment\n`);
++  process.stdout.write(`Usage: node gs-server/deploy/scripts/refactor-onboard.mjs <command>\n\nCommands:\n  preflight  Check tools and local files, then run refactor preflight\n  up         Start the refactor-only Docker environment (includes preflight)\n  down       Stop the refactor-only Docker environment\n  smoke      Run simple HTTP checks against a running refactor environment\n  soak       Run repeated smoke checks and write soak summary artifacts\n`);
+ }
+ 
+ function run(bin, args, opts = {}) {
+@@ -888,6 +891,150 @@ async function smokeChecks() {
+   log('Smoke checks passed. The refactor launch alias is reachable.');
+ }
+ 
++function detectGitSha() {
++  const res = runCapture('git', ['rev-parse', 'HEAD'], { cwd: REPO_ROOT });
++  if (!res.ok) return 'unknown';
++  const sha = res.stdout.trim();
++  return sha === '' ? 'unknown' : sha;
++}
++
++function classifySmokeRc(rawRc) {
++  if (rawRc === 0) {
++    return { rc: 0, outcome: 'pass' };
++  }
++  if (rawRc === 2) {
++    return { rc: 2, outcome: 'functional_fail' };
++  }
++  if (rawRc === 3) {
++    return { rc: 3, outcome: 'infra_blocked_fail' };
++  }
++  return { rc: 3, outcome: 'infra_blocked_fail' };
++}
++
++function buildSoakArtifactDir() {
++  const configured = (process.env.REFACTOR_SOAK_ARTIFACT_DIR ?? '').trim();
++  const root = configured === '' ? DEFAULT_SOAK_ARTIFACT_ROOT : path.resolve(configured);
++  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
++  const dir = path.join(root, `soak-${stamp}`);
++  mkdirSync(dir, { recursive: true });
++  return dir;
++}
++
++function writeSoakSummaryArtifacts(summary, artifactDir) {
++  const jsonPath = path.join(artifactDir, 'soak-summary.json');
++  const txtPath = path.join(artifactDir, 'soak-summary.txt');
++
++  writeFileSync(jsonPath, `${JSON.stringify(summary, null, 2)}\n`, 'utf8');
++
++  const lines = [
++    'Refactor Soak Summary',
++    `started_at=${summary.startedAt}`,
++    `ended_at=${summary.endedAt}`,
++    `git_sha=${summary.gitSha}`,
++    `total_runs=${summary.totalRuns}`,
++    `pass_count=${summary.passCount}`,
++    `functional_fail_count=${summary.functionalFailCount}`,
++    `infra_blocked_fail_count=${summary.infraBlockedFailCount}`,
++    `final_rc=${summary.finalRc}`,
++    `gap_ms=${summary.gapMs}`,
++    `artifact_dir=${summary.artifactDir}`,
++    '',
++    'Runs:',
++  ];
++
++  for (const run of summary.runs) {
++    lines.push(
++      `run=${run.runIndex} started_at=${run.startedAt} ended_at=${run.endedAt} duration_ms=${run.durationMs} raw_rc=${run.rawRc} rc=${run.rc} outcome=${run.outcome}`
++    );
++  }
++
++  writeFileSync(txtPath, `${lines.join('\n')}\n`, 'utf8');
++
++  return { jsonPath, txtPath };
++}
++
++async function soakChecks() {
++  const totalRuns = Math.max(1, parsePositiveIntEnv('REFACTOR_SOAK_RUNS', DEFAULT_SOAK_RUNS));
++  const gapMs = Math.max(0, parsePositiveIntEnv('REFACTOR_SOAK_GAP_MS', DEFAULT_SOAK_GAP_MS));
++  const artifactDir = buildSoakArtifactDir();
++  const gitSha = detectGitSha();
++  const startedAt = new Date().toISOString();
++
++  const runs = [];
++  let passCount = 0;
++  let functionalFailCount = 0;
++  let infraBlockedFailCount = 0;
++
++  log(`SOAK: starting ${totalRuns} run(s), gap=${gapMs}ms, artifactDir=${artifactDir}`);
++
++  for (let runIndex = 1; runIndex <= totalRuns; runIndex += 1) {
++    const runStartedAt = new Date().toISOString();
++    const runStartedMs = Date.now();
++    const smokeRes = runCapture(process.execPath, [__filename, 'smoke'], {
++      cwd: REPO_ROOT,
++    });
++    const runEndedAt = new Date().toISOString();
++    const durationMs = Date.now() - runStartedMs;
++    const rawRc = Number.isInteger(smokeRes.status) ? smokeRes.status : 1;
++    const classified = classifySmokeRc(rawRc);
++
++    if (classified.outcome === 'pass') {
++      passCount += 1;
++    } else if (classified.outcome === 'functional_fail') {
++      functionalFailCount += 1;
++    } else {
++      infraBlockedFailCount += 1;
++    }
++
++    runs.push({
++      runIndex,
++      startedAt: runStartedAt,
++      endedAt: runEndedAt,
++      durationMs,
++      rawRc,
++      rc: classified.rc,
++      outcome: classified.outcome,
++    });
++
++    log(
++      `SOAK-RUN: ${runIndex}/${totalRuns} outcome=${classified.outcome} rc=${classified.rc} rawRc=${rawRc} durationMs=${durationMs}`
++    );
++
++    if (runIndex < totalRuns && gapMs > 0) {
++      await sleep(gapMs);
++    }
++  }
++
++  const finalRc = infraBlockedFailCount > 0 ? 3 : functionalFailCount > 0 ? 2 : 0;
++  const endedAt = new Date().toISOString();
++  const summary = {
++    startedAt,
++    endedAt,
++    gitSha,
++    totalRuns,
++    gapMs,
++    artifactDir,
++    passCount,
++    functionalFailCount,
++    infraBlockedFailCount,
++    finalRc,
++    runs,
++  };
++
++  const outputs = writeSoakSummaryArtifacts(summary, artifactDir);
++  log(`SOAK: wrote summary artifacts: ${outputs.jsonPath}, ${outputs.txtPath}`);
++
++  if (finalRc === 0) {
++    log('SOAK: all runs passed.');
++    return;
++  }
++
++  fail(
++    `Soak finished with failures (functional=${functionalFailCount}, infra-blocked=${infraBlockedFailCount}). See ${outputs.txtPath}`,
++    finalRc
++  );
++}
++
+ async function main() {
+   const command = process.argv[2];
+   if (!command || command === 'help' || command === '--help' || command === '-h') {
+@@ -922,6 +1069,9 @@ async function main() {
+     case 'smoke':
+       await smokeChecks();
+       return;
++    case 'soak':
++      await soakChecks();
++      return;
+     default:
+       usage();
+       fail(`Unknown command: ${command}`);
+diff --git a/gs-server/deploy/scripts/refactor-start.sh b/gs-server/deploy/scripts/refactor-start.sh
+index 38c2551fc..8b2dade74 100755
+--- a/gs-server/deploy/scripts/refactor-start.sh
++++ b/gs-server/deploy/scripts/refactor-start.sh
+@@ -64,6 +64,9 @@ REFACTOR_EDGE_STABILITY_CHECKS="${REFACTOR_EDGE_STABILITY_CHECKS:-3}"
+ REFACTOR_EDGE_STABILITY_DELAY_SEC="${REFACTOR_EDGE_STABILITY_DELAY_SEC:-3}"
+ REFACTOR_WARM_ALIAS_RETRIES="${REFACTOR_WARM_ALIAS_RETRIES:-3}"
+ REFACTOR_WARM_ALIAS_DELAY_SEC="${REFACTOR_WARM_ALIAS_DELAY_SEC:-2}"
++REFACTOR_DIAG_ON_FAIL="${REFACTOR_DIAG_ON_FAIL:-1}"
++REFACTOR_DIAG_TAIL_LINES="${REFACTOR_DIAG_TAIL_LINES:-80}"
++NGINX_ERROR_LOG_PATH="${NGINX_ERROR_LOG_PATH:-$DEV_NEW_ROOT/Doker/runtime-gs/logs/nginx/error.log}"
+ 
+ log() { printf '[refactor-start] %s\n' "$*"; }
+ die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
+@@ -353,6 +356,50 @@ wait_for_health() {
+   return 1
+ }
+ 
++emit_failure_diagnostics() {
++  local reason="$1"
++  if ! is_truthy "$REFACTOR_DIAG_ON_FAIL"; then
++    return 0
++  fi
++
++  log "diag: failure context -> $reason"
++  (
++    cd "$REFACTOR_DIR"
++    if ! docker compose -p refactor --env-file .env ps c1-refactor zookeeper kafka mp gs static; then
++      log "diag: docker compose ps failed"
++    fi
++  )
++
++  if [[ -f "$NGINX_ERROR_LOG_PATH" ]]; then
++    log "diag: nginx error log tail (${REFACTOR_DIAG_TAIL_LINES} lines) from $NGINX_ERROR_LOG_PATH"
++    if ! tail -n "$REFACTOR_DIAG_TAIL_LINES" "$NGINX_ERROR_LOG_PATH" | sed 's/^/[refactor-start] diag nginx: /' >&2; then
++      log "diag: failed to tail nginx error log"
++    fi
++  else
++    log "diag: nginx error log not found at $NGINX_ERROR_LOG_PATH"
++  fi
++
++  log "diag probe: curl -fsS \"http://${STATIC_EXTERNAL_HOST}:${STATIC_EXTERNAL_PORT}/html5pc/actiongames/dragonstone/lobby/version.json\""
++  log "diag probe: curl -fsS \"http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}\""
++  log "diag probe: curl -fsS \"http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/cwstartgamev2.do?bankId=${LAUNCH_BANK_ID}&subCasinoId=${LAUNCH_SUBCASINO_ID}&gameId=${LAUNCH_GAME_ID}&mode=${LAUNCH_MODE}&token=${LAUNCH_TOKEN}&lang=${LAUNCH_LANG}\""
++  log "diag probe: curl -fsS \"http://127.0.0.1:${CONFIG_SERVICE_PORT}/health\""
++  log "diag probe: curl -fsS \"http://127.0.0.1:${SESSION_SERVICE_PORT}/health\""
++  log "diag probe: curl -fsS \"http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health\""
++  log "diag probe: curl -fsS \"http://127.0.0.1:${WALLET_ADAPTER_PORT}/health\""
++  log "diag probe: curl -fsS \"http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health\""
++}
++
++warn_on_restart_counts() {
++  local service
++  local restart_count
++  for service in c1-refactor zookeeper kafka mp gs static; do
++    restart_count="$(service_restart_count "$service")"
++    if [[ "$restart_count" =~ ^[0-9]+$ ]] && (( restart_count > 0 )); then
++      log "warn: service ${service} restartCount=${restart_count} (consider inspecting logs if instability persists)"
++    fi
++  done
++}
++
+ wait_for_refactor_readiness() {
+   local strict="${REFACTOR_STRICT_READINESS}"
+   local readiness_failures=()
+@@ -368,6 +415,7 @@ wait_for_refactor_readiness() {
+ 
+   if (( ${#readiness_failures[@]} > 0 )); then
+     if is_truthy "$strict"; then
++      emit_failure_diagnostics "strict readiness failed for: ${readiness_failures[*]}"
+       die "strict readiness failed for: ${readiness_failures[*]}"
+     fi
+     log "warn: non-strict readiness mode; continuing with failed checks: ${readiness_failures[*]}"
+@@ -422,11 +470,13 @@ case "$ACTION" in
+     wait_for_refactor_readiness
+     if ! warm_launch_alias_probe; then
+       if is_truthy "$REFACTOR_STRICT_READINESS"; then
++        emit_failure_diagnostics "strict readiness failed: warm alias probe"
+         die "strict readiness failed: warm alias probe"
+       fi
+       log "warn: non-strict readiness mode; continuing despite warm alias probe failure"
+     fi
+     post_checks
++    warn_on_restart_counts
+     ;;
+   preflight)
+     preflight

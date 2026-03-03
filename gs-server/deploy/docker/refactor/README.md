@@ -73,6 +73,14 @@ curl -sS http://127.0.0.1:18078/health
 ```
 
 ## Smoke exit codes and triage
+- Startup diagnostics knobs (`refactor-start.sh up`):
+  - `REFACTOR_DIAG_ON_FAIL=1` enables automatic diagnostic bundle on strict readiness failures (`0` disables).
+  - `REFACTOR_DIAG_TAIL_LINES=80` controls nginx error log tail length in diagnostics.
+  - Diagnostics bundle prints:
+    - `docker compose ps` for `c1-refactor zookeeper kafka mp gs static`,
+    - nginx error log tail from `NGINX_ERROR_LOG_PATH` (default `Doker/runtime-gs/logs/nginx/error.log`),
+    - direct copy/paste probe `curl` commands for static, GS support/direct launch, and service health endpoints.
+  - Successful `up` now emits warn-only restart-count hints for core services when restart count is nonzero.
 - `node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke` exit code semantics:
   - `0`: smoke checks passed.
   - `2`: functional smoke failure (required checks failed and launch alias did not show upstream/downstream infra signals).
@@ -86,6 +94,11 @@ curl -sS http://127.0.0.1:18078/health
   - `REFACTOR_SMOKE_STABILITY_RETRIES=2` retry count per stability pass check.
   - `REFACTOR_SMOKE_STABILITY_DELAY_MS=1000` delay between retries during stability passes.
   - Set `REFACTOR_SMOKE_STABILITY_PASSES=1` to disable additional stability passes when quick triage speed is preferred.
+- Soak command (`node ./gs-server/deploy/scripts/refactor-onboard.mjs soak`):
+  - `REFACTOR_SOAK_RUNS=5` controls repeated smoke iterations.
+  - `REFACTOR_SOAK_GAP_MS=2000` controls wait between soak iterations.
+  - `REFACTOR_SOAK_ARTIFACT_DIR=/path` overrides soak artifact output directory.
+  - Soak writes `soak-summary.json` and `soak-summary.txt` and exits with `0/2/3` using the same smoke classification semantics.
 - Infra diagnostics emitted on infra-blocked path:
   - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
   - Per-core-service diagnostics include `status`, `restartCount`, and `uptimeSeconds` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).

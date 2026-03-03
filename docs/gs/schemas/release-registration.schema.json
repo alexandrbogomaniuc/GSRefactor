@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "slot-release-registration-v1/release-registration.schema.json",
+  "title": "slot-release-registration-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractVersion",
+    "releaseId",
+    "gameId",
+    "title",
+    "route",
+    "client",
+    "math",
+    "capabilityProfile",
+    "rollout",
+    "compatibility",
+    "integrity",
+    "metadata"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "const": "slot-release-registration-v1"
+    },
+    "releaseId": {
+      "type": "string"
+    },
+    "gameId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "routeGameId",
+        "routingEnabled",
+        "legacyFallbackEnabled"
+      ],
+      "properties": {
+        "routeGameId": {
+          "type": "string"
+        },
+        "routingEnabled": {
+          "type": "boolean"
+        },
+        "legacyFallbackEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "client": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clientPackageVersion",
+        "assetBaseUrl",
+        "assetBundleHash",
+        "assetManifestPath"
+      ],
+      "properties": {
+        "clientPackageVersion": {
+          "type": "string"
+        },
+        "assetBaseUrl": {
+          "type": "string"
+        },
+        "assetBundleHash": {
+          "type": "string"
+        },
+        "assetManifestPath": {
+          "type": "string"
+        }
+      }
+    },
+    "math": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mathPackageVersion",
+        "allowedRtpModels",
+        "defaultRtpModelRules"
+      ],
+      "properties": {
+        "mathPackageVersion": {
+          "type": "string"
+        },
+        "allowedRtpModels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "rtpModelId",
+              "rtpPercent",
+              "jurisdictionTags"
+            ],
+            "properties": {
+              "rtpModelId": {
+                "type": "string"
+              },
+              "rtpPercent": {
+                "type": "number"
+              },
+              "jurisdictionTags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "defaultRtpModelRules": {
+          "type": "object",
+          "required": [
+            "ruleType",
+            "releaseDefaultRtpModelId",
+            "fallbackOrder"
+          ],
+          "properties": {
+            "ruleType": {
+              "type": "string"
+            },
+            "releaseDefaultRtpModelId": {
+              "type": "string"
+            },
+            "fallbackOrder": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "capabilityProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileRef",
+        "profileHash",
+        "policySchemaVersion"
+      ],
+      "properties": {
+        "profileRef": {
+          "type": "string"
+        },
+        "profileHash": {
+          "type": "string"
+        },
+        "policySchemaVersion": {
+          "type": "string",
+          "const": "slot-bootstrap-v1"
+        }
+      }
+    },
+    "rollout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "canary",
+        "rollbackTargetReleaseId"
+      ],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "DISABLED",
+            "CANARY",
+            "ENABLED",
+            "ROLLBACK_TARGET"
+          ]
+        },
+        "canary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "banks",
+            "subCasinoIds",
+            "trafficPercent"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string"
+            },
+            "banks": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "subCasinoIds": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "trafficPercent": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          }
+        },
+        "rollbackTargetReleaseId": {
+          "type": "string"
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minGsVersion",
+        "maxGsVersion",
+        "browserContractVersion",
+        "bootstrapContractVersion",
+        "internalRuntimeContractVersion"
+      ],
+      "properties": {
+        "minGsVersion": {
+          "type": "string"
+        },
+        "maxGsVersion": {
+          "type": "string"
+        },
+        "browserContractVersion": {
+          "type": "string",
+          "const": "slot-browser-v1"
+        },
+        "bootstrapContractVersion": {
+          "type": "string",
+          "const": "slot-bootstrap-v1"
+        },
+        "internalRuntimeContractVersion": {
+          "type": "string",
+          "const": "slot-runtime-v1"
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registrationHash",
+        "signature",
+        "signer",
+        "generatedAtUtc"
+      ],
+      "properties": {
+        "registrationHash": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        },
+        "signer": {
+          "type": "string"
+        },
+        "generatedAtUtc": {
+          "type": "string"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "changeTicket",
+        "notes",
+        "createdBy"
+      ],
+      "properties": {
+        "changeTicket": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

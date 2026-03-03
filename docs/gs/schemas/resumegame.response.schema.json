@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ok",
+    "requestId",
+    "sessionId",
+    "requestCounter",
+    "stateVersion",
+    "wallet",
+    "round",
+    "feature",
+    "presentationPayload",
+    "restore",
+    "idempotency",
+    "retry"
+  ],
+  "properties": {
+    "ok": {
+      "type": "boolean",
+      "const": true
+    },
+    "requestId": {
+      "type": "string"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "requestCounter": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stateVersion": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "wallet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "balanceMinor",
+        "previousBalanceMinor",
+        "currencyCode",
+        "truncateCents",
+        "delayedWalletMessagePending"
+      ],
+      "properties": {
+        "balanceMinor": {
+          "type": "integer"
+        },
+        "previousBalanceMinor": {
+          "type": "integer"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "truncateCents": {
+          "type": "boolean"
+        },
+        "delayedWalletMessagePending": {
+          "type": "boolean"
+        }
+      }
+    },
+    "round": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "roundId",
+        "status",
+        "betMinor",
+        "winMinor",
+        "netEffectMinor",
+        "outcomeHash"
+      ],
+      "properties": {
+        "roundId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "IN_PROGRESS",
+            "FINAL"
+          ]
+        },
+        "betMinor": {
+          "type": "integer"
+        },
+        "winMinor": {
+          "type": "integer"
+        },
+        "netEffectMinor": {
+          "type": "integer"
+        },
+        "outcomeHash": {
+          "type": "string"
+        }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "remainingActions",
+        "nextAllowedActions",
+        "featureContext"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string"
+        },
+        "remainingActions": {
+          "type": "integer"
+        },
+        "nextAllowedActions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "featureContext": {
+          "type": "object"
+        }
+      }
+    },
+    "presentationPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "featureMode",
+        "reelStops",
+        "symbolGrid",
+        "uiMessages",
+        "animationCues",
+        "audioCues",
+        "counters",
+        "labels"
+      ],
+      "properties": {
+        "featureMode": {
+          "type": "string"
+        },
+        "reelStops": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "symbolGrid": {
+          "type": "array"
+        },
+        "uiMessages": {
+          "type": "array"
+        },
+        "animationCues": {
+          "type": "array"
+        },
+        "audioCues": {
+          "type": "array"
+        },
+        "counters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "value"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "labels": {
+          "type": "object"
+        }
+      }
+    },
+    "restore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hasUnfinishedRound",
+        "unfinishedRoundId",
+        "resumeStateVersion",
+        "opaqueRestorePayload"
+      ],
+      "properties": {
+        "hasUnfinishedRound": {
+          "type": "boolean"
+        },
+        "unfinishedRoundId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resumeStateVersion": {
+          "type": "integer"
+        },
+        "opaqueRestorePayload": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "idempotency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "isDuplicate",
+        "duplicateOfRequestId",
+        "replaySafe"
+      ],
+      "properties": {
+        "isDuplicate": {
+          "type": "boolean"
+        },
+        "duplicateOfRequestId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "replaySafe": {
+          "type": "boolean"
+        }
+      }
+    },
+    "retry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clientMayRetrySameKey",
+        "clientMustIncrementCounterOnNewAction"
+      ],
+      "properties": {
+        "clientMayRetrySameKey": {
+          "type": "boolean"
+        },
+        "clientMustIncrementCounterOnNewAction": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$id": "slot-browser-v1/resumegame.response.schema.json",
+  "title": "slot-browser-v1 resumegame.response"
+}

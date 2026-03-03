@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "slot-browser-v1/bootstrap.request.schema.json",
+  "title": "slot-browser-v1 bootstrap request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractVersion",
+    "sessionId",
+    "bootstrapRef"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "const": "slot-browser-v1"
+    },
+    "sessionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bootstrapRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "configId",
+        "clientPackageVersion"
+      ],
+      "properties": {
+        "configId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clientPackageVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

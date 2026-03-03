@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import http from 'node:http';
 import https from 'node:https';
 import path from 'node:path';
@@ -72,6 +72,9 @@ const RECOVERY_ALWAYS_INCLUDE = ['gs', 'static'];
 const SMOKE_RECOVERY_WAIT_MS = 3000;
 const CORE_RECOVERY_WAIT_MS = 10000;
 const RECENT_RESTART_WINDOW_SEC = 120;
+const DEFAULT_SOAK_RUNS = 5;
+const DEFAULT_SOAK_GAP_MS = 2000;
+const DEFAULT_SOAK_ARTIFACT_ROOT = path.join(DEPLOY_DIR, 'artifacts', 'refactor-soak');
 
 function log(msg) {
   process.stdout.write(`[refactor-onboard] ${msg}\n`);
@@ -87,7 +90,7 @@ function fail(msg, code = 1) {
 }
 
 function usage() {
-  process.stdout.write(`Usage: node gs-server/deploy/scripts/refactor-onboard.mjs <command>\n\nCommands:\n  preflight  Check tools and local files, then run refactor preflight\n  up         Start the refactor-only Docker environment (includes preflight)\n  down       Stop the refactor-only Docker environment\n  smoke      Run simple HTTP checks against a running refactor environment\n`);
+  process.stdout.write(`Usage: node gs-server/deploy/scripts/refactor-onboard.mjs <command>\n\nCommands:\n  preflight  Check tools and local files, then run refactor preflight\n  up         Start the refactor-only Docker environment (includes preflight)\n  down       Stop the refactor-only Docker environment\n  smoke      Run simple HTTP checks against a running refactor environment\n  soak       Run repeated smoke checks and write soak summary artifacts\n`);
 }
 
 function run(bin, args, opts = {}) {
@@ -888,6 +891,150 @@ async function smokeChecks() {
   log('Smoke checks passed. The refactor launch alias is reachable.');
 }
 
+function detectGitSha() {
+  const res = runCapture('git', ['rev-parse', 'HEAD'], { cwd: REPO_ROOT });
+  if (!res.ok) return 'unknown';
+  const sha = res.stdout.trim();
+  return sha === '' ? 'unknown' : sha;
+}
+
+function classifySmokeRc(rawRc) {
+  if (rawRc === 0) {
+    return { rc: 0, outcome: 'pass' };
+  }
+  if (rawRc === 2) {
+    return { rc: 2, outcome: 'functional_fail' };
+  }
+  if (rawRc === 3) {
+    return { rc: 3, outcome: 'infra_blocked_fail' };
+  }
+  return { rc: 3, outcome: 'infra_blocked_fail' };
+}
+
+function buildSoakArtifactDir() {
+  const configured = (process.env.REFACTOR_SOAK_ARTIFACT_DIR ?? '').trim();
+  const root = configured === '' ? DEFAULT_SOAK_ARTIFACT_ROOT : path.resolve(configured);
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const dir = path.join(root, `soak-${stamp}`);
+  mkdirSync(dir, { recursive: true });
+  return dir;
+}
+
+function writeSoakSummaryArtifacts(summary, artifactDir) {
+  const jsonPath = path.join(artifactDir, 'soak-summary.json');
+  const txtPath = path.join(artifactDir, 'soak-summary.txt');
+
+  writeFileSync(jsonPath, `${JSON.stringify(summary, null, 2)}\n`, 'utf8');
+
+  const lines = [
+    'Refactor Soak Summary',
+    `started_at=${summary.startedAt}`,
+    `ended_at=${summary.endedAt}`,
+    `git_sha=${summary.gitSha}`,
+    `total_runs=${summary.totalRuns}`,
+    `pass_count=${summary.passCount}`,
+    `functional_fail_count=${summary.functionalFailCount}`,
+    `infra_blocked_fail_count=${summary.infraBlockedFailCount}`,
+    `final_rc=${summary.finalRc}`,
+    `gap_ms=${summary.gapMs}`,
+    `artifact_dir=${summary.artifactDir}`,
+    '',
+    'Runs:',
+  ];
+
+  for (const run of summary.runs) {
+    lines.push(
+      `run=${run.runIndex} started_at=${run.startedAt} ended_at=${run.endedAt} duration_ms=${run.durationMs} raw_rc=${run.rawRc} rc=${run.rc} outcome=${run.outcome}`
+    );
+  }
+
+  writeFileSync(txtPath, `${lines.join('\n')}\n`, 'utf8');
+
+  return { jsonPath, txtPath };
+}
+
+async function soakChecks() {
+  const totalRuns = Math.max(1, parsePositiveIntEnv('REFACTOR_SOAK_RUNS', DEFAULT_SOAK_RUNS));
+  const gapMs = Math.max(0, parsePositiveIntEnv('REFACTOR_SOAK_GAP_MS', DEFAULT_SOAK_GAP_MS));
+  const artifactDir = buildSoakArtifactDir();
+  const gitSha = detectGitSha();
+  const startedAt = new Date().toISOString();
+
+  const runs = [];
+  let passCount = 0;
+  let functionalFailCount = 0;
+  let infraBlockedFailCount = 0;
+
+  log(`SOAK: starting ${totalRuns} run(s), gap=${gapMs}ms, artifactDir=${artifactDir}`);
+
+  for (let runIndex = 1; runIndex <= totalRuns; runIndex += 1) {
+    const runStartedAt = new Date().toISOString();
+    const runStartedMs = Date.now();
+    const smokeRes = runCapture(process.execPath, [__filename, 'smoke'], {
+      cwd: REPO_ROOT,
+    });
+    const runEndedAt = new Date().toISOString();
+    const durationMs = Date.now() - runStartedMs;
+    const rawRc = Number.isInteger(smokeRes.status) ? smokeRes.status : 1;
+    const classified = classifySmokeRc(rawRc);
+
+    if (classified.outcome === 'pass') {
+      passCount += 1;
+    } else if (classified.outcome === 'functional_fail') {
+      functionalFailCount += 1;
+    } else {
+      infraBlockedFailCount += 1;
+    }
+
+    runs.push({
+      runIndex,
+      startedAt: runStartedAt,
+      endedAt: runEndedAt,
+      durationMs,
+      rawRc,
+      rc: classified.rc,
+      outcome: classified.outcome,
+    });
+
+    log(
+      `SOAK-RUN: ${runIndex}/${totalRuns} outcome=${classified.outcome} rc=${classified.rc} rawRc=${rawRc} durationMs=${durationMs}`
+    );
+
+    if (runIndex < totalRuns && gapMs > 0) {
+      await sleep(gapMs);
+    }
+  }
+
+  const finalRc = infraBlockedFailCount > 0 ? 3 : functionalFailCount > 0 ? 2 : 0;
+  const endedAt = new Date().toISOString();
+  const summary = {
+    startedAt,
+    endedAt,
+    gitSha,
+    totalRuns,
+    gapMs,
+    artifactDir,
+    passCount,
+    functionalFailCount,
+    infraBlockedFailCount,
+    finalRc,
+    runs,
+  };
+
+  const outputs = writeSoakSummaryArtifacts(summary, artifactDir);
+  log(`SOAK: wrote summary artifacts: ${outputs.jsonPath}, ${outputs.txtPath}`);
+
+  if (finalRc === 0) {
+    log('SOAK: all runs passed.');
+    return;
+  }
+
+  fail(
+    `Soak finished with failures (functional=${functionalFailCount}, infra-blocked=${infraBlockedFailCount}). See ${outputs.txtPath}`,
+    finalRc
+  );
+}
+
 async function main() {
   const command = process.argv[2];
   if (!command || command === 'help' || command === '--help' || command === '-h') {
@@ -921,6 +1068,9 @@ async function main() {
       return;
     case 'smoke':
       await smokeChecks();
+      return;
+    case 'soak':
+      await soakChecks();
       return;
     default:
       usage();

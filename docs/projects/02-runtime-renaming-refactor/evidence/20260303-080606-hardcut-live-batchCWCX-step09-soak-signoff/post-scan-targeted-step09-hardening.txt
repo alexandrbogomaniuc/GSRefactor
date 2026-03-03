@@ -1,0 +1,49 @@
+gs-server/deploy/docker/refactor/README.md:76:- Startup diagnostics knobs (`refactor-start.sh up`):
+gs-server/deploy/docker/refactor/README.md:77:  - `REFACTOR_DIAG_ON_FAIL=1` enables automatic diagnostic bundle on strict readiness failures (`0` disables).
+gs-server/deploy/docker/refactor/README.md:78:  - `REFACTOR_DIAG_TAIL_LINES=80` controls nginx error log tail length in diagnostics.
+gs-server/deploy/docker/refactor/README.md:97:- Soak command (`node ./gs-server/deploy/scripts/refactor-onboard.mjs soak`):
+gs-server/deploy/docker/refactor/README.md:98:  - `REFACTOR_SOAK_RUNS=5` controls repeated smoke iterations.
+gs-server/deploy/docker/refactor/README.md:99:  - `REFACTOR_SOAK_GAP_MS=2000` controls wait between soak iterations.
+gs-server/deploy/docker/refactor/README.md:100:  - `REFACTOR_SOAK_ARTIFACT_DIR=/path` overrides soak artifact output directory.
+gs-server/deploy/docker/refactor/README.md:101:  - Soak writes `soak-summary.json` and `soak-summary.txt` and exits with `0/2/3` using the same smoke classification semantics.
+gs-server/deploy/docker/refactor/README.md:102:- Infra diagnostics emitted on infra-blocked path:
+gs-server/deploy/docker/refactor/README.md:104:  - Per-core-service diagnostics include `status`, `restartCount`, and `uptimeSeconds` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
+gs-server/deploy/docker/refactor/README.md:112:  - If recovery does not clear failures, smoke stays infra-blocked and returns `3` with diagnostics.
+gs-server/deploy/scripts/refactor-onboard.mjs:77:const DEFAULT_SOAK_ARTIFACT_ROOT = path.join(DEPLOY_DIR, 'artifacts', 'refactor-soak');
+gs-server/deploy/scripts/refactor-onboard.mjs:93:  process.stdout.write(`Usage: node gs-server/deploy/scripts/refactor-onboard.mjs <command>\n\nCommands:\n  preflight  Check tools and local files, then run refactor preflight\n  up         Start the refactor-only Docker environment (includes preflight)\n  down       Stop the refactor-only Docker environment\n  smoke      Run simple HTTP checks against a running refactor environment\n  soak       Run repeated smoke checks and write soak summary artifacts\n`);
+gs-server/deploy/scripts/refactor-onboard.mjs:567:    logErr('INFRA-DIAG: docker command not found; cannot emit compose diagnostics.');
+gs-server/deploy/scripts/refactor-onboard.mjs:729:          `Smoke stability pass ${pass}/${totalPasses} failed with infrastructure signals. See diagnostics above.`,
+gs-server/deploy/scripts/refactor-onboard.mjs:757:      label: 'GS support route (diagnostic)',
+gs-server/deploy/scripts/refactor-onboard.mjs:858:      fail('Smoke checks infra-blocked by upstream/runtime outage. See diagnostics above.', 3);
+gs-server/deploy/scripts/refactor-onboard.mjs:915:  const configured = (process.env.REFACTOR_SOAK_ARTIFACT_DIR ?? '').trim();
+gs-server/deploy/scripts/refactor-onboard.mjs:918:  const dir = path.join(root, `soak-${stamp}`);
+gs-server/deploy/scripts/refactor-onboard.mjs:924:  const jsonPath = path.join(artifactDir, 'soak-summary.json');
+gs-server/deploy/scripts/refactor-onboard.mjs:925:  const txtPath = path.join(artifactDir, 'soak-summary.txt');
+gs-server/deploy/scripts/refactor-onboard.mjs:956:async function soakChecks() {
+gs-server/deploy/scripts/refactor-onboard.mjs:957:  const totalRuns = Math.max(1, parsePositiveIntEnv('REFACTOR_SOAK_RUNS', DEFAULT_SOAK_RUNS));
+gs-server/deploy/scripts/refactor-onboard.mjs:958:  const gapMs = Math.max(0, parsePositiveIntEnv('REFACTOR_SOAK_GAP_MS', DEFAULT_SOAK_GAP_MS));
+gs-server/deploy/scripts/refactor-onboard.mjs:1072:    case 'soak':
+gs-server/deploy/scripts/refactor-onboard.mjs:1073:      await soakChecks();
+gs-server/deploy/scripts/refactor-start.sh:67:REFACTOR_DIAG_ON_FAIL="${REFACTOR_DIAG_ON_FAIL:-1}"
+gs-server/deploy/scripts/refactor-start.sh:68:REFACTOR_DIAG_TAIL_LINES="${REFACTOR_DIAG_TAIL_LINES:-80}"
+gs-server/deploy/scripts/refactor-start.sh:359:emit_failure_diagnostics() {
+gs-server/deploy/scripts/refactor-start.sh:361:  if ! is_truthy "$REFACTOR_DIAG_ON_FAIL"; then
+gs-server/deploy/scripts/refactor-start.sh:365:  log "diag: failure context -> $reason"
+gs-server/deploy/scripts/refactor-start.sh:369:      log "diag: docker compose ps failed"
+gs-server/deploy/scripts/refactor-start.sh:374:    log "diag: nginx error log tail (${REFACTOR_DIAG_TAIL_LINES} lines) from $NGINX_ERROR_LOG_PATH"
+gs-server/deploy/scripts/refactor-start.sh:375:    if ! tail -n "$REFACTOR_DIAG_TAIL_LINES" "$NGINX_ERROR_LOG_PATH" | sed 's/^/[refactor-start] diag nginx: /' >&2; then
+gs-server/deploy/scripts/refactor-start.sh:376:      log "diag: failed to tail nginx error log"
+gs-server/deploy/scripts/refactor-start.sh:379:    log "diag: nginx error log not found at $NGINX_ERROR_LOG_PATH"
+gs-server/deploy/scripts/refactor-start.sh:382:  log "diag probe: curl -fsS \"http://${STATIC_EXTERNAL_HOST}:${STATIC_EXTERNAL_PORT}/html5pc/actiongames/dragonstone/lobby/version.json\""
+gs-server/deploy/scripts/refactor-start.sh:383:  log "diag probe: curl -fsS \"http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}\""
+gs-server/deploy/scripts/refactor-start.sh:384:  log "diag probe: curl -fsS \"http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/cwstartgamev2.do?bankId=${LAUNCH_BANK_ID}&subCasinoId=${LAUNCH_SUBCASINO_ID}&gameId=${LAUNCH_GAME_ID}&mode=${LAUNCH_MODE}&token=${LAUNCH_TOKEN}&lang=${LAUNCH_LANG}\""
+gs-server/deploy/scripts/refactor-start.sh:385:  log "diag probe: curl -fsS \"http://127.0.0.1:${CONFIG_SERVICE_PORT}/health\""
+gs-server/deploy/scripts/refactor-start.sh:386:  log "diag probe: curl -fsS \"http://127.0.0.1:${SESSION_SERVICE_PORT}/health\""
+gs-server/deploy/scripts/refactor-start.sh:387:  log "diag probe: curl -fsS \"http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health\""
+gs-server/deploy/scripts/refactor-start.sh:388:  log "diag probe: curl -fsS \"http://127.0.0.1:${WALLET_ADAPTER_PORT}/health\""
+gs-server/deploy/scripts/refactor-start.sh:389:  log "diag probe: curl -fsS \"http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health\""
+gs-server/deploy/scripts/refactor-start.sh:392:warn_on_restart_counts() {
+gs-server/deploy/scripts/refactor-start.sh:418:      emit_failure_diagnostics "strict readiness failed for: ${readiness_failures[*]}"
+gs-server/deploy/scripts/refactor-start.sh:451:  curl -fsS "http://127.0.0.1:18081/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}" >/dev/null && log "gs support route ok" || log "gs support route warn (diagnostic)"
+gs-server/deploy/scripts/refactor-start.sh:473:        emit_failure_diagnostics "strict readiness failed: warm alias probe"
+gs-server/deploy/scripts/refactor-start.sh:479:    warn_on_restart_counts

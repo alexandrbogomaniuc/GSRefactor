@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "slot-browser-v1/playround.request.schema.json",
+  "title": "slot-browser-v1 playround request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractVersion",
+    "sessionId",
+    "requestCounter",
+    "idempotencyKey",
+    "clientOperationId",
+    "currentStateVersion",
+    "bootstrapRef",
+    "selectedBet",
+    "selectedFeatureChoice"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "const": "slot-browser-v1"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "requestCounter": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "idempotencyKey": {
+      "type": "string"
+    },
+    "clientOperationId": {
+      "type": "string"
+    },
+    "currentStateVersion": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "bootstrapRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "configId",
+        "clientPackageVersion",
+        "mathPackageVersion"
+      ],
+      "properties": {
+        "configId": {
+          "type": "string"
+        },
+        "clientPackageVersion": {
+          "type": "string"
+        },
+        "mathPackageVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "selectedBet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coinValueMinor",
+        "lines",
+        "multiplier",
+        "totalBetMinor"
+      ],
+      "properties": {
+        "coinValueMinor": {
+          "type": "integer"
+        },
+        "lines": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "multiplier": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "totalBetMinor": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "selectedFeatureChoice": {
+      "type": "null"
+    }
+  }
+}
