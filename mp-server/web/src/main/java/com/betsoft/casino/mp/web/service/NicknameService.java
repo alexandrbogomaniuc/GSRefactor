@@ -43,15 +43,23 @@ public class NicknameService implements INicknameService {
             LOG.warn("addReservedNicknameForEntireSystem: nickName already used: {}", nickname);
             return false;
         }
-        reservedNicknamePersister.persistForEntireSystem(AI_BOT_REGION, nickname);
-        socketService.addMQReservedNicknames(AI_BOT_REGION, -1, Collections.singleton(nickname));
+        try {
+            reservedNicknamePersister.persistForEntireSystem(AI_BOT_REGION, nickname);
+            socketService.addMQReservedNicknames(AI_BOT_REGION, -1, Collections.singleton(nickname));
+        } catch (com.abs.casino.common.exception.CommonException e) {
+            throw new CommonException(e.getMessage(), e);
+        }
         LOG.debug("addReservedNicknameForEntireSystem: success add nickname={}", nickname);
         return true;
     }
 
     public void removeReservedNicknameForEntireSystem(String nickname) throws CommonException {
-        reservedNicknamePersister.remove(AI_BOT_REGION, nickname);
-        socketService.removeMQReservedNicknames(AI_BOT_REGION, -1, Collections.singleton(nickname));
+        try {
+            reservedNicknamePersister.remove(AI_BOT_REGION, nickname);
+            socketService.removeMQReservedNicknames(AI_BOT_REGION, -1, Collections.singleton(nickname));
+        } catch (com.abs.casino.common.exception.CommonException e) {
+            throw new CommonException(e.getMessage(), e);
+        }
         LOG.debug("removeReservedNicknameForEntireSystem: success remove nickname={}", nickname);
     }
 
@@ -81,7 +89,11 @@ public class NicknameService implements INicknameService {
     @Override
     public boolean changeNickname(Long bankId, Long accountId, String oldNickName, String newNickname)
             throws CommonException {
-        return playerNicknamePersister.changeNickname(bankId, accountId, oldNickName, newNickname);
+        try {
+            return playerNicknamePersister.changeNickname(bankId, accountId, oldNickName, newNickname);
+        } catch (com.abs.casino.common.exception.CommonException e) {
+            throw new CommonException(e.getMessage(), e);
+        }
     }
 
     @Override

@@ -1,0 +1,76 @@
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java
+index 543fb2d99..c29586387 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java
+@@ -36,24 +36,32 @@ public class NicknameService implements INicknameService {
+         return playerNicknamePersister.getNickname(bankId, accountId);
+     }
+ 
+-    //used for initial setup scripts
+-    public boolean addReservedNicknameForEntireSystem(String nickname) throws CommonException {
+-        boolean available = playerNicknamePersister.isNicknameAvailable(nickname);
+-        if (!available) {
+-            LOG.warn("addReservedNicknameForEntireSystem: nickName already used: {}", nickname);
+-            return false;
+-        }
+-        reservedNicknamePersister.persistForEntireSystem(AI_BOT_REGION, nickname);
+-        socketService.addMQReservedNicknames(AI_BOT_REGION, -1, Collections.singleton(nickname));
+-        LOG.debug("addReservedNicknameForEntireSystem: success add nickname={}", nickname);
+-        return true;
+-    }
+-
+-    public void removeReservedNicknameForEntireSystem(String nickname) throws CommonException {
+-        reservedNicknamePersister.remove(AI_BOT_REGION, nickname);
+-        socketService.removeMQReservedNicknames(AI_BOT_REGION, -1, Collections.singleton(nickname));
+-        LOG.debug("removeReservedNicknameForEntireSystem: success remove nickname={}", nickname);
+-    }
++    //used for initial setup scripts
++    public boolean addReservedNicknameForEntireSystem(String nickname) throws CommonException {
++        boolean available = playerNicknamePersister.isNicknameAvailable(nickname);
++        if (!available) {
++            LOG.warn("addReservedNicknameForEntireSystem: nickName already used: {}", nickname);
++            return false;
++        }
++        try {
++            reservedNicknamePersister.persistForEntireSystem(AI_BOT_REGION, nickname);
++            socketService.addMQReservedNicknames(AI_BOT_REGION, -1, Collections.singleton(nickname));
++        } catch (com.abs.casino.common.exception.CommonException e) {
++            throw new CommonException(e.getMessage(), e);
++        }
++        LOG.debug("addReservedNicknameForEntireSystem: success add nickname={}", nickname);
++        return true;
++    }
++
++    public void removeReservedNicknameForEntireSystem(String nickname) throws CommonException {
++        try {
++            reservedNicknamePersister.remove(AI_BOT_REGION, nickname);
++            socketService.removeMQReservedNicknames(AI_BOT_REGION, -1, Collections.singleton(nickname));
++        } catch (com.abs.casino.common.exception.CommonException e) {
++            throw new CommonException(e.getMessage(), e);
++        }
++        LOG.debug("removeReservedNicknameForEntireSystem: success remove nickname={}", nickname);
++    }
+ 
+     @Override
+     public boolean isNicknameAvailableGlobally(String nickname) {
+@@ -78,11 +86,15 @@ public class NicknameService implements INicknameService {
+         return available;
+     }
+ 
+-    @Override
+-    public boolean changeNickname(Long bankId, Long accountId, String oldNickName, String newNickname)
+-            throws CommonException {
+-        return playerNicknamePersister.changeNickname(bankId, accountId, oldNickName, newNickname);
+-    }
++    @Override
++    public boolean changeNickname(Long bankId, Long accountId, String oldNickName, String newNickname)
++            throws CommonException {
++        try {
++            return playerNicknamePersister.changeNickname(bankId, accountId, oldNickName, newNickname);
++        } catch (com.abs.casino.common.exception.CommonException e) {
++            throw new CommonException(e.getMessage(), e);
++        }
++    }
+ 
+     @Override
+     public String generateRandomNickname(boolean isGuest, long bankId, long accountId, String oldNickname) {

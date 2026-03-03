@@ -1,0 +1,12 @@
+40:    public boolean addReservedNicknameForEntireSystem(String nickname) throws CommonException {
+43:            LOG.warn("addReservedNicknameForEntireSystem: nickName already used: {}", nickname);
+49:        } catch (com.abs.casino.common.exception.CommonException e) {
+52:        LOG.debug("addReservedNicknameForEntireSystem: success add nickname={}", nickname);
+56:    public void removeReservedNicknameForEntireSystem(String nickname) throws CommonException {
+60:        } catch (com.abs.casino.common.exception.CommonException e) {
+63:        LOG.debug("removeReservedNicknameForEntireSystem: success remove nickname={}", nickname);
+90:    public boolean changeNickname(Long bankId, Long accountId, String oldNickName, String newNickname)
+91:            throws CommonException {
+93:            return playerNicknamePersister.changeNickname(bankId, accountId, oldNickName, newNickname);
+94:        } catch (com.abs.casino.common.exception.CommonException e) {
+108:                        changeNickname(bankId, accountId, oldNickname, nickname);

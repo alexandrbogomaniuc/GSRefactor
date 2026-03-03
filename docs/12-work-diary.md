@@ -10792,3 +10792,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.01-0.45h` (`~0.00-0.06` workdays), next lane is localized `NicknameService` exception-boundary harmonization.
+
+### 2026-03-03 03:35 UTC
+- Continued Project 02 stabilization with `CG` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `NicknameService` methods `addReservedNicknameForEntireSystem`, `removeReservedNicknameForEntireSystem`, and `changeNickname` now bridge `com.abs...CommonException` back to legacy `com.dgphoenix...CommonException` to preserve method contracts.
+  - retained total: `3` targeted rewires across `1` file.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL.
+  - web compile first-fail moved from `NicknameService` to localized `GetBattlegroundStartGameUrlHandler` boundary (`[293,44]`).
+  - canonical rerun profile unchanged: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-031511-hardcut-live-batchCG-nickname-exception-bridge-rewire3/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/287-hard-cut-live-batchCG-nickname-exception-bridge-rewire3-report-20260303.md`
+- Result:
+  - NicknameService boundary lane is cleared; next bounded pass should target `GetBattlegroundStartGameUrlHandler` boundary point.

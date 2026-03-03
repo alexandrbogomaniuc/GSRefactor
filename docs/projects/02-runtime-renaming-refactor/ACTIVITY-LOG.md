@@ -5618,3 +5618,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared `EnterLobbyHandler` fail-head and advanced to the next localized boundary file (`NicknameService`).
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 03:35 UTC (Hard-cut live Batch CG)
+- Continued Project 02 stabilization with live batch `CG` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - CG (`3` rewires): `NicknameService` exception-bridge harmonization for legacy contract methods (`addReservedNicknameForEntireSystem`, `removeReservedNicknameForEntireSystem`, `changeNickname`).
+  - retained total: `3` targeted rewires across `1` file.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, `clashofthegods` compile gate FAIL in known lane.
+  - `web` first-fail shifted off `NicknameService` to localized `GetBattlegroundStartGameUrlHandler` boundary (`[293,44]`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not CG import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-031511-hardcut-live-batchCG-nickname-exception-bridge-rewire3/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/287-hard-cut-live-batchCG-nickname-exception-bridge-rewire3-report-20260303.md`
+- Measured movement:
+  - cleared `NicknameService` fail-head and advanced to `GetBattlegroundStartGameUrlHandler` localized boundary lane.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).
