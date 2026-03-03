@@ -5,30 +5,38 @@ Repo root: `E:\Dev\GSRefactor\Gamesv1`
 
 ## Scope
 
-This run produced export/proof artifacts only (no new product features).
+Final proof-reconciliation run only (no product feature work).
 
-## Canonical mirror proof
+## Verification model (resolved contradiction)
 
-- Strict upstream check against included GS pack artifact: PASS
-- Command: `pnpm run verify:gs-contract-pack -- --strict-upstream --upstream E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gs_pack\gs --repo E:\Dev\GSRefactor\Gamesv1\docs\gs`
+Option A applied:
+- Default `verify:gs-contract-pack` is now reproducibly repo-local (uses `Gamesv1/docs/gs` by default).
+- Strict upstream equality remains explicit and stronger via `--strict-upstream --upstream <path>`.
 
-## Export proof
+Result:
+- default verify: PASS
+- strict verify against included GS pack: PASS
 
-- Clean export zip: `E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gamesv1\Gamesv1_export_20260303T112426Z.zip`
-- SHA-256: `b43d90f901b3bddcd1350c36763960fdbff1c1b60cef07ad54ce1408888de6ac`
-- Exclusion check: PASS
+## Final proof command status
 
-## Audit bundle
+Commands and results from final state:
+1. `pnpm run verify:gs-contract-pack` -> PASS
+2. `pnpm run verify:gs-contract-pack -- --strict-upstream --upstream E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gs_pack\gs --repo E:\Dev\GSRefactor\Gamesv1\docs\gs` -> PASS
+3. `pnpm run test:contract` -> PASS
+4. `pnpm run test` -> PASS
+5. `pnpm run build` -> PASS
+6. `pnpm run release:pack -- --game premium-slot` -> PASS
+7. `pnpm run create-game -- --dry-run --gameId audit-proof-slot --name "Audit Proof Slot" --themeId audit` -> PASS
 
-- Bundle: `E:\Dev\GSRefactor\exports\AUDIT_BUNDLE_20260303T112544Z.zip`
-- SHA-256: `dd2c4659006f9f229b9131e97333e77f12e5fe58168b4c2513fa779cade8b6aa`
+## Final export and bundle
 
-## Proof commands
+- Clean export: `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gamesv1\Gamesv1_export_20260303T120703Z.zip`
+- Export SHA-256: `eb896ea6e50797278bddca5dd8200010586f2bf78c3d2feee9e7fe7c06ab53b5`
 
-- `pnpm run test:contract`: PASS
-- `pnpm run test`: PASS
-- `pnpm run build`: PASS
-- `pnpm run release:pack -- --game premium-slot`: PASS
-- `pnpm run create-game --dry-run`: PASS
+- Final upload bundle: `E:\Dev\GSRefactor\exports\AUDIT_BUNDLE_FINAL_20260303T120816Z.zip`
+- Bundle SHA-256: `ff8e894ab2f7dc79869ba82c12bc15c6b9b5592a8d5caf7310517571a9f4ed8c`
 
-Raw outputs are in `proof/command_outputs.txt` and `proof/verify_gs_contract_pack_output.txt` inside the audit bundle.
+## Raw proof output location
+
+- `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\proof\command_outputs.txt`
+- `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\proof\verify_gs_contract_pack_output.txt`

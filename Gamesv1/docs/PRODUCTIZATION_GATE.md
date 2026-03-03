@@ -1,28 +1,32 @@
 ﻿# PRODUCTIZATION_GATE
 
-Gate rule for this audit sprint:
-- Gate is **GREEN** only if strict upstream verification passes and the clean export is clean.
+Gate rule:
+- GREEN only if strict upstream verify passes and the final export is clean.
 
 ## Current status (2026-03-03)
 
 - **GREEN**
 
-## Required evidence
+## Evidence
 
-1. Strict upstream mirror check
-- Command: `pnpm run verify:gs-contract-pack -- --strict-upstream --upstream E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gs_pack\gs --repo E:\Dev\GSRefactor\Gamesv1\docs\gs`
-- Result: PASS
+1. Default verification baseline (repo-local, reproducible)
+- `pnpm run verify:gs-contract-pack` -> PASS
 
-2. Clean export check
-- Export: `E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gamesv1\Gamesv1_export_20260303T112426Z.zip`
-- SHA-256: `b43d90f901b3bddcd1350c36763960fdbff1c1b60cef07ad54ce1408888de6ac`
-- Exclusion check: PASS (`node_modules`, `dist`, `build`, `.cache`, `release-packs`, `~$*.docx` excluded)
+2. Strict upstream mirror equality
+- `pnpm run verify:gs-contract-pack -- --strict-upstream --upstream E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gs_pack\gs --repo E:\Dev\GSRefactor\Gamesv1\docs\gs` -> PASS
 
-3. Proof command run set
-- `pnpm run test:contract`: PASS
-- `pnpm run test`: PASS
-- `pnpm run build`: PASS
-- `pnpm run release:pack -- --game premium-slot`: PASS
-- `pnpm run create-game --dry-run`: PASS
+3. Contract/runtime/build/release/scaffold checks
+- `pnpm run test:contract` -> PASS
+- `pnpm run test` -> PASS
+- `pnpm run build` -> PASS
+- `pnpm run release:pack -- --game premium-slot` -> PASS
+- `pnpm run create-game -- --dry-run --gameId audit-proof-slot --name "Audit Proof Slot" --themeId audit` -> PASS
 
-Raw outputs are included in the audit bundle under `proof/`.
+4. Clean export proof
+- Export: `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gamesv1\Gamesv1_export_20260303T120703Z.zip`
+- SHA-256: `eb896ea6e50797278bddca5dd8200010586f2bf78c3d2feee9e7fe7c06ab53b5`
+- Exclusion check: PASS
+
+5. Final upload bundle
+- `E:\Dev\GSRefactor\exports\AUDIT_BUNDLE_FINAL_20260303T120816Z.zip`
+- SHA-256: `ff8e894ab2f7dc79869ba82c12bc15c6b9b5592a8d5caf7310517571a9f4ed8c`

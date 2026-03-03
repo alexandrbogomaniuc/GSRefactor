@@ -1,45 +1,33 @@
-# PHASE1_PREPARATION_CLOSEOUT
+﻿# PHASE1_PREPARATION_CLOSEOUT
 
-Date: 2026-03-02
+Date: 2026-03-03
 
 ## Exactness status
 
-- `upstream-exact`: **NOT VERIFIED**
-  - strict upstream verifier failed (`verify:gs-contract-pack -- --strict-upstream`) because upstream path was inaccessible from this environment.
-  - strict check against local mirror path failed due lock-format mismatch (`contract-lock.json` in repo uses legacy keys).
+- `upstream-exact`: **PASS**
+  - strict upstream verifier passed against included GS pack artifact path.
 - `runtime-exact`: **PASS**
-  - `test:contract` passed (10/10) with canonical `/slot/v1/*` operation coverage.
+  - `test:contract` passed (10/10).
 - `release/scaffold-exact`: **PASS**
-  - `release:pack` succeeded and emitted canonical artifact set.
-  - `create-game --dry-run` produced canonical file/folder scaffold and GS placeholders.
+  - `release:pack` passed and emitted canonical release artifacts.
+  - `create-game --dry-run` passed and produced canonical structure plan.
 
 ## Productization readiness
 
-- Current state: **NOT READY**
-- Blocking condition: upstream strict contract-pack verification is not green, and `pnpm test` remains red because it depends on that verifier.
+- Current state: **READY (GREEN)**
+- Gate basis: all required proof commands are green and export is clean.
 
-## Canonical architecture baseline
+## Verification command model
 
-- Browser runtime target: GS HTTP `slot-browser-v1` (`/slot/v1/*`).
-- Browser is presentation-only for wallet/session/financial truth.
-- GS is authoritative for session, wallet, persistence, restore, sequencing, and idempotency.
-- Internal slot-engine details are server-side and outside browser canonical scope.
+- Default verifier (`pnpm run verify:gs-contract-pack`) is repo-local/reproducible.
+- Strict upstream equality proof is explicit:
+  - `pnpm run verify:gs-contract-pack -- --strict-upstream --upstream E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gs_pack\gs --repo E:\Dev\GSRefactor\Gamesv1\docs\gs`
 
-## Release/scaffold re-proof notes
+## Final artifact set
 
-- Release-pack source of truth:
-  - `docs/gs/release-registration-contract.md`
-  - `docs/gs/fixtures/release-registration.sample.json`
-  - `docs/gs/schemas/release-registration.schema.json`
-- Scaffolder source of truth:
-  - `tools/create-game.ts`
-  - `.agent/workflows/new_game.md`
-  - `docs/PHASE1_GOLDEN_PATH.md`
-
-## Canonical vs non-canonical scope
-
-- Canonical: `docs/gs/*`, `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`, GS HTTP runtime path.
-- Legacy/experimental: `packages/core-protocol/src/ws/*`.
-- Legacy docs: `docs/protocol/*` + `docs/_archive/protocol/*` (including old ExtGame markers).
-- Optional/out-of-scope for phase-1 runtime: `packages/operator-pariplay/*`.
-- Supplemental/internal notes (when present under `docs/gs/obsolete/*` or `docs/gs/supplemental/*`) are non-canonical context, not runtime source of truth.
+- Clean export:
+  - `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gamesv1\Gamesv1_export_20260303T120703Z.zip`
+  - SHA-256: `eb896ea6e50797278bddca5dd8200010586f2bf78c3d2feee9e7fe7c06ab53b5`
+- Final bundle:
+  - `E:\Dev\GSRefactor\exports\AUDIT_BUNDLE_FINAL_20260303T120816Z.zip`
+  - SHA-256: `ff8e894ab2f7dc79869ba82c12bc15c6b9b5592a8d5caf7310517571a9f4ed8c`

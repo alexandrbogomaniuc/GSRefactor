@@ -33,9 +33,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, "..");
 
+// Default mode is repo-local and reproducible (no external path drift).
+// Use --strict-upstream/--upstream (or GS_CONTRACT_UPSTREAM_PATH) for the stronger
+// byte-for-byte upstream mirror proof against an explicit upstream artifact/path.
 const DEFAULT_UPSTREAM_PATH =
   process.env.GS_CONTRACT_UPSTREAM_PATH?.trim() ||
-  path.resolve(ROOT_DIR, "../docs/gs");
+  path.resolve(ROOT_DIR, "docs/gs");
 const DEFAULT_REPO_PATH =
   process.env.GS_CONTRACT_REPO_PATH?.trim() ||
   path.resolve(ROOT_DIR, "docs/gs");

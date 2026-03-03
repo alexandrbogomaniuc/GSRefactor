@@ -7,26 +7,20 @@ Artifact-truth export proof for Gamesv1.
 - Export source root: `E:\Dev\GSRefactor\Gamesv1`
 - Git toplevel: `E:/Dev/GSRefactor`
 
-## 2) Was this the same root used for command proofs?
+## 2) Same root used for command proofs
 
 - Yes.
-- All proof commands in this audit run used working directory `E:\Dev\GSRefactor\Gamesv1`.
+- All proof commands in this final run used working directory `E:\Dev\GSRefactor\Gamesv1`.
 
-## 3) Archive produced
+## 3) Final clean Gamesv1 export
 
-- Archive file: `E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gamesv1\Gamesv1_export_20260303T112426Z.zip`
+- Archive file: `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gamesv1\Gamesv1_export_20260303T120703Z.zip`
+- SHA-256: `eb896ea6e50797278bddca5dd8200010586f2bf78c3d2feee9e7fe7c06ab53b5`
+- Timestamp (UTC): `2026-03-03 12:07:21`
 
-## 4) Archive hash
+## 4) Exclusion rules used
 
-- SHA-256: `b43d90f901b3bddcd1350c36763960fdbff1c1b60cef07ad54ce1408888de6ac`
-
-## 5) Export timestamp (UTC)
-
-- Archive last write: `2026-03-03 11:24:48`
-
-## 6) Export cleanliness (generated/binary junk exclusions)
-
-Excluded from archive build:
+Excluded from export staging:
 - `node_modules`
 - `dist`
 - `build`
@@ -34,23 +28,24 @@ Excluded from archive build:
 - `release-packs`
 - `~$*.docx`
 
-Archive exclusion check:
-- Result: `ZIP_EXCLUSION_CHECK=PASS`
+Archive exclusion check result:
+- `ZIP_EXCLUSION_CHECK=PASS`
 
-## 7) Repo/export mismatch truth
+## 5) Strict upstream mirror proof
 
-- This archive was exported from the same repo root used for command proofs.
-- Required file truth is recorded in `docs/EXPORT_FILE_CHECKLIST.md`.
-
-## 8) Canonical contract mirror check
-
-Strict upstream verify command used the included GS pack artifact:
-- upstream source zip: `E:\Dev\GSRefactor\docs\gs_pack_upload.zip`
-- strict verify upstream dir: `E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gs_pack\gs`
-- command: `corepack pnpm run verify:gs-contract-pack -- --strict-upstream --upstream E:\Dev\GSRefactor\exports\audit_20260303T111938Z\gs_pack\gs --repo E:\Dev\GSRefactor\Gamesv1\docs\gs`
+- Included GS pack artifact: `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gs_pack\gs_pack_upload.zip`
+- Extracted strict upstream path: `E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gs_pack\gs`
+- Command:
+  - `corepack pnpm run verify:gs-contract-pack -- --strict-upstream --upstream E:\Dev\GSRefactor\exports\audit_final_20260303T120234Z\gs_pack\gs --repo E:\Dev\GSRefactor\Gamesv1\docs\gs`
 - Result: `PASS`
 
-## 9) Audit bundle artifact
+## 6) Final audit bundle
 
-- Audit bundle: `E:\Dev\GSRefactor\exports\AUDIT_BUNDLE_20260303T112544Z.zip`
-- Audit bundle SHA-256: `dd2c4659006f9f229b9131e97333e77f12e5fe58168b4c2513fa779cade8b6aa`
+- Bundle file: `E:\Dev\GSRefactor\exports\AUDIT_BUNDLE_FINAL_20260303T120816Z.zip`
+- SHA-256: `ff8e894ab2f7dc79869ba82c12bc15c6b9b5592a8d5caf7310517571a9f4ed8c`
+- Contains:
+  - `/gs_pack/gs_pack_upload.zip`
+  - `/gamesv1/Gamesv1_export_20260303T120703Z.zip`
+  - `/proof/SHA256SUMS.txt`
+  - `/proof/command_outputs.txt`
+  - `/proof/verify_gs_contract_pack_output.txt`
