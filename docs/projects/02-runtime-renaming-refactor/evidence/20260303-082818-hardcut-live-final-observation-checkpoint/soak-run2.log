@@ -1,0 +1,5 @@
+[refactor-onboard] SOAK: starting 2 run(s), gap=1000ms, artifactDir=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-082818-hardcut-live-final-observation-checkpoint/soak-run2/soak-2026-03-03T08-30-48-258Z
+[refactor-onboard] SOAK-RUN: 1/2 outcome=pass rc=0 rawRc=0 durationMs=2118
+[refactor-onboard] SOAK-RUN: 2/2 outcome=pass rc=0 rawRc=0 durationMs=1925
+[refactor-onboard] SOAK: wrote summary artifacts: /Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-082818-hardcut-live-final-observation-checkpoint/soak-run2/soak-2026-03-03T08-30-48-258Z/soak-summary.json, /Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-082818-hardcut-live-final-observation-checkpoint/soak-run2/soak-2026-03-03T08-30-48-258Z/soak-summary.txt
+[refactor-onboard] SOAK: all runs passed.
