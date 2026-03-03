@@ -1,0 +1,395 @@
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/AbstractCrashBetHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/AbstractCrashBetHandler.java
+index cc5cfc8ba..e34e7b1a4 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/AbstractCrashBetHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/AbstractCrashBetHandler.java
+@@ -315,16 +315,25 @@ public abstract class AbstractCrashBetHandler<MESSAGE extends TInboundObject> ex
+                     true, message.getRid(), otherSeatsMessage, true);
+             room.executeOnAllMembers(sendSeatsMessageTask);
+             getLog().debug("Success processing, seat.isDisconnected()={}, seat={}", seat.isDisconnected(), seat);
+-        } catch (Exception e) {
+-            getLog().error("Failed to perform buy in", e);
+-            playerInfo.setPendingOperation(false);
+-            //rollback changes
+-            seat.setCanceledBetAmount(canceledBetAmount);
+-            playerInfoService.put(playerInfo);
+-            int errorCode = room.getBuyInFailedErrorCode(e);
+-            sendErrorMessage(client, errorCode,
+-                            "BuyIn failed, reason: " + e.getMessage(), message.getRid());
+-        }
++        } catch (BuyInFailedException bfExc) {
++            getLog().error("Failed to perform buy in", bfExc);
++            playerInfo.setPendingOperation(false);
++            //rollback changes
++            seat.setCanceledBetAmount(canceledBetAmount);
++            playerInfoService.put(playerInfo);
++            int errorCode = room.getBuyInFailedErrorCode(bfExc);
++            sendErrorMessage(client, errorCode,
++                            "BuyIn failed, reason: " + bfExc.getMessage(), message.getRid());
++        } catch (Exception e) {
++            getLog().error("Failed to perform buy in", e);
++            playerInfo.setPendingOperation(false);
++            //rollback changes
++            seat.setCanceledBetAmount(canceledBetAmount);
++            playerInfoService.put(playerInfo);
++            int errorCode = room.getBuyInFailedErrorCode(e);
++            sendErrorMessage(client, errorCode,
++                            "BuyIn failed, reason: " + e.getMessage(), message.getRid());
++        }
+         playerInfoService.put(playerInfo);
+     }
+     private boolean shouldUpdateStartBalance(Seat seat){
+@@ -530,31 +539,36 @@ public abstract class AbstractCrashBetHandler<MESSAGE extends TInboundObject> ex
+                             "{}", e.getMessage(), e);
+                 }
+             }
+-        } catch (Exception e) {
+-
+-            getLog().error("Failed to perform buy in", e);
+-            playerInfo.setPendingOperation(false);
+-            //rollback changes
+-            seat.setCanceledBetAmount(canceledBetAmount);
+-
+-            playerInfoService.put(playerInfo);
+-
+-            if (e instanceof BuyInFailedException) {
+-                BuyInFailedException bfExc = (BuyInFailedException) e;
+-                if (bfExc.getErrorCode() > 0) {
+-                    sendErrorMessage(client,
+-                            ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
+-                            "BuyIn failed, reason: " + e.getMessage(), message.getRid());
+-                } else {
+-                    sendErrorMessage(client, bfExc.isFatal() ?
+-                                    ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
+-                            "Buy in failed, reason: " + e.getMessage(), message.getRid());
+-                }
+-            } else {
+-                sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
+-                        "Buy in failed, reason: " + e.getMessage(), message.getRid());
+-            }
+-        }
++        } catch (BuyInFailedException bfExc) {
++
++            getLog().error("Failed to perform buy in", bfExc);
++            playerInfo.setPendingOperation(false);
++            //rollback changes
++            seat.setCanceledBetAmount(canceledBetAmount);
++
++            playerInfoService.put(playerInfo);
++
++            if (bfExc.getErrorCode() > 0) {
++                sendErrorMessage(client,
++                        ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
++                        "BuyIn failed, reason: " + bfExc.getMessage(), message.getRid());
++            } else {
++                sendErrorMessage(client, bfExc.isFatal() ?
++                                ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
++                        "Buy in failed, reason: " + bfExc.getMessage(), message.getRid());
++            }
++        } catch (Exception e) {
++
++            getLog().error("Failed to perform buy in", e);
++            playerInfo.setPendingOperation(false);
++            //rollback changes
++            seat.setCanceledBetAmount(canceledBetAmount);
++
++            playerInfoService.put(playerInfo);
++
++            sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
++                    "Buy in failed, reason: " + e.getMessage(), message.getRid());
++        }
+ 
+         playerInfoService.put(playerInfo);
+     }
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/BuyInHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/BuyInHandler.java
+index d14885b73..da5e1d8d3 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/BuyInHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/BuyInHandler.java
+@@ -208,29 +208,32 @@ public class BuyInHandler extends AbstractRoomHandler<BuyIn, IGameSocketClient>
+                                 lobbySession.setBalance(buyInResult.getBalance());
+                                 lobbySessionService.add(lobbySession);
+ 
+-                            } catch (Exception e) {
+-                                LOG.error("Failed to perform buy in", e);
+-                                playerInfo.setPendingOperation(false);
+-                                IRoomPlayerInfo actualPlayerInfo = playerInfoService.get(accountId);
+-                                if (actualPlayerInfo != null) {
+-                                    playerInfoService.put(playerInfo);
+-                                }
+-                                if (e instanceof BuyInFailedException) {
+-                                    BuyInFailedException bfExc = (BuyInFailedException) e;
+-                                    if (bfExc.getErrorCode() > 0) {
+-                                        sendErrorMessage(client,
+-                                                ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
+-                                                "BuyIn failed, reason: " + e.getMessage(), message.getRid());
+-                                    } else {
+-                                        sendErrorMessage(client, bfExc.isFatal() ?
+-                                                        ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
+-                                                "Buy in failed, reason: " + e.getMessage(), message.getRid());
+-                                    }
+-                                } else {
+-                                    sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
+-                                            "Buy in failed, reason: " + e.getMessage(), message.getRid());
+-                                }
+-                            }
++                            } catch (BuyInFailedException bfExc) {
++                                LOG.error("Failed to perform buy in", bfExc);
++                                playerInfo.setPendingOperation(false);
++                                IRoomPlayerInfo actualPlayerInfo = playerInfoService.get(accountId);
++                                if (actualPlayerInfo != null) {
++                                    playerInfoService.put(playerInfo);
++                                }
++                                if (bfExc.getErrorCode() > 0) {
++                                    sendErrorMessage(client,
++                                            ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
++                                            "BuyIn failed, reason: " + bfExc.getMessage(), message.getRid());
++                                } else {
++                                    sendErrorMessage(client, bfExc.isFatal() ?
++                                                    ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
++                                            "Buy in failed, reason: " + bfExc.getMessage(), message.getRid());
++                                }
++                            } catch (Exception e) {
++                                LOG.error("Failed to perform buy in", e);
++                                playerInfo.setPendingOperation(false);
++                                IRoomPlayerInfo actualPlayerInfo = playerInfoService.get(accountId);
++                                if (actualPlayerInfo != null) {
++                                    playerInfoService.put(playerInfo);
++                                }
++                                sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
++                                        "Buy in failed, reason: " + e.getMessage(), message.getRid());
++                            }
+                         } else {
+                             LOG.error("Impossible error: bad amount={}", amount.toCents());
+                             sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/PurchaseWeaponLootBoxHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/PurchaseWeaponLootBoxHandler.java
+index 27f295084..b44474361 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/PurchaseWeaponLootBoxHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/PurchaseWeaponLootBoxHandler.java
+@@ -222,12 +222,17 @@ public class PurchaseWeaponLootBoxHandler extends AbstractRoomHandler<PurchaseWe
+                     buyInResult = socketService.buyIn(client.getServerId(), playerInfo.getId(),
+                             client.getSessionId(), reducedBalancePart, playerInfo.getGameSessionId(),
+                             playerInfo.getRoomId(), playerInfo.getBuyInCount(), null, room);
+-                } catch (Exception e) {
+-                    LOG.error("purchaseFromBalanceAndAmmo: buyIn from balance failed, rollback buyIn from ammo={}",
+-                            ammo);
+-                    seat.incrementAmmoAmount(ammo);
+-                    throw e;
+-                }
++                } catch (BuyInFailedException e) {
++                    LOG.error("purchaseFromBalanceAndAmmo: buyIn from balance failed, rollback buyIn from ammo={}",
++                            ammo, e);
++                    seat.incrementAmmoAmount(ammo);
++                    throw e;
++                } catch (Exception e) {
++                    LOG.error("purchaseFromBalanceAndAmmo: buyIn from balance failed, rollback buyIn from ammo={}",
++                            ammo, e);
++                    seat.incrementAmmoAmount(ammo);
++                    throw e;
++                }
+                 if (buyInResult.getAmount() > 0) {
+                     playerInfo.incrementBuyInCount();
+                 }
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/ReBuyHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/ReBuyHandler.java
+index b2b321a67..677e28009 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/ReBuyHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/ReBuyHandler.java
+@@ -319,32 +319,34 @@ public class ReBuyHandler extends AbstractRoomHandler<ReBuy, IGameSocketClient>
+ 
+                             needFireReBuyAccepted = true;
+ 
+-                        } catch (Exception e) {
+-
+-                            LOG.error("rid=" + message.getRid() + ", Failed to perform ReBuy", e);
+-
+-                            playerInfo.setPendingOperation(false);
+-                            playerInfoService.put(playerInfo);
+-
+-                            if (e instanceof BuyInFailedException) {
+-                                BuyInFailedException bfExc = (BuyInFailedException) e;
+-                                if (bfExc.getErrorCode() > 0) {
+-
+-                                    sendErrorMessage(client,
+-                                            ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
+-                                            "ReBuy failed, reason: " + e.getMessage(), message.getRid());
+-                                } else {
+-
+-                                    sendErrorMessage(client,
+-                                            bfExc.isFatal() ? ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
+-                                            "ReBuy failed, reason: " + e.getMessage(), message.getRid());
+-                                }
+-                            } else {
+-
+-                                sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
+-                                        "ReBuy failed, reason: " + e.getMessage(), message.getRid());
+-                            }
+-                        }
++                        } catch (BuyInFailedException bfExc) {
++
++                            LOG.error("rid=" + message.getRid() + ", Failed to perform ReBuy", bfExc);
++
++                            playerInfo.setPendingOperation(false);
++                            playerInfoService.put(playerInfo);
++
++                            if (bfExc.getErrorCode() > 0) {
++
++                                sendErrorMessage(client,
++                                        ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
++                                        "ReBuy failed, reason: " + bfExc.getMessage(), message.getRid());
++                            } else {
++
++                                sendErrorMessage(client,
++                                        bfExc.isFatal() ? ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
++                                        "ReBuy failed, reason: " + bfExc.getMessage(), message.getRid());
++                            }
++                        } catch (Exception e) {
++
++                            LOG.error("rid=" + message.getRid() + ", Failed to perform ReBuy", e);
++
++                            playerInfo.setPendingOperation(false);
++                            playerInfoService.put(playerInfo);
++
++                            sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
++                                    "ReBuy failed, reason: " + e.getMessage(), message.getRid());
++                        }
+                     }
+                 } finally {
+ 
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java
+index dd1c4b273..8a9c252b3 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java
+@@ -693,10 +693,15 @@ public class SitInHandler extends AbstractRoomHandler<SitIn, IGameSocketClient>
+                 getLog().debug("Found confirmed battle case without buyIn amount, need buyIn lobbySession: {}, playerInfo: {}, amount: {}",
+                         lobbySession, roomPlayerInfo, amount );
+                 seat.getCurrentPlayerRoundInfo().setRoundStartBalance(seatBalance);
+-                BuyInResult buyInResult = socketService.buyIn(client.getServerId(), roomPlayer.getId(),
+-                        client.getSessionId(), amount, sitInResult.getGameSessionId(), room.getId(),
+-                        roomPlayer.getBuyInCount(), tournamentId, 0L, room);
+-                buyInAmount = buyInResult.getAmount();
++                BuyInResult buyInResult;
++                try {
++                    buyInResult = socketService.buyIn(client.getServerId(), roomPlayer.getId(),
++                            client.getSessionId(), amount, sitInResult.getGameSessionId(), room.getId(),
++                            roomPlayer.getBuyInCount(), tournamentId, 0L, room);
++                } catch (BuyInFailedException e) {
++                    throw new CommonException("BuyIn failed", e);
++                }
++                buyInAmount = buyInResult.getAmount();
+                 if (actualSeat.getPlayerInfo() != null) {
+                     actualSeat.getPlayerInfo().setRoundBuyInAmount(buyInAmount);
+                 }
+@@ -833,7 +838,7 @@ public class SitInHandler extends AbstractRoomHandler<SitIn, IGameSocketClient>
+         }
+         IRoomInfoService roomInfoService = getRoomInfoService(client);
+         IRoomInfo roomInfo = roomInfoService.getRoom(playerInfo.getRoomId());
+-        IRoom room = roomServiceFactory.getRoom(currentSitInRoom.getGameType(), playerInfo.getRoomId());
++        IRoom room = roomServiceFactory.getRoomAbs(currentSitInRoom.getGameType(), playerInfo.getRoomId());
+         if (roomInfo.isBattlegroundMode() && room != null) {
+             RoomState roomState = room.getGameState().getRoomState();
+             if (roomState.equals(RoomState.PLAY) || roomState.equals(RoomState.QUALIFY)) {
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java
+index b248717e4..b9158dd3c 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java
+@@ -208,7 +208,7 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
+ 
+                     if (((ISingleNodeRoomInfo) roomInfo).getGameServerId() == IRoomInfo.NOT_ASSIGNED_ID) {
+ 
+-                        getRoomServiceFactory().getRoom(roomInfo.getGameType(), roomInfo.getId());
++                        getRoomServiceFactory().getRoomAbs(roomInfo.getGameType(), roomInfo.getId());
+                         roomInfo = getRoomInfoService(client).getRoom(roomInfo.getId());
+                         getLog().debug("handle {}, {}: Room Found={} not started, try to start it: {}", client.getNickname(), client.getSessionId(),
+                                 roomInfo.getId(), roomInfo);
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/LobbyReBuyHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/LobbyReBuyHandler.java
+index 836abe0ec..78ff4c2b7 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/LobbyReBuyHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/LobbyReBuyHandler.java
+@@ -111,30 +111,28 @@ public class LobbyReBuyHandler extends MessageHandler<ReBuy, ILobbySocketClient>
+                     tournamentSessionPersister.persist(tournamentSession);
+                     client.sendMessage(new ReBuyResponse(System.currentTimeMillis(), message.getRid(), 0,
+                             lobbySession.getBalance(), tournamentSession.getReBuyCount()), message);
+-                } catch (Exception e) {
+-                    LOG.error("Failed to perform ReBuy", e);
+-                    if (e instanceof BuyInFailedException) {
+-                        BuyInFailedException bfExc = (BuyInFailedException) e;
+-                        if (bfExc.getErrorCode() > 0) {
+-                            sendErrorMessage(client,
+-                                    ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
+-                                    "ReBuy failed, reason: " + e.getMessage(), message.getRid());
+-                        } else if (INSUFFICIENT_BALANCE.equals(bfExc.getMessage())) {
+-                            sendErrorMessage(client, ErrorCodes.NOT_ENOUGH_MONEY, INSUFFICIENT_BALANCE,
+-                                    message.getRid());
+-                        } else if (REBUY_LIMIT_EXCEEDED.equals(bfExc.getMessage())) {
+-                            sendErrorMessage(client, ErrorCodes.BUYIN_NOT_ALLOWED, REBUY_LIMIT_EXCEEDED,
+-                                    message.getRid());
+-                        } else {
+-                            sendErrorMessage(client,
+-                                    bfExc.isFatal() ? ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
+-                                    "ReBuy failed, reason: " + e.getMessage(), message.getRid());
+-                        }
+-                    } else {
+-                        sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
+-                                "ReBuy failed, reason: " + e.getMessage(), message.getRid());
+-                    }
+-                }
++                } catch (BuyInFailedException bfExc) {
++                    LOG.error("Failed to perform ReBuy", bfExc);
++                    if (bfExc.getErrorCode() > 0) {
++                        sendErrorMessage(client,
++                                ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
++                                "ReBuy failed, reason: " + bfExc.getMessage(), message.getRid());
++                    } else if (INSUFFICIENT_BALANCE.equals(bfExc.getMessage())) {
++                        sendErrorMessage(client, ErrorCodes.NOT_ENOUGH_MONEY, INSUFFICIENT_BALANCE,
++                                message.getRid());
++                    } else if (REBUY_LIMIT_EXCEEDED.equals(bfExc.getMessage())) {
++                        sendErrorMessage(client, ErrorCodes.BUYIN_NOT_ALLOWED, REBUY_LIMIT_EXCEEDED,
++                                message.getRid());
++                    } else {
++                        sendErrorMessage(client,
++                                bfExc.isFatal() ? ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
++                                "ReBuy failed, reason: " + bfExc.getMessage(), message.getRid());
++                    }
++                } catch (Exception e) {
++                    LOG.error("Failed to perform ReBuy", e);
++                    sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
++                            "ReBuy failed, reason: " + e.getMessage(), message.getRid());
++                }
+             } finally {
+                 playerInfoService.unlock(accountId);
+                 getLog().debug("handle HS unlock: {}", accountId);
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+index e24fd2da1..39e5c49e2 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+@@ -1014,8 +1014,8 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
+         }
+     }
+ 
+-    @Override
+-    public IRoom getRoom(GameType gameType, long id) throws CommonException {
++    @Override
++    public IRoom getRoom(GameType gameType, long id) throws CommonException {
+         IRoomInfoService roomInfoService = this.getRoomInfoServiceByRoomId(id);
+         if (roomInfoService == null) {
+             LOG.error("getRoom: roomInfoService not found for id={}", id);
+@@ -1074,8 +1074,19 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
+             room = roomService.getRoom(id);
+         }
+ 
+-        return room;
+-    }
++        return room;
++    }
++
++    /**
++     * Compatibility bridge for callers migrated to ABS CommonException.
++     */
++    public IRoom getRoomAbs(GameType gameType, long id) throws com.abs.casino.common.exception.CommonException {
++        try {
++            return getRoom(gameType, id);
++        } catch (CommonException e) {
++            throw new com.abs.casino.common.exception.CommonException(e.getMessage(), e);
++        }
++    }
+ 
+     @Override
+     public IRoom getRoomWithoutCreation(GameType gameType, long id) throws CommonException {

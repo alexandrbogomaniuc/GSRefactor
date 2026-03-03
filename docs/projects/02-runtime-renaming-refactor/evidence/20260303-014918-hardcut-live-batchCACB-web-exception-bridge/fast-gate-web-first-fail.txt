@@ -1,0 +1,16 @@
+846:[ERROR] COMPILATION ERROR : 
+848:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java:[92,23] exception com.dgphoenix.casino.common.exception.CommonException is never thrown in body of corresponding try statement
+849:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java:[57,43] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+898:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project web: Compilation failure: Compilation failure: 
+899:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java:[92,23] exception com.dgphoenix.casino.common.exception.CommonException is never thrown in body of corresponding try statement
+900:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java:[57,43] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+901:[ERROR] -> [Help 1]
+902:[ERROR] 
+903:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+904:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+905:[ERROR] 
+906:[ERROR] For more information about the errors and possible solutions, please read the following articles:
+907:[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+908:[ERROR] 
+909:[ERROR] After correcting the problems, you can resume the build with the command
+910:[ERROR]   mvn <args> -rf :web

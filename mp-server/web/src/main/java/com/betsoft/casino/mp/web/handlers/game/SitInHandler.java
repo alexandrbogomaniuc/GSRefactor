@@ -693,9 +693,14 @@ public class SitInHandler extends AbstractRoomHandler<SitIn, IGameSocketClient> 
                 getLog().debug("Found confirmed battle case without buyIn amount, need buyIn lobbySession: {}, playerInfo: {}, amount: {}",
                         lobbySession, roomPlayerInfo, amount );
                 seat.getCurrentPlayerRoundInfo().setRoundStartBalance(seatBalance);
-                BuyInResult buyInResult = socketService.buyIn(client.getServerId(), roomPlayer.getId(),
-                        client.getSessionId(), amount, sitInResult.getGameSessionId(), room.getId(),
-                        roomPlayer.getBuyInCount(), tournamentId, 0L, room);
+                BuyInResult buyInResult;
+                try {
+                    buyInResult = socketService.buyIn(client.getServerId(), roomPlayer.getId(),
+                            client.getSessionId(), amount, sitInResult.getGameSessionId(), room.getId(),
+                            roomPlayer.getBuyInCount(), tournamentId, 0L, room);
+                } catch (BuyInFailedException e) {
+                    throw new CommonException("BuyIn failed", e);
+                }
                 buyInAmount = buyInResult.getAmount();
                 if (actualSeat.getPlayerInfo() != null) {
                     actualSeat.getPlayerInfo().setRoundBuyInAmount(buyInAmount);
@@ -833,7 +838,7 @@ public class SitInHandler extends AbstractRoomHandler<SitIn, IGameSocketClient> 
         }
         IRoomInfoService roomInfoService = getRoomInfoService(client);
         IRoomInfo roomInfo = roomInfoService.getRoom(playerInfo.getRoomId());
-        IRoom room = roomServiceFactory.getRoom(currentSitInRoom.getGameType(), playerInfo.getRoomId());
+        IRoom room = roomServiceFactory.getRoomAbs(currentSitInRoom.getGameType(), playerInfo.getRoomId());
         if (roomInfo.isBattlegroundMode() && room != null) {
             RoomState roomState = room.getGameState().getRoomState();
             if (roomState.equals(RoomState.PLAY) || roomState.equals(RoomState.QUALIFY)) {

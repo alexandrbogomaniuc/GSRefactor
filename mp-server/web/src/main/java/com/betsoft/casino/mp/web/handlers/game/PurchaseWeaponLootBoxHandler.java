@@ -222,9 +222,14 @@ public class PurchaseWeaponLootBoxHandler extends AbstractRoomHandler<PurchaseWe
                     buyInResult = socketService.buyIn(client.getServerId(), playerInfo.getId(),
                             client.getSessionId(), reducedBalancePart, playerInfo.getGameSessionId(),
                             playerInfo.getRoomId(), playerInfo.getBuyInCount(), null, room);
+                } catch (BuyInFailedException e) {
+                    LOG.error("purchaseFromBalanceAndAmmo: buyIn from balance failed, rollback buyIn from ammo={}",
+                            ammo, e);
+                    seat.incrementAmmoAmount(ammo);
+                    throw e;
                 } catch (Exception e) {
                     LOG.error("purchaseFromBalanceAndAmmo: buyIn from balance failed, rollback buyIn from ammo={}",
-                            ammo);
+                            ammo, e);
                     seat.incrementAmmoAmount(ammo);
                     throw e;
                 }

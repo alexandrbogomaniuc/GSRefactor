@@ -208,7 +208,7 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
                     if (((ISingleNodeRoomInfo) roomInfo).getGameServerId() == IRoomInfo.NOT_ASSIGNED_ID) {
 
-                        getRoomServiceFactory().getRoom(roomInfo.getGameType(), roomInfo.getId());
+                        getRoomServiceFactory().getRoomAbs(roomInfo.getGameType(), roomInfo.getId());
                         roomInfo = getRoomInfoService(client).getRoom(roomInfo.getId());
                         getLog().debug("handle {}, {}: Room Found={} not started, try to start it: {}", client.getNickname(), client.getSessionId(),
                                 roomInfo.getId(), roomInfo);

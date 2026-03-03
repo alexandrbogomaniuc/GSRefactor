@@ -1077,6 +1077,17 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
         return room;
     }
 
+    /**
+     * Compatibility bridge for callers migrated to ABS CommonException.
+     */
+    public IRoom getRoomAbs(GameType gameType, long id) throws com.abs.casino.common.exception.CommonException {
+        try {
+            return getRoom(gameType, id);
+        } catch (CommonException e) {
+            throw new com.abs.casino.common.exception.CommonException(e.getMessage(), e);
+        }
+    }
+
     @Override
     public IRoom getRoomWithoutCreation(GameType gameType, long id) throws CommonException {
 

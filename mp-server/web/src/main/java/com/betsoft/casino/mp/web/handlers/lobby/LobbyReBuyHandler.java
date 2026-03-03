@@ -111,29 +111,27 @@ public class LobbyReBuyHandler extends MessageHandler<ReBuy, ILobbySocketClient>
                     tournamentSessionPersister.persist(tournamentSession);
                     client.sendMessage(new ReBuyResponse(System.currentTimeMillis(), message.getRid(), 0,
                             lobbySession.getBalance(), tournamentSession.getReBuyCount()), message);
+                } catch (BuyInFailedException bfExc) {
+                    LOG.error("Failed to perform ReBuy", bfExc);
+                    if (bfExc.getErrorCode() > 0) {
+                        sendErrorMessage(client,
+                                ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
+                                "ReBuy failed, reason: " + bfExc.getMessage(), message.getRid());
+                    } else if (INSUFFICIENT_BALANCE.equals(bfExc.getMessage())) {
+                        sendErrorMessage(client, ErrorCodes.NOT_ENOUGH_MONEY, INSUFFICIENT_BALANCE,
+                                message.getRid());
+                    } else if (REBUY_LIMIT_EXCEEDED.equals(bfExc.getMessage())) {
+                        sendErrorMessage(client, ErrorCodes.BUYIN_NOT_ALLOWED, REBUY_LIMIT_EXCEEDED,
+                                message.getRid());
+                    } else {
+                        sendErrorMessage(client,
+                                bfExc.isFatal() ? ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
+                                "ReBuy failed, reason: " + bfExc.getMessage(), message.getRid());
+                    }
                 } catch (Exception e) {
                     LOG.error("Failed to perform ReBuy", e);
-                    if (e instanceof BuyInFailedException) {
-                        BuyInFailedException bfExc = (BuyInFailedException) e;
-                        if (bfExc.getErrorCode() > 0) {
-                            sendErrorMessage(client,
-                                    ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
-                                    "ReBuy failed, reason: " + e.getMessage(), message.getRid());
-                        } else if (INSUFFICIENT_BALANCE.equals(bfExc.getMessage())) {
-                            sendErrorMessage(client, ErrorCodes.NOT_ENOUGH_MONEY, INSUFFICIENT_BALANCE,
-                                    message.getRid());
-                        } else if (REBUY_LIMIT_EXCEEDED.equals(bfExc.getMessage())) {
-                            sendErrorMessage(client, ErrorCodes.BUYIN_NOT_ALLOWED, REBUY_LIMIT_EXCEEDED,
-                                    message.getRid());
-                        } else {
-                            sendErrorMessage(client,
-                                    bfExc.isFatal() ? ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
-                                    "ReBuy failed, reason: " + e.getMessage(), message.getRid());
-                        }
-                    } else {
-                        sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
-                                "ReBuy failed, reason: " + e.getMessage(), message.getRid());
-                    }
+                    sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
+                            "ReBuy failed, reason: " + e.getMessage(), message.getRid());
                 }
             } finally {
                 playerInfoService.unlock(accountId);

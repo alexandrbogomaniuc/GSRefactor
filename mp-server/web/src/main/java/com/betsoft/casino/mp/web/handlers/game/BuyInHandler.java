@@ -208,6 +208,22 @@ public class BuyInHandler extends AbstractRoomHandler<BuyIn, IGameSocketClient> 
                                 lobbySession.setBalance(buyInResult.getBalance());
                                 lobbySessionService.add(lobbySession);
 
+                            } catch (BuyInFailedException bfExc) {
+                                LOG.error("Failed to perform buy in", bfExc);
+                                playerInfo.setPendingOperation(false);
+                                IRoomPlayerInfo actualPlayerInfo = playerInfoService.get(accountId);
+                                if (actualPlayerInfo != null) {
+                                    playerInfoService.put(playerInfo);
+                                }
+                                if (bfExc.getErrorCode() > 0) {
+                                    sendErrorMessage(client,
+                                            ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
+                                            "BuyIn failed, reason: " + bfExc.getMessage(), message.getRid());
+                                } else {
+                                    sendErrorMessage(client, bfExc.isFatal() ?
+                                                    ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
+                                            "Buy in failed, reason: " + bfExc.getMessage(), message.getRid());
+                                }
                             } catch (Exception e) {
                                 LOG.error("Failed to perform buy in", e);
                                 playerInfo.setPendingOperation(false);
@@ -215,21 +231,8 @@ public class BuyInHandler extends AbstractRoomHandler<BuyIn, IGameSocketClient> 
                                 if (actualPlayerInfo != null) {
                                     playerInfoService.put(playerInfo);
                                 }
-                                if (e instanceof BuyInFailedException) {
-                                    BuyInFailedException bfExc = (BuyInFailedException) e;
-                                    if (bfExc.getErrorCode() > 0) {
-                                        sendErrorMessage(client,
-                                                ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
-                                                "BuyIn failed, reason: " + e.getMessage(), message.getRid());
-                                    } else {
-                                        sendErrorMessage(client, bfExc.isFatal() ?
-                                                        ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
-                                                "Buy in failed, reason: " + e.getMessage(), message.getRid());
-                                    }
-                                } else {
-                                    sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
-                                            "Buy in failed, reason: " + e.getMessage(), message.getRid());
-                                }
+                                sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
+                                        "Buy in failed, reason: " + e.getMessage(), message.getRid());
                             }
                         } else {
                             LOG.error("Impossible error: bad amount={}", amount.toCents());

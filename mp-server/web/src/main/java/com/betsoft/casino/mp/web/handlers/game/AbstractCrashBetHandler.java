@@ -315,6 +315,15 @@ public abstract class AbstractCrashBetHandler<MESSAGE extends TInboundObject> ex
                     true, message.getRid(), otherSeatsMessage, true);
             room.executeOnAllMembers(sendSeatsMessageTask);
             getLog().debug("Success processing, seat.isDisconnected()={}, seat={}", seat.isDisconnected(), seat);
+        } catch (BuyInFailedException bfExc) {
+            getLog().error("Failed to perform buy in", bfExc);
+            playerInfo.setPendingOperation(false);
+            //rollback changes
+            seat.setCanceledBetAmount(canceledBetAmount);
+            playerInfoService.put(playerInfo);
+            int errorCode = room.getBuyInFailedErrorCode(bfExc);
+            sendErrorMessage(client, errorCode,
+                            "BuyIn failed, reason: " + bfExc.getMessage(), message.getRid());
         } catch (Exception e) {
             getLog().error("Failed to perform buy in", e);
             playerInfo.setPendingOperation(false);
@@ -530,6 +539,24 @@ public abstract class AbstractCrashBetHandler<MESSAGE extends TInboundObject> ex
                             "{}", e.getMessage(), e);
                 }
             }
+        } catch (BuyInFailedException bfExc) {
+
+            getLog().error("Failed to perform buy in", bfExc);
+            playerInfo.setPendingOperation(false);
+            //rollback changes
+            seat.setCanceledBetAmount(canceledBetAmount);
+
+            playerInfoService.put(playerInfo);
+
+            if (bfExc.getErrorCode() > 0) {
+                sendErrorMessage(client,
+                        ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
+                        "BuyIn failed, reason: " + bfExc.getMessage(), message.getRid());
+            } else {
+                sendErrorMessage(client, bfExc.isFatal() ?
+                                ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
+                        "Buy in failed, reason: " + bfExc.getMessage(), message.getRid());
+            }
         } catch (Exception e) {
 
             getLog().error("Failed to perform buy in", e);
@@ -539,21 +566,8 @@ public abstract class AbstractCrashBetHandler<MESSAGE extends TInboundObject> ex
 
             playerInfoService.put(playerInfo);
 
-            if (e instanceof BuyInFailedException) {
-                BuyInFailedException bfExc = (BuyInFailedException) e;
-                if (bfExc.getErrorCode() > 0) {
-                    sendErrorMessage(client,
-                            ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
-                            "BuyIn failed, reason: " + e.getMessage(), message.getRid());
-                } else {
-                    sendErrorMessage(client, bfExc.isFatal() ?
-                                    ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
-                            "Buy in failed, reason: " + e.getMessage(), message.getRid());
-                }
-            } else {
-                sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
-                        "Buy in failed, reason: " + e.getMessage(), message.getRid());
-            }
+            sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
+                    "Buy in failed, reason: " + e.getMessage(), message.getRid());
         }
 
         playerInfoService.put(playerInfo);

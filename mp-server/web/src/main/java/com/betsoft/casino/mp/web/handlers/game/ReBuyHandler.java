@@ -319,6 +319,24 @@ public class ReBuyHandler extends AbstractRoomHandler<ReBuy, IGameSocketClient> 
 
                             needFireReBuyAccepted = true;
 
+                        } catch (BuyInFailedException bfExc) {
+
+                            LOG.error("rid=" + message.getRid() + ", Failed to perform ReBuy", bfExc);
+
+                            playerInfo.setPendingOperation(false);
+                            playerInfoService.put(playerInfo);
+
+                            if (bfExc.getErrorCode() > 0) {
+
+                                sendErrorMessage(client,
+                                        ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
+                                        "ReBuy failed, reason: " + bfExc.getMessage(), message.getRid());
+                            } else {
+
+                                sendErrorMessage(client,
+                                        bfExc.isFatal() ? ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
+                                        "ReBuy failed, reason: " + bfExc.getMessage(), message.getRid());
+                            }
                         } catch (Exception e) {
 
                             LOG.error("rid=" + message.getRid() + ", Failed to perform ReBuy", e);
@@ -326,24 +344,8 @@ public class ReBuyHandler extends AbstractRoomHandler<ReBuy, IGameSocketClient> 
                             playerInfo.setPendingOperation(false);
                             playerInfoService.put(playerInfo);
 
-                            if (e instanceof BuyInFailedException) {
-                                BuyInFailedException bfExc = (BuyInFailedException) e;
-                                if (bfExc.getErrorCode() > 0) {
-
-                                    sendErrorMessage(client,
-                                            ErrorCodes.translateGameServerErrorCode(bfExc.getErrorCode()),
-                                            "ReBuy failed, reason: " + e.getMessage(), message.getRid());
-                                } else {
-
-                                    sendErrorMessage(client,
-                                            bfExc.isFatal() ? ErrorCodes.BAD_BUYIN : ErrorCodes.NOT_FATAL_BAD_BUYIN,
-                                            "ReBuy failed, reason: " + e.getMessage(), message.getRid());
-                                }
-                            } else {
-
-                                sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
-                                        "ReBuy failed, reason: " + e.getMessage(), message.getRid());
-                            }
+                            sendErrorMessage(client, ErrorCodes.INTERNAL_ERROR,
+                                    "ReBuy failed, reason: " + e.getMessage(), message.getRid());
                         }
                     }
                 } finally {

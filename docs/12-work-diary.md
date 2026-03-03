@@ -10706,3 +10706,19 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.03-0.90h` (`~0.00-0.11` workdays), next lane remains localized `SitInHandler` boundary harmonization (`BuyInFailedException` + residual legacy exception point).
+
+### 2026-03-03 02:13 UTC
+- Continued Project 02 stabilization with integrated `CA+CB` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - CA (`4` rewires): added `RoomServiceFactory#getRoomAbs` bridge (`com.dgphoenix` -> `com.abs` exception translation), rewired `SitInHandler` and `AbstractStartGameUrlHandler` call sites, and bridged `SitInHandler` battleground buy-in checked exception.
+  - CB (`6` rewires): converted broad buy-in catch blocks to explicit `catch (BuyInFailedException)` first, retaining existing error-code/fallback behavior.
+  - retained total: `10` targeted rewires across `8` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL.
+  - web compile first-fail moved from `SitInHandler` to localized `SitOutHandler` boundary (`[57,43]`, `[92,23]`).
+  - canonical rerun profile unchanged: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-014918-hardcut-live-batchCACB-web-exception-bridge/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/284-hard-cut-live-batchCACB-web-exception-bridge-rewire10-report-20260303.md`
+- Result:
+  - fail frontier advanced to `SitOutHandler`; next bounded pass can finish this localized exception lane.

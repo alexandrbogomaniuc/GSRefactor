@@ -1,0 +1,8 @@
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java:36:import com.abs.casino.common.exception.CommonException;
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java:483:                            if (!(e instanceof CommonException) && !(e instanceof com.dgphoenix.casino.common.exception.CommonException)) { //error message already sended
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java:18:import com.dgphoenix.casino.common.exception.CommonException;
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:34:import com.dgphoenix.casino.common.exception.CommonException;
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:1083:    public IRoom getRoomAbs(GameType gameType, long id) throws com.abs.casino.common.exception.CommonException {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:1087:            throw new com.abs.casino.common.exception.CommonException(e.getMessage(), e);
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:1197:        } catch (com.abs.casino.common.exception.CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java:18:import com.abs.casino.common.exception.CommonException;
