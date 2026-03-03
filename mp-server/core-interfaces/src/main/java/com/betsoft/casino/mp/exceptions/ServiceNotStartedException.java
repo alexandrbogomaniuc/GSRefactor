@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.exceptions;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 /**
  * User: flsh

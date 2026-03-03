@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.service;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.room.IRoom;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.util.Collection;
 

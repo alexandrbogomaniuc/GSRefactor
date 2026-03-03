@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.bots.dto.BotLogInResult;
 import com.betsoft.casino.mp.model.bots.dto.BotLogOutResult;
 import com.betsoft.casino.mp.model.bots.dto.BotStatusResult;
 import com.betsoft.casino.mp.model.bots.dto.BotsMap;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 /**
  * User: flsh

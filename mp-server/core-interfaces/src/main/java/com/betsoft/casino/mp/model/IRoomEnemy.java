@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.model;
 
 import com.betsoft.casino.mp.model.movement.Trajectory;
-import com.dgphoenix.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.Identifiable;
 import org.kynosarges.tektosyne.geometry.PointD;
 
 import java.util.List;
