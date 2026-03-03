@@ -1,0 +1,89 @@
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java
+index c48fba20b..a47962a8d 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java
+@@ -89,9 +89,9 @@ public class SitOutHandler extends AbstractRoomHandler<SitOut, IGameSocketClient
+                         getLog().debug("handle: sendWaitingPlayerStatusToCanex for candidateNickname: {}", candidateNickname);
+                         this.sendWaitingPlayerStatusToCanex(room, roomInfo, candidateNickname);
+ 
+-                    } catch (CommonException e) {
+-                        getLog().error("Cannot sitOut, seat={}, room={}", seat, room, e);
+-                    }
++                    } catch (com.abs.casino.common.exception.CommonException e) {
++                        getLog().error("Cannot sitOut, seat={}, room={}", seat, room, e);
++                    }
+                 } else {
+                     client.sendMessage(new Error(ErrorCodes.NOT_SEATER, "Seat not found",
+                             System.currentTimeMillis(), message.getRid()), message);
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+index cad55c965..275d397ac 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+@@ -381,9 +381,11 @@ public class KafkaMultiPlayerResponseService {
+                     }
+                 }
+             }
+-        }  catch (Exception e) {
+-            LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
+-        }
++        }  catch (com.abs.casino.common.exception.CommonException e) {
++            LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
++        }  catch (Exception e) {
++            LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
++        }
+     }
+ 
+     public UpdateRoomResultDto updatePlayersStatusInPrivateRoom(UpdateRoomDto request) {
+@@ -896,9 +898,11 @@ public class KafkaMultiPlayerResponseService {
+                 } else {
+                     LOG.debug("SitOut not found roomInfo: {}, just exit", roomId);
+                 }
+-            } catch (Exception e) {
+-                LOG.debug("Cannot sitOut player: {} roomId: {}", request.getAccountId(), roomId, e);
+-            }
++            } catch (com.abs.casino.common.exception.CommonException e) {
++                LOG.debug("Cannot sitOut player: {} roomId: {}", request.getAccountId(), roomId, e);
++            } catch (Exception e) {
++                LOG.debug("Cannot sitOut player: {} roomId: {}", request.getAccountId(), roomId, e);
++            }
+         }
+     }
+ 
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+index 39e5c49e2..b696a3439 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+@@ -1422,9 +1422,11 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
+                     }
+                 }
+             }
+-        }  catch (Exception e) {
+-            LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
+-        }
++        }  catch (com.abs.casino.common.exception.CommonException e) {
++            LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
++        }  catch (Exception e) {
++            LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
++        }
+     }
+ 
+     private void notifyMultinodeAnyRoomDeactivatedToAllObserversOnAllNodes(AbstractRoomInfoService multiNodeAnyRoomInfoService, IRoomInfo roomInfo, ITransportObject roomWasDeactivatedMessage ) {
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java
+index 0c865407d..38094e95b 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java
+@@ -85,9 +85,11 @@ public class SitOutTask implements Runnable, Serializable, ApplicationContextAwa
+                 } else {
+                     LOG.debug("SitOutTask not found roomInfo: {}, just exit", roomId);
+                 }
+-            } catch (Exception e) {
+-                LOG.debug("Cannot sitOut player: {}, roomId: {}", accountId, roomId, e);
+-            }
++            } catch (com.abs.casino.common.exception.CommonException e) {
++                LOG.debug("Cannot sitOut player: {}, roomId: {}", accountId, roomId, e);
++            } catch (Exception e) {
++                LOG.debug("Cannot sitOut player: {}, roomId: {}", accountId, roomId, e);
++            }
+         } else {
+             LOG.error("ApplicationContext not found, {}", this);
+         }

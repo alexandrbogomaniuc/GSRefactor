@@ -10735,3 +10735,19 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.02-0.75h` (`~0.00-0.09` workdays), next lane is localized `SitOutHandler` exception-boundary harmonization.
+
+### 2026-03-03 02:48 UTC
+- Continued Project 02 stabilization with integrated `CD+CE` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - CD (`1` rewire): `SitOutHandler` inner `processSitOut(...)` boundary catch updated to explicit `com.abs...CommonException`.
+  - CE (`4` rewires): added explicit `com.abs...CommonException` first-catch in sit-out wrappers (`RoomServiceFactory`, `SitOutTask`, `KafkaMultiPlayerResponseService` x2).
+  - retained total: `5` targeted rewires across `4` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL.
+  - web compile first-fail moved from `SitOutHandler` to localized `EnterLobbyHandler` exception boundary (`[1976,81]`, `[1985,62]`).
+  - canonical rerun profile unchanged: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-022647-hardcut-live-batchCDCE-sitout-exception-boundary-rewire5/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/285-hard-cut-live-batchCDCE-sitout-exception-boundary-rewire5-report-20260303.md`
+- Result:
+  - sit-out exception lane is cleared; next bounded pass should target `EnterLobbyHandler` boundary points.

@@ -1422,6 +1422,8 @@ public class RoomServiceFactory implements IRoomServiceFactory, MembershipListen
                     }
                 }
             }
+        }  catch (com.abs.casino.common.exception.CommonException e) {
+            LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
         }  catch (Exception e) {
             LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
         }

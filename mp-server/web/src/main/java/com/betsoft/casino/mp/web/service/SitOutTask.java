@@ -85,6 +85,8 @@ public class SitOutTask implements Runnable, Serializable, ApplicationContextAwa
                 } else {
                     LOG.debug("SitOutTask not found roomInfo: {}, just exit", roomId);
                 }
+            } catch (com.abs.casino.common.exception.CommonException e) {
+                LOG.debug("Cannot sitOut player: {}, roomId: {}", accountId, roomId, e);
             } catch (Exception e) {
                 LOG.debug("Cannot sitOut player: {}, roomId: {}", accountId, roomId, e);
             }

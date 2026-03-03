@@ -381,6 +381,8 @@ public class KafkaMultiPlayerResponseService {
                     }
                 }
             }
+        }  catch (com.abs.casino.common.exception.CommonException e) {
+            LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
         }  catch (Exception e) {
             LOG.error("sitOutFromMultiNodePrivateRoom: Cannot send message={}", toString(), e);
         }
@@ -896,6 +898,8 @@ public class KafkaMultiPlayerResponseService {
                 } else {
                     LOG.debug("SitOut not found roomInfo: {}, just exit", roomId);
                 }
+            } catch (com.abs.casino.common.exception.CommonException e) {
+                LOG.debug("Cannot sitOut player: {} roomId: {}", request.getAccountId(), roomId, e);
             } catch (Exception e) {
                 LOG.debug("Cannot sitOut player: {} roomId: {}", request.getAccountId(), roomId, e);
             }

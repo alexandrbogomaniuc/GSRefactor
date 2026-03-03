@@ -5583,3 +5583,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared `SitInHandler` fail-head and advanced to next localized boundary file (`SitOutHandler`).
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 02:48 UTC (Hard-cut live Batch CD+CE)
+- Continued Project 02 stabilization with integrated live batches `CD+CE` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - CD (`1` rewire): `SitOutHandler` inner sit-out boundary catch aligned to explicit `com.abs...CommonException`.
+  - CE (`4` rewires): explicit `com.abs...CommonException`-first catch in sit-out wrappers in `RoomServiceFactory`, `SitOutTask`, and `KafkaMultiPlayerResponseService` (2 sites).
+  - retained total: `5` targeted rewires across `4` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, `clashofthegods` compile gate FAIL in known lane.
+  - `web` first-fail shifted off `SitOutHandler` to localized `EnterLobbyHandler` exception boundary (`[1976,81]`, `[1985,62]`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not CD/CE import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-022647-hardcut-live-batchCDCE-sitout-exception-boundary-rewire5/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/285-hard-cut-live-batchCDCE-sitout-exception-boundary-rewire5-report-20260303.md`
+- Measured movement:
+  - cleared sit-out fail-head and advanced to next localized boundary lane in `EnterLobbyHandler`.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

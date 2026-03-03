@@ -1,0 +1,16 @@
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java:62:                        room.processSitOut(null, null, seatNumber, accountId, true);
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java:88:            } catch (com.abs.casino.common.exception.CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:380:                        room.processSitOut(null, null, 0, accountId, true);
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:384:        }  catch (com.abs.casino.common.exception.CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:893:                        room.processSitOut(null, null, seatNumber, request.getAccountId(), true);
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:901:            } catch (com.abs.casino.common.exception.CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:246:        } catch (CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:309:        } catch (CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:1042:        } catch (CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:1086:        } catch (CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:1197:        } catch (com.abs.casino.common.exception.CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:1421:                        room.processSitOut(null, null, 0, accountId, true);
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:1425:        }  catch (com.abs.casino.common.exception.CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java:57:                        room.processSitOut(client, message, seatNumber, seat.getAccountId(), true);
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java:92:                    } catch (com.abs.casino.common.exception.CommonException e) {
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitOutHandler.java:102:        } catch (CommonException e) {

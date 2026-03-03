@@ -89,7 +89,7 @@ public class SitOutHandler extends AbstractRoomHandler<SitOut, IGameSocketClient
                         getLog().debug("handle: sendWaitingPlayerStatusToCanex for candidateNickname: {}", candidateNickname);
                         this.sendWaitingPlayerStatusToCanex(room, roomInfo, candidateNickname);
 
-                    } catch (CommonException e) {
+                    } catch (com.abs.casino.common.exception.CommonException e) {
                         getLog().error("Cannot sitOut, seat={}, room={}", seat, room, e);
                     }
                 } else {
