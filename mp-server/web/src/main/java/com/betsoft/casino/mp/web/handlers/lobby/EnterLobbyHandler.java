@@ -1973,20 +1973,24 @@ public class EnterLobbyHandler extends MessageHandler<EnterLobby, ILobbySocketCl
     private DetailedPlayerInfo2Dto getDetailedPlayerInfoWithSidRecovery(EnterLobby message, GameType messageGameType,
                                                                          MoneyType modeMoneyType, ILobbySocketClient client)
             throws CommonException {
-        DetailedPlayerInfo2Dto tPlayerInfo = socketService.getDetailedPlayerInfo(
-                message.getSid(), messageGameType.getGameId(), modeMoneyType.name(), message.getBonusId(),
-                message.getTournamentId());
-        String expectedSid = extractExpectedSidFromMismatch(tPlayerInfo);
-        if (!StringUtils.isTrimmedEmpty(expectedSid) && !expectedSid.equals(message.getSid())) {
-            getLog().warn("Detected stale SID on EnterLobby, retry with expected SID. receivedSid={}, expectedSid={}",
-                    message.getSid(), expectedSid);
-            message.setSid(expectedSid);
-            client.setSessionId(expectedSid);
-            tPlayerInfo = socketService.getDetailedPlayerInfo(
-                    expectedSid, messageGameType.getGameId(), modeMoneyType.name(), message.getBonusId(),
+        try {
+            DetailedPlayerInfo2Dto tPlayerInfo = socketService.getDetailedPlayerInfo(
+                    message.getSid(), messageGameType.getGameId(), modeMoneyType.name(), message.getBonusId(),
                     message.getTournamentId());
+            String expectedSid = extractExpectedSidFromMismatch(tPlayerInfo);
+            if (!StringUtils.isTrimmedEmpty(expectedSid) && !expectedSid.equals(message.getSid())) {
+                getLog().warn("Detected stale SID on EnterLobby, retry with expected SID. receivedSid={}, expectedSid={}",
+                        message.getSid(), expectedSid);
+                message.setSid(expectedSid);
+                client.setSessionId(expectedSid);
+                tPlayerInfo = socketService.getDetailedPlayerInfo(
+                        expectedSid, messageGameType.getGameId(), modeMoneyType.name(), message.getBonusId(),
+                        message.getTournamentId());
+            }
+            return tPlayerInfo;
+        } catch (com.abs.casino.common.exception.CommonException e) {
+            throw new CommonException(e.getMessage(), e);
         }
-        return tPlayerInfo;
     }
 
     private String extractExpectedSidFromMismatch(DetailedPlayerInfo2Dto tPlayerInfo) {

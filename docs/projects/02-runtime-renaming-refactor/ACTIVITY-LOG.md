@@ -5601,3 +5601,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared sit-out fail-head and advanced to next localized boundary lane in `EnterLobbyHandler`.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 03:12 UTC (Hard-cut live Batch CF)
+- Continued Project 02 stabilization with live batch `CF` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - CF (`1` rewire): `EnterLobbyHandler` SID-recovery exception bridge (`com.abs...CommonException` -> legacy `com.dgphoenix...CommonException`) within `getDetailedPlayerInfoWithSidRecovery(...)`.
+  - retained total: `1` targeted rewire across `1` file.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, `clashofthegods` compile gate FAIL in known lane.
+  - `web` first-fail shifted off `EnterLobbyHandler` to localized `NicknameService` exception boundary (`[47,45]`, `[54,48]`, `[84,54]`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not CF import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-025130-hardcut-live-batchCF-enterlobby-sid-exception-bridge-rewire2/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/286-hard-cut-live-batchCF-enterlobby-sid-exception-bridge-rewire2-report-20260303.md`
+- Measured movement:
+  - cleared `EnterLobbyHandler` fail-head and advanced to the next localized boundary file (`NicknameService`).
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

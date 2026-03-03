@@ -1,0 +1,18 @@
+846:[ERROR] COMPILATION ERROR : 
+848:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java:[47,45] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+849:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java:[54,48] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+850:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java:[84,54] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+899:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project web: Compilation failure: Compilation failure: 
+900:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java:[47,45] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+901:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java:[54,48] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+902:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java:[84,54] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+903:[ERROR] -> [Help 1]
+904:[ERROR] 
+905:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+906:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+907:[ERROR] 
+908:[ERROR] For more information about the errors and possible solutions, please read the following articles:
+909:[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+910:[ERROR] 
+911:[ERROR] After correcting the problems, you can resume the build with the command
+912:[ERROR]   mvn <args> -rf :web

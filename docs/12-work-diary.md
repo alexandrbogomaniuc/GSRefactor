@@ -10764,3 +10764,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.01-0.60h` (`~0.00-0.08` workdays), next lane is localized `EnterLobbyHandler` exception-boundary harmonization.
+
+### 2026-03-03 03:12 UTC
+- Continued Project 02 stabilization with `CF` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `EnterLobbyHandler` SID-recovery boundary bridged by catching `com.abs...CommonException` and rethrowing legacy `com.dgphoenix...CommonException` with preserved cause.
+  - retained total: `1` targeted rewire across `1` file.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL.
+  - web compile first-fail moved from `EnterLobbyHandler` to localized `NicknameService` boundary (`[47,45]`, `[54,48]`, `[84,54]`).
+  - canonical rerun profile unchanged: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-025130-hardcut-live-batchCF-enterlobby-sid-exception-bridge-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/286-hard-cut-live-batchCF-enterlobby-sid-exception-bridge-rewire2-report-20260303.md`
+- Result:
+  - EnterLobby boundary lane is cleared; next bounded pass should target `NicknameService` exception-boundary points.

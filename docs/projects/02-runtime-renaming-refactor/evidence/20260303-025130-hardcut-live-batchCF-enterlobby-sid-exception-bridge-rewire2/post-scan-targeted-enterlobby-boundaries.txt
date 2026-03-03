@@ -1,0 +1,17 @@
+149:     * @throws CommonException if any unexpected error occur
+866:     * @throws CommonException error if room player info incompatible with room
+869:            throws CommonException {
+1049:    private void removeRoomPlayerInfoIfNoSeatFound(IRoomPlayerInfo roomPlayerInfo, IRoomInfo roomInfo) throws CommonException {
+1102:     * @throws CommonException if any unexpected error occur
+1239:     * @throws CommonException error generation of nickname
+1242:                                                ILobbySocketClient client) throws CommonException {
+1266:     * @throws CommonException error generation of nickname
+1269:                                             ILobbySocketClient client) throws CommonException {
+1777:     * @throws CommonException if any unexpected error occur
+1783:                              List<BattlegroundInfoDto> tBattlegroundInfoList) throws CommonException {
+1913:     * @throws CommonException if any unexpected error occur
+1917:                                                           LobbySession lobbySession, long roomId) throws CommonException {
+1975:            throws CommonException {
+1977:            DetailedPlayerInfo2Dto tPlayerInfo = socketService.getDetailedPlayerInfo(
+1986:                tPlayerInfo = socketService.getDetailedPlayerInfo(
+1991:        } catch (com.abs.casino.common.exception.CommonException e) {
