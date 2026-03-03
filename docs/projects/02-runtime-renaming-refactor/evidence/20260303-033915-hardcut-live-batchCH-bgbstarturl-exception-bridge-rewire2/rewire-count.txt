@@ -1,0 +1,2 @@
+rewires=1
+legacy_commonexception_bridge_catches=1

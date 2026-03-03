@@ -1,0 +1,28 @@
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetBattlegroundStartGameUrlHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetBattlegroundStartGameUrlHandler.java
+index 8510e86b0..2dc16f700 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetBattlegroundStartGameUrlHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetBattlegroundStartGameUrlHandler.java
+@@ -287,12 +287,17 @@ public class GetBattlegroundStartGameUrlHandler extends AbstractStartGameUrlHand
+         LOG.debug("getBestRoomForStake {}, {}: duration={} ms, bestRoomInfo={}",
+                 client.getNickname(), client.getSessionId(), System.currentTimeMillis() - now, bestRoomInfo);
+ 
+-        if (bestRoomInfo != null) {
+-
+-            IRoom roomWithoutCreation = getRoomServiceFactory()
+-                    .getRoomWithoutCreation(bestRoomInfo.getGameType(), bestRoomInfo.getId());
+-
+-            if (roomWithoutCreation != null) {
++        if (bestRoomInfo != null) {
++
++            IRoom roomWithoutCreation;
++            try {
++                roomWithoutCreation = getRoomServiceFactory()
++                        .getRoomWithoutCreation(bestRoomInfo.getGameType(), bestRoomInfo.getId());
++            } catch (com.dgphoenix.casino.common.exception.CommonException e) {
++                throw new CommonException(e.getMessage(), e);
++            }
++
++            if (roomWithoutCreation != null) {
+ 
+                 LOG.debug("getBestRoomForStake {}, {}: add account:{} as Player To WaitingOpenRoom, bestRoomInfo={}",
+                         client.getNickname(), client.getSessionId(), accountId, bestRoomInfo);

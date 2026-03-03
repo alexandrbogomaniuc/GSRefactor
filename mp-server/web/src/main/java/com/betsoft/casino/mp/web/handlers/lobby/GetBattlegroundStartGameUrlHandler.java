@@ -289,8 +289,13 @@ public class GetBattlegroundStartGameUrlHandler extends AbstractStartGameUrlHand
 
         if (bestRoomInfo != null) {
 
-            IRoom roomWithoutCreation = getRoomServiceFactory()
-                    .getRoomWithoutCreation(bestRoomInfo.getGameType(), bestRoomInfo.getId());
+            IRoom roomWithoutCreation;
+            try {
+                roomWithoutCreation = getRoomServiceFactory()
+                        .getRoomWithoutCreation(bestRoomInfo.getGameType(), bestRoomInfo.getId());
+            } catch (com.dgphoenix.casino.common.exception.CommonException e) {
+                throw new CommonException(e.getMessage(), e);
+            }
 
             if (roomWithoutCreation != null) {
 

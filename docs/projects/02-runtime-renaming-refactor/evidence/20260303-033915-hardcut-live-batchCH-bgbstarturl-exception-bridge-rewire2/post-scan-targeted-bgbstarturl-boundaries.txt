@@ -1,0 +1,3 @@
+245:                                                      GetBattlegroundStartGameUrl message) throws CommonException {
+295:                        .getRoomWithoutCreation(bestRoomInfo.getGameType(), bestRoomInfo.getId());
+296:            } catch (com.dgphoenix.casino.common.exception.CommonException e) {
