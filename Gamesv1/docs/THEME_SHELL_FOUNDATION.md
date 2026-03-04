@@ -18,6 +18,18 @@ Provide a reusable shell-token foundation so future games can theme HUD/VFX/audi
 - `roundActions`: shared round/bet/action defaults
 - `winTargets`: generic win-highlight target constraints
 
+### Round-Action Defaults Ownership
+
+- Template bet defaults are owned by `ShellThemeTokens.DEFAULT_THEME_TOKENS.roundActions.bet`.
+- `BetSelectionBuilder` keeps neutral fallback values (`lineCount=1`, `multiplier=1`) to avoid premium-slot leakage when tokens are not provided.
+- Premium-slot keeps template defaults (`lineCount=20`, `multiplier=1`) through shell tokens, not screen-local hardcoding.
+
+### Buy Feature Price Fallback
+
+- Default buy pricing in shell tokens is neutral: `roundActions.buyFeature.priceMinor = 0`.
+- Manual runtime smoke against the GS fixture runtime confirmed `featureaction` succeeds with `selectedFeatureChoice.priceMinor=0`.
+- If an operator/runtime requires a non-zero buy price, override via shell tokens/config (`RoundActionBuilderConfig`) instead of `MainScreen` hardcoding.
+
 ## Runtime Consumption
 
 `games/premium-slot/src/app/screens/main/MainScreen.ts` resolves shell tokens once and passes them into:

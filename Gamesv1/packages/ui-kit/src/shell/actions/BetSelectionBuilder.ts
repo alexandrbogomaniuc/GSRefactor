@@ -7,7 +7,8 @@ export interface BetSelectionBuilderOptions {
   minCoinValueMinor?: number;
 }
 
-const DEFAULT_LINE_COUNT = 20;
+// Keep builder fallbacks neutral so game-template assumptions live in theme/config tokens.
+const DEFAULT_LINE_COUNT = 1;
 const DEFAULT_MULTIPLIER = 1;
 const DEFAULT_MIN_COIN_VALUE_MINOR = 1;
 

@@ -320,6 +320,13 @@ test("round action builder removes screen-local bet and buy-price assumptions", 
   const neutralBuilder = new RoundActionBuilder();
   const neutralBuyAction = neutralBuilder.buildBuyFeatureAction({ totalBetMinor: 200 });
   assert.equal(neutralBuyAction.selectedFeatureChoice.priceMinor, 0);
+  assert.equal(neutralBuyAction.selectedBet.lines, 1);
+  assert.equal(neutralBuyAction.selectedBet.multiplier, 1);
+
+  const themedBuilder = new RoundActionBuilder(resolveShellThemeTokens().roundActions);
+  const themedBet = themedBuilder.buildSpinBet(200);
+  assert.equal(themedBet.lines, 20);
+  assert.equal(themedBet.multiplier, 1);
 });
 
 test("win target resolver uses configurable layout constraints", () => {
@@ -404,6 +411,18 @@ test("theme token foundation resolves overrides and query hooks", () => {
   assert.equal(theme.vfx.intensity, "low");
   assert.equal(theme.hud.panelAlpha, 0.85);
   assert.equal(theme.winPresentation.tierLabels.mega, "EPIC WIN");
+});
+
+test("tier style hooks are consumed by premium screen integration", () => {
+  const mainScreenSource = readFileSync(
+    "games/premium-slot/src/app/screens/main/MainScreen.ts",
+    "utf8",
+  );
+
+  assert.equal(mainScreenSource.includes("resolveTierStyleHook"), true);
+  assert.equal(mainScreenSource.includes("this.winCounter.showWin(amountMinor, title"), true);
+  assert.equal(mainScreenSource.includes("this.winHighlight.showWin(symbols"), true);
+  assert.equal(mainScreenSource.includes("shellTheme.winPresentation.tierStyleHooks"), true);
 });
 
 test("presentation mapper ignores engine-private fields", () => {

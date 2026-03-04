@@ -65,6 +65,13 @@ Theme/VFX token hooks:
 - `intensity` (`low|normal|high`) to tune heavy FX usage
 - `heavyFxEnabled` / `coinBurstEnabled` to hard-toggle expensive effects
 
+Current premium-slot integration:
+
+- `MainScreen` resolves `shellTheme.winPresentation.tierStyleHooks[tier]` and passes the style hook into:
+  - `WinCounter.showWin(..., styleHook)`
+  - `WinHighlight.showWin(..., styleHook)`
+- The style hook is optional and safely ignored when no mapping is configured.
+
 ## Timing Contract
 
 Win presentation duration is config-driven via `AnimationPolicyEngine.getWinPresentationDurationMs(...)`.

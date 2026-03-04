@@ -16,6 +16,7 @@ import {
   resolveShellThemeTokens,
   RoundActionBuilder,
   resolveWinSymbolsFromReels,
+  type PresentationWinTier,
   PremiumTemplateHud,
   type AudioCueRegistry,
   type PremiumHudControlId,
@@ -148,9 +149,11 @@ export class MainScreen extends Container {
     this.wowVfx = new WowVfxOrchestrator(this.animationPolicy, {
       onAudioCue: (cue) => this.applySoundCue(cue),
       onAnimationCue: (cue) => this.applyAnimationCue(cue),
-      showWinCounter: (amountMinor, title) => this.winCounter.showWin(amountMinor, title),
+      showWinCounter: (amountMinor, title, tier) =>
+        this.winCounter.showWin(amountMinor, title, this.resolveTierStyleHook(tier)),
       hideWinCounter: () => this.winCounter.hideNow(),
-      showHeavyWinFx: (symbols) => this.winHighlight.showWin(symbols),
+      showHeavyWinFx: (symbols, tier) =>
+        this.winHighlight.showWin(symbols, this.resolveTierStyleHook(tier)),
       clearHeavyWinFx: () => this.winHighlight.clear(),
       playCoinBurst: (origin) => this.particleBurst.play(origin.x, origin.y),
     }, {
@@ -226,6 +229,10 @@ export class MainScreen extends Container {
       activeFeatureModules: [],
     });
     this.showStatus(`FEATURE MODULES: ${this.featureModules.listEnabledModules().join(", ")}`);
+  }
+
+  private resolveTierStyleHook(tier: PresentationWinTier): string | undefined {
+    return this.shellTheme.winPresentation.tierStyleHooks[tier];
   }
 
   private async handleHudControl(controlId: PremiumHudControlId): Promise<void> {

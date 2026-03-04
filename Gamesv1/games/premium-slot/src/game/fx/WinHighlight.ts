@@ -7,6 +7,39 @@ export class WinHighlight extends Container {
   private pulseActive = false;
   private pulseTime = 0;
 
+  private resolveStyle(styleHook?: string): {
+    stroke: number;
+    fill: number;
+    alpha: number;
+  } {
+    switch (styleHook) {
+      case "subtle":
+        return {
+          stroke: 0xffffff,
+          fill: 0x90a4c6,
+          alpha: 0.28,
+        };
+      case "neon":
+        return {
+          stroke: 0x35f7ff,
+          fill: 0x00b7c2,
+          alpha: 0.36,
+        };
+      case "intense":
+        return {
+          stroke: 0xff5fb2,
+          fill: 0xff2f92,
+          alpha: 0.42,
+        };
+      default:
+        return {
+          stroke: 0xffffff,
+          fill: 0xffd700,
+          alpha: 0.4,
+        };
+    }
+  }
+
   constructor() {
     super();
     Ticker.shared.add((time) => {
@@ -17,19 +50,20 @@ export class WinHighlight extends Container {
     });
   }
 
-  public showWin(symbols: SlotSymbol[]) {
+  public showWin(symbols: SlotSymbol[], styleHook?: string) {
     this.clear();
     if (!this.parent) return;
 
     this.pulseActive = true;
     this.pulseTime = 0;
+    const style = this.resolveStyle(styleHook);
 
     symbols.forEach((sym) => {
       const glow = new Graphics();
       glow.roundRect(0, 0, GameConfig.symbolWidth, GameConfig.symbolHeight, 16);
 
-      glow.stroke({ width: 8, color: 0xffffff, alignment: 0.5 });
-      glow.fill({ color: 0xffd700, alpha: 0.4 });
+      glow.stroke({ width: 8, color: style.stroke, alignment: 0.5 });
+      glow.fill({ color: style.fill, alpha: style.alpha });
 
       const point = sym.getGlobalPosition();
       const localPoint = this.parent!.toLocal(point);

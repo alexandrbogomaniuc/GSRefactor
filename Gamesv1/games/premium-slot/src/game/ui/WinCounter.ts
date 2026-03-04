@@ -7,6 +7,7 @@ export class WinCounter extends Container {
   private isCounting: boolean = false;
   private countDuration: number = 1.2; // seconds
   private title: string = "WIN";
+  private currentStyleHook = "";
 
   constructor() {
     super();
@@ -28,12 +29,38 @@ export class WinCounter extends Container {
     this.visible = false;
   }
 
-  public showWin(amount: number, title = "WIN") {
+  private applyStyleHook(styleHook?: string) {
+    this.currentStyleHook = styleHook ?? "";
+
+    const style = this.countText.style;
+    style.fill = 0xffd700;
+    style.stroke = { color: 0x000000, width: 6 };
+
+    switch (this.currentStyleHook) {
+      case "subtle":
+        style.fill = 0xf7f2da;
+        style.stroke = { color: 0x2b2b2b, width: 4 };
+        break;
+      case "neon":
+        style.fill = 0x35f7ff;
+        style.stroke = { color: 0x041018, width: 7 };
+        break;
+      case "intense":
+        style.fill = 0xff5fb2;
+        style.stroke = { color: 0x240010, width: 8 };
+        break;
+      default:
+        break;
+    }
+  }
+
+  public showWin(amount: number, title = "WIN", styleHook?: string) {
     this.title = title;
     this.targetValue = Math.max(0, amount);
     this.currentValue = 0;
     this.isCounting = true;
     this.visible = true;
+    this.applyStyleHook(styleHook);
 
     this.countText.text = `${this.title}\n$0`;
 
