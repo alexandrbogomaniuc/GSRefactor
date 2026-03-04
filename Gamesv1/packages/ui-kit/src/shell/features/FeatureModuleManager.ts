@@ -1,5 +1,6 @@
 import type { ResolvedConfig } from "@gamesv1/core-compliance";
 
+import type { PremiumHudControlId } from "../../hud/PremiumTemplateHud.ts";
 import type { RoundPresentationModel } from "../presentation/PremiumPresentationMapper.ts";
 import { BuyFeatureModule } from "./BuyFeatureModule.ts";
 import { FreeSpinsFeatureModule } from "./FreeSpinsFeatureModule.ts";
@@ -18,9 +19,7 @@ export interface FeatureFrame {
   messages: string[];
   soundCues: string[];
   animationCues: string[];
-  controlVisibility: {
-    buyFeature?: boolean;
-  };
+  controlVisibility: Partial<Record<PremiumHudControlId, boolean>>;
   enabledModuleIds: string[];
   activeModuleIds: string[];
 }

@@ -1,11 +1,16 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 
 import { DefaultResolvedRuntimeConfig } from "../../packages/core-compliance/src/ResolvedRuntimeConfig.ts";
 import { hasRowGaps } from "../../packages/pixi-layout/src/index.ts";
 import { computeHudLayout } from "../../packages/ui-kit/src/layout/HudLayout.ts";
 import { FeatureModuleManager } from "../../packages/ui-kit/src/shell/features/FeatureModuleManager.ts";
 import { mapPlayRoundToPresentation } from "../../packages/ui-kit/src/shell/presentation/PremiumPresentationMapper.ts";
-import { resolvePremiumHudVisibility } from "../../packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts";
+import {
+  mergePremiumHudVisibility,
+  resolvePremiumHudVisibility,
+} from "../../packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts";
+import { applyAudioCue, createAudioCueRegistry } from "../../packages/ui-kit/src/shell/vfx/AudioCueRegistry.ts";
 import type { PlayRoundResponse } from "../../packages/core-protocol/src/IGameTransport.ts";
 
 let passed = 0;
@@ -256,19 +261,86 @@ test("dynamic buy-feature visibility toggles by round state without layout gaps"
 
   const baseVisibility = resolvePremiumHudVisibility(config);
   const enabledLayout = assertGaplessLayout(
-    toLayoutItems({
-      ...baseVisibility.controls,
-      buyFeature: availableRound.controlVisibility.buyFeature ?? false,
-    }),
+    toLayoutItems(
+      mergePremiumHudVisibility(baseVisibility, availableRound.controlVisibility).controls,
+    ),
   );
   const disabledLayout = assertGaplessLayout(
-    toLayoutItems({
-      ...baseVisibility.controls,
-      buyFeature: disabledRound.controlVisibility.buyFeature ?? false,
-    }),
+    toLayoutItems(
+      mergePremiumHudVisibility(baseVisibility, disabledRound.controlVisibility).controls,
+    ),
   );
 
   assert.equal(enabledLayout.items.length, disabledLayout.items.length + 1);
+});
+
+test("generic dynamic control visibility applies turbo/autoplay/history combinations", () => {
+  const baseVisibility = resolvePremiumHudVisibility(DefaultResolvedRuntimeConfig);
+  const dynamicControls = {
+    buyFeature: false,
+    turbo: false,
+    autoplay: false,
+    history: false,
+  } as const;
+
+  const merged = mergePremiumHudVisibility(baseVisibility, dynamicControls);
+  const layout = assertGaplessLayout(toLayoutItems(merged.controls));
+
+  assert.equal(merged.controls.buyFeature, false);
+  assert.equal(merged.controls.turbo, false);
+  assert.equal(merged.controls.autoplay, false);
+  assert.equal(merged.controls.history, false);
+  assert.equal(layout.items.length, 3);
+});
+
+test("audio cue dispatch is delegated to shared registry", () => {
+  const registry = createAudioCueRegistry({
+    "jackpot-stinger": [{ type: "sfx", assetKey: "theme/jackpot", volume: 0.5 }],
+    "mute-bgm": [{ type: "bgmVolume", volume: 0.2 }],
+  });
+
+  const sfxEvents: Array<{ assetKey: string; volume: number }> = [];
+  const bgmEvents: number[] = [];
+
+  applyAudioCue(
+    "jackpot-stinger",
+    {
+      playSfx: (assetKey, options) => {
+        sfxEvents.push({ assetKey, volume: options.volume });
+      },
+      setBgmVolume: (volume) => {
+        bgmEvents.push(volume);
+      },
+      isSoundEnabled: () => true,
+    },
+    registry,
+  );
+
+  applyAudioCue(
+    "mute-bgm",
+    {
+      playSfx: (assetKey, options) => {
+        sfxEvents.push({ assetKey, volume: options.volume });
+      },
+      setBgmVolume: (volume) => {
+        bgmEvents.push(volume);
+      },
+      isSoundEnabled: () => true,
+    },
+    registry,
+  );
+
+  const mainScreenSource = readFileSync(
+    "games/premium-slot/src/app/screens/main/MainScreen.ts",
+    "utf8",
+  );
+
+  assert.equal(sfxEvents.length, 1);
+  assert.deepEqual(sfxEvents[0], { assetKey: "theme/jackpot", volume: 0.5 });
+  assert.deepEqual(bgmEvents, [0.2]);
+  assert.equal(mainScreenSource.includes("applyAudioCue("), true);
+  assert.equal(mainScreenSource.includes('cue === "jackpot-stinger"'), false);
+  assert.equal(mainScreenSource.includes('cue === "mute-bgm"'), false);
 });
 
 test("presentation mapper ignores engine-private fields", () => {

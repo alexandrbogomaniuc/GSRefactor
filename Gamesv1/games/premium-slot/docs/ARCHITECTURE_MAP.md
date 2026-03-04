@@ -38,6 +38,7 @@ Controls:
 - history
 
 HUD visibility and layout are driven by resolved runtime config and feature module outputs.
+`MainScreen` now merges feature-frame control visibility generically (`buyFeature`, `turbo`, `autoplay`, `history`) through shared shell policy helpers, preserving no-gap reflow.
 
 ## Feature module pipeline
 
@@ -67,12 +68,15 @@ Enablement source:
   - `packages/ui-kit/src/shell/vfx/WinPresentationTiers.ts`
 - Canonical orchestrator:
   - `packages/ui-kit/src/shell/vfx/WowVfxOrchestrator.ts`
+- Shared audio cue registry / dispatcher:
+  - `packages/ui-kit/src/shell/vfx/AudioCueRegistry.ts`
 - Premium implementation adapters:
   - `src/game/fx/WinHighlight.ts`
   - `src/game/fx/ParticleBurst.ts`
   - `src/game/ui/WinCounter.ts`
 
 VFX timing and low-performance behavior are driven by `AnimationPolicyEngine` and runtime config.
+Audio cue execution is delegated to shared shell cue dispatching (no screen-local hardcoded cue branching).
 
 ## Asset and localization handoff paths
 

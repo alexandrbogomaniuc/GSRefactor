@@ -46,6 +46,8 @@ No-win handling:
   - `force-skip-presentation`
 
 Audio cue mapping is resolved through shared registry entries (`resolveAudioCueActions`) instead of screen-local hardcoded cue branching.
+`MainScreen` now delegates cue execution directly to shared shell logic via `applyAudioCue(...)`, so cue-to-action handling is no longer implemented with screen-local `cue === ...` branches.
+Registry creation supports theme/skin override layers (`themeId`, `skinId`, and `themedOverrides`) to keep cue mapping skin-friendly.
 
 ## Heavy-FX and Low-Perf Fallback
 

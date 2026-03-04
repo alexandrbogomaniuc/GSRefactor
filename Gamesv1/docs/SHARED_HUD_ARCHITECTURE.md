@@ -38,7 +38,8 @@ All control visibility is derived from resolved runtime config via `resolvePremi
 `games/premium-slot/src/app/screens/main/MainScreen.ts` composes:
 
 - `resolvePremiumHudVisibility(...)` for base visibility
-- `FeatureModuleManager` dynamic control updates (for example buy feature visibility)
+- `FeatureModuleManager` dynamic control updates (buy feature + generic control patches)
+- `mergePremiumHudVisibility(...)` to apply generic dynamic control visibility (`buyFeature`, `turbo`, `autoplay`, `history`, and future controls)
 - `PremiumTemplateHud` state updates (balance/bet/win/turbo/sound)
 
 This keeps GS-authoritative session/wallet/runtime truth unchanged; HUD is presentation-only.

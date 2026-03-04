@@ -7,10 +7,12 @@ import {
 } from "@gamesv1/core-compliance";
 import { engine } from "@gamesv1/pixi-engine";
 import {
+  applyAudioCue,
   createAudioCueRegistry,
   FeatureModuleManager,
   type FeatureFrame,
   GameConfig,
+  mergePremiumHudVisibility,
   PremiumTemplateHud,
   type AudioCueRegistry,
   type PremiumHudControlId,
@@ -19,7 +21,6 @@ import {
   resolvePremiumHudVisibility,
   SettingsPopup,
   SlotMachine,
-  resolveAudioCueActions,
   WowVfxOrchestrator,
 } from "@gamesv1/ui-kit";
 import {
@@ -411,31 +412,27 @@ export class MainScreen extends Container {
   }
 
   private applyDynamicControlVisibility(featureFrame: FeatureFrame): void {
-    if (featureFrame.controlVisibility.buyFeature !== undefined) {
-      this.hud.applyVisibility({
-        controls: {
-          buyFeature: featureFrame.controlVisibility.buyFeature,
-        },
-      });
-    }
+    const visibility = mergePremiumHudVisibility(
+      this.baseHudVisibility,
+      featureFrame.controlVisibility,
+    );
+    this.hud.applyVisibility({ controls: visibility.controls });
   }
 
   private applySoundCue(cue: string): void {
-    for (const action of resolveAudioCueActions(cue, this.audioCueRegistry)) {
-      if (action.type === "sfx") {
-        if (action.respectSoundEnabled && !this.soundEnabled) {
-          continue;
-        }
-        engine().audio.sfx.play(action.assetKey, {
-          volume: action.volume ?? 1,
-        });
-        continue;
-      }
-
-      if (action.type === "bgmVolume") {
-        userSettings.setBgmVolume(action.volume);
-      }
-    }
+    applyAudioCue(
+      cue,
+      {
+        playSfx: (assetKey, options) => {
+          engine().audio.sfx.play(assetKey, options);
+        },
+        setBgmVolume: (volume) => {
+          userSettings.setBgmVolume(volume);
+        },
+        isSoundEnabled: () => this.soundEnabled,
+      },
+      this.audioCueRegistry,
+    );
   }
 
   private applyAnimationCue(cue: string): void {
