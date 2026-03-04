@@ -6,7 +6,7 @@ This is the gold-standard reference architecture for future Gamesv1 slot games.
 
 1. `GsRuntimeClient.bootstrap()` hydrates session/wallet/config from GS.
 2. `ConfigManager` resolves runtime config with GS payload as highest practical runtime source.
-3. `MainScreen` issues `playRound` and maps GS `presentationPayload` through one canonical mapper.
+3. `MainScreen` builds spin/buy actions via shared shell action builders and maps GS `presentationPayload` through one canonical mapper.
 4. Visual rendering uses mapped reel data/counters/overlays/cues only.
 
 ## Core components
@@ -21,6 +21,9 @@ This is the gold-standard reference architecture for future Gamesv1 slot games.
   - `src/app/stores/PresentationStateStore.ts`
 - Main composition:
   - `src/app/screens/main/MainScreen.ts`
+- Shared round/action helpers:
+  - `packages/ui-kit/src/shell/actions/BetSelectionBuilder.ts`
+  - `packages/ui-kit/src/shell/actions/RoundActionBuilder.ts`
 
 ## Shared template HUD
 
@@ -38,6 +41,8 @@ Controls:
 - history
 
 HUD visibility and layout are driven by resolved runtime config and feature module outputs.
+HUD styling/skin behavior is driven by shell theme tokens:
+- `packages/ui-kit/src/shell/theme/ShellThemeTokens.ts`
 
 ## Feature module pipeline
 
@@ -67,12 +72,17 @@ Enablement source:
   - `packages/ui-kit/src/shell/vfx/WinPresentationTiers.ts`
 - Canonical orchestrator:
   - `packages/ui-kit/src/shell/vfx/WowVfxOrchestrator.ts`
+- Audio cue dispatch:
+  - `packages/ui-kit/src/shell/vfx/AudioCueRegistry.ts`
+- Win-target resolution helper:
+  - `packages/ui-kit/src/shell/presentation/WinTargetResolver.ts`
 - Premium implementation adapters:
   - `src/game/fx/WinHighlight.ts`
   - `src/game/fx/ParticleBurst.ts`
   - `src/game/ui/WinCounter.ts`
 
 VFX timing and low-performance behavior are driven by `AnimationPolicyEngine` and runtime config.
+Theme token hooks can override tier labels/styles and VFX intensity without changing GS runtime contracts.
 
 ## Asset and localization handoff paths
 

@@ -7,19 +7,24 @@ import {
 } from "@gamesv1/core-compliance";
 import { engine } from "@gamesv1/pixi-engine";
 import {
+  applyAudioCue,
   createAudioCueRegistry,
   FeatureModuleManager,
   type FeatureFrame,
   GameConfig,
+  mergePremiumHudVisibility,
+  resolveShellThemeTokens,
+  RoundActionBuilder,
+  resolveWinSymbolsFromReels,
   PremiumTemplateHud,
   type AudioCueRegistry,
   type PremiumHudControlId,
   type PremiumHudFeatureFlags,
   type PremiumHudVisibility,
+  type ShellThemeTokens,
   resolvePremiumHudVisibility,
   SettingsPopup,
   SlotMachine,
-  resolveAudioCueActions,
   WowVfxOrchestrator,
 } from "@gamesv1/ui-kit";
 import {
@@ -102,6 +107,8 @@ export class MainScreen extends Container {
   private readonly wowVfx: WowVfxOrchestrator;
   private readonly featureModules: FeatureModuleManager;
   private readonly baseHudVisibility: PremiumHudVisibility;
+  private readonly shellTheme: ShellThemeTokens;
+  private readonly roundActionBuilder: RoundActionBuilder;
 
   private pendingRound: PendingRoundResolution | null = null;
 
@@ -117,9 +124,27 @@ export class MainScreen extends Container {
         lowPerformanceMode: this.runtimeConfig.capabilities.animationPolicy.lowPerformanceMode,
       }),
     );
+    const queryParams = new URLSearchParams(window.location.search);
+    this.shellTheme = resolveShellThemeTokens({
+      runtimeConfig: this.runtimeConfig,
+      queryParams,
+      overrides: {
+        winTargets: {
+          reelCount: GameConfig.numReels,
+          rowCount: GameConfig.numRows,
+          highlightReelIndexes: Array.from({ length: GameConfig.numReels }, (_, index) => index),
+        },
+      },
+    });
+    this.roundActionBuilder = new RoundActionBuilder(this.shellTheme.roundActions);
 
     this.featureModules = new FeatureModuleManager(this.runtimeConfig);
-    this.audioCueRegistry = createAudioCueRegistry();
+    this.audioCueRegistry = createAudioCueRegistry({
+      overrides: this.shellTheme.audio.cueOverrides,
+      themedOverrides: this.shellTheme.audio.themedCueOverrides,
+      themeId: this.shellTheme.metadata.themeId,
+      skinId: this.shellTheme.metadata.skinId,
+    });
     this.wowVfx = new WowVfxOrchestrator(this.animationPolicy, {
       onAudioCue: (cue) => this.applySoundCue(cue),
       onAnimationCue: (cue) => this.applyAnimationCue(cue),
@@ -128,6 +153,12 @@ export class MainScreen extends Container {
       showHeavyWinFx: (symbols) => this.winHighlight.showWin(symbols),
       clearHeavyWinFx: () => this.winHighlight.clear(),
       playCoinBurst: (origin) => this.particleBurst.play(origin.x, origin.y),
+    }, {
+      tierLabels: this.shellTheme.winPresentation.tierLabels,
+      tierStyleHooks: this.shellTheme.winPresentation.tierStyleHooks,
+      intensity: this.shellTheme.vfx.intensity,
+      heavyFxEnabled: this.shellTheme.vfx.heavyFxEnabled,
+      coinBurstEnabled: this.shellTheme.vfx.coinBurstEnabled,
     });
     this.baseHudVisibility = resolvePremiumHudVisibility(
       this.runtimeConfig,
@@ -158,6 +189,7 @@ export class MainScreen extends Container {
     this.uiLayer.addChild(this.winCounter);
 
     this.hud = new PremiumTemplateHud();
+    this.hud.applyTheme(this.shellTheme.hud);
     this.hud.applyVisibility(this.baseHudVisibility);
     this.hud.setCallbacks({
       onControlPress: (controlId) => {
@@ -263,20 +295,14 @@ export class MainScreen extends Container {
   private async handleBuyFeature(): Promise<void> {
     try {
       const totalBetMinor = Math.max(1, Math.round(ResolvedRuntimeConfigStore.limits.defaultBet));
-      const lines = 20;
-      const multiplier = 1;
-      const coinValueMinor = Math.max(1, Math.floor(totalBetMinor / (lines * multiplier)));
+      const action = this.roundActionBuilder.buildBuyFeatureAction({
+        totalBetMinor,
+        payload: { source: "hud" },
+      });
 
       await gsRuntimeClient.featureaction("buy-feature", {
-        selectedBet: {
-          coinValueMinor,
-          lines,
-          multiplier,
-          totalBetMinor,
-        },
-        featureType: "BUY_FEATURE",
-        priceMinor: totalBetMinor,
-        payload: { source: "hud" },
+        selectedBet: action.selectedBet,
+        selectedFeatureChoice: action.selectedFeatureChoice,
       });
       this.showStatus("BUY FEATURE ACTION SENT");
     } catch (error) {
@@ -301,14 +327,7 @@ export class MainScreen extends Container {
 
     const timing = this.animationPolicy.resolveSpinTiming(this.turboSelected);
     const totalBetMinor = Math.max(1, Math.round(ResolvedRuntimeConfigStore.limits.defaultBet));
-    const lines = 20;
-    const multiplier = 1;
-    const selectedBet = {
-      coinValueMinor: Math.max(1, Math.floor(totalBetMinor / (lines * multiplier))),
-      lines,
-      multiplier,
-      totalBetMinor,
-    };
+    const selectedBet = this.roundActionBuilder.buildSpinBet(totalBetMinor);
 
     try {
       const round = await gsRuntimeClient.playround(selectedBet);
@@ -362,12 +381,10 @@ export class MainScreen extends Container {
     ];
     this.showStatus(formatMessages(mergedMessages));
 
-    const reels = this.slotMachine.getReels();
-    const winSymbols = [
-      reels[0].getVisibleSymbols()[1],
-      reels[1].getVisibleSymbols()[1],
-      reels[2].getVisibleSymbols()[1],
-    ];
+    const winSymbols = resolveWinSymbolsFromReels(
+      this.slotMachine.getReels(),
+      this.shellTheme.winTargets,
+    );
 
     const winAmount = presentation.winAmount;
     const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
@@ -411,31 +428,27 @@ export class MainScreen extends Container {
   }
 
   private applyDynamicControlVisibility(featureFrame: FeatureFrame): void {
-    if (featureFrame.controlVisibility.buyFeature !== undefined) {
-      this.hud.applyVisibility({
-        controls: {
-          buyFeature: featureFrame.controlVisibility.buyFeature,
-        },
-      });
-    }
+    const visibility = mergePremiumHudVisibility(
+      this.baseHudVisibility,
+      featureFrame.controlVisibility,
+    );
+    this.hud.applyVisibility({ controls: visibility.controls });
   }
 
   private applySoundCue(cue: string): void {
-    for (const action of resolveAudioCueActions(cue, this.audioCueRegistry)) {
-      if (action.type === "sfx") {
-        if (action.respectSoundEnabled && !this.soundEnabled) {
-          continue;
-        }
-        engine().audio.sfx.play(action.assetKey, {
-          volume: action.volume ?? 1,
-        });
-        continue;
-      }
-
-      if (action.type === "bgmVolume") {
-        userSettings.setBgmVolume(action.volume);
-      }
-    }
+    applyAudioCue(
+      cue,
+      {
+        playSfx: (assetKey, options) => {
+          engine().audio.sfx.play(assetKey, options);
+        },
+        setBgmVolume: (volume) => {
+          userSettings.setBgmVolume(volume);
+        },
+        isSoundEnabled: () => this.soundEnabled,
+      },
+      this.audioCueRegistry,
+    );
   }
 
   private applyAnimationCue(cue: string): void {

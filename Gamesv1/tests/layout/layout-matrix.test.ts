@@ -59,6 +59,17 @@ const visibilityScenarios = [
     expectedCount: 1,
   },
   {
+    name: "dynamic-buy-feature-only",
+    resolver: (itemId: string) => itemId !== "buyFeature",
+    expectedCount: 6,
+  },
+  {
+    name: "dynamic-turbo-history-autoplay-hidden",
+    resolver: (itemId: string) =>
+      itemId !== "turbo" && itemId !== "autoplay" && itemId !== "history",
+    expectedCount: 4,
+  },
+  {
     name: "mixed-hidden-no-gaps",
     resolver: (itemId: string) => itemId !== "buyFeature" && itemId !== "history",
     expectedCount: 5,

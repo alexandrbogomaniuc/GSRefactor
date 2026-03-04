@@ -31,6 +31,13 @@ export interface PremiumHudVisibilityPatch {
   metrics?: Partial<PremiumHudVisibility["metrics"]>;
 }
 
+export interface PremiumHudThemeTokens {
+  visualStyle?: string;
+  panelAlpha?: number;
+  metricAccentColor?: number;
+  controlSkinHooks?: Partial<Record<PremiumHudControlId, string>>;
+}
+
 export interface PremiumHudState {
   balance: number;
   bet: number;
@@ -77,6 +84,13 @@ const createMetricText = (): Text =>
 
 const metricRegionHeight = 76;
 
+const defaultTheme: Required<PremiumHudThemeTokens> = {
+  visualStyle: "premium-default",
+  panelAlpha: 1,
+  metricAccentColor: 0xf7f2da,
+  controlSkinHooks: {},
+};
+
 export class PremiumTemplateHud extends Container {
   private readonly controlsLayer = new Container();
   private readonly metricsLayer = new Container();
@@ -90,6 +104,7 @@ export class PremiumTemplateHud extends Container {
 
   private readonly controlLayout: ResponsiveHudLayoutController;
   private visibility: PremiumHudVisibility = structuredClone(defaultVisibility);
+  private theme: Required<PremiumHudThemeTokens> = { ...defaultTheme };
   private callbacks: PremiumHudCallbacks = {};
 
   constructor() {
@@ -148,6 +163,7 @@ export class PremiumTemplateHud extends Container {
     ]);
 
     this.applyVisibility(defaultVisibility);
+    this.applyTheme(defaultTheme);
     this.setState({
       balance: 0,
       bet: 0,
@@ -159,6 +175,48 @@ export class PremiumTemplateHud extends Container {
 
   public setCallbacks(callbacks: PremiumHudCallbacks): void {
     this.callbacks = callbacks;
+  }
+
+  public applyTheme(next: PremiumHudThemeTokens): void {
+    this.theme = {
+      visualStyle: next.visualStyle ?? this.theme.visualStyle,
+      panelAlpha:
+        typeof next.panelAlpha === "number" && Number.isFinite(next.panelAlpha)
+          ? Math.min(1, Math.max(0, next.panelAlpha))
+          : this.theme.panelAlpha,
+      metricAccentColor:
+        typeof next.metricAccentColor === "number" && Number.isFinite(next.metricAccentColor)
+          ? next.metricAccentColor
+          : this.theme.metricAccentColor,
+      controlSkinHooks: {
+        ...this.theme.controlSkinHooks,
+        ...(next.controlSkinHooks ?? {}),
+      },
+    };
+
+    this.controlsLayer.alpha = this.theme.panelAlpha;
+    this.metricsLayer.alpha = this.theme.visualStyle === "minimal" ? 0.9 : 1;
+
+    for (const metricText of Object.values(this.metricTexts)) {
+      metricText.style.fill = this.theme.metricAccentColor;
+    }
+
+    for (const [controlId, button] of Object.entries(this.buttons) as Array<
+      [PremiumHudControlId, Button]
+    >) {
+      const hook = this.theme.controlSkinHooks[controlId];
+      switch (hook) {
+        case "muted":
+          button.alpha = 0.7;
+          break;
+        case "emphasis":
+          button.alpha = 1;
+          break;
+        default:
+          button.alpha = 0.95;
+          break;
+      }
+    }
   }
 
   public applyVisibility(next: PremiumHudVisibilityPatch): void {

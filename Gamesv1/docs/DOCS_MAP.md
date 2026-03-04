@@ -22,6 +22,8 @@ Canonical and archived documentation index.
 - `docs/RESPONSIVE_SCALING_STRATEGY.md`: shared scaling strategy and layout matrix expectations.
 - `docs/SAFE_AREA_POLICY.md`: safe-area/notch handling policy for all game shells.
 - `docs/WOW_VFX_ARCHITECTURE.md`: shared win/VFX orchestration architecture.
+- `docs/THEME_SHELL_FOUNDATION.md`: shell token foundation (HUD/VFX/audio/action/win-target hooks).
+- `docs/HUD_THEME_TOKENS.md`: HUD-specific theme token schema and integration points.
 - `docs/WIN_PRESENTATION_TIERS.md`: canonical win tier mapping and timing rules.
 - `docs/ART_PIPELINE_PRODUCTIZATION.md`: reusable art integration contract for new games.
 - `docs/PROMO_ASSET_PIPELINE.md`: promo asset flow and release handoff policy.

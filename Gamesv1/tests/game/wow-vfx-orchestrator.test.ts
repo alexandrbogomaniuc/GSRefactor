@@ -28,6 +28,7 @@ const test = (name: string, fn: () => void) => {
 const makeHarness = (input?: {
   lowPerformanceMode?: boolean;
   forcedSkipWinPresentation?: boolean;
+  theme?: ConstructorParameters<typeof WowVfxOrchestrator>[2];
 }) => {
   const runtimeConfig = structuredClone(DefaultResolvedRuntimeConfig);
   const animationPolicy = new AnimationPolicyEngine(
@@ -40,15 +41,19 @@ const makeHarness = (input?: {
 
   const events: string[] = [];
 
-  const orchestrator = new WowVfxOrchestrator(animationPolicy, {
-    onAudioCue: (cue) => events.push(`audio:${cue}`),
-    onAnimationCue: (cue) => events.push(`anim:${cue}`),
-    showWinCounter: (_amount, title, tier) => events.push(`counter:${title}:${tier}`),
-    hideWinCounter: () => events.push("counter:hide"),
-    showHeavyWinFx: (_symbols, tier) => events.push(`heavy:${tier}`),
-    clearHeavyWinFx: () => events.push("heavy:clear"),
-    playCoinBurst: (_origin, tier) => events.push(`burst:${tier}`),
-  });
+  const orchestrator = new WowVfxOrchestrator(
+    animationPolicy,
+    {
+      onAudioCue: (cue) => events.push(`audio:${cue}`),
+      onAnimationCue: (cue) => events.push(`anim:${cue}`),
+      showWinCounter: (_amount, title, tier) => events.push(`counter:${title}:${tier}`),
+      hideWinCounter: () => events.push("counter:hide"),
+      showHeavyWinFx: (_symbols, tier) => events.push(`heavy:${tier}`),
+      clearHeavyWinFx: () => events.push("heavy:clear"),
+      playCoinBurst: (_origin, tier) => events.push(`burst:${tier}`),
+    },
+    input?.theme,
+  );
 
   return {
     orchestrator,
@@ -140,6 +145,23 @@ test("zero-win rounds do not show win counter or heavy effects", () => {
   assert.equal(events.includes("heavy:mega"), false);
   assert.ok(events.includes("heavy:clear"));
   assert.equal(events.some((entry) => entry.startsWith("burst:")), false);
+});
+
+test("theme tokens can override tier label and reduce vfx intensity", () => {
+  const { orchestrator, events } = makeHarness({
+    theme: {
+      tierLabels: { mega: "EPIC WIN" },
+      intensity: "low",
+      coinBurstEnabled: false,
+    },
+  });
+
+  const state = orchestrator.startWinPresentation(makeInput(1000));
+
+  assert.equal(state.title, "EPIC WIN");
+  assert.equal(state.heavyFxPlayed, false);
+  assert.equal(events.includes("heavy:mega"), false);
+  assert.equal(events.some((event) => event.startsWith("burst:")), false);
 });
 
 console.log(`\nWOW/VFX tests: ${passed} passed, ${failed} failed.`);

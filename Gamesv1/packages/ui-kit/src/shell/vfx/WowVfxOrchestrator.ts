@@ -26,6 +26,14 @@ export interface WinPresentationCueHooks {
   ) => void;
 }
 
+export interface WowVfxThemeTokens {
+  tierLabels?: Partial<Record<PresentationWinTier, string>>;
+  tierStyleHooks?: Partial<Record<PresentationWinTier, string>>;
+  intensity?: "low" | "normal" | "high";
+  heavyFxEnabled?: boolean;
+  coinBurstEnabled?: boolean;
+}
+
 export interface StartWinPresentationInput {
   winAmountMinor: number;
   defaultBetMinor: number;
@@ -52,10 +60,30 @@ const cueDisablesHeavyFx = (cue: string): boolean => cue === "disable-heavy-win-
 export class WowVfxOrchestrator {
   private readonly animationPolicy: AnimationPolicyLike;
   private readonly hooks: WinPresentationCueHooks;
+  private readonly theme: WowVfxThemeTokens;
 
-  constructor(animationPolicy: AnimationPolicyLike, hooks: WinPresentationCueHooks) {
+  constructor(
+    animationPolicy: AnimationPolicyLike,
+    hooks: WinPresentationCueHooks,
+    theme: WowVfxThemeTokens = {},
+  ) {
     this.animationPolicy = animationPolicy;
     this.hooks = hooks;
+    this.theme = theme;
+  }
+
+  private resolveTierTitle(tier: PresentationWinTier): string {
+    return this.theme.tierLabels?.[tier] ?? getWinPresentationTitle(tier);
+  }
+
+  private shouldAllowHeavyFx(policyTier: PolicyWinTier): boolean {
+    if (this.theme.heavyFxEnabled === false) {
+      return false;
+    }
+    if (this.theme.intensity === "low") {
+      return false;
+    }
+    return this.animationPolicy.shouldPlayHeavyWinFx(policyTier);
   }
 
   public startWinPresentation(input: StartWinPresentationInput): WinPresentationState {
@@ -81,7 +109,7 @@ export class WowVfxOrchestrator {
     const policyTier = this.animationPolicy.classifyWinByMultiplier(winMultiplier);
     const tier = toPresentationWinTier(policyTier, input.winAmountMinor);
     const hasWinPresentation = tier !== "none";
-    const title = getWinPresentationTitle(tier);
+    const title = this.resolveTierTitle(tier);
     const forcedSkip = this.animationPolicy.shouldAllowForcedSkip() || forcedSkipFromCues;
 
     if (!hasWinPresentation) {
@@ -100,11 +128,13 @@ export class WowVfxOrchestrator {
     }
 
     const heavyFxAllowed =
-      !forcedSkip && !suppressHeavyFx && this.animationPolicy.shouldPlayHeavyWinFx(policyTier);
+      !forcedSkip && !suppressHeavyFx && this.shouldAllowHeavyFx(policyTier);
 
     if (heavyFxAllowed) {
       this.hooks.showHeavyWinFx?.(input.winSymbols, tier);
-      this.hooks.playCoinBurst?.(input.burstOrigin ?? { x: 0, y: -100 }, tier);
+      if (this.theme.coinBurstEnabled !== false) {
+        this.hooks.playCoinBurst?.(input.burstOrigin ?? { x: 0, y: -100 }, tier);
+      }
     } else {
       this.hooks.clearHeavyWinFx?.();
     }

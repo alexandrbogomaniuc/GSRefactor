@@ -1,11 +1,22 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 
 import { DefaultResolvedRuntimeConfig } from "../../packages/core-compliance/src/ResolvedRuntimeConfig.ts";
 import { hasRowGaps } from "../../packages/pixi-layout/src/index.ts";
 import { computeHudLayout } from "../../packages/ui-kit/src/layout/HudLayout.ts";
 import { FeatureModuleManager } from "../../packages/ui-kit/src/shell/features/FeatureModuleManager.ts";
 import { mapPlayRoundToPresentation } from "../../packages/ui-kit/src/shell/presentation/PremiumPresentationMapper.ts";
-import { resolvePremiumHudVisibility } from "../../packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts";
+import { resolveWinSymbolsFromReels } from "../../packages/ui-kit/src/shell/presentation/WinTargetResolver.ts";
+import {
+  mergePremiumHudVisibility,
+  resolvePremiumHudVisibility,
+} from "../../packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts";
+import { RoundActionBuilder } from "../../packages/ui-kit/src/shell/actions/RoundActionBuilder.ts";
+import { resolveShellThemeTokens } from "../../packages/ui-kit/src/shell/theme/ShellThemeTokens.ts";
+import {
+  applyAudioCue,
+  createAudioCueRegistry,
+} from "../../packages/ui-kit/src/shell/vfx/AudioCueRegistry.ts";
 import type { PlayRoundResponse } from "../../packages/core-protocol/src/IGameTransport.ts";
 
 let passed = 0;
@@ -256,19 +267,143 @@ test("dynamic buy-feature visibility toggles by round state without layout gaps"
 
   const baseVisibility = resolvePremiumHudVisibility(config);
   const enabledLayout = assertGaplessLayout(
-    toLayoutItems({
-      ...baseVisibility.controls,
-      buyFeature: availableRound.controlVisibility.buyFeature ?? false,
-    }),
+    toLayoutItems(
+      mergePremiumHudVisibility(baseVisibility, availableRound.controlVisibility).controls,
+    ),
   );
   const disabledLayout = assertGaplessLayout(
-    toLayoutItems({
-      ...baseVisibility.controls,
-      buyFeature: disabledRound.controlVisibility.buyFeature ?? false,
-    }),
+    toLayoutItems(
+      mergePremiumHudVisibility(baseVisibility, disabledRound.controlVisibility).controls,
+    ),
   );
 
   assert.equal(enabledLayout.items.length, disabledLayout.items.length + 1);
+});
+
+test("generic dynamic visibility supports turbo/autoplay/history updates", () => {
+  const baseVisibility = resolvePremiumHudVisibility(DefaultResolvedRuntimeConfig);
+  const mergedVisibility = mergePremiumHudVisibility(baseVisibility, {
+    buyFeature: false,
+    turbo: false,
+    autoplay: false,
+    history: false,
+  });
+
+  const layout = assertGaplessLayout(toLayoutItems(mergedVisibility.controls));
+  assert.equal(mergedVisibility.controls.buyFeature, false);
+  assert.equal(mergedVisibility.controls.turbo, false);
+  assert.equal(mergedVisibility.controls.autoplay, false);
+  assert.equal(mergedVisibility.controls.history, false);
+  assert.equal(layout.items.length, 3);
+});
+
+test("round action builder removes screen-local bet and buy-price assumptions", () => {
+  const builder = new RoundActionBuilder({
+    bet: {
+      lineCount: 25,
+      multiplier: 2,
+    },
+    buyFeature: {
+      priceMinor: 450,
+    },
+  });
+
+  const spinBet = builder.buildSpinBet(500);
+  assert.equal(spinBet.lines, 25);
+  assert.equal(spinBet.multiplier, 2);
+  assert.equal(spinBet.totalBetMinor, 500);
+
+  const buyAction = builder.buildBuyFeatureAction({ totalBetMinor: 500 });
+  assert.equal(buyAction.selectedBet.lines, 25);
+  assert.equal(buyAction.selectedFeatureChoice.priceMinor, 450);
+
+  const neutralBuilder = new RoundActionBuilder();
+  const neutralBuyAction = neutralBuilder.buildBuyFeatureAction({ totalBetMinor: 200 });
+  assert.equal(neutralBuyAction.selectedFeatureChoice.priceMinor, 0);
+});
+
+test("win target resolver uses configurable layout constraints", () => {
+  const r0 = [{ id: "r0-top" }, { id: "r0-mid" }, { id: "r0-bottom" }] as never[];
+  const r1 = [{ id: "r1-top" }, { id: "r1-mid" }, { id: "r1-bottom" }] as never[];
+  const r2 = [{ id: "r2-top" }, { id: "r2-mid" }, { id: "r2-bottom" }] as never[];
+  const reels = [
+    { getVisibleSymbols: () => r0 },
+    { getVisibleSymbols: () => r1 },
+    { getVisibleSymbols: () => r2 },
+  ];
+
+  const symbols = resolveWinSymbolsFromReels(reels, {
+    reelCount: 3,
+    rowCount: 3,
+    highlightRowIndex: 2,
+    highlightReelIndexes: [0, 2],
+  });
+
+  assert.equal(symbols.length, 2);
+  assert.equal(symbols[0], r0[2]);
+  assert.equal(symbols[1], r2[2]);
+});
+
+test("audio cue execution is delegated to shared registry", () => {
+  const registry = createAudioCueRegistry({
+    overrides: {
+      "jackpot-stinger": [{ type: "sfx", assetKey: "theme/sfx-jp", volume: 0.6 }],
+      "mute-bgm": [{ type: "bgmVolume", volume: 0.15 }],
+    },
+  });
+
+  const played: Array<{ key: string; volume: number }> = [];
+  const bgm: number[] = [];
+
+  applyAudioCue(
+    "jackpot-stinger",
+    {
+      playSfx: (assetKey, options) => played.push({ key: assetKey, volume: options.volume }),
+      setBgmVolume: (volume) => bgm.push(volume),
+      isSoundEnabled: () => true,
+    },
+    registry,
+  );
+
+  applyAudioCue(
+    "mute-bgm",
+    {
+      playSfx: (assetKey, options) => played.push({ key: assetKey, volume: options.volume }),
+      setBgmVolume: (volume) => bgm.push(volume),
+      isSoundEnabled: () => true,
+    },
+    registry,
+  );
+
+  const mainScreenSource = readFileSync(
+    "games/premium-slot/src/app/screens/main/MainScreen.ts",
+    "utf8",
+  );
+
+  assert.deepEqual(played, [{ key: "theme/sfx-jp", volume: 0.6 }]);
+  assert.deepEqual(bgm, [0.15]);
+  assert.equal(mainScreenSource.includes("applyAudioCue("), true);
+  assert.equal(mainScreenSource.includes('cue === "jackpot-stinger"'), false);
+  assert.equal(mainScreenSource.includes('cue === "mute-bgm"'), false);
+});
+
+test("theme token foundation resolves overrides and query hooks", () => {
+  const query = new URLSearchParams("theme=neon&skin=night&vfxIntensity=low&hudPanelAlpha=0.85");
+  const theme = resolveShellThemeTokens({
+    runtimeConfig: DefaultResolvedRuntimeConfig,
+    queryParams: query,
+    overrides: {
+      winPresentation: {
+        tierLabels: { mega: "EPIC WIN" },
+      },
+    },
+  });
+
+  assert.equal(theme.metadata.themeId, "neon");
+  assert.equal(theme.metadata.skinId, "night");
+  assert.equal(theme.vfx.intensity, "low");
+  assert.equal(theme.hud.panelAlpha, 0.85);
+  assert.equal(theme.winPresentation.tierLabels.mega, "EPIC WIN");
 });
 
 test("presentation mapper ignores engine-private fields", () => {

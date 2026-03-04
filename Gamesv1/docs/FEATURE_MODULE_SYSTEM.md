@@ -29,9 +29,11 @@ Modules return a composable output frame:
 - messages
 - sound cues
 - animation cues
-- dynamic control visibility (for example buy feature availability)
+- dynamic control visibility (generic HUD control patches, not limited to buy feature)
 
 `FeatureModuleManager.resolve(...)` merges all active module outputs into one frame consumed by `MainScreen`.
+`MainScreen.applyDynamicControlVisibility(...)` applies this frame through
+`mergePremiumHudVisibility(...)`, preserving no-gap reflow.
 
 ## Enabled vs Active Semantics
 

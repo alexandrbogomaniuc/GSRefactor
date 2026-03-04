@@ -9,6 +9,7 @@ Provide a reusable WOW/VFX orchestration layer for all slot templates while pres
 - Tier mapping: `packages/ui-kit/src/shell/vfx/WinPresentationTiers.ts`
 - VFX orchestrator: `packages/ui-kit/src/shell/vfx/WowVfxOrchestrator.ts`
 - Audio cue registry: `packages/ui-kit/src/shell/vfx/AudioCueRegistry.ts`
+- Theme token source: `packages/ui-kit/src/shell/theme/ShellThemeTokens.ts`
 - Premium integration point: `games/premium-slot/src/app/screens/main/MainScreen.ts`
 
 ## Presentation Inputs
@@ -46,6 +47,7 @@ No-win handling:
   - `force-skip-presentation`
 
 Audio cue mapping is resolved through shared registry entries (`resolveAudioCueActions`) instead of screen-local hardcoded cue branching.
+`MainScreen` delegates cue execution to `applyAudioCue(...)`; screen code no longer owns cue action branching.
 
 ## Heavy-FX and Low-Perf Fallback
 
@@ -56,6 +58,12 @@ Heavy overlays/burst FX run only when all are true:
 3. payload cue does not disable heavy FX
 
 Otherwise, heavy FX layers are cleared and only lightweight presentation remains.
+
+Theme/VFX token hooks:
+
+- `tierLabels` and `tierStyleHooks` to customize win-tier output labels/styles
+- `intensity` (`low|normal|high`) to tune heavy FX usage
+- `heavyFxEnabled` / `coinBurstEnabled` to hard-toggle expensive effects
 
 ## Timing Contract
 

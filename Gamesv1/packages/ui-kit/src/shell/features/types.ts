@@ -4,6 +4,7 @@ import type {
   PresentationCounters,
   RoundPresentationModel,
 } from "../presentation/PremiumPresentationMapper.ts";
+import type { PremiumHudControlId } from "../../hud/PremiumTemplateHud.ts";
 
 export interface FeatureOverlay {
   id: string;
@@ -28,9 +29,7 @@ export interface FeatureModuleOutput {
   messages?: string[];
   soundCues?: string[];
   animationCues?: string[];
-  controlVisibility?: {
-    buyFeature?: boolean;
-  };
+  controlVisibility?: Partial<Record<PremiumHudControlId, boolean>>;
 }
 
 export interface FeatureModule {

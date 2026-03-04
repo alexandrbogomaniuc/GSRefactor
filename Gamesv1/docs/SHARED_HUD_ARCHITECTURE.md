@@ -9,6 +9,7 @@
 - HUD component: `packages/ui-kit/src/hud/PremiumTemplateHud.ts`
 - HUD config policy resolver: `packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts`
 - HUD layout engine: `packages/ui-kit/src/layout/HudLayout.ts`
+- HUD theme tokens: `packages/ui-kit/src/shell/theme/ShellThemeTokens.ts`
 - Safe-area viewport source: `packages/pixi-engine/src/layout/ResponsiveLayoutManager.ts`
 
 ## Control Surface
@@ -38,7 +39,9 @@ All control visibility is derived from resolved runtime config via `resolvePremi
 `games/premium-slot/src/app/screens/main/MainScreen.ts` composes:
 
 - `resolvePremiumHudVisibility(...)` for base visibility
-- `FeatureModuleManager` dynamic control updates (for example buy feature visibility)
+- `FeatureModuleManager` dynamic control updates
+- `mergePremiumHudVisibility(...)` for generic dynamic control patches (`buyFeature`, `turbo`, `autoplay`, `history`)
 - `PremiumTemplateHud` state updates (balance/bet/win/turbo/sound)
+- `PremiumTemplateHud.applyTheme(...)` with shell theme tokens (visual style, panel alpha, control skin hooks)
 
 This keeps GS-authoritative session/wallet/runtime truth unchanged; HUD is presentation-only.

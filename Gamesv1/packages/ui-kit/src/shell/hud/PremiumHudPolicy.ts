@@ -7,6 +7,10 @@ export interface PremiumHudFeatureFlags {
   metrics?: Partial<PremiumHudVisibility["metrics"]>;
 }
 
+export type PremiumHudDynamicControlVisibility = Partial<
+  Record<PremiumHudControlId, boolean>
+>;
+
 const applyOverrides = (
   base: Record<PremiumHudControlId, boolean>,
   overrides: Partial<Record<PremiumHudControlId, boolean>> | undefined,
@@ -40,6 +44,28 @@ export const resolvePremiumHudVisibility = (
       bet: true,
       win: true,
       ...(featureFlags.metrics ?? {}),
+    },
+  };
+};
+
+export const mergePremiumHudVisibility = (
+  baseVisibility: PremiumHudVisibility,
+  dynamicControlVisibility: PremiumHudDynamicControlVisibility = {},
+): PremiumHudVisibility => {
+  const safeDynamicControlVisibility = Object.fromEntries(
+    Object.entries(dynamicControlVisibility).filter(
+      (entry): entry is [PremiumHudControlId, boolean] =>
+        typeof entry[1] === "boolean",
+    ),
+  );
+
+  return {
+    controls: {
+      ...baseVisibility.controls,
+      ...safeDynamicControlVisibility,
+    },
+    metrics: {
+      ...baseVisibility.metrics,
     },
   };
 };
