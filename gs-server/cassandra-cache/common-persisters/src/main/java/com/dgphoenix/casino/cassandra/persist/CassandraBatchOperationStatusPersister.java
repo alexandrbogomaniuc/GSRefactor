@@ -11,6 +11,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraBatchOperationStatusPersister extends AbstractCassandraPersister<String, String> {
     public static final String CF_NAME = "BatchOpStatus";
     public static final String ROOM_ID = "ROOM_ID";
@@ -21,11 +24,11 @@ public class CassandraBatchOperationStatusPersister extends AbstractCassandraPer
     private static final Logger LOG = LogManager.getLogger(CassandraBatchOperationStatusPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(ROOM_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(OPERATION_TYPE, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(STATUS, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(CHANGE_DATE, com.datastax.driver.core.DataType.bigint())
+                    new ColumnDefinition(ROOM_ID, bigint(), false, false, true),
+                    new ColumnDefinition(ROUND_ID, bigint(), false, false, true),
+                    new ColumnDefinition(OPERATION_TYPE, text(), false, false, true),
+                    new ColumnDefinition(STATUS, text()),
+                    new ColumnDefinition(CHANGE_DATE, bigint())
             ), ROOM_ID, ROUND_ID)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(8)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(24));
