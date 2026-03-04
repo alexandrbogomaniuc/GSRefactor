@@ -29,6 +29,14 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cboolean;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.list;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 
 /**
  * User: flsh
@@ -100,49 +108,49 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
 
     private static final TableDefinition MAIN_TABLE = new TableDefinition(GAME_SESSION_CF,
             Arrays.asList(
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(END_TIME_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(START_TIME_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(INCOME_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(PAYOUT_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(NEGATIVE_BET_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(BETS_COUNT_FIELD, com.datastax.driver.core.DataType.cint()),
-                    new ColumnDefinition(ROUNDS_COUNT_FIELD, com.datastax.driver.core.DataType.cint()),
-                    new ColumnDefinition(LAST_PLAYER_BET_ID_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(REAL_MONEY_FIELD, com.datastax.driver.core.DataType.cboolean()),
-                    new ColumnDefinition(PCR_SUM_FIELD, com.datastax.driver.core.DataType.cdouble()),
-                    new ColumnDefinition(BCR_SUM_FIELD, com.datastax.driver.core.DataType.cdouble()),
-                    new ColumnDefinition(CURRENCY_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(FR_BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(BONUS_STATUS_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(FR_BONUS_STATUS_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(EXT_SESSION_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(START_BALANCE_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(START_BONUS_BALANCE_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(END_BONUS_BALANCE_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(LANG_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(CLIENT_TYPE_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(BANK_ID_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(BONUS_BET_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(BONUS_WIN_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(UNJ_ID_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(UNJ_SUM_CONNTRIBUTION_FIELD, com.datastax.driver.core.DataType.cdouble()),
-                    new ColumnDefinition(UNJ_SUM_WIN_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(PREV_GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(NEXT_GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(DAY_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(CURRENCY_FRACTION_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(PROMO_IDS_FIELD, com.datastax.driver.core.DataType.list(com.datastax.driver.core.DataType.bigint())),
-                    new ColumnDefinition(ENTER_DATE_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(CONTRIBUTIONS_JP_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(CONTRIBUTIONS_JP_FIELD_JSON, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(DBL_UP_ROUNDS_COUNT_FIELD, com.datastax.driver.core.DataType.cint()),
-                    new ColumnDefinition(DBL_UP_INCOME_COUNT_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(DBL_UP_PAYOUT_COUNT_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(MODEL_FIELD, com.datastax.driver.core.DataType.cdouble())
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint()),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint()),
+                    new ColumnDefinition(END_TIME_FIELD, bigint()),
+                    new ColumnDefinition(START_TIME_FIELD, bigint()),
+                    new ColumnDefinition(INCOME_FIELD, bigint()),
+                    new ColumnDefinition(PAYOUT_FIELD, bigint()),
+                    new ColumnDefinition(NEGATIVE_BET_FIELD, bigint()),
+                    new ColumnDefinition(BETS_COUNT_FIELD, cint()),
+                    new ColumnDefinition(ROUNDS_COUNT_FIELD, cint()),
+                    new ColumnDefinition(LAST_PLAYER_BET_ID_FIELD, bigint()),
+                    new ColumnDefinition(REAL_MONEY_FIELD, cboolean()),
+                    new ColumnDefinition(PCR_SUM_FIELD, cdouble()),
+                    new ColumnDefinition(BCR_SUM_FIELD, cdouble()),
+                    new ColumnDefinition(CURRENCY_FIELD, text()),
+                    new ColumnDefinition(BONUS_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(FR_BONUS_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(BONUS_STATUS_FIELD, text()),
+                    new ColumnDefinition(FR_BONUS_STATUS_FIELD, text()),
+                    new ColumnDefinition(EXT_SESSION_ID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(START_BALANCE_FIELD, bigint()),
+                    new ColumnDefinition(START_BONUS_BALANCE_FIELD, bigint()),
+                    new ColumnDefinition(END_BONUS_BALANCE_FIELD, bigint()),
+                    new ColumnDefinition(LANG_FIELD, text()),
+                    new ColumnDefinition(CLIENT_TYPE_FIELD, text()),
+                    new ColumnDefinition(BANK_ID_FIELD, bigint()),
+                    new ColumnDefinition(BONUS_BET_FIELD, bigint()),
+                    new ColumnDefinition(BONUS_WIN_FIELD, bigint()),
+                    new ColumnDefinition(UNJ_ID_FIELD, bigint()),
+                    new ColumnDefinition(UNJ_SUM_CONNTRIBUTION_FIELD, cdouble()),
+                    new ColumnDefinition(UNJ_SUM_WIN_FIELD, bigint()),
+                    new ColumnDefinition(PREV_GAME_SESSION_ID_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(NEXT_GAME_SESSION_ID_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(DAY_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(CURRENCY_FRACTION_FIELD, text()),
+                    new ColumnDefinition(PROMO_IDS_FIELD, list(bigint())),
+                    new ColumnDefinition(ENTER_DATE_FIELD, bigint()),
+                    new ColumnDefinition(CONTRIBUTIONS_JP_FIELD, blob()),
+                    new ColumnDefinition(CONTRIBUTIONS_JP_FIELD_JSON, text()),
+                    new ColumnDefinition(DBL_UP_ROUNDS_COUNT_FIELD, cint()),
+                    new ColumnDefinition(DBL_UP_INCOME_COUNT_FIELD, bigint()),
+                    new ColumnDefinition(DBL_UP_PAYOUT_COUNT_FIELD, bigint()),
+                    new ColumnDefinition(MODEL_FIELD, cdouble())
             ), GAME_SESSION_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -154,11 +162,11 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
     //this table used for query without mode, if gameId=-1 - this all games index
     private static final TableDefinition GAME_INDEX_TABLE = new TableDefinition(GAME_SESSION_AG_INDX,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(END_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(GAME_SERIAL_NUMBER_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false)
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(END_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint()),
+                    new ColumnDefinition(GAME_SERIAL_NUMBER_FIELD, bigint(), false, true, false)
             ), ACCOUNT_ID_FIELD, GAME_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -170,12 +178,12 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
     //this table used for query with Mode, if gameId=-1 - this all games index
     private static final TableDefinition GAME_MODE_INDEX_TABLE = new TableDefinition(GAME_SESSION_AGM_INDX,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MODE_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(END_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(GAME_SERIAL_NUMBER_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false)
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(MODE_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(END_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint()),
+                    new ColumnDefinition(GAME_SERIAL_NUMBER_FIELD, bigint(), false, true, false)
             ), ACCOUNT_ID_FIELD, MODE_FIELD, GAME_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -194,11 +202,11 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
     //select * from GameSessionCF_BAG_idx where bid=600 and gameid=-1 and et>=1442880280000 and et<=1442880282000  limit 1;
     private static final TableDefinition BANK_GAME_INDEX_TABLE = new TableDefinition(BANK_GAME_SESSION_AG_INDX,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(END_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint())
+                    new ColumnDefinition(BANK_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(END_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint())
             ), BANK_ID_FIELD, GAME_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)

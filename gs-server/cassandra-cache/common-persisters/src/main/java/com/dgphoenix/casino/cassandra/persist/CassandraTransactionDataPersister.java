@@ -40,6 +40,11 @@ import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 7/4/12
@@ -84,36 +89,36 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     private static final Logger LOG = LogManager.getLogger(CassandraTransactionDataPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(TRANSACTION_DATA_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(PLAYER_SESSION_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(GAME_SESSION_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(LAST_HAND_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(WALLET_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(LAST_BET_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(BONUS_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(FRBONUS_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(FRBWIN_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(FRBNOTIFY_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(LAST_UPDATE_ID_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(VERSION_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(TRACKING_INFO, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(EXTRA_ACCOUNT_INFO, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(GAME_ACHIEVEMENT, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(PLAYER_ACTIVITY, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(PAYMENT_TRANSACTION_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(PROMO_MEMBERS_FIELD, com.datastax.driver.core.DataType.blob())
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_FIELD, blob()),
+                    new ColumnDefinition(PLAYER_SESSION_FIELD, blob()),
+                    new ColumnDefinition(GAME_SESSION_FIELD, blob()),
+                    new ColumnDefinition(LAST_HAND_FIELD, blob()),
+                    new ColumnDefinition(WALLET_FIELD, blob()),
+                    new ColumnDefinition(LAST_BET_FIELD, blob()),
+                    new ColumnDefinition(BONUS_FIELD, blob()),
+                    new ColumnDefinition(FRBONUS_FIELD, blob()),
+                    new ColumnDefinition(FRBWIN_FIELD, blob()),
+                    new ColumnDefinition(FRBNOTIFY_FIELD, blob()),
+                    new ColumnDefinition(LAST_UPDATE_ID_FIELD, text()),
+                    new ColumnDefinition(VERSION_FIELD, bigint()),
+                    new ColumnDefinition(TRACKING_INFO, text()),
+                    new ColumnDefinition(EXTRA_ACCOUNT_INFO, blob()),
+                    new ColumnDefinition(GAME_ACHIEVEMENT, blob()),
+                    new ColumnDefinition(PLAYER_ACTIVITY, blob()),
+                    new ColumnDefinition(PAYMENT_TRANSACTION_FIELD, blob()),
+                    new ColumnDefinition(PROMO_MEMBERS_FIELD, blob())
             ), KEY)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(4));
 
     private static final TableDefinition TRACKING_TABLE = new TableDefinition(TRANSACTION_TRACKING_CF,
             Arrays.asList(
-                    new ColumnDefinition(TRACKING_STATUS, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(SERVER_ID, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(TRACKING_STATUS, cint(), false, false, true),
+                    new ColumnDefinition(SERVER_ID, cint(), false, false, true),
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), TRACKING_STATUS)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(4));
@@ -1122,7 +1127,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
             com.datastax.driver.core.DataType dataType = definition.getType();
             ByteBuffer bytes;
-            if (com.datastax.driver.core.DataType.blob().equals(dataType)) {
+            if (blob().equals(dataType)) {
                 bytes = row.getBytes(definition.getName());
             } else {
                 bytes = row.getBytesUnsafe(definition.getName());
@@ -1335,7 +1340,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
             com.datastax.driver.core.DataType dataType = definition.getType();
             ByteBuffer bytes;
-            if (com.datastax.driver.core.DataType.blob().equals(dataType)) {
+            if (blob().equals(dataType)) {
                 bytes = row.getBytes(definition.getName());
             } else {
                 bytes = row.getBytesUnsafe(definition.getName());

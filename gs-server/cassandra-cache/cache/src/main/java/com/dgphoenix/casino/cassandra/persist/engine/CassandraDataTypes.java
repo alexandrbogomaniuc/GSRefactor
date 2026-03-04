@@ -19,4 +19,16 @@ public final class CassandraDataTypes {
     public static com.datastax.driver.core.DataType cint() {
         return com.datastax.driver.core.DataType.cint();
     }
+
+    public static com.datastax.driver.core.DataType cboolean() {
+        return com.datastax.driver.core.DataType.cboolean();
+    }
+
+    public static com.datastax.driver.core.DataType cdouble() {
+        return com.datastax.driver.core.DataType.cdouble();
+    }
+
+    public static com.datastax.driver.core.DataType list(com.datastax.driver.core.DataType elementType) {
+        return com.datastax.driver.core.DataType.list(elementType);
+    }
 }
