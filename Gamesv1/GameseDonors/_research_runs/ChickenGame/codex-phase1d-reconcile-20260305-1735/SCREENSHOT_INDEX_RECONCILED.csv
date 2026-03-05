@@ -1,0 +1,9 @@
+filename,actual_state,old_label_if_any,status,notes
+../codex-phase1c-video-20260305-1643/assets/screenshots/screenshot_01_idle.png,"Result/special-highlight state (not clean idle)",idle,RELABELED,"Win/special visual present"
+../codex-phase1c-video-20260305-1643/assets/screenshots/screenshot_02_spin.png,"Active spin/reel motion",spin,MATCHES,"Usable as spin-state evidence"
+../codex-phase1c-video-20260305-1643/assets/screenshots/screenshot_03_rules_open.png,"Menu overlay open",rules_open,RELABELED,"No clear rules/how-to panel"
+../codex-phase1c-video-20260305-1643/assets/screenshots/screenshot_04_buy_bonus_probe.png,"Buy bonus modal with multiple options/prices",buy_bonus_probe,MATCHES,"Primary buy-bonus screenshot evidence"
+../codex-phase1c-video-20260305-1643/assets/screenshots/screenshot_05_autoplay_probe.png,"Buy bonus modal with options/prices",autoplay_probe,RELABELED,"Was mislabeled as autoplay"
+../codex-phase1c-video-20260305-1643/assets/screenshots/screenshot_06_post_spin_state.png,"Buy bonus modal with options/prices",post_spin_state,RELABELED,"Not a generic post-spin board state"
+../codex-phase1c-video-20260305-1643/assets/screenshots/state_check_autorun.png,"Special/highlighted win-effect state",autorun_check,RELABELED,"Does not independently prove autoplay mechanics"
+../codex-phase1c-video-20260305-1643/assets/screenshots/mapping_after_btn5.png,"Win/result state after control interaction",mapping_after_btn5,RELABELED,"Not reliable as control-mapping proof by itself"
