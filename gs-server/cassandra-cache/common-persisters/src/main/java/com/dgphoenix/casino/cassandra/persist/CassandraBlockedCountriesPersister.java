@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraBlockedCountriesPersister extends AbstractCassandraPersister<String, String> {
     public static final String COLUMN_FAMILY_NAME = "BlockedCountriesCF";
 
@@ -20,7 +22,7 @@ public class CassandraBlockedCountriesPersister extends AbstractCassandraPersist
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Collections.singletonList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true)
+                    new ColumnDefinition(KEY, text(), false, false, true)
             ),
             KEY);
 
