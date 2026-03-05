@@ -10,6 +10,11 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: Grien
  * Date: 28.01.2015 13:56
@@ -20,10 +25,10 @@ public class CassandraDelayedMassAwardHistoryPersister extends AbstractCassandra
     private static final String GS_ID_FIELD = "GsId";
     private static final TableDefinition TABLE = new TableDefinition(DELAYED_MASS_AWARD_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GS_ID_FIELD, com.datastax.driver.core.DataType.cint()),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(GS_ID_FIELD, cint()),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             KEY);
 

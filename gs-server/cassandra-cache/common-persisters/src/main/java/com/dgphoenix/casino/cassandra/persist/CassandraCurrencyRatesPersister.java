@@ -13,6 +13,10 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 22.03.13
@@ -30,10 +34,10 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY,
             Arrays.asList(
-                    new ColumnDefinition(SOURCE_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(DEST_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(RATE_FIELD, com.datastax.driver.core.DataType.cdouble(), false, false, false),
-                    new ColumnDefinition(UPDATE_DATE_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(SOURCE_FIELD, text(), false, false, true),
+                    new ColumnDefinition(DEST_FIELD, text(), false, false, true),
+                    new ColumnDefinition(RATE_FIELD, cdouble(), false, false, false),
+                    new ColumnDefinition(UPDATE_DATE_FIELD, bigint(), false, false, false)
             ), SOURCE_FIELD, DEST_FIELD);
 
     private CassandraCurrencyRatesPersister() {

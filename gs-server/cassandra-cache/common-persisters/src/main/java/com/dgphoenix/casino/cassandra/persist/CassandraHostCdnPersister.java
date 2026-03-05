@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * Created by inter on 07.09.15.
  */
@@ -27,10 +31,10 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(IP_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(CDN_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(TIME_FIELD, com.datastax.driver.core.DataType.cint(), false, false, false),
-                    new ColumnDefinition(LAST_UPDATE_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(IP_FIELD, text(), false, false, true),
+                    new ColumnDefinition(CDN_FIELD, text(), false, false, true),
+                    new ColumnDefinition(TIME_FIELD, cint(), false, false, false),
+                    new ColumnDefinition(LAST_UPDATE_FIELD, bigint(), false, false, false)
             ), IP_FIELD);
 
     private CassandraHostCdnPersister() {
