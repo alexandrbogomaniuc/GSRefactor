@@ -1,0 +1,52 @@
+[
+  {
+    "ts": "2026-03-05T13:42:17Z",
+    "action": "entered main game",
+    "result": "ok",
+    "evidence": [
+      "assets/screenshots/desktop/desktop_002_main_idle.png"
+    ],
+    "blocker": ""
+  },
+  {
+    "ts": "2026-03-05T13:42:25Z",
+    "action": "captured menu/rules/how-to",
+    "result": "ok",
+    "evidence": [
+      "assets/screenshots/desktop/desktop_003_menu_open.png",
+      "assets/screenshots/desktop/desktop_004_rules_open.png",
+      "assets/screenshots/desktop/desktop_005_how_to_play_open.png"
+    ],
+    "blocker": ""
+  },
+  {
+    "ts": "2026-03-05T13:42:27Z",
+    "action": "captured buy bonus evidence",
+    "result": "ok",
+    "evidence": [
+      "assets/screenshots/desktop/desktop_006_buy_bonus_open.png"
+    ],
+    "blocker": ""
+  },
+  {
+    "ts": "2026-03-05T13:42:29Z",
+    "action": "captured autoplay evidence",
+    "result": "ok",
+    "evidence": [
+      "assets/screenshots/desktop/desktop_007_autoplay_open_top.png",
+      "assets/screenshots/desktop/desktop_008_autoplay_open_bottom.png"
+    ],
+    "blocker": ""
+  },
+  {
+    "ts": "2026-03-05T13:42:33Z",
+    "action": "captured jackpot bet levels",
+    "result": "ok",
+    "evidence": [
+      "assets/screenshots/desktop/desktop_009_jackpot_bet_base.png",
+      "assets/screenshots/desktop/desktop_010_jackpot_bet_plus1.png",
+      "assets/screenshots/desktop/desktop_011_jackpot_bet_plus2.png"
+    ],
+    "blocker": ""
+  }
+]
