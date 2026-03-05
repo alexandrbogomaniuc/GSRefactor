@@ -21,6 +21,11 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraHistoryInformerItemPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraHistoryInformerItemPersister.class);
     private static final String HISTORY_INFORMER_ITEM_CF = "HistoryInformerItemCF";
@@ -34,25 +39,25 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
     //Main CF for HistoryInformerItem. New items goes here
     private static final TableDefinition TABLE = new TableDefinition(HISTORY_INFORMER_ITEM_CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(CREATE_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ITERATIONS_FIELD, com.datastax.driver.core.DataType.cint()),
-                    new ColumnDefinition(LAST_ATTEMPT_TIME_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(BANK_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(CREATE_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(SESSION_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(ITERATIONS_FIELD, cint()),
+                    new ColumnDefinition(LAST_ATTEMPT_TIME_FIELD, bigint()),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), BANK_ID_FIELD)
             .clusteringOrder(CREATE_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC);
 
     //CF for items with max iterations
     private static final TableDefinition MAX_ITERATIONS_TABLE = new TableDefinition(MAX_ITERATIONS_ITEM_CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(CREATE_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(LAST_ATTEMPT_TIME_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(BANK_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(CREATE_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(SESSION_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(LAST_ATTEMPT_TIME_FIELD, bigint()),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), BANK_ID_FIELD)
             .clusteringOrder(CREATE_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC);
 

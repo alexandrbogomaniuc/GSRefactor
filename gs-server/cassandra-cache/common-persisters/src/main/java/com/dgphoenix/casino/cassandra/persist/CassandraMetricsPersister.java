@@ -16,6 +16,9 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+
 
 /**
  * Created by quant on 19.11.15.
@@ -39,10 +42,10 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
 
     private static final TableDefinition METRICS_TABLE = new TableDefinition(METRICS_CF,
             Arrays.asList(
-                    new ColumnDefinition(METRIC_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(GAME_SERVER_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(LOG_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(METRIC_VALUE_FIELD, com.datastax.driver.core.DataType.bigint())
+                    new ColumnDefinition(METRIC_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(GAME_SERVER_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(LOG_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(METRIC_VALUE_FIELD, bigint())
             ), METRIC_ID_FIELD, GAME_SERVER_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -52,14 +55,14 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
 
     private static final TableDefinition METRICS_STAT_TABLE = new TableDefinition(METRICS_STAT_CF,
             Arrays.asList(
-                    new ColumnDefinition(METRIC_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(GAME_SERVER_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAT_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(AVERAGE_VALUE_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(MIN_VALUE_TIME_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(MIN_VALUE_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(MAX_VALUE_TIME_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(MAX_VALUE_FIELD, com.datastax.driver.core.DataType.bigint())
+                    new ColumnDefinition(METRIC_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(GAME_SERVER_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(STAT_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(AVERAGE_VALUE_FIELD, bigint()),
+                    new ColumnDefinition(MIN_VALUE_TIME_FIELD, bigint()),
+                    new ColumnDefinition(MIN_VALUE_FIELD, bigint()),
+                    new ColumnDefinition(MAX_VALUE_TIME_FIELD, bigint()),
+                    new ColumnDefinition(MAX_VALUE_FIELD, bigint())
             ), METRIC_ID_FIELD, GAME_SERVER_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -68,9 +71,9 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
 
     private static final TableDefinition LAST_STAT_TIME_TABLE = new TableDefinition(LAST_STAT_TIME_CF,
             Arrays.asList(
-                    new ColumnDefinition(METRIC_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(GAME_SERVER_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(LAST_STAT_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(METRIC_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(GAME_SERVER_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(LAST_STAT_TIME_FIELD, bigint(), false, false, false)
             ), METRIC_ID_FIELD, GAME_SERVER_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)

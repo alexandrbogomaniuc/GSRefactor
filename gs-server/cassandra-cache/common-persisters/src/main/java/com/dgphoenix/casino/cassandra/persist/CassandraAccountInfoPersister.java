@@ -25,6 +25,11 @@ import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 27.03.12
@@ -41,9 +46,9 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
     private static final Logger LOG = LogManager.getLogger(CassandraAccountInfoPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(ACCOUNT_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), KEY)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -52,9 +57,9 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
 
     private static final TableDefinition EXT_ID_INDEX_TABLE = new TableDefinition(EXT_ID_CF_INDEX,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(BANK_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, false)
             ), BANK_ID_FIELD)
             .caching(Caching.ACTUAL_DATA)
             .compaction(CompactionStrategy.LEVELED)
@@ -63,9 +68,9 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
 
     private static final TableDefinition BANK_TESTER_ID_INDEX_TABLE = new TableDefinition(BANK_TESTER_CF_INDEX,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(BANK_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, false)
             ), BANK_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)

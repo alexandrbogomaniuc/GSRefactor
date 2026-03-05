@@ -19,6 +19,12 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cboolean;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 6/28/12
@@ -47,21 +53,21 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
     private static final TableDefinition TABLE = new TableDefinition(COMMON_GAME_WALLET_CF,
             Arrays.asList(
                     //key is accountId_gameId
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(ROUND_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(WIN_AMOUNT_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(BET_AMOUNT_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(LAST_NEGATIVE_BET_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(NEGATIVE_BET_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(NEW_ROUND_FIELD, com.datastax.driver.core.DataType.cboolean(), false, false, false),
-                    new ColumnDefinition(ROUND_FINISHED_FIELD, com.datastax.driver.core.DataType.cboolean(), false, false, false),
-                    new ColumnDefinition(ADDITIONAL_ROUND_INFO, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(JP_CONTRIBUTION, com.datastax.driver.core.DataType.cdouble(), false, false, false),
-                    new ColumnDefinition(JP_WIN, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(TEMP_TOKEN, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(CLIENT_TYPE, com.datastax.driver.core.DataType.text(), false, false, false)
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(ROUND_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(WIN_AMOUNT_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(BET_AMOUNT_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(LAST_NEGATIVE_BET_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(NEGATIVE_BET_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(NEW_ROUND_FIELD, cboolean(), false, false, false),
+                    new ColumnDefinition(ROUND_FINISHED_FIELD, cboolean(), false, false, false),
+                    new ColumnDefinition(ADDITIONAL_ROUND_INFO, text(), false, false, false),
+                    new ColumnDefinition(JP_CONTRIBUTION, cdouble(), false, false, false),
+                    new ColumnDefinition(JP_WIN, bigint(), false, false, false),
+                    new ColumnDefinition(TEMP_TOKEN, text(), false, false, false),
+                    new ColumnDefinition(CLIENT_TYPE, text(), false, false, false)
             ), ACCOUNT_ID_FIELD)
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toSeconds(1))

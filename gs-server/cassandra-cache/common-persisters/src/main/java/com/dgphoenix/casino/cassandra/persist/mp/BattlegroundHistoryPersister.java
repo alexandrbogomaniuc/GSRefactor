@@ -1,6 +1,7 @@
 package com.abs.casino.cassandra.persist.mp;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.CassandraDataTypes;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
@@ -8,6 +9,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.ByteBuffer;
 import java.util.*;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(BattlegroundHistoryPersister.class);
@@ -28,25 +34,25 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(DATE_TIME, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID, com.datastax.driver.core.DataType.cint(), false, true, false),
-                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(GAMESESSION_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID, bigint(), false, false, true),
+                    new ColumnDefinition(DATE_TIME, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID, cint(), false, true, false),
+                    new ColumnDefinition(ROUND_ID, bigint(), false, true, false),
+                    new ColumnDefinition(GAMESESSION_ID, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), ACCOUNT_ID)
             .clusteringOrder(DATE_TIME, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
 
     private static final TableDefinition PARTICIPANT_ROUND_TABLE = new TableDefinition(
             CF_PARTICIPANT_NAME,
             Arrays.asList(
-                    new ColumnDefinition(SID, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAMESESSION_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(ACCOUNT_IDS, com.datastax.driver.core.DataType.set(com.datastax.driver.core.DataType.bigint())),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(SID, text(), false, false, true),
+                    new ColumnDefinition(ROUND_ID, bigint(), false, false, true),
+                    new ColumnDefinition(GAMESESSION_ID, bigint(), false, true, false),
+                    new ColumnDefinition(ACCOUNT_IDS, CassandraDataTypes.set(bigint())),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), SID);
 
     public void create(long accountId, BattlegroundRound battlegroundRound) {

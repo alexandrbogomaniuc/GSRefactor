@@ -31,4 +31,8 @@ public final class CassandraDataTypes {
     public static com.datastax.driver.core.DataType list(com.datastax.driver.core.DataType elementType) {
         return com.datastax.driver.core.DataType.list(elementType);
     }
+
+    public static com.datastax.driver.core.DataType set(com.datastax.driver.core.DataType elementType) {
+        return com.datastax.driver.core.DataType.set(elementType);
+    }
 }
