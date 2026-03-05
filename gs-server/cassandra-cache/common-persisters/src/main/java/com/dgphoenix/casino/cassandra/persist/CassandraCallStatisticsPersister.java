@@ -11,6 +11,8 @@ import org.apache.logging.log4j.Logger;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.datastax.driver.core.querybuilder.QueryBuilder.incr;
 
 public class CassandraCallStatisticsPersister extends AbstractCassandraPersister<String, String> implements IHttpClientStatisticsPersister {
@@ -28,10 +30,10 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
     private static final TableDefinition TABLE = new TableDefinition(
             COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(DATE, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(URL, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SUCCESS_COUNTER, com.datastax.driver.core.DataType.counter()),
-                    new ColumnDefinition(FAIL_COUNTER, com.datastax.driver.core.DataType.counter())
+                    new ColumnDefinition(DATE, text(), false, false, true),
+                    new ColumnDefinition(URL, text(), false, false, true),
+                    new ColumnDefinition(SUCCESS_COUNTER, counter()),
+                    new ColumnDefinition(FAIL_COUNTER, counter())
             ),
             DATE
     );
