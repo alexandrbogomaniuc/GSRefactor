@@ -9,6 +9,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.Date;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 21.11.14.
@@ -22,8 +25,8 @@ public class CassandraExpiredBonusTrackerInfoPersister extends AbstractCassandra
 
     private final static TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(LAST_PROCESSED_DATE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(LAST_PROCESSED_DATE_COLUMN, bigint(), false, false, false)
             ), KEY);
 
     private CassandraExpiredBonusTrackerInfoPersister() {

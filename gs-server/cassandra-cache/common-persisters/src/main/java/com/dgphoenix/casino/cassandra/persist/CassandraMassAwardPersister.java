@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+
 /**
  * User: flsh
  * Date: 18.12.13
@@ -26,8 +28,8 @@ public class CassandraMassAwardPersister extends AbstractLongDistributedConfigEn
 
     private static final TableDefinition DELAYED_MASS_AWARD_TABLE = new TableDefinition(DELAYED_MASS_AWARD_CF,
             Arrays.asList(
-                    new ColumnDefinition(DELAYED_MASS_AWARD_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MASS_AWARD_ID, com.datastax.driver.core.DataType.bigint(), false, true, false)
+                    new ColumnDefinition(DELAYED_MASS_AWARD_ID, bigint(), false, false, true),
+                    new ColumnDefinition(MASS_AWARD_ID, bigint(), false, true, false)
             ), DELAYED_MASS_AWARD_ID);
 
     private CassandraMassAwardPersister() {

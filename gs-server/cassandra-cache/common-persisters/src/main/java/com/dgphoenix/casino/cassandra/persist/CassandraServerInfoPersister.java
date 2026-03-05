@@ -11,6 +11,9 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 8/10/12
@@ -25,8 +28,8 @@ public class CassandraServerInfoPersister extends AbstractLongDistributedConfigE
 
     private static final TableDefinition VOTE_MASTER_TABLE = new TableDefinition(VOTE_MASTER_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(GS_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, false)
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(GS_ID_FIELD, cint(), false, false, false)
             ), Collections.singletonList(KEY));
 
     private CassandraServerInfoPersister() {

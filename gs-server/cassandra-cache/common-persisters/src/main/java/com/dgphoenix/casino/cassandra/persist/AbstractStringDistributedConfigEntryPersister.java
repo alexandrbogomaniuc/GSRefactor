@@ -6,6 +6,9 @@ import com.abs.casino.common.cache.data.IDistributedConfigEntry;
 
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 4/11/12
@@ -14,9 +17,9 @@ public abstract class AbstractStringDistributedConfigEntryPersister<T extends ID
         extends AbstractDistributedConfigEntryPersister<String, T> {
     private final TableDefinition TABLE = new TableDefinition(getMainColumnFamilyName(),
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             KEY);
 
