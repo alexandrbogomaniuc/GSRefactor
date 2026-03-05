@@ -12,6 +12,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<String, String> {
 
     private static final Logger LOG = LogManager.getLogger(CassandraHistoryTokenPersister.class);
@@ -24,9 +27,9 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TOKEN_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ROUND_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(EXP_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(TOKEN_FIELD, text(), false, false, true),
+                    new ColumnDefinition(ROUND_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(EXP_TIME, bigint(), false, false, false)
             ), TOKEN_FIELD);
 
     @Override

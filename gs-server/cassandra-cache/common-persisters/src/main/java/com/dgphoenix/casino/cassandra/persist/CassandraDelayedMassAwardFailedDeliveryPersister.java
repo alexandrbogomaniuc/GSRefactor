@@ -10,6 +10,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * @author <a href="mailto:dader@dgphoenix.com">Timur Shaymardanov</a>
  * @since 05.03.2019
@@ -19,9 +23,9 @@ public class CassandraDelayedMassAwardFailedDeliveryPersister extends AbstractCa
     private static final String DELAYED_MASS_AWARD_CF = "DMassAwardFailedSendCF";
     private static final TableDefinition TABLE = new TableDefinition(DELAYED_MASS_AWARD_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             KEY);
 
