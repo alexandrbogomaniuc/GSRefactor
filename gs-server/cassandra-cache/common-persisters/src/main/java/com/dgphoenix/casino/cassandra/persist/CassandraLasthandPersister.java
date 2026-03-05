@@ -4,6 +4,7 @@ import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.abs.casino.common.cache.CacheKeyInfo;
 import com.abs.casino.common.cache.IDistributedCache;
 import com.abs.casino.common.cache.data.account.LasthandInfo;
@@ -35,18 +36,18 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
 
     private static final TableDefinition REAL_TABLE = new TableDefinition(REAL_LASTHAND_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(LASTHAND_DATA_FIELD, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(LASTHAND_DATA_FIELD, text())
             ), ACCOUNT_ID_FIELD);
 
     private static final TableDefinition BONUS_TABLE = new TableDefinition(BONUS_LASTHAND_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BONUS_TYPE_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(LASTHAND_DATA_FIELD, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(BONUS_TYPE_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(BONUS_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(LASTHAND_DATA_FIELD, text())
             ), ACCOUNT_ID_FIELD, BONUS_TYPE_FIELD, BONUS_ID_FIELD);
 
     private CassandraLasthandPersister() {

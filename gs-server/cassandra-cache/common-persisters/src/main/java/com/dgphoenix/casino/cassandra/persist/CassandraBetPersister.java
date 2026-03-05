@@ -3,6 +3,7 @@ package com.abs.casino.cassandra.persist;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.cassandra.persist.engine.configuration.Compression;
@@ -46,9 +47,9 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), GAME_SESSION_ID_FIELD)
             .caching(Caching.NONE)
             .gcGraceSeconds(0)

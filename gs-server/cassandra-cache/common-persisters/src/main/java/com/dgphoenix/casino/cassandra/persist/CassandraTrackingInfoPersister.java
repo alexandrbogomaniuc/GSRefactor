@@ -3,6 +3,7 @@ package com.abs.casino.cassandra.persist;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.engine.tracker.ICommonTrackingTaskDelegate;
 import com.abs.casino.common.engine.tracker.TrackingInfo;
@@ -26,10 +27,10 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
     private static final Logger LOG = LogManager.getLogger(CassandraTrackingInfoPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(TRACKING_INFO_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true), //key is trackerName+gsId
-                    new ColumnDefinition(OBJECT_ID_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, text(), false, false, true), //key is trackerName+gsId
+                    new ColumnDefinition(OBJECT_ID_FIELD, text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), KEY)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(4));
