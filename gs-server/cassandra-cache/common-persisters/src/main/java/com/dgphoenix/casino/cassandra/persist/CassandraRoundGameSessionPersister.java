@@ -14,6 +14,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+
 /**
  * Created by inter on 18.06.15.
  */
@@ -28,11 +30,11 @@ public class CassandraRoundGameSessionPersister extends AbstractCassandraPersist
     private static final String WRITE_TIME = "WRITE_TIME";
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(ROUND_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_SID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint(), true, false, false),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), true, false, false),
-                    new ColumnDefinition(WRITE_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(ROUND_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_SID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint(), true, false, false),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), true, false, false),
+                    new ColumnDefinition(WRITE_TIME, bigint(), false, false, false)
             ), ROUND_ID_FIELD);
 
     private static final Comparator<com.datastax.driver.core.Row> sortComparator = (o1, o2) -> (int) (o1.getLong(WRITE_TIME) - o2.getLong(WRITE_TIME));

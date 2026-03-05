@@ -15,6 +15,10 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cboolean;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 27.03.12
@@ -30,11 +34,11 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
 
     private static final TableDefinition CURRENT_PLAYER_SESSION_STATE_TABLE
             = new TableDefinition(CURRENT_PLAYER_SESSION_STATE, Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(SID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(DAY_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(IS_FINISH_GAME_SESSION_FIELD, com.datastax.driver.core.DataType.cboolean(), false, false, false),
-                    new ColumnDefinition(PRIVATE_ROOM_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false)
+                    new ColumnDefinition(KEY, text(), false, false, false),
+                    new ColumnDefinition(SID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(DAY_TIME_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(IS_FINISH_GAME_SESSION_FIELD, cboolean(), false, false, false),
+                    new ColumnDefinition(PRIVATE_ROOM_ID_FIELD, text(), false, true, false)
 
             ), KEY)
             .caching(Caching.NONE)

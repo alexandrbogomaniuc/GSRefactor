@@ -28,6 +28,10 @@ public final class CassandraDataTypes {
         return com.datastax.driver.core.DataType.cdouble();
     }
 
+    public static com.datastax.driver.core.DataType varchar() {
+        return com.datastax.driver.core.DataType.varchar();
+    }
+
     public static com.datastax.driver.core.DataType list(com.datastax.driver.core.DataType elementType) {
         return com.datastax.driver.core.DataType.list(elementType);
     }
