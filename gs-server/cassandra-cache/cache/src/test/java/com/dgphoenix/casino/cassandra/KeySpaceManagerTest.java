@@ -4,6 +4,7 @@ import com.codahale.metrics.Counter;
 import com.codahale.metrics.Snapshot;
 import com.abs.casino.cassandra.config.ClusterConfig;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.Session;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.google.common.collect.ImmutableSet;
 import org.junit.Before;
@@ -47,7 +48,7 @@ public class KeySpaceManagerTest {
     @Mock
     private TableDefinition tableDefinition;
     @Mock
-    private com.datastax.driver.core.Session session;
+    private com.datastax.driver.core.Session rawSession;
     @Mock
     private PersistersFactory persistersFactory;
     @Mock
@@ -59,8 +60,10 @@ public class KeySpaceManagerTest {
     @Before
     public void setUp() {
         when(cluster.getMetadata()).thenReturn(metadata);
-        when(cluster.connect()).thenReturn(session);
+        when(cluster.connect()).thenReturn(rawSession);
+        when(cluster.connect("TestKS")).thenReturn(rawSession);
         when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
+        when(configuration.getKeyspaceName()).thenReturn("TestKS");
 
         when(clusterConfig.getKeySpace()).thenReturn("TestKS");
         when(clusterConfig.getReplicationStrategyClass()).thenReturn("org.apache.cassandra.locator.SimpleStrategy");
@@ -91,39 +94,36 @@ public class KeySpaceManagerTest {
     public void testInitializationWithSchemaCreation() {
         when(configuration.isCreateSchema()).thenReturn(true);
         when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
-        when(cluster.connect(null)).thenReturn(session);
         when(persister.getAllTableDefinitions()).thenReturn(Collections.singletonList(tableDefinition));
 
         keySpaceManager.init();
 
-        verify(persister).createTable(session, tableDefinition);
+        verify(persister).createTable(new Session("TestKS", rawSession), tableDefinition);
         assertTrue("Keyspace manager must be ready after init", keySpaceManager.isReady());
     }
 
     @Test
     public void testInitializationWithCreateTable() {
         when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
-        when(cluster.connect(null)).thenReturn(session);
-        when(metadata.getKeyspace(null)).thenReturn(keyspaceMetadata);
+        when(metadata.getKeyspace("TestKS")).thenReturn(keyspaceMetadata);
         when(persister.getAllTableDefinitions()).thenReturn(Collections.singletonList(tableDefinition));
 
         keySpaceManager.init();
 
-        verify(persister).createTable(session, tableDefinition);
+        verify(persister).createTable(new Session("TestKS", rawSession), tableDefinition);
         assertTrue("Keyspace manager must be ready after init", keySpaceManager.isReady());
     }
 
     @Test
     public void testInitializationWithSchemaUpdate() {
         when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
-        when(cluster.connect(null)).thenReturn(session);
-        when(metadata.getKeyspace(null)).thenReturn(keyspaceMetadata);
+        when(metadata.getKeyspace("TestKS")).thenReturn(keyspaceMetadata);
         when(keyspaceMetadata.getTable(null)).thenReturn(tableMetadata);
         when(persister.getAllTableDefinitions()).thenReturn(Collections.singletonList(tableDefinition));
 
         keySpaceManager.init();
 
-        verify(persister).updateTable(session, tableDefinition, tableMetadata);
+        verify(persister).updateTable(new Session("TestKS", rawSession), tableDefinition, tableMetadata);
         assertTrue("Keyspace manager must be ready after init", keySpaceManager.isReady());
     }
 
@@ -139,7 +139,6 @@ public class KeySpaceManagerTest {
     public void testShutdown() {
         when(configuration.isCreateSchema()).thenReturn(true);
         when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
-        when(cluster.connect(null)).thenReturn(session);
 
         keySpaceManager.init();
         assertTrue("Keyspace manager must be ready after init", keySpaceManager.isReady());
@@ -159,7 +158,6 @@ public class KeySpaceManagerTest {
         Set<com.datastax.driver.core.Host> hosts = ImmutableSet.<com.datastax.driver.core.Host>builder().add(firstHost, secondHost).build();
         when(metadata.getAllHosts()).thenReturn(hosts);
         when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
-        when(cluster.connect(null)).thenReturn(session);
 
         keySpaceManager.init();
         assertTrue("Keyspace manager must be ready after init", keySpaceManager.isReady());
@@ -181,7 +179,6 @@ public class KeySpaceManagerTest {
         Set<com.datastax.driver.core.Host> hosts = ImmutableSet.<com.datastax.driver.core.Host>builder().add(firstHost, secondHost, thirdHost).build();
         when(metadata.getAllHosts()).thenReturn(hosts);
         when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
-        when(cluster.connect(null)).thenReturn(session);
 
         keySpaceManager.init();
         assertTrue("Keyspace manager must be ready after init", keySpaceManager.isReady());
