@@ -278,12 +278,10 @@ export class WowPreloader extends Container {
         const radius = ringRadius * (0.35 + index * 0.09);
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle * 1.15) * radius * 0.72;
-        this.heroFx
-          .circle(x, y, 5 + (index % 2))
-          .fill({
-            color: index % 2 === 0 ? this.primaryColor : this.accentColor,
-            alpha: 0.76,
-          });
+        this.heroFx.circle(x, y, 5 + (index % 2)).fill({
+          color: index % 2 === 0 ? this.primaryColor : this.accentColor,
+          alpha: 0.76,
+        });
       }
       this.heroFx
         .circle(0, 0, ringRadius * 1.34)

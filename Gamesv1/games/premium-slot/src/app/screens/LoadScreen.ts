@@ -19,7 +19,9 @@ export class LoadScreen extends Container {
   private readonly preloader: WowPreloader;
   private readonly proofHoldMs = Math.max(
     0,
-    Number(new URLSearchParams(window.location.search).get("preloaderHoldMs") ?? "0") || 0,
+    Number(
+      new URLSearchParams(window.location.search).get("preloaderHoldMs") ?? "0",
+    ) || 0,
   );
   private audioStingerPlayed = false;
   private shownAtMs = 0;
@@ -73,7 +75,9 @@ export class LoadScreen extends Container {
     this.shownAtMs = performance.now();
     this.preloader.setProgress(6);
     this.preloader.setStatus("CONNECTING TO GS");
-    window.addEventListener("pointerdown", this.tryPlayAudioStinger, { once: true });
+    window.addEventListener("pointerdown", this.tryPlayAudioStinger, {
+      once: true,
+    });
   }
 
   public async hide() {
@@ -98,7 +102,10 @@ export class LoadScreen extends Container {
       return;
     }
 
-    for (const action of resolveAudioCueActions(cue, LoadScreen.audioRegistry)) {
+    for (const action of resolveAudioCueActions(
+      cue,
+      LoadScreen.audioRegistry,
+    )) {
       if (action.type !== "sfx") {
         continue;
       }
@@ -110,5 +117,5 @@ export class LoadScreen extends Container {
       });
       this.audioStingerPlayed = true;
     }
-  }
+  };
 }
