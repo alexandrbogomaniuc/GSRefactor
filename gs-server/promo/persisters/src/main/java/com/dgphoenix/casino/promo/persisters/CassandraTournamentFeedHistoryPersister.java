@@ -12,6 +12,11 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Map;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraTournamentFeedHistoryPersister extends AbstractCassandraPersister<String, String> implements ITournamentFeedHistoryPersister {
     private static final Logger LOG = LogManager.getLogger(CassandraTournamentFeedHistoryPersister.class);
 
@@ -21,10 +26,10 @@ public class CassandraTournamentFeedHistoryPersister extends AbstractCassandraPe
 
     private static final TableDefinition HISTORY_TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(TIME_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(TIME_COLUMN, cint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), TOURNAMENT_ID_COLUMN);
 
     @Override

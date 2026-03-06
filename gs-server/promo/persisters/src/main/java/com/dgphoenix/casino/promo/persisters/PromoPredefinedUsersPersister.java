@@ -12,6 +12,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Long, Long> {
     private static final Logger LOG = LogManager.getLogger(PromoPredefinedUsersPersister.class);
     private static final String BG_CONFIG_CF = "PromoPredefinedUsersPersisterCF";
@@ -23,10 +26,10 @@ public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Lo
 
     private static final TableDefinition PROMO_PREDEFINED_TABLE = new TableDefinition(BG_CONFIG_CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(PROMO_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(EXT_USER_ID, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, true, false)
+                    new ColumnDefinition(BANK_ID, bigint(), false, false, true),
+                    new ColumnDefinition(PROMO_ID, bigint(), false, false, true),
+                    new ColumnDefinition(EXT_USER_ID, text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID, bigint(), false, true, false)
             ), BANK_ID)
             .compaction(CompactionStrategy.LEVELED);
 
