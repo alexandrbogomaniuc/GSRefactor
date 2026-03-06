@@ -1,0 +1,2 @@
+spin_number,bet_value,visible_symbols_after_stop,win_value,special_symbols_seen,feature_triggered,evidence_filename,notes
+1,<bet>,<symbols>,<win>,<specials>,<feature>,assets/screenshots/<file>,<notes>
