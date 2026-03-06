@@ -13,6 +13,8 @@ import java.util.*;
 import java.util.stream.StreamSupport;
 
 import static java.util.stream.Collectors.toSet;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 public class BGPrivateRoomPlayersStatusPersister extends AbstractCassandraPersister<String, String>
         implements MapStore<String, PrivateRoom> {
@@ -22,9 +24,9 @@ public class BGPrivateRoomPlayersStatusPersister extends AbstractCassandraPersis
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), KEY);
 
     @Override
