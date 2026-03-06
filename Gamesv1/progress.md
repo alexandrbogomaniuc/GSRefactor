@@ -88,3 +88,5 @@ Original prompt: TASK: Implement responsive layout using @pixi/layout in package
   - `corepack pnpm run test` (pass)
   - `corepack pnpm run test:layout` (pass)
   - `corepack pnpm run build` (pass; existing `vendor-pixi` chunk warning remains)
+- 2026-03-06: Merge-prep pass confirmed `origin/main` is unchanged relative to the integration branch merge-base, so no rebase was needed.
+- Added `docs/_visual_proof/preloader-wow-2026-03-06/README.md` with exact Brand A / Brand B / minimal-motion proof query strings and the proof-only `preloaderHoldMs` note.
