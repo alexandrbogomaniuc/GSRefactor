@@ -3,6 +3,7 @@
 Use this prompt to start implementation of a new original slot game in Gamesv1.
 
 ## REQUIRED INPUT BLOCK
+
 - `[NEW_GAME_ID]`:
 - `[NEW_GAME_NAME]`:
 - `[NEW_THEME]`:
@@ -18,6 +19,7 @@ Use this prompt to start implementation of a new original slot game in Gamesv1.
 - `[PROMO_REQUIRED]`: (yes/no)
 
 ## PROMPT BODY
+
 Build a new original game module in `Gamesv1/games/[NEW_GAME_ID]/` using the canonical Gamesv1 architecture.
 
 Hard constraints:

@@ -31,8 +31,10 @@
 - Reconciled evidence reports visible modal prices at bet `0.6`: `45`, `120`, `180`. (Evidence: `Gamesv1/GameseDonors/ChickenGame/assets/_research_runs/ChickenGame/codex-phase1d-reconcile-20260305-1735/BUY_BONUS_RECONCILED.md`, `Gamesv1/GameseDonors/ChickenGame/assets/_research_runs/ChickenGame/codex-phase1c-video-20260305-1643/assets/screenshots/screenshot_04_buy_bonus_probe.png`)
 
 ## INFERENCE
+
 - INFERENCE: Buy Bonus modal prices at bet `0.6` are consistent with `75x/200x/300x` tier multipliers from How-to (`0.6*75=45`, `0.6*200=120`, `0.6*300=180`). (Evidence: `Gamesv1/GameseDonors/ChickenGame/assets/_research_runs/ChickenGame/codex-phase1a-20260305-1323/assets/snapshots/snapshot_020_howto_modal.txt`, `Gamesv1/GameseDonors/ChickenGame/assets/_research_runs/ChickenGame/codex-phase1d-reconcile-20260305-1735/BUY_BONUS_RECONCILED.md`)
 
 ## UNOBSERVED
+
 - UNOBSERVED: exact payout table for every symbol in every count from high-confidence readable captures.
 - UNOBSERVED: exact feature probability weights and exact jackpot selection weights.
