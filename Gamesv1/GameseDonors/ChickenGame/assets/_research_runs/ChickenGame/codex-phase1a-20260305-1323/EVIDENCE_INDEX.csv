@@ -1,0 +1,110 @@
+filename,type,state/subject,short_description
+assets/screenshots/desktop/desktop_001_intro.png,screenshot,intro,Initial donor launch intro screen with PLAY gate.
+assets/screenshots/desktop/desktop_002_main_idle.png,screenshot,desktop-idle,Main game idle state with controls and buy bonus button.
+assets/screenshots/desktop/desktop_016_after_uid_burger_click.png,screenshot,menu-open,Top-right menu panel open with navigation items.
+assets/screenshots/desktop/desktop_017_after_uid_rules_click.png,screenshot,rules-open,Game rules modal open.
+assets/screenshots/desktop/desktop_019_howto_modal.png,screenshot,how-to-open,How to play modal open.
+assets/screenshots/desktop/desktop_014_settings_open_test.png,screenshot,settings-open,Bottom-left settings popup (music/sound).
+assets/screenshots/desktop/desktop_006_buy_bonus_open.png,screenshot,buy-bonus-presence,Buy Bonus control visible in main HUD.
+assets/screenshots/desktop/desktop_020_autoplay_open.png,screenshot,autoplay-attempt,Right-side option button click result (spin triggered; no autoplay panel shown).
+assets/screenshots/desktop/desktop_022_autoplay_hold_test.png,screenshot,autoplay-hold-attempt,Long-press attempt on right-side control; no autoplay panel shown.
+assets/screenshots/desktop/desktop_023_jackpot_bet_0_2_verified.png,screenshot,jackpot-bet-0.2,Jackpot values at bet $0.2.
+assets/screenshots/desktop/desktop_024_jackpot_bet_0_3_verified.png,screenshot,jackpot-bet-0.3,Jackpot values at bet $0.3.
+assets/screenshots/desktop/desktop_025_jackpot_bet_0_4_verified.png,screenshot,jackpot-bet-0.4,Jackpot values at bet $0.4.
+assets/screenshots/mobile-portrait/mobile_portrait_001_idle.png,screenshot,mobile-portrait-idle,Mobile portrait idle state.
+assets/screenshots/mobile-portrait/mobile_portrait_002_after_spin.png,screenshot,mobile-portrait-spin,Mobile portrait spin/special frame.
+assets/screenshots/mobile-landscape/mobile_landscape_001_idle.png,screenshot,mobile-landscape-idle,Mobile landscape idle state.
+assets/screenshots/mobile-landscape/mobile_landscape_002_after_spin.png,screenshot,mobile-landscape-spin,Mobile landscape spin frame.
+assets/video/chicken_spin_short.mp4,video,screencast,Short recorded screencast clip during spin.
+assets/video/video_capture_note.txt,note,video-status,Screencast tool status/output.
+assets/console/console_capture.txt,console,console-log,Console message capture.
+assets/network/network_capture.txt,network,network-log,Network request listing capture.
+assets/perf/trace_load.json,perf-trace,load,Performance trace for load/reload flow.
+assets/perf/perf_load_note.txt,perf-note,load,Load trace note/output.
+assets/perf/trace_spin.json,perf-trace,active-spin,Performance trace during active spin.
+assets/perf/perf_spin_note.txt,perf-note,active-spin,Active-spin trace note/output.
+assets/snapshots/snapshot_001_intro.txt,snapshot,snapshot_001_intro,Accessibility snapshot export.
+assets/snapshots/snapshot_002_main_idle.txt,snapshot,snapshot_002_main_idle,Accessibility snapshot export.
+assets/snapshots/snapshot_003_menu_open.txt,snapshot,snapshot_003_menu_open,Accessibility snapshot export.
+assets/snapshots/snapshot_004_rules_open.txt,snapshot,snapshot_004_rules_open,Accessibility snapshot export.
+assets/snapshots/snapshot_005_how_to_play_open.txt,snapshot,snapshot_005_how_to_play_open,Accessibility snapshot export.
+assets/snapshots/snapshot_006_buy_bonus_open.txt,snapshot,snapshot_006_buy_bonus_open,Accessibility snapshot export.
+assets/snapshots/snapshot_013_menu_fullpage_test.txt,snapshot,snapshot_013_menu_fullpage_test,Accessibility snapshot export.
+assets/snapshots/snapshot_014_settings_open_test.txt,snapshot,snapshot_014_settings_open_test,Accessibility snapshot export.
+assets/snapshots/snapshot_015_rules_test.txt,snapshot,snapshot_015_rules_test,Accessibility snapshot export.
+assets/snapshots/snapshot_016_uid_probe.txt,snapshot,snapshot_016_uid_probe,Accessibility snapshot export.
+assets/snapshots/snapshot_017_after_uid_rules_click.txt,snapshot,snapshot_017_after_uid_rules_click,Accessibility snapshot export.
+assets/snapshots/snapshot_018_after_uid_howto_click.txt,snapshot,snapshot_018_after_uid_howto_click,Accessibility snapshot export.
+assets/snapshots/snapshot_019_howto_probe.txt,snapshot,snapshot_019_howto_probe,Accessibility snapshot export.
+assets/snapshots/snapshot_020_howto_modal.txt,snapshot,snapshot_020_howto_modal,Accessibility snapshot export.
+assets/snapshots/snapshot_021_autoplay_probe.txt,snapshot,snapshot_021_autoplay_probe,Accessibility snapshot export.
+assets/snapshots/snapshot_022_autoplay_open.txt,snapshot,snapshot_022_autoplay_open,Accessibility snapshot export.
+assets/snapshots/snapshot_023_autoplay_probe2.txt,snapshot,snapshot_023_autoplay_probe2,Accessibility snapshot export.
+assets/snapshots/snapshot_024_autoplay_or_turbo_open.txt,snapshot,snapshot_024_autoplay_or_turbo_open,Accessibility snapshot export.
+assets/snapshots/snapshot_025_autoplay_hold_test.txt,snapshot,snapshot_025_autoplay_hold_test,Accessibility snapshot export.
+assets/snapshots/snapshot_spin_001.txt,snapshot,snapshot_spin_001,Accessibility snapshot export.
+assets/snapshots/snapshot_spin_002.txt,snapshot,snapshot_spin_002,Accessibility snapshot export.
+assets/snapshots/snapshot_spin_003.txt,snapshot,snapshot_spin_003,Accessibility snapshot export.
+assets/snapshots/snapshot_spin_004.txt,snapshot,snapshot_spin_004,Accessibility snapshot export.
+assets/snapshots/snapshot_spin_005.txt,snapshot,snapshot_spin_005,Accessibility snapshot export.
+assets/snapshots/snapshot_spin_006.txt,snapshot,snapshot_spin_006,Accessibility snapshot export.
+assets/screenshots/desktop/spin_001_after_stop.png,screenshot,spin-001,After-stop spin frame.
+assets/screenshots/desktop/spin_002_after_stop.png,screenshot,spin-002,After-stop spin frame.
+assets/screenshots/desktop/spin_003_after_stop.png,screenshot,spin-003,After-stop spin frame.
+assets/screenshots/desktop/spin_004_after_stop.png,screenshot,spin-004,After-stop spin frame.
+assets/screenshots/desktop/spin_005_after_stop.png,screenshot,spin-005,After-stop spin frame.
+assets/screenshots/desktop/spin_006_after_stop.png,screenshot,spin-006,After-stop spin frame.
+assets/screenshots/desktop/spin_007_after_stop.png,screenshot,spin-007,After-stop spin frame.
+assets/screenshots/desktop/spin_008_after_stop.png,screenshot,spin-008,After-stop spin frame.
+assets/screenshots/desktop/spin_009_after_stop.png,screenshot,spin-009,After-stop spin frame.
+assets/screenshots/desktop/spin_010_after_stop.png,screenshot,spin-010,After-stop spin frame.
+assets/screenshots/desktop/spin_011_after_stop.png,screenshot,spin-011,After-stop spin frame.
+assets/screenshots/desktop/spin_012_after_stop.png,screenshot,spin-012,After-stop spin frame.
+assets/screenshots/desktop/spin_013_after_stop.png,screenshot,spin-013,After-stop spin frame.
+assets/screenshots/desktop/spin_014_after_stop.png,screenshot,spin-014,After-stop spin frame.
+assets/screenshots/desktop/spin_015_after_stop.png,screenshot,spin-015,After-stop spin frame.
+assets/screenshots/desktop/spin_016_after_stop.png,screenshot,spin-016,After-stop spin frame.
+assets/screenshots/desktop/spin_017_after_stop.png,screenshot,spin-017,After-stop spin frame.
+assets/screenshots/desktop/spin_018_after_stop.png,screenshot,spin-018,After-stop spin frame.
+assets/screenshots/desktop/spin_019_after_stop.png,screenshot,spin-019,After-stop spin frame.
+assets/screenshots/desktop/spin_020_after_stop.png,screenshot,spin-020,After-stop spin frame.
+assets/screenshots/desktop/spin_021_after_stop.png,screenshot,spin-021,After-stop spin frame.
+assets/screenshots/desktop/spin_022_after_stop.png,screenshot,spin-022,After-stop spin frame.
+assets/screenshots/desktop/spin_023_after_stop.png,screenshot,spin-023,After-stop spin frame.
+assets/screenshots/desktop/spin_024_after_stop.png,screenshot,spin-024,After-stop spin frame.
+assets/screenshots/desktop/spin_025_after_stop.png,screenshot,spin-025,After-stop spin frame.
+assets/screenshots/desktop/spin_026_after_stop.png,screenshot,spin-026,After-stop spin frame.
+assets/screenshots/desktop/spin_027_after_stop.png,screenshot,spin-027,After-stop spin frame.
+assets/screenshots/desktop/spin_028_after_stop.png,screenshot,spin-028,After-stop spin frame.
+assets/screenshots/desktop/spin_029_after_stop.png,screenshot,spin-029,After-stop spin frame.
+assets/screenshots/desktop/spin_030_after_stop.png,screenshot,spin-030,After-stop spin frame.
+assets/screenshots/desktop/spin_031_after_stop.png,screenshot,spin-031,After-stop spin frame.
+assets/screenshots/desktop/spin_032_after_stop.png,screenshot,spin-032,After-stop spin frame.
+assets/screenshots/desktop/spin_033_after_stop.png,screenshot,spin-033,After-stop spin frame.
+assets/screenshots/desktop/spin_034_after_stop.png,screenshot,spin-034,After-stop spin frame.
+assets/screenshots/desktop/spin_035_after_stop.png,screenshot,spin-035,After-stop spin frame.
+assets/screenshots/desktop/spin_036_after_stop.png,screenshot,spin-036,After-stop spin frame.
+assets/screenshots/desktop/spin_037_after_stop.png,screenshot,spin-037,After-stop spin frame.
+assets/screenshots/desktop/spin_038_after_stop.png,screenshot,spin-038,After-stop spin frame.
+assets/screenshots/desktop/spin_039_after_stop.png,screenshot,spin-039,After-stop spin frame.
+assets/screenshots/desktop/spin_040_after_stop.png,screenshot,spin-040,After-stop spin frame.
+assets/screenshots/desktop/spin_041_after_stop.png,screenshot,spin-041,After-stop spin frame.
+assets/screenshots/desktop/spin_042_after_stop.png,screenshot,spin-042,After-stop spin frame.
+assets/screenshots/desktop/spin_043_after_stop.png,screenshot,spin-043,After-stop spin frame.
+assets/screenshots/desktop/spin_044_after_stop.png,screenshot,spin-044,After-stop spin frame.
+assets/screenshots/desktop/spin_045_after_stop.png,screenshot,spin-045,After-stop spin frame.
+assets/screenshots/desktop/spin_046_after_stop.png,screenshot,spin-046,After-stop spin frame.
+assets/screenshots/desktop/spin_047_after_stop.png,screenshot,spin-047,After-stop spin frame.
+assets/screenshots/desktop/spin_048_after_stop.png,screenshot,spin-048,After-stop spin frame.
+assets/screenshots/desktop/spin_049_after_stop.png,screenshot,spin-049,After-stop spin frame.
+assets/screenshots/desktop/spin_050_after_stop.png,screenshot,spin-050,After-stop spin frame.
+assets/screenshots/desktop/spin_051_after_stop.png,screenshot,spin-051,After-stop spin frame.
+assets/screenshots/desktop/spin_052_after_stop.png,screenshot,spin-052,After-stop spin frame.
+assets/screenshots/desktop/spin_053_after_stop.png,screenshot,spin-053,After-stop spin frame.
+assets/screenshots/desktop/spin_054_after_stop.png,screenshot,spin-054,After-stop spin frame.
+assets/screenshots/desktop/spin_055_after_stop.png,screenshot,spin-055,After-stop spin frame.
+assets/screenshots/desktop/spin_056_after_stop.png,screenshot,spin-056,After-stop spin frame.
+assets/screenshots/desktop/spin_057_after_stop.png,screenshot,spin-057,After-stop spin frame.
+assets/screenshots/desktop/spin_058_after_stop.png,screenshot,spin-058,After-stop spin frame.
+assets/screenshots/desktop/spin_059_after_stop.png,screenshot,spin-059,After-stop spin frame.
+assets/screenshots/desktop/spin_060_after_stop.png,screenshot,spin-060,After-stop spin frame.

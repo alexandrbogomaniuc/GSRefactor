@@ -1,0 +1,5 @@
+uid=1_0 RootWebArea "ChickenCoin" url="https://chicken-coin.inout.games/api/modes/game?gameMode=chicken-coin&operatorId=ee2013ed-e1f0-4d6e-97d2-f36619e2eb52&authToken=[REDACTED]&currency=USD&lang=en&theme=&gameCustomizationId=&lobbyUrl="
+  uid=1_1 banner
+  uid=1_2 StaticText "Сhicken Boost Feature awards random Multipliers, Jackpots or additional Bonus Coins"
+  uid=1_3 StaticText "The Super Chicken Coin collects all Coins on the screen, including Chicken Coins"
+  uid=1_4 StaticText "PLAY"
