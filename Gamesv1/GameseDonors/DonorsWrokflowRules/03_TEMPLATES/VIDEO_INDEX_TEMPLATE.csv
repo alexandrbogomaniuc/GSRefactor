@@ -1,0 +1,2 @@
+filename,event_type,start_state,end_state,duration_seconds,resolution,fps,file_size_bytes,validation_status,thumbnail_first,thumbnail_mid,thumbnail_last,notes
+video_01_example.mp4,<event>,<start>,<end>,<seconds>,<resolution>,<fps>,<bytes>,VALID,assets/video-thumbs/<first>,assets/video-thumbs/<mid>,assets/video-thumbs/<last>,<notes>
