@@ -37,6 +37,34 @@ Brand/preloader overrides are merged into the existing shell token defaults. The
   - inline SVG logo via `logoUrl`
   - reduced-motion-friendly `minimal` preloader using `slotSweep`
 
+## Sample Seed: BetOnline
+
+This is a docs-only seed entry for future approved branding work. It does not add
+runtime assets or licensed imagery to the repo.
+
+```json
+{
+  "brand": {
+    "displayName": "BetOnline",
+    "logoAssetKey": "TODO_APPROVED_BETONLINE_LOGO",
+    "logoUrl": "",
+    "primaryColor": "TODO_APPROVED_PRIMARY_COLOR",
+    "accentColor": "TODO_APPROVED_ACCENT_COLOR"
+  },
+  "preloader": {
+    "style": "wow",
+    "heroFx": "energyRing",
+    "vfxIntensity": 0.7
+  }
+}
+```
+
+Approval notes:
+
+- Do not commit a BetOnline logo file unless the user provides an approved SVG/PNG.
+- If colors are sampled from public CSS, commit only the resulting hex values.
+- When approved assets exist, wire the entry through the per-game brand resolver.
+
 ## Drift Prevention
 
 1. Add new shell token families in `ShellThemeTokens.ts` first.
