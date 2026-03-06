@@ -1,1 +1,1 @@
-export * from "./PremiumPresentationMapper";
+export * from "./PremiumPresentationMapper.ts";

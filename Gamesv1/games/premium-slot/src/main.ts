@@ -6,7 +6,9 @@ import { gsRuntimeClient } from "./app/runtime";
 import { ResolvedRuntimeConfigStore } from "./app/stores";
 import { CreationEngine, setEngine } from "@gamesv1/pixi-engine";
 import { i18n } from "@gamesv1/i18n";
+import { createAudioCueRegistry } from "@gamesv1/ui-kit";
 import manifest from "./manifest.json";
+import { resolvePremiumSlotBrandKit } from "./app/theme/brandKit";
 
 import "@pixi/sound";
 
@@ -22,6 +24,15 @@ setEngine(appEngine);
   });
 
   const urlParams = new URLSearchParams(window.location.search);
+  const brandTheme = resolvePremiumSlotBrandKit(urlParams.get("brand"));
+  LoadScreen.configure({
+    themeTokens: brandTheme,
+    audioRegistry: createAudioCueRegistry(),
+  });
+  userSettings.init();
+  await appEngine.navigation.showScreen(LoadScreen);
+  const activeLoadScreen = appEngine.navigation.currentScreen as LoadScreen | undefined;
+  activeLoadScreen?.setBootPhase("CONNECTING TO GS", 8);
   const explicitDevFallback =
     urlParams.get("devConfig") === "1" ||
     urlParams.get("allowDevFallback") === "1" ||
@@ -30,6 +41,7 @@ setEngine(appEngine);
   let bootstrapFlow: Awaited<ReturnType<typeof gsRuntimeClient.bootstrap>> | null = null;
   try {
     bootstrapFlow = await gsRuntimeClient.bootstrap();
+    activeLoadScreen?.setBootPhase("SYNCING CONFIG", 14);
   } catch (error) {
     if (!explicitDevFallback) {
       throw error;
@@ -51,10 +63,10 @@ setEngine(appEngine);
         | null)?.currencyCode as string | undefined,
     allowDevFallback: explicitDevFallback,
   });
-  userSettings.init();
+  activeLoadScreen?.setBootPhase("LOCALIZING SHELL", 18);
 
   const devLang = urlParams.get("lang");
-  const brandName = urlParams.get("brand") || "Casino";
+  const brandName = brandTheme.brand.displayName;
   const language = devLang || ResolvedRuntimeConfigStore.localization.defaultLang || "en";
   const localesPath = ResolvedRuntimeConfigStore.localization.contentPath;
 
@@ -68,6 +80,6 @@ setEngine(appEngine);
     },
   });
 
-  await appEngine.navigation.showScreen(LoadScreen);
+  activeLoadScreen?.beginAssetLoadPhase();
   await appEngine.navigation.showScreen(MainScreen);
 })();

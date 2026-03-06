@@ -31,6 +31,14 @@ export const DefaultAudioCueRegistry: AudioCueRegistry = {
       volume: 0,
     },
   ],
+  "preloader-stinger": [
+    {
+      type: "sfx",
+      assetKey: UiAssetKeys.SFX_HOVER,
+      volume: 0.9,
+      respectSoundEnabled: true,
+    },
+  ],
 };
 
 export const createAudioCueRegistry = (
