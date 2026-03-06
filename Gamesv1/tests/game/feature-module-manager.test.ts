@@ -1,11 +1,15 @@
 import assert from "node:assert/strict";
 
 import { DefaultResolvedRuntimeConfig } from "../../packages/core-compliance/src/ResolvedRuntimeConfig.ts";
-import { FeatureModuleManager } from "../../packages/ui-kit/src/shell/features/FeatureModuleManager.ts";
-import { resolvePremiumHudVisibility } from "../../packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts";
-import type { RoundPresentationModel } from "../../packages/ui-kit/src/shell/presentation/PremiumPresentationMapper.ts";
+import {
+  FeatureModuleManager,
+  resolvePremiumHudVisibility,
+  type RoundPresentationModel,
+} from "@gamesv1/ui-kit";
 
-const makeRound = (overrides: Partial<RoundPresentationModel> = {}): RoundPresentationModel => ({
+const makeRound = (
+  overrides: Partial<RoundPresentationModel> = {},
+): RoundPresentationModel => ({
   roundId: "round-1",
   winAmount: 100,
   slotIndex: 0,
@@ -115,7 +119,11 @@ test("buy feature hidden when cash bonus forbids buy", () => {
   );
 
   assert.equal(frame.controlVisibility.buyFeature, false);
-  assert.ok(frame.messages.some((message) => message.includes("DISABLED FOR CASH BONUS")));
+  assert.ok(
+    frame.messages.some((message) =>
+      message.includes("DISABLED FOR CASH BONUS"),
+    ),
+  );
   assert.ok(frame.enabledModuleIds.includes("buy-feature"));
   assert.ok(frame.activeModuleIds.includes("buy-feature"));
 });

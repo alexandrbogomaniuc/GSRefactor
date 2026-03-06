@@ -3,20 +3,18 @@ import { readFileSync } from "node:fs";
 
 import { DefaultResolvedRuntimeConfig } from "../../packages/core-compliance/src/ResolvedRuntimeConfig.ts";
 import { hasRowGaps } from "../../packages/pixi-layout/src/index.ts";
-import { computeHudLayout } from "../../packages/ui-kit/src/layout/HudLayout.ts";
-import { FeatureModuleManager } from "../../packages/ui-kit/src/shell/features/FeatureModuleManager.ts";
-import { mapPlayRoundToPresentation } from "../../packages/ui-kit/src/shell/presentation/PremiumPresentationMapper.ts";
-import { resolveWinSymbolsFromReels } from "../../packages/ui-kit/src/shell/presentation/WinTargetResolver.ts";
-import {
-  mergePremiumHudVisibility,
-  resolvePremiumHudVisibility,
-} from "../../packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts";
-import { RoundActionBuilder } from "../../packages/ui-kit/src/shell/actions/RoundActionBuilder.ts";
-import { resolveShellThemeTokens } from "../../packages/ui-kit/src/shell/theme/ShellThemeTokens.ts";
 import {
   applyAudioCue,
+  computeHudLayout,
   createAudioCueRegistry,
-} from "../../packages/ui-kit/src/shell/vfx/AudioCueRegistry.ts";
+  FeatureModuleManager,
+  mergePremiumHudVisibility,
+  mapPlayRoundToPresentation,
+  resolvePremiumHudVisibility,
+  resolveShellThemeTokens,
+  resolveWinSymbolsFromReels,
+  RoundActionBuilder,
+} from "@gamesv1/ui-kit";
 import type { PlayRoundResponse } from "../../packages/core-protocol/src/IGameTransport.ts";
 
 let passed = 0;
@@ -50,14 +48,21 @@ const defaultLayout = {
   symbolModulo: 12,
 } as const;
 
-const toLayoutItems = (visibility: Record<(typeof baseHudItems)[number]["id"], boolean>) =>
+const toLayoutItems = (
+  visibility: Record<(typeof baseHudItems)[number]["id"], boolean>,
+) =>
   baseHudItems.map((item) => ({
     ...item,
     visible: visibility[item.id],
   }));
 
 const assertGaplessLayout = (
-  visibleItems: Array<{ id: string; width: number; height: number; visible: boolean }>,
+  visibleItems: Array<{
+    id: string;
+    width: number;
+    height: number;
+    visible: boolean;
+  }>,
 ) => {
   const { layout } = computeHudLayout(visibleItems, {
     width: 844,
@@ -81,7 +86,9 @@ test("hidden controls collapse without layout gaps", () => {
   const visibleItems = toLayoutItems(visibility.controls);
   const layout = assertGaplessLayout(visibleItems);
 
-  const visibleControlCount = Object.values(visibility.controls).filter(Boolean).length;
+  const visibleControlCount = Object.values(visibility.controls).filter(
+    Boolean,
+  ).length;
   assert.equal(layout.items.length, visibleControlCount);
 });
 
@@ -268,12 +275,16 @@ test("dynamic buy-feature visibility toggles by round state without layout gaps"
   const baseVisibility = resolvePremiumHudVisibility(config);
   const enabledLayout = assertGaplessLayout(
     toLayoutItems(
-      mergePremiumHudVisibility(baseVisibility, availableRound.controlVisibility).controls,
+      mergePremiumHudVisibility(
+        baseVisibility,
+        availableRound.controlVisibility,
+      ).controls,
     ),
   );
   const disabledLayout = assertGaplessLayout(
     toLayoutItems(
-      mergePremiumHudVisibility(baseVisibility, disabledRound.controlVisibility).controls,
+      mergePremiumHudVisibility(baseVisibility, disabledRound.controlVisibility)
+        .controls,
     ),
   );
 
@@ -281,7 +292,9 @@ test("dynamic buy-feature visibility toggles by round state without layout gaps"
 });
 
 test("generic dynamic visibility supports turbo/autoplay/history updates", () => {
-  const baseVisibility = resolvePremiumHudVisibility(DefaultResolvedRuntimeConfig);
+  const baseVisibility = resolvePremiumHudVisibility(
+    DefaultResolvedRuntimeConfig,
+  );
   const mergedVisibility = mergePremiumHudVisibility(baseVisibility, {
     buyFeature: false,
     turbo: false,
@@ -318,21 +331,37 @@ test("round action builder removes screen-local bet and buy-price assumptions", 
   assert.equal(buyAction.selectedFeatureChoice.priceMinor, 450);
 
   const neutralBuilder = new RoundActionBuilder();
-  const neutralBuyAction = neutralBuilder.buildBuyFeatureAction({ totalBetMinor: 200 });
+  const neutralBuyAction = neutralBuilder.buildBuyFeatureAction({
+    totalBetMinor: 200,
+  });
   assert.equal(neutralBuyAction.selectedFeatureChoice.priceMinor, 0);
   assert.equal(neutralBuyAction.selectedBet.lines, 1);
   assert.equal(neutralBuyAction.selectedBet.multiplier, 1);
 
-  const themedBuilder = new RoundActionBuilder(resolveShellThemeTokens().roundActions);
+  const themedBuilder = new RoundActionBuilder(
+    resolveShellThemeTokens().roundActions,
+  );
   const themedBet = themedBuilder.buildSpinBet(200);
   assert.equal(themedBet.lines, 20);
   assert.equal(themedBet.multiplier, 1);
 });
 
 test("win target resolver uses configurable layout constraints", () => {
-  const r0 = [{ id: "r0-top" }, { id: "r0-mid" }, { id: "r0-bottom" }] as never[];
-  const r1 = [{ id: "r1-top" }, { id: "r1-mid" }, { id: "r1-bottom" }] as never[];
-  const r2 = [{ id: "r2-top" }, { id: "r2-mid" }, { id: "r2-bottom" }] as never[];
+  const r0 = [
+    { id: "r0-top" },
+    { id: "r0-mid" },
+    { id: "r0-bottom" },
+  ] as never[];
+  const r1 = [
+    { id: "r1-top" },
+    { id: "r1-mid" },
+    { id: "r1-bottom" },
+  ] as never[];
+  const r2 = [
+    { id: "r2-top" },
+    { id: "r2-mid" },
+    { id: "r2-bottom" },
+  ] as never[];
   const reels = [
     { getVisibleSymbols: () => r0 },
     { getVisibleSymbols: () => r1 },
@@ -354,7 +383,9 @@ test("win target resolver uses configurable layout constraints", () => {
 test("audio cue execution is delegated to shared registry", () => {
   const registry = createAudioCueRegistry({
     overrides: {
-      "jackpot-stinger": [{ type: "sfx", assetKey: "theme/sfx-jp", volume: 0.6 }],
+      "jackpot-stinger": [
+        { type: "sfx", assetKey: "theme/sfx-jp", volume: 0.6 },
+      ],
       "mute-bgm": [{ type: "bgmVolume", volume: 0.15 }],
     },
   });
@@ -365,7 +396,8 @@ test("audio cue execution is delegated to shared registry", () => {
   applyAudioCue(
     "jackpot-stinger",
     {
-      playSfx: (assetKey, options) => played.push({ key: assetKey, volume: options.volume }),
+      playSfx: (assetKey, options) =>
+        played.push({ key: assetKey, volume: options.volume }),
       setBgmVolume: (volume) => bgm.push(volume),
       isSoundEnabled: () => true,
     },
@@ -375,7 +407,8 @@ test("audio cue execution is delegated to shared registry", () => {
   applyAudioCue(
     "mute-bgm",
     {
-      playSfx: (assetKey, options) => played.push({ key: assetKey, volume: options.volume }),
+      playSfx: (assetKey, options) =>
+        played.push({ key: assetKey, volume: options.volume }),
       setBgmVolume: (volume) => bgm.push(volume),
       isSoundEnabled: () => true,
     },
@@ -395,7 +428,9 @@ test("audio cue execution is delegated to shared registry", () => {
 });
 
 test("theme token foundation resolves overrides and query hooks", () => {
-  const query = new URLSearchParams("theme=neon&skin=night&vfxIntensity=low&hudPanelAlpha=0.85");
+  const query = new URLSearchParams(
+    "theme=neon&skin=night&vfxIntensity=low&hudPanelAlpha=0.85",
+  );
   const theme = resolveShellThemeTokens({
     runtimeConfig: DefaultResolvedRuntimeConfig,
     queryParams: query,
@@ -420,9 +455,18 @@ test("tier style hooks are consumed by premium screen integration", () => {
   );
 
   assert.equal(mainScreenSource.includes("resolveTierStyleHook"), true);
-  assert.equal(mainScreenSource.includes("this.winCounter.showWin(amountMinor, title"), true);
-  assert.equal(mainScreenSource.includes("this.winHighlight.showWin(symbols"), true);
-  assert.equal(mainScreenSource.includes("shellTheme.winPresentation.tierStyleHooks"), true);
+  assert.equal(
+    mainScreenSource.includes("this.winCounter.showWin(amountMinor, title"),
+    true,
+  );
+  assert.equal(
+    mainScreenSource.includes("this.winHighlight.showWin(symbols"),
+    true,
+  );
+  assert.equal(
+    mainScreenSource.includes("shellTheme.winPresentation.tierStyleHooks"),
+    true,
+  );
 });
 
 test("presentation mapper ignores engine-private fields", () => {
@@ -476,7 +520,10 @@ test("presentation mapper ignores engine-private fields", () => {
 
   assert.equal(mapped.roundId, "round-9");
   assert.equal(mapped.messages[0], "ROUND COMPLETE");
-  assert.equal(Object.prototype.hasOwnProperty.call(mapped, "serverAudit"), false);
+  assert.equal(
+    Object.prototype.hasOwnProperty.call(mapped, "serverAudit"),
+    false,
+  );
 });
 
 console.log(`\nPremium shell smoke tests: ${passed} passed, ${failed} failed.`);

@@ -1,1 +1,1 @@
-export * from "./PremiumHudPolicy";
+export * from "./PremiumHudPolicy.ts";

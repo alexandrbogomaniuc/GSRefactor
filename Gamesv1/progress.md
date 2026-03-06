@@ -61,3 +61,21 @@ Original prompt: TASK: Implement responsive layout using @pixi/layout in package
   - corepack pnpm run test:template (pass)
   - corepack pnpm run test (pass)
   - corepack pnpm run build (pass, single vendor warning remains)
+- 2026-03-06: Started brandable WOW preloader sprint from origin/main on audit branch.
+- Added shared shell token foundation in `packages/ui-kit/src/shell/theme/ShellThemeTokens.ts` with schema validation and strict defaults for brand + preloader tokens.
+- Added reusable shared preloader renderer in `packages/ui-kit/src/shell/preloader/WowPreloader.ts`.
+- Integrated premium-slot `LoadScreen` with boot-phase messaging, weighted real asset-load progress, brand A/B presets, and optional gesture-gated preloader stinger support.
+- Added docs:
+  - `docs/THEME_SHELL_FOUNDATION.md`
+  - `docs/BRAND_KIT_TOKENS.md`
+  - `docs/WOW_PRELOADER_TEMPLATE.md`
+- Added test coverage for shell token defaults/validation and premium-slot brand presets in `tests/game/preloader-brand-kit.test.ts`.
+- Added proof-only `preloaderHoldMs` query support in `LoadScreen` so visual audit captures can hold the preloader without changing production GS/runtime behavior.
+- Final verification for the preloader sprint:
+  - `corepack pnpm run test` (pass)
+  - `corepack pnpm run test:layout` (pass)
+  - `corepack pnpm run build` (pass; existing `vendor-pixi` chunk warning remains)
+- Captured and committed visual proof under `docs/_visual_proof/preloader-wow-2026-03-06/`:
+  - `brand-a-preloader.png`
+  - `brand-b-preloader.png`
+  - `preloader-wow.gif`

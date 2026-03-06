@@ -5,10 +5,7 @@ import {
   createAnimationPolicy,
 } from "../../packages/core-compliance/src/animation/AnimationPolicy.ts";
 import { DefaultResolvedRuntimeConfig } from "../../packages/core-compliance/src/ResolvedRuntimeConfig.ts";
-import {
-  WowVfxOrchestrator,
-  type PresentationWinTier,
-} from "../../packages/ui-kit/src/shell/vfx/index.ts";
+import { WowVfxOrchestrator, type PresentationWinTier } from "@gamesv1/ui-kit";
 
 let passed = 0;
 let failed = 0;
@@ -46,7 +43,8 @@ const makeHarness = (input?: {
     {
       onAudioCue: (cue) => events.push(`audio:${cue}`),
       onAnimationCue: (cue) => events.push(`anim:${cue}`),
-      showWinCounter: (_amount, title, tier) => events.push(`counter:${title}:${tier}`),
+      showWinCounter: (_amount, title, tier) =>
+        events.push(`counter:${title}:${tier}`),
       hideWinCounter: () => events.push("counter:hide"),
       showHeavyWinFx: (_symbols, tier) => events.push(`heavy:${tier}`),
       clearHeavyWinFx: () => events.push("heavy:clear"),
@@ -69,7 +67,10 @@ const makeInput = (winAmountMinor: number, animationCues: string[] = []) => ({
   animationCues,
 });
 
-const assertTier = (actual: PresentationWinTier, expected: PresentationWinTier) => {
+const assertTier = (
+  actual: PresentationWinTier,
+  expected: PresentationWinTier,
+) => {
   assert.equal(actual, expected);
 };
 
@@ -90,7 +91,9 @@ test("maps zero/small/big/huge/mega presentation tiers", () => {
 test("orchestrates audio, animation, heavy fx, and win counter", () => {
   const { orchestrator, events } = makeHarness();
 
-  const state = orchestrator.startWinPresentation(makeInput(1000, ["jackpot-overlay"]));
+  const state = orchestrator.startWinPresentation(
+    makeInput(1000, ["jackpot-overlay"]),
+  );
 
   assert.equal(state.heavyFxPlayed, true);
   assert.equal(state.hasWinPresentation, true);
@@ -137,14 +140,19 @@ test("zero-win rounds do not show win counter or heavy effects", () => {
   assert.equal(state.tier, "none");
   assert.equal(state.hasWinPresentation, false);
   assert.equal(
-    events.some((entry) => /^counter:(WIN|BIG WIN|HUGE WIN|MEGA WIN):/.test(entry)),
+    events.some((entry) =>
+      /^counter:(WIN|BIG WIN|HUGE WIN|MEGA WIN):/.test(entry),
+    ),
     false,
   );
   assert.equal(events.includes("heavy:big"), false);
   assert.equal(events.includes("heavy:huge"), false);
   assert.equal(events.includes("heavy:mega"), false);
   assert.ok(events.includes("heavy:clear"));
-  assert.equal(events.some((entry) => entry.startsWith("burst:")), false);
+  assert.equal(
+    events.some((entry) => entry.startsWith("burst:")),
+    false,
+  );
 });
 
 test("theme tokens can override tier label and reduce vfx intensity", () => {
@@ -161,7 +169,10 @@ test("theme tokens can override tier label and reduce vfx intensity", () => {
   assert.equal(state.title, "EPIC WIN");
   assert.equal(state.heavyFxPlayed, false);
   assert.equal(events.includes("heavy:mega"), false);
-  assert.equal(events.some((event) => event.startsWith("burst:")), false);
+  assert.equal(
+    events.some((event) => event.startsWith("burst:")),
+    false,
+  );
 });
 
 console.log(`\nWOW/VFX tests: ${passed} passed, ${failed} failed.`);

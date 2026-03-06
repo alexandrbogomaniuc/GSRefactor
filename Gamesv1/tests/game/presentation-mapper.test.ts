@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 
-import { mapPlayRoundToPresentation } from "../../packages/ui-kit/src/shell/presentation/PremiumPresentationMapper.ts";
 import type { PlayRoundResponse } from "../../packages/core-protocol/src/IGameTransport.ts";
+import { mapPlayRoundToPresentation } from "@gamesv1/ui-kit";
 
 const defaultLayout = {
   reelCount: 5,
@@ -81,7 +81,11 @@ test("maps canonical payload fields into presentation model", () => {
 
 test("throws on missing reel stops", () => {
   assert.throws(
-    () => mapPlayRoundToPresentation(makeRound({ uiMessages: ["invalid"] }), defaultLayout),
+    () =>
+      mapPlayRoundToPresentation(
+        makeRound({ uiMessages: ["invalid"] }),
+        defaultLayout,
+      ),
     /Invalid presentationPayload/,
   );
 });

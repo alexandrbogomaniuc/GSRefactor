@@ -16,14 +16,16 @@ Canonical and archived documentation index.
 - `docs/PRODUCTIZATION_GATE.md`: explicit gate conditions before polish/productization.
 - `docs/HANDOFF_TO_PRODUCTIZATION.md`: frozen boundaries and next-sprint handoff.
 - `docs/SHARED_HUD_ARCHITECTURE.md`: reusable premium HUD/control panel architecture.
+- `docs/THEME_SHELL_FOUNDATION.md`: reusable shell token foundation and validation rules.
+- `docs/BRAND_KIT_TOKENS.md`: brand/preloader token catalog for shared shell surfaces.
 - `docs/HUD_CONFIG_SCHEMA.md`: HUD visibility/config schema and capability mapping.
 - `docs/PRESENTATION_LAYER_ARCHITECTURE.md`: canonical payload-to-UI mapping architecture.
 - `docs/FEATURE_MODULE_SYSTEM.md`: pluggable feature-module system for template reuse.
 - `docs/RESPONSIVE_SCALING_STRATEGY.md`: shared scaling strategy and layout matrix expectations.
 - `docs/SAFE_AREA_POLICY.md`: safe-area/notch handling policy for all game shells.
 - `docs/WOW_VFX_ARCHITECTURE.md`: shared win/VFX orchestration architecture.
-- `docs/THEME_SHELL_FOUNDATION.md`: shell token foundation (HUD/VFX/audio/action/win-target hooks).
 - `docs/HUD_THEME_TOKENS.md`: HUD-specific theme token schema and integration points.
+- `docs/WOW_PRELOADER_TEMPLATE.md`: reusable branded preloader architecture and integration flow.
 - `docs/WIN_PRESENTATION_TIERS.md`: canonical win tier mapping and timing rules.
 - `docs/ART_PIPELINE_PRODUCTIZATION.md`: reusable art integration contract for new games.
 - `docs/PROMO_ASSET_PIPELINE.md`: promo asset flow and release handoff policy.
@@ -75,6 +77,7 @@ Canonical and archived documentation index.
 ## Contradiction Prevention Rule
 
 When behavior changes:
+
 1. update `docs/gs/*` first,
 2. update canon docs,
 3. archive or deprecate conflicting docs under `docs/_archive/` or explicit legacy markers.

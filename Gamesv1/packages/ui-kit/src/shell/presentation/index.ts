@@ -1,2 +1,2 @@
-export * from "./PremiumPresentationMapper";
+export * from "./PremiumPresentationMapper.ts";
 export * from "./WinTargetResolver.ts";
