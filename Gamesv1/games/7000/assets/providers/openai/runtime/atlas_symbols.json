@@ -1,0 +1,375 @@
+{
+  "frames": {
+    "symbol-0-egg": {
+      "frame": {
+        "x": 8,
+        "y": 8,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "symbol-1-cherries": {
+      "frame": {
+        "x": 272,
+        "y": 8,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "symbol-2-lemon": {
+      "frame": {
+        "x": 536,
+        "y": 8,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "symbol-3-orange": {
+      "frame": {
+        "x": 800,
+        "y": 8,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "symbol-4-plum": {
+      "frame": {
+        "x": 1064,
+        "y": 8,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "symbol-5-bar": {
+      "frame": {
+        "x": 1328,
+        "y": 8,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "symbol-6-seven": {
+      "frame": {
+        "x": 1592,
+        "y": 8,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "symbol-7-coin": {
+      "frame": {
+        "x": 8,
+        "y": 272,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "symbol-8-bolt": {
+      "frame": {
+        "x": 272,
+        "y": 272,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "symbol-9-rooster": {
+      "frame": {
+        "x": 536,
+        "y": 272,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "collector-symbol": {
+      "frame": {
+        "x": 800,
+        "y": 272,
+        "w": 256,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "coin-multiplier-2x": {
+      "frame": {
+        "x": 1064,
+        "y": 272,
+        "w": 196,
+        "h": 196
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 196,
+        "h": 196
+      },
+      "sourceSize": {
+        "w": 196,
+        "h": 196
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "coin-multiplier-3x": {
+      "frame": {
+        "x": 1268,
+        "y": 272,
+        "w": 196,
+        "h": 196
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 196,
+        "h": 196
+      },
+      "sourceSize": {
+        "w": 196,
+        "h": 196
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "coin-multiplier-5x": {
+      "frame": {
+        "x": 1472,
+        "y": 272,
+        "w": 196,
+        "h": 196
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 196,
+        "h": 196
+      },
+      "sourceSize": {
+        "w": 196,
+        "h": 196
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    },
+    "coin-multiplier-10x": {
+      "frame": {
+        "x": 1676,
+        "y": 272,
+        "w": 196,
+        "h": 196
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 196,
+        "h": 196
+      },
+      "sourceSize": {
+        "w": 196,
+        "h": 196
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.56
+      }
+    }
+  },
+  "meta": {
+    "app": "codex-openai-original-art-kit",
+    "version": "1.0",
+    "image": "atlas_symbols.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2048,
+      "h": 2048
+    },
+    "scale": "1"
+  }
+}
