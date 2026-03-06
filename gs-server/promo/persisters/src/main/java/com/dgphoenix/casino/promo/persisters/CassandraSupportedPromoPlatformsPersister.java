@@ -12,6 +12,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraSupportedPromoPlatformsPersister extends AbstractCassandraPersister<Long, Object> {
 
     private static final Logger LOG = LogManager.getLogger(CassandraSupportedPromoPlatformsPersister.class);
@@ -21,9 +25,9 @@ public class CassandraSupportedPromoPlatformsPersister extends AbstractCassandra
     private static final String PROMO_PLATFORMS_CF = "PromoPlatformsCf";
     private static final TableDefinition TABLE = new TableDefinition(PROMO_PLATFORMS_CF,
             Arrays.asList(
-                    new ColumnDefinition(PROMO_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(PLATFORM, com.datastax.driver.core.DataType.blob(), false, false, false),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text(), false, false, false)
+                    new ColumnDefinition(PROMO_ID, bigint(), false, false, true),
+                    new ColumnDefinition(PLATFORM, blob(), false, false, false),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text(), false, false, false)
             ), PROMO_ID);
 
     public void persist(long campaignId, ISupportedPlatform supportedPlatform) {

@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraMaxBalanceTournamentPersister.class);
 
@@ -21,10 +25,10 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
     private static final String ACCOUNT_ID_FIELD = "aid";
     private static final TableDefinition MAX_BALANCE_DETAILS_TABLE = new TableDefinition(MAX_BALANCE_DETAILS_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(CAMPAIGN_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), CAMPAIGN_ID_FIELD)
             .compaction(CompactionStrategy.LEVELED);
 
