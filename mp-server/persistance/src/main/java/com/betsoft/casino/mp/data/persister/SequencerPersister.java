@@ -20,6 +20,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 /**
  * User: flsh
@@ -33,8 +35,8 @@ public class SequencerPersister extends AbstractCassandraPersister<String, Strin
     private static final TableDefinition TABLE = new TableDefinition(SEQUENCER_CF,
             Arrays.asList(
                     //key is sequencer name
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(VALUE_COLUMN_NAME, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(VALUE_COLUMN_NAME, bigint(), false, false, false)
             ),
             Collections.singletonList(KEY));
 

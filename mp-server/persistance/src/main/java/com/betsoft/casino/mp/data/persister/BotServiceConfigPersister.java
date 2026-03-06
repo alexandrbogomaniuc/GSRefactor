@@ -13,6 +13,7 @@ import java.util.*;
 import java.util.stream.StreamSupport;
 
 import static java.util.stream.Collectors.toSet;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 /**
  * User: flsh
@@ -25,8 +26,8 @@ public class BotServiceConfigPersister extends AbstractCassandraPersister<String
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(VALUE, com.datastax.driver.core.DataType.text(), false, true, false)
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(VALUE, text(), false, true, false)
             ), KEY);
 
     @Override

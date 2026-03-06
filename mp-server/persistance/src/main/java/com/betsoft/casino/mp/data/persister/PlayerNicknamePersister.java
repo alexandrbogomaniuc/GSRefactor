@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 /**
  * User: flsh
@@ -25,8 +26,8 @@ public class PlayerNicknamePersister extends AbstractCassandraPersister<String, 
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(NICK_NAME_COLUMN, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(BANK_AID_COLUMN, com.datastax.driver.core.DataType.text(), false, true, false)
+                    new ColumnDefinition(NICK_NAME_COLUMN, text(), false, false, true),
+                    new ColumnDefinition(BANK_AID_COLUMN, text(), false, true, false)
             ), NICK_NAME_COLUMN);
 
     @Override
