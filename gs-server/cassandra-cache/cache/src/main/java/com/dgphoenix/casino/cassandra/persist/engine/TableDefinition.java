@@ -24,6 +24,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 import static java.util.stream.Collectors.toMap;
 import static org.apache.commons.lang.StringUtils.join;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
 
 /**
  * User: flsh
@@ -106,7 +107,7 @@ public class TableDefinition {
     }
 
     private boolean isNonCounterColumn(ColumnDefinition column) {
-        return !column.getType().equals(com.datastax.driver.core.DataType.counter());
+        return !column.getType().equals(counter());
     }
 
     public String getIndexName(String columnName) {
