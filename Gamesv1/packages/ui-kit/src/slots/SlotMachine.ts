@@ -1,6 +1,6 @@
 import { Container, Graphics, Ticker } from "pixi.js";
-import { GameConfig } from "../config/GameConfig";
-import { Reel } from "./Reel";
+import { GameConfig } from "../config/GameConfig.ts";
+import { Reel } from "./Reel.ts";
 
 export interface SpinOptions {
   minSpinDurationMs?: number;
@@ -15,7 +15,7 @@ export class SlotMachine extends Container {
   private ticker: Ticker;
 
   // Callbacks
-  public onSpinComplete: () => void = () => { };
+  public onSpinComplete: () => void = () => {};
 
   constructor() {
     super();
@@ -48,8 +48,13 @@ export class SlotMachine extends Container {
 
   public spin(options: SpinOptions) {
     if (this.isSpinning) return;
-    if (!options.reelStopColumns || options.reelStopColumns.length !== this.reels.length) {
-      throw new Error("SlotMachine.spin requires reelStopColumns from server presentation payload.");
+    if (
+      !options.reelStopColumns ||
+      options.reelStopColumns.length !== this.reels.length
+    ) {
+      throw new Error(
+        "SlotMachine.spin requires reelStopColumns from server presentation payload.",
+      );
     }
     for (let index = 0; index < options.reelStopColumns.length; index += 1) {
       const column = options.reelStopColumns[index];
@@ -62,7 +67,8 @@ export class SlotMachine extends Container {
     this.isSpinning = true;
 
     const minSpinDurationMs =
-      options.minSpinDurationMs ?? Math.round(GameConfig.minSpinDuration * 1000);
+      options.minSpinDurationMs ??
+      Math.round(GameConfig.minSpinDuration * 1000);
     const speedMultiplier = options.speedMultiplier ?? 1;
 
     this.reels.forEach((reel) => reel.spin(speedMultiplier));
@@ -72,22 +78,19 @@ export class SlotMachine extends Container {
   }
 
   public stop(options: SpinOptions) {
-    const spinStaggerMs = options.spinStaggerMs ?? Math.round(GameConfig.spinStagger * 1000);
+    const spinStaggerMs =
+      options.spinStaggerMs ?? Math.round(GameConfig.spinStagger * 1000);
 
     // Send stop commands with stagger
     this.reels.forEach((reel, index) => {
-      setTimeout(
-        () => {
-          const resolvedColumn = options.reelStopColumns[index];
-          reel.stop(resolvedColumn.slice(0, GameConfig.numRows));
-        },
-        index * spinStaggerMs,
-      );
+      setTimeout(() => {
+        const resolvedColumn = options.reelStopColumns[index];
+        reel.stop(resolvedColumn.slice(0, GameConfig.numRows));
+      }, index * spinStaggerMs);
     });
 
     // Calculate total time until last reel stops (roughly)
-    const totalStopDelay =
-      (this.reels.length - 1) * spinStaggerMs + 500;
+    const totalStopDelay = (this.reels.length - 1) * spinStaggerMs + 500;
     setTimeout(() => {
       this.isSpinning = false;
       this.onSpinComplete();

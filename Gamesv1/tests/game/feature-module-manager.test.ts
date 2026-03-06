@@ -5,7 +5,7 @@ import {
   FeatureModuleManager,
   resolvePremiumHudVisibility,
   type RoundPresentationModel,
-} from "@gamesv1/ui-kit";
+} from "@gamesv1/ui-kit/shell";
 
 const makeRound = (
   overrides: Partial<RoundPresentationModel> = {},

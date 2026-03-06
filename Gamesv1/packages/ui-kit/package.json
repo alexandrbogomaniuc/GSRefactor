@@ -7,6 +7,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./config": "./src/config/index.ts",
+    "./layout": "./src/layout/index.ts",
     "./shell": "./src/shell/index.ts"
   },
   "dependencies": {

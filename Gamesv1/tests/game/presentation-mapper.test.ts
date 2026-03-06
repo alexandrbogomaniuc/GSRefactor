@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 
 import type { PlayRoundResponse } from "../../packages/core-protocol/src/IGameTransport.ts";
-import { mapPlayRoundToPresentation } from "@gamesv1/ui-kit";
+import { mapPlayRoundToPresentation } from "@gamesv1/ui-kit/shell";
 
 const defaultLayout = {
   reelCount: 5,

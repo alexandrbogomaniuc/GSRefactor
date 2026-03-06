@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {
   DefaultShellThemeTokens,
   resolveShellThemeTokens,
-} from "@gamesv1/ui-kit";
+} from "@gamesv1/ui-kit/shell";
 import { resolvePremiumSlotBrandKit } from "../../games/premium-slot/src/app/theme/brandKit.ts";
 
 let passed = 0;

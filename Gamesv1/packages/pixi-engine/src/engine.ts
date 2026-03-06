@@ -43,19 +43,25 @@ export class CreationEngine extends Application {
     document.getElementById("pixi-container")!.appendChild(this.canvas);
     document.addEventListener("visibilitychange", this.visibilityChange);
 
-    const debugLayout = new URLSearchParams(window.location.search).get("layoutDebug") === "1";
-    this.layout = new ResponsiveLayoutManager(this, { debugEnabled: debugLayout });
+    const debugLayout =
+      new URLSearchParams(window.location.search).get("layoutDebug") === "1";
+    this.layout = new ResponsiveLayoutManager(this, {
+      debugEnabled: debugLayout,
+    });
 
     if (assetManifest) {
-      await Assets.init({ manifest: assetManifest as never, basePath: assetBasePath });
+      await Assets.init({
+        manifest: assetManifest as never,
+        basePath: assetBasePath,
+      });
 
       if (preloadBundle) {
         await Assets.loadBundle(preloadBundle);
       }
 
-      const allBundles = (assetManifest as { bundles?: { name: string }[] }).bundles?.map(
-        (item) => item.name,
-      );
+      const allBundles = (
+        assetManifest as { bundles?: { name: string }[] }
+      ).bundles?.map((item) => item.name);
 
       if (allBundles?.length) {
         Assets.backgroundLoadBundle(allBundles);

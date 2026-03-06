@@ -5,8 +5,8 @@ import { flowLayout } from "@pixi/layout";
 import {
   ResponsiveHudLayoutController,
   type HudLayoutViewport,
-} from "../layout/HudLayout";
-import { Button } from "../ui/Button";
+} from "../layout/HudLayout.ts";
+import { Button } from "../ui/Button.ts";
 
 export type PremiumHudControlId =
   | "spin"
@@ -129,8 +129,20 @@ export class PremiumTemplateHud extends Container {
     }
 
     this.controlLayout = new ResponsiveHudLayoutController([
-      { id: "spin", object: this.buttons.spin, width: 216, height: 100, visible: true },
-      { id: "turbo", object: this.buttons.turbo, width: 186, height: 84, visible: true },
+      {
+        id: "spin",
+        object: this.buttons.spin,
+        width: 216,
+        height: 100,
+        visible: true,
+      },
+      {
+        id: "turbo",
+        object: this.buttons.turbo,
+        width: 186,
+        height: 84,
+        visible: true,
+      },
       {
         id: "autoplay",
         object: this.buttons.autoplay,
@@ -145,7 +157,13 @@ export class PremiumTemplateHud extends Container {
         height: 84,
         visible: true,
       },
-      { id: "sound", object: this.buttons.sound, width: 186, height: 84, visible: true },
+      {
+        id: "sound",
+        object: this.buttons.sound,
+        width: 186,
+        height: 84,
+        visible: true,
+      },
       {
         id: "settings",
         object: this.buttons.settings,
@@ -185,7 +203,8 @@ export class PremiumTemplateHud extends Container {
           ? Math.min(1, Math.max(0, next.panelAlpha))
           : this.theme.panelAlpha,
       metricAccentColor:
-        typeof next.metricAccentColor === "number" && Number.isFinite(next.metricAccentColor)
+        typeof next.metricAccentColor === "number" &&
+        Number.isFinite(next.metricAccentColor)
           ? next.metricAccentColor
           : this.theme.metricAccentColor,
       controlSkinHooks: {
@@ -288,7 +307,9 @@ export class PremiumTemplateHud extends Container {
       rowGap: 8,
     });
 
-    const metricPosition = new Map(metricLayout.items.map((item) => [item.id, item]));
+    const metricPosition = new Map(
+      metricLayout.items.map((item) => [item.id, item]),
+    );
 
     for (const [key, text] of Object.entries(this.metricTexts) as Array<
       [keyof typeof this.metricTexts, Text]

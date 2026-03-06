@@ -1,6 +1,6 @@
 import { Container } from "pixi.js";
-import { GameConfig } from "../config/GameConfig";
-import { SlotSymbol } from "./SlotSymbol";
+import { GameConfig } from "../config/GameConfig.ts";
+import { SlotSymbol } from "./SlotSymbol.ts";
 
 export class Reel extends Container {
   public id: number;
@@ -44,7 +44,8 @@ export class Reel extends Container {
     this.speed = 0;
     this.targetResult = null;
     this.nextGeneratedSymbolId = (this.id + 1) % GameConfig.symbolCount;
-    this.currentMaxSpeed = this.baseEaseInSpeed * Math.max(0.5, speedMultiplier);
+    this.currentMaxSpeed =
+      this.baseEaseInSpeed * Math.max(0.5, speedMultiplier);
   }
 
   public stop(result: number[]) {

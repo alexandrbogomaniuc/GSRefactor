@@ -3,9 +3,9 @@ import { readFileSync } from "node:fs";
 
 import { DefaultResolvedRuntimeConfig } from "../../packages/core-compliance/src/ResolvedRuntimeConfig.ts";
 import { hasRowGaps } from "../../packages/pixi-layout/src/index.ts";
+import { computeHudLayout } from "@gamesv1/ui-kit/layout";
 import {
   applyAudioCue,
-  computeHudLayout,
   createAudioCueRegistry,
   FeatureModuleManager,
   mergePremiumHudVisibility,
@@ -14,7 +14,7 @@ import {
   resolveShellThemeTokens,
   resolveWinSymbolsFromReels,
   RoundActionBuilder,
-} from "@gamesv1/ui-kit";
+} from "@gamesv1/ui-kit/shell";
 import type { PlayRoundResponse } from "../../packages/core-protocol/src/IGameTransport.ts";
 
 let passed = 0;

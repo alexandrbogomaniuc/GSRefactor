@@ -2,8 +2,8 @@ import { FancyButton } from "@pixi/ui";
 
 import { engine } from "@gamesv1/pixi-engine";
 
-import { UiAssetKeys } from "../assets";
-import { Label } from "./Label";
+import { UiAssetKeys } from "../assets.ts";
+import { Label } from "./Label.ts";
 
 const defaultButtonOptions = {
   text: "",

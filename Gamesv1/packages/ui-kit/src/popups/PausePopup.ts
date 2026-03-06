@@ -2,9 +2,9 @@ import { BlurFilter, Container, Sprite, Texture } from "pixi.js";
 
 import { engine } from "@gamesv1/pixi-engine";
 
-import { Button } from "../ui/Button";
-import { Label } from "../ui/Label";
-import { RoundedBox } from "../ui/RoundedBox";
+import { Button } from "../ui/Button.ts";
+import { Label } from "../ui/Label.ts";
+import { RoundedBox } from "../ui/RoundedBox.ts";
 
 export class PausePopup extends Container {
   private bg: Sprite;

@@ -24,8 +24,14 @@ export class LayoutDebugOverlay extends Container {
 
     const safeX = viewport.safeArea.left;
     const safeY = viewport.safeArea.top;
-    const safeWidth = Math.max(0, viewport.width - viewport.safeArea.left - viewport.safeArea.right);
-    const safeHeight = Math.max(0, viewport.height - viewport.safeArea.top - viewport.safeArea.bottom);
+    const safeWidth = Math.max(
+      0,
+      viewport.width - viewport.safeArea.left - viewport.safeArea.right,
+    );
+    const safeHeight = Math.max(
+      0,
+      viewport.height - viewport.safeArea.top - viewport.safeArea.bottom,
+    );
 
     this.safeRect.rect(safeX, safeY, safeWidth, safeHeight);
     this.safeRect.stroke({ color: 0xff9933, width: 2, alpha: 0.9 });

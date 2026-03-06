@@ -4,10 +4,10 @@ import { BlurFilter, Container, Sprite, Texture } from "pixi.js";
 
 import { engine } from "@gamesv1/pixi-engine";
 
-import { Button } from "../ui/Button";
-import { Label } from "../ui/Label";
-import { RoundedBox } from "../ui/RoundedBox";
-import { VolumeSlider } from "../ui/VolumeSlider";
+import { Button } from "../ui/Button.ts";
+import { Label } from "../ui/Label.ts";
+import { RoundedBox } from "../ui/RoundedBox.ts";
+import { VolumeSlider } from "../ui/VolumeSlider.ts";
 
 export class SettingsPopup extends Container {
   private bg: Sprite;
@@ -120,4 +120,3 @@ export class SettingsPopup extends Container {
     this.panel.pivot.y = -500;
   }
 }
-

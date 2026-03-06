@@ -79,3 +79,12 @@ Original prompt: TASK: Implement responsive layout using @pixi/layout in package
   - `brand-a-preloader.png`
   - `brand-b-preloader.png`
   - `preloader-wow.gif`
+- 2026-03-06: Unified round-action shell tokens with the branded preloader token surface on `audit/theme-tokens-preloader-unified-20260306-1006`.
+- Kept the existing deep-merge `resolveShellThemeTokens(options)` API and extended it with validated `brand` + `preloader` families.
+- Switched premium-slot brand-kit and game tests from deep `packages/ui-kit/src/*` imports to exported package entrypoints (`@gamesv1/ui-kit/shell`, `@gamesv1/ui-kit/layout`).
+- Added `packages/ui-kit/src/layout/index.ts` and updated `packages/ui-kit/package.json` exports so layout helpers can be consumed through package subpaths.
+- Added root workspace dependency on `@gamesv1/ui-kit` so the root test runner can resolve package entrypoints.
+- Validation:
+  - `corepack pnpm run test` (pass)
+  - `corepack pnpm run test:layout` (pass)
+  - `corepack pnpm run build` (pass; existing `vendor-pixi` chunk warning remains)

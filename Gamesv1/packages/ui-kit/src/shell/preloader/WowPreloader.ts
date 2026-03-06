@@ -4,7 +4,7 @@ import {
   DefaultShellThemeTokens,
   getBrandMonogram,
   type ShellThemeTokens,
-} from "../theme/ShellThemeTokens";
+} from "../theme/ShellThemeTokens.ts";
 
 export interface WowPreloaderOptions {
   reducedMotion?: boolean;
@@ -21,7 +21,8 @@ type ParticleState = {
 const clamp = (value: number, min: number, max: number): number =>
   Math.min(max, Math.max(min, value));
 
-const parseHexColor = (value: string): number => Number.parseInt(value.slice(1, 7), 16);
+const parseHexColor = (value: string): number =>
+  Number.parseInt(value.slice(1, 7), 16);
 
 const mixColors = (a: number, b: number, amount: number): number => {
   const ratio = clamp(amount, 0, 1);
@@ -127,7 +128,12 @@ export class WowPreloader extends Container {
     this.phaseLabel.anchor.set(0.5, 0.5);
     this.progressLabel.anchor.set(0.5);
 
-    this.heroLayer.addChild(this.heroFx, this.logoFrame, this.logoSprite, this.logoFallback);
+    this.heroLayer.addChild(
+      this.heroFx,
+      this.logoFrame,
+      this.logoSprite,
+      this.logoFallback,
+    );
     this.addChild(
       this.background,
       this.glow,
@@ -185,12 +191,10 @@ export class WowPreloader extends Container {
 
     const count = Math.round(10 + this.theme.preloader.vfxIntensity * 12);
     for (let index = 0; index < count; index += 1) {
-      const dot = new Graphics()
-        .circle(0, 0, 4 + (index % 3))
-        .fill({
-          color: index % 2 === 0 ? this.accentColor : this.primaryColor,
-          alpha: 0.45,
-        });
+      const dot = new Graphics().circle(0, 0, 4 + (index % 3)).fill({
+        color: index % 2 === 0 ? this.accentColor : this.primaryColor,
+        alpha: 0.45,
+      });
       this.particleLayer.addChild(dot);
       this.particles.push({
         dot,
@@ -206,16 +210,20 @@ export class WowPreloader extends Container {
     const centerX = this.viewport.width * 0.5;
     const centerY = this.viewport.height * 0.42;
     const intensity =
-      this.theme.preloader.style === "minimal" ? 0.08 : this.theme.preloader.vfxIntensity;
+      this.theme.preloader.style === "minimal"
+        ? 0.08
+        : this.theme.preloader.vfxIntensity;
 
     for (const particle of this.particles) {
       particle.angle += particle.speed * 0.012 * (0.55 + intensity);
       const pulse = 1 + Math.sin(this.elapsed * 2.1 + particle.angle) * 0.12;
-      particle.dot.x = centerX + Math.cos(particle.angle) * particle.orbitRadius * pulse;
+      particle.dot.x =
+        centerX + Math.cos(particle.angle) * particle.orbitRadius * pulse;
       particle.dot.y =
         centerY + Math.sin(particle.angle * 1.18) * particle.orbitRadius * 0.55;
       particle.dot.alpha =
-        particle.alpha * (0.8 + Math.sin(this.elapsed * 1.6 + particle.angle) * 0.2);
+        particle.alpha *
+        (0.8 + Math.sin(this.elapsed * 1.6 + particle.angle) * 0.2);
       particle.dot.scale.set(pulse);
     }
   }
@@ -223,12 +231,18 @@ export class WowPreloader extends Container {
   private animateHero(): void {
     this.heroFx.clear();
 
-    const ringRadius = Math.min(this.viewport.width, this.viewport.height) * 0.12;
+    const ringRadius =
+      Math.min(this.viewport.width, this.viewport.height) * 0.12;
     const accentGlow = mixColors(this.primaryColor, this.accentColor, 0.6);
-    const intensity = this.reducedMotion ? 0.18 : this.theme.preloader.vfxIntensity;
+    const intensity = this.reducedMotion
+      ? 0.18
+      : this.theme.preloader.vfxIntensity;
     const pulse = 1 + Math.sin(this.elapsed * 2.4) * 0.06;
 
-    this.heroLayer.position.set(this.viewport.width * 0.5, this.viewport.height * 0.42);
+    this.heroLayer.position.set(
+      this.viewport.width * 0.5,
+      this.viewport.height * 0.42,
+    );
     this.heroFx.rotation = 0;
 
     if (this.theme.preloader.style === "minimal" || this.reducedMotion) {
@@ -246,7 +260,8 @@ export class WowPreloader extends Container {
         .stroke({ width: 2, color: this.primaryColor, alpha: 0.28 });
 
       for (let index = 0; index < 3; index += 1) {
-        const angle = this.elapsed * (0.9 + intensity) + index * ((Math.PI * 2) / 3);
+        const angle =
+          this.elapsed * (0.9 + intensity) + index * ((Math.PI * 2) / 3);
         const x = Math.cos(angle) * ringRadius * 1.18;
         const y = Math.sin(angle) * ringRadius * 1.18;
         this.heroFx.circle(x, y, 6 + intensity * 3).fill({
@@ -265,7 +280,10 @@ export class WowPreloader extends Container {
         const y = Math.sin(angle * 1.15) * radius * 0.72;
         this.heroFx
           .circle(x, y, 5 + (index % 2))
-          .fill({ color: index % 2 === 0 ? this.primaryColor : this.accentColor, alpha: 0.76 });
+          .fill({
+            color: index % 2 === 0 ? this.primaryColor : this.accentColor,
+            alpha: 0.76,
+          });
       }
       this.heroFx
         .circle(0, 0, ringRadius * 1.34)
@@ -276,11 +294,29 @@ export class WowPreloader extends Container {
     this.heroFx.rotation = -0.28;
     const sweepShift = Math.sin(this.elapsed * 2.2) * ringRadius * 0.5;
     this.heroFx
-      .roundRect(-ringRadius * 1.8 + sweepShift, -ringRadius * 0.66, ringRadius * 2.5, 22, 11)
+      .roundRect(
+        -ringRadius * 1.8 + sweepShift,
+        -ringRadius * 0.66,
+        ringRadius * 2.5,
+        22,
+        11,
+      )
       .fill({ color: this.accentColor, alpha: 0.28 + intensity * 0.2 })
-      .roundRect(-ringRadius * 1.3 - sweepShift * 0.6, -2, ringRadius * 2.8, 18, 9)
+      .roundRect(
+        -ringRadius * 1.3 - sweepShift * 0.6,
+        -2,
+        ringRadius * 2.8,
+        18,
+        9,
+      )
       .fill({ color: accentGlow, alpha: 0.22 + intensity * 0.14 })
-      .roundRect(-ringRadius * 1.6 + sweepShift * 0.4, ringRadius * 0.52, ringRadius * 2.4, 16, 8)
+      .roundRect(
+        -ringRadius * 1.6 + sweepShift * 0.4,
+        ringRadius * 0.52,
+        ringRadius * 2.4,
+        16,
+        8,
+      )
       .fill({ color: this.primaryColor, alpha: 0.18 + intensity * 0.12 });
   }
 
@@ -298,14 +334,18 @@ export class WowPreloader extends Container {
 
     this.background.clear();
     this.background.rect(0, 0, width, height).fill({ color: baseColor });
-    this.background.circle(width * 0.18, height * 0.22, Math.min(width, height) * 0.22).fill({
-      color: accentTint,
-      alpha: 0.12,
-    });
-    this.background.circle(width * 0.78, height * 0.74, Math.min(width, height) * 0.26).fill({
-      color: this.primaryColor,
-      alpha: 0.08,
-    });
+    this.background
+      .circle(width * 0.18, height * 0.22, Math.min(width, height) * 0.22)
+      .fill({
+        color: accentTint,
+        alpha: 0.12,
+      });
+    this.background
+      .circle(width * 0.78, height * 0.74, Math.min(width, height) * 0.26)
+      .fill({
+        color: this.primaryColor,
+        alpha: 0.08,
+      });
 
     this.glow.clear();
     this.glow
@@ -324,7 +364,9 @@ export class WowPreloader extends Container {
 
     this.logoSprite.scale.set(ringRadius / 150);
     this.logoFallback.style.fill = this.primaryColor;
-    this.logoFallback.style.fontSize = Math.round(clamp(ringRadius * 0.6, 40, 68));
+    this.logoFallback.style.fontSize = Math.round(
+      clamp(ringRadius * 0.6, 40, 68),
+    );
 
     this.brandLabel.text = this.theme.brand.displayName.toUpperCase();
     this.brandLabel.style.fill = this.primaryColor;
@@ -339,7 +381,13 @@ export class WowPreloader extends Container {
 
     this.progressTrack.clear();
     this.progressTrack
-      .roundRect(width * 0.5 - trackWidth / 2, progressY, trackWidth, trackHeight, 9)
+      .roundRect(
+        width * 0.5 - trackWidth / 2,
+        progressY,
+        trackWidth,
+        trackHeight,
+        9,
+      )
       .fill({ color: 0xffffff, alpha: 0.12 });
 
     this.progressLabel.x = width * 0.5;
@@ -359,7 +407,13 @@ export class WowPreloader extends Container {
 
     this.progressFill.clear();
     this.progressFill
-      .roundRect(width * 0.5 - trackWidth / 2 + 3, progressY + 3, fillWidth, trackHeight - 6, 7)
+      .roundRect(
+        width * 0.5 - trackWidth / 2 + 3,
+        progressY + 3,
+        fillWidth,
+        trackHeight - 6,
+        7,
+      )
       .fill({ color: this.primaryColor, alpha: 0.96 });
 
     this.progressGlint.clear();

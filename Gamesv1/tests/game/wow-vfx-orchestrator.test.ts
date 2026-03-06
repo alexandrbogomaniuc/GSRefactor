@@ -5,7 +5,10 @@ import {
   createAnimationPolicy,
 } from "../../packages/core-compliance/src/animation/AnimationPolicy.ts";
 import { DefaultResolvedRuntimeConfig } from "../../packages/core-compliance/src/ResolvedRuntimeConfig.ts";
-import { WowVfxOrchestrator, type PresentationWinTier } from "@gamesv1/ui-kit";
+import {
+  WowVfxOrchestrator,
+  type PresentationWinTier,
+} from "@gamesv1/ui-kit/shell";
 
 let passed = 0;
 let failed = 0;

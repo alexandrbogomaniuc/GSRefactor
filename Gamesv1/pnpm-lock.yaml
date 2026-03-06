@@ -12,6 +12,9 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
+      '@gamesv1/ui-kit':
+        specifier: workspace:*
+        version: link:packages/ui-kit
       '@types/node':
         specifier: ^25.3.2
         version: 25.3.2
@@ -136,6 +139,12 @@ importers:
 
   packages/ui-kit:
     dependencies:
+      '@gamesv1/core-compliance':
+        specifier: workspace:*
+        version: link:../core-compliance
+      '@gamesv1/core-protocol':
+        specifier: workspace:*
+        version: link:../core-protocol
       '@gamesv1/pixi-engine':
         specifier: workspace:*
         version: link:../pixi-engine
@@ -151,6 +160,9 @@ importers:
       pixi.js:
         specifier: ^8.8.1
         version: 8.16.0
+      zod:
+        specifier: ^4.3.6
+        version: 4.3.6
 
   tools/config-gen:
     devDependencies:

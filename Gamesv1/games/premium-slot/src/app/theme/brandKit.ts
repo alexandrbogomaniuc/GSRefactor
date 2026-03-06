@@ -1,7 +1,7 @@
 import {
   resolveShellThemeTokens,
   type ShellThemeTokens,
-} from "@gamesv1/ui-kit";
+} from "@gamesv1/ui-kit/shell";
 
 import { AppAssetKeys } from "../assets/assetKeys.ts";
 

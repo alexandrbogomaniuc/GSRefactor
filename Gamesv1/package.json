@@ -23,6 +23,7 @@
     "release:pack": "node --experimental-strip-types tools/release-pack/create-release.ts"
   },
   "devDependencies": {
+    "@gamesv1/ui-kit": "workspace:*",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "@types/node": "^25.3.2",

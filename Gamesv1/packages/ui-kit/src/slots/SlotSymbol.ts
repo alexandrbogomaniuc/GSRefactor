@@ -1,5 +1,5 @@
 import { Container, Sprite, Texture, Text } from "pixi.js";
-import { GameConfig } from "../config/GameConfig";
+import { GameConfig } from "../config/GameConfig.ts";
 
 export class SlotSymbol extends Container {
   private sprite: Sprite;
@@ -25,7 +25,7 @@ export class SlotSymbol extends Container {
         fontSize: 36,
         fill: 0xffffff,
         fontWeight: "bold",
-        stroke: { color: 0x000000, width: 2 }
+        stroke: { color: 0x000000, width: 2 },
       },
     });
     this.symbolText.anchor.set(0.5);
@@ -55,4 +55,3 @@ export class SlotSymbol extends Container {
     return GameConfig.symbolHeight;
   }
 }
-
