@@ -74,6 +74,11 @@ Canonical and archived documentation index.
 - Release execution: `docs/RELEASE_PROCESS.md`
 - Agent protocol constraints: `.agent/rules/01_rules_protocol.md`
 
+## Examples / Proof Seeds
+
+- `docs/examples/release-pack/premium-slot/README.md`
+- `docs/examples/release-pack/premium-slot/brand-betonline-token-seed.example.json`
+
 ## Contradiction Prevention Rule
 
 When behavior changes:

@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "themeId": "premium-default",
+    "skinId": "betonline-placeholder"
+  },
+  "brand": {
+    "displayName": "BetOnline",
+    "logoAssetKey": "REPLACE_WITH_APPROVED_LOGO_ASSET_KEY",
+    "primaryColor": "#123456",
+    "accentColor": "#ABCDEF"
+  },
+  "preloader": {
+    "style": "wow",
+    "heroFx": "energyRing",
+    "vfxIntensity": 0.82
+  }
+}
