@@ -1,0 +1,11 @@
+{
+    "TITLE": "Tabla de Pagos",
+    "SYMBOL_PREFIX": "Símbolo",
+    "WILD": "Comodín",
+    "WILD_DESC": "Sustituye a todos los símbolos excepto Scatter.",
+    "SCATTER": "Dispersión",
+    "SCATTER_DESC": "3 o más activan Giros Gratis.",
+    "PAYLINE_LABEL": "Línea de pago {{number}}",
+    "PAYS_LEFT_TO_RIGHT": "Todas las ganancias se pagan de izquierda a derecha.",
+    "HIGHEST_WIN_ONLY": "Solo se paga la ganancia más alta por línea."
+}

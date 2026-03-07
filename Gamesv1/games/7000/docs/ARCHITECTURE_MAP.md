@@ -1,0 +1,111 @@
+﻿# Premium Slot Architecture Map
+
+This is the gold-standard reference architecture for future Gamesv1 slot games.
+
+## Runtime flow
+
+1. `GsRuntimeClient.bootstrap()` hydrates session/wallet/config from GS.
+2. `ConfigManager` resolves runtime config with GS payload as highest practical runtime source.
+3. `MainScreen` builds spin/buy actions via shared shell action builders and maps GS `presentationPayload` through one canonical mapper.
+4. Visual rendering uses mapped reel data/counters/overlays/cues only.
+
+## Core components
+
+- Transport client:
+  - `src/app/runtime/GsRuntimeClient.ts`
+- Presentation mapping:
+  - `src/app/runtime/RuntimeOutcomeMapper.ts`
+- Runtime stores:
+  - `src/app/stores/SessionRuntimeStore.ts`
+  - `src/app/stores/ResolvedRuntimeConfigStore.ts`
+  - `src/app/stores/PresentationStateStore.ts`
+- Main composition:
+  - `src/app/screens/main/MainScreen.ts`
+- Shared round/action helpers:
+  - `packages/ui-kit/src/shell/actions/BetSelectionBuilder.ts`
+  - `packages/ui-kit/src/shell/actions/RoundActionBuilder.ts`
+
+## Shared template HUD
+
+- `@gamesv1/ui-kit` reusable HUD:
+  - `packages/ui-kit/src/hud/PremiumTemplateHud.ts`
+  - `packages/ui-kit/src/shell/hud/PremiumHudPolicy.ts`
+
+Controls:
+- spin
+- turbo
+- autoplay
+- buy feature
+- sound
+- settings
+- history
+
+HUD visibility and layout are driven by resolved runtime config and feature module outputs.
+HUD styling/skin behavior is driven by shell theme tokens:
+- `packages/ui-kit/src/shell/theme/ShellThemeTokens.ts`
+
+## Feature module pipeline
+
+- Module manager:
+  - `packages/ui-kit/src/shell/features/FeatureModuleManager.ts`
+- Modules:
+  - `packages/ui-kit/src/shell/features/FreeSpinsFeatureModule.ts`
+  - `packages/ui-kit/src/shell/features/RespinFeatureModule.ts`
+  - `packages/ui-kit/src/shell/features/HoldAndWinFeatureModule.ts`
+  - `packages/ui-kit/src/shell/features/BuyFeatureModule.ts`
+  - `packages/ui-kit/src/shell/features/JackpotHooksFeatureModule.ts`
+
+Enablement source:
+- resolved runtime config capabilities
+- server feature state from mapped `presentationPayload`
+
+## Presentation mapper
+
+- Canonical mapper:
+  - `packages/ui-kit/src/shell/presentation/PremiumPresentationMapper.ts`
+- premium-slot compatibility export:
+  - `src/app/runtime/RuntimeOutcomeMapper.ts`
+
+## WOW / VFX orchestration
+
+- Canonical tiers:
+  - `packages/ui-kit/src/shell/vfx/WinPresentationTiers.ts`
+- Canonical orchestrator:
+  - `packages/ui-kit/src/shell/vfx/WowVfxOrchestrator.ts`
+- Audio cue dispatch:
+  - `packages/ui-kit/src/shell/vfx/AudioCueRegistry.ts`
+- Win-target resolution helper:
+  - `packages/ui-kit/src/shell/presentation/WinTargetResolver.ts`
+- Premium implementation adapters:
+  - `src/game/fx/WinHighlight.ts`
+  - `src/game/fx/ParticleBurst.ts`
+  - `src/game/ui/WinCounter.ts`
+
+VFX timing and low-performance behavior are driven by `AnimationPolicyEngine` and runtime config.
+Theme token hooks can override tier labels/styles and VFX intensity without changing GS runtime contracts.
+
+## Asset and localization handoff paths
+
+- Asset source folders:
+  - `raw-assets/preload/`
+  - `raw-assets/main/`
+  - `raw-assets/promo/`
+- Runtime manifest:
+  - `src/manifest.json`
+- Per-game asset manifest sample:
+  - `docs/asset-manifest.sample.json`
+- Localization folders:
+  - `locales/<lang>/common.json`
+  - `locales/<lang>/paytable.json`
+  - `locales/<lang>/rules.json`
+- Math package reference:
+  - `math/math-package-manifest.json`
+
+## Release-pack quality gate
+
+`tools/release-pack/create-release.ts` generates deterministic release artifacts including:
+- bundle/asset/localization manifests
+- math manifest reference
+- registration artifact
+- checksums
+- canary/smoke/rollback packs

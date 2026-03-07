@@ -43,6 +43,67 @@ importers:
         specifier: ^8.19.0
         version: 8.19.0
 
+  games/7000:
+    dependencies:
+      '@esotericsoftware/spine-pixi-v8':
+        specifier: ^4.2.74
+        version: 4.2.106(pixi.js@8.16.0)
+      '@gamesv1/core-compliance':
+        specifier: workspace:*
+        version: link:../../packages/core-compliance
+      '@gamesv1/core-protocol':
+        specifier: workspace:*
+        version: link:../../packages/core-protocol
+      '@gamesv1/i18n':
+        specifier: workspace:*
+        version: link:../../packages/i18n
+      '@gamesv1/pixi-engine':
+        specifier: workspace:*
+        version: link:../../packages/pixi-engine
+      '@gamesv1/ui-kit':
+        specifier: workspace:*
+        version: link:../../packages/ui-kit
+      '@pixi/sound':
+        specifier: ^6.0.1
+        version: 6.0.1(pixi.js@8.16.0)
+      '@pixi/ui':
+        specifier: ^2.3.2
+        version: 2.3.2(pixi.js@8.16.0)
+      motion:
+        specifier: ^12.4.7
+        version: 12.34.3
+      pixi.js:
+        specifier: ^8.8.1
+        version: 8.16.0
+    devDependencies:
+      '@assetpack/core':
+        specifier: ^1.4.0
+        version: 1.7.0
+      '@eslint/js':
+        specifier: ^9.21.0
+        version: 9.39.3
+      eslint:
+        specifier: ^9.21.0
+        version: 9.39.3
+      eslint-config-prettier:
+        specifier: ^10.1.2
+        version: 10.1.8(eslint@9.39.3)
+      eslint-plugin-prettier:
+        specifier: ^5.2.6
+        version: 5.5.5(eslint-config-prettier@10.1.8(eslint@9.39.3))(eslint@9.39.3)(prettier@3.8.1)
+      prettier:
+        specifier: ^3.5.3
+        version: 3.8.1
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+      typescript-eslint:
+        specifier: ^8.25.0
+        version: 8.56.1(eslint@9.39.3)(typescript@5.9.3)
+      vite:
+        specifier: ^6.2.0
+        version: 6.4.1(@types/node@25.3.2)(tsx@4.21.0)
+
   games/premium-slot:
     dependencies:
       '@esotericsoftware/spine-pixi-v8':

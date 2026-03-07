@@ -1,0 +1,196 @@
+{
+  "manifestVersion": "1.0.0",
+  "gameId": "premium-slot",
+  "gameName": "Premium Slot",
+  "themeId": "luxury_gold",
+  "updatedAt": "2026-02-27T00:00:00Z",
+  "owner": "art-team-placeholder",
+  "deliverables": {
+    "icons": [
+      {
+        "id": "icon_512",
+        "status": "todo",
+        "sourcePath": "raw-assets/promo/icons/icon_512.png",
+        "runtimePath": "assets/promo/icons/icon_512.png",
+        "format": "png",
+        "width": 512,
+        "height": 512,
+        "fps": 0,
+        "codec": "none",
+        "compression": "lossless",
+        "bundle": "promo",
+        "notes": "store icon"
+      },
+      {
+        "id": "icon_1024",
+        "status": "todo",
+        "sourcePath": "raw-assets/promo/icons/icon_1024.png",
+        "runtimePath": "assets/promo/icons/icon_1024.png",
+        "format": "png",
+        "width": 1024,
+        "height": 1024,
+        "fps": 0,
+        "codec": "none",
+        "compression": "lossless",
+        "bundle": "promo",
+        "notes": "high-res store icon"
+      }
+    ],
+    "banners": [
+      {
+        "id": "banner_landscape_1920x1080",
+        "status": "todo",
+        "sourcePath": "raw-assets/promo/banners/banner_landscape_1920x1080.jpg",
+        "runtimePath": "assets/promo/banners/banner_landscape_1920x1080.jpg",
+        "format": "jpg",
+        "width": 1920,
+        "height": 1080,
+        "fps": 0,
+        "codec": "none",
+        "compression": "jpg-q85",
+        "bundle": "promo",
+        "notes": "marketing banner"
+      },
+      {
+        "id": "banner_portrait_1080x1920",
+        "status": "todo",
+        "sourcePath": "raw-assets/promo/banners/banner_portrait_1080x1920.jpg",
+        "runtimePath": "assets/promo/banners/banner_portrait_1080x1920.jpg",
+        "format": "jpg",
+        "width": 1080,
+        "height": 1920,
+        "fps": 0,
+        "codec": "none",
+        "compression": "jpg-q85",
+        "bundle": "promo",
+        "notes": "portrait ad"
+      }
+    ],
+    "promoVideos": [
+      {
+        "id": "promo_teaser_15s",
+        "status": "todo",
+        "sourcePath": "raw-assets/promo/videos/promo_teaser_15s.mp4",
+        "runtimePath": "assets/promo/videos/promo_teaser_15s.mp4",
+        "format": "mp4",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "codec": "h264",
+        "compression": "8mbps",
+        "bundle": "promo",
+        "notes": "teaser cut"
+      }
+    ],
+    "preloaders": [
+      {
+        "id": "preloader_static_1024",
+        "status": "todo",
+        "sourcePath": "raw-assets/preload/preloader_static_1024x1024.png",
+        "runtimePath": "assets/preload/preloader_static_1024x1024.png",
+        "format": "png",
+        "width": 1024,
+        "height": 1024,
+        "fps": 0,
+        "codec": "none",
+        "compression": "lossless",
+        "bundle": "preload",
+        "notes": "startup card"
+      }
+    ],
+    "bigWinVideos": [
+      {
+        "id": "big_win",
+        "status": "todo",
+        "sourcePath": "raw-assets/main/win-videos/big_win.mp4",
+        "runtimePath": "assets/main/win-videos/big_win.mp4",
+        "format": "mp4",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "codec": "h264",
+        "compression": "8mbps",
+        "bundle": "main",
+        "notes": "big tier"
+      },
+      {
+        "id": "huge_win",
+        "status": "todo",
+        "sourcePath": "raw-assets/main/win-videos/huge_win.mp4",
+        "runtimePath": "assets/main/win-videos/huge_win.mp4",
+        "format": "mp4",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "codec": "h264",
+        "compression": "8mbps",
+        "bundle": "main",
+        "notes": "huge tier"
+      },
+      {
+        "id": "mega_win",
+        "status": "todo",
+        "sourcePath": "raw-assets/main/win-videos/mega_win.mp4",
+        "runtimePath": "assets/main/win-videos/mega_win.mp4",
+        "format": "mp4",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "codec": "h264",
+        "compression": "10mbps",
+        "bundle": "main",
+        "notes": "mega tier"
+      }
+    ],
+    "symbolAnimations": [
+      {
+        "id": "symbol_wild_spine",
+        "symbolId": "wild",
+        "status": "todo",
+        "sourcePath": "raw-assets/main/spine/sym_wild/",
+        "runtimePath": "assets/main/spine/sym_wild/",
+        "format": "spine",
+        "width": 512,
+        "height": 512,
+        "fps": 30,
+        "codec": "none",
+        "compression": "atlas-webp",
+        "bundle": "main",
+        "spineSkeleton": "sym_wild.json",
+        "spineAtlas": "sym_wild.atlas",
+        "staticFirstFrame": "raw-assets/main/symbols/symbol_wild_static.png",
+        "hasSpritesheetFallback": true,
+        "notes": "frame0 must match static symbol"
+      }
+    ],
+    "uiKit": [
+      {
+        "id": "hud_icons_set",
+        "status": "todo",
+        "sourcePath": "raw-assets/main/ui-kit/hud_icons/",
+        "runtimePath": "assets/main/ui-kit/hud_icons/",
+        "format": "png",
+        "width": 1024,
+        "height": 1024,
+        "fps": 0,
+        "codec": "none",
+        "compression": "atlas-webp",
+        "bundle": "main",
+        "notes": "spin/turbo/autoplay/buybonus/settings/pause"
+      }
+    ]
+  },
+  "qualityBudgets": {
+    "maxAtlasSizeMobile": 2048,
+    "maxAtlasSizeDesktop": 4096,
+    "maxStartupTextureMBMobile": 64,
+    "maxStartupTextureMBDesktop": 128,
+    "maxInitialGpuUploadMB": 40,
+    "maxEventGpuUploadMB": 8
+  },
+  "bundleMap": {
+    "preload": ["preloaders"],
+    "main": ["symbolAnimations", "bigWinVideos", "uiKit"],
+    "promo": ["icons", "banners", "promoVideos"]
+  }
+}

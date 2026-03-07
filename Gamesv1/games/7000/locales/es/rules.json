@@ -1,0 +1,11 @@
+{
+    "TITLE": "Reglas del Juego",
+    "RTP_LABEL": "Retorno al Jugador (RTP)",
+    "RTP_VALUE": "{{rtp}}%",
+    "VOLATILITY_LABEL": "Volatilidad",
+    "MAX_WIN_LABEL": "Ganancia Máxima",
+    "MAX_WIN_VALUE": "{{multiplier}}× su apuesta",
+    "MALFUNCTION_VOIDS": "Un fallo anula todos los pagos y jugadas.",
+    "MIN_BET_LABEL": "Apuesta Mínima",
+    "MAX_BET_LABEL": "Apuesta Máxima"
+}

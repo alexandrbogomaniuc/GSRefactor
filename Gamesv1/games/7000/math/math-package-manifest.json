@@ -1,0 +1,8 @@
+{
+  "id": "7000-math-default",
+  "modelVersion": "0.1.0-stub",
+  "rtp": 96.02,
+  "volatility": "high",
+  "certified": false,
+  "source": "replace-with-certified-crazy-rooster-math-package-before-production"
+}

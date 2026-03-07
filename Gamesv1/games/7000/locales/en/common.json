@@ -1,0 +1,20 @@
+{
+    "GAME_TITLE": "Template Slot",
+    "SPIN": "SPIN",
+    "STOP": "STOP",
+    "AUTOPLAY": "Auto Play",
+    "AUTOPLAY_START": "Start Autoplay",
+    "AUTOPLAY_STOP": "Stop Autoplay",
+    "SETTINGS": "Settings",
+    "SOUND_ON": "Sound On",
+    "SOUND_OFF": "Sound Off",
+    "TURBO_ON": "Turbo On",
+    "TURBO_OFF": "Turbo Off",
+    "BET": "Bet",
+    "BALANCE": "Balance",
+    "WIN": "Win",
+    "TOTAL_BET": "Total Bet",
+    "LOADING": "Loading...",
+    "ERROR_GENERIC": "Something went wrong. Please refresh.",
+    "BRAND_WELCOME": "Welcome to {{BRAND_NAME}}"
+}
