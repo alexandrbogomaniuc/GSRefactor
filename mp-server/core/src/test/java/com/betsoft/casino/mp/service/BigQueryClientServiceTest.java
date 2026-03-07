@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.model.room.IRoom;
 import com.betsoft.casino.mp.transport.Avatar;
 import com.betsoft.casino.mp.transport.Currency;
 import com.betsoft.casino.mp.utils.ObjectFileWriterUtil;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 import com.google.cloud.bigquery.*;
 import com.google.cloud.http.HttpTransportOptions;
 import org.junit.Before;

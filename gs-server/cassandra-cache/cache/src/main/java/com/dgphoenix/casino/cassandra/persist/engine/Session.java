@@ -141,7 +141,7 @@ public class Session implements com.datastax.driver.core.Session {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("com.datastax.driver.core.Session");
+        sb.append("Session");
         sb.append("[keySpace='").append(keySpace).append('\'');
         sb.append(", session=").append(session);
         sb.append(']');

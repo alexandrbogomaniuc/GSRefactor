@@ -12,6 +12,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraPromoWinPersister extends AbstractCassandraPersister<Long, Long> {
     private static final Logger LOG = LogManager.getLogger(CassandraPromoWinPersister.class);
     private static final String TABLE_NAME = "promoWinCF";
@@ -27,15 +30,15 @@ public class CassandraPromoWinPersister extends AbstractCassandraPersister<Long,
 
     private static final TableDefinition TABLE = new TableDefinition(TABLE_NAME,
             Arrays.asList(
-                    new ColumnDefinition(PROMO_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(TIME_WIN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(GAME_SESSION_ID, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(GAME_ID, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(AMOUNT, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(AMOUNT_IN_PLAYER_CURRENCY, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(TRANSFER_STATUS, com.datastax.driver.core.DataType.text(), false, false, false)
+                    new ColumnDefinition(PROMO_ID, bigint(), false, false, true),
+                    new ColumnDefinition(TIME_WIN, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID, bigint(), false, false, false),
+                    new ColumnDefinition(GAME_SESSION_ID, bigint(), false, false, false),
+                    new ColumnDefinition(BANK_ID, bigint(), false, false, false),
+                    new ColumnDefinition(GAME_ID, bigint(), false, false, false),
+                    new ColumnDefinition(AMOUNT, bigint(), false, false, false),
+                    new ColumnDefinition(AMOUNT_IN_PLAYER_CURRENCY, bigint(), false, false, false),
+                    new ColumnDefinition(TRANSFER_STATUS, text(), false, false, false)
             ), PROMO_ID
     );
 

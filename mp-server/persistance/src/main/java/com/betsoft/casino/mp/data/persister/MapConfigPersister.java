@@ -12,6 +12,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class MapConfigPersister extends AbstractCassandraPersister<String, String> implements IMapConfigService {
     private static final Logger LOG = LogManager.getLogger(MapConfigPersister.class);
 
@@ -20,9 +24,9 @@ public class MapConfigPersister extends AbstractCassandraPersister<String, Strin
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(MAP_ID_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(MAP_ID_COLUMN, cint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), MAP_ID_COLUMN);
 
     @Override

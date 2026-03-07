@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -11,6 +13,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<String, String> {
 
@@ -24,9 +29,9 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TOKEN_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ROUND_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(EXP_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(TOKEN_FIELD, text(), false, false, true),
+                    new ColumnDefinition(ROUND_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(EXP_TIME, bigint(), false, false, false)
             ), TOKEN_FIELD);
 
     @Override
@@ -47,7 +52,7 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
         long startTime = System.currentTimeMillis();
         BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(bankId);
         int ttl = (ttlSeconds != null) ? (int) TimeUnit.SECONDS.toMillis(ttlSeconds) : bankInfo.getHistoryTokenTTL();
-        com.datastax.driver.core.Statement insert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(TABLE.getTableName())
+        com.datastax.driver.core.Statement insert = Cql.insertInto(TABLE.getTableName())
                 .value(TOKEN_FIELD, token)
                 .value(ROUND_ID_FIELD, roundId)
                 .value(EXP_TIME, ((ttl != 0) ? ttl + startTime : Long.MAX_VALUE));

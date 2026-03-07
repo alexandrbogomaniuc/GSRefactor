@@ -45,7 +45,7 @@ public class RESTServiceClient implements ILoggableCWClient {
 
     protected Map<String, String> getSpecialRequestHeadersMap(BankInfo bankInfo) {
         String specialRequestHeaders = bankInfo.getCWSpecialRequestHeaders();
-        if (!com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders)) {
+        if (!com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders)) {
             try {
                 specialRequestHeadersMap = CollectionUtils.stringToMap(specialRequestHeaders);
             } catch (Exception e) {
@@ -201,7 +201,7 @@ public class RESTServiceClient implements ILoggableCWClient {
 
             if (LOG.isDebugEnabled()) {
                 LOG.debug("request, response from url:" + url + " bankId:" + bankInfo.getId() + " is:" + sb +
-                        (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(
+                        (com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty(
                                 bankInfo.getCWSpecialRequestHeaders()) ?
                                 "" : " specialRequestHeaders:" + bankInfo.getCWSpecialRequestHeaders()));
 

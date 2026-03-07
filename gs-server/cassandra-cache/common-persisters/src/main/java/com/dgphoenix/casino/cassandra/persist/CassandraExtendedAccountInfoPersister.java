@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.ExtendedAccountInfoPersister;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
@@ -9,6 +11,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.Map;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.map;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 /**
  * Created by mic on 12.01.15.
@@ -24,9 +30,9 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(EXTERNAL_ID, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(PROPERTIES, com.datastax.driver.core.DataType.map(com.datastax.driver.core.DataType.text(), com.datastax.driver.core.DataType.text()))
+                    new ColumnDefinition(BANK_ID, bigint(), false, false, true),
+                    new ColumnDefinition(EXTERNAL_ID, text(), false, false, true),
+                    new ColumnDefinition(PROPERTIES, map(text(), text()))
             ),
             BANK_ID, EXTERNAL_ID);
 
@@ -69,7 +75,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
         com.datastax.driver.core.Statement update = getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
-                .with(com.datastax.driver.core.querybuilder.QueryBuilder.putAll(PROPERTIES, properties));
+                .with(Cql.putAll(PROPERTIES, properties));
         execute(update, "persist");
     }
 
@@ -78,7 +84,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
         com.datastax.driver.core.Statement update = getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
-                .with(com.datastax.driver.core.querybuilder.QueryBuilder.put(PROPERTIES, propertyName, value));
+                .with(Cql.put(PROPERTIES, propertyName, value));
         execute(update, "persist");
     }
 

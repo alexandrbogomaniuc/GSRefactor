@@ -13,6 +13,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 24.06.2021.
@@ -25,10 +29,10 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
 
     private static final TableDefinition BG_CONFIG_TABLE = new TableDefinition(BG_CONFIG_CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob(), false, false, false),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text(), false, false, false)
+                    new ColumnDefinition(BANK_ID, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob(), false, false, false),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text(), false, false, false)
             ), BANK_ID)
             .compaction(CompactionStrategy.LEVELED);
 

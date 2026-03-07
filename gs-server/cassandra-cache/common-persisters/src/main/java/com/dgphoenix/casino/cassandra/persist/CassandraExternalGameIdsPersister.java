@@ -18,6 +18,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * Created by grien on 18.02.15.
  */
@@ -29,9 +33,9 @@ public class CassandraExternalGameIdsPersister extends AbstractStringDistributed
     private static final TableDefinition TABLE = new TableDefinition(
             CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ID, com.datastax.driver.core.DataType.bigint())
+                    new ColumnDefinition(BANK_ID, cint(), false, false, true),
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(ID, bigint())
             ),
             BANK_ID
     );

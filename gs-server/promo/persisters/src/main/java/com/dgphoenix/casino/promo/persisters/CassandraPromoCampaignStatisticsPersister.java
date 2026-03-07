@@ -9,6 +9,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+
 /**
  * User: flsh
  * Date: 21.09.2019.
@@ -23,10 +27,10 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GS_ID, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(ROUNDS_COUNT, com.datastax.driver.core.DataType.cint(), false, false, false),
-                    new ColumnDefinition(BET_SUM, com.datastax.driver.core.DataType.cdouble(), false, false, false)
+                    new ColumnDefinition(CAMPAIGN_ID, bigint(), false, false, true),
+                    new ColumnDefinition(GS_ID, cint(), false, false, true),
+                    new ColumnDefinition(ROUNDS_COUNT, cint(), false, false, false),
+                    new ColumnDefinition(BET_SUM, cdouble(), false, false, false)
             ), CAMPAIGN_ID);
 
     public synchronized void increment(long campaignId, int gsId, int roundsCountDelta, double betSumDelta) {

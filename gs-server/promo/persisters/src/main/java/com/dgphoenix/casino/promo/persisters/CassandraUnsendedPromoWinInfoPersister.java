@@ -14,6 +14,10 @@ import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 27.10.2021.
@@ -27,11 +31,11 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
 
     private static final TableDefinition TABLE = new TableDefinition(TABLE_NAME,
             Arrays.asList(
-                    new ColumnDefinition(GAME_SESSION_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(WIN_DATE, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(GAME_SESSION_ID, bigint(), false, false, true),
+                    new ColumnDefinition(WIN_DATE, bigint(), false, false, true),
+                    new ColumnDefinition(ROUND_ID, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), GAME_SESSION_ID)
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toMillis(1))

@@ -7,11 +7,19 @@ import com.betsoft.casino.mp.service.IPlayerQuestsService;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
+import com.datastax.driver.core.querybuilder.QueryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.ByteBuffer;
 import java.util.*;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, String> implements IPlayerQuestsService<PlayerQuests> {
     private static final Logger LOG = LogManager.getLogger(PlayerQuestsPersister.class);
@@ -30,25 +38,25 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MODE_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAKE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(BANK_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(MODE_COLUMN, cint(), false, false, true),
+                    new ColumnDefinition(STAKE_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), BANK_ID_COLUMN, ACCOUNT_ID_COLUMN, GAME_ID_COLUMN, MODE_COLUMN);
 
     private static final TableDefinition SPECIAL_MODE_TABLE = new TableDefinition(SPECIAL_MODE_CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(SM_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MODE_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAKE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(SM_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(BANK_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(MODE_COLUMN, cint(), false, false, true),
+                    new ColumnDefinition(STAKE_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), SM_ID_COLUMN, BANK_ID_COLUMN, ACCOUNT_ID_COLUMN, GAME_ID_COLUMN, MODE_COLUMN);
 
     @Override
@@ -73,7 +81,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
 
     @Override
     public PlayerQuests load(long bankId, long gameId, long accountId, Money stake, int mode) {
-        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+        Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
                         .where()
                         .and(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
@@ -104,7 +112,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
                                               Money stake, int mode) {
         LOG.debug("loadSpecialModeQuests: specialId={}, bankId={}, accountId={}, gameId={}, stake(cents)={}, mode={} ",
                 tournamentOrBonusId, bankId, accountId, gameId, stake.toFloatCents(), mode);
-        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+        Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
                         .where()
                         .and(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(BANK_ID_COLUMN, bankId))
@@ -136,14 +144,14 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
     public Set<IQuest> getAllQuests(long bankId, long accountId, int mode, long gameId) {
         LOG.debug("getAllQuests: bankId: {}, accountId: {}, mode: {}, gameId: {}", bankId, accountId, mode, gameId);
         Set<IQuest> quests = new HashSet<>();
-        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+        ResultSet result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAME_ID_COLUMN, gameId))
                         .and(eq(MODE_COLUMN, mode)),
                 "getAllQuests");
         if (result != null) {
-            for (com.datastax.driver.core.Row row : result) {
+            for (Row row : result) {
                 PlayerQuests playerQuests = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME),
                         PlayerQuests.class);
                 if (playerQuests == null) {
@@ -163,7 +171,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
         LOG.debug("getAllSpecialModeQuests: tournamentOrBonusId={}, bankId={}, accountId={}, gameId={}, mode={}",
                 tournamentOrBonusId, bankId, accountId, gameId, mode);
         Set<IQuest> quests = new HashSet<>();
-        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+        ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
@@ -171,7 +179,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
                         .and(eq(MODE_COLUMN, mode)),
                 "getAllSpecialModeQuests");
         if (result != null) {
-            for (com.datastax.driver.core.Row row : result) {
+            for (Row row : result) {
                 PlayerQuests tournamentQuests = SPECIAL_MODE_TABLE
                         .deserializeFromJson(row.getString(JSON_COLUMN_NAME),
                         PlayerQuests.class);
@@ -246,7 +254,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
         ByteBuffer buffer = SPECIAL_MODE_TABLE.serializeToBytes(quests);
         String json = SPECIAL_MODE_TABLE.serializeToJson(quests);
         try {
-            execute(com.datastax.driver.core.querybuilder.QueryBuilder.update(SPECIAL_MODE_CF_NAME)
+            execute(QueryBuilder.update(SPECIAL_MODE_CF_NAME)
                             .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                             .and(eq(BANK_ID_COLUMN, bankId))
                             .and(eq(ACCOUNT_ID_COLUMN, accountId))
@@ -263,12 +271,12 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
 
     @Override
     public void removeAllQuests(long gameId) {
-        execute(com.datastax.driver.core.querybuilder.QueryBuilder.truncate(CF_NAME), "removeAllQuests");
+        execute(QueryBuilder.truncate(CF_NAME), "removeAllQuests");
         getLog().debug("remove all quests");
     }
 
     public void removeSpecialModeAllQuests() {
-        execute(com.datastax.driver.core.querybuilder.QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllQuests");
+        execute(QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllQuests");
         getLog().debug("removeSpecialModeAllQuests");
     }
 

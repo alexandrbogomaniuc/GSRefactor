@@ -4,6 +4,7 @@ import com.abs.casino.cassandra.persist.ICassandraBaseGameInfoPersister;
 import com.abs.casino.cassandra.IEntityUpdateListener;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.abs.casino.common.cache.AbstractDistributedCache;
 import com.abs.casino.common.cache.BankInfoCache;
 import com.abs.casino.common.cache.BaseGameCache;
@@ -44,11 +45,11 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     private static final TableDefinition TABLE = new TableDefinition(
             BASE_GAME_INFO_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(BANK_IDX, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(BANK_AND_CUR_IDX, com.datastax.driver.core.DataType.text(), false, true, false)
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text()),
+                    new ColumnDefinition(BANK_IDX, text(), false, true, false),
+                    new ColumnDefinition(BANK_AND_CUR_IDX, text(), false, true, false)
             ),
             KEY
     );

@@ -16,6 +16,10 @@ import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 17.11.16.
@@ -31,18 +35,18 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
     private static final String CAMPAIGN_MEMBER_DATA = "memData";
     private static final TableDefinition CAMPAIGN_MEMBER_TABLE = new TableDefinition(PROMO_CAMPAIGN_MEMBER_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(CAMPAIGN_MEMBER_DATA, com.datastax.driver.core.DataType.blob(), false, false, false),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text(), false, false, false)
+                    new ColumnDefinition(CAMPAIGN_ID, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID, bigint(), false, false, true),
+                    new ColumnDefinition(CAMPAIGN_MEMBER_DATA, blob(), false, false, false),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text(), false, false, false)
             ), CAMPAIGN_ID)
             .compaction(CompactionStrategy.LEVELED);
     private static final TableDefinition PROMO_MEMBER_ALIASES_TABLE = new TableDefinition(PROMO_MEMBER_ALIASES_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ALIAS_NAME, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(CAMPAIGN_ID, bigint(), false, false, true),
+                    new ColumnDefinition(BANK_ID, bigint(), false, false, true),
+                    new ColumnDefinition(ALIAS_NAME, text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID, bigint(), false, false, false)
             ), CAMPAIGN_ID)
             .compaction(CompactionStrategy.LEVELED);
 

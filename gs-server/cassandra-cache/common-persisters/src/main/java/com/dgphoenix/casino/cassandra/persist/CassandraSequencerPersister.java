@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -21,6 +23,9 @@ import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 4/10/12
@@ -33,8 +38,8 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
     private static final TableDefinition TABLE = new TableDefinition(SEQUENCER_CF,
             Arrays.asList(
                     //key is sequencer name
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(VALUE_COLUMN_NAME, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(VALUE_COLUMN_NAME, bigint(), false, false, false)
             ),
             Collections.singletonList(KEY));
 
@@ -74,7 +79,7 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
     }
 
     public Long getCurrentValue(String sequencerName) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(VALUE_COLUMN_NAME).
+        com.datastax.driver.core.Statement query = Cql.select(VALUE_COLUMN_NAME).
                 from(getMainColumnFamilyName()).where(eq("KEY", sequencerName)).limit(1);
         com.datastax.driver.core.ResultSet rows = execute(query, "getCurrentValue");
         com.datastax.driver.core.Row row = rows.one();
@@ -94,7 +99,7 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
                 //reserve block
                 com.datastax.driver.core.Statement updateQuery = getUpdateQuery()
                         .where(getSimpleKeyClause(name))
-                        .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(VALUE_COLUMN_NAME, baseValue + block))
+                        .with(Cql.set(VALUE_COLUMN_NAME, baseValue + block))
                         .onlyIf(eq(VALUE_COLUMN_NAME, currentValue));
                 com.datastax.driver.core.ResultSet resultSet = executeWithCheckTimeout(updateQuery, "allocateNextBlock");
                 success = resultSet.wasApplied();
@@ -147,7 +152,7 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
             int attemptsCount = 0;
             while (!success) {
                 com.datastax.driver.core.Statement query = getUpdateQuery(seq.getName())
-                        .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(VALUE_COLUMN_NAME, newDesiredValue))
+                        .with(Cql.set(VALUE_COLUMN_NAME, newDesiredValue))
                         .onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue));
                 com.datastax.driver.core.ResultSet resultSet = executeWithCheckTimeout(query, "persist[update]");
 

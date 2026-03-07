@@ -12,6 +12,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.varchar;
+
 public class CassandraPlayerAliasPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraPlayerAliasPersister.class);
 
@@ -22,9 +25,9 @@ public class CassandraPlayerAliasPersister extends AbstractCassandraPersister<Lo
     private static final String ALIAS_POSTFIX = "ap";
     private static final TableDefinition PLAYER_ALIAS_TABLE = new TableDefinition(PLAYER_ALIAS_CF,
             Arrays.asList(
-                    new ColumnDefinition(NETWORK_TOURNAMENT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(PLAYER_ALIAS, com.datastax.driver.core.DataType.varchar(), false, false, true),
-                    new ColumnDefinition(ALIAS_POSTFIX, com.datastax.driver.core.DataType.bigint(), false, false, true)
+                    new ColumnDefinition(NETWORK_TOURNAMENT_ID, bigint(), false, false, true),
+                    new ColumnDefinition(PLAYER_ALIAS, varchar(), false, false, true),
+                    new ColumnDefinition(ALIAS_POSTFIX, bigint(), false, false, true)
             ), NETWORK_TOURNAMENT_ID)
             .compaction(CompactionStrategy.LEVELED);
 

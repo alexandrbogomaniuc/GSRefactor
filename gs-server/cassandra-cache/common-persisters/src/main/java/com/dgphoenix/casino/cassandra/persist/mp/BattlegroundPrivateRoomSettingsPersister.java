@@ -9,6 +9,9 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class BattlegroundPrivateRoomSettingsPersister extends AbstractCassandraPersister<String, String> {
     private static final Logger LOG = LogManager.getLogger(BattlegroundPrivateRoomSettingsPersister.class);
 
@@ -19,9 +22,9 @@ public class BattlegroundPrivateRoomSettingsPersister extends AbstractCassandraP
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(PRIVATE_ROOM_ID, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(PRIVATE_ROOM_ID, text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), PRIVATE_ROOM_ID);
 
     public void create(String privateRoomId, BattlegroundPrivateRoomSetting battlegroundPrivateRoomSetting) {

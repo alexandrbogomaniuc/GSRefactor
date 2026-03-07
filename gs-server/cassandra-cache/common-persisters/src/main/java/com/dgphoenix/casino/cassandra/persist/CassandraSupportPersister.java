@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static java.util.Collections.*;
 
 public class CassandraSupportPersister extends AbstractCassandraPersister<String, Long> {
@@ -21,9 +23,9 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(TIMESTAMP, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(INFO, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(TIMESTAMP, bigint(), false, false, true),
+                    new ColumnDefinition(INFO, text())
             ),
             KEY);
 

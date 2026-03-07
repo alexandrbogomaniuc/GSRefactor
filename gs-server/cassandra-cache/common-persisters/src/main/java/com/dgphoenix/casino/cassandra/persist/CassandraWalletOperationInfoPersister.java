@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -17,6 +19,9 @@ import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static java.util.Collections.emptyList;
 
 /**
@@ -33,12 +38,12 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
                     //key is walletOperation.id
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(DAY_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(ROUND_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(DAY_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(ROUND_ID_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             Collections.singletonList(KEY));
 
@@ -267,9 +272,9 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
             return;
         }
         com.datastax.driver.core.Statement query =
-                com.datastax.driver.core.querybuilder.QueryBuilder.delete().
+                Cql.delete().
                         from(getMainColumnFamilyName()).
-                        where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, walletOperationIds));
+                        where(Cql.in(KEY, walletOperationIds));
         execute(query, "delete walletOperations");
     }
 

@@ -1,6 +1,7 @@
 package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.Session;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +35,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
 
     private boolean initialized;
     private com.datastax.driver.core.Cluster cluster;
-    private com.datastax.driver.core.Session session;
+    private Session session;
 
     public KeyspaceManagerImpl(KeyspaceConfiguration configuration, PersistersFactory persistersFactory,
                                String schemaUpdateFilename) {
@@ -55,7 +56,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     /**
      * Internal/legacy accessor retained for persister engine compatibility.
      */
-    public com.datastax.driver.core.Session getSession() {
+    public Session getSession() {
         return session;
     }
 
@@ -143,7 +144,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
 
         cluster = configuration.buildCluster(com.datastax.driver.core.Cluster.builder());
         com.datastax.driver.core.KeyspaceMetadata metadata = cluster.getMetadata().getKeyspace(keyspaceName);
-        try (com.datastax.driver.core.Session schemaSession = cluster.connect()) {
+        try (Session schemaSession = wrapSession(cluster.connect(), keyspaceName)) {
             List<ICassandraPersister> persisters = persistersFactory.getAllPersisters();
             if (metadata == null) {
                 checkState(configuration.isCreateSchema(), "Cassandra schema not found and schema creation disabled");
@@ -153,7 +154,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
             }
         }
 
-        session = new com.abs.casino.cassandra.persist.engine.Session(keyspaceName, cluster.connect(keyspaceName));
+        session = wrapSession(cluster.connect(keyspaceName), keyspaceName);
 
         try {
             awaitOnlineHosts(configuration.getMinimumOnlineHosts(), configuration.getLocalDataCenterName());
@@ -166,6 +167,10 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
         persistersFactory.populateSession(session);
         LOG.info("Complete initialize manager for keyspace: {}", keyspaceName);
         initialized = true;
+    }
+
+    private Session wrapSession(com.datastax.driver.core.Session rawSession, String keyspaceName) {
+        return new Session(StringUtils.defaultString(keyspaceName), rawSession);
     }
 
     private void awaitOnlineHosts(long minimumOnlineHosts, String localDataCenter) throws InterruptedException {

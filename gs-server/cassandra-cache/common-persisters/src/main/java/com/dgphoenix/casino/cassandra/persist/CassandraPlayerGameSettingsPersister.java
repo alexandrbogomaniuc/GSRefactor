@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -14,6 +16,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 8/24/12
@@ -26,10 +32,10 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
 
     private static final TableDefinition TABLE = new TableDefinition(PLAYER_GAME_SETTINGS_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             Arrays.asList(ACCOUNT_ID_FIELD, GAME_ID_FIELD));
 
@@ -89,7 +95,7 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
         String json = TABLE.serializeToJson(entry);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(entry);
         try {
-            com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(getMainTableDefinition().getTableName())
+            com.datastax.driver.core.Statement query = Cql.insertInto(getMainTableDefinition().getTableName())
                     .value(ACCOUNT_ID_FIELD, accountId)
                     .value(GAME_ID_FIELD, entry.getGameId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
@@ -101,7 +107,7 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
     }
 
     public void delete(long accountId, int gameId) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.delete()
+        com.datastax.driver.core.Statement query = Cql.delete()
                 .from(getMainColumnFamilyName())
                 .where()
                 .and(eq(ACCOUNT_ID_FIELD, accountId))

@@ -11,6 +11,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * Created by vladislav on 4/20/16.
  */
@@ -23,9 +27,9 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     private static final String TASK_DATA = "data";
     private static final TableDefinition PERIODIC_TASKS_TABLE = new TableDefinition(PERIODIC_TASKS_TABLE_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TASK_KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(LAST_EXECUTION_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(TASK_DATA, com.datastax.driver.core.DataType.blob(), false, false, false)
+                    new ColumnDefinition(TASK_KEY, text(), false, false, true),
+                    new ColumnDefinition(LAST_EXECUTION_TIME, bigint(), false, false, false),
+                    new ColumnDefinition(TASK_DATA, blob(), false, false, false)
             ), TASK_KEY)
             .compaction(CompactionStrategy.LEVELED)
             .caching(Caching.NONE);

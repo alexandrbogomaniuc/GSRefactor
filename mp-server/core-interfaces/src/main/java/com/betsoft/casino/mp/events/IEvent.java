@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.events;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.io.Serializable;
 

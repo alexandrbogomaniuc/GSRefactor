@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.varchar;
+
 public class LeaderboardResultPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(LeaderboardResultPersister.class);
 
@@ -22,11 +25,11 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
 
     private static final TableDefinition RESULTS_TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(LEADERBOARD_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(END_DATE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(START_DATE_COLUMN, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(RESULT_COLUMN, com.datastax.driver.core.DataType.varchar())
+                    new ColumnDefinition(BANK_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(LEADERBOARD_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(END_DATE_COLUMN, bigint(), false, true, false),
+                    new ColumnDefinition(START_DATE_COLUMN, bigint()),
+                    new ColumnDefinition(RESULT_COLUMN, varchar())
             ), BANK_ID_COLUMN);
 
     public void persist(long leaderboardId, long bankId, long startDate, long endDate, String result) {

@@ -23,6 +23,10 @@ import com.google.common.cache.LoadingCache;
 import java.util.*;
 import java.util.concurrent.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * Created by grien on 17.02.15.
  */
@@ -102,10 +106,10 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     public TableDefinition getMainTableDefinition() {
         return new TableDefinition(getMainColumnFamilyName(),
                 Arrays.asList(
-                        new ColumnDefinition(LOCK_ID, com.datastax.driver.core.DataType.text(), false, false, true),
-                        new ColumnDefinition(LOCKER, com.datastax.driver.core.DataType.cint(), false, true, false),
-                        new ColumnDefinition(LAST_LOCKER, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(LOCK_TIME, com.datastax.driver.core.DataType.bigint())
+                        new ColumnDefinition(LOCK_ID, text(), false, false, true),
+                        new ColumnDefinition(LOCKER, cint(), false, true, false),
+                        new ColumnDefinition(LAST_LOCKER, cint()),
+                        new ColumnDefinition(LOCK_TIME, bigint())
                 ), LOCK_ID)
                 .caching(Caching.ACTUAL_DATA)
                 .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))

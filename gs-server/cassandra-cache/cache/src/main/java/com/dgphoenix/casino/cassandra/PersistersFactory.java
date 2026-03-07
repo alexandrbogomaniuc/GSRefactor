@@ -2,6 +2,7 @@ package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.config.ColumnFamilyConfig;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.Session;
 import com.abs.casino.common.util.ReflectionUtils;
 import org.apache.commons.lang.ClassUtils;
 import org.apache.logging.log4j.LogManager;
@@ -89,7 +90,7 @@ public class PersistersFactory {
         }
     }
 
-    public void populateSession(com.datastax.driver.core.Session session) {
+    public void populateSession(Session session) {
         persisters.forEach(persister -> persister.initSession(session));
     }
 

@@ -10,6 +10,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * Created by vladislav on 14/08/15.
  */
@@ -20,10 +24,10 @@ public class CassandraNotificationPersister extends AbstractCassandraPersister<L
     private static final String SERVER_ID = "serverId";
     private static final TableDefinition CONCURRENT_NOTIFICATION_TABLE = new TableDefinition(
             CONCURRENT_NOTIFICATION_CF,
-            Arrays.asList(new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SERVER_ID, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())),
+            Arrays.asList(new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(SERVER_ID, cint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())),
             KEY, SERVER_ID);
 
     private CassandraNotificationPersister() {

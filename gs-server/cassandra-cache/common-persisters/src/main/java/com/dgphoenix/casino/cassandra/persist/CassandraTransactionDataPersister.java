@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -39,6 +41,11 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 /**
  * User: flsh
@@ -84,36 +91,36 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     private static final Logger LOG = LogManager.getLogger(CassandraTransactionDataPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(TRANSACTION_DATA_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(PLAYER_SESSION_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(GAME_SESSION_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(LAST_HAND_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(WALLET_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(LAST_BET_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(BONUS_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(FRBONUS_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(FRBWIN_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(FRBNOTIFY_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(LAST_UPDATE_ID_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(VERSION_FIELD, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(TRACKING_INFO, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(EXTRA_ACCOUNT_INFO, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(GAME_ACHIEVEMENT, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(PLAYER_ACTIVITY, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(PAYMENT_TRANSACTION_FIELD, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(PROMO_MEMBERS_FIELD, com.datastax.driver.core.DataType.blob())
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_FIELD, blob()),
+                    new ColumnDefinition(PLAYER_SESSION_FIELD, blob()),
+                    new ColumnDefinition(GAME_SESSION_FIELD, blob()),
+                    new ColumnDefinition(LAST_HAND_FIELD, blob()),
+                    new ColumnDefinition(WALLET_FIELD, blob()),
+                    new ColumnDefinition(LAST_BET_FIELD, blob()),
+                    new ColumnDefinition(BONUS_FIELD, blob()),
+                    new ColumnDefinition(FRBONUS_FIELD, blob()),
+                    new ColumnDefinition(FRBWIN_FIELD, blob()),
+                    new ColumnDefinition(FRBNOTIFY_FIELD, blob()),
+                    new ColumnDefinition(LAST_UPDATE_ID_FIELD, text()),
+                    new ColumnDefinition(VERSION_FIELD, bigint()),
+                    new ColumnDefinition(TRACKING_INFO, text()),
+                    new ColumnDefinition(EXTRA_ACCOUNT_INFO, blob()),
+                    new ColumnDefinition(GAME_ACHIEVEMENT, blob()),
+                    new ColumnDefinition(PLAYER_ACTIVITY, blob()),
+                    new ColumnDefinition(PAYMENT_TRANSACTION_FIELD, blob()),
+                    new ColumnDefinition(PROMO_MEMBERS_FIELD, blob())
             ), KEY)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(4));
 
     private static final TableDefinition TRACKING_TABLE = new TableDefinition(TRANSACTION_TRACKING_CF,
             Arrays.asList(
-                    new ColumnDefinition(TRACKING_STATUS, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(SERVER_ID, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(TRACKING_STATUS, cint(), false, false, true),
+                    new ColumnDefinition(SERVER_ID, cint(), false, false, true),
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), TRACKING_STATUS)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(4));
@@ -233,7 +240,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
             }
 
             Iterator<com.datastax.driver.core.Row> iterator = execute(
-                    getSelectColumnsQuery(columns).where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, stepKeys)),
+                    getSelectColumnsQuery(columns).where(Cql.in(KEY, stepKeys)),
                     "getOnlineSessionInfos").iterator();
             if (!iterator.hasNext()) {
                 continue;
@@ -314,7 +321,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
             LOG.warn("persistPlayerBet: storedItems is empty for lockId={}", data.getLockId());
         }
 
-        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap = new HashMap<>();
+        HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap = new HashMap<>();
         List<ByteBuffer> byteBuffers = new LinkedList<>();
 
         try {
@@ -385,7 +392,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     }
 
     public boolean limitOfTrackingInfoByStatusIsExceededForAllGameServers(TrackingStatus status, int limit) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().countAll().from(TRANSACTION_TRACKING_CF).
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().countAll().from(TRANSACTION_TRACKING_CF).
                 where().and(eq(TRACKING_STATUS, status.ordinal())).limit(limit + 1);
 
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getAllTrackInfoCountByStatus");
@@ -396,7 +403,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     }
 
     public boolean limitOfTrackingInfoByStatusIsExceededForGameServer(TrackingStatus status, Integer serverId, int limit) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().countAll().from(TRANSACTION_TRACKING_CF).
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().countAll().from(TRANSACTION_TRACKING_CF).
                 where().and(eq(TRACKING_STATUS, status.ordinal())).and(eq(SERVER_ID, serverId)).limit(limit + 1);
 
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getAllTrackInfoCountByStatusAndGameServer");
@@ -533,7 +540,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         if (CollectionUtils.isEmpty(storedItems)) {
             LOG.warn("processInTransactionItems: storedItems is empty for lockId={}", data.getLockId());
         }
-        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap = new HashMap<>();
+        HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap = new HashMap<>();
         List<ByteBuffer> byteBuffers = new LinkedList<>();
         try {
             boolean success = true;
@@ -587,13 +594,13 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     }
 
-    protected Pair<Boolean, Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.ResultSet>>> execute(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap,
+    protected Pair<Boolean, Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.ResultSet>>> execute(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap,
                                                                    String callerClassMethodIdentification) {
         long now = System.currentTimeMillis();
         try {
             List<com.datastax.driver.core.Statement> strongConsistencyItems = statementsMap.remove(getSession());
-            Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.ResultSet>> resultSets = new HashMap<>(statementsMap.size());
-            for (Map.Entry<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> entry : statementsMap.entrySet()) {
+            Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.ResultSet>> resultSets = new HashMap<>(statementsMap.size());
+            for (Map.Entry<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> entry : statementsMap.entrySet()) {
                 Pair<Boolean, List<com.datastax.driver.core.ResultSet>> ksResult = executeSingleBatch(entry.getKey(), entry.getValue(),
                         callerClassMethodIdentification);
                 resultSets.put(entry.getKey(), ksResult.getValue());
@@ -617,7 +624,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         }
     }
 
-    private Pair<Boolean, List<com.datastax.driver.core.ResultSet>> executeSingleBatch(com.datastax.driver.core.Session session, List<com.datastax.driver.core.Statement> statements,
+    private Pair<Boolean, List<com.datastax.driver.core.ResultSet>> executeSingleBatch(com.abs.casino.cassandra.persist.engine.Session session, List<com.datastax.driver.core.Statement> statements,
                                                               String callerClassMethodIdentification) {
         String keySpace = (com.abs.casino.cassandra.persist.engine.Session.class.isInstance(session) ?
                 ((com.abs.casino.cassandra.persist.engine.Session) session).getKeySpace() :
@@ -663,18 +670,18 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         long clock = getTimeStamp(data);
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
         com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
-        update.using(com.datastax.driver.core.querybuilder.QueryBuilder.timestamp(clock));
+        update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeToBytes(data.getBonus());
         ByteBuffer luBuffer = null;
         try {
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(BONUS_FIELD, byteBuffer));
+            update.with(Cql.set(BONUS_FIELD, byteBuffer));
             if (data.isTrackingStateChanged()) {
-                update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(TRACKING_INFO, serializeField(data.getBankId(),
+                update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(),
                         TRACKING_INFO, data.getTrackingStateAsString())));
             }
             luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(LAST_UPDATE_ID_FIELD, luBuffer));
-            //update.onlyIf(com.datastax.driver.core.querybuilder.QueryBuilder.eq(VERSION_FIELD, data.getVersion()));
+            update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
+            //update.onlyIf(Cql.eq(VERSION_FIELD, data.getVersion()));
             com.datastax.driver.core.ResultSet result = execute(update, "persistBonus");
 /*
             if (LOG.isDebugEnabled()) {
@@ -725,17 +732,17 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
         com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
-        update.using(com.datastax.driver.core.querybuilder.QueryBuilder.timestamp(clock));
+        update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeToBytes(data.getFrBonus());
         ByteBuffer luBuffer = null;
         try {
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(FRBONUS_FIELD, byteBuffer));
+            update.with(Cql.set(FRBONUS_FIELD, byteBuffer));
             if (data.isTrackingStateChanged()) {
-                update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
+                update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
                         data.getTrackingStateAsString())));
             }
             luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(LAST_UPDATE_ID_FIELD, luBuffer));
+            update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.datastax.driver.core.ResultSet result = execute(update, "persistFrBonus");
             if (LOG.isDebugEnabled()) {
                 LOG.debug("persistFrBonus " + data.getFrBonus());
@@ -785,17 +792,17 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
 
         com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
-        update.using(com.datastax.driver.core.querybuilder.QueryBuilder.timestamp(clock));
+        update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeToBytes(data.getFrbWin());
         ByteBuffer luBuffer = null;
         try {
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(FRBWIN_FIELD, byteBuffer));
+            update.with(Cql.set(FRBWIN_FIELD, byteBuffer));
             if (data.isTrackingStateChanged()) {
-                update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
+                update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
                         data.getTrackingStateAsString())));
             }
             luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(LAST_UPDATE_ID_FIELD, luBuffer));
+            update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.datastax.driver.core.ResultSet result = execute(update, "persistFrbWin");
             if (LOG.isDebugEnabled()) {
                 LOG.debug("persistFrbWin " + data.getFrbWin());
@@ -844,17 +851,17 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
         com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
-        update.using(com.datastax.driver.core.querybuilder.QueryBuilder.timestamp(clock));
+        update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeToBytes(data.getFrbNotification());
         ByteBuffer luBuffer = null;
         try {
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(FRBNOTIFY_FIELD, byteBuffer));
+            update.with(Cql.set(FRBNOTIFY_FIELD, byteBuffer));
             if (data.isTrackingStateChanged()) {
-                update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
+                update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
                         data.getTrackingStateAsString())));
             }
             luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(LAST_UPDATE_ID_FIELD, luBuffer));
+            update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.datastax.driver.core.ResultSet result = execute(update, "persistFrbNotification");
             if (LOG.isDebugEnabled()) {
                 LOG.debug("persistFrbNotification " + data.getFrbNotification());
@@ -886,13 +893,13 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
         com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
-        update.using(com.datastax.driver.core.querybuilder.QueryBuilder.timestamp(clock));
+        update.using(Cql.timestamp(clock));
         ByteBuffer accountByteBuffer = TABLE.serializeToBytes(data.getAccount());
         ByteBuffer luBuffer = null;
         try {
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(ACCOUNT_FIELD, accountByteBuffer));
+            update.with(Cql.set(ACCOUNT_FIELD, accountByteBuffer));
             luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(LAST_UPDATE_ID_FIELD, luBuffer));
+            update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.datastax.driver.core.ResultSet result = execute(update, "persistAccount");
             boolean wasApplied = result.wasApplied();
             if (!wasApplied) {
@@ -938,22 +945,22 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
         com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
-        update.using(com.datastax.driver.core.querybuilder.QueryBuilder.timestamp(clock));
+        update.using(Cql.timestamp(clock));
         ByteBuffer paymentByteBuffer = TABLE.serializeToBytes(data.getPaymentTransaction());
         ByteBuffer accountByteBuffer = saveAccount && data.getAccount() != null ?
                 TABLE.serializeToBytes(data.getAccount()) : null;
         ByteBuffer luBuffer = null;
         try {
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(PAYMENT_TRANSACTION_FIELD, paymentByteBuffer));
+            update.with(Cql.set(PAYMENT_TRANSACTION_FIELD, paymentByteBuffer));
             if (accountByteBuffer != null) {
-                update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(ACCOUNT_FIELD, accountByteBuffer));
+                update.with(Cql.set(ACCOUNT_FIELD, accountByteBuffer));
             }
             if (data.isTrackingStateChanged()) {
-                update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(TRACKING_INFO, serializeField(data.getBankId(),
+                update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(),
                         TRACKING_INFO, data.getTrackingStateAsString())));
             }
             luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(LAST_UPDATE_ID_FIELD, luBuffer));
+            update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.datastax.driver.core.ResultSet result = execute(update, "persistPaymentTransaction");
             boolean wasApplied = result.wasApplied();
             if (!wasApplied) {
@@ -1009,17 +1016,17 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
         com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
-        update.using(com.datastax.driver.core.querybuilder.QueryBuilder.timestamp(clock));
+        update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeWithClassToBytes(data.getWallet());
         ByteBuffer luBuffer = null;
         try {
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(WALLET_FIELD, byteBuffer));
+            update.with(Cql.set(WALLET_FIELD, byteBuffer));
             if (data.isTrackingStateChanged()) {
-                update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
+                update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
                         data.getTrackingStateAsString())));
             }
             luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
-            update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(LAST_UPDATE_ID_FIELD, luBuffer));
+            update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.datastax.driver.core.ResultSet result = execute(update, "persistWallet");
             boolean wasApplied = result.wasApplied();
             if (!wasApplied) {
@@ -1110,7 +1117,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     public Map<String, ByteBuffer> getByColumns(String lockId, String... columns) {
         long now = System.currentTimeMillis();
 
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(columns).from(getMainColumnFamilyName());
+        com.datastax.driver.core.querybuilder.Select query = Cql.select(columns).from(getMainColumnFamilyName());
         query.where(eq(getKeyColumnName(), lockId)).limit(1);
         com.datastax.driver.core.ResultSet resultSet = execute(query, "CassandraTransactionDataPersister: getByColumns");
         com.datastax.driver.core.Row row = resultSet.one();
@@ -1122,7 +1129,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
             com.datastax.driver.core.DataType dataType = definition.getType();
             ByteBuffer bytes;
-            if (com.datastax.driver.core.DataType.blob().equals(dataType)) {
+            if (blob().equals(dataType)) {
                 bytes = row.getBytes(definition.getName());
             } else {
                 bytes = row.getBytesUnsafe(definition.getName());
@@ -1183,7 +1190,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         }
         columnsNames[columns.length] = KEY;
         com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(columnsNames);
-        query.where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, lockIds.toArray()));
+        query.where(Cql.in(KEY, lockIds.toArray()));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getByKeysColumns");
         Map<String, Map<String, Object>> result = new HashMap<>();
         for (com.datastax.driver.core.Row row : resultSet) {
@@ -1206,7 +1213,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         Set<Integer> servers = LoadBalancerCache.getInstance().getServers();
         Pair<TrackingState, TrackingInfo> result = null;
         com.datastax.driver.core.querybuilder.Clause keyClause = eq(KEY, lockId);
-        com.datastax.driver.core.querybuilder.Clause statusClause = com.datastax.driver.core.querybuilder.QueryBuilder.in(TRACKING_STATUS, 0, 1, 2, 3);
+        com.datastax.driver.core.querybuilder.Clause statusClause = Cql.in(TRACKING_STATUS, 0, 1, 2, 3);
         for (Integer serverId : servers) {
             com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(TRACKING_TABLE, SERVER_ID, TRACKING_STATUS, KEY,
                     SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
@@ -1237,7 +1244,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     public List<ITransactionData> getTransactionsWithoutTracking() {
         List<ITransactionData> result = new ArrayList<>();
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().
                 column(KEY).
                 column(ACCOUNT_FIELD).
                 column(PLAYER_SESSION_FIELD).
@@ -1296,7 +1303,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     //made public. dirty get, don't use this method in usual situations
     public ITransactionData getFromDB(String lockId) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().
                 column(KEY).
                 column(ACCOUNT_FIELD).
                 column(PLAYER_SESSION_FIELD).
@@ -1335,7 +1342,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
             com.datastax.driver.core.DataType dataType = definition.getType();
             ByteBuffer bytes;
-            if (com.datastax.driver.core.DataType.blob().equals(dataType)) {
+            if (blob().equals(dataType)) {
                 bytes = row.getBytes(definition.getName());
             } else {
                 bytes = row.getBytesUnsafe(definition.getName());
@@ -1364,7 +1371,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     @Override
     public boolean delete(String lockId) {
         LOG.debug("delete: lockId={}", lockId);
-        com.datastax.driver.core.Statement delete = com.datastax.driver.core.querybuilder.QueryBuilder.delete().
+        com.datastax.driver.core.Statement delete = Cql.delete().
                 from(getMainColumnFamilyName()).
                 where(getSimpleKeyClause(lockId));
         com.datastax.driver.core.ResultSet resultSet = execute(delete, "delete");
@@ -1380,7 +1387,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         if (data.getAccount() != null) {
             accountInfoPersister.persist(data.getAccount());
         }
-        com.datastax.driver.core.RegularStatement delete = com.datastax.driver.core.querybuilder.QueryBuilder.delete().
+        com.datastax.driver.core.RegularStatement delete = Cql.delete().
                 from(getMainColumnFamilyName()).
                 where(getSimpleKeyClause(lockId));
         com.datastax.driver.core.Statement deleteTrackingInfo = getDeleteTrackingInfo(data, data.getTrackingState());

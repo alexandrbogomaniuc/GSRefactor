@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
@@ -17,6 +19,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.ByteBuffer;
 import java.util.*;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 /**
  * User: flsh
@@ -38,14 +45,14 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
     //key: bucket (random value), startDate, transactionId
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BUCKET_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(START_DATE_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(TRANSACTION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
+                    new ColumnDefinition(BUCKET_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(START_DATE_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(TRANSACTION_ID_FIELD, bigint(), false, true, false),
                     //external_id = bankId+extId
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())),
             BUCKET_FIELD);
 
     private CassandraPaymentTransactionPersister() {
@@ -57,7 +64,7 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         this.accountInfoPersister = accountInfoPersister;
     }
 
-    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, PaymentTransaction transaction,
+    public void prepareToPersist(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, PaymentTransaction transaction,
                                  List<ByteBuffer> byteBuffersCollector) {
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         String json = TABLE.serializeToJson(transaction);
@@ -84,18 +91,18 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
                     .where(eq(BUCKET_FIELD, bucket))
                     .and(eq(START_DATE_FIELD, transaction.getStartDate()))
                     .and(eq(KEY, transaction.getId()))
-                    .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(TRANSACTION_ID_FIELD, transaction.getId()))
-                    .and(com.datastax.driver.core.querybuilder.QueryBuilder.set(EXTERNAL_ID_FIELD, extId))
-                    .and(com.datastax.driver.core.querybuilder.QueryBuilder.set(SERIALIZED_COLUMN_NAME, byteBuffer))
-                    .and(com.datastax.driver.core.querybuilder.QueryBuilder.set(JSON_COLUMN_NAME, json));
+                    .with(Cql.set(TRANSACTION_ID_FIELD, transaction.getId()))
+                    .and(Cql.set(EXTERNAL_ID_FIELD, extId))
+                    .and(Cql.set(SERIALIZED_COLUMN_NAME, byteBuffer))
+                    .and(Cql.set(JSON_COLUMN_NAME, json));
         }
         return getUpdateQuery()
                 .where(eq(BUCKET_FIELD, bucket))
                 .and(eq(START_DATE_FIELD, transaction.getStartDate()))
                 .and(eq(KEY, transaction.getId()))
-                .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(TRANSACTION_ID_FIELD, transaction.getId()))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.set(SERIALIZED_COLUMN_NAME, byteBuffer))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.set(JSON_COLUMN_NAME, json));
+                .with(Cql.set(TRANSACTION_ID_FIELD, transaction.getId()))
+                .and(Cql.set(SERIALIZED_COLUMN_NAME, byteBuffer))
+                .and(Cql.set(JSON_COLUMN_NAME, json));
     }
 
     private String resolveExtIdKey(PaymentTransaction transaction, String extIdOverride) {
@@ -151,8 +158,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         for (int i = 0; i < RANDOM_FACTOR; i++) {
             com.datastax.driver.core.Statement query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                     .where(eq(BUCKET_FIELD, i))
-                    .and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(START_DATE_FIELD, startRangeDate))
-                    .and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(START_DATE_FIELD, endRangeDate));
+                    .and(Cql.gte(START_DATE_FIELD, startRangeDate))
+                    .and(Cql.lte(START_DATE_FIELD, endRangeDate));
             com.datastax.driver.core.ResultSet resultSet = execute(query, "loadAndProcess");
             for (com.datastax.driver.core.Row row : resultSet) {
                 String json = row.getString(JSON_COLUMN_NAME);
@@ -177,8 +184,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         for (int i = 0; i < RANDOM_FACTOR; i++) {
             com.datastax.driver.core.Statement query = getSelectColumnsQuery(TABLE, TRANSACTION_ID_FIELD)
                     .where(eq(BUCKET_FIELD, i))
-                    .and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(START_DATE_FIELD, startDate))
-                    .and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(START_DATE_FIELD, endDate));
+                    .and(Cql.gte(START_DATE_FIELD, startDate))
+                    .and(Cql.lte(START_DATE_FIELD, endDate));
             com.datastax.driver.core.ResultSet resultSet = execute(query, "getTransactionIdsByDateRange");
             for (com.datastax.driver.core.Row row : resultSet) {
                 long transactionId = row.getLong(TRANSACTION_ID_FIELD);

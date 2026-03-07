@@ -16,6 +16,11 @@ import static com.abs.casino.cassandra.persist.engine.TableDefinition.INDEX_POST
 import static com.abs.casino.cassandra.persist.engine.TableDefinition.SEPARATOR;
 import static com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy.SS_TABLE_SIZE;
 import static org.junit.Assert.*;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.ascii;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cboolean;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>
@@ -34,8 +39,8 @@ public class TableDefinitionTest {
     public void withoutPartitionKeyColumn() {
         TableDefinition tableDefinition = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.cboolean())
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, cboolean())
                 ));
         tableDefinition.getCreateTableStatement().getQueryString();
     }
@@ -44,15 +49,15 @@ public class TableDefinitionTest {
     public void simpleColumns() {
         TableDefinition tableDefinition = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.cboolean())
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, cboolean())
                 ), COL_1);
         String actualCreateTable = tableDefinition.getCreateTableStatement().getQueryString();
 
         String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME)
                 .ifNotExists()
-                .addPartitionKey(COL_1, com.datastax.driver.core.DataType.cint())
-                .addColumn(COL_2, com.datastax.driver.core.DataType.cboolean())
+                .addPartitionKey(COL_1, cint())
+                .addColumn(COL_2, cboolean())
                 .withOptions()
                 .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -67,9 +72,9 @@ public class TableDefinitionTest {
     public void indexes() {
         TableDefinition tableDefinition = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint(), false, true, false),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.cboolean()),
-                        new ColumnDefinition(COL_3, com.datastax.driver.core.DataType.cdouble(), false, true, true)
+                        new ColumnDefinition(COL_1, cint(), false, true, false),
+                        new ColumnDefinition(COL_2, cboolean()),
+                        new ColumnDefinition(COL_3, cdouble(), false, true, true)
                 ), COL_1);
         tableDefinition.getCreateTableStatement().getQueryString();
         Map<String, com.datastax.driver.core.schemabuilder.SchemaStatement> actualIndexes = tableDefinition.getCreateIndexStatements();
@@ -99,8 +104,8 @@ public class TableDefinitionTest {
     public void indexOnCounter() {
         new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.counter(), false, true, false)
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, counter(), false, true, false)
                 ), COL_1);
     }
 
@@ -108,10 +113,10 @@ public class TableDefinitionTest {
     public void duplicateColumns() {
         new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.cboolean()),
-                        new ColumnDefinition(COL_3, com.datastax.driver.core.DataType.cdouble()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.cboolean())
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, cboolean()),
+                        new ColumnDefinition(COL_3, cdouble()),
+                        new ColumnDefinition(COL_2, cboolean())
                 ), COL_1);
     }
 
@@ -119,17 +124,17 @@ public class TableDefinitionTest {
     public void compositePrimaryKey() {
         TableDefinition tableDefinition = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.ascii()),
-                        new ColumnDefinition(COL_3, com.datastax.driver.core.DataType.cboolean(), false, false, true)
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, ascii()),
+                        new ColumnDefinition(COL_3, cboolean(), false, false, true)
                 ), COL_1, COL_2);
         String actualCreateTable = tableDefinition.getCreateTableStatement().getQueryString();
 
         String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME)
                 .ifNotExists()
-                .addPartitionKey(COL_1, com.datastax.driver.core.DataType.cint())
-                .addPartitionKey(COL_2, com.datastax.driver.core.DataType.ascii())
-                .addClusteringColumn(COL_3, com.datastax.driver.core.DataType.cboolean())
+                .addPartitionKey(COL_1, cint())
+                .addPartitionKey(COL_2, ascii())
+                .addClusteringColumn(COL_3, cboolean())
                 .withOptions()
                 .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -142,17 +147,17 @@ public class TableDefinitionTest {
     public void staticColumn() {
         TableDefinition tableDefinition = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.ascii(), true, false, false),
-                        new ColumnDefinition(COL_3, com.datastax.driver.core.DataType.ascii(), false, false, true)
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, ascii(), true, false, false),
+                        new ColumnDefinition(COL_3, ascii(), false, false, true)
                 ), COL_1);
         String actualCreateTable = tableDefinition.getCreateTableStatement().getQueryString();
 
         String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME)
                 .ifNotExists()
-                .addPartitionKey(COL_1, com.datastax.driver.core.DataType.cint())
-                .addStaticColumn(COL_2, com.datastax.driver.core.DataType.ascii())
-                .addClusteringColumn(COL_3, com.datastax.driver.core.DataType.ascii())
+                .addPartitionKey(COL_1, cint())
+                .addStaticColumn(COL_2, ascii())
+                .addClusteringColumn(COL_3, ascii())
                 .withOptions()
                 .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -165,9 +170,9 @@ public class TableDefinitionTest {
     public void staticColumnWithoutClusteringColumn() {
         TableDefinition tableDefinition = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.ascii(), true, false, false),
-                        new ColumnDefinition(COL_3, com.datastax.driver.core.DataType.ascii())
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, ascii(), true, false, false),
+                        new ColumnDefinition(COL_3, ascii())
                 ), COL_1);
         tableDefinition.getCreateTableStatement().getQueryString();
     }
@@ -176,9 +181,9 @@ public class TableDefinitionTest {
     public void staticColumnWithIndex() {
         TableDefinition tableDefinition = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.ascii(), true, true, false),
-                        new ColumnDefinition(COL_3, com.datastax.driver.core.DataType.ascii(), false, false, false)
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, ascii(), true, true, false),
+                        new ColumnDefinition(COL_3, ascii(), false, false, false)
                 ), COL_1);
         tableDefinition.getCreateTableStatement().getQueryString();
     }
@@ -187,9 +192,9 @@ public class TableDefinitionTest {
     public void staticClusteringColumn() {
         TableDefinition tableDefinition = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.ascii(), true, false, true),
-                        new ColumnDefinition(COL_3, com.datastax.driver.core.DataType.ascii(), false, false, false)
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, ascii(), true, false, true),
+                        new ColumnDefinition(COL_3, ascii(), false, false, false)
                 ), COL_1);
         tableDefinition.getCreateTableStatement().getQueryString();
     }
@@ -373,16 +378,16 @@ public class TableDefinitionTest {
     public void clusteringOrder() {
         String actualCreateTable = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.ascii(), false, false, true)
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, ascii(), false, false, true)
                 ), COL_1)
                 .clusteringOrder(COL_2, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC)
                 .getCreateTableStatement()
                 .getQueryString();
 
         String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME).ifNotExists()
-                .addPartitionKey(COL_1, com.datastax.driver.core.DataType.cint())
-                .addClusteringColumn(COL_2, com.datastax.driver.core.DataType.ascii())
+                .addPartitionKey(COL_1, cint())
+                .addClusteringColumn(COL_2, ascii())
                 .withOptions()
                 .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -397,9 +402,9 @@ public class TableDefinitionTest {
     public void clusteringOrderOnTwoColumns() {
         String actualCreateTable = new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.ascii(), false, false, true),
-                        new ColumnDefinition(COL_3, com.datastax.driver.core.DataType.ascii(), false, false, true)
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, ascii(), false, false, true),
+                        new ColumnDefinition(COL_3, ascii(), false, false, true)
                 ), COL_1)
                 .clusteringOrder(COL_2, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC)
                 .clusteringOrder(COL_3, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC)
@@ -407,9 +412,9 @@ public class TableDefinitionTest {
                 .getQueryString();
 
         String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME).ifNotExists()
-                .addPartitionKey(COL_1, com.datastax.driver.core.DataType.cint())
-                .addClusteringColumn(COL_2, com.datastax.driver.core.DataType.ascii())
-                .addClusteringColumn(COL_3, com.datastax.driver.core.DataType.ascii())
+                .addPartitionKey(COL_1, cint())
+                .addClusteringColumn(COL_2, ascii())
+                .addClusteringColumn(COL_3, ascii())
                 .withOptions()
                 .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -438,8 +443,8 @@ public class TableDefinitionTest {
     private TableDefinition createSimpleTableDefinition() {
         return new TableDefinition(TABLE_NAME,
                 Arrays.asList(
-                        new ColumnDefinition(COL_1, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(COL_2, com.datastax.driver.core.DataType.ascii())
+                        new ColumnDefinition(COL_1, cint()),
+                        new ColumnDefinition(COL_2, ascii())
                 ), COL_1);
     }
 
@@ -452,8 +457,8 @@ public class TableDefinitionTest {
 
     private com.datastax.driver.core.schemabuilder.Create.Options createSimpleTableWithOptions() {
         return com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME).ifNotExists()
-                .addPartitionKey(COL_1, com.datastax.driver.core.DataType.cint())
-                .addColumn(COL_2, com.datastax.driver.core.DataType.ascii())
+                .addPartitionKey(COL_1, cint())
+                .addColumn(COL_2, ascii())
                 .withOptions();
     }
 }

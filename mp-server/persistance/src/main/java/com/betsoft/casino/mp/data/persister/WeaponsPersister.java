@@ -5,12 +5,20 @@ import com.betsoft.casino.mp.service.IWeaponService;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
+import com.datastax.driver.core.querybuilder.QueryBuilder;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.ByteBuffer;
 import java.util.*;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 public class WeaponsPersister extends AbstractCassandraPersister<Long, String> implements IWeaponService {
     private static final Logger LOG = LogManager.getLogger(WeaponsPersister.class);
@@ -30,24 +38,24 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MODE_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAKE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAMEID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(WEAPONS_COLUMN, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(BANK_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(MODE_COLUMN, cint(), false, false, true),
+                    new ColumnDefinition(STAKE_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(GAMEID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(WEAPONS_COLUMN, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), BANK_ID_COLUMN, ACCOUNT_ID_COLUMN, MODE_COLUMN, GAMEID_COLUMN);
 
     private static final TableDefinition SPECIAL_MODE_TABLE = new TableDefinition(SPECIAL_MODE_CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(SM_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MODE_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAKE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAMEID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(WEAPONS_COLUMN, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(SM_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(MODE_COLUMN, cint(), false, false, true),
+                    new ColumnDefinition(STAKE_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(GAMEID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(WEAPONS_COLUMN, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), SM_ID_COLUMN, ACCOUNT_ID_COLUMN, MODE_COLUMN, GAMEID_COLUMN);
 
     public void saveWeapons(long bankId, long accountId, int mode, Money stake, Map<Integer, Integer> weapons, long gameId) {
@@ -74,7 +82,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
         ByteBuffer byteBuffer = SPECIAL_MODE_TABLE.serializeWithClassToBytes(weapons);
         String json = SPECIAL_MODE_TABLE.serializeToMapJson(weapons, Integer.class, Integer.class);
         try {
-            execute(com.datastax.driver.core.querybuilder.QueryBuilder.update(SPECIAL_MODE_TABLE.getTableName())
+            execute(QueryBuilder.update(SPECIAL_MODE_TABLE.getTableName())
                             .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                             .and(eq(ACCOUNT_ID_COLUMN, accountId))
                             .and(eq(GAMEID_COLUMN, gameId))
@@ -89,7 +97,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     }
 
     public Map<Integer, Integer> loadWeapons(long bankId, long accountId, int mode, Money stake, long gameId) {
-        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        Row result = execute(getSelectColumnsQuery(TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -114,7 +122,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     @Override
     public Map<Integer, Integer> loadSpecialModeWeapons(long tournamentOrBonusId, long accountId, int mode,
                                                         Money stake, long gameId) {
-        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -134,7 +142,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
 
     public Map<Money, Map<Integer, Integer>> getAllWeapons(long bankId, long accountId, int mode, long gameId) {
         Map<Money, Map<Integer, Integer>> weapons = new HashMap<>();
-        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -156,7 +164,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     public Map<Money, Map<Integer, Integer>> getAllSpecialModeWeapons(long tournamentOrBonusId, long accountId,
                                                                       int mode, long gameId) {
         Map<Money, Map<Integer, Integer>> weapons = new HashMap<>();
-        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -176,7 +184,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
 
     public Map<Long, Map<Integer, Integer>> getAllWeaponsLong(long bankId, long accountId, int mode, long gameId) {
         Map<Long, Map<Integer, Integer>> weapons = new HashMap<>();
-        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -202,7 +210,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     public Map<Long, Map<Integer, Integer>> getSpecialModeAllWeaponsLong(long tournamentOrBonusId, long accountId,
                                                                          int mode, long gameId) {
         Map<Long, Map<Integer, Integer>> weapons = new HashMap<>();
-        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -222,12 +230,12 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
 
     @Override
     public void removeAllWeapons() {
-        execute(com.datastax.driver.core.querybuilder.QueryBuilder.truncate(CF_NAME), "removeAllWeapons");
+        execute(QueryBuilder.truncate(CF_NAME), "removeAllWeapons");
         getLog().debug("remove all weapons");
     }
 
     public void removeSpecialModeAllWeapons() {
-        execute(com.datastax.driver.core.querybuilder.QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllWeapons");
+        execute(QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllWeapons");
         getLog().debug("removeSpecialModeAllWeapons");
     }
 

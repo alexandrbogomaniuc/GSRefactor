@@ -1,6 +1,7 @@
 package com.abs.casino.cassandra.inject;
 
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.Session;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.Logger;
 
@@ -16,12 +17,12 @@ public class AbstractPersister implements ICassandraPersister {
     }
 
     @Override
-    public void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition) {
+    public void createTable(Session session, TableDefinition tableDefinition) {
 
     }
 
     @Override
-    public void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata) {
+    public void updateTable(Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata) {
 
     }
 
@@ -31,7 +32,7 @@ public class AbstractPersister implements ICassandraPersister {
     }
 
     @Override
-    public void initSession(com.datastax.driver.core.Session session) {
+    public void initSession(Session session) {
 
     }
 

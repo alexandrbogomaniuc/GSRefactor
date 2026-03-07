@@ -46,7 +46,7 @@ public class RESTClient extends AbstractBonusClient implements IBonusClient, ILo
     public RESTClient(long bankId) {
         super(bankId);
         specialRequestHeaders = bankInfo.getCWSpecialRequestHeaders();
-        if (!com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders)) {
+        if (!com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders)) {
             try {
                 specialRequestHeadersMap = CollectionUtils.stringToMap(specialRequestHeaders);
             } catch (Exception e) {
@@ -224,7 +224,7 @@ public class RESTClient extends AbstractBonusClient implements IBonusClient, ILo
             logResponse(sb);
 
             LOG.info("request, response from url:" + url + " bankId:" + getBankId() + " is:" + sb +
-                    (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders) ?
+                    (com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders) ?
                             "" : " specialRequestHeaders:" + specialRequestHeaders));
 
             XmlRequestResult result = new XmlRequestResult();

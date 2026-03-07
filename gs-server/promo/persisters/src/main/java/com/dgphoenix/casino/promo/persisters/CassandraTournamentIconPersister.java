@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraTournamentIconPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraTournamentIconPersister.class);
 
@@ -22,9 +25,9 @@ public class CassandraTournamentIconPersister extends AbstractCassandraPersister
 
     private static final TableDefinition TOURNAMENT_ICON_TABLE = new TableDefinition(TOURNAMENT_ICON_CF,
             Arrays.asList(
-                    new ColumnDefinition(ICON_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ICON_NAME_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(ICON_HTTP_ADDRESS_FIELD, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ICON_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(ICON_NAME_FIELD, text()),
+                    new ColumnDefinition(ICON_HTTP_ADDRESS_FIELD, text())
             ), ICON_ID_FIELD);
 
     public void persist(TournamentIcon icon) {

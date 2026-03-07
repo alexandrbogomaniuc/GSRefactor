@@ -15,6 +15,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cboolean;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 31.03.17.
@@ -57,17 +61,17 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
     private static final TableDefinition SUMMARY_PROMO_FEED_TABLE = new TableDefinition(
             SUMMARY_PROMO_FEED_CF,
             Arrays.asList(
-                    new ColumnDefinition(ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(FEED_URL, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(START_DATE, com.datastax.driver.core.DataType.bigint(), true, false, false),
-                    new ColumnDefinition(END_DATE, com.datastax.driver.core.DataType.bigint(), true, false, false),
-                    new ColumnDefinition(BANK_NAME, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(CHECKSUM, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(TOURNAMENT_TYPE, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(UPDATE_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(FEED_BODY, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(MASK_NAME, com.datastax.driver.core.DataType.cboolean(), false, false, false),
-                    new ColumnDefinition(TOURNAMENT_ID, com.datastax.driver.core.DataType.bigint(), false, true, false)
+                    new ColumnDefinition(ID, bigint(), false, false, true),
+                    new ColumnDefinition(FEED_URL, text(), false, false, true),
+                    new ColumnDefinition(START_DATE, bigint(), true, false, false),
+                    new ColumnDefinition(END_DATE, bigint(), true, false, false),
+                    new ColumnDefinition(BANK_NAME, text(), false, false, false),
+                    new ColumnDefinition(CHECKSUM, text(), false, false, false),
+                    new ColumnDefinition(TOURNAMENT_TYPE, text(), false, false, false),
+                    new ColumnDefinition(UPDATE_TIME, bigint(), false, false, false),
+                    new ColumnDefinition(FEED_BODY, text()),
+                    new ColumnDefinition(MASK_NAME, cboolean(), false, false, false),
+                    new ColumnDefinition(TOURNAMENT_ID, bigint(), false, true, false)
             ), ID)
             .compaction(CompactionStrategy.LEVELED);
 

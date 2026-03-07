@@ -14,6 +14,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Optional;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraClientStatisticsPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraClientStatisticsPersister.class);
 
@@ -27,11 +31,11 @@ public class CassandraClientStatisticsPersister extends AbstractCassandraPersist
 
     private static final TableDefinition TABLE = new TableDefinition(CLIENT_STATISTICS_INFO_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BROWSER_INFO, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(GAME_CLIENT_INFO, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(BROWSER_INFO_JSON, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(GAME_CLIENT_INFO_JSON, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(BROWSER_INFO, blob()),
+                    new ColumnDefinition(GAME_CLIENT_INFO, blob()),
+                    new ColumnDefinition(BROWSER_INFO_JSON, text()),
+                    new ColumnDefinition(GAME_CLIENT_INFO_JSON, text())
             ), KEY);
 
     public void persistGameClientInfo(long gameSessionId, GameClientInfo gameClientInfo) {

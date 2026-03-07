@@ -11,6 +11,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 14.06.13
@@ -21,8 +24,8 @@ public class CassandraArchiverPersister extends AbstractCassandraPersister<Strin
     public static final String LAST_PROCESSED_DATE_COLUMN = "LastProcessedDate";
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(LAST_PROCESSED_DATE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(LAST_PROCESSED_DATE_COLUMN, bigint(), false, false, false)
             ),
             Collections.singletonList(KEY));
 

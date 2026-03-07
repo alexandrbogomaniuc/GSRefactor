@@ -19,6 +19,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.ascii;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
@@ -33,18 +37,18 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
     private static final String CAMPAIGN_DATA = "campData";
     private static final TableDefinition CAMPAIGN_TABLE = new TableDefinition(PROMO_CAMPAIGN_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(CAMPAIGN_DATA, com.datastax.driver.core.DataType.blob(), false, false, false),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text(), false, false, false)
+                    new ColumnDefinition(CAMPAIGN_ID, bigint(), false, false, true),
+                    new ColumnDefinition(CAMPAIGN_DATA, blob(), false, false, false),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text(), false, false, false)
             ), CAMPAIGN_ID)
             .compaction(CompactionStrategy.LEVELED);
 
     private static final String ARCHIVE_PROMO_CAMPAIGN_CF = "PromoCampaignArchCF";
     private static final TableDefinition ARCHIVE_CAMPAIGN_TABLE = new TableDefinition(ARCHIVE_PROMO_CAMPAIGN_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(CAMPAIGN_DATA, com.datastax.driver.core.DataType.blob(), false, false, false),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text(), false, false, false)
+                    new ColumnDefinition(CAMPAIGN_ID, bigint(), false, false, true),
+                    new ColumnDefinition(CAMPAIGN_DATA, blob(), false, false, false),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text(), false, false, false)
             ), CAMPAIGN_ID)
             .compaction(CompactionStrategy.SIZE_TIRED)
             .caching(Caching.NONE);
@@ -56,10 +60,10 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
     private static final String CAMPAIGN_STATUS = "campStatus";
     private static final TableDefinition CAMPAIGN_BY_BANK_AND_GAME_TABLE = new TableDefinition(PROMO_CAMPAIGN_BY_BANK_AND_GAME_CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(CAMPAIGN_STATUS, com.datastax.driver.core.DataType.ascii(), false, true, false)
+                    new ColumnDefinition(BANK_ID, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID, bigint(), false, false, true),
+                    new ColumnDefinition(CAMPAIGN_ID, bigint(), false, false, true),
+                    new ColumnDefinition(CAMPAIGN_STATUS, ascii(), false, true, false)
             ), BANK_ID)
             .compaction(CompactionStrategy.LEVELED);
 

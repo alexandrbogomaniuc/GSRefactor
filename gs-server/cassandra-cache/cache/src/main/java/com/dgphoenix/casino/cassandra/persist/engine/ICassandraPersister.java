@@ -23,13 +23,13 @@ public interface ICassandraPersister {
         return Collections.singletonList(getMainTableDefinition());
     }
 
-    void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition);
+    void createTable(Session session, TableDefinition tableDefinition);
 
-    void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata);
+    void updateTable(Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata);
 
     Logger getLog();
 
-    void initSession(com.datastax.driver.core.Session session);
+    void initSession(Session session);
 
     void init();
 

@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
@@ -23,12 +24,15 @@ import com.abs.casino.gs.managers.bet.PlayerBetPersister;
 import com.esotericsoftware.kryo.Serializer;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
+
+
+
 
 /**
  * User: flsh
@@ -46,9 +50,9 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), GAME_SESSION_ID_FIELD)
             .caching(Caching.NONE)
             .gcGraceSeconds(0)
@@ -110,7 +114,7 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
                     System.currentTimeMillis() - now);
             return result;
         }
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getBetsAndRealSize");
@@ -141,7 +145,7 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
                     System.currentTimeMillis() - now);
             return new Pair<>(bets.size(), result);
         }
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getBetsAndRealSize");
@@ -291,7 +295,7 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
         SessionHelper.getInstance().getTransactionData().setLastBet(null);
     }
 
-    public void prepareToPersistGameSessionBets(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId,
+    public void prepareToPersistGameSessionBets(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId,
                                                 int maxPlayerBetId, List<ByteBuffer> byteBuffersCollector) {
         long now = System.currentTimeMillis();
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
@@ -491,7 +495,7 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
         put(gameSession, playerBet);
     }
 
-    public void prepareToPersistBet(HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId, PlayerBet bet,
+    public void prepareToPersistBet(HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId, PlayerBet bet,
                                     List<ByteBuffer> byteBuffersCollector) {
         tempBetPersister.prepareToPersistBet(statementsMap, gameSessionId, bet,
                 byteBuffersCollector);
@@ -541,9 +545,9 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
             return;
         }
         com.datastax.driver.core.Statement query =
-                com.datastax.driver.core.querybuilder.QueryBuilder.delete().
+                Cql.delete().
                         from(getMainColumnFamilyName()).
-                        where(com.datastax.driver.core.querybuilder.QueryBuilder.in(GAME_SESSION_ID_FIELD, gameSessionIds));
+                        where(Cql.in(GAME_SESSION_ID_FIELD, gameSessionIds));
         execute(query, "delete gameSessions");
     }
 

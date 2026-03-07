@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * Created by quant on 28.12.17.
  */
@@ -27,11 +31,11 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
 
     private static final TableDefinition PENDING_DATA_ARCHIVE_TABLE = new TableDefinition(PENDING_DATA_ARCH_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(DATA_NAME_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(CREATION_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(DATA_NAME_FIELD, text(), false, false, true),
+                    new ColumnDefinition(CREATION_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), ACCOUNT_ID_FIELD);
 
     private CassandraPendingDataArchivePersister() {

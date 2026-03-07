@@ -105,9 +105,16 @@ public class ClusterConfigDeserializationTest {
     }
 
     private void assertCFEquals(ColumnFamilyConfig expected, ColumnFamilyConfig actual) {
-        assertEquals("Actual cf classname doesn't equals", expected.getClassName(), actual.getClassName());
+        assertEquals("Actual cf classname doesn't equals", normalizeLegacyClassName(expected.getClassName()), normalizeLegacyClassName(actual.getClassName()));
         assertEquals("Actual cf ttl doesn't equals", expected.getTtl(), actual.getTtl());
         assertEquals("Actual cf enabled doesn't equals", expected.isEnabled(), actual.isEnabled());
+    }
+
+    private String normalizeLegacyClassName(String className) {
+        if (className == null) {
+            return null;
+        }
+        return className.replaceFirst("^com\\.dgphoenix\\.", "com.abs.");
     }
 
     private File getFile(String filename) {

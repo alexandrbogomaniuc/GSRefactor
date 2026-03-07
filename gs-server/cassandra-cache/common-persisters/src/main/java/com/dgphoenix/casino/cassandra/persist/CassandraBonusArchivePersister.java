@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
@@ -14,6 +16,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.google.common.base.Preconditions.checkState;
 
 /**
@@ -39,14 +45,14 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
     //Primary key (accountId), timeAwarded clustered order by timeAwarded desc
     private static final TableDefinition BONUS_ARCHIVE_TABLE = new TableDefinition(BONUS_ARCH_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(AWARD_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(STATUS_FIELD, com.datastax.driver.core.DataType.cint(), false, false, false),
-                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(PERSIST_DAY, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(AWARD_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(STATUS_FIELD, cint(), false, false, false),
+                    new ColumnDefinition(BONUS_ID_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(PERSIST_DAY, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), ACCOUNT_ID_FIELD)
             .clusteringOrder(AWARD_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
 
@@ -78,7 +84,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
         ByteBuffer byteBuffer = BONUS_ARCHIVE_TABLE.serializeToBytes(bonus);
         String json = BONUS_ARCHIVE_TABLE.serializeToJson(bonus);
         try {
-            com.datastax.driver.core.Statement archInsert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(BONUS_ARCH_CF)
+            com.datastax.driver.core.Statement archInsert = Cql.insertInto(BONUS_ARCH_CF)
                     .value(ACCOUNT_ID_FIELD, bonus.getAccountId()).
                     value(AWARD_TIME_FIELD, bonus.getTimeAwarded()).
                     value(STATUS_FIELD, bonus.getStatus().ordinal()).
@@ -151,7 +157,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
 
     @SuppressWarnings("Duplicates")
     public void setPersistDay() {
-        com.datastax.driver.core.Statement select = com.datastax.driver.core.querybuilder.QueryBuilder.select()
+        com.datastax.driver.core.Statement select = Cql.select()
                 .column(ACCOUNT_ID_FIELD)
                 .column(AWARD_TIME_FIELD)
                 .column(BONUS_ID_FIELD)
@@ -172,7 +178,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
             bonusPersistTime = row.getLong(PERSIST_DAY);
 
             if (bonusPersistTime == 0) {
-                com.datastax.driver.core.Statement update = com.datastax.driver.core.querybuilder.QueryBuilder.update(BONUS_ARCH_CF)
+                com.datastax.driver.core.Statement update = Cql.update(BONUS_ARCH_CF)
                         .with(set(PERSIST_DAY, currentPersistTime))
                         .where(eq(ACCOUNT_ID_FIELD, accountId))
                         .and(eq(AWARD_TIME_FIELD, awardTime));

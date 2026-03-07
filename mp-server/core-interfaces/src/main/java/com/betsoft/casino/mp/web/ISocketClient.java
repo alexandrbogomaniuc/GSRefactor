@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.web;
 
 import com.betsoft.casino.utils.ITransportObject;
 import com.betsoft.casino.utils.InboundObject;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.reactive.socket.WebSocketMessage;

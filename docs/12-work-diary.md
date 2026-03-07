@@ -11209,3 +11209,89 @@
   - printed SHA-256 + full tree summary (60 files).
 - Push checkpoint:
   - commit `eab0b4bd5` pushed to `origin/main` with proof file refresh + upload artifacts.
+
+### 2026-03-03 11:13 UTC
+- Added GS productization support operations docs (no architecture/contract changes) under `/Users/alexb/Documents/Dev/Dev_new/docs/gs/`:
+  - `PRODUCTIZED_GAME_ROLLOUT_RUNBOOK.md`
+  - `GAME_ENABLEMENT_CHECKLIST.md`
+  - `ROLLBACK_DRILL_CHECKLIST.md`
+- Coverage included release registration, canary enablement, rollback execution, session restore validation, history validation, capability/feature-policy verification, and artifact version pin verification.
+- Validation: files created and visible in git status as new docs only.
+- Next step: optional commit/push if requested.
+
+### 2026-03-03 14:18 UTC
+- Executed pull-first workflow before pushing new GS ops docs.
+- Repo: `/Users/alexb/Documents/Dev/Dev_new` on branch `codex-phaseb-20260303`.
+- Actions:
+  - stashed local work (`git stash -u`),
+  - pulled/rebased from `origin/main` (fast-forward to `994595acb`),
+  - restored stash,
+  - committed only new GS productization-support docs:
+    - `docs/gs/PRODUCTIZED_GAME_ROLLOUT_RUNBOOK.md`
+    - `docs/gs/GAME_ENABLEMENT_CHECKLIST.md`
+    - `docs/gs/ROLLBACK_DRILL_CHECKLIST.md`
+- Push:
+  - commit `790e3dafc` pushed to `origin/codex-phaseb-20260303`.
+- Note:
+  - unrelated local in-progress files remain in working tree and were intentionally not included in this commit.
+
+### 2026-03-03 15:02 UTC
+- Executed Phase E stabilization in `/Users/alexb/Documents/Dev/Dev_new` on branch `codex/phasee-stabilization-20260303`.
+- Completed read-only audits (branch state, GS duplicate-project root cause, MP RNG root cause, exact Cassandra inventory, runtime hit classification, mapping authority) and wrote outputs under:
+  - `_orchestration_20260303/phaseE_stabilization/`
+- Applied minimal stabilization fixes:
+  - GS: removed duplicate reactor inclusion in `gs-server/support/pom.xml`; fixed targeted stale namespace references in GS source/tests.
+  - MP: fixed targeted stale imports in maxcrashgame/common-games/core tests to restore canonical persistance compile/test.
+- Validation outcomes:
+  - GS compile PASS, GS test FAIL (remaining JSP compile blockers in web-gs `vabs` JSP fragments).
+  - MP compile PASS, MP test PASS using canonical settings-based commands.
+  - Corrected scan methodology and refreshed exact scans: package=820, branding=9110, cassandra_dependency=2245, cassandra_symbol_noisy=540.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/_orchestration_20260303/phaseE_stabilization/phaseE_stabilization_gate_report.md`
+- Next:
+  - resolve remaining GS web-gs JSP namespace/import blockers and rerun GS test gate.
+
+### 2026-03-03 16:55-17:03 UTC
+- Applied mandatory continuity bootstrap in `Dev_new`, loaded approved phase-F lock, and captured fresh baseline exact scans for rename lanes under active scopes (`gs-server`, `mp-server`).
+- Executed controlled Wave 1 tiny batch in `mp-server/core-interfaces` (import-only `com.dgphoenix.casino.common.* -> com.abs.casino.common.*`) with safety checks proving target `com.abs` package declarations exist and old declarations for those selected packages are absent.
+- Validation command run:
+  - `cd mp-server && mvn -pl core-interfaces -am test`
+  - result: failed with unresolved symbols (`IEnemy`, `IRoom`) during `core-interfaces` compile stage.
+- Fallback action:
+  - attempted reverse-patch rollback, then applied deterministic import rollback over recorded manifest,
+  - reran exact scans and captured before/after-revert counts.
+- Additional blocker observed:
+  - workspace/index exhibited broad concurrent staged deletions outside this controlled batch, so attribution for further rename execution became ambiguous.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/_orchestration_20260303/phaseF_execution/batches/00_baseline_20260303T165524Z/`
+  - `/Users/alexb/Documents/Dev/Dev_new/_orchestration_20260303/phaseF_execution/batches/01_wave1_core_interfaces_imports_20260303T165551Z/`
+  - `/Users/alexb/Documents/Dev/Dev_new/_orchestration_20260303/phaseF_execution/rename_batches.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/_orchestration_20260303/phaseF_execution/batch_metrics.csv`
+- Result:
+  - stopped phase-F wave execution on ambiguity per instruction; no further waves (2/3) executed.
+- Next:
+  - stabilize workspace/index state and restore deterministic ownership boundaries, then resume with a new tiny validated lane.
+
+### 2026-03-03 17:10-17:18 UTC
+- User-requested pull-first recovery completed before continuing refactor execution in `/Users/alexb/Documents/Dev/Dev_new`.
+- Root cause fixed:
+  - stale git index lock file `.git/index.lock` (timestamp `2026-02-28`) blocked index writes (`git stash` failed with `could not write index`).
+  - resolved by moving stale lock aside and re-running pull-safe flow.
+- Pull-safe workflow:
+  - `git stash push -u`
+  - `git pull --rebase origin main` (branch already up to date)
+  - `git stash pop`
+- Post-fix baseline validation:
+  - GS canonical compile PASS,
+  - GS canonical test PASS,
+  - MP canonical compile PASS,
+  - MP canonical test PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/_orchestration_20260303/phaseF_execution/rerun_after_pull/gs_clean_compile.log`
+  - `/Users/alexb/Documents/Dev/Dev_new/_orchestration_20260303/phaseF_execution/rerun_after_pull/gs_test.log`
+  - `/Users/alexb/Documents/Dev/Dev_new/_orchestration_20260303/phaseF_execution/rerun_after_pull/mp_clean_compile.log`
+  - `/Users/alexb/Documents/Dev/Dev_new/_orchestration_20260303/phaseF_execution/rerun_after_pull/mp_test.log`
+- Result:
+  - pull blocker removed; build/test baseline is stable again; phase-F controlled renaming can resume from deterministic state.
+- Next:
+  - resume phase-F controlled rename wave with tiny validated batches and per-batch evidence.

@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -13,6 +15,11 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraCountryRestrictionPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraCountryRestrictionPersister.class);
     private static final String COLUMN_FAMILY_NAME = "CountryRestrictionsCF";
@@ -21,10 +28,10 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
 
     private static final TableDefinition COUNTRIES_TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
         Arrays.asList(
-            new ColumnDefinition(OBJECT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-            new ColumnDefinition(RESTRICTION_TYPE, com.datastax.driver.core.DataType.cint(), false, false, true),
-            new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob(), false, false, false),
-            new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+            new ColumnDefinition(OBJECT_ID, bigint(), false, false, true),
+            new ColumnDefinition(RESTRICTION_TYPE, cint(), false, false, true),
+            new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob(), false, false, false),
+            new ColumnDefinition(JSON_COLUMN_NAME, text())
         ), OBJECT_ID)
         .compaction(CompactionStrategy.LEVELED);
 
@@ -81,7 +88,7 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     }
 
     public void delete(long objectId, RestrictionType type) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.delete()
+        com.datastax.driver.core.Statement query = Cql.delete()
                 .from(getMainColumnFamilyName())
                 .where()
                 .and(eq(OBJECT_ID, objectId))

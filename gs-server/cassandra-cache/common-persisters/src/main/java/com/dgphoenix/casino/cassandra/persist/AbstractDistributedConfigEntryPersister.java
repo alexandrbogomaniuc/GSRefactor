@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
@@ -15,6 +17,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.ascii;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.varchar;
 
 /**
  * User: Grien
@@ -34,7 +42,7 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
 
     public void saveAll() {
         Map<? extends Object, ? extends T> objects = getCache().getAllObjects();
-        com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
+        com.datastax.driver.core.querybuilder.Batch batch = Cql.batch();
         List<ByteBuffer> list = new ArrayList<>(objects.size());
         try {
             for (Map.Entry<? extends Object, ? extends T> entry : objects.entrySet()) {
@@ -116,7 +124,7 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
 
     protected Map<KEY, T> loadAllAsMap(Class<T> entryClass) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select().all().from(getMainColumnFamilyName());
+        com.datastax.driver.core.Statement query = Cql.select().all().from(getMainColumnFamilyName());
         com.datastax.driver.core.ResultSet resultSet = execute(query, "loadAllAsMap");
         if (resultSet == null || !resultSet.iterator().hasNext()) {
             getLog().error("loadAllForLongKeysAsMapKryo: rowList is null or empty");
@@ -128,15 +136,15 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
                 getLog().error("Column KEY not found");
             }
             com.datastax.driver.core.ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
-            com.datastax.driver.core.DataType keyType = columnDefinitions.getType(KEY);
+            Object keyType = columnDefinitions.getType(KEY);
             KEY key = null;
-            if (com.datastax.driver.core.DataType.ascii().equals(keyType) || com.datastax.driver.core.DataType.varchar().equals(keyType) ||
-                    com.datastax.driver.core.DataType.text().equals(keyType)) {
+            if (ascii().equals(keyType) || varchar().equals(keyType) ||
+                    text().equals(keyType)) {
                 key = (KEY) row.getString(KEY);
-            } else if (com.datastax.driver.core.DataType.cint().equals(keyType)) {
+            } else if (cint().equals(keyType)) {
                 Integer k = row.getInt(KEY);
                 key = (KEY) k;
-            } else if (com.datastax.driver.core.DataType.bigint().equals(keyType)) {
+            } else if (bigint().equals(keyType)) {
                 Long k = row.getLong(KEY);
                 key = (KEY) k;
             }

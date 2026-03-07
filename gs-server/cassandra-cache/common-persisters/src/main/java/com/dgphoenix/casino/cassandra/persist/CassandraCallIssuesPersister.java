@@ -13,6 +13,9 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 
 public class CassandraCallIssuesPersister extends AbstractCassandraPersister {
     private static final Logger LOG = LogManager.getLogger(CassandraCallIssuesPersister.class);
@@ -27,11 +30,11 @@ public class CassandraCallIssuesPersister extends AbstractCassandraPersister {
     private static final TableDefinition TABLE = new TableDefinition(
             COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(DATE_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(URL_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SUCCESS_COUNT, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(FAIL_COUNT, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(LAST_UPDATE_FIELD, com.datastax.driver.core.DataType.bigint())
+                    new ColumnDefinition(DATE_FIELD, text(), false, false, true),
+                    new ColumnDefinition(URL_FIELD, text(), false, false, true),
+                    new ColumnDefinition(SUCCESS_COUNT, bigint()),
+                    new ColumnDefinition(FAIL_COUNT, bigint()),
+                    new ColumnDefinition(LAST_UPDATE_FIELD, bigint())
             ),
             DATE_FIELD
     );

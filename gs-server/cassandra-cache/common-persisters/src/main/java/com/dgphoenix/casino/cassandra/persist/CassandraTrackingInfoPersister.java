@@ -1,8 +1,11 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.engine.tracker.ICommonTrackingTaskDelegate;
 import com.abs.casino.common.engine.tracker.TrackingInfo;
@@ -26,10 +29,10 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
     private static final Logger LOG = LogManager.getLogger(CassandraTrackingInfoPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(TRACKING_INFO_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true), //key is trackerName+gsId
-                    new ColumnDefinition(OBJECT_ID_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, text(), false, false, true), //key is trackerName+gsId
+                    new ColumnDefinition(OBJECT_ID_FIELD, text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), KEY)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(4));
@@ -123,7 +126,7 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
 
     public void delete(String trackerName, String trackedObjectId) {
         String key = getKey(trackerName);
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.delete()
+        com.datastax.driver.core.Statement query = Cql.delete()
                 .from(getMainColumnFamilyName())
                 .where(eq(getKeyColumnName(), key))
                 .and(eq(OBJECT_ID_FIELD, trackedObjectId));
@@ -134,7 +137,7 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
         String key = getKey(trackerName);
         List<TrackingInfo> result = new LinkedList();
         com.datastax.driver.core.ResultSet resultSet = execute(
-                com.datastax.driver.core.querybuilder.QueryBuilder.select().
+                Cql.select().
                         column(OBJECT_ID_FIELD).writeTime(SERIALIZED_COLUMN_NAME).writeTime(JSON_COLUMN_NAME).
                         from(getMainColumnFamilyName()).
                         where(eq(getKeyColumnName(), key)
@@ -193,7 +196,7 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
                                                   Class<T> aClass) {
         String key = getKey(trackerName);
         Map<String, T> result = new HashMap<>();
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select()
+        com.datastax.driver.core.Statement query = Cql.select()
                 .column(OBJECT_ID_FIELD)
                 .column(SERIALIZED_COLUMN_NAME).writeTime(SERIALIZED_COLUMN_NAME)
                 .column(JSON_COLUMN_NAME).writeTime(JSON_COLUMN_NAME)
@@ -241,7 +244,7 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
 
     public <T> T getTrackingInfo(String trackerName, String trackedObjectId, boolean isPersistedWithAdditionClassInfo, Class<T> aClass) {
         String key = getKey(trackerName);
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select()
+        com.datastax.driver.core.Statement query = Cql.select()
                 .column(SERIALIZED_COLUMN_NAME).writeTime(SERIALIZED_COLUMN_NAME)
                 .column(JSON_COLUMN_NAME).writeTime(JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())

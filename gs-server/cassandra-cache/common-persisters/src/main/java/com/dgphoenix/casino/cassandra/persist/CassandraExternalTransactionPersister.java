@@ -11,6 +11,9 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 
 /**
  * User: flsh
@@ -24,10 +27,10 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
     private static final Logger LOG = LogManager.getLogger(CassandraExternalTransactionPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(EXTERNAL_TRANSACTION_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(INTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(INTERNAL_ID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             KEY);
 
