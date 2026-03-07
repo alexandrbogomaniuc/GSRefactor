@@ -30,6 +30,36 @@ export const CRAZY_ROOSTER_PAYLINES: number[][] = [
   [3, 2, 1],
 ];
 
+// TODO: Replace with donor-verified 3x4 payline shapes when the exact 8-line table is supplied.
+
+export const CRAZY_ROOSTER_PROVISIONAL_BET_LADDER = [
+  0.1,
+  0.2,
+  0.5,
+  1,
+  2,
+  5,
+  10,
+  20,
+  50,
+  100,
+  200,
+  500,
+  1000,
+  2000,
+  5000,
+  10000,
+  20000,
+] as const;
+
+export const CRAZY_ROOSTER_BET_LIMITS = {
+  minBet: CRAZY_ROOSTER_PROVISIONAL_BET_LADDER[0],
+  defaultBet: 1,
+  maxBet: CRAZY_ROOSTER_PROVISIONAL_BET_LADDER[
+    CRAZY_ROOSTER_PROVISIONAL_BET_LADDER.length - 1
+  ],
+} as const;
+
 export const CRAZY_ROOSTER_BUY_TIERS = [
   { id: "bonus-75", label: "BONUS 75", priceMultiplier: 75 },
   { id: "bonus-200", label: "BONUS 200", priceMultiplier: 200 },
@@ -85,7 +115,7 @@ export const CRAZY_ROOSTER_BRAND = {
   displayName: "BetOnline",
   footerText: "Powered By BetOnline Studios",
   themeId: "betonline-crazy-rooster",
-  primaryColor: "#0D0D0D",
+  primaryColor: "#000000",
   accentColor: "#C7141A",
   surfaceColor: "#FFFFFF",
   defaultProvider: "openai" as CrazyRoosterAssetProvider,

@@ -6,16 +6,25 @@
   "reels": {
     "rows": 4,
     "cols": 3,
+    "todo": "Provisional 8 fixed paylines only. Replace with donor-verified 3x4 line map when supplied.",
     "paylines": [
       [0, 0, 0],
       [1, 1, 1],
       [2, 2, 2],
       [3, 3, 3],
       [0, 1, 2],
-      [1, 2, 3],
       [2, 1, 0],
+      [1, 2, 3],
       [3, 2, 1]
     ]
+  },
+  "betConfig": {
+    "mode": "ladder",
+    "betLadder": [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000],
+    "defaultBet": 1,
+    "minBet": 0.1,
+    "maxBet": 20000,
+    "todo": "Provisional config-driven ladder only. Replace with donor-verified production ladder when supplied."
   },
   "assets": {
     "provider": "openai",
@@ -43,19 +52,20 @@
   "winPresentation": {
     "thresholdsMultiplier": {
       "big": 10,
-      "mega": 20,
-      "epic": 35
+      "huge": 25,
+      "mega": 50
     },
-    "todo": "Confirm donor-equivalent big win tier thresholds from certified pack before release."
+    "todo": "Using core-compliance defaults until donor/math-backed thresholds are supplied."
   },
   "brand": {
     "displayName": "BetOnline",
     "footer": "Powered By BetOnline Studios",
     "palette": {
-      "primary": "#0D0D0D",
+      "primary": "#000000",
       "accent": "#C7141A",
       "surface": "#FFFFFF"
-    }
+    },
+    "todo": "Placeholder black/red/white tokens only. Replace with approved BetOnline brand hex values when supplied."
   },
   "gs": {
     "runtimeTarget": "slot-browser-v1",

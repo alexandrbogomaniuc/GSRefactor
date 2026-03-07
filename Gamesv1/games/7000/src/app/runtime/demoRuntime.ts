@@ -9,11 +9,13 @@ import type {
 } from "@gamesv1/core-protocol";
 
 import {
+  CRAZY_ROOSTER_BET_LIMITS,
   CRAZY_ROOSTER_BIG_WIN_THRESHOLDS,
   CRAZY_ROOSTER_BRAND,
   CRAZY_ROOSTER_FEATURE_FLAGS,
   CRAZY_ROOSTER_IDLE_COLUMNS,
   CRAZY_ROOSTER_LAYOUT,
+  CRAZY_ROOSTER_PROVISIONAL_BET_LADDER,
   buildGridFromColumns,
   pickBuyTier,
 } from "../../game/config/CrazyRoosterGameConfig";
@@ -302,7 +304,7 @@ export class CrazyRoosterDemoRuntime {
     const scenario = SCENARIOS[scenarioId];
     const requestId = this.nextRequestId(prefix);
     const winAmountMinor = scenario.winAmountMinor;
-    const totalBetMinor = selectedBet?.totalBetMinor ?? 200;
+    const totalBetMinor = selectedBet?.totalBetMinor ?? CRAZY_ROOSTER_BET_LIMITS.defaultBet;
 
     if (prefix !== "opengame" && prefix !== "history") {
       this.balanceMinor = Math.max(0, this.balanceMinor - totalBetMinor + winAmountMinor);
@@ -379,9 +381,13 @@ export class CrazyRoosterDemoRuntime {
         },
         runtimeConfig: {
           currencyCode: "USD",
-          defaultBet: 200,
-          minBet: 20,
-          maxBet: 600,
+          betConfig: {
+            mode: "ladder",
+            betLadder: [...CRAZY_ROOSTER_PROVISIONAL_BET_LADDER],
+          },
+          defaultBet: CRAZY_ROOSTER_BET_LIMITS.defaultBet,
+          minBet: CRAZY_ROOSTER_BET_LIMITS.minBet,
+          maxBet: CRAZY_ROOSTER_BET_LIMITS.maxBet,
           capabilities,
           localization: {
             defaultLang: "en",
@@ -401,10 +407,10 @@ export class CrazyRoosterDemoRuntime {
     };
 
     const opengame = this.envelopeFromScenario("idle", "opengame", {
-      coinValueMinor: 25,
+      coinValueMinor: 1,
       lines: 8,
       multiplier: 1,
-      totalBetMinor: 200,
+      totalBetMinor: CRAZY_ROOSTER_BET_LIMITS.defaultBet,
     });
 
     return { bootstrap, opengame };
@@ -418,7 +424,8 @@ export class CrazyRoosterDemoRuntime {
     selectedBet: SelectedBet | null,
     selectedFeatureChoice: SelectedFeatureChoice | null,
   ): FeatureActionResponse {
-    const totalBetMinor = selectedBet?.totalBetMinor ?? 200;
+    const totalBetMinor =
+      selectedBet?.totalBetMinor ?? CRAZY_ROOSTER_BET_LIMITS.defaultBet;
     const requestedTier = pickBuyTier(
       selectedFeatureChoice?.priceMinor
         ? Math.round(selectedFeatureChoice.priceMinor / Math.max(totalBetMinor, 1))
@@ -444,10 +451,10 @@ export class CrazyRoosterDemoRuntime {
 
   public resumegame(): OpenGameResponse {
     return this.envelopeFromScenario(this.currentProofState(), "resumegame", {
-      coinValueMinor: 25,
+      coinValueMinor: 1,
       lines: CRAZY_ROOSTER_LAYOUT.reelCount,
       multiplier: 1,
-      totalBetMinor: 200,
+      totalBetMinor: CRAZY_ROOSTER_BET_LIMITS.defaultBet,
     });
   }
 

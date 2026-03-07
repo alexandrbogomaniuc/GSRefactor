@@ -5,6 +5,10 @@
   LayerConfig,
   LayerConfigSchema,
 } from "@gamesv1/core-compliance";
+import {
+  CRAZY_ROOSTER_BET_LIMITS,
+  CRAZY_ROOSTER_PROVISIONAL_BET_LADDER,
+} from "../../game/config/CrazyRoosterGameConfig";
 import { BootstrapConfigStore } from "../stores/BootstrapConfigStore";
 import { ResolvedRuntimeConfigStore } from "../stores/ResolvedRuntimeConfigStore";
 
@@ -74,13 +78,13 @@ export class ConfigManager {
       currencyCode: "USD",
       betConfig: {
         mode: "ladder",
-        betLadder: [20, 40, 100, 200, 400, 800, 1200, 2000],
+        betLadder: [...CRAZY_ROOSTER_PROVISIONAL_BET_LADDER],
         coinValues: [0.01, 0.02, 0.05, 0.1, 0.2],
       },
-      minBet: 20,
-      maxBet: 5000,
+      minBet: CRAZY_ROOSTER_BET_LIMITS.minBet,
+      maxBet: CRAZY_ROOSTER_BET_LIMITS.maxBet,
       maxExposure: 100000,
-      defaultBet: 200,
+      defaultBet: CRAZY_ROOSTER_BET_LIMITS.defaultBet,
       turboplay: {
         allowed: true,
         speedId: "turbo-x2",
