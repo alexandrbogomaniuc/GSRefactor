@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -122,7 +124,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
     }
 
     public void persistStat(int gameServerId) {
-        com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.unloggedBatch();
+        com.datastax.driver.core.querybuilder.Batch batch = Cql.unloggedBatch();
         for (Metric metric : Metric.values()) {
             persistStat(batch, metric, gameServerId);
         }
@@ -197,8 +199,8 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
 
         batch.add(query);
 
-        com.datastax.driver.core.querybuilder.Update update = com.datastax.driver.core.querybuilder.QueryBuilder.update(LAST_STAT_TIME_TABLE.getTableName());
-        update.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(LAST_STAT_TIME_FIELD, startTime)).
+        com.datastax.driver.core.querybuilder.Update update = Cql.update(LAST_STAT_TIME_TABLE.getTableName());
+        update.with(Cql.set(LAST_STAT_TIME_FIELD, startTime)).
                 where(eq(METRIC_ID_FIELD, metric.ordinal())).
                 and(eq(GAME_SERVER_ID_FIELD, gameServerId));
 
@@ -206,7 +208,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
     }
 
     private long getLastStatTime(Metric metric, int gameServerId) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().column(LAST_STAT_TIME_FIELD).from(LAST_STAT_TIME_CF);
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().column(LAST_STAT_TIME_FIELD).from(LAST_STAT_TIME_CF);
         query.where(eq(METRIC_ID_FIELD, metric.ordinal())).
                 and(eq(GAME_SERVER_ID_FIELD, gameServerId)).limit(1);
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getLastStatTime");
@@ -218,7 +220,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
     }
 
     private long getFirstLogTime(Metric metric, int gameServerId) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().column(LOG_TIME_FIELD).from(getMainColumnFamilyName());
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().column(LOG_TIME_FIELD).from(getMainColumnFamilyName());
         query.where(eq(METRIC_ID_FIELD, metric.ordinal())).
                 and(eq(GAME_SERVER_ID_FIELD, gameServerId)).limit(1);
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getFirstLogTime");
@@ -230,14 +232,14 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
     }
 
     private com.datastax.driver.core.ResultSet queryMetricValues(Metric metric, int gameServerId, long startTime, long endTime) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().
                 column(LOG_TIME_FIELD).
                 column(METRIC_VALUE_FIELD).
                 from(getMainColumnFamilyName());
         query.where(eq(METRIC_ID_FIELD, metric.ordinal())).
                 and(eq(GAME_SERVER_ID_FIELD, gameServerId)).
-                and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(LOG_TIME_FIELD, startTime)).
-                and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(LOG_TIME_FIELD, endTime));
+                and(Cql.gte(LOG_TIME_FIELD, startTime)).
+                and(Cql.lte(LOG_TIME_FIELD, endTime));
         return execute(query, "queryMetricValues");
     }
 
@@ -251,7 +253,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
     }
 
     public List<MetricStat> getMetricStatValues(Metric metric, int gameServerId, long startTime, long endTime) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().
                 column(STAT_TIME_FIELD).
                 column(AVERAGE_VALUE_FIELD).
                 column(MIN_VALUE_TIME_FIELD).
@@ -261,8 +263,8 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
                 from(METRICS_STAT_CF);
         query.where(eq(METRIC_ID_FIELD, metric.ordinal())).
                 and(eq(GAME_SERVER_ID_FIELD, gameServerId)).
-                and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(STAT_TIME_FIELD, startTime)).
-                and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(STAT_TIME_FIELD, endTime));
+                and(Cql.gte(STAT_TIME_FIELD, startTime)).
+                and(Cql.lte(STAT_TIME_FIELD, endTime));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getMetricValues");
         List<MetricStat> values = new ArrayList<>();
         for (com.datastax.driver.core.Row row : resultSet) {

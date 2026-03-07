@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -245,7 +247,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         if (mode != null) {
             query.where().and(eq(MODE_FIELD, mode));
         }
-        query.orderBy(com.datastax.driver.core.querybuilder.QueryBuilder.desc(END_TIME_FIELD));
+        query.orderBy(Cql.desc(END_TIME_FIELD));
         query.limit(1);
         com.datastax.driver.core.ResultSet rows = execute(query, "getSerialNumber");
         com.datastax.driver.core.Row row = rows.one();
@@ -346,7 +348,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
             query.value(DBL_UP_INCOME_COUNT_FIELD, session.getDblUpIncome());
             query.value(DBL_UP_PAYOUT_COUNT_FIELD, session.getDblUpPayout());
             query.value(MODEL_FIELD, session.getModel());
-            com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
+            com.datastax.driver.core.querybuilder.Batch batch = Cql.batch();
             batch.add(query);
 
             com.datastax.driver.core.querybuilder.Insert concreteGameIndexQuery = getInsertQuery(GAME_INDEX_TABLE, null);
@@ -407,7 +409,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
             if (lastGameSessionId != null) {
                 com.datastax.driver.core.querybuilder.Update prevQuery = getUpdateQuery();
                 prevQuery.where().and(eq(GAME_SESSION_ID_FIELD, lastGameSessionId));
-                prevQuery.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(NEXT_GAME_SESSION_ID_FIELD, session.getId()));
+                prevQuery.with(Cql.set(NEXT_GAME_SESSION_ID_FIELD, session.getId()));
                 batch.add(prevQuery);
             }
             execute(batch, "persist");
@@ -672,23 +674,23 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         if (lastGameSessionId != null) {
             com.datastax.driver.core.querybuilder.Update prevQuery = getUpdateQuery();
             prevQuery.where().and(eq(GAME_SESSION_ID_FIELD, lastGameSessionId));
-            prevQuery.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(NEXT_GAME_SESSION_ID_FIELD, session.getId()));
+            prevQuery.with(Cql.set(NEXT_GAME_SESSION_ID_FIELD, session.getId()));
             batch.add(prevQuery);
         }
     }
 
     public Integer getRecordsCount(Date startDate, Date endDate) {
-        return (int) count(com.datastax.driver.core.querybuilder.QueryBuilder.gte(END_TIME_FIELD, startDate == null ? 0L : startDate.getTime()),
-                com.datastax.driver.core.querybuilder.QueryBuilder.lte(END_TIME_FIELD, endDate == null ? Long.MAX_VALUE : endDate.getTime()));
+        return (int) count(Cql.gte(END_TIME_FIELD, startDate == null ? 0L : startDate.getTime()),
+                Cql.lte(END_TIME_FIELD, endDate == null ? Long.MAX_VALUE : endDate.getTime()));
     }
 
     public List<GameSession> getRecords(Date startDate, Date endDate, int from, int count) {
         long now = System.currentTimeMillis();
         com.datastax.driver.core.querybuilder.Select query = getSelectAllColumnsQuery();
         com.datastax.driver.core.querybuilder.Select.Where where = query.where();
-        where.and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(END_TIME_FIELD, startDate.getTime()));
-        where.and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(END_TIME_FIELD, endDate.getTime()));
-        query.orderBy(com.datastax.driver.core.querybuilder.QueryBuilder.asc(END_TIME_FIELD));
+        where.and(Cql.gte(END_TIME_FIELD, startDate.getTime()));
+        where.and(Cql.lte(END_TIME_FIELD, endDate.getTime()));
+        query.orderBy(Cql.asc(END_TIME_FIELD));
         query.limit(count);
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getRecords");
         List<GameSession> result = new ArrayList<>();
@@ -744,13 +746,13 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
             getLog().warn("getPlayerHistoryClauses: found 'IN' condition for gameIds, this may be dangerous or " +
                             "don't work!!! accountId={}, games={}, startDate={}, endDate={}, mode={}",
                     accountId, gameIds, startDate, endDate, mode);
-            clauses.add(com.datastax.driver.core.querybuilder.QueryBuilder.in(GAME_ID_FIELD, gameIds.toArray()));
+            clauses.add(Cql.in(GAME_ID_FIELD, gameIds.toArray()));
         }
         if (mode != MODE_ALL) {
             clauses.add(eq(MODE_FIELD, mode));
         }
-        clauses.add(com.datastax.driver.core.querybuilder.QueryBuilder.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0));
-        clauses.add(com.datastax.driver.core.querybuilder.QueryBuilder.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
+        clauses.add(Cql.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0));
+        clauses.add(Cql.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
         return clauses;
     }
 
@@ -787,7 +789,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
     public Long getLastGameSession(long accountId, long gameId) {
         com.datastax.driver.core.querybuilder.Select query = getSelectAllColumnsQuery(GAME_INDEX_TABLE);
         query.where().and(eq(GAME_ID_FIELD, gameId)).and(eq(ACCOUNT_ID_FIELD, accountId)).limit(1);
-        query.orderBy(com.datastax.driver.core.querybuilder.QueryBuilder.desc(END_TIME_FIELD));
+        query.orderBy(Cql.desc(END_TIME_FIELD));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getLastGameSession");
         com.datastax.driver.core.Row row = resultSet.one();
         Long gameSessionId = null;
@@ -813,7 +815,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
                 endIndex = gameSessionIds.size();
             }
             com.datastax.driver.core.querybuilder.Select query = getSelectAllColumnsQuery();
-            query.where().and(com.datastax.driver.core.querybuilder.QueryBuilder.in(GAME_SESSION_ID_FIELD, gameSessionIds.subList(startIndex, endIndex).toArray()));
+            query.where().and(Cql.in(GAME_SESSION_ID_FIELD, gameSessionIds.subList(startIndex, endIndex).toArray()));
             com.datastax.driver.core.ResultSet resultSet = execute(query, "getGameSessionList");
             for (com.datastax.driver.core.Row row : resultSet) {
                 GameSession gameSession = convert(row);
@@ -901,7 +903,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         for (com.datastax.driver.core.querybuilder.Clause clause : clauses) {
             where.and(clause);
         }
-        query.orderBy(com.datastax.driver.core.querybuilder.QueryBuilder.desc(END_TIME_FIELD));
+        query.orderBy(Cql.desc(END_TIME_FIELD));
         return query;
     }
 
@@ -929,9 +931,9 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         com.datastax.driver.core.querybuilder.Select.Where where = query.where();
         where.and(eq(BANK_ID_FIELD, bankId));
         where.and(eq(GAME_ID_FIELD, gameId != null ? gameId : ALL_GAMES_ID));
-        where.and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0));
-        where.and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
-        query.orderBy(com.datastax.driver.core.querybuilder.QueryBuilder.desc(END_TIME_FIELD));
+        where.and(Cql.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0));
+        where.and(Cql.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
+        query.orderBy(Cql.desc(END_TIME_FIELD));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getBankGameSessionsIds");
         List<Long> gameSessionIds = new ArrayList<>();
         for (com.datastax.driver.core.Row row : resultSet) {
@@ -948,17 +950,17 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         long now = System.currentTimeMillis();
         int count = (int) count(BANK_GAME_INDEX_TABLE, eq(BANK_ID_FIELD, bankId),
                 eq(GAME_ID_FIELD, gameId != null ? gameId : ALL_GAMES_ID),
-                com.datastax.driver.core.querybuilder.QueryBuilder.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0),
-                com.datastax.driver.core.querybuilder.QueryBuilder.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
+                Cql.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0),
+                Cql.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
         LOG.debug("getBankActiveAccountIds: count={}", count);
 
         com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(BANK_GAME_INDEX_TABLE, ACCOUNT_ID_FIELD);
         com.datastax.driver.core.querybuilder.Select.Where where = query.where();
         where.and(eq(BANK_ID_FIELD, bankId));
         where.and(eq(GAME_ID_FIELD, gameId != null ? gameId : ALL_GAMES_ID));
-        where.and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0));
-        where.and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
-        query.orderBy(com.datastax.driver.core.querybuilder.QueryBuilder.desc(END_TIME_FIELD));
+        where.and(Cql.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0));
+        where.and(Cql.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
+        query.orderBy(Cql.desc(END_TIME_FIELD));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getBankActiveAccountIds");
         List<Long> accountIds = new ArrayList<>(count);
         for (com.datastax.driver.core.Row row : resultSet) {

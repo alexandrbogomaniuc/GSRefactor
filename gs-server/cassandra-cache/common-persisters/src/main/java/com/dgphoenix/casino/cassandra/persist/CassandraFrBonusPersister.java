@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
@@ -110,7 +112,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist bonus: " + bonus);
         }
-        com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
+        com.datastax.driver.core.querybuilder.Batch batch = Cql.batch();
         com.datastax.driver.core.querybuilder.Insert query = getInsertQuery();
         String externalKey = externalBonusIdComposer == null
                 ? composeKey(bonus.getBankId(), bonus.getExtId())
@@ -125,15 +127,15 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
                         value(SERIALIZED_COLUMN_NAME, byteBuffer).
                         value(JSON_COLUMN_NAME, json);
                 batch.add(query);
-                com.datastax.driver.core.querybuilder.Insert indexQuery = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(FRBONUS_ACC_INDX);
+                com.datastax.driver.core.querybuilder.Insert indexQuery = Cql.insertInto(FRBONUS_ACC_INDX);
                 indexQuery.value(ACCOUNT_ID_FIELD, bonus.getAccountId()).value(BONUS_ID_FIELD, bonus.getId());
                 batch.add(indexQuery);
             } else {
                 frBonusArchivePersister.persist(bonus);
-                com.datastax.driver.core.querybuilder.Delete indexQuery = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(FRBONUS_ACC_INDX);
+                com.datastax.driver.core.querybuilder.Delete indexQuery = Cql.delete().from(FRBONUS_ACC_INDX);
                 indexQuery.where(eq(ACCOUNT_ID_FIELD, bonus.getAccountId())).and(eq(BONUS_ID_FIELD, bonus.getId()));
                 batch.add(indexQuery);
-                com.datastax.driver.core.querybuilder.Delete activeTable = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(FRBONUS_CF);
+                com.datastax.driver.core.querybuilder.Delete activeTable = Cql.delete().from(FRBONUS_CF);
                 activeTable.where(eq(BONUS_ID_FIELD, bonus.getId()));
                 batch.add(activeTable);
             }
@@ -147,8 +149,8 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         if (bonusIds == null || bonusIds.isEmpty()) {
             return Collections.emptyList();
         }
-        com.datastax.driver.core.querybuilder.Select select = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(FRBONUS_CF);
-        select.where().and(com.datastax.driver.core.querybuilder.QueryBuilder.in(BONUS_ID_FIELD, bonusIds.toArray()));
+        com.datastax.driver.core.querybuilder.Select select = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(FRBONUS_CF);
+        select.where().and(Cql.in(BONUS_ID_FIELD, bonusIds.toArray()));
         com.datastax.driver.core.ResultSet resultSet = execute(select, "getFRBonuses");
         List<FRBonus> result = new ArrayList<>(bonusIds.size());
         for (com.datastax.driver.core.Row row : resultSet) {
@@ -172,7 +174,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
 
     public List<FRBonus> getActiveBonuses(Long accountId) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(BONUS_ID_FIELD).from(FRBONUS_ACC_INDX);
+        com.datastax.driver.core.querybuilder.Select query = Cql.select(BONUS_ID_FIELD).from(FRBONUS_ACC_INDX);
         query.where(eq(ACCOUNT_ID_FIELD, accountId));
         com.datastax.driver.core.ResultSet rows = execute(query, "getActiveBonuses");
         List<Long> bonusIds = new ArrayList<>();
