@@ -4,6 +4,13 @@ Provider root: `Gamesv1/games/7000/assets/providers/openai`
 
 All runtime art in this pack is original and intended for the `openai` provider path only.
 
+## Runtime Status
+
+- This folder is a runtime-ready provider pack and not a canonical AssetPack source tree.
+- The repo-wide documented source pipeline is `raw-assets/preload/`, `raw-assets/main/`, and `raw-assets/promo/`.
+- No `Gamesv1/games/7000/raw-assets/providers/openai` folder is committed because there is no existing provider-local raw-assets convention elsewhere in the repo.
+- If engineering later needs pipeline sources, they should be created under canonical `raw-assets/preload/` and `raw-assets/main/` locations rather than under a new provider-local subtree.
+
 ## Backgrounds
 
 | File | Resolution | Intended Use |
@@ -75,6 +82,23 @@ All runtime art in this pack is original and intended for the `openai` provider 
 | `spark-burst-02` | `180x180` | `(0.5, 0.5)` |
 | `spark-burst-03` | `180x180` | `(0.5, 0.5)` |
 | `collector-ring` | `220x220` | `(0.5, 0.5)` |
+
+## Stable Runtime Keys
+
+Code should request the committed runtime art by these exact identifiers:
+
+- Background stems: `background-desktop-1920x1080`, `background-landscape-safe-1600x900`, `background-portrait-1080x1920`
+- UI atlas frames: `reel-frame-panel`, `reel-separator-vertical`, `reel-separator-horizontal`, `button-spin`, `button-spin-pressed`, `button-autoplay`, `button-autoplay-pressed`, `button-buybonus`, `button-buybonus-pressed`, `button-bet-plus`, `button-bet-minus`, `payline-pill`
+- Symbol atlas frames: `symbol-0-egg`, `symbol-1-cherries`, `symbol-2-lemon`, `symbol-3-orange`, `symbol-4-plum`, `symbol-5-bar`, `symbol-6-seven`, `symbol-7-coin`, `symbol-8-bolt`, `symbol-9-rooster`, `collector-symbol`, `coin-multiplier-2x`, `coin-multiplier-3x`, `coin-multiplier-5x`, `coin-multiplier-10x`
+- VFX atlas frames: `lightning-arc-01`, `lightning-arc-02`, `lightning-arc-03`, `lightning-arc-04`, `lightning-arc-05`, `lightning-arc-06`, `spark-burst-01`, `spark-burst-02`, `spark-burst-03`, `collector-ring`
+
+## Intentionally Absent
+
+- No standalone `BetOnline` runtime lockup asset is committed.
+- No explicit `boost` VFX key is committed.
+- No explicit coin-VFX key is committed.
+- No pressed-state keys are committed for `button-bet-plus` or `button-bet-minus`.
+- Masters are local-only working files and are intentionally not committed in this provider pack.
 
 ## Preview Set
 
