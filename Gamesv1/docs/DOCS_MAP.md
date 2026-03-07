@@ -45,6 +45,11 @@ Canonical and archived documentation index.
 - `docs/gs/fixtures/*`
 - `docs/gs/schemas/*`
 
+## Examples / Proof Seeds
+
+- `docs/examples/release-pack/premium-slot/README.md`
+- `docs/examples/release-pack/premium-slot/brand-betonline-token-seed.example.json`
+
 ## Canonical Endpoint Naming
 
 - Canonical prefix: `/slot/v1/*`
