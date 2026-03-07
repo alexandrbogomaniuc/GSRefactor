@@ -1,0 +1,11 @@
+Phase 1F live donor config capture
+Date: 2026-03-07
+Source launch URL: https://api.inout.games/api/launch?gameMode=chicken-coin&operatorId=ee2013ed-e1f0-4d6e-97d2-f36619e2eb52&currency=USD&lang=en
+Final donor URL: https://chicken-coin.inout.games/api/modes/game?gameMode=chicken-coin&operatorId=ee2013ed-e1f0-4d6e-97d2-f36619e2eb52&authToken=[REDACTED]&currency=USD&lang=en&theme=&gameCustomizationId=&lobbyUrl=
+API endpoint: https://api.inout.games
+Socket path: /io (websocket)
+
+Observed websocket events after auth:
+- onBalanceChange: {"currency":"USD","balance":"1000000"}
+- betsRanges: {"USD":["0.10","20000.00"]}
+- betsConfig: {"USD":{"betPresets":[],"minBetAmount":"0.10","maxBetAmount":"20000.00","maxWinAmount":"100000.00","decimalPlaces":null,"defaultBetAmount":null}}

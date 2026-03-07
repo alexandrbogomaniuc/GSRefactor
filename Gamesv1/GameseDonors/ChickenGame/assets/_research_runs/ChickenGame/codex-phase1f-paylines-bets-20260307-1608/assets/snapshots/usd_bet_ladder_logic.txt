@@ -1,0 +1,49 @@
+Phase 1F client-side USD bet ladder derivation
+Date: 2026-03-07
+Bundle source inspected locally: chicken client main bundle downloaded during Phase 1F from the live donor page.
+
+Relevant extracted client logic:
+- Threshold table:
+  [{threshold:1,step:0.1},{threshold:10,step:1},{threshold:25,step:5},{threshold:100,step:25},{threshold:500,step:50},{threshold:1000,step:100},{threshold:5000,step:500},{threshold:20000,step:1000},{threshold:100000,step:5000},{threshold:1000000,step:25000},{threshold:10000000,step:100000},{threshold:100000000,step:500000},{threshold:1000000000,step:5000000}]
+- Preset list builder:
+  a9(min, max, currentBet)
+- Max bound used by ChickenGame bet UI:
+  lt(maxBet, maxPresetDivider)
+- ChickenGame passes:
+  maxPresetDivider: 100
+- Live USD bounds from betsConfig:
+  minBetAmount: 0.10
+  maxBetAmount: 20000.00
+- Derived preset/dropdown upper bound:
+  lt(20000, 100) = 200
+
+Deterministic USD preset/dropdown list produced by the client:
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+15
+20
+25
+50
+75
+100
+150
+200
+
+Count: 27
