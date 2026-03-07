@@ -1,0 +1,11 @@
+{
+    "TITLE": "Paytable",
+    "SYMBOL_PREFIX": "Symbol",
+    "WILD": "Wild",
+    "WILD_DESC": "Substitutes for all symbols except Scatter.",
+    "SCATTER": "Scatter",
+    "SCATTER_DESC": "3 or more trigger Free Spins.",
+    "PAYLINE_LABEL": "Payline {{number}}",
+    "PAYS_LEFT_TO_RIGHT": "All wins pay left to right.",
+    "HIGHEST_WIN_ONLY": "Only the highest win per payline is paid."
+}

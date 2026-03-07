@@ -1,0 +1,133 @@
+import { GameConfig } from "@gamesv1/ui-kit";
+
+export type CrazyRoosterAssetProvider = "openai" | "nanobanana";
+export type AssetProvider = CrazyRoosterAssetProvider;
+
+export const CRAZY_ROOSTER_LAYOUT = {
+  reelCount: 3,
+  numReels: 3,
+  rowCount: 4,
+  numRows: 4,
+  symbolWidth: 172,
+  symbolHeight: 148,
+  reelSpacing: 14,
+  rowSpacing: 14,
+  symbolCount: 10,
+  extraSymbols: 2,
+  minSpinMs: 1300,
+  spinStaggerMs: 120,
+  stopDelayMs: 420,
+};
+
+export const CRAZY_ROOSTER_PAYLINES: number[][] = [
+  [0, 0, 0],
+  [1, 1, 1],
+  [2, 2, 2],
+  [3, 3, 3],
+  [0, 1, 2],
+  [2, 1, 0],
+  [1, 2, 3],
+  [3, 2, 1],
+];
+
+export const CRAZY_ROOSTER_BUY_TIERS = [
+  { id: "bonus-75", label: "BONUS 75", priceMultiplier: 75 },
+  { id: "bonus-200", label: "BONUS 200", priceMultiplier: 200 },
+  { id: "bonus-300", label: "BONUS 300", priceMultiplier: 300 },
+] as const;
+export const CRAZY_ROOSTER_BUY_BONUS_TIERS = CRAZY_ROOSTER_BUY_TIERS;
+
+export const CRAZY_ROOSTER_JACKPOTS = {
+  miniMultiplier: 25,
+  minorMultiplier: 50,
+  majorMultiplier: 150,
+  grandMultiplier: 1000,
+};
+
+export const CRAZY_ROOSTER_BIG_WIN_THRESHOLDS = {
+  bigMultiplier: 10,
+  hugeMultiplier: 25,
+  megaMultiplier: 50,
+};
+
+export const CRAZY_ROOSTER_FEATURE_FLAGS = {
+  autoplay: true,
+  buyFeature: true,
+  collectFeature: true,
+  boostFeature: true,
+  bonusGame: true,
+  holdAndWin: true,
+  holdForTurbo: true,
+  jackpotHooks: true,
+} as const;
+
+export const CRAZY_ROOSTER_SYMBOL_LABELS = [
+  "CHERRY",
+  "LEMON",
+  "ORANGE",
+  "PLUM",
+  "GRAPE",
+  "MELON",
+  "BAR",
+  "777",
+  "CHICKEN",
+  "SUPER",
+] as const;
+
+export const CRAZY_ROOSTER_IDLE_COLUMNS = [
+  [0, 1, 8, 3],
+  [1, 8, 2, 9],
+  [2, 3, 9, 4],
+];
+
+export const CRAZY_ROOSTER_BRAND = {
+  brandName: "BetOnline",
+  displayName: "BetOnline",
+  footerText: "Powered By BetOnline Studios",
+  themeId: "betonline-crazy-rooster",
+  primaryColor: "#0D0D0D",
+  accentColor: "#C7141A",
+  surfaceColor: "#FFFFFF",
+  defaultProvider: "openai" as CrazyRoosterAssetProvider,
+};
+
+export const CRAZY_ROOSTER_BRAND_NAME = CRAZY_ROOSTER_BRAND.brandName;
+export const CRAZY_ROOSTER_DISPLAY_NAME = CRAZY_ROOSTER_BRAND.displayName;
+export const CRAZY_ROOSTER_FOOTER = CRAZY_ROOSTER_BRAND.footerText;
+
+export const isAssetProvider = (
+  value: string | null | undefined,
+): value is CrazyRoosterAssetProvider =>
+  value === "openai" || value === "nanobanana";
+
+export const resolveAssetProvider = (
+  params: URLSearchParams = new URLSearchParams(window.location.search),
+): CrazyRoosterAssetProvider => {
+  const requested = params.get("assetProvider") ?? params.get("provider");
+  if (isAssetProvider(requested)) {
+    return requested;
+  }
+  return CRAZY_ROOSTER_BRAND.defaultProvider;
+};
+
+export const applyCrazyRoosterSharedGameConfig = (): void => {
+  GameConfig.numReels = CRAZY_ROOSTER_LAYOUT.reelCount;
+  GameConfig.numRows = CRAZY_ROOSTER_LAYOUT.rowCount;
+  GameConfig.symbolWidth = CRAZY_ROOSTER_LAYOUT.symbolWidth;
+  GameConfig.symbolHeight = CRAZY_ROOSTER_LAYOUT.symbolHeight;
+  GameConfig.reelSpacing = CRAZY_ROOSTER_LAYOUT.reelSpacing;
+  GameConfig.rowSpacing = CRAZY_ROOSTER_LAYOUT.rowSpacing;
+  GameConfig.symbolCount = CRAZY_ROOSTER_LAYOUT.symbolCount;
+  GameConfig.symbolAtlasPrefix = "symbol_";
+};
+
+export const buildGridFromColumns = (columns: number[][]): number[][] =>
+  Array.from({ length: CRAZY_ROOSTER_LAYOUT.rowCount }, (_, rowIndex) =>
+    Array.from({ length: CRAZY_ROOSTER_LAYOUT.reelCount }, (_, reelIndex) => {
+      return columns[reelIndex]?.[rowIndex] ?? 0;
+    }),
+  );
+
+export const pickBuyTier = (requested: number | null | undefined) =>
+  CRAZY_ROOSTER_BUY_TIERS.find((tier) => tier.priceMultiplier === requested) ??
+  CRAZY_ROOSTER_BUY_TIERS[0];

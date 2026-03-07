@@ -1,0 +1,30 @@
+{
+  "gameId": "7000",
+  "gameName": "Crazy Rooster Hold&Win",
+  "version": "0.1.0",
+  "reels": {
+    "rows": 4,
+    "cols": 3
+  },
+  "mathModels": [
+    {
+      "id": "M1",
+      "rtp": 96.02,
+      "label": "Default"
+    }
+  ],
+  "rtpValues": [
+    96.02
+  ],
+  "volatility": "high",
+  "possibleMaxWinMultiplier": 1000,
+  "capWinMultiplier": 1000,
+  "releaseTime": 3,
+  "isFrb": false,
+  "ocb": false,
+  "features": {
+    "freeSpins": false,
+    "buyFeature": true,
+    "autoplay": true
+  }
+}

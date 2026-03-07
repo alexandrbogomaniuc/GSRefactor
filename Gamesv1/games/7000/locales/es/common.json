@@ -1,0 +1,20 @@
+{
+    "GAME_TITLE": "Tragamonedas Plantilla",
+    "SPIN": "GIRAR",
+    "STOP": "PARAR",
+    "AUTOPLAY": "Juego Automático",
+    "AUTOPLAY_START": "Iniciar Autogiro",
+    "AUTOPLAY_STOP": "Detener Autogiro",
+    "SETTINGS": "Configuración",
+    "SOUND_ON": "Sonido Activado",
+    "SOUND_OFF": "Sonido Desactivado",
+    "TURBO_ON": "Turbo Activado",
+    "TURBO_OFF": "Turbo Desactivado",
+    "BET": "Apuesta",
+    "BALANCE": "Saldo",
+    "WIN": "Ganancia",
+    "TOTAL_BET": "Apuesta Total",
+    "LOADING": "Cargando...",
+    "ERROR_GENERIC": "Algo salió mal. Por favor, actualice la página.",
+    "BRAND_WELCOME": "Bienvenido a {{BRAND_NAME}}"
+}

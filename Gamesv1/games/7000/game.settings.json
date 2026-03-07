@@ -1,0 +1,81 @@
+{
+  "gameId": 7000,
+  "gameName": "Crazy Rooster Hold&Win",
+  "version": "0.1.0",
+  "themeId": "betonline-crazy-rooster",
+  "reels": {
+    "rows": 4,
+    "cols": 3,
+    "paylines": [
+      [0, 0, 0],
+      [1, 1, 1],
+      [2, 2, 2],
+      [3, 3, 3],
+      [0, 1, 2],
+      [1, 2, 3],
+      [2, 1, 0],
+      [3, 2, 1]
+    ]
+  },
+  "assets": {
+    "provider": "openai",
+    "supportedProviders": ["openai", "nanobanana"]
+  },
+  "features": {
+    "collect": true,
+    "lightning": true,
+    "bonus": true,
+    "buyFeature": true,
+    "autoplay": true,
+    "holdForTurbo": true,
+    "history": true,
+    "jackpotHooks": true
+  },
+  "buyBonus": {
+    "tiers": [75, 200, 300]
+  },
+  "jackpots": {
+    "mini": 25,
+    "minor": 50,
+    "major": 150,
+    "grand": 1000
+  },
+  "winPresentation": {
+    "thresholdsMultiplier": {
+      "big": 10,
+      "mega": 20,
+      "epic": 35
+    },
+    "todo": "Confirm donor-equivalent big win tier thresholds from certified pack before release."
+  },
+  "brand": {
+    "displayName": "BetOnline",
+    "footer": "Powered By BetOnline Studios",
+    "palette": {
+      "primary": "#0D0D0D",
+      "accent": "#C7141A",
+      "surface": "#FFFFFF"
+    }
+  },
+  "gs": {
+    "runtimeTarget": "slot-browser-v1",
+    "mathManifestPath": "math/math-package-manifest.json",
+    "historyPolicy": {
+      "enabled": true,
+      "openInSameWindow": true
+    },
+    "mathModels": [
+      {
+        "id": "M1",
+        "rtp": 96.54,
+        "label": "Default"
+      }
+    ],
+    "volatility": "medium-high",
+    "possibleMaxWinMultiplier": 5000,
+    "capWinMultiplier": 10000,
+    "releaseTime": 3,
+    "isFrb": false,
+    "ocb": false
+  }
+}

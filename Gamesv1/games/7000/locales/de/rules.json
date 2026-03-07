@@ -1,0 +1,11 @@
+{
+    "TITLE": "Spielregeln",
+    "RTP_LABEL": "Auszahlungsquote (RTP)",
+    "RTP_VALUE": "{{rtp}}%",
+    "VOLATILITY_LABEL": "Volatilität",
+    "MAX_WIN_LABEL": "Maximaler Gewinn",
+    "MAX_WIN_VALUE": "{{multiplier}}× Ihren Einsatz",
+    "MALFUNCTION_VOIDS": "Eine Fehlfunktion macht alle Zahlungen und Spiele ungültig.",
+    "MIN_BET_LABEL": "Mindesteinsatz",
+    "MAX_BET_LABEL": "Höchsteinsatz"
+}
