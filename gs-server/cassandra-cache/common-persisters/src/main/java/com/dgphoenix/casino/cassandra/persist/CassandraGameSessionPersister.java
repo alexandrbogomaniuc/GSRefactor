@@ -525,7 +525,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
                 sessionWithoutEndTimeCount);
     }
 
-    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, GameSession session) {
+    public void prepareToPersist(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, GameSession session) {
         if (!session.isRealMoney()) {
             LOG.error("Cannot persist free mode session: {}", session);
             return;

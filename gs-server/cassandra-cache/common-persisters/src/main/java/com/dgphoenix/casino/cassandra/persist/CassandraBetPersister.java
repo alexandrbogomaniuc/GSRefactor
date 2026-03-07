@@ -292,7 +292,7 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
         SessionHelper.getInstance().getTransactionData().setLastBet(null);
     }
 
-    public void prepareToPersistGameSessionBets(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId,
+    public void prepareToPersistGameSessionBets(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId,
                                                 int maxPlayerBetId, List<ByteBuffer> byteBuffersCollector) {
         long now = System.currentTimeMillis();
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
@@ -492,7 +492,7 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
         put(gameSession, playerBet);
     }
 
-    public void prepareToPersistBet(HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId, PlayerBet bet,
+    public void prepareToPersistBet(HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId, PlayerBet bet,
                                     List<ByteBuffer> byteBuffersCollector) {
         tempBetPersister.prepareToPersistBet(statementsMap, gameSessionId, bet,
                 byteBuffersCollector);

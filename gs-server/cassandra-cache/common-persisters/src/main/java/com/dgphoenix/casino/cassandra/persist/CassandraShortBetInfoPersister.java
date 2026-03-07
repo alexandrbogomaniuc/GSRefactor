@@ -95,7 +95,7 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
         return result;
     }
 
-    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, ShortBetInfo betInfo,
+    public void prepareToPersist(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, ShortBetInfo betInfo,
                                  List<ByteBuffer> byteBuffersCollector, Integer ttl) {
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         String json = getMainTableDefinition().serializeToJson(betInfo);

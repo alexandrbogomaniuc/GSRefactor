@@ -73,7 +73,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         }
     }
 
-    protected List<com.datastax.driver.core.Statement> getOrCreateStatements(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap) {
+    protected List<com.datastax.driver.core.Statement> getOrCreateStatements(Map<Session, List<com.datastax.driver.core.Statement>> statementsMap) {
         return statementsMap.computeIfAbsent(getSession(), session -> new LinkedList<>());
     }
 
@@ -150,7 +150,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     protected Session getSession() {
-        checkState(session != null, "com.datastax.driver.core.Session undefined");
+        checkState(session != null, "Session undefined");
         return session;
     }
 
@@ -334,7 +334,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return execute(this.session, statement, callerClassMethodIdentification, null);
     }
 
-    protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
+    protected com.datastax.driver.core.ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
                                 boolean warnErrors) {
         assertInitialized();
         long now = System.currentTimeMillis();
@@ -384,11 +384,11 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return rs;
     }
 
-    protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+    protected com.datastax.driver.core.ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
         return execute(session, statement, callerClassMethodIdentification, null);
     }
 
-    protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
+    protected com.datastax.driver.core.ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
                                 com.datastax.driver.core.ConsistencyLevel level) {
         assertInitialized();
         long now = System.currentTimeMillis();

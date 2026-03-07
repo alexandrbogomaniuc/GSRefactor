@@ -96,7 +96,7 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
         return LOG;
     }
 
-    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, AccountInfo account, List<ByteBuffer> byteBuffersCollector) {
+    public void prepareToPersist(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, AccountInfo account, List<ByteBuffer> byteBuffersCollector) {
         if (account.isGuest()) {
             LOG.warn("prepareToPersist: persist skipped [this may be error, please fix], found guest account: {}",
                     account.getId());

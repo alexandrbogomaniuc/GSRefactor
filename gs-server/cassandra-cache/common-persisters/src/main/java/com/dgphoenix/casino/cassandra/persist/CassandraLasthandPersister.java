@@ -78,7 +78,7 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
         }
     }
 
-    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long accountId, long gameId, Long bonusId, String lasthandData,
+    public void prepareToPersist(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long accountId, long gameId, Long bonusId, String lasthandData,
                                  BonusSystemType bonusSystemType) {
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         statements.add(getPersistStatement(accountId, gameId, bonusSystemType, bonusId, lasthandData));
@@ -108,7 +108,7 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
         persist(accountId, gameId, bonusId, "", bonusSystemType);
     }
 
-    public void prepareToDeletion(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long accountId, long gameId,
+    public void prepareToDeletion(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long accountId, long gameId,
                                   Long bonusId, BonusSystemType bonusSystemType) {
         prepareToPersist(statementsMap, accountId, gameId, bonusId, "", bonusSystemType);
     }

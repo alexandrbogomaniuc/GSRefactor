@@ -210,6 +210,6 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
                 com.datastax.driver.core.querybuilder.QueryBuilder.delete().
                         from(getMainColumnFamilyName()).
                         where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, sids));
-        execute(query, "delete player com.datastax.driver.core.Session States");
+        execute(query, "delete player Session states");
     }
 }

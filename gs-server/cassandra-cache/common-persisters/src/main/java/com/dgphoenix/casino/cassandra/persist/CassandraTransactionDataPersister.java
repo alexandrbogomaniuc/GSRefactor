@@ -319,7 +319,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
             LOG.warn("persistPlayerBet: storedItems is empty for lockId={}", data.getLockId());
         }
 
-        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap = new HashMap<>();
+        HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap = new HashMap<>();
         List<ByteBuffer> byteBuffers = new LinkedList<>();
 
         try {
@@ -538,7 +538,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         if (CollectionUtils.isEmpty(storedItems)) {
             LOG.warn("processInTransactionItems: storedItems is empty for lockId={}", data.getLockId());
         }
-        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap = new HashMap<>();
+        HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap = new HashMap<>();
         List<ByteBuffer> byteBuffers = new LinkedList<>();
         try {
             boolean success = true;
@@ -592,13 +592,13 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     }
 
-    protected Pair<Boolean, Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.ResultSet>>> execute(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap,
+    protected Pair<Boolean, Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.ResultSet>>> execute(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap,
                                                                    String callerClassMethodIdentification) {
         long now = System.currentTimeMillis();
         try {
             List<com.datastax.driver.core.Statement> strongConsistencyItems = statementsMap.remove(getSession());
-            Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.ResultSet>> resultSets = new HashMap<>(statementsMap.size());
-            for (Map.Entry<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> entry : statementsMap.entrySet()) {
+            Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.ResultSet>> resultSets = new HashMap<>(statementsMap.size());
+            for (Map.Entry<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> entry : statementsMap.entrySet()) {
                 Pair<Boolean, List<com.datastax.driver.core.ResultSet>> ksResult = executeSingleBatch(entry.getKey(), entry.getValue(),
                         callerClassMethodIdentification);
                 resultSets.put(entry.getKey(), ksResult.getValue());
@@ -622,7 +622,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         }
     }
 
-    private Pair<Boolean, List<com.datastax.driver.core.ResultSet>> executeSingleBatch(com.datastax.driver.core.Session session, List<com.datastax.driver.core.Statement> statements,
+    private Pair<Boolean, List<com.datastax.driver.core.ResultSet>> executeSingleBatch(com.abs.casino.cassandra.persist.engine.Session session, List<com.datastax.driver.core.Statement> statements,
                                                               String callerClassMethodIdentification) {
         String keySpace = (com.abs.casino.cassandra.persist.engine.Session.class.isInstance(session) ?
                 ((com.abs.casino.cassandra.persist.engine.Session) session).getKeySpace() :

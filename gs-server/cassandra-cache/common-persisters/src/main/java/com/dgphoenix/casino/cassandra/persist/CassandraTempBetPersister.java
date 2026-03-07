@@ -111,12 +111,12 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
         return execute(query, "getResultSetByGameSessionIdAndRounds from temp Table");
     }
 
-    void addDeleteStatement(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId) {
+    void addDeleteStatement(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId) {
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         statements.add(addItemDeletion(COLUMN_FAMILY_NAME, gameSessionId));
     }
 
-    public void prepareToPersistBet(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId, PlayerBet bet,
+    public void prepareToPersistBet(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId, PlayerBet bet,
                                     List<ByteBuffer> byteBuffersCollector) {
         if (bet == null) {
             getLog().warn("persist: empty bet, gameSessionId={}", gameSessionId);

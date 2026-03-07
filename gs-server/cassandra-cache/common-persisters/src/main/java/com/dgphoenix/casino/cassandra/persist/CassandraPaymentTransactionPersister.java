@@ -62,7 +62,7 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         this.accountInfoPersister = accountInfoPersister;
     }
 
-    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, PaymentTransaction transaction,
+    public void prepareToPersist(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, PaymentTransaction transaction,
                                  List<ByteBuffer> byteBuffersCollector) {
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         String json = TABLE.serializeToJson(transaction);

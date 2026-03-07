@@ -56,7 +56,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     /**
      * Internal/legacy accessor retained for persister engine compatibility.
      */
-    public com.datastax.driver.core.Session getSession() {
+    public Session getSession() {
         return session;
     }
 
