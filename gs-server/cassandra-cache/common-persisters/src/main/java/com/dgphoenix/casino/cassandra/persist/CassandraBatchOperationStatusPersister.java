@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -48,7 +50,7 @@ public class CassandraBatchOperationStatusPersister extends AbstractCassandraPer
     }
 
     public Pair<Status, Long> getStatus(long roomId, long roundId, String operationType) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(STATUS, CHANGE_DATE).from(getMainColumnFamilyName()).where(eq(ROOM_ID, roomId))
+        com.datastax.driver.core.Statement query = Cql.select(STATUS, CHANGE_DATE).from(getMainColumnFamilyName()).where(eq(ROOM_ID, roomId))
                 .and(eq(ROUND_ID, roundId))
                 .and(eq(OPERATION_TYPE, operationType))
                 .limit(1);

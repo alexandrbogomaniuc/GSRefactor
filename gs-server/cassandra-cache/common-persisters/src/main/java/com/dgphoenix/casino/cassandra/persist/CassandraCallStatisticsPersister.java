@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
-import static com.datastax.driver.core.querybuilder.QueryBuilder.incr;
+import static com.abs.casino.cassandra.persist.engine.Cql.incr;
 
 public class CassandraCallStatisticsPersister extends AbstractCassandraPersister<String, String> implements IHttpClientStatisticsPersister {
     private static final Logger LOG = LogManager.getLogger(CassandraCallStatisticsPersister.class);
