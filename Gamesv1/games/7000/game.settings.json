@@ -6,25 +6,25 @@
   "reels": {
     "rows": 4,
     "cols": 3,
-    "todo": "Provisional 8 fixed paylines only. Replace with donor-verified 3x4 line map when supplied.",
+    "todo": "Donor-verified 8 fixed paylines for the current 3x4 vertical slice.",
     "paylines": [
       [0, 0, 0],
       [1, 1, 1],
       [2, 2, 2],
       [3, 3, 3],
       [0, 1, 2],
-      [2, 1, 0],
       [1, 2, 3],
+      [2, 1, 0],
       [3, 2, 1]
     ]
   },
   "betConfig": {
     "mode": "ladder",
-    "betLadder": [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000],
+    "betLadder": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 50, 75, 100, 150, 200],
     "defaultBet": 1,
     "minBet": 0.1,
     "maxBet": 20000,
-    "todo": "Provisional config-driven ladder only. Replace with donor-verified production ladder when supplied."
+    "todo": "Donor-verified dropdown ladder with config-driven bounds retained for runtime flexibility."
   },
   "assets": {
     "provider": "openai",

@@ -25,39 +25,45 @@ export const CRAZY_ROOSTER_PAYLINES: number[][] = [
   [2, 2, 2],
   [3, 3, 3],
   [0, 1, 2],
-  [2, 1, 0],
   [1, 2, 3],
+  [2, 1, 0],
   [3, 2, 1],
 ];
-
-// TODO: Replace with donor-verified 3x4 payline shapes when the exact 8-line table is supplied.
 
 export const CRAZY_ROOSTER_PROVISIONAL_BET_LADDER = [
   0.1,
   0.2,
+  0.3,
+  0.4,
   0.5,
+  0.6,
+  0.7,
+  0.8,
+  0.9,
   1,
   2,
+  3,
+  4,
   5,
+  6,
+  7,
+  8,
+  9,
   10,
+  15,
   20,
+  25,
   50,
+  75,
   100,
+  150,
   200,
-  500,
-  1000,
-  2000,
-  5000,
-  10000,
-  20000,
 ] as const;
 
 export const CRAZY_ROOSTER_BET_LIMITS = {
   minBet: CRAZY_ROOSTER_PROVISIONAL_BET_LADDER[0],
   defaultBet: 1,
-  maxBet: CRAZY_ROOSTER_PROVISIONAL_BET_LADDER[
-    CRAZY_ROOSTER_PROVISIONAL_BET_LADDER.length - 1
-  ],
+  maxBet: 20000,
 } as const;
 
 export const CRAZY_ROOSTER_BUY_TIERS = [
