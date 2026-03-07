@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -77,7 +79,7 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
     }
 
     public Long getCurrentValue(String sequencerName) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(VALUE_COLUMN_NAME).
+        com.datastax.driver.core.Statement query = Cql.select(VALUE_COLUMN_NAME).
                 from(getMainColumnFamilyName()).where(eq("KEY", sequencerName)).limit(1);
         com.datastax.driver.core.ResultSet rows = execute(query, "getCurrentValue");
         com.datastax.driver.core.Row row = rows.one();
@@ -97,7 +99,7 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
                 //reserve block
                 com.datastax.driver.core.Statement updateQuery = getUpdateQuery()
                         .where(getSimpleKeyClause(name))
-                        .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(VALUE_COLUMN_NAME, baseValue + block))
+                        .with(Cql.set(VALUE_COLUMN_NAME, baseValue + block))
                         .onlyIf(eq(VALUE_COLUMN_NAME, currentValue));
                 com.datastax.driver.core.ResultSet resultSet = executeWithCheckTimeout(updateQuery, "allocateNextBlock");
                 success = resultSet.wasApplied();
@@ -150,7 +152,7 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
             int attemptsCount = 0;
             while (!success) {
                 com.datastax.driver.core.Statement query = getUpdateQuery(seq.getName())
-                        .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(VALUE_COLUMN_NAME, newDesiredValue))
+                        .with(Cql.set(VALUE_COLUMN_NAME, newDesiredValue))
                         .onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue));
                 com.datastax.driver.core.ResultSet resultSet = executeWithCheckTimeout(query, "persist[update]");
 

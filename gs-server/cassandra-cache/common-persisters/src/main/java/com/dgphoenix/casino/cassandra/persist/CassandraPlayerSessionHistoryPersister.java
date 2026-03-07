@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -100,9 +102,9 @@ public class CassandraPlayerSessionHistoryPersister extends AbstractCassandraPer
             return;
         }
         com.datastax.driver.core.Statement query =
-                com.datastax.driver.core.querybuilder.QueryBuilder.delete().
+                Cql.delete().
                         from(getMainColumnFamilyName()).
-                        where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, sessionIds));
+                        where(Cql.in(KEY, sessionIds));
         execute(query, "delete playerSession");
     }
 
