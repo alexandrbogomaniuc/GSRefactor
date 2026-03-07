@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.ExtendedAccountInfoPersister;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
@@ -73,7 +75,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
         com.datastax.driver.core.Statement update = getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
-                .with(com.datastax.driver.core.querybuilder.QueryBuilder.putAll(PROPERTIES, properties));
+                .with(Cql.putAll(PROPERTIES, properties));
         execute(update, "persist");
     }
 
@@ -82,7 +84,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
         com.datastax.driver.core.Statement update = getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
-                .with(com.datastax.driver.core.querybuilder.QueryBuilder.put(PROPERTIES, propertyName, value));
+                .with(Cql.put(PROPERTIES, propertyName, value));
         execute(update, "persist");
     }
 

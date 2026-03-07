@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -93,7 +95,7 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
         String json = TABLE.serializeToJson(entry);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(entry);
         try {
-            com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(getMainTableDefinition().getTableName())
+            com.datastax.driver.core.Statement query = Cql.insertInto(getMainTableDefinition().getTableName())
                     .value(ACCOUNT_ID_FIELD, accountId)
                     .value(GAME_ID_FIELD, entry.getGameId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
@@ -105,7 +107,7 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
     }
 
     public void delete(long accountId, int gameId) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.delete()
+        com.datastax.driver.core.Statement query = Cql.delete()
                 .from(getMainColumnFamilyName())
                 .where()
                 .and(eq(ACCOUNT_ID_FIELD, accountId))

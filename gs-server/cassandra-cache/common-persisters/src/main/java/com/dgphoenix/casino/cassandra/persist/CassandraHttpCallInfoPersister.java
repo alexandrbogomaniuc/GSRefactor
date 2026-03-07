@@ -19,7 +19,7 @@ import java.util.Optional;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
-import static com.datastax.driver.core.querybuilder.QueryBuilder.select;
+import static com.abs.casino.cassandra.persist.engine.Cql.select;
 import static com.abs.casino.common.util.support.AdditionalInfoAttribute.*;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;

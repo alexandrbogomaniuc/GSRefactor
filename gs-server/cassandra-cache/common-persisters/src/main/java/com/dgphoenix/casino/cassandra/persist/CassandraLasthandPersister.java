@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
@@ -122,7 +124,7 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
 
     //key: gameId, value is pair writetime/lasthand
     public Map<Long, Pair<Long, String>> getRealModeLasthandsWithWriteTime(long accountId) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select().column(LASTHAND_DATA_FIELD).column(GAME_ID_FIELD).writeTime(LASTHAND_DATA_FIELD)
+        com.datastax.driver.core.Statement query = Cql.select().column(LASTHAND_DATA_FIELD).column(GAME_ID_FIELD).writeTime(LASTHAND_DATA_FIELD)
                 .from(REAL_TABLE.getTableName()).where().and(eq(ACCOUNT_ID_FIELD, accountId)).limit(10000);
         com.datastax.driver.core.ResultSet rows = execute(query, "getRealModeLasthandsWithWriteTime");
         Map<Long, Pair<Long, String>> result = new HashMap<>();

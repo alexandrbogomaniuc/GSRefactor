@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist.mp;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -77,7 +79,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
     }
 
     public void removeConfig(long id) {
-        com.datastax.driver.core.querybuilder.Delete.Where delete = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(CF_NAME).where(eq(DRAW_ID_COLUMN, id));
+        com.datastax.driver.core.querybuilder.Delete.Where delete = Cql.delete().from(CF_NAME).where(eq(DRAW_ID_COLUMN, id));
         execute(delete, "removeConfig");
     }
 

@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
@@ -40,7 +42,7 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
 
     public void saveAll() {
         Map<? extends Object, ? extends T> objects = getCache().getAllObjects();
-        com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
+        com.datastax.driver.core.querybuilder.Batch batch = Cql.batch();
         List<ByteBuffer> list = new ArrayList<>(objects.size());
         try {
             for (Map.Entry<? extends Object, ? extends T> entry : objects.entrySet()) {
@@ -122,7 +124,7 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
 
     protected Map<KEY, T> loadAllAsMap(Class<T> entryClass) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select().all().from(getMainColumnFamilyName());
+        com.datastax.driver.core.Statement query = Cql.select().all().from(getMainColumnFamilyName());
         com.datastax.driver.core.ResultSet resultSet = execute(query, "loadAllAsMap");
         if (resultSet == null || !resultSet.iterator().hasNext()) {
             getLog().error("loadAllForLongKeysAsMapKryo: rowList is null or empty");
