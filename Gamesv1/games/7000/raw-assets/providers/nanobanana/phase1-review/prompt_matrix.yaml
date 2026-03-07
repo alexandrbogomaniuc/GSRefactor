@@ -1,0 +1,208 @@
+# Phase 1 Prompt Matrix
+
+## Backgrounds
+- panel_id: bg_01
+  asset_group: backgrounds
+  asset_role: Main ambiance
+  contract_key: background-desktop-1920x1080
+  export_name: bg_concept_1_hero_barn.png
+  positive_prompt: A warm, sunlit interior of a classic red wooden slot background. Dust motes dancing in the air, golden straw on the floor, golden hour lighting pouring through gaps in the wood. Highly detailed, premium 3D rendering, cozy rustic atmosphere, no futuristic elements.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Wide angle, central composition, framing a central slot reel area
+  palette: Warm golds, deep reds, soft browns, natural sunlight
+  materials: Weathered wood, golden straw, dust motes
+  lighting: Golden hour, god rays, warm ambient
+  rendering_finish: Premium 3D casino art
+  target_resolution: 1920x1080
+  aspect_ratio: 16:9
+  pass_plan: Direct base generation
+  cleanup_notes: Ensure center is readable behind UI
+
+- panel_id: bg_02
+  asset_group: backgrounds
+  asset_role: Main ambiance
+  contract_key: background-desktop-1920x1080
+  export_name: bg_concept_2_coop_stage.png
+  positive_prompt: A whimsical premium wooden chicken coop interior slot background, built with polished mahogany and shiny brass fittings. Warm ambient lantern lighting, soft glowing hay nests. High-end casino presentation, vibrant colors, detailed 3D artwork.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Mid-wide, showcasing the intricate coop structure around the edges
+  palette: Mahogany reds, brass golds, lantern yellows
+  materials: Polished wood, shiny brass, soft hay
+  lighting: Warm lantern, moody ambient
+  rendering_finish: High-end 3D slot art
+  target_resolution: 1920x1080
+  aspect_ratio: 16:9
+  pass_plan: Direct base generation
+  cleanup_notes: Check brass reflections for noise
+
+- panel_id: bg_03
+  asset_group: backgrounds
+  asset_role: Main ambiance
+  contract_key: background-desktop-1920x1080
+  export_name: bg_concept_3_harvest_machine.png
+  positive_prompt: A stylized farmyard feature scene at sunrise, focusing on a complex but warm brass mechanical harvesting contraption. Wooden wheels, golden wheat, morning dew, beautiful sunny sky. High-end 3D slot background art.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Exterior wide shot, contraption elements framing the sides
+  palette: Morning blues, golden yellows, rich brass and wood
+  materials: Polished brass, weathered farm wood, organic wheat
+  lighting: Sunrise, crisp morning light, high contrast
+  rendering_finish: Premium 3D illustration
+  target_resolution: 1920x1080
+  aspect_ratio: 16:9
+  pass_plan: Direct base generation
+  cleanup_notes: Ensure contraption doesn't block center reels
+
+## Symbols
+- panel_id: sym_01_wild
+  asset_group: symbols
+  asset_role: Wild
+  contract_key: symbol-8-bolt
+  export_name: sym_concept_1_wild.png
+  positive_prompt: A shiny polished brass weather vane shaped like a rooster slot symbol, catching the sunlight, rustic but premium 3D game icon, isolated on a dark background.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Centered macro shot, isolated object
+  palette: Gold, bright brass, dark background
+  materials: Highly polished brass
+  lighting: Studio lighting, strong specular highlights
+  rendering_finish: Premium 3D casino icon
+  target_resolution: 1024x1024
+  aspect_ratio: 1:1
+  pass_plan: Direct generation, auto-crop
+  cleanup_notes: Ensure strong silhouette
+
+- panel_id: sym_02_scatter
+  asset_group: symbols
+  asset_role: Scatter/Collector
+  contract_key: collector-symbol
+  export_name: sym_concept_2_scatter.png
+  positive_prompt: A miniature, classic red wooden barn door with heavy polished brass hinges slot symbol, stylized, cute but highly detailed, 3D premium game icon, isolated on a dark background.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Centered macro shot, isolated object
+  palette: Crimson red, bright brass, dark background
+  materials: Painted wood, heavy brass
+  lighting: Warm studio light
+  rendering_finish: Premium 3D slot icon
+  target_resolution: 1024x1024
+  aspect_ratio: 1:1
+  pass_plan: Direct generation
+  cleanup_notes: Check readability at 256x256
+
+- panel_id: sym_03_bonus
+  asset_group: symbols
+  asset_role: Bonus/Coin
+  contract_key: symbol-7-coin
+  export_name: sym_concept_3_bonus.png
+  positive_prompt: A glowing, perfectly polished brass egg sitting on a velvet cushion slot symbol, high-end reflection, premium 3D game art, isolated on a dark background.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Centered macro shot, isolated object
+  palette: Gold, deep red velvet, dark background
+  materials: Refractive polished brass, soft velvet
+  lighting: Dramatic studio rim lighting
+  rendering_finish: Premium 3D slot icon
+  target_resolution: 1024x1024
+  aspect_ratio: 1:1
+  pass_plan: Direct generation
+  cleanup_notes: Ensure it feels heavy and valuable
+
+- panel_id: sym_04_premium
+  asset_group: symbols
+  asset_role: Top Premium
+  contract_key: symbol-9-rooster
+  export_name: sym_concept_4_premium.png
+  positive_prompt: A proud, slightly wild-looking rooster head in profile slot symbol. Vibrant red, orange, and gold feathers, premium 3D casino icon, highly detailed rendering, isolated on a dark background.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Profile view, tight crop
+  palette: Bright organic reds, oranges, yellows
+  materials: Organic feathers, sharp beak
+  lighting: Bright studio lighting to capture feather sheen
+  rendering_finish: Premium 3D casino art
+  target_resolution: 1024x1024
+  aspect_ratio: 1:1
+  pass_plan: Direct generation
+  cleanup_notes: Avoid anatomical horror
+
+- panel_id: sym_05_mid
+  asset_group: symbols
+  asset_role: Mid Value 3
+  contract_key: symbol-5-bar
+  export_name: sym_concept_5_mid.png
+  positive_prompt: A stack of three polished mahogany and brass ingots slot symbol, glowing warm light reflecting off the metal, premium 3D game icon, isolated on a dark background.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Isometric stack, centered
+  palette: Deep browns, bright gold/brass
+  materials: Polished wood, shiny metal
+  lighting: Strong studio directional light
+  rendering_finish: Premium 3D slot icon
+  target_resolution: 1024x1024
+  aspect_ratio: 1:1
+  pass_plan: Direct generation
+  cleanup_notes: Must look like a casino asset, not firewood
+
+- panel_id: sym_06_low
+  asset_group: symbols
+  asset_role: Low Value 1
+  contract_key: symbol-0-egg
+  export_name: sym_concept_6_low.png
+  positive_prompt: A clean, perfectly spherical cream-colored chicken egg slot symbol with subtle rustic speckling, highly detailed 3D render, smooth lighting, isolated on a dark background.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Centered macro shot
+  palette: Pale cream, off-white, subtle brown speckles
+  materials: Matte organic shell
+  lighting: Soft studio box lighting
+  rendering_finish: Premium 3D slot icon
+  target_resolution: 1024x1024
+  aspect_ratio: 1:1
+  pass_plan: Direct generation
+  cleanup_notes: Keep simple but perfectly shaded
+
+## UI Elements
+- panel_id: ui_01
+  asset_group: ui
+  asset_role: Main CTA
+  contract_key: button-spin
+  export_name: ui_concept_1_mahogany.png
+  positive_prompt: A shiny polished mahogany wood rounded rectangular template for a slot UI element, warm glowing amber inner edge, premium casino UI element, 3D render, blank center, on a dark background.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Flat front-facing UI view
+  palette: Rich browns, bright amber
+  materials: Polished wood, amber resin
+  lighting: Studio UI lighting
+  rendering_finish: High-end casino UI
+  target_resolution: 1024x512
+  aspect_ratio: 2:1
+  pass_plan: Direct generation
+  cleanup_notes: Ensure center is clean for text
+
+- panel_id: ui_02
+  asset_group: ui
+  asset_role: Main CTA
+  contract_key: button-spin
+  export_name: ui_concept_2_rustic.png
+  positive_prompt: A rustic wooden plank template clamped with shiny rounded copper brackets, warm glowing center, high-end 3D UI design, slot game component, blank center, on a dark background.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Flat front-facing UI view
+  palette: Weathered brown, shiny copper/orange
+  materials: Rough wood, polished copper
+  lighting: Studio UI lighting
+  rendering_finish: High-end casino UI
+  target_resolution: 1024x512
+  aspect_ratio: 2:1
+  pass_plan: Direct generation
+  cleanup_notes: Ensure center is clean for text
+
+- panel_id: ui_03
+  asset_group: ui
+  asset_role: Main CTA
+  contract_key: button-spin
+  export_name: ui_concept_3_fairground.png
+  positive_prompt: A thick, glossy painted red and cream carnival-style button template with a polished brass rim, vibrant warm colors, premium slot game UI element, blank center, on a dark background.
+  negative_prompt: neon, cyberpunk, futuristic, lab, sci-fi, glass UI, blue glowing lights, holographic, alien, robot, text, words, watermark, blurry, low resolution, flat colors, deformed anatomy
+  camera_and_framing: Flat front-facing UI view
+  palette: Glossy red, cream, bright brass
+  materials: Glossy paint, polished brass
+  lighting: Bright studio lighting
+  rendering_finish: High-end casino UI
+  target_resolution: 1024x512
+  aspect_ratio: 2:1
+  pass_plan: Direct generation
+  cleanup_notes: Ensure center is clean for text

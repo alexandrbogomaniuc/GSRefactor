@@ -1,0 +1,31 @@
+asset_group,relative_path,asset_key,basename,dimensions,format,purpose,priority,notes
+symbols,runtime/atlas_symbols.png,symbol-0-egg,symbol-0-egg,256x256,png,Low value 1,Low,Base low-paying symbol
+symbols,runtime/atlas_symbols.png,symbol-1-cherries,symbol-1-cherries,256x256,png,Low value 2,Low,Standard low
+symbols,runtime/atlas_symbols.png,symbol-2-lemon,symbol-2-lemon,256x256,png,Low value 3,Low,Standard low
+symbols,runtime/atlas_symbols.png,symbol-3-orange,symbol-3-orange,256x256,png,Mid value 1,Low,Standard mid
+symbols,runtime/atlas_symbols.png,symbol-4-plum,symbol-4-plum,256x256,png,Mid value 2,Medium,Standard mid
+symbols,runtime/atlas_symbols.png,symbol-5-bar,symbol-5-bar,256x256,png,Mid value 3,Medium,Upper mid
+symbols,runtime/atlas_symbols.png,symbol-6-seven,symbol-6-seven,256x256,png,Premium 1,High,Lower premium
+symbols,runtime/atlas_symbols.png,symbol-7-coin,symbol-7-coin,256x256,png,Bonus/Coin,High,Activates features
+symbols,runtime/atlas_symbols.png,symbol-8-bolt,symbol-8-bolt,256x256,png,Wild,High,Substitutes for pays
+symbols,runtime/atlas_symbols.png,symbol-9-rooster,symbol-9-rooster,256x256,png,Top Premium,High,Highest payout
+symbols,runtime/atlas_symbols.png,collector-symbol,collector-symbol,256x256,png,Scatter/Collector,High,Feature trigger
+symbols,runtime/atlas_symbols.png,coin-multiplier-2x,coin-multiplier-2x,256x256,png,Multiplier Coin,Medium,Hold&Win feature
+symbols,runtime/atlas_symbols.png,coin-multiplier-3x,coin-multiplier-3x,256x256,png,Multiplier Coin,Medium,Hold&Win feature
+symbols,runtime/atlas_symbols.png,coin-multiplier-5x,coin-multiplier-5x,256x256,png,Multiplier Coin,Medium,Hold&Win feature
+symbols,runtime/atlas_symbols.png,coin-multiplier-10x,coin-multiplier-10x,256x256,png,Multiplier Coin,Medium,Hold&Win feature
+ui,runtime/atlas_ui.png,reel-frame-panel,reel-frame-panel,620x880,png,Reel framing container,High,Main layout structure
+ui,runtime/atlas_ui.png,reel-separator-vertical,reel-separator-vertical,18x760,png,Reel column divider,Low,Layout structure
+ui,runtime/atlas_ui.png,reel-separator-horizontal,reel-separator-horizontal,540x18,png,Row divider,Low,Layout structure
+ui,runtime/atlas_ui.png,button-spin,button-spin,320x108,png,Main CTA,High,Core interaction
+ui,runtime/atlas_ui.png,button-spin-pressed,button-spin-pressed,320x108,png,Main CTA active,Medium,Interaction state
+ui,runtime/atlas_ui.png,button-autoplay,button-autoplay,320x108,png,Autoplay CTA,Medium,Secondary interaction
+ui,runtime/atlas_ui.png,button-autoplay-pressed,button-autoplay-pressed,320x108,png,Autoplay CTA active,Low,Interaction state
+ui,runtime/atlas_ui.png,button-buybonus,button-buybonus,360x108,png,Buy Feature CTA,Medium,Secondary interaction
+ui,runtime/atlas_ui.png,button-buybonus-pressed,button-buybonus-pressed,360x108,png,Buy Feature active,Low,Interaction state
+ui,runtime/atlas_ui.png,button-bet-plus,button-bet-plus,108x108,png,Bet increment,Medium,UI control
+ui,runtime/atlas_ui.png,button-bet-minus,button-bet-minus,108x108,png,Bet decrement,Medium,UI control
+ui,runtime/atlas_ui.png,payline-pill,payline-pill,220x72,png,Line indicator,Medium,UI decoration
+backgrounds,runtime/background-desktop-1920x1080.png,background-desktop-1920x1080,background-desktop-1920x1080,1920x1080,png,Desktop Hero Bg,High,Main ambiance
+backgrounds,runtime/background-portrait-1080x1920.png,background-portrait-1080x1920,background-portrait-1080x1920,1080x1920,png,Mobile Portrait Bg,High,Main ambiance
+backgrounds,runtime/background-landscape-safe-1600x900.png,background-landscape-safe-1600x900,background-landscape-safe-1600x900,1600x900,png,Landscape Safe Bg,High,Main ambiance
