@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.CacheKeyInfo;
@@ -11,15 +12,17 @@ import com.abs.casino.common.cache.data.bonus.BonusStatus;
 import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.CalendarUtils;
 import com.abs.casino.common.web.statistics.StatisticsManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.nio.ByteBuffer;
 import java.util.*;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
+
+
+
 
 /**
  * User: flsh
@@ -95,7 +98,7 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist bonus: " + bonus);
         }
-        com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
+        com.datastax.driver.core.querybuilder.Batch batch = Cql.batch();
         com.datastax.driver.core.querybuilder.Insert query = getInsertQuery();
         String externalKey = composeKey(bonus.getBankId(), bonus.getExtId());
         String json = TABLE.serializeToJson(bonus);
@@ -109,12 +112,12 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
                         value(SERIALIZED_COLUMN_NAME, byteBuffer).
                         value(JSON_COLUMN_NAME, json);
                 batch.add(query);
-                com.datastax.driver.core.querybuilder.Insert indexQuery = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(BONUS_ACC_INDX);
+                com.datastax.driver.core.querybuilder.Insert indexQuery = Cql.insertInto(BONUS_ACC_INDX);
                 indexQuery.value(ACCOUNT_ID_FIELD, bonus.getAccountId()).value(BONUS_ID_FIELD, bonus.getId());
                 batch.add(indexQuery);
             } else {
                 bonusArchivePersister.persist(bonus);
-                com.datastax.driver.core.querybuilder.Delete activeTable = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(BONUS_CF);
+                com.datastax.driver.core.querybuilder.Delete activeTable = Cql.delete().from(BONUS_CF);
                 activeTable.where(eq(BONUS_ID_FIELD, bonus.getId()));
                 batch.add(activeTable);
             }
@@ -128,8 +131,8 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
         if (bonusIds == null || bonusIds.isEmpty()) {
             return Collections.emptyList();
         }
-        com.datastax.driver.core.querybuilder.Select select = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(BONUS_CF);
-        select.where().and(com.datastax.driver.core.querybuilder.QueryBuilder.in(BONUS_ID_FIELD, bonusIds.toArray()));
+        com.datastax.driver.core.querybuilder.Select select = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(BONUS_CF);
+        select.where().and(Cql.in(BONUS_ID_FIELD, bonusIds.toArray()));
         com.datastax.driver.core.ResultSet resultSet = execute(select, "getBonuses");
         Map<Long, Bonus> resultsMap = new HashMap<>(bonusIds.size());
         for (com.datastax.driver.core.Row row : resultSet) {
@@ -164,7 +167,7 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
 
     public List<Bonus> getActiveBonuses(Long accountId) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(BONUS_ID_FIELD).from(BONUS_ACC_INDX);
+        com.datastax.driver.core.querybuilder.Select query = Cql.select(BONUS_ID_FIELD).from(BONUS_ACC_INDX);
         query.where(eq(ACCOUNT_ID_FIELD, accountId));
         com.datastax.driver.core.ResultSet rows = execute(query, "getActiveBonuses");
         List<Long> bonusIds = new ArrayList<>();

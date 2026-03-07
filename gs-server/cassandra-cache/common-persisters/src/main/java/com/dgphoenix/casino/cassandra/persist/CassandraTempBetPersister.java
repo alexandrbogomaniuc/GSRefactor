@@ -2,18 +2,21 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
-import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.cache.data.bet.PlayerBet;
 import com.abs.casino.common.web.statistics.StatisticsManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
+
+
+
 
 /**
  * User: flsh
@@ -46,7 +49,7 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
 
     public PlayerBet getPlayerBet(long gameSessionId, long betId) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
                 .and(eq(BET_ID_FIELD, (int) betId));
@@ -68,7 +71,7 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
     }
 
     com.datastax.driver.core.ResultSet getResultSetByGameSessionId(long gameSessionId) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(BET_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = Cql.select(BET_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(COLUMN_FAMILY_NAME)
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
         return execute(query, "getResultSetByGameSessionId get from temp Table");
@@ -104,10 +107,10 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
     }
 
     com.datastax.driver.core.ResultSet getResultSetByGameSessionIdAndRounds(long gameSessionId, Set<Long> betIds) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(COLUMN_FAMILY_NAME)
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.in(BET_ID_FIELD, betIds.toArray()));
+                .and(Cql.in(BET_ID_FIELD, betIds.toArray()));
         return execute(query, "getResultSetByGameSessionIdAndRounds from temp Table");
     }
 

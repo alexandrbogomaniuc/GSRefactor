@@ -3,18 +3,21 @@ package com.abs.casino.cassandra.persist;
 import com.abs.casino.cassandra.persist.IShortBetInfoProcessor;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
-import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.cassandra.persist.engine.configuration.Compression;
 import com.abs.casino.common.cache.data.bet.ShortBetInfo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
+
+
+
 
 /**
  * User: flsh
@@ -53,8 +56,8 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
     public void getByBank(long bankId, long startDate, long endDate, IShortBetInfoProcessor processor) throws Exception {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_ID_FIELD, bankId))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(BET_TIME_FIELD, startDate))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(BET_TIME_FIELD, endDate));
+                .and(Cql.gte(BET_TIME_FIELD, startDate))
+                .and(Cql.lte(BET_TIME_FIELD, endDate));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getByBank");
         for (com.datastax.driver.core.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
@@ -78,8 +81,8 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
     private List<ShortBetInfo> getByBankFromTable(long bankId, long startDate, long endDate, TableDefinition table) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(table, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_ID_FIELD, bankId))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(BET_TIME_FIELD, startDate))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(BET_TIME_FIELD, endDate));
+                .and(Cql.gte(BET_TIME_FIELD, startDate))
+                .and(Cql.lte(BET_TIME_FIELD, endDate));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getByBank");
         List<ShortBetInfo> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
         for (com.datastax.driver.core.Row row : resultSet) {
@@ -108,7 +111,7 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
         query.value(SERIALIZED_COLUMN_NAME, byteBuffer);
         query.value(JSON_COLUMN_NAME, json);
         if (ttl != null) {
-            query.using(com.datastax.driver.core.querybuilder.QueryBuilder.ttl(ttl));
+            query.using(Cql.ttl(ttl));
         }
         statements.add(query);
     }
@@ -119,7 +122,7 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
         query.value(BET_TIME_FIELD, betInfo.getTime());
         query.value(ACCOUNT_ID_FIELD, betInfo.getAccountId());
         if (ttl != null) {
-            query.using(com.datastax.driver.core.querybuilder.QueryBuilder.ttl(ttl));
+            query.using(Cql.ttl(ttl));
         }
         String json = TABLE.serializeToJson(betInfo);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(betInfo);

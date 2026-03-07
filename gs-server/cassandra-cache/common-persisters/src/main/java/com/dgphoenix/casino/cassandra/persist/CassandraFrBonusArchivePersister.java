@@ -2,23 +2,26 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.IDistributedCache;
 import com.abs.casino.common.cache.data.bonus.FRBonus;
 import com.abs.casino.common.util.CalendarUtils;
 import com.abs.casino.common.web.statistics.StatisticsManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.nio.ByteBuffer;
 import java.util.*;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.google.common.base.Preconditions.checkState;
+
+
+
+
 
 /**
  * User: flsh
@@ -85,7 +88,7 @@ public class CassandraFrBonusArchivePersister extends AbstractCassandraPersister
         ByteBuffer byteBuffer = BONUS_ARCHIVE_TABLE.serializeToBytes(bonus);
         String json = BONUS_ARCHIVE_TABLE.serializeToJson(bonus);
         try {
-            com.datastax.driver.core.Statement archInsert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(FRBONUS_ARCH_CF)
+            com.datastax.driver.core.Statement archInsert = Cql.insertInto(FRBONUS_ARCH_CF)
                     .value(ACCOUNT_ID_FIELD, bonus.getAccountId()).
                     value(AWARD_TIME_FIELD, bonus.getTimeAwarded()).
                     value(STATUS_FIELD, bonus.getStatus().ordinal()).
@@ -101,7 +104,7 @@ public class CassandraFrBonusArchivePersister extends AbstractCassandraPersister
     }
 
     public List<FRBonus> getFinishedFRBonusList(Long accountId) {
-        com.datastax.driver.core.Statement select = com.datastax.driver.core.querybuilder.QueryBuilder.select(BONUS_ID_FIELD, SERIALIZED_COLUMN_NAME)
+        com.datastax.driver.core.Statement select = Cql.select(BONUS_ID_FIELD, SERIALIZED_COLUMN_NAME)
                 .from(FRBONUS_ARCH_CF)
                 .where(eq(ACCOUNT_ID_FIELD, accountId));
         com.datastax.driver.core.ResultSet rows = execute(select, "getFinishedFRBonusList");
@@ -135,7 +138,7 @@ public class CassandraFrBonusArchivePersister extends AbstractCassandraPersister
 
     @SuppressWarnings("Duplicates")
     public void setPersistDay() {
-        com.datastax.driver.core.Statement select = com.datastax.driver.core.querybuilder.QueryBuilder.select()
+        com.datastax.driver.core.Statement select = Cql.select()
                 .column(ACCOUNT_ID_FIELD)
                 .column(AWARD_TIME_FIELD)
                 .column(BONUS_ID_FIELD)
@@ -156,7 +159,7 @@ public class CassandraFrBonusArchivePersister extends AbstractCassandraPersister
             bonusPersistTime = row.getLong(PERSIST_DAY);
 
             if (bonusPersistTime == 0) {
-                com.datastax.driver.core.Statement update = com.datastax.driver.core.querybuilder.QueryBuilder.update(FRBONUS_ARCH_CF)
+                com.datastax.driver.core.Statement update = Cql.update(FRBONUS_ARCH_CF)
                         .with(set(PERSIST_DAY, currentPersistTime))
                         .where(eq(ACCOUNT_ID_FIELD, accountId))
                         .and(eq(AWARD_TIME_FIELD, awardTime));
