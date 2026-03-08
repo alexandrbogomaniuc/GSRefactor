@@ -4,7 +4,7 @@ import {
 } from "@gamesv1/ui-kit/shell";
 import type { ResolvedConfig } from "@gamesv1/core-compliance";
 
-import { AppAssetKeys } from "../assets/assetKeys.ts";
+import { resolveProviderWordmarkUrl } from "../assets/providerPackRegistry.ts";
 import {
   CRAZY_ROOSTER_BRAND,
   CRAZY_ROOSTER_BRAND_NAME,
@@ -29,7 +29,7 @@ export const resolveCrazyRoosterBrandKit = (
       },
       brand: {
         displayName: brandParam?.trim() || CRAZY_ROOSTER_BRAND_NAME,
-        logoAssetKey: AppAssetKeys.LOGO_PRELOAD,
+        logoUrl: resolveProviderWordmarkUrl(queryParams),
         primaryColor: CRAZY_ROOSTER_BRAND.primaryColor,
         accentColor: CRAZY_ROOSTER_BRAND.accentColor,
       },

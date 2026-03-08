@@ -1,4 +1,4 @@
-import { Container, Text } from "pixi.js";
+import { Container, Graphics, Text } from "pixi.js";
 
 import { engine } from "@gamesv1/pixi-engine";
 import {
@@ -18,6 +18,8 @@ export class LoadScreen extends Container {
   private static audioRegistry: AudioCueRegistry = createAudioCueRegistry();
 
   private readonly preloader: WowPreloader;
+  private readonly wordmarkPlate = new Graphics();
+  private readonly wordmarkText: Text;
   private readonly titleText: Text;
   private readonly footerText: Text;
   private readonly proofHoldMs = Math.max(
@@ -47,11 +49,28 @@ export class LoadScreen extends Container {
     });
     this.addChild(this.preloader);
 
-    this.titleText = new Text({
+    this.addChild(this.wordmarkPlate);
+
+    this.wordmarkText = new Text({
       text: CRAZY_ROOSTER_DISPLAY_NAME,
       style: {
         fontFamily: "Trebuchet MS, Arial, sans-serif",
-        fontSize: 34,
+        fontSize: 92,
+        fontWeight: "900",
+        fill: 0xffeef0,
+        stroke: { color: 0x180305, width: 8 },
+        align: "center",
+        letterSpacing: -1,
+      },
+    });
+    this.wordmarkText.anchor.set(0.5);
+    this.addChild(this.wordmarkText);
+
+    this.titleText = new Text({
+      text: "Crazy Rooster Hold&Win",
+      style: {
+        fontFamily: "Trebuchet MS, Arial, sans-serif",
+        fontSize: 30,
         fontWeight: "800",
         fill: 0xffffff,
         stroke: { color: 0x220408, width: 5 },
@@ -92,6 +111,27 @@ export class LoadScreen extends Container {
 
   public resize(width: number, height: number): void {
     this.preloader.resize(width, height);
+    const plateWidth = Math.min(width * 0.9, 1100);
+    const plateHeight = Math.min(height * 0.5, 440);
+    const plateX = width * 0.5;
+    const plateY = height * 0.46;
+
+    this.wordmarkPlate.clear();
+    this.wordmarkPlate.roundRect(
+      plateX - plateWidth * 0.5,
+      plateY - plateHeight * 0.5,
+      plateWidth,
+      plateHeight,
+      42,
+    );
+    this.wordmarkPlate.fill({ color: 0x040409, alpha: 1 });
+    this.wordmarkPlate.stroke({ color: 0x4a0c14, width: 3, alpha: 0.7 });
+
+    this.wordmarkText.x = plateX;
+    this.wordmarkText.y = plateY;
+    const scale = Math.min(1, plateWidth / Math.max(1, this.wordmarkText.width + 72));
+    this.wordmarkText.scale.set(scale);
+
     this.titleText.x = width * 0.5;
     this.titleText.y = height * 0.22;
     this.footerText.x = width * 0.5;
@@ -106,7 +146,7 @@ export class LoadScreen extends Container {
     this.alpha = 1;
     this.shownAtMs = performance.now();
     this.preloader.setProgress(6);
-    this.preloader.setStatus("CONNECTING TO GS");
+    this.preloader.setStatus("BOOTSTRAPPING");
     window.addEventListener("pointerdown", this.tryPlayAudioStinger, { once: true });
   }
 
@@ -140,9 +180,13 @@ export class LoadScreen extends Container {
       if (action.respectSoundEnabled && userSettings.getMasterVolume() <= 0) {
         continue;
       }
-      engine().audio.sfx.play(action.assetKey, {
-        volume: action.volume ?? 1,
-      });
+      try {
+        engine().audio.sfx.play(action.assetKey, {
+          volume: action.volume ?? 1,
+        });
+      } catch {
+        // Preloader stingers are optional in the QA slice.
+      }
       this.audioStingerPlayed = true;
     }
   };

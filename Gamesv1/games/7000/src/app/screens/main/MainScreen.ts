@@ -1,4 +1,4 @@
-import { Container, Text } from "pixi.js";
+import { Assets, Container, Sprite, Text, Texture } from "pixi.js";
 
 import {
   AnimationPolicyEngine,
@@ -32,6 +32,7 @@ import {
   SessionRuntimeStore,
 } from "../../stores";
 import { AppAssetKeys } from "../../assets/assetKeys";
+import { resolveProviderBackgroundUrl } from "../../assets/providerPackRegistry.ts";
 import { resolveCrazyRoosterBrandKit } from "../../theme/brandKit.ts";
 import { userSettings } from "../../utils/userSettings";
 import { resolveProviderSymbolRoot } from "../../../game/assets/provider.ts";
@@ -120,6 +121,8 @@ export class MainScreen extends Container {
   private readonly roundActionBuilder: RoundActionBuilder;
   private readonly shellTheme: ReturnType<typeof resolveCrazyRoosterBrandKit>;
 
+  private readonly backgroundSprite = new Sprite(Texture.WHITE);
+  private backgroundAssetUrl: string | null = null;
   private readonly reelsLayer = new Container();
   private readonly fxLayer = new Container();
   private readonly uiLayer = new Container();
@@ -235,6 +238,9 @@ export class MainScreen extends Container {
     this.lastKnownMasterVolume = Math.max(0.25, userSettings.getMasterVolume() || 0.8);
     this.soundEnabled = userSettings.getMasterVolume() > 0;
 
+    this.backgroundSprite.anchor.set(0.5);
+    this.backgroundSprite.alpha = 0.42;
+    this.addChild(this.backgroundSprite);
     this.addChild(this.reelsLayer);
     this.addChild(this.fxLayer);
     this.addChild(this.uiLayer);
@@ -310,6 +316,20 @@ export class MainScreen extends Container {
     const availableWidth = width - safe.left - safe.right - 48;
     const availableHeight = Math.max(320, availableBottom - availableTop);
     const scale = Math.min(availableWidth / machineWidth, availableHeight / machineHeight);
+    const backgroundUrl = resolveProviderBackgroundUrl(width, height);
+
+    if (backgroundUrl) {
+      this.backgroundSprite.tint = 0xffffff;
+      this.ensureBackgroundTexture(backgroundUrl);
+    } else {
+      this.backgroundAssetUrl = null;
+      this.backgroundSprite.texture = Texture.WHITE;
+      this.backgroundSprite.tint = 0x120c0c;
+    }
+    this.backgroundSprite.x = width * 0.5;
+    this.backgroundSprite.y = height * 0.5;
+    this.backgroundSprite.width = width;
+    this.backgroundSprite.height = height;
 
     this.reelsLayer.scale.set(scale);
     this.fxLayer.scale.set(scale);
@@ -337,9 +357,31 @@ export class MainScreen extends Container {
     this.debugOverlay.resize(width, height);
   }
 
+  private ensureBackgroundTexture(backgroundUrl: string): void {
+    if (this.backgroundAssetUrl === backgroundUrl) {
+      return;
+    }
+
+    this.backgroundAssetUrl = backgroundUrl;
+    void Assets.load(backgroundUrl)
+      .then(() => {
+        if (this.backgroundAssetUrl !== backgroundUrl) {
+          return;
+        }
+        this.backgroundSprite.texture = Texture.from(backgroundUrl);
+      })
+      .catch(() => {
+        if (this.backgroundAssetUrl !== backgroundUrl) {
+          return;
+        }
+        this.backgroundSprite.texture = Texture.WHITE;
+        this.backgroundSprite.tint = 0x120c0c;
+      });
+  }
+
   public async show(): Promise<void> {
     try {
-      engine().audio.bgm.play(AppAssetKeys.BGM_MAIN, {
+      await engine().audio.bgm.play(AppAssetKeys.BGM_MAIN, {
         volume: userSettings.getBgmVolume(),
       });
     } catch {
@@ -689,7 +731,11 @@ export class MainScreen extends Container {
       cue,
       {
         playSfx: (assetKey, options) => {
-          engine().audio.sfx.play(assetKey, options);
+          try {
+            engine().audio.sfx.play(assetKey, options);
+          } catch {
+            // Missing QA slice cues should not break presentation.
+          }
         },
         setBgmVolume: (volume) => {
           userSettings.setBgmVolume(volume);

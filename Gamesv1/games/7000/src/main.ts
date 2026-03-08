@@ -8,6 +8,7 @@ import { CreationEngine, setEngine } from "@gamesv1/pixi-engine";
 import { i18n } from "@gamesv1/i18n";
 import { createAudioCueRegistry } from "@gamesv1/ui-kit";
 import manifest from "./manifest.json";
+import { initializeProviderPackStatus } from "./app/assets/providerPackRegistry";
 import { resolveCrazyRoosterBrandKit } from "./app/theme/brandKit";
 import { applyCrazyRoosterSharedGameConfig } from "./game/config/CrazyRoosterGameConfig";
 
@@ -27,6 +28,7 @@ setEngine(appEngine);
   });
 
   const urlParams = new URLSearchParams(window.location.search);
+  const providerPackStatus = initializeProviderPackStatus(urlParams);
   const brandTheme = resolveCrazyRoosterBrandKit(
     urlParams.get("brandName") ?? urlParams.get("brand"),
     undefined,
@@ -40,7 +42,10 @@ setEngine(appEngine);
   userSettings.init();
   await appEngine.navigation.showScreen(LoadScreen);
   const loadScreen = appEngine.navigation.currentScreen as LoadScreen | undefined;
-  loadScreen?.setBootPhase("CONNECTING TO GS", 8);
+  loadScreen?.setBootPhase(
+    providerPackStatus.safePlaceholder ? "VALIDATING ART PACK" : "STARTING SESSION",
+    8,
+  );
 
   const explicitDevFallback =
     urlParams.get("devConfig") === "1" ||
@@ -51,12 +56,16 @@ setEngine(appEngine);
   let bootstrapFlow: Awaited<ReturnType<typeof gsRuntimeClient.bootstrap>> | null = null;
   try {
     bootstrapFlow = await gsRuntimeClient.bootstrap();
-    loadScreen?.setBootPhase("SYNCING CONFIG", 14);
+    loadScreen?.setBootPhase(
+      gsRuntimeClient.isDemoRuntime() ? "LOADING DEMO CONFIG" : "SYNCING CONFIG",
+      14,
+    );
   } catch (error) {
     if (!explicitDevFallback) {
       throw error;
     }
     console.warn("[GS Runtime Bootstrap] Falling back to demo runtime:", error);
+    loadScreen?.setBootPhase("LOADING DEMO CONFIG", 14);
   }
 
   await ConfigManager.init({
@@ -95,4 +104,7 @@ setEngine(appEngine);
   await appEngine.navigation.showScreen(MainScreen);
   const mainScreen = appEngine.navigation.currentScreen as MainScreen | undefined;
   mainScreen?.installTestingHooks();
+
+  (window as Window & { __game7000ProviderPack?: unknown }).__game7000ProviderPack =
+    providerPackStatus;
 })();

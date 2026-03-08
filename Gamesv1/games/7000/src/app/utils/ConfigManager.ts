@@ -73,6 +73,8 @@ export class ConfigManager {
     const reducedMotion =
       new URLSearchParams(window.location.search).get("motion") === "minimal" ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const resolvedLadderMax =
+      CRAZY_ROOSTER_PROVISIONAL_BET_LADDER[CRAZY_ROOSTER_PROVISIONAL_BET_LADDER.length - 1];
 
     const template: LayerConfig = {
       currencyCode: "USD",
@@ -82,7 +84,8 @@ export class ConfigManager {
         coinValues: [0.01, 0.02, 0.05, 0.1, 0.2],
       },
       minBet: CRAZY_ROOSTER_BET_LIMITS.minBet,
-      maxBet: CRAZY_ROOSTER_BET_LIMITS.maxBet,
+      // Core compliance requires ladder-mode bounds to remain inside the committed dropdown ladder.
+      maxBet: Math.min(CRAZY_ROOSTER_BET_LIMITS.maxBet, resolvedLadderMax),
       maxExposure: 100000,
       defaultBet: CRAZY_ROOSTER_BET_LIMITS.defaultBet,
       turboplay: {

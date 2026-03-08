@@ -1,0 +1,35 @@
+{
+  "preloader": [
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: PixiJS Warning:  [Assets] http://localhost:8080/assets/promo/.gitkeep could not be loaded as we don't know how to parse it, ensure the correct parser has been added",
+    "warning: [ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}",
+    "warning: [ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+  ],
+  "idle": [
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: PixiJS Warning:  [Assets] http://localhost:8080/assets/promo/.gitkeep could not be loaded as we don't know how to parse it, ensure the correct parser has been added",
+    "warning: [ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}",
+    "warning: [ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+  ],
+  "afterSpin": [
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: PixiJS Warning:  [Assets] http://localhost:8080/assets/promo/.gitkeep could not be loaded as we don't know how to parse it, ensure the correct parser has been added",
+    "warning: [ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}",
+    "warning: [ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+  ],
+  "featureRun": [
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+    "warning: PixiJS Warning:  [Assets] http://localhost:8080/assets/promo/.gitkeep could not be loaded as we don't know how to parse it, ensure the correct parser has been added",
+    "warning: [ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}",
+    "warning: [ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+  ],
+  "featureRunVideoPath": "/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/games/7000/docs/_visual_proof/beta1-2026-03-08/6a0d1e6d3b372ca85db141676db3dfaf.webm"
+}

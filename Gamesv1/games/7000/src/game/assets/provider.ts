@@ -1,19 +1,11 @@
 import {
-  CRAZY_ROOSTER_BRAND,
   type CrazyRoosterAssetProvider,
 } from "../config/CrazyRoosterGameConfig.ts";
 
-const VALID_PROVIDERS = new Set<CrazyRoosterAssetProvider>(["openai", "nanobanana"]);
+import { getProviderPackStatus } from "../../app/assets/providerPackRegistry";
 
-export const resolveAssetProvider = (
-  queryParams = new URLSearchParams(window.location.search),
-): CrazyRoosterAssetProvider => {
-  const requested = queryParams.get("assetProvider")?.trim().toLowerCase();
-  if (requested && VALID_PROVIDERS.has(requested as CrazyRoosterAssetProvider)) {
-    return requested as CrazyRoosterAssetProvider;
-  }
-  return CRAZY_ROOSTER_BRAND.defaultProvider;
-};
+export const resolveAssetProvider = (): CrazyRoosterAssetProvider =>
+  getProviderPackStatus().requestedProvider;
 
 export const resolveProviderSymbolRoot = (
   provider = resolveAssetProvider(),

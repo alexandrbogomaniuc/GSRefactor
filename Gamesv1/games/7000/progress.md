@@ -20,3 +20,9 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
 - 2026-03-07: Planned implementation scope:
   - keep almost all edits inside Gamesv1/games/7000,
   - only minimal shared/root script routing if required so `corepack pnpm -C Gamesv1 run build` and `test:layout` target @games/7000.
+- 2026-03-08: Assembled QA beta branch `qa/7000-beta1-20260308-0935` from `eng/7000-crazy-rooster-20260307-1346` and imported both provider packs for QA review.
+  - checked out the committed OpenAI runtime pack from `origin/codex/assets/7000-openai-polish-20260308-0914`.
+  - the requested NanoBanana runtime pack was not present on `origin/assets/7000-nanobanana-crazy-rooster-phase1-20260307-1358`; only `raw-assets/providers/nanobanana` existed, so a partial QA runtime pack was assembled locally from those committed files and documented as incomplete.
+  - added provider selection by query param/config, startup asset-pack validation, safe placeholder fallback behavior, and a branded preloader lockup that uses the BetOnline wordmark instead of the Pixi placeholder.
+  - fixed demo fallback startup for `?allowDevFallback=1` and resolved ladder-mode config validation by clamping the runtime max bet to the configured preset range.
+  - produced QA proof artifacts under `docs/_visual_proof/beta1-2026-03-08/` and added `docs/BETA_QA_CHECKLIST.md` with deterministic feature URLs for smoke testing.

@@ -254,6 +254,10 @@ export class GsRuntimeClient {
     }
   }
 
+  public isDemoRuntime(): boolean {
+    return this.demoMode;
+  }
+
   public async playround(
     selectedBet: SelectedBet,
     _selectedFeatureChoice?: SelectedFeatureChoice,
