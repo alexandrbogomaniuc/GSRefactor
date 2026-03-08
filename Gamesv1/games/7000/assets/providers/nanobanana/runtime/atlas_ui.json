@@ -1,0 +1,12 @@
+{
+  "frames": {
+    "reel-frame-panel": {
+      "sourceFile": "reel-frame-panel.png"
+    }
+  },
+  "meta": {
+    "image": "atlas_ui.png",
+    "format": "review-contact-sheet",
+    "provider": "nanobanana"
+  }
+}

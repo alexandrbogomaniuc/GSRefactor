@@ -1,0 +1,48 @@
+{
+  "frames": {
+    "symbol-0-egg": {
+      "sourceFile": "symbol-0-egg.png"
+    },
+    "symbol-1-cherries": {
+      "sourceFile": "symbol-1-cherries.png"
+    },
+    "symbol-2-lemon": {
+      "sourceFile": "symbol-2-lemon.png"
+    },
+    "symbol-3-orange": {
+      "sourceFile": "symbol-3-orange.png"
+    },
+    "symbol-4-plum": {
+      "sourceFile": "symbol-4-plum.png"
+    },
+    "symbol-5-bar": {
+      "sourceFile": "symbol-5-bar.png"
+    },
+    "symbol-6-seven": {
+      "sourceFile": "symbol-6-seven.png"
+    },
+    "symbol-7-coin": {
+      "sourceFile": "symbol-7-coin.png"
+    },
+    "symbol-8-bolt": {
+      "sourceFile": "symbol-8-bolt.png"
+    },
+    "symbol-9-rooster": {
+      "sourceFile": "symbol-9-rooster.png"
+    },
+    "collector-symbol": {
+      "sourceFile": "collector-symbol.png"
+    },
+    "coin-multiplier-2x": {
+      "sourceFile": "coin-multiplier-2x.png"
+    },
+    "coin-multiplier-5x": {
+      "sourceFile": "coin-multiplier-5x.png"
+    }
+  },
+  "meta": {
+    "image": "atlas_symbols.png",
+    "format": "review-contact-sheet",
+    "provider": "nanobanana"
+  }
+}
