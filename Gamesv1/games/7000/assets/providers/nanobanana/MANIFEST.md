@@ -1,24 +1,39 @@
-# MANIFEST
+# NanoBanana Provider
 
-Provider root: `Gamesv1/games/7000/assets/providers/nanobanana`
+**Theme:** Crazy Rooster Hold&Win (Beta 3 Hero Polish)
+**Status:** Active Hero Visuals (Partial due to API Quota block on Symbols)
 
-## Runtime Status
+## Manifest
 
-- Source branch: `origin/assets/7000-nanobanana-crazy-rooster-phase1-20260307-1358`
-- Original source path on that branch: `Gamesv1/games/7000/raw-assets/providers/nanobanana`
-- This repo folder is a QA-beta assembly created from those committed source files.
-- `atlas_vfx.png` / `atlas_vfx.json` were not supplied on the source branch and are intentionally absent here.
+This provider pack contains standard layout assets plus the Beta 3 Hero visual upgrades.
 
-## Committed Runtime Files
+### Core Backgrounds
+* `background-desktop-1920x1080.png` (Upgraded to Hero Quality)
+* `background-landscape-safe-1600x900.png` (Upgraded to Hero Quality)
+* `background-portrait-1080x1920.png` (Upgraded to Hero Quality)
 
-- `runtime/background-desktop-1920x1080.png`
-- `runtime/background-landscape-safe-1600x900.png`
-- `runtime/background-portrait-1080x1920.png`
-- `runtime/atlas_symbols.png`
-- `runtime/atlas_symbols.json`
-- `runtime/atlas_ui.png`
-- `runtime/atlas_ui.json`
+### Render Atlases
+#### `atlas_ui` / `atlas_hero_ui`
+UI framing and button controls.
+**New keys added in Beta 3 Hero Pass:**
+* `jackpot-plaque-grand`
+* `jackpot-plaque-major`
+* `jackpot-plaque-minor`
+* `jackpot-plaque-mini`
+* `mascot-rooster`
+* `button-turbo`
+* `button-autoplay`
+* `button-settings`
+* `button-history`
+* `button-sound`
+* `button-buybonus` (Upgraded Hero version)
 
-## Validation Note
+#### `atlas_symbols`
+Slot symbols and collectible entities.
+Contains full fallback keys. (Hero Symbol upgrade blocked by generation quota limits)
 
-The QA runtime should validate this pack at startup and log a clear warning that NanoBanana is missing a committed VFX atlas, then continue with safe placeholder behavior instead of crashing.
+#### `atlas_vfx` / `atlas_hero_vfx`
+Screen effects and particle emitters.
+**New keys added in Beta 3 Hero Pass:**
+* `vfx-hero-glow`
+* `vfx-hero-pulse`
