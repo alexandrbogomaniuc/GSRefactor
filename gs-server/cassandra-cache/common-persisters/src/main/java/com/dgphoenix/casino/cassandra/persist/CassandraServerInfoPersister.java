@@ -13,6 +13,8 @@ import java.util.*;
 
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import com.datastax.driver.core.querybuilder.Insert;
+
 
 /**
  * User: flsh
@@ -66,7 +68,7 @@ public class CassandraServerInfoPersister extends AbstractLongDistributedConfigE
         String json = getMainTableDefinition().serializeToJson(serverInfo);
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(serverInfo);
         try {
-            com.datastax.driver.core.querybuilder.Insert query = addInsertion(serverInfo.getId(), SERIALIZED_COLUMN_NAME, byteBuffer)
+            Insert query = addInsertion(serverInfo.getId(), SERIALIZED_COLUMN_NAME, byteBuffer)
                     .value(JSON_COLUMN_NAME, json);
             execute(query, "persist", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE);
         } finally {
