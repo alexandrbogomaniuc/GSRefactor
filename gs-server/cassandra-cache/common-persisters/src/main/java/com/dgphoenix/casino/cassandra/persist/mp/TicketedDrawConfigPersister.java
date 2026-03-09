@@ -72,7 +72,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
                 .where(eq(DRAW_ID_COLUMN, id))
                 .limit(1);
 
-        com.datastax.driver.core.ResultSet result = execute(query, "getConfig");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(query, "getConfig");
         if (result != null) {
             TicketedDrawConfig tdc = CONFIG_TABLE.deserializeWithClassFromJson(result.one().getString(JSON_COLUMN_NAME));
             if (tdc == null) {
@@ -108,10 +108,10 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
         Select.Where query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
                 .where(eq(STATUS_COLUMN, status.getCode()));
 
-        com.datastax.driver.core.ResultSet result = execute(query, "getTicketedDraws");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(query, "getTicketedDraws");
 
         List<TicketedDrawConfig> configs = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : result) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : result) {
             TicketedDrawConfig tdc = CONFIG_TABLE.deserializeWithClassFromJson(row.getString(JSON_COLUMN_NAME));
             if (tdc == null) {
                 tdc = CONFIG_TABLE.deserializeWithClassFrom(row.getBytes(CONFIG_COLUMN));

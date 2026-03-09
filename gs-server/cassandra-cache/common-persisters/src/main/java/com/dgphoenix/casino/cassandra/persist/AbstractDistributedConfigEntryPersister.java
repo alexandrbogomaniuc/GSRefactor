@@ -127,17 +127,17 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
     protected Map<KEY, T> loadAllAsMap(Class<T> entryClass) {
         long now = System.currentTimeMillis();
         com.datastax.driver.core.Statement query = Cql.select().all().from(getMainColumnFamilyName());
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "loadAllAsMap");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "loadAllAsMap");
         if (resultSet == null || !resultSet.iterator().hasNext()) {
             getLog().error("loadAllForLongKeysAsMapKryo: rowList is null or empty");
             return null;
         }
         Map<KEY, T> result = new HashMap<>(resultSet.getAvailableWithoutFetching());
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             if (row.isNull(KEY)) {
                 getLog().error("Column KEY not found");
             }
-            com.datastax.driver.core.ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
+            com.abs.casino.cassandra.persist.engine.ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
             Object keyType = columnDefinitions.getType(KEY);
             KEY key = null;
             if (ascii().equals(keyType) || varchar().equals(keyType) ||

@@ -193,9 +193,9 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
                 .where(eq(BANK_ID_FIELD, bankId))
                 .setFetchSize(3);
 
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "processItemsForBank");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "processItemsForBank");
         int itemsCount = 0;
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             HistoryInformerItem item = TABLE.deserializeFromJson(json, HistoryInformerItem.class);
 
@@ -230,9 +230,9 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
                 .where(eq(BANK_ID_FIELD, bankId))
                 .limit(1);
 
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "loadMaxIterationsItem");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "loadMaxIterationsItem");
 
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         if (row != null) {
             String json = row.getString(SERIALIZED_COLUMN_NAME);
             HistoryInformerItem obj = TABLE.deserializeFromJson(json, HistoryInformerItem.class);
