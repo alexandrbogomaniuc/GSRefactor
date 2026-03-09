@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
@@ -35,7 +36,7 @@ public class CassandraDepositsPersister extends AbstractCassandraPersister<Strin
     }
 
     public Long getDeposit(String sessionId) {
-        com.datastax.driver.core.Row result = getAsRow(sessionId, AMOUNT);
+        Row result = getAsWrappedRow(sessionId, AMOUNT);
         return result == null ? null : result.getLong(AMOUNT);
     }
 

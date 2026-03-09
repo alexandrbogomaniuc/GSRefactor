@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.data.session.BrowserInfo;
 import com.abs.casino.common.cache.data.session.GameClientInfo;
@@ -51,7 +52,7 @@ public class CassandraClientStatisticsPersister extends AbstractCassandraPersist
     }
 
     public Optional<Pair<BrowserInfo, GameClientInfo>> getByGameSessionId(long gameSessionId) {
-        com.datastax.driver.core.Row row = getByKey(gameSessionId);
+        Row row = getByKeyWrapped(gameSessionId);
         if (row == null) {
             return Optional.empty();
         }

@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.util.IGeoIp;
 import org.apache.logging.log4j.LogManager;
@@ -52,7 +53,7 @@ public class CassandraBlockedCountriesPersister extends AbstractCassandraPersist
     }
 
     public List<String> get() {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectAllColumnsQuery(), "get");
+        ResultSet resultSet = executeWrapped(getSelectAllColumnsQuery(), "get");
         List<String> blockedCountries = resultSet.all().stream()
                 .map(row -> row.getString(KEY))
                 .collect(Collectors.toList());

@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -53,7 +54,7 @@ public class CassandraArchiverPersister extends AbstractCassandraPersister<Strin
     }
 
     public Long getLastArchiveDate(String cfName, int month) {
-        com.datastax.driver.core.Row row = getAsRow(cfName, LAST_PROCESSED_DATE_COLUMN);
+        Row row = getAsWrappedRow(cfName, LAST_PROCESSED_DATE_COLUMN);
         if (row != null && !row.isNull(LAST_PROCESSED_DATE_COLUMN)) {
             return row.getLong(LAST_PROCESSED_DATE_COLUMN);
         }

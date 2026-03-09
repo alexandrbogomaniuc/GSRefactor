@@ -3,6 +3,7 @@ package com.abs.casino.cassandra.persist;
 import com.abs.casino.cassandra.persist.IHttpClientStatisticsPersister;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.data.URLCallCounters;
 import org.apache.logging.log4j.LogManager;
@@ -74,7 +75,7 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(FAIL_COUNTER, SUCCESS_COUNTER)
                 .where(eq(DATE, date))
                 .and(eq(URL, url));
-        com.datastax.driver.core.Row row = execute(select, "getCallStatistics").one();
+        Row row = executeWrapped(select, "getCallStatistics").one();
         if (row == null) {
             return new URLCallCounters(date, url, 0, 0, 0);
         } else {
