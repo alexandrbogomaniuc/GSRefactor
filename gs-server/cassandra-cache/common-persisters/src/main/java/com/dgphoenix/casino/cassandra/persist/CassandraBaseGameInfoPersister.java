@@ -85,10 +85,10 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     @Override
     public Set<String> getKeys() {
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(KEY);
-        Iterator<com.datastax.driver.core.Row> iterator = execute(select, "getKeys").iterator();
+        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getKeys").iterator();
         Set<String> result = new HashSet<>();
         while (iterator.hasNext()) {
-            com.datastax.driver.core.Row row = iterator.next();
+            com.abs.casino.cassandra.persist.engine.Row row = iterator.next();
             result.add(row.getString(KEY));
         }
         return ImmutableSet.copyOf(result);
@@ -98,10 +98,10 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     public List<BaseGameInfo> getByBank(long bankId) {
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_IDX, getBankIdx(bankId)));
-        Iterator<com.datastax.driver.core.Row> iterator = execute(select, "getByBank", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
+        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBank", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
-            com.datastax.driver.core.Row row = iterator.next();
+            com.abs.casino.cassandra.persist.engine.Row row = iterator.next();
             result.add(deserialize().apply(row));
         }
         return result;
@@ -111,16 +111,16 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     public List<BaseGameInfo> getByBankAndCurrency(long bankId, ICurrency currency) {
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_AND_CUR_IDX, getBankAndCurIdx(bankId, currency.getCode())));
-        Iterator<com.datastax.driver.core.Row> iterator = execute(select, "getByBankAndCurrency", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
+        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBankAndCurrency", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
-            com.datastax.driver.core.Row row = iterator.next();
+            com.abs.casino.cassandra.persist.engine.Row row = iterator.next();
             result.add(deserialize().apply(row));
         }
         return result;
     }
 
-    protected Function<com.datastax.driver.core.Row, BaseGameInfo> deserialize() {
+    protected Function<com.abs.casino.cassandra.persist.engine.Row, BaseGameInfo> deserialize() {
         return row -> {
             BaseGameInfo bgi = TABLE.deserializeFromJson(
                     Objects.requireNonNull(row).getString(JSON_COLUMN_NAME), BaseGameInfo.class);
@@ -208,9 +208,9 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     @Override
     public Map<String, BaseGameInfo> getAllAsMap() {
         Map<String, BaseGameInfo> result = new HashMap<>();
-        Iterator<com.datastax.driver.core.Row> iterator = getAll();
+        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = getAllWrapped();
         while (iterator.hasNext()) {
-            com.datastax.driver.core.Row row = iterator.next();
+            com.abs.casino.cassandra.persist.engine.Row row = iterator.next();
             String key = row.getString(KEY);
             BaseGameInfo value = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME), BaseGameInfo.class);
             if (value == null) {
@@ -223,9 +223,9 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
 
     @Override
     public void processAll(TableProcessor<Pair<String, BaseGameInfo>> tableProcessor) throws IOException {
-        Iterator<com.datastax.driver.core.Row> iterator = getAll();
+        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = getAllWrapped();
         while (iterator.hasNext()) {
-            com.datastax.driver.core.Row row = iterator.next();
+            com.abs.casino.cassandra.persist.engine.Row row = iterator.next();
             processRow(row, tableProcessor);
         }
     }
@@ -238,15 +238,15 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
             Long bankId = (Long) conditionValues[0];
             com.datastax.driver.core.Statement select = getSelectColumnsQuery(KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                     .where(eq(BANK_IDX, getBankIdx(bankId)));
-            Iterator<com.datastax.driver.core.Row> iterator = execute(select, "getByBank").iterator();
+            Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBank").iterator();
             while (iterator.hasNext()) {
-                com.datastax.driver.core.Row row = iterator.next();
+                com.abs.casino.cassandra.persist.engine.Row row = iterator.next();
                 processRow(row, tableProcessor);
             }
         }
     }
 
-    private void processRow(com.datastax.driver.core.Row row, TableProcessor<Pair<String, BaseGameInfo>> tableProcessor) throws IOException {
+    private void processRow(com.abs.casino.cassandra.persist.engine.Row row, TableProcessor<Pair<String, BaseGameInfo>> tableProcessor) throws IOException {
         String key = row.getString(KEY);
         BaseGameInfo value = deserialize().apply(row);
         tableProcessor.process(new Pair<>(key, value));
