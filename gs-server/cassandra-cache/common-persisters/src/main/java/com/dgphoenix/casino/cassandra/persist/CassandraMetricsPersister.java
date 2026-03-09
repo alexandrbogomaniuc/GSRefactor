@@ -160,7 +160,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
             start.add(Calendar.HOUR_OF_DAY, 1);
             long hourEnd = start.getTimeInMillis();
 
-            com.datastax.driver.core.ResultSet resultSet = queryMetricValues(metric, gameServerId, hourStart, hourEnd);
+            com.abs.casino.cassandra.persist.engine.ResultSet resultSet = queryMetricValues(metric, gameServerId, hourStart, hourEnd);
             if (!resultSet.isExhausted()) {
                 long resultCount = 0;
 
@@ -170,7 +170,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
                 long maxValueTime = 0;
                 BigInteger averageValue = BigInteger.valueOf(0);
 
-                for (com.datastax.driver.core.Row row : resultSet) {
+                for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
                     long value = row.getLong(METRIC_VALUE_FIELD);
                     long time = row.getLong(LOG_TIME_FIELD);
                     averageValue = averageValue.add(BigInteger.valueOf(value));
@@ -216,7 +216,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
         Select query = Cql.select().column(LAST_STAT_TIME_FIELD).from(LAST_STAT_TIME_CF);
         query.where(eq(METRIC_ID_FIELD, metric.ordinal())).
                 and(eq(GAME_SERVER_ID_FIELD, gameServerId)).limit(1);
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getLastStatTime");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getLastStatTime");
         if (resultSet.isExhausted()) {
             getLog().warn("Metric stat data is empty for metric={}, gameServerId={}", metric, gameServerId);
             return 0;
@@ -228,7 +228,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
         Select query = Cql.select().column(LOG_TIME_FIELD).from(getMainColumnFamilyName());
         query.where(eq(METRIC_ID_FIELD, metric.ordinal())).
                 and(eq(GAME_SERVER_ID_FIELD, gameServerId)).limit(1);
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getFirstLogTime");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getFirstLogTime");
         if (resultSet.isExhausted()) {
             getLog().warn("Metric stat data is empty for metric={}, gameServerId={}", metric, gameServerId);
             return System.currentTimeMillis();
@@ -236,7 +236,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
         return resultSet.one().getLong(LOG_TIME_FIELD);
     }
 
-    private com.datastax.driver.core.ResultSet queryMetricValues(Metric metric, int gameServerId, long startTime, long endTime) {
+    private com.abs.casino.cassandra.persist.engine.ResultSet queryMetricValues(Metric metric, int gameServerId, long startTime, long endTime) {
         Select query = Cql.select().
                 column(LOG_TIME_FIELD).
                 column(METRIC_VALUE_FIELD).
@@ -245,13 +245,13 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
                 and(eq(GAME_SERVER_ID_FIELD, gameServerId)).
                 and(Cql.gte(LOG_TIME_FIELD, startTime)).
                 and(Cql.lte(LOG_TIME_FIELD, endTime));
-        return execute(query, "queryMetricValues");
+        return executeWrapped(query, "queryMetricValues");
     }
 
     public List<Pair<Long, Long>> getMetricValues(Metric metric, int gameServerId, long startTime, long endTime) {
-        com.datastax.driver.core.ResultSet resultSet = queryMetricValues(metric, gameServerId, startTime, endTime);
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = queryMetricValues(metric, gameServerId, startTime, endTime);
         List<Pair<Long, Long>> values = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             values.add(new Pair<>(row.getLong(LOG_TIME_FIELD), row.getLong(METRIC_VALUE_FIELD)));
         }
         return values;
@@ -270,9 +270,9 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
                 and(eq(GAME_SERVER_ID_FIELD, gameServerId)).
                 and(Cql.gte(STAT_TIME_FIELD, startTime)).
                 and(Cql.lte(STAT_TIME_FIELD, endTime));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getMetricValues");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getMetricValues");
         List<MetricStat> values = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             MetricStat metricStat = new MetricStat();
             metricStat.setStatTime(row.getLong(STAT_TIME_FIELD));
             metricStat.setAverageValue(row.getLong(AVERAGE_VALUE_FIELD));
