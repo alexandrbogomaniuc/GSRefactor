@@ -258,7 +258,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
             StatisticsManager.getInstance().updateRequestStatistics(
                     getClass().getSimpleName() + " execution timeout " + callerClassMethodIdentification,
                     System.currentTimeMillis() - now);
-            return ResultSet.wrap(new FakeNotAppliedResultSet(e));
+            return new FakeNotAppliedResultSet(e);
         }
     }
 

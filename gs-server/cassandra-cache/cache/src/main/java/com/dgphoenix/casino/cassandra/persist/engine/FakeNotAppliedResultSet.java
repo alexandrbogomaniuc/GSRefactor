@@ -1,11 +1,5 @@
 package com.abs.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.ColumnDefinitions;
-import com.datastax.driver.core.ExecutionInfo;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
-import com.google.common.util.concurrent.ListenableFuture;
-
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -14,10 +8,11 @@ import java.util.List;
  * User: Grien
  * Date: 24.12.2014 17:16
  */
-public class FakeNotAppliedResultSet implements ResultSet {
+public class FakeNotAppliedResultSet extends ResultSet {
     private com.datastax.driver.core.exceptions.DriverException exception;
 
     public FakeNotAppliedResultSet(com.datastax.driver.core.exceptions.DriverException exception) {
+        super();
         this.exception = exception;
     }
 
@@ -53,27 +48,6 @@ public class FakeNotAppliedResultSet implements ResultSet {
     @Override
     public int getAvailableWithoutFetching() {
         return 0;
-    }
-
-    @Override
-    public ListenableFuture<ResultSet> fetchMoreResults() {
-        return null;
-    }
-
-    @Override
-    public boolean isFullyFetched() {
-        return false;
-    }
-
-
-    @Override
-    public ExecutionInfo getExecutionInfo() {
-        return null;
-    }
-
-    @Override
-    public List<ExecutionInfo> getAllExecutionInfo() {
-        return null;
     }
 
     @Override

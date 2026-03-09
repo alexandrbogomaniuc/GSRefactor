@@ -7,6 +7,10 @@ import java.util.List;
 public class ResultSet implements Iterable<Row> {
     private final com.datastax.driver.core.ResultSet resultSet;
 
+    ResultSet() {
+        this.resultSet = null;
+    }
+
     ResultSet(com.datastax.driver.core.ResultSet resultSet) {
         this.resultSet = resultSet;
     }
