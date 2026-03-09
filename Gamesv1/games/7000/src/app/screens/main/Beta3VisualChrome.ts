@@ -24,6 +24,7 @@ type JackpotCoinVisual = {
   baseX: number;
   baseY: number;
   phase: number;
+  heroTextureActive: boolean;
 };
 
 const readDebugProviderFlag = (): boolean =>
@@ -43,6 +44,8 @@ export class Beta3VisualChrome extends Container {
   private readonly cabinetGlow = new Graphics();
   private readonly topBar = new Graphics();
   private readonly mascotHalo = new Graphics();
+  private readonly heroGlowSprite = new Sprite(Texture.WHITE);
+  private readonly heroPulseSprite = new Sprite(Texture.WHITE);
   private readonly mascotSprite = new Sprite(Texture.WHITE);
   private readonly mascotCaption = new Text({
     text: "ROOSTER RUSH",
@@ -200,6 +203,10 @@ export class Beta3VisualChrome extends Container {
 
     this.mascotSprite.anchor.set(0.5, 1);
     this.mascotSprite.alpha = 0.96;
+    this.heroGlowSprite.anchor.set(0.5);
+    this.heroGlowSprite.alpha = 0;
+    this.heroPulseSprite.anchor.set(0.5);
+    this.heroPulseSprite.alpha = 0;
     this.mascotCaption.anchor.set(0.5, 0.5);
     this.jackpotTitle.anchor.set(0.5);
     this.buyTitle.anchor.set(0.5);
@@ -215,6 +222,8 @@ export class Beta3VisualChrome extends Container {
       this.cabinetGlow,
       this.topBar,
       this.mascotHalo,
+      this.heroGlowSprite,
+      this.heroPulseSprite,
       this.mascotSprite,
       this.mascotCaption,
       this.jackpotTitle,
@@ -287,6 +296,7 @@ export class Beta3VisualChrome extends Container {
         baseX: 0,
         baseY: 0,
         phase: spec.phase,
+        heroTextureActive: false,
       });
     }
 
@@ -371,6 +381,12 @@ export class Beta3VisualChrome extends Container {
     const heroPulse = 1 + Math.sin(this.ambientTime * 1.7) * 0.035 + this.boostFlash * 0.06;
     this.mascotSprite.y = -72 + heroFloat;
     this.mascotSprite.scale.set(heroPulse);
+    this.heroGlowSprite.y = -70 + heroFloat * 0.18;
+    this.heroGlowSprite.scale.set(1.02 + Math.sin(this.ambientTime * 1.9) * 0.04 + this.boostFlash * 0.08);
+    this.heroGlowSprite.alpha = 0.22 + this.boostFlash * 0.22;
+    this.heroPulseSprite.y = -80 + heroFloat * 0.12;
+    this.heroPulseSprite.scale.set(0.98 + Math.sin(this.ambientTime * 2.2 + 0.4) * 0.05 + this.boostFlash * 0.1);
+    this.heroPulseSprite.alpha = 0.14 + this.boostFlash * 0.18;
 
     this.mascotHalo.clear();
     this.mascotHalo.ellipse(
@@ -392,11 +408,16 @@ export class Beta3VisualChrome extends Container {
       coin.sprite.y = coin.baseY + drift;
       coin.sprite.scale.set(pulse);
       coin.halo.clear();
-      coin.halo.circle(coin.baseX, coin.baseY + drift, 33 + index * 2 + this.boostFlash * 4);
-      coin.halo.fill({ color: 0xe5b357, alpha: 0.98 });
-      coin.halo.stroke({ color: 0xfff0c1, width: 4, alpha: 0.95 });
-      coin.halo.circle(coin.baseX, coin.baseY + drift, 24 + index * 2 + this.boostFlash * 2);
-      coin.halo.fill({ color: 0x9f5519, alpha: 0.28 });
+      if (coin.heroTextureActive) {
+        coin.halo.circle(coin.baseX, coin.baseY + drift, 46 + index * 2 + this.boostFlash * 6);
+        coin.halo.fill({ color: 0xffcf73, alpha: 0.18 + this.boostFlash * 0.08 });
+      } else {
+        coin.halo.circle(coin.baseX, coin.baseY + drift, 33 + index * 2 + this.boostFlash * 4);
+        coin.halo.fill({ color: 0xe5b357, alpha: 0.98 });
+        coin.halo.stroke({ color: 0xfff0c1, width: 4, alpha: 0.95 });
+        coin.halo.circle(coin.baseX, coin.baseY + drift, 24 + index * 2 + this.boostFlash * 2);
+        coin.halo.fill({ color: 0x9f5519, alpha: 0.28 });
+      }
       coin.label.x = coin.baseX;
       coin.label.y = coin.baseY + 10 + drift * 0.1;
       coin.value.x = coin.baseX;
@@ -441,6 +462,12 @@ export class Beta3VisualChrome extends Container {
     this.mascotSprite.y = -72;
     this.mascotSprite.width = 128;
     this.mascotSprite.height = 128;
+    this.heroGlowSprite.x = this.machineWidth * 0.5;
+    this.heroGlowSprite.width = 220;
+    this.heroGlowSprite.height = 220;
+    this.heroPulseSprite.x = this.machineWidth * 0.5;
+    this.heroPulseSprite.width = 168;
+    this.heroPulseSprite.height = 168;
     this.mascotCaption.x = this.machineWidth * 0.5;
     this.mascotCaption.y = 108;
     this.jackpotTitle.x = this.machineWidth * 0.5;
@@ -450,8 +477,8 @@ export class Beta3VisualChrome extends Container {
     this.jackpotCoins.forEach((coin, index) => {
       coin.baseX = coinStartX + index * 88;
       coin.baseY = -116 + (index % 2 === 0 ? -5 : 5);
-      coin.sprite.width = 58;
-      coin.sprite.height = 58;
+      coin.sprite.width = coin.heroTextureActive ? 92 : 58;
+      coin.sprite.height = coin.heroTextureActive ? 92 : 58;
     });
 
     this.buyPanel.position.set(-162, this.machineHeight * 0.44 - 84);
@@ -542,24 +569,37 @@ export class Beta3VisualChrome extends Container {
 
   private async refreshTextures(): Promise<void> {
     const requestToken = ++this.textureRequestToken;
-    const mascot = await resolveProviderFrameTexture("symbolAtlas", "symbol-9-rooster");
-    const buy = await resolveProviderFrameTexture("symbolAtlas", "collector-symbol");
+    const buy = await resolveProviderFrameTexture("heroUiAtlas", "button-buybonus");
+    const buyFallback = buy.texture
+      ? buy
+      : await resolveProviderFrameTexture("symbolAtlas", "collector-symbol");
+    const heroGlow = await resolveProviderFrameTexture("heroVfxAtlas", "vfx-hero-glow");
+    const heroPulse = await resolveProviderFrameTexture("heroVfxAtlas", "vfx-hero-pulse");
     const jackpotFrames = await Promise.all([
-      resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-2x"),
-      resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-3x"),
-      resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-5x"),
-      resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-10x"),
+      resolveProviderFrameTexture("heroUiAtlas", "jackpot-plaque-mini"),
+      resolveProviderFrameTexture("heroUiAtlas", "jackpot-plaque-minor"),
+      resolveProviderFrameTexture("heroUiAtlas", "jackpot-plaque-major"),
+      resolveProviderFrameTexture("heroUiAtlas", "jackpot-plaque-grand"),
     ]);
 
     if (requestToken !== this.textureRequestToken) {
       return;
     }
 
-    this.applyTexture(this.mascotSprite, mascot.texture, 0xd34f35);
-    this.applyTexture(this.buyIcon, buy.texture, 0xf1b458);
+    this.mascotSprite.visible = false;
+    this.applyTexture(this.buyIcon, buyFallback.texture, 0xf1b458);
+    this.applyTexture(this.heroGlowSprite, heroGlow.texture, 0xc7141a);
+    this.applyTexture(this.heroPulseSprite, heroPulse.texture, 0xf4c869);
+    this.heroGlowSprite.visible = Boolean(heroGlow.texture);
+    this.heroPulseSprite.visible = Boolean(heroPulse.texture);
     this.jackpotCoins.forEach((coin, index) => {
-      this.applyTexture(coin.sprite, jackpotFrames[index]?.texture ?? null, 0xf2b545);
+      const resolved = jackpotFrames[index];
+      coin.heroTextureActive = Boolean(resolved?.texture);
+      this.applyTexture(coin.sprite, resolved?.texture ?? null, 0xf2b545);
+      coin.label.visible = !coin.heroTextureActive;
+      coin.value.visible = !coin.heroTextureActive;
     });
+    this.mascotCaption.visible = false;
   }
 
   private applyTexture(sprite: Sprite, texture: Texture | null, fallbackTint: number): void {

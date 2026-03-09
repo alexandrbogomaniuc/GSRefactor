@@ -1,5 +1,8 @@
 import { Container, Text, Ticker } from "pixi.js";
 
+const showDebugOverlay = (): boolean =>
+    new URLSearchParams(window.location.search).get("debugOverlay") === "1";
+
 export class DebugOverlay extends Container {
     private fpsText: Text;
     private timeSum: number = 0;
@@ -7,6 +10,7 @@ export class DebugOverlay extends Container {
 
     constructor() {
         super();
+        this.visible = showDebugOverlay();
 
         this.fpsText = new Text({
             text: "FPS: --",
@@ -19,7 +23,9 @@ export class DebugOverlay extends Container {
         });
         this.addChild(this.fpsText);
 
-        Ticker.shared.add(this.update, this);
+        if (this.visible) {
+            Ticker.shared.add(this.update, this);
+        }
     }
 
     private update(ticker: Ticker) {

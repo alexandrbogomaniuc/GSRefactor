@@ -20,6 +20,10 @@ import nanobananaUiAtlasUrl from "../../../assets/providers/nanobanana/runtime/a
 import nanobananaUiAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_ui.json";
 import nanobananaVfxAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_vfx.png?url";
 import nanobananaVfxAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_vfx.json";
+import nanobananaHeroUiAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_hero_ui.png?url";
+import nanobananaHeroUiAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_hero_ui.json";
+import nanobananaHeroVfxAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_hero_vfx.png?url";
+import nanobananaHeroVfxAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_hero_vfx.json";
 
 import {
   CRAZY_ROOSTER_BRAND,
@@ -54,6 +58,8 @@ type ProviderPackDefinition = {
   symbolAtlas?: ProviderAtlas;
   uiAtlas?: ProviderAtlas;
   vfxAtlas?: ProviderAtlas;
+  heroUiAtlas?: ProviderAtlas;
+  heroVfxAtlas?: ProviderAtlas;
   manifestUrl?: string;
 };
 
@@ -82,7 +88,12 @@ export type ProviderPackStatus = {
   fallbackReason?: string;
 };
 
-export type ProviderAtlasKind = "symbolAtlas" | "uiAtlas" | "vfxAtlas";
+export type ProviderAtlasKind =
+  | "symbolAtlas"
+  | "uiAtlas"
+  | "vfxAtlas"
+  | "heroUiAtlas"
+  | "heroVfxAtlas";
 
 export type ProviderResolvedTexture = {
   texture: Texture | null;
@@ -193,6 +204,14 @@ const PROVIDER_PACKS: Record<CommittedProvider, ProviderPackDefinition> = {
     vfxAtlas: {
       url: nanobananaVfxAtlasUrl,
       data: nanobananaVfxAtlasData as AtlasData,
+    },
+    heroUiAtlas: {
+      url: nanobananaHeroUiAtlasUrl,
+      data: nanobananaHeroUiAtlasData as AtlasData,
+    },
+    heroVfxAtlas: {
+      url: nanobananaHeroVfxAtlasUrl,
+      data: nanobananaHeroVfxAtlasData as AtlasData,
     },
   },
 };

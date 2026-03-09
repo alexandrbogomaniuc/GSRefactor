@@ -57,3 +57,10 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
   - ported the safe audio alias guard so missing hover/click SFX no longer throw repeated `.play()` exceptions.
   - removed unused promo placeholder `.gitkeep` files that were generating asset warnings during build/runtime scans.
   - browser proof for Beta 3 was captured against the live nanobanana build; Chrome DevTools MCP had `Transport closed` earlier in this thread, so Playwright/system Chrome was used for proof while the launcher config was being corrected separately.
+- 2026-03-09: Started Beta 3B hero merge sprint on `codex/qa/7000-beta3b-hero-merge-20260309-1533`.
+  - merged the NanoBanana hero-polish runtime pack from `origin/assets/7000-nanobanana-hero-polish-20260309-1405`, adding stronger barn backgrounds plus optional `atlas_hero_ui` / `atlas_hero_vfx` presentation assets.
+  - extended the provider registry with optional hero atlas kinds so Beta 3B can consume extra NanoBanana presentation art without changing the required provider contract.
+  - added a custom bottom HUD art rail (`HeroHudChrome.ts`) that keeps the shell hit targets but replaces the visible bottom controls with Beta 3B-specific art, using the NanoBanana hero button set as the default presentation.
+  - upgraded `LoadScreen.ts` again with a stronger bar/plate composition and NanoBanana hero glow layers, while avoiding the baked-background mascot frame that degraded the screen.
+  - kept the provider matrix intact: nanobanana remains the default hero provider, openai is still the fallback path, and donorlocal remains the local benchmark.
+  - fresh proof lives in `docs/_visual_proof/beta3b-2026-03-09/`, and the Beta 3B review concludes the build is improved but still not ready for Wave 1 visual QA because the remaining blocker is quality/polish, not code wiring.

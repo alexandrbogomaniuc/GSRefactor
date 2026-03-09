@@ -51,6 +51,7 @@ import { WinHighlight } from "../../../game/fx/WinHighlight";
 import { WinCounter } from "../../../game/ui/WinCounter";
 import { Beta3VisualChrome } from "./Beta3VisualChrome";
 import { DebugOverlay } from "./DebugOverlay";
+import { HeroHudChrome } from "./HeroHudChrome";
 
 type PendingRoundResolution = {
   presentation: RoundPresentationModel;
@@ -58,6 +59,12 @@ type PendingRoundResolution = {
 };
 
 type HudButtonHandle = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  alpha: number;
+  visible: boolean;
   onDown: {
     connect: (callback: () => void) => void;
   };
@@ -135,6 +142,7 @@ export class MainScreen extends Container {
   private readonly particleBurst = new ParticleBurst();
   private readonly winCounter = new WinCounter();
   private readonly hud = new PremiumTemplateHud();
+  private readonly hudChrome = new HeroHudChrome();
   private readonly statusText = new Text({
     text: "",
     style: {
@@ -275,6 +283,7 @@ export class MainScreen extends Container {
     });
 
     this.uiLayer.addChild(this.winCounter);
+    this.uiLayer.addChild(this.hudChrome);
     this.uiLayer.addChild(this.hud);
     this.uiLayer.addChild(this.statusText);
     this.uiLayer.addChild(this.titleText);
@@ -360,6 +369,7 @@ export class MainScreen extends Container {
       orientation: viewport.orientation,
       safeArea: safe,
     });
+    this.syncHudChrome();
 
     this.titleText.x = width * 0.5;
     this.titleText.y = safe.top + 34;
@@ -740,6 +750,7 @@ export class MainScreen extends Container {
       featureFrame.controlVisibility,
     );
     this.hud.applyVisibility({ controls: visibility.controls });
+    this.syncHudChrome();
   }
 
   private applySoundCue(cue: string): void {
@@ -799,6 +810,13 @@ export class MainScreen extends Container {
       soundEnabled: this.soundEnabled,
       statusText: this.statusText.text || "BETONLINE READY",
     });
+    this.hudChrome.setState({
+      buyLabel,
+      autoplayActive: this.autoplayActive,
+      turboSelected: this.turboSelected || this.holdTurboRequested,
+      soundEnabled: this.soundEnabled,
+      holdTurboRequested: this.holdTurboRequested,
+    });
   }
 
   private showStatus(text: string): void {
@@ -825,6 +843,14 @@ export class MainScreen extends Container {
       statusText: preview.labels.state ?? "idle",
     });
     this.showStatus(formatMessages([...preview.messages, ...featureFrame.messages]));
+  }
+
+  private syncHudChrome(): void {
+    const buttons = (this.hud as unknown as HudInternals).buttons;
+    this.hudChrome.attachButtons(buttons);
+    for (const button of Object.values(buttons)) {
+      button.alpha = 0.001;
+    }
   }
 
   private skipWinPresentation(): void {
