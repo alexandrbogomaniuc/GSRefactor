@@ -49,6 +49,10 @@ public class ResultSet implements Iterable<Row> {
         return resultSet.getAvailableWithoutFetching();
     }
 
+    public ColumnDefinitions getColumnDefinitions() {
+        return ColumnDefinitions.wrap(resultSet.getColumnDefinitions());
+    }
+
     static Iterator<Row> wrapRows(final Iterator<com.datastax.driver.core.Row> iterator) {
         return new Iterator<Row>() {
             @Override

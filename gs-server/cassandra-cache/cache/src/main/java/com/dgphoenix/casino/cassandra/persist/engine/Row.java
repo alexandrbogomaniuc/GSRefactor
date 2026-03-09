@@ -72,4 +72,8 @@ public class Row {
     public <K, V> Map<K, V> getMap(String name, Class<K> keyClass, Class<V> valueClass) {
         return row.getMap(name, keyClass, valueClass);
     }
+
+    public ColumnDefinitions getColumnDefinitions() {
+        return ColumnDefinitions.wrap(row.getColumnDefinitions());
+    }
 }
