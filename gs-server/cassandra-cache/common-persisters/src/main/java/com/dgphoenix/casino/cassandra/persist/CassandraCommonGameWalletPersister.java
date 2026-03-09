@@ -27,6 +27,7 @@ import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.Delete;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.Select;
+import com.abs.casino.cassandra.persist.engine.SchemaCql;
 
 
 
@@ -80,7 +81,7 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toSeconds(1))
             .compression(Compression.NONE)
-            .speculativeRetry(com.datastax.driver.core.schemabuilder.SchemaBuilder.always());
+            .speculativeRetry(SchemaCql.always());
 
     private CassandraCommonGameWalletPersister() {
     }

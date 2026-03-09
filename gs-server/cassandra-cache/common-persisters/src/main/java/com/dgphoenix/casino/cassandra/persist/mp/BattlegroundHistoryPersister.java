@@ -20,6 +20,7 @@ import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.Delete;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 
 
 public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Long, String> {
@@ -49,7 +50,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
                     new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
                     new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), ACCOUNT_ID)
-            .clusteringOrder(DATE_TIME, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
+            .clusteringOrder(DATE_TIME, Direction.DESC);
 
     private static final TableDefinition PARTICIPANT_ROUND_TABLE = new TableDefinition(
             CF_PARTICIPANT_NAME,

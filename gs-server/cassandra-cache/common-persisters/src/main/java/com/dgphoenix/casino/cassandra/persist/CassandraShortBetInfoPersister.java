@@ -16,6 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 
 
 
@@ -43,7 +44,7 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
             .caching(Caching.NONE).compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toSeconds(1))
             .compression(Compression.DEFLATE)
-            .clusteringOrder(BET_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
+            .clusteringOrder(BET_TIME_FIELD, Direction.DESC);
 
     @Override
     public TableDefinition getMainTableDefinition() {

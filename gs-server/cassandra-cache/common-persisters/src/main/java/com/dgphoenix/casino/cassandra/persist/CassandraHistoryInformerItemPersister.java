@@ -32,6 +32,7 @@ import com.datastax.driver.core.querybuilder.Delete;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.Select;
 import com.datastax.driver.core.querybuilder.Update;
+import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 
 
 public class CassandraHistoryInformerItemPersister extends AbstractCassandraPersister<Long, String> {
@@ -55,7 +56,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
                     new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
                     new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), BANK_ID_FIELD)
-            .clusteringOrder(CREATE_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC);
+            .clusteringOrder(CREATE_TIME_FIELD, Direction.ASC);
 
     //CF for items with max iterations
     private static final TableDefinition MAX_ITERATIONS_TABLE = new TableDefinition(MAX_ITERATIONS_ITEM_CF,
@@ -67,7 +68,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
                     new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
                     new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), BANK_ID_FIELD)
-            .clusteringOrder(CREATE_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC);
+            .clusteringOrder(CREATE_TIME_FIELD, Direction.ASC);
 
     /**
      * For instantiate use {@link CassandraPersistenceManager#getPersister(Class)}

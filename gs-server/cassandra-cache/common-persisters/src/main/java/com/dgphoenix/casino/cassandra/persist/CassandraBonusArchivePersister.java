@@ -22,6 +22,7 @@ import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.google.common.base.Preconditions.checkState;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 
 
 /**
@@ -56,7 +57,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
                     new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
                     new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), ACCOUNT_ID_FIELD)
-            .clusteringOrder(AWARD_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
+            .clusteringOrder(AWARD_TIME_FIELD, Direction.DESC);
 
     private CassandraBonusArchivePersister() {
         super();

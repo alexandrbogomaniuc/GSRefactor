@@ -44,6 +44,7 @@ import com.datastax.driver.core.querybuilder.Delete;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.Select;
 import com.datastax.driver.core.querybuilder.Update;
+import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 
 
 
@@ -181,7 +182,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toSeconds(1))
             .compression(Compression.DEFLATE)
-            .clusteringOrder(END_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
+            .clusteringOrder(END_TIME_FIELD, Direction.DESC);
 
     //Primary key (accountId, mode, gameId), endTime clustered order by endTime desc
     //this table used for query with Mode, if gameId=-1 - this all games index
@@ -198,7 +199,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toSeconds(1))
             .compression(Compression.DEFLATE)
-            .clusteringOrder(END_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
+            .clusteringOrder(END_TIME_FIELD, Direction.DESC);
 
     //Primary ke:y (bankId, gameId), endTime clustered order by endTime desc
     //this table used for query without mode, if gameId=-1 - this all games index
@@ -221,7 +222,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toSeconds(1))
             .compression(Compression.DEFLATE)
-            .clusteringOrder(END_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
+            .clusteringOrder(END_TIME_FIELD, Direction.DESC);
 
     private CassandraGameSessionPersister() {
     }
