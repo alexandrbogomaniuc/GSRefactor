@@ -19,13 +19,53 @@
         "w": 640,
         "h": 640
       }
+    },
+    "vfx-hero-glow": {
+      "frame": {
+        "x": 644,
+        "y": 0,
+        "w": 640,
+        "h": 640
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 640
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 640
+      }
+    },
+    "vfx-hero-pulse": {
+      "frame": {
+        "x": 1288,
+        "y": 0,
+        "w": 640,
+        "h": 640
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 640
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 640
+      }
     }
   },
   "meta": {
     "image": "atlas_vfx.png",
     "format": "RGBA8888",
     "size": {
-      "w": 644,
+      "w": 1932,
       "h": 640
     },
     "scale": "1"

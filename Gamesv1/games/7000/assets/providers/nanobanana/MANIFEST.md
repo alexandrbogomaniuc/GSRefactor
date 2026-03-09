@@ -13,7 +13,7 @@ This provider pack contains standard layout assets plus the Beta 3 Hero visual u
 * `background-portrait-1080x1920.png` (Upgraded to Hero Quality)
 
 ### Render Atlases
-#### `atlas_ui` / `atlas_hero_ui`
+#### `atlas_ui`
 UI framing and button controls.
 **New keys added in Beta 3 Hero Pass:**
 * `jackpot-plaque-grand`
@@ -32,7 +32,7 @@ UI framing and button controls.
 Slot symbols and collectible entities.
 Contains full fallback keys. (Hero Symbol upgrade blocked by generation quota limits)
 
-#### `atlas_vfx` / `atlas_hero_vfx`
+#### `atlas_vfx`
 Screen effects and particle emitters.
 **New keys added in Beta 3 Hero Pass:**
 * `vfx-hero-glow`
