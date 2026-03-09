@@ -117,8 +117,8 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
         com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getBetsAndRealSize");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getBetsAndRealSize");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         if (row != null) {
             bets = TABLE.deserializeToListJson(row.getString(JSON_COLUMN_NAME), PlayerBet.class);
             if (bets == null) {
@@ -148,8 +148,8 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
         com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getBetsAndRealSize");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getBetsAndRealSize");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         if (row != null) {
             bets = TABLE.deserializeToListJson(row.getString(JSON_COLUMN_NAME), PlayerBet.class);
             if (bets == null) {
@@ -314,11 +314,11 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
             SessionHelper.getInstance().getTransactionData().getAtomicallyStoredData().
                     remove(StoredItemType.PLAYER_BET);
         }
-        com.datastax.driver.core.ResultSet resultSet = tempBetPersister.getResultSetByGameSessionId(gameSessionId);
-        Iterator<com.datastax.driver.core.Row> iterator = resultSet.iterator();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = tempBetPersister.getResultSetByGameSessionId(gameSessionId);
+        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = resultSet.iterator();
 
         while (iterator.hasNext()) {
-            com.datastax.driver.core.Row row = iterator.next();
+            com.abs.casino.cassandra.persist.engine.Row row = iterator.next();
             if (row != null) {
                 int betId = row.getInt(BET_ID_FIELD);
                 if (!betsMap.containsKey(betId) && betId <= maxPlayerBetId) {
@@ -399,8 +399,8 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
                     }
                 }
                 if (playedGameSessionId != null && playedGameSessionId.equals(gameSessionId)) {
-                    com.datastax.driver.core.ResultSet resultSet = tempBetPersister.getResultSetByGameSessionIdAndRounds(gameSessionId, betIds);
-                    for (com.datastax.driver.core.Row row : resultSet) {
+                    com.abs.casino.cassandra.persist.engine.ResultSet resultSet = tempBetPersister.getResultSetByGameSessionIdAndRounds(gameSessionId, betIds);
+                    for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
                         PlayerBet playerBet = tempBetPersister.getMainTableDefinition().
                                 deserializeFromJson(row.getString(JSON_COLUMN_NAME), PlayerBet.class);
                         if (playerBet == null) {
@@ -418,8 +418,8 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
             for (Map.Entry<Long, Set<Long>> entry : required.entrySet()) {
                 Long gameSessionId = entry.getKey();
                 Set<Long> betIds = entry.getValue();
-                com.datastax.driver.core.ResultSet resultSet = tempBetPersister.getResultSetByGameSessionIdAndRounds(gameSessionId, betIds);
-                for (com.datastax.driver.core.Row row : resultSet) {
+                com.abs.casino.cassandra.persist.engine.ResultSet resultSet = tempBetPersister.getResultSetByGameSessionIdAndRounds(gameSessionId, betIds);
+                for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
                     PlayerBet playerBet = tempBetPersister.getMainTableDefinition().
                             deserializeFromJson(row.getString(JSON_COLUMN_NAME), PlayerBet.class);
                     if (playerBet == null) {

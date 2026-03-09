@@ -72,7 +72,7 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
         com.datastax.driver.core.Statement query = getSelectAllColumnsQuery()
                 .where(eq(getKeyColumnName(), key))
                 .and(eq(OBJECT_ID_FIELD, trackedObjectId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "isTracking");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "isTracking");
         return resultSet.one() != null;
     }
 
@@ -136,13 +136,13 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
     public List<TrackingInfo> getList(String trackerName) {
         String key = getKey(trackerName);
         List<TrackingInfo> result = new LinkedList();
-        com.datastax.driver.core.ResultSet resultSet = execute(
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(
                 Cql.select().
                         column(OBJECT_ID_FIELD).writeTime(SERIALIZED_COLUMN_NAME).writeTime(JSON_COLUMN_NAME).
                         from(getMainColumnFamilyName()).
                         where(eq(getKeyColumnName(), key)
                         ), "getList");
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String trackedObjectId = row.getString(OBJECT_ID_FIELD);
             Long writeTimes = row.getLong("writetime(" + SERIALIZED_COLUMN_NAME + ")");
             Long writeTimej = row.getLong("writetime(" + JSON_COLUMN_NAME + ")");
@@ -151,8 +151,8 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
                     writeTimej == null ? -1 : writeTimej);
 
             if (writeTime <= 0) {
-                com.datastax.driver.core.ColumnDefinitions definitions = resultSet.getColumnDefinitions();
-                for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
+                com.abs.casino.cassandra.persist.engine.ColumnDefinitions definitions = resultSet.getColumnDefinitions();
+                for (com.abs.casino.cassandra.persist.engine.ColumnDefinitions.Definition definition : definitions) {
                     LOG.info("getList: writetime(OBJECT_ID) not found: " + definition.getName() + ": " +
                             definition.getType());
                 }
@@ -202,8 +202,8 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
                 .column(JSON_COLUMN_NAME).writeTime(JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
                 .where(eq(getKeyColumnName(), key));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getList");
-        for (com.datastax.driver.core.Row row : resultSet) {
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getList");
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String trackedObjectId = row.getString(OBJECT_ID_FIELD);
             Long writeTimes = null;
             Long writeTimej = null;
@@ -216,8 +216,8 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
             Long writeTime = Long.max(writeTimes == null ? -1 : writeTimes,
                     writeTimej == null ? -1 : writeTimej);
             if (writeTime <= 0) {
-                com.datastax.driver.core.ColumnDefinitions definitions = resultSet.getColumnDefinitions();
-                for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
+                com.abs.casino.cassandra.persist.engine.ColumnDefinitions definitions = resultSet.getColumnDefinitions();
+                for (com.abs.casino.cassandra.persist.engine.ColumnDefinitions.Definition definition : definitions) {
                     LOG.info("getList: writetime(OBJECT_ID) not found: " + definition.getName() + ": " +
                             definition.getType());
                 }
@@ -250,10 +250,10 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
                 .from(getMainColumnFamilyName())
                 .where(eq(getKeyColumnName(), key))
                 .and(eq(OBJECT_ID_FIELD, trackedObjectId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getTrackingInfo");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getTrackingInfo");
         T addition = null;
         if (!resultSet.isExhausted()) {
-            com.datastax.driver.core.Row row = resultSet.one();
+            com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
             Long writeTimes = null;
             Long writeTimej = null;
             try {
@@ -265,8 +265,8 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
             Long writeTime = Long.max(writeTimes == null ? -1 : writeTimes,
                     writeTimej == null ? -1 : writeTimej);
             if (writeTime <= 0) {
-                com.datastax.driver.core.ColumnDefinitions definitions = resultSet.getColumnDefinitions();
-                for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
+                com.abs.casino.cassandra.persist.engine.ColumnDefinitions definitions = resultSet.getColumnDefinitions();
+                for (com.abs.casino.cassandra.persist.engine.ColumnDefinitions.Definition definition : definitions) {
                     LOG.info("getList: writetime(OBJECT_ID) not found: " + definition.getName() + ": " +
                             definition.getType());
                 }

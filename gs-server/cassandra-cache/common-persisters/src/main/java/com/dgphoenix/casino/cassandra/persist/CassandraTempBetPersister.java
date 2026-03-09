@@ -53,8 +53,8 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
                 .and(eq(BET_ID_FIELD, (int) betId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getPlayerBet");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getPlayerBet");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
 
         PlayerBet playerBet = null;
         if (row != null) {
@@ -70,17 +70,17 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
         return playerBet;
     }
 
-    com.datastax.driver.core.ResultSet getResultSetByGameSessionId(long gameSessionId) {
+    com.abs.casino.cassandra.persist.engine.ResultSet getResultSetByGameSessionId(long gameSessionId) {
         com.datastax.driver.core.Statement query = Cql.select(BET_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(COLUMN_FAMILY_NAME)
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
-        return execute(query, "getResultSetByGameSessionId get from temp Table");
+        return executeWrapped(query, "getResultSetByGameSessionId get from temp Table");
     }
 
     public List<PlayerBet> getOnlinePayerBets(long gameSessionId) {
         Map<Integer, PlayerBet> betsMap = new HashMap<>();
-        com.datastax.driver.core.ResultSet resultSet = getResultSetByGameSessionId(gameSessionId);
-        for (com.datastax.driver.core.Row row : resultSet) {
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = getResultSetByGameSessionId(gameSessionId);
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             if (row != null) {
                 int betId = row.getInt(BET_ID_FIELD);
                 if (!betsMap.containsKey(betId)) {
@@ -106,12 +106,12 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
         return new ArrayList<>(betsMap.values());
     }
 
-    com.datastax.driver.core.ResultSet getResultSetByGameSessionIdAndRounds(long gameSessionId, Set<Long> betIds) {
+    com.abs.casino.cassandra.persist.engine.ResultSet getResultSetByGameSessionIdAndRounds(long gameSessionId, Set<Long> betIds) {
         com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(COLUMN_FAMILY_NAME)
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
                 .and(Cql.in(BET_ID_FIELD, betIds.toArray()));
-        return execute(query, "getResultSetByGameSessionIdAndRounds from temp Table");
+        return executeWrapped(query, "getResultSetByGameSessionIdAndRounds from temp Table");
     }
 
     void addDeleteStatement(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId) {
