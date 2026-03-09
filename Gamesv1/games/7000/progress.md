@@ -43,3 +43,9 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
   - applied provider atlas usage to reel chrome and lightning VFX, added a prewarmed `LightningArcFx`, and surfaced `requestedProvider`, `effectiveProvider`, `safePlaceholder`, and `missingKeys` on-screen for QA.
   - captured proof artifacts under `docs/_visual_proof/beta2b-2026-03-09/`, including openai/nanobanana/donorlocal idle states plus openai/nanobanana lightning frames and provider state JSON.
   - donorlocal is active in this local checkout because the ignored manifest under `Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json` now satisfies the provider contract.
+- 2026-03-09: Investigated the live Beta 2B branch with a fresh one-port server and browser automation after the user still reported text tiles.
+  - found multiple stale Vite servers already bound to `8081-8084`; the documented `dev:oneport` command had auto-shifted to `8084`, so an older `8081` instance was a real source of misleading browser evidence.
+  - merged the runtime-complete NanoBanana symbol atlas from `origin/assets/7000-nanobanana-runtime-complete-20260309-1031`, which removed the last NanoBanana symbol-art gap on a clean `8081` run.
+  - confirmed openai and nanobanana are atlas-driven on the fresh branch; no text-label tiles remain in the clean-browser proof.
+  - fixed a real donorlocal defect in `providerPackRegistry.ts`: the local donor manifest exposes key maps (`*_keys.json`), not Pixi spritesheet JSON, so the old loader threw during `Spritesheet` construction and silently fell back to OpenAI.
+  - the donorlocal loader now resolves direct per-frame image sources from the local key maps and falls back to OpenAI only for unresolved donor entries such as Spine/atlas-only mappings.

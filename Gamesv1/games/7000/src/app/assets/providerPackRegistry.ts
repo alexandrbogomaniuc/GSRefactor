@@ -33,6 +33,7 @@ type CommittedProvider = Exclude<CrazyRoosterAssetProvider, "donorlocal">;
 type AtlasFrames = Record<string, unknown>;
 type AtlasData = {
   frames?: AtlasFrames;
+  meta?: unknown;
 };
 
 type ProviderAtlas = {
@@ -93,6 +94,63 @@ const DONORLOCAL_MANIFEST_URL = `/@fs${__DONORLOCAL_MANIFEST_FS_PATH__}`;
 
 const hasFrame = (atlas: AtlasData | undefined, frameKey: string): boolean =>
   Boolean(atlas?.frames && typeof atlas.frames === "object" && frameKey in atlas.frames);
+
+const isSpritesheetAtlasData = (atlas: AtlasData | undefined): atlas is AtlasData & {
+  meta: Record<string, unknown>;
+} => Boolean(atlas?.meta && typeof atlas.meta === "object");
+
+const normalizeKeyMappedSourceUrl = (
+  source: string | undefined,
+  atlasUrl: string,
+): string | undefined => {
+  if (!source?.trim()) {
+    return undefined;
+  }
+
+  const resolved = new URL(source, atlasUrl).toString();
+  const sourceLower = source.toLowerCase();
+  if (/\.(png|jpg|jpeg|webp|svg)(\?|$)/.test(sourceLower)) {
+    return resolved;
+  }
+
+  return undefined;
+};
+
+const loadKeyMappedTextures = async (
+  atlas: ProviderAtlas,
+): Promise<Record<string, Texture>> => {
+  const textures: Record<string, Texture> = {};
+  const frames = atlas.data?.frames;
+  if (!atlas.url || !frames || typeof frames !== "object") {
+    return textures;
+  }
+
+  for (const [frameKey, frameValue] of Object.entries(frames)) {
+    if (!frameValue || typeof frameValue !== "object") {
+      continue;
+    }
+
+    const sourceUrl = normalizeKeyMappedSourceUrl(
+      (frameValue as { source?: string }).source,
+      atlas.url,
+    );
+    if (!sourceUrl) {
+      continue;
+    }
+
+    try {
+      await Assets.load(sourceUrl);
+      textures[frameKey] = Texture.from(sourceUrl);
+    } catch (error) {
+      console.warn(
+        `[ProviderPack] Failed to load mapped texture for ${frameKey} from ${sourceUrl}:`,
+        error,
+      );
+    }
+  }
+
+  return textures;
+};
 
 const PROVIDER_PACKS: Record<CommittedProvider, ProviderPackDefinition> = {
   openai: {
@@ -457,6 +515,10 @@ const loadAtlasTextures = async (
   }
 
   const loading = (async () => {
+    if (!isSpritesheetAtlasData(atlas.data)) {
+      return loadKeyMappedTextures(atlas);
+    }
+
     await Assets.load(atlas.url!);
     const spritesheet = new Spritesheet({
       texture: Texture.from(atlas.url!),
