@@ -57,3 +57,7 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
   - ported the safe audio alias guard so missing hover/click SFX no longer throw repeated `.play()` exceptions.
   - removed unused promo placeholder `.gitkeep` files that were generating asset warnings during build/runtime scans.
   - browser proof for Beta 3 was captured against the live nanobanana build; Chrome DevTools MCP had `Transport closed` earlier in this thread, so Playwright/system Chrome was used for proof while the launcher config was being corrected separately.
+- 2026-03-09: Started Beta 3B asset parity audit from `codex/qa/7000-beta3-visual-parity-20260309-1410` on branch `codex/qa/7000-beta3b-asset-parity-20260309-1629`.
+  - evidence: `/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/games/7000/docs/ASSET_PARITY_MATRIX.md`, `/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/games/7000/docs/_visual_proof/beta3b-asset-parity-2026-03-09/`
+  - result: Compared donor archive availability, current OpenAI/NanoBanana runtime packs, and actual runtime consumption on the requested Beta 3 base branch. No additional unused NanoBanana hero keys were available to wire on this branch, so the pass stays docs-only and identifies the missing premium runtime contract instead.
+  - next: Run the requested test/build suite, push the docs-only audit branch, and return the exact missing NanoBanana runtime keys and premium asset categories.
