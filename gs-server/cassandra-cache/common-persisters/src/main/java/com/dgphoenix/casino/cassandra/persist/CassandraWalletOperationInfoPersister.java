@@ -87,7 +87,7 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
     public List<WalletOperationInfo> getByRoundId(long roundId) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ROUND_ID_FIELD, roundId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByRoundId");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByRoundId");
         if (resultSet.isExhausted()) {
             return emptyList();
         }
@@ -116,8 +116,8 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
                 KeySpaceManager.bytesArraySerializer);
         WalletOperationInfo[] result = new WalletOperationInfo[2];
         if(rows != null) {
-            List<com.datastax.driver.core.Row<Long, String, byte[]>> rowsList = rows.getList();
-            for (com.datastax.driver.core.Row<Long, String, byte[]> row : rowsList) {
+            List<com.abs.casino.cassandra.persist.engine.Row> rowsList = rows.getList();
+            for (com.abs.casino.cassandra.persist.engine.Row row : rowsList) {
                 ColumnSlice<String, byte[]> rowColumnSlice = row.getColumnSlice();
                 List<HColumn<String, byte[]>> columns = rowColumnSlice.getColumns();
                 for (HColumn<String, byte[]> column : columns) {
@@ -166,9 +166,9 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         CqlRows<Long, String, byte[]> rows = executeCQL(cql, KeySpaceManager.bytesArraySerializer);
         List<WalletOperationInfo> result = new ArrayList<WalletOperationInfo>();
         if(rows != null) {
-            List<com.datastax.driver.core.Row<Long, String, byte[]>> rowsList = rows.getList();
+            List<com.abs.casino.cassandra.persist.engine.Row> rowsList = rows.getList();
             LOG.debug("getRecords: rowsList.size()" + rowsList.size());
-            for (com.datastax.driver.core.Row<Long, String, byte[]> row : rowsList) {
+            for (com.abs.casino.cassandra.persist.engine.Row row : rowsList) {
                 ColumnSlice<String, byte[]> rowColumnSlice = row.getColumnSlice();
                 List<HColumn<String, byte[]>> columns = rowColumnSlice.getColumns();
                 for (HColumn<String, byte[]> column : columns) {
