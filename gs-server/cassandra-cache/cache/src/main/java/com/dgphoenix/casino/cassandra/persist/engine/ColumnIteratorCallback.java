@@ -6,5 +6,5 @@ package com.abs.casino.cassandra.persist.engine;
  * Date: 11.10.14.
  */
 public interface ColumnIteratorCallback {
-    void process(com.datastax.driver.core.Row row);
+    void process(Row row);
 }

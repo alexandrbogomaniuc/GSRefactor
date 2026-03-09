@@ -50,6 +50,10 @@ public class Session implements com.datastax.driver.core.Session {
         return session.execute(query, values);
     }
 
+    public ResultSet executeWrapped(String query, Object... values) {
+        return ResultSet.wrap(session.execute(query, values));
+    }
+
     @Override
     public com.datastax.driver.core.ResultSet execute(String query, Map<String, Object> values) {
         return session.execute(query, values);
@@ -58,6 +62,10 @@ public class Session implements com.datastax.driver.core.Session {
     @Override
     public com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Statement statement) {
         return session.execute(statement);
+    }
+
+    public ResultSet executeWrapped(com.datastax.driver.core.Statement statement) {
+        return ResultSet.wrap(session.execute(statement));
     }
 
     @Override
