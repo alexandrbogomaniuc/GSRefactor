@@ -1,4 +1,4 @@
-import { Assets, Container, Sprite, Text, Texture } from "pixi.js";
+import { Assets, Container, Graphics, Sprite, Text, Texture } from "pixi.js";
 
 import {
   AnimationPolicyEngine,
@@ -33,7 +33,7 @@ import {
 } from "../../stores";
 import { AppAssetKeys } from "../../assets/assetKeys";
 import {
-  getProviderDebugLine,
+  getProviderPackStatus,
   resolveProviderBackgroundUrl,
 } from "../../assets/providerPackRegistry.ts";
 import { resolveCrazyRoosterBrandKit } from "../../theme/brandKit.ts";
@@ -166,14 +166,19 @@ export class MainScreen extends Container {
       fontWeight: "700",
     },
   });
+  private readonly providerBadge = new Container();
+  private readonly providerBadgeBackground = new Graphics();
   private readonly providerStateText = new Text({
-    text: getProviderDebugLine(),
+    text: "",
     style: {
       fontFamily: "monospace",
-      fontSize: 12,
+      fontSize: 13,
       fill: 0xf6f6f6,
       stroke: { color: 0x111111, width: 3 },
       align: "left",
+      wordWrap: true,
+      wordWrapWidth: 280,
+      breakWords: true,
     },
   });
   private readonly debugOverlay = new DebugOverlay();
@@ -270,7 +275,10 @@ export class MainScreen extends Container {
     this.statusText.visible = false;
     this.titleText.anchor.set(0.5);
     this.footerText.anchor.set(0.5);
-    this.providerStateText.anchor.set(0, 1);
+    this.providerStateText.anchor.set(0, 0);
+    this.providerBadge.addChild(this.providerBadgeBackground);
+    this.providerBadge.addChild(this.providerStateText);
+    this.refreshProviderBadge();
 
     this.hud.applyTheme(this.shellTheme.hud);
     this.hud.applyVisibility(this.baseHudVisibility);
@@ -285,7 +293,7 @@ export class MainScreen extends Container {
     this.uiLayer.addChild(this.statusText);
     this.uiLayer.addChild(this.titleText);
     this.uiLayer.addChild(this.footerText);
-    this.uiLayer.addChild(this.providerStateText);
+    this.uiLayer.addChild(this.providerBadge);
 
     this.slotMachine.onSpinComplete = () => this.handleSpinComplete();
     this.connectSpinHoldGesture();
@@ -372,10 +380,37 @@ export class MainScreen extends Container {
     this.winCounter.y = safe.top + 172;
     this.footerText.x = width * 0.5;
     this.footerText.y = height - Math.max(24, safe.bottom + 18);
-    this.providerStateText.x = safe.left + 18;
-    this.providerStateText.y = height - Math.max(126, safe.bottom + 84);
+    this.providerBadge.x = width - safe.right - this.providerBadge.width - 18;
+    this.providerBadge.y = safe.top + 88;
 
     this.debugOverlay.resize(width, height);
+  }
+
+  private refreshProviderBadge(): void {
+    const status = getProviderPackStatus();
+    const lines = [
+      `requested: ${status.requestedProvider}`,
+      `effective: ${status.effectiveProvider}`,
+      `safePlaceholder: ${status.safePlaceholder ? "yes" : "no"}`,
+      `missingKeys: ${status.missingKeys.length}`,
+    ];
+
+    if (status.fallbackReason) {
+      lines.push(`fallback: ${status.fallbackReason}`);
+    }
+
+    this.providerStateText.text = lines.join("\n");
+    this.providerStateText.x = 10;
+    this.providerStateText.y = 8;
+
+    const borderColor = status.fallbackReason || status.safePlaceholder ? 0xc7141a : 0x57f287;
+    const width = this.providerStateText.width + 20;
+    const height = this.providerStateText.height + 16;
+
+    this.providerBadgeBackground.clear();
+    this.providerBadgeBackground.roundRect(0, 0, width, height, 12);
+    this.providerBadgeBackground.fill({ color: 0x060606, alpha: 0.78 });
+    this.providerBadgeBackground.stroke({ color: borderColor, width: 2, alpha: 0.95 });
   }
 
   private ensureBackgroundTexture(backgroundUrl: string): void {

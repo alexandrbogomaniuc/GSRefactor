@@ -49,3 +49,10 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
   - confirmed openai and nanobanana are atlas-driven on the fresh branch; no text-label tiles remain in the clean-browser proof.
   - fixed a real donorlocal defect in `providerPackRegistry.ts`: the local donor manifest exposes key maps (`*_keys.json`), not Pixi spritesheet JSON, so the old loader threw during `Spritesheet` construction and silently fell back to OpenAI.
   - the donorlocal loader now resolves direct per-frame image sources from the local key maps and falls back to OpenAI only for unresolved donor entries such as Spine/atlas-only mappings.
+- 2026-03-09: Completed Beta 2C launch-matrix follow-up on branch `codex/qa/7000-beta2c-launch-matrix-20260309-1337`.
+  - fixed the shared UI audio console storm by guarding missing aliases in `packages/pixi-engine/src/audio/audio.ts`, which removes the repeated hover/press exceptions shown in the Chrome screenshot.
+  - removed the game-level promo `.gitkeep` scaffold files so Vite/Pixi no longer tries to parse `assets/promo/.gitkeep` as a runtime asset.
+  - upgraded the provider status overlay into a visible QA badge with requested/effective provider, safePlaceholder state, missing-key count, and fallback reason when present.
+  - added `docs/LAUNCH_MATRIX.md` with exact branch checkout, stale-port cleanup, three-port dev commands, URLs, and the `window.__game7000ProviderPack` console probe.
+  - captured fresh clean-restart proof under `docs/_visual_proof/beta2c-2026-03-09/` using dedicated `8081/8082/8083` provider ports.
+  - remaining console output on clean restart is warning-only: three browser autoplay warnings from the shared `@pixi/sound` stack plus the two expected `allowDevFallback` / local-runtime warnings; no `error` or `assert` entries remain in the launch-matrix proof.

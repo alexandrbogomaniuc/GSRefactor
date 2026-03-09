@@ -1,0 +1,671 @@
+[
+  {
+    "scenario": "openai",
+    "url": "http://127.0.0.1:8081/?allowDevFallback=1",
+    "providerPack": {
+      "requestedProvider": "openai",
+      "effectiveProvider": "openai",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "/raw-assets/preload%7Bm%7D/logo.svg",
+      "backgrounds": {
+        "desktop": "/assets/providers/openai/runtime/background-desktop-1920x1080.png",
+        "landscape": "/assets/providers/openai/runtime/background-landscape-safe-1600x900.png",
+        "portrait": "/assets/providers/openai/runtime/background-portrait-1080x1920.png"
+      }
+    },
+    "consoleMessages": [
+      {
+        "type": "debug",
+        "text": "[vite] connecting...",
+        "args": [
+          "[vite] connecting..."
+        ]
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connected.",
+        "args": [
+          "[vite] connected."
+        ]
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+        "args": []
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+        "args": []
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+        "args": []
+      },
+      {
+        "type": "info",
+        "text": "[ProviderPack] Provider \"openai\" validated.",
+        "args": [
+          "[ProviderPack] Provider \"openai\" validated."
+        ]
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only.",
+        "args": [
+          "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+        ]
+      },
+      {
+        "type": "log",
+        "text": "[SessionRuntimeStore] Snapshot updated. {sessionId: demo-session-7000, requestCounter: 1, balance: 250000}",
+        "args": [
+          "[SessionRuntimeStore] Snapshot updated.",
+          {
+            "sessionId": "demo-session-7000",
+            "requestCounter": 1,
+            "balance": 250000
+          }
+        ]
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}",
+        "args": [
+          "[ConfigManager] Failed to parse GS runtime config, using fallback layer",
+          {
+            "issues": [
+              {
+                "expected": "array",
+                "code": "invalid_type",
+                "path": [
+                  "betConfig",
+                  "coinValues"
+                ],
+                "message": "Invalid input: expected array, received undefined"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "info",
+        "text": "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key",
+        "args": [
+          "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key"
+        ]
+      },
+      {
+        "type": "log",
+        "text": "[ResolvedRuntimeConfigStore] Updated.",
+        "args": [
+          "[ResolvedRuntimeConfigStore] Updated."
+        ]
+      },
+      {
+        "type": "log",
+        "text": "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules",
+        "args": [
+          "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules"
+        ]
+      }
+    ],
+    "network": [
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/background-desktop-1920x1080.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/background-landscape-safe-1600x900.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/background-portrait-1080x1920.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/atlas_symbols.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/atlas_symbols.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/atlas_ui.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/atlas_ui.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/atlas_vfx.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/atlas_vfx.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/nanobanana/runtime/background-desktop-1920x1080.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/nanobanana/runtime/background-portrait-1080x1920.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/nanobanana/runtime/atlas_symbols.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/nanobanana/runtime/atlas_symbols.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/nanobanana/runtime/atlas_ui.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/nanobanana/runtime/atlas_ui.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/nanobanana/runtime/atlas_vfx.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/nanobanana/runtime/atlas_vfx.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/atlas_symbols.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/atlas_vfx.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/atlas_ui.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8081/assets/providers/openai/runtime/background-landscape-safe-1600x900.png"
+      }
+    ]
+  },
+  {
+    "scenario": "nanobanana",
+    "url": "http://127.0.0.1:8082/?allowDevFallback=1",
+    "providerPack": {
+      "requestedProvider": "nanobanana",
+      "effectiveProvider": "nanobanana",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "/raw-assets/preload%7Bm%7D/logo.svg",
+      "backgrounds": {
+        "desktop": "/assets/providers/nanobanana/runtime/background-desktop-1920x1080.png",
+        "landscape": "/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png",
+        "portrait": "/assets/providers/nanobanana/runtime/background-portrait-1080x1920.png"
+      }
+    },
+    "consoleMessages": [
+      {
+        "type": "debug",
+        "text": "[vite] connecting...",
+        "args": [
+          "[vite] connecting..."
+        ]
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connected.",
+        "args": [
+          "[vite] connected."
+        ]
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+        "args": []
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+        "args": []
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+        "args": []
+      },
+      {
+        "type": "info",
+        "text": "[ProviderPack] Provider \"nanobanana\" validated.",
+        "args": [
+          "[ProviderPack] Provider \"nanobanana\" validated."
+        ]
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only.",
+        "args": [
+          "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+        ]
+      },
+      {
+        "type": "log",
+        "text": "[SessionRuntimeStore] Snapshot updated. {sessionId: demo-session-7000, requestCounter: 1, balance: 250000}",
+        "args": [
+          "[SessionRuntimeStore] Snapshot updated.",
+          {
+            "sessionId": "demo-session-7000",
+            "requestCounter": 1,
+            "balance": 250000
+          }
+        ]
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}",
+        "args": [
+          "[ConfigManager] Failed to parse GS runtime config, using fallback layer",
+          {
+            "issues": [
+              {
+                "expected": "array",
+                "code": "invalid_type",
+                "path": [
+                  "betConfig",
+                  "coinValues"
+                ],
+                "message": "Invalid input: expected array, received undefined"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "info",
+        "text": "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key",
+        "args": [
+          "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key"
+        ]
+      },
+      {
+        "type": "log",
+        "text": "[ResolvedRuntimeConfigStore] Updated.",
+        "args": [
+          "[ResolvedRuntimeConfigStore] Updated."
+        ]
+      },
+      {
+        "type": "log",
+        "text": "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules",
+        "args": [
+          "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules"
+        ]
+      }
+    ],
+    "network": [
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/openai/runtime/background-desktop-1920x1080.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/openai/runtime/background-landscape-safe-1600x900.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/openai/runtime/background-portrait-1080x1920.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/openai/runtime/atlas_symbols.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/openai/runtime/atlas_symbols.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/openai/runtime/atlas_ui.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/openai/runtime/atlas_ui.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/openai/runtime/atlas_vfx.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/openai/runtime/atlas_vfx.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/background-portrait-1080x1920.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/atlas_symbols.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/atlas_symbols.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/background-desktop-1920x1080.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/atlas_ui.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/atlas_vfx.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/atlas_vfx.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/atlas_ui.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/atlas_symbols.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/atlas_ui.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8082/assets/providers/nanobanana/runtime/atlas_vfx.png"
+      }
+    ]
+  },
+  {
+    "scenario": "donorlocal",
+    "url": "http://127.0.0.1:8083/?allowDevFallback=1",
+    "providerPack": {
+      "requestedProvider": "donorlocal",
+      "effectiveProvider": "donorlocal",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/logo.2ea1fa99.png",
+      "backgrounds": {
+        "desktop": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBg.af5e8e37.png",
+        "landscape": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBg.af5e8e37.png",
+        "portrait": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBgMobile.d924d35d.png"
+      },
+      "manifestUrl": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json"
+    },
+    "consoleMessages": [
+      {
+        "type": "debug",
+        "text": "[vite] connecting...",
+        "args": [
+          "[vite] connecting..."
+        ]
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connected.",
+        "args": [
+          "[vite] connected."
+        ]
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+        "args": []
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+        "args": []
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio",
+        "args": []
+      },
+      {
+        "type": "info",
+        "text": "[ProviderPack] Provider \"donorlocal\" validated.",
+        "args": [
+          "[ProviderPack] Provider \"donorlocal\" validated."
+        ]
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only.",
+        "args": [
+          "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+        ]
+      },
+      {
+        "type": "log",
+        "text": "[SessionRuntimeStore] Snapshot updated. {sessionId: demo-session-7000, requestCounter: 1, balance: 250000}",
+        "args": [
+          "[SessionRuntimeStore] Snapshot updated.",
+          {
+            "sessionId": "demo-session-7000",
+            "requestCounter": 1,
+            "balance": 250000
+          }
+        ]
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}",
+        "args": [
+          "[ConfigManager] Failed to parse GS runtime config, using fallback layer",
+          {
+            "issues": [
+              {
+                "expected": "array",
+                "code": "invalid_type",
+                "path": [
+                  "betConfig",
+                  "coinValues"
+                ],
+                "message": "Invalid input: expected array, received undefined"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "info",
+        "text": "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key",
+        "args": [
+          "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key"
+        ]
+      },
+      {
+        "type": "log",
+        "text": "[ResolvedRuntimeConfigStore] Updated.",
+        "args": [
+          "[ResolvedRuntimeConfigStore] Updated."
+        ]
+      },
+      {
+        "type": "log",
+        "text": "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules",
+        "args": [
+          "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules"
+        ]
+      }
+    ],
+    "network": [
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/background-desktop-1920x1080.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/background-landscape-safe-1600x900.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/background-portrait-1080x1920.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/atlas_ui.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/atlas_ui.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/atlas_vfx.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/atlas_symbols.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/atlas_symbols.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/nanobanana/runtime/background-desktop-1920x1080.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/nanobanana/runtime/background-portrait-1080x1920.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/nanobanana/runtime/atlas_symbols.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/atlas_vfx.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/nanobanana/runtime/atlas_ui.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/nanobanana/runtime/atlas_ui.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/nanobanana/runtime/atlas_vfx.png?import&url"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/nanobanana/runtime/atlas_vfx.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/nanobanana/runtime/atlas_symbols.json?import"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/symbol_keys.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/ui_keys.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/vfx_keys.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/logo.2ea1fa99.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/bell.d508a0aa.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/slot.d8edf336.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/chery.7c79c57e.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/btn_buy_bonus.1d85b9e0.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/lemon.5f70c041.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/orange.a5ac7051.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/atlas_vfx.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBg.af5e8e37.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/plum.4f0ce8aa.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/bar.2f5353fa.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/777.26770b3f.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/img_bonus_coin.2529fcb8.png"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:8083/assets/providers/openai/runtime/atlas_symbols.png"
+      }
+    ]
+  }
+]
