@@ -156,9 +156,9 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         }
         Select select = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(FRBONUS_CF);
         select.where().and(Cql.in(BONUS_ID_FIELD, bonusIds.toArray()));
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "getFRBonuses");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(select, "getFRBonuses");
         List<FRBonus> result = new ArrayList<>(bonusIds.size());
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             FRBonus bonus = TABLE.deserializeFromJson(json, FRBonus.class);
 
@@ -181,9 +181,9 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         long now = System.currentTimeMillis();
         Select query = Cql.select(BONUS_ID_FIELD).from(FRBONUS_ACC_INDX);
         query.where(eq(ACCOUNT_ID_FIELD, accountId));
-        com.datastax.driver.core.ResultSet rows = execute(query, "getActiveBonuses");
+        com.abs.casino.cassandra.persist.engine.ResultSet rows = executeWrapped(query, "getActiveBonuses");
         List<Long> bonusIds = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : rows) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : rows) {
             long bonusId = row.getLong(BONUS_ID_FIELD);
             if (bonusId > 0) {
                 bonusIds.add(bonusId);
@@ -199,9 +199,9 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         long now = System.currentTimeMillis();
         Select query = getSelectColumnsQuery(BONUS_ID_FIELD);
         query.where(eq(EXPIRATION_DATE_FIELD, expirationDate));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExpirationDate");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByExpirationDate");
         List<Long> ids = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             ids.add(row.getLong(BONUS_ID_FIELD));
         }
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " getByExpirationDate",
@@ -217,8 +217,8 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         long now = System.currentTimeMillis();
         Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         query.where(eq(EXTERNAL_ID_FIELD, key));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExtId", 3);
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByExtId", 3);
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " getByExtId",
                 System.currentTimeMillis() - now);
         if (row == null) {
