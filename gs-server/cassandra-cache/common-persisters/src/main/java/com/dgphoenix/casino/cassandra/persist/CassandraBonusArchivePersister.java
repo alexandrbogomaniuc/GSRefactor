@@ -107,7 +107,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
                 .select(BONUS_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(BONUS_ARCH_CF)
                 .where(eq(ACCOUNT_ID_FIELD, accountId));
-        com.datastax.driver.core.ResultSet rows = execute(select, "getFinishedBonusList");
+        com.abs.casino.cassandra.persist.engine.ResultSet rows = executeWrapped(select, "getFinishedBonusList");
         return getBonusesFromResultSet(rows);
     }
 
@@ -127,7 +127,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
         String key = composeKey(bankId, externalId);
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(EXTERNAL_ID_FIELD, key));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByCompositeKey");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByCompositeKey");
         List<Bonus> result = getBonusesFromResultSet(resultSet);
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " getByCompositeKey",
                 System.currentTimeMillis() - now);
@@ -137,13 +137,13 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
     public List<Bonus> getRecordsByDay(long date) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(PERSIST_DAY, date));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getRecordsByDay");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getRecordsByDay");
         return getBonusesFromResultSet(resultSet);
     }
 
-    private List<Bonus> getBonusesFromResultSet(com.datastax.driver.core.ResultSet resultSet) {
+    private List<Bonus> getBonusesFromResultSet(com.abs.casino.cassandra.persist.engine.ResultSet resultSet) {
         List<Bonus> result = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             Bonus bonus = BONUS_ARCHIVE_TABLE.deserializeFromJson(json, Bonus.class);
 
@@ -167,14 +167,14 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
                 .column(PERSIST_DAY)
                 .writeTime(BONUS_ID_FIELD)
                 .from(BONUS_ARCH_CF);
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "setPersistDay");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(select, "setPersistDay");
 
         long currentPersistTime = CalendarUtils.getStartDay(System.currentTimeMillis()).getTimeInMillis();
         Long awardTime;
         Long accountId;
         Long bonusId;
         long bonusPersistTime;
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             awardTime = row.getLong(AWARD_TIME_FIELD);
             accountId = row.getLong(ACCOUNT_ID_FIELD);
             bonusId = row.getLong(BONUS_ID_FIELD);
