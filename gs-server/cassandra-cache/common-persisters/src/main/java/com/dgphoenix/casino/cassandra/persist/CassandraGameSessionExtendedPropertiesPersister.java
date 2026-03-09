@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.GameSessionExtendedProperties;
 import org.apache.logging.log4j.LogManager;
@@ -50,7 +51,7 @@ public class CassandraGameSessionExtendedPropertiesPersister extends AbstractCas
         com.datastax.driver.core.Statement select = getSelectAllColumnsQuery()
                 .where(eq(GAME_SESSION_ID, gameSessionId))
                 .limit(1);
-        com.datastax.driver.core.Row result = execute(select, "select").one();
+        Row result = executeWrapped(select, "select").one();
         if (result == null) {
             return null;
         }

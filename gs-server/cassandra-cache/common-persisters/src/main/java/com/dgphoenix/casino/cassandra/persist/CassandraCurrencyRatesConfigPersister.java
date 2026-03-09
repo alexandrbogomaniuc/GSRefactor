@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.StreamUtils;
@@ -68,7 +69,7 @@ public class CassandraCurrencyRatesConfigPersister extends AbstractCassandraPers
 
     public Map<String, Pair<String, String>> getCalculatedCurrenciesConfig() {
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(CURRENCY_NAME, CURRENCY_FORMULA, CURRENCY_TARGET);
-        return StreamUtils.asStream(execute(select, "getCalculatedCurrenciesConfig"))
+        return StreamUtils.asStream(executeWrapped(select, "getCalculatedCurrenciesConfig"))
                 .filter(row -> !StringUtils.isTrimmedEmpty(row.getString(CURRENCY_FORMULA)))
                 .collect(Collectors.toMap(
                         row -> row.getString(CURRENCY_NAME),
@@ -77,7 +78,7 @@ public class CassandraCurrencyRatesConfigPersister extends AbstractCassandraPers
     }
 
     public Long getUpdatePeriod(String currency) {
-        com.datastax.driver.core.Row row = getAsRow(currency, UPDATE_PERIOD);
+        Row row = getAsWrappedRow(currency, UPDATE_PERIOD);
         return row != null && !row.isNull(UPDATE_PERIOD) ? row.getLong(UPDATE_PERIOD) : null;
     }
 

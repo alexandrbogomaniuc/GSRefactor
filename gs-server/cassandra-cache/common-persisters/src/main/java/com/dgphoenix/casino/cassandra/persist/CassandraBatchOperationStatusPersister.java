@@ -4,6 +4,8 @@ import com.abs.casino.cassandra.persist.engine.Cql;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.util.Pair;
@@ -54,8 +56,8 @@ public class CassandraBatchOperationStatusPersister extends AbstractCassandraPer
                 .and(eq(ROUND_ID, roundId))
                 .and(eq(OPERATION_TYPE, operationType))
                 .limit(1);
-        com.datastax.driver.core.ResultSet rows = execute(query, "getStatus");
-        com.datastax.driver.core.Row row = rows.one();
+        ResultSet rows = executeWrapped(query, "getStatus");
+        Row row = rows.one();
         return row == null ? null : new Pair<>(Status.valueOf(row.getString(STATUS)), row.getLong(CHANGE_DATE));
     }
 

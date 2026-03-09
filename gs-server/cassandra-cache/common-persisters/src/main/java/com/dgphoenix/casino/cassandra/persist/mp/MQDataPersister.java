@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist.mp;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.mp.MQData;
 import org.apache.logging.log4j.LogManager;
@@ -49,7 +50,7 @@ public class MQDataPersister extends AbstractCassandraPersister<Long, String> {
                 .where(eq(ACCOUNT_ID_COLUMN, accountId))
                 .and(eq(GAME_ID_COLUMN, gameId))
                 .limit(1);
-        com.datastax.driver.core.Row row = execute(query, "load").one();
+        Row row = executeWrapped(query, "load").one();
         if (row == null) {
             return null;
         }

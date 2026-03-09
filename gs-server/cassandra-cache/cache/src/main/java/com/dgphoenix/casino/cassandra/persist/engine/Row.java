@@ -33,6 +33,10 @@ public class Row {
         return row.getLong(name);
     }
 
+    public double getDouble(String name) {
+        return row.getDouble(name);
+    }
+
     public boolean getBool(String name) {
         return row.getBool(name);
     }

@@ -5,6 +5,7 @@ import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.ExtendedAccountInfoPersister;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -63,7 +64,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(PROPERTIES)
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId));
-        com.datastax.driver.core.Row row = execute(select, "get").one();
+        Row row = executeWrapped(select, "get").one();
         if (row != null) {
             return row.getMap(PROPERTIES, String.class, String.class);
         }

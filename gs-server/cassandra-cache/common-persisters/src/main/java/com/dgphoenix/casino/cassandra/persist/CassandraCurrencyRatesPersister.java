@@ -4,6 +4,7 @@ import com.abs.casino.cassandra.persist.engine.Cql;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.currency.ICurrencyRateChangedListener;
@@ -72,7 +73,7 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(RATE_FIELD, UPDATE_DATE_FIELD)
                 .where(Cql.eq(SOURCE_FIELD, source))
                 .and(Cql.eq(DEST_FIELD, target));
-        com.datastax.driver.core.Row row = execute(query, "getRate").one();
+        Row row = executeWrapped(query, "getRate").one();
         CurrencyRate result = null;
         if (row != null && !row.isNull(RATE_FIELD)) {
             double rate = row.getDouble(RATE_FIELD);
@@ -85,7 +86,7 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
 
     public Collection<CurrencyRate> getRates() {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SOURCE_FIELD, DEST_FIELD, RATE_FIELD, UPDATE_DATE_FIELD);
-        return StreamUtils.asStream(execute(query, "getRates"))
+        return StreamUtils.asStream(executeWrapped(query, "getRates"))
                 .filter(Objects::nonNull)
                 .filter(row -> {
                     if (row.isNull(RATE_FIELD)) {
