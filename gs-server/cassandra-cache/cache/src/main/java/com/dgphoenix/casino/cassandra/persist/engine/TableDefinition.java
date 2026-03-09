@@ -25,6 +25,7 @@ import static com.google.common.base.Preconditions.checkState;
 import static java.util.stream.Collectors.toMap;
 import static org.apache.commons.lang.StringUtils.join;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
+import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 
 /**
  * User: flsh
@@ -53,7 +54,7 @@ public class TableDefinition {
     public TableDefinition(String tableName, List<ColumnDefinition> columns, String... partitionKey) {
         this.tableName = tableName.trim();
         this.columns = columns;
-        com.datastax.driver.core.schemabuilder.Create createStatement = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(this.tableName).ifNotExists();
+        com.datastax.driver.core.schemabuilder.Create createStatement = SchemaCql.createTable(this.tableName).ifNotExists();
         addPartitionKeyColumns(partitionKey, this.columns, createStatement);
         addColumns(columns, Arrays.asList(partitionKey), createStatement);
         indexesStatements = generateIndexes(columns);
@@ -100,7 +101,7 @@ public class TableDefinition {
                     //You cannot index, delete, or and re-adding a counter column
                     checkState(isNonCounterColumn(column), "Counter column cannot be indexed");
                     String columnName = column.getName();
-                    return com.datastax.driver.core.schemabuilder.SchemaBuilder.createIndex(getIndexName(columnName)).ifNotExists()
+                    return SchemaCql.createIndex(getIndexName(columnName)).ifNotExists()
                             .onTable(tableName)
                             .andColumn(columnName);
                 }));
@@ -145,7 +146,7 @@ public class TableDefinition {
         return this;
     }
 
-    public TableDefinition clusteringOrder(String columnName, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction direction) {
+    public TableDefinition clusteringOrder(String columnName, Direction direction) {
         getOptions().clusteringOrder(columnName, direction);
         return this;
     }

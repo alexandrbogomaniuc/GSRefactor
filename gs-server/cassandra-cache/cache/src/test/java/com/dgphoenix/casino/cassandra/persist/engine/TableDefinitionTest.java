@@ -21,6 +21,8 @@ import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cboolea
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
+import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
+import com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>
@@ -54,12 +56,12 @@ public class TableDefinitionTest {
                 ), COL_1);
         String actualCreateTable = tableDefinition.getCreateTableStatement().getQueryString();
 
-        String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME)
+        String expectedCreateTable = SchemaCql.createTable(TABLE_NAME)
                 .ifNotExists()
                 .addPartitionKey(COL_1, cint())
                 .addColumn(COL_2, cboolean())
                 .withOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
                 .getQueryString();
@@ -130,13 +132,13 @@ public class TableDefinitionTest {
                 ), COL_1, COL_2);
         String actualCreateTable = tableDefinition.getCreateTableStatement().getQueryString();
 
-        String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME)
+        String expectedCreateTable = SchemaCql.createTable(TABLE_NAME)
                 .ifNotExists()
                 .addPartitionKey(COL_1, cint())
                 .addPartitionKey(COL_2, ascii())
                 .addClusteringColumn(COL_3, cboolean())
                 .withOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
                 .getQueryString();
@@ -153,13 +155,13 @@ public class TableDefinitionTest {
                 ), COL_1);
         String actualCreateTable = tableDefinition.getCreateTableStatement().getQueryString();
 
-        String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME)
+        String expectedCreateTable = SchemaCql.createTable(TABLE_NAME)
                 .ifNotExists()
                 .addPartitionKey(COL_1, cint())
                 .addStaticColumn(COL_2, ascii())
                 .addClusteringColumn(COL_3, ascii())
                 .withOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
                 .getQueryString();
@@ -207,10 +209,10 @@ public class TableDefinitionTest {
                 .getQueryString();
 
         String expectedCreateTable = createSimpleTableWithOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .caching(com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching.NONE, com.datastax.driver.core.schemabuilder.SchemaBuilder.noRows())
+                .caching(KeyCaching.NONE, SchemaCql.noRows())
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
@@ -224,9 +226,9 @@ public class TableDefinitionTest {
                 .getQueryString();
 
         String expectedCreateTable = createSimpleTableWithOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
-                .caching(com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching.NONE, com.datastax.driver.core.schemabuilder.SchemaBuilder.rows(Caching.CACHING_ROW_NUMBER))
+                .caching(KeyCaching.NONE, SchemaCql.rows(Caching.CACHING_ROW_NUMBER))
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
                 .getQueryString();
 
@@ -243,7 +245,7 @@ public class TableDefinitionTest {
         String expectedCreateTable = createSimpleTableWithOptions()
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.leveledStrategy().ssTableSizeInMB(SS_TABLE_SIZE))
+                .compactionOptions(SchemaCql.leveledStrategy().ssTableSizeInMB(SS_TABLE_SIZE))
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
@@ -259,7 +261,7 @@ public class TableDefinitionTest {
         String expectedCreateTable = createSimpleTableWithOptions()
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.leveledStrategy()
+                .compactionOptions(SchemaCql.leveledStrategy()
                         .ssTableSizeInMB(SS_TABLE_SIZE)
                         .uncheckedTombstoneCompaction(true)
                         .tombstoneCompactionIntervalInDay((int) TimeUnit.HOURS.toSeconds(5)))
@@ -278,7 +280,7 @@ public class TableDefinitionTest {
         String expectedCreateTable = createSimpleTableWithOptions()
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
@@ -294,7 +296,7 @@ public class TableDefinitionTest {
         String expectedCreateTable = createSimpleTableWithOptions()
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy()
+                .compactionOptions(SchemaCql.sizedTieredStategy()
                         .uncheckedTombstoneCompaction(true)
                         .tombstoneCompactionIntervalInDay((int) TimeUnit.HOURS.toSeconds(3)))
                 .getQueryString();
@@ -312,7 +314,7 @@ public class TableDefinitionTest {
         String expectedCreateTable = createSimpleTableWithOptions()
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.dateTieredStrategy())
+                .compactionOptions(SchemaCql.dateTieredStrategy())
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
@@ -327,7 +329,7 @@ public class TableDefinitionTest {
 
         String expectedCreateTable = createSimpleTableWithOptions()
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds((int) TimeUnit.DAYS.toSeconds(1))
                 .getQueryString();
 
@@ -341,7 +343,7 @@ public class TableDefinitionTest {
         String actualCreateTable = actualTableDefinition.getCreateTableStatement().getQueryString();
 
         String expectedCreateTable = createSimpleTableWithOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.DEFLATE))
                 .getQueryString();
@@ -357,7 +359,7 @@ public class TableDefinitionTest {
         String actualCreateTable = actualTableDefinition.getCreateTableStatement().getQueryString();
 
         String expectedCreateTable = createSimpleTableWithOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
                 .getQueryString();
@@ -369,7 +371,7 @@ public class TableDefinitionTest {
     @Test(expected = IllegalArgumentException.class)
     public void clusteringOrderOnUnknownColumn() {
         createSimpleTableDefinition()
-                .clusteringOrder(COL_2, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC)
+                .clusteringOrder(COL_2, Direction.ASC)
                 .getCreateTableStatement()
                 .getQueryString();
     }
@@ -381,18 +383,18 @@ public class TableDefinitionTest {
                         new ColumnDefinition(COL_1, cint()),
                         new ColumnDefinition(COL_2, ascii(), false, false, true)
                 ), COL_1)
-                .clusteringOrder(COL_2, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC)
+                .clusteringOrder(COL_2, Direction.DESC)
                 .getCreateTableStatement()
                 .getQueryString();
 
-        String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME).ifNotExists()
+        String expectedCreateTable = SchemaCql.createTable(TABLE_NAME).ifNotExists()
                 .addPartitionKey(COL_1, cint())
                 .addClusteringColumn(COL_2, ascii())
                 .withOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .clusteringOrder(COL_2, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC)
+                .clusteringOrder(COL_2, Direction.DESC)
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
@@ -406,21 +408,21 @@ public class TableDefinitionTest {
                         new ColumnDefinition(COL_2, ascii(), false, false, true),
                         new ColumnDefinition(COL_3, ascii(), false, false, true)
                 ), COL_1)
-                .clusteringOrder(COL_2, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC)
-                .clusteringOrder(COL_3, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC)
+                .clusteringOrder(COL_2, Direction.DESC)
+                .clusteringOrder(COL_3, Direction.ASC)
                 .getCreateTableStatement()
                 .getQueryString();
 
-        String expectedCreateTable = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME).ifNotExists()
+        String expectedCreateTable = SchemaCql.createTable(TABLE_NAME).ifNotExists()
                 .addPartitionKey(COL_1, cint())
                 .addClusteringColumn(COL_2, ascii())
                 .addClusteringColumn(COL_3, ascii())
                 .withOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .clusteringOrder(COL_2, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC)
-                .clusteringOrder(COL_3, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC)
+                .clusteringOrder(COL_2, Direction.DESC)
+                .clusteringOrder(COL_3, Direction.ASC)
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
@@ -429,12 +431,12 @@ public class TableDefinitionTest {
     @Test
     public void speculativeRetryAlways() {
         String actualCreateTable = createSimpleTableDefinition()
-                .speculativeRetry(com.datastax.driver.core.schemabuilder.SchemaBuilder.always())
+                .speculativeRetry(SchemaCql.always())
                 .getCreateTableStatement()
                 .getQueryString();
 
         String expectedCreateTable = createDefaultTable()
-                .speculativeRetry(com.datastax.driver.core.schemabuilder.SchemaBuilder.always())
+                .speculativeRetry(SchemaCql.always())
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
@@ -450,13 +452,13 @@ public class TableDefinitionTest {
 
     private com.datastax.driver.core.schemabuilder.Create.Options createDefaultTable() {
         return createSimpleTableWithOptions()
-                .compactionOptions(com.datastax.driver.core.schemabuilder.SchemaBuilder.sizedTieredStategy())
+                .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE));
     }
 
     private com.datastax.driver.core.schemabuilder.Create.Options createSimpleTableWithOptions() {
-        return com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(TABLE_NAME).ifNotExists()
+        return SchemaCql.createTable(TABLE_NAME).ifNotExists()
                 .addPartitionKey(COL_1, cint())
                 .addColumn(COL_2, ascii())
                 .withOptions();

@@ -109,7 +109,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     private void addColumn(Session session, String tableName, String columnName, ColumnDefinition columnDefinition) {
         com.datastax.driver.core.DataType type = columnDefinition.getType();
-        com.datastax.driver.core.schemabuilder.SchemaStatement addColumn = com.datastax.driver.core.schemabuilder.SchemaBuilder.alterTable(tableName).addColumn(columnName).type(type);
+        com.datastax.driver.core.schemabuilder.SchemaStatement addColumn = SchemaCql.alterTable(tableName).addColumn(columnName).type(type);
         getLog().info("updateTable: add column statement: {}", addColumn);
         session.execute(addColumn);
     }
