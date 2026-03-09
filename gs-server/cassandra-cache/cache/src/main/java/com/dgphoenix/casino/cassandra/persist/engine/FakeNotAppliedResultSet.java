@@ -1,5 +1,9 @@
 package com.abs.casino.cassandra.persist.engine;
 
+import com.datastax.driver.core.ColumnDefinitions;
+import com.datastax.driver.core.ExecutionInfo;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.Collections;
@@ -10,7 +14,7 @@ import java.util.List;
  * User: Grien
  * Date: 24.12.2014 17:16
  */
-public class FakeNotAppliedResultSet implements com.datastax.driver.core.ResultSet {
+public class FakeNotAppliedResultSet implements ResultSet {
     private com.datastax.driver.core.exceptions.DriverException exception;
 
     public FakeNotAppliedResultSet(com.datastax.driver.core.exceptions.DriverException exception) {
@@ -22,7 +26,7 @@ public class FakeNotAppliedResultSet implements com.datastax.driver.core.ResultS
     }
 
     @Override
-    public com.datastax.driver.core.ColumnDefinitions getColumnDefinitions() {
+    public ColumnDefinitions getColumnDefinitions() {
         return null;
     }
 
@@ -32,17 +36,17 @@ public class FakeNotAppliedResultSet implements com.datastax.driver.core.ResultS
     }
 
     @Override
-    public com.datastax.driver.core.Row one() {
+    public Row one() {
         return null;
     }
 
     @Override
-    public List<com.datastax.driver.core.Row> all() {
+    public List<Row> all() {
         return null;
     }
 
     @Override
-    public Iterator<com.datastax.driver.core.Row> iterator() {
+    public Iterator<Row> iterator() {
         return Collections.emptyIterator();
     }
 
@@ -52,7 +56,7 @@ public class FakeNotAppliedResultSet implements com.datastax.driver.core.ResultS
     }
 
     @Override
-    public ListenableFuture<com.datastax.driver.core.ResultSet> fetchMoreResults() {
+    public ListenableFuture<ResultSet> fetchMoreResults() {
         return null;
     }
 
@@ -63,12 +67,12 @@ public class FakeNotAppliedResultSet implements com.datastax.driver.core.ResultS
 
 
     @Override
-    public com.datastax.driver.core.ExecutionInfo getExecutionInfo() {
+    public ExecutionInfo getExecutionInfo() {
         return null;
     }
 
     @Override
-    public List<com.datastax.driver.core.ExecutionInfo> getAllExecutionInfo() {
+    public List<ExecutionInfo> getAllExecutionInfo() {
         return null;
     }
 
