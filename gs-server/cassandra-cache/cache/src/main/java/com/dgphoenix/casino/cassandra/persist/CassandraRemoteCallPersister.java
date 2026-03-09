@@ -2,6 +2,8 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.remotecall.PersistableCall;
@@ -64,8 +66,8 @@ public class CassandraRemoteCallPersister extends AbstractCassandraPersister<Int
         List<PersistableCall> result = new ArrayList<>();
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(GS_ID_FIELD, serverId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getRemoteCalls");
-        for (com.datastax.driver.core.Row row : resultSet) {
+        ResultSet resultSet = executeWrapped(query, "getRemoteCalls");
+        for (Row row : resultSet) {
             PersistableCall call = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME),
                     PersistableCall.class);
             if (call == null) {

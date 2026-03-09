@@ -260,6 +260,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         }
     }
 
+    protected ResultSet executeWithCheckTimeoutWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return ResultSet.wrap(executeWithCheckTimeout(statement, callerClassMethodIdentification));
+    }
+
     protected com.datastax.driver.core.ResultSetFuture executeAsync(com.datastax.driver.core.Statement query, String callerClassMethodIdentification) {
         assertInitialized();
         long now = System.currentTimeMillis();
@@ -291,6 +295,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return rs;
     }
 
+    protected ResultSet executeWrapped(String query, String callerClassMethodIdentification) {
+        return ResultSet.wrap(execute(query, callerClassMethodIdentification));
+    }
+
     protected com.datastax.driver.core.ResultSet execute(String query, String callerClassMethodIdentification, Object... values) {
         assertInitialized();
         long now = System.currentTimeMillis();
@@ -312,8 +320,17 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return rs;
     }
 
+    protected ResultSet executeWrapped(String query, String callerClassMethodIdentification, Object... values) {
+        return ResultSet.wrap(execute(query, callerClassMethodIdentification, values));
+    }
+
     protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification, com.datastax.driver.core.ConsistencyLevel level) {
         return execute(this.session, statement, callerClassMethodIdentification, level);
+    }
+
+    protected ResultSet executeWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
+                                       com.datastax.driver.core.ConsistencyLevel level) {
+        return ResultSet.wrap(execute(statement, callerClassMethodIdentification, level));
     }
 
     protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.querybuilder.Select statement, String callerClassMethodIdentification,
@@ -334,6 +351,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
         return execute(this.session, statement, callerClassMethodIdentification, null);
+    }
+
+    protected ResultSet executeWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return ResultSet.wrap(execute(statement, callerClassMethodIdentification));
     }
 
     protected com.datastax.driver.core.ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
@@ -682,6 +703,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return getAll(null);
     }
 
+    protected Iterator<Row> getAllWrapped() {
+        return ResultSet.wrapRows(getAll());
+    }
+
     protected Iterator<com.datastax.driver.core.Row> getAll(com.datastax.driver.core.querybuilder.Clause clause) {
         long now = System.currentTimeMillis();
         com.datastax.driver.core.querybuilder.Select query = Cql.select().all().from(getMainColumnFamilyName());
@@ -704,11 +729,19 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         }
     }
 
+    protected Iterator<Row> getAllWrapped(com.datastax.driver.core.querybuilder.Clause clause) {
+        return ResultSet.wrapRows(getAll(clause));
+    }
+
     protected com.datastax.driver.core.Row getByKey(KEY key) {
         com.datastax.driver.core.querybuilder.Select query = Cql.select().all().from(getMainColumnFamilyName()).where(eq(getKeyColumnName(), key)).
                 limit(1);
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getByKey");
         return resultSet.one();
+    }
+
+    protected Row getByKeyWrapped(KEY key) {
+        return Row.wrap(getByKey(key));
     }
 
     protected ByteBuffer get(Map<String, Object> keys, String columnName) {
@@ -765,6 +798,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
                 where(eq(getKeyColumnName(), key)).limit(1);
         com.datastax.driver.core.ResultSet rows = execute(query, "getAsRow");
         return rows.one();
+    }
+
+    protected Row getAsWrappedRow(KEY key, String columnName) {
+        return Row.wrap(getAsRow(key, columnName));
     }
 
     protected Long getWriteTime(KEY key) {
