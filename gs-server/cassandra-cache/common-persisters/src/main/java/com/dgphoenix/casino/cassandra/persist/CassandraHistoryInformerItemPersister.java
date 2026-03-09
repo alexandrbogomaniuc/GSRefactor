@@ -27,6 +27,12 @@ import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import com.datastax.driver.core.querybuilder.Batch;
+import com.datastax.driver.core.querybuilder.Delete;
+import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.querybuilder.Update;
+
 
 public class CassandraHistoryInformerItemPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraHistoryInformerItemPersister.class);
@@ -88,7 +94,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
     public void delete(HistoryInformerItem item) {
         LOG.debug("delete {}", item);
 
-        com.datastax.driver.core.querybuilder.Delete.Where query = Cql.delete().from(HISTORY_INFORMER_ITEM_CF)
+        Delete.Where query = Cql.delete().from(HISTORY_INFORMER_ITEM_CF)
                 .where(eq(BANK_ID_FIELD, item.getBankId()))
                 .and(eq(CREATE_TIME_FIELD, item.getCreateTime()))
                 .and(eq(SESSION_ID_FIELD, item.getGameSessionId()));
@@ -99,7 +105,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
     public void deleteFromMaxIterationsCF(HistoryInformerItem item) {
         LOG.debug("deleteFromMaxIterationsCF {}", item);
 
-        com.datastax.driver.core.querybuilder.Delete.Where query = Cql.delete().from(MAX_ITERATIONS_ITEM_CF)
+        Delete.Where query = Cql.delete().from(MAX_ITERATIONS_ITEM_CF)
                 .where(eq(BANK_ID_FIELD, item.getBankId()))
                 .and(eq(CREATE_TIME_FIELD, item.getCreateTime()))
                 .and(eq(SESSION_ID_FIELD, item.getGameSessionId()));
@@ -117,7 +123,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(item);
         String json = getMainTableDefinition().serializeToJson(item);
         try {
-            com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery()
+            Insert insert = getInsertQuery()
                     .value(BANK_ID_FIELD, item.getBankId())
                     .value(CREATE_TIME_FIELD, item.getCreateTime())
                     .value(SESSION_ID_FIELD, item.getGameSessionId())
@@ -142,7 +148,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(item);
         try {
             if (item.getIterations() <= maxSendAttempts) {
-                com.datastax.driver.core.querybuilder.Update.Where update = Cql.update(HISTORY_INFORMER_ITEM_CF)
+                Update.Where update = Cql.update(HISTORY_INFORMER_ITEM_CF)
                         .with(Cql.set(ITERATIONS_FIELD, item.getIterations()))
                         .and(Cql.set(LAST_ATTEMPT_TIME_FIELD, System.currentTimeMillis()))
 
@@ -153,7 +159,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
                 execute(update, "update");
             } else {
 
-                com.datastax.driver.core.querybuilder.Batch batch = Cql.batch(Cql.delete().from(HISTORY_INFORMER_ITEM_CF)
+                Batch batch = Cql.batch(Cql.delete().from(HISTORY_INFORMER_ITEM_CF)
                         .where(eq(BANK_ID_FIELD, item.getBankId()))
                         .and(eq(CREATE_TIME_FIELD, item.getCreateTime()))
                         .and(eq(SESSION_ID_FIELD, item.getGameSessionId())));
@@ -218,7 +224,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
     }
 
     public HistoryInformerItem loadMaxIterationsItem(long bankId) {
-        com.datastax.driver.core.querybuilder.Select query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        Select query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(MAX_ITERATIONS_ITEM_CF)
                 .where(eq(BANK_ID_FIELD, bankId))
                 .limit(1);
