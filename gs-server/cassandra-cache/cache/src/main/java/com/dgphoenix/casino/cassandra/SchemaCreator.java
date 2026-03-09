@@ -110,7 +110,7 @@ public class SchemaCreator {
         for (String query : queries) {
             if (isNotBlank(query)) {
                 try {
-                    com.datastax.driver.core.ResultSet resultSet = session.execute(query);
+                    com.abs.casino.cassandra.persist.engine.ResultSet resultSet = session.executeWrapped(query);
                     LOG.warn("Execute query: {}\nresult: {}", query, resultSet);
                 } catch (Throwable t) {
                     LOG.error("Can't execute CQL:" + query, t);

@@ -41,6 +41,10 @@ public class Session implements com.datastax.driver.core.Session {
         return session.execute(query);
     }
 
+    public ResultSet executeWrapped(String query) {
+        return ResultSet.wrap(session.execute(query));
+    }
+
     @Override
     public com.datastax.driver.core.ResultSet execute(String query, Object... values) {
         return session.execute(query, values);
