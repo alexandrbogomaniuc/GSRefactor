@@ -46,6 +46,12 @@ import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import com.datastax.driver.core.querybuilder.Batch;
+import com.datastax.driver.core.querybuilder.Clause;
+import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.querybuilder.Update;
+
 
 /**
  * User: flsh
@@ -365,7 +371,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     public Iterable<Pair<String, Pair<TrackingState, TrackingInfo>>> getTrackingInfo(TrackingStatus trackingStatus,
                                                                                      Integer gameServerId) {
-        com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(TRACKING_TABLE, SERVER_ID, TRACKING_STATUS, KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
+        Select select = getSelectColumnsQuery(TRACKING_TABLE, SERVER_ID, TRACKING_STATUS, KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         select.where(eq(TRACKING_STATUS, trackingStatus.ordinal()));
         if (gameServerId != null) {
             select.where(eq(SERVER_ID, gameServerId));
@@ -392,7 +398,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     }
 
     public boolean limitOfTrackingInfoByStatusIsExceededForAllGameServers(TrackingStatus status, int limit) {
-        com.datastax.driver.core.querybuilder.Select query = Cql.select().countAll().from(TRANSACTION_TRACKING_CF).
+        Select query = Cql.select().countAll().from(TRANSACTION_TRACKING_CF).
                 where().and(eq(TRACKING_STATUS, status.ordinal())).limit(limit + 1);
 
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getAllTrackInfoCountByStatus");
@@ -403,7 +409,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     }
 
     public boolean limitOfTrackingInfoByStatusIsExceededForGameServer(TrackingStatus status, Integer serverId, int limit) {
-        com.datastax.driver.core.querybuilder.Select query = Cql.select().countAll().from(TRANSACTION_TRACKING_CF).
+        Select query = Cql.select().countAll().from(TRANSACTION_TRACKING_CF).
                 where().and(eq(TRACKING_STATUS, status.ordinal())).and(eq(SERVER_ID, serverId)).limit(limit + 1);
 
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getAllTrackInfoCountByStatusAndGameServer");
@@ -439,7 +445,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     public void processTransactions(Integer gameServerId, ITransactionDataProcessor processor) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(KEY);
+        Select select = getSelectColumnsQuery(KEY);
         if (gameServerId != null) {
             select.where(eq(SERVER_ID, gameServerId));
         }
@@ -494,7 +500,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
             data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + time);
             savedData = TransactionDataFactory.getInstance().getStoredData(data);
             long timeStamp = getTimeStamp(data);
-            com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery(null).value(getKeyColumnName(), lockId);
+            Insert insert = getInsertQuery(null).value(getKeyColumnName(), lockId);
             for (Map.Entry<String, ByteBuffer> e : savedData.entrySet()) {
                 insert.value(e.getKey(), e.getValue());
             }
@@ -636,7 +642,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
             resultSetsByKs.add(resultSet);
             if (!resultSet.wasApplied()) {
                 try {
-                    getLog().error("com.datastax.driver.core.querybuilder.Batch was not applied. Keyspace={}; statement={}", keySpace, statement);
+                    getLog().error("Batch was not applied. Keyspace={}; statement={}", keySpace, statement);
                 } catch (Throwable t) {
                     getLog().error("execute: failed log cql", t);
                 }
@@ -669,7 +675,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         com.datastax.driver.core.Statement after = trackingInfoChanges.getValue();
         long clock = getTimeStamp(data);
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
-        com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
+        Update update = getUpdateQuery(data.getLockId());
         update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeToBytes(data.getBonus());
         ByteBuffer luBuffer = null;
@@ -731,7 +737,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         long clock = getTimeStamp(data);
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
-        com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
+        Update update = getUpdateQuery(data.getLockId());
         update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeToBytes(data.getFrBonus());
         ByteBuffer luBuffer = null;
@@ -791,7 +797,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
 
-        com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
+        Update update = getUpdateQuery(data.getLockId());
         update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeToBytes(data.getFrbWin());
         ByteBuffer luBuffer = null;
@@ -850,7 +856,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         long clock = getTimeStamp(data);
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
-        com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
+        Update update = getUpdateQuery(data.getLockId());
         update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeToBytes(data.getFrbNotification());
         ByteBuffer luBuffer = null;
@@ -892,7 +898,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         long clock = getTimeStamp(data);
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
-        com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
+        Update update = getUpdateQuery(data.getLockId());
         update.using(Cql.timestamp(clock));
         ByteBuffer accountByteBuffer = TABLE.serializeToBytes(data.getAccount());
         ByteBuffer luBuffer = null;
@@ -944,7 +950,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         long clock = getTimeStamp(data);
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
-        com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
+        Update update = getUpdateQuery(data.getLockId());
         update.using(Cql.timestamp(clock));
         ByteBuffer paymentByteBuffer = TABLE.serializeToBytes(data.getPaymentTransaction());
         ByteBuffer accountByteBuffer = saveAccount && data.getAccount() != null ?
@@ -1015,7 +1021,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         long clock = getTimeStamp(data);
         data.setLastUpdateInfo(gameServerId + "_" + Thread.currentThread().getName() + "_" + clock);
 
-        com.datastax.driver.core.querybuilder.Update update = getUpdateQuery(data.getLockId());
+        Update update = getUpdateQuery(data.getLockId());
         update.using(Cql.timestamp(clock));
         ByteBuffer byteBuffer = TABLE.serializeWithClassToBytes(data.getWallet());
         ByteBuffer luBuffer = null;
@@ -1117,7 +1123,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     public Map<String, ByteBuffer> getByColumns(String lockId, String... columns) {
         long now = System.currentTimeMillis();
 
-        com.datastax.driver.core.querybuilder.Select query = Cql.select(columns).from(getMainColumnFamilyName());
+        Select query = Cql.select(columns).from(getMainColumnFamilyName());
         query.where(eq(getKeyColumnName(), lockId)).limit(1);
         com.datastax.driver.core.ResultSet resultSet = execute(query, "CassandraTransactionDataPersister: getByColumns");
         com.datastax.driver.core.Row row = resultSet.one();
@@ -1189,7 +1195,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
             columnsNames[i] = pair.getKey();
         }
         columnsNames[columns.length] = KEY;
-        com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(columnsNames);
+        Select query = getSelectColumnsQuery(columnsNames);
         query.where(Cql.in(KEY, lockIds.toArray()));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getByKeysColumns");
         Map<String, Map<String, Object>> result = new HashMap<>();
@@ -1212,10 +1218,10 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     public Pair<TrackingState, TrackingInfo> getTrackingInfo(String lockId) {
         Set<Integer> servers = LoadBalancerCache.getInstance().getServers();
         Pair<TrackingState, TrackingInfo> result = null;
-        com.datastax.driver.core.querybuilder.Clause keyClause = eq(KEY, lockId);
-        com.datastax.driver.core.querybuilder.Clause statusClause = Cql.in(TRACKING_STATUS, 0, 1, 2, 3);
+        Clause keyClause = eq(KEY, lockId);
+        Clause statusClause = Cql.in(TRACKING_STATUS, 0, 1, 2, 3);
         for (Integer serverId : servers) {
-            com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(TRACKING_TABLE, SERVER_ID, TRACKING_STATUS, KEY,
+            Select select = getSelectColumnsQuery(TRACKING_TABLE, SERVER_ID, TRACKING_STATUS, KEY,
                     SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
             select.where(statusClause).and(eq(SERVER_ID, serverId)).and(keyClause);
             final TrackingStatus[] trackingStatuses = TrackingStatus.values();
@@ -1244,7 +1250,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     public List<ITransactionData> getTransactionsWithoutTracking() {
         List<ITransactionData> result = new ArrayList<>();
-        com.datastax.driver.core.querybuilder.Select query = Cql.select().
+        Select query = Cql.select().
                 column(KEY).
                 column(ACCOUNT_FIELD).
                 column(PLAYER_SESSION_FIELD).
@@ -1303,7 +1309,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     //made public. dirty get, don't use this method in usual situations
     public ITransactionData getFromDB(String lockId) {
-        com.datastax.driver.core.querybuilder.Select query = Cql.select().
+        Select query = Cql.select().
                 column(KEY).
                 column(ACCOUNT_FIELD).
                 column(PLAYER_SESSION_FIELD).
