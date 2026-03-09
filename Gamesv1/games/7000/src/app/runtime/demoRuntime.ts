@@ -372,7 +372,7 @@ export class CrazyRoosterDemoRuntime {
         displayName: CRAZY_ROOSTER_BRAND.displayName,
       },
       assets: {
-        provider: "openai",
+        provider: CRAZY_ROOSTER_BRAND.defaultProvider,
       },
       runtime: {
         wallet: {

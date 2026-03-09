@@ -14,8 +14,11 @@ export interface CrazyRoosterSpinOptions {
 export class CrazyRoosterSlotMachine extends Container {
   private readonly reels: CrazyRoosterReel[] = [];
   private readonly ticker = new Ticker();
-  private readonly reelFrame = new Sprite(Texture.WHITE);
+  private readonly cabinetBase = new Graphics();
+  private readonly cabinetGlow = new Graphics();
+  private readonly reelPanels: Sprite[] = [];
   private isSpinning = false;
+  private elapsed = 0;
 
   public onSpinComplete: () => void = () => {};
 
@@ -29,13 +32,18 @@ export class CrazyRoosterSlotMachine extends Container {
       CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
       (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
 
-    this.reelFrame.width = machineWidth;
-    this.reelFrame.height = machineHeight;
-    this.reelFrame.alpha = 0.9;
-    this.reelFrame.tint = 0x3f0a10;
-    this.addChild(this.reelFrame);
+    this.redrawCabinet(machineWidth, machineHeight);
+    this.addChild(this.cabinetBase, this.cabinetGlow);
 
     for (let index = 0; index < CRAZY_ROOSTER_LAYOUT.reelCount; index += 1) {
+      const panel = new Sprite(Texture.WHITE);
+      panel.width = CRAZY_ROOSTER_LAYOUT.symbolWidth;
+      panel.height = machineHeight;
+      panel.alpha = 0.96;
+      panel.x = index * (CRAZY_ROOSTER_LAYOUT.symbolWidth + CRAZY_ROOSTER_LAYOUT.reelSpacing);
+      this.reelPanels.push(panel);
+      this.addChild(panel);
+
       const reel = new CrazyRoosterReel(index, assetRoot);
       reel.x = index * (CRAZY_ROOSTER_LAYOUT.symbolWidth + CRAZY_ROOSTER_LAYOUT.reelSpacing);
       this.reels.push(reel);
@@ -44,11 +52,11 @@ export class CrazyRoosterSlotMachine extends Container {
 
     const mask = new Graphics();
     mask.roundRect(
-      0,
-      0,
-      machineWidth,
-      machineHeight,
-      18,
+      -8,
+      -8,
+      machineWidth + 16,
+      machineHeight + 16,
+      26,
     );
     mask.fill(0xffffff);
     this.addChild(mask);
@@ -56,6 +64,8 @@ export class CrazyRoosterSlotMachine extends Container {
     void this.applyReelFrameTexture();
 
     this.ticker.add((ticker) => {
+      this.elapsed += ticker.deltaMS / 1000;
+      this.cabinetGlow.alpha = 0.48 + Math.sin(this.elapsed * 2.1) * 0.12;
       if (!this.isSpinning) {
         return;
       }
@@ -107,13 +117,29 @@ export class CrazyRoosterSlotMachine extends Container {
 
   private async applyReelFrameTexture(): Promise<void> {
     const resolved = await resolveProviderFrameTexture("uiAtlas", "reel-frame-panel");
-    if (resolved.texture) {
-      this.reelFrame.texture = resolved.texture;
-      this.reelFrame.tint = 0xffffff;
+    const resolvedTexture = resolved.texture;
+    if (resolvedTexture) {
+      this.reelPanels.forEach((panel) => {
+        panel.texture = resolvedTexture;
+        panel.tint = 0xffffff;
+      });
       return;
     }
 
-    this.reelFrame.texture = Texture.WHITE;
-    this.reelFrame.tint = 0x3f0a10;
+    this.reelPanels.forEach((panel) => {
+      panel.texture = Texture.WHITE;
+      panel.tint = 0x3f0a10;
+    });
+  }
+
+  private redrawCabinet(machineWidth: number, machineHeight: number): void {
+    this.cabinetBase.clear();
+    this.cabinetBase.roundRect(-10, -10, machineWidth + 20, machineHeight + 20, 28);
+    this.cabinetBase.fill({ color: 0x0d0406, alpha: 0.94 });
+    this.cabinetBase.stroke({ color: 0xffd88a, width: 4, alpha: 0.82 });
+
+    this.cabinetGlow.clear();
+    this.cabinetGlow.roundRect(-16, -14, machineWidth + 32, machineHeight + 28, 34);
+    this.cabinetGlow.stroke({ color: 0xc7141a, width: 8, alpha: 0.44 });
   }
 }

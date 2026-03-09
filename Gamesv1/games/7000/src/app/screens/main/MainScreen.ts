@@ -32,10 +32,7 @@ import {
   SessionRuntimeStore,
 } from "../../stores";
 import { AppAssetKeys } from "../../assets/assetKeys";
-import {
-  getProviderDebugLine,
-  resolveProviderBackgroundUrl,
-} from "../../assets/providerPackRegistry.ts";
+import { resolveProviderBackgroundUrl } from "../../assets/providerPackRegistry.ts";
 import { resolveCrazyRoosterBrandKit } from "../../theme/brandKit.ts";
 import { userSettings } from "../../utils/userSettings";
 import { resolveProviderSymbolRoot } from "../../../game/assets/provider.ts";
@@ -52,6 +49,7 @@ import { ParticleBurst } from "../../../game/fx/ParticleBurst";
 import { LightningArcFx } from "../../../game/fx/LightningArcFx";
 import { WinHighlight } from "../../../game/fx/WinHighlight";
 import { WinCounter } from "../../../game/ui/WinCounter";
+import { Beta3VisualChrome } from "./Beta3VisualChrome";
 import { DebugOverlay } from "./DebugOverlay";
 
 type PendingRoundResolution = {
@@ -130,6 +128,7 @@ export class MainScreen extends Container {
   private readonly reelsLayer = new Container();
   private readonly fxLayer = new Container();
   private readonly uiLayer = new Container();
+  private readonly visualChrome = new Beta3VisualChrome();
   private readonly slotMachine = new CrazyRoosterSlotMachine(resolveProviderSymbolRoot());
   private readonly lightningFx = new LightningArcFx();
   private readonly winHighlight = new WinHighlight();
@@ -140,21 +139,23 @@ export class MainScreen extends Container {
     text: "",
     style: {
       fontFamily: "Trebuchet MS, Arial, sans-serif",
-      fontSize: 24,
-      fill: 0xffffff,
-      stroke: { color: 0x111111, width: 4 },
-      fontWeight: "700",
+      fontSize: 18,
+      fill: 0xffe6d2,
+      stroke: { color: 0x160406, width: 4 },
+      fontWeight: "800",
       align: "center",
+      letterSpacing: 1,
     },
   });
   private readonly titleText = new Text({
-    text: "Crazy Rooster Hold&Win",
+    text: "CRAZY ROOSTER HOLD&WIN",
     style: {
       fontFamily: "Trebuchet MS, Arial, sans-serif",
-      fontSize: 28,
-      fill: 0xffffff,
-      fontWeight: "800",
+      fontSize: 24,
+      fill: 0xffd88a,
+      fontWeight: "900",
       stroke: { color: 0x080808, width: 4 },
+      letterSpacing: 1,
     },
   });
   private readonly footerText = new Text({
@@ -164,16 +165,6 @@ export class MainScreen extends Container {
       fontSize: 15,
       fill: 0xcfcfcf,
       fontWeight: "700",
-    },
-  });
-  private readonly providerStateText = new Text({
-    text: getProviderDebugLine(),
-    style: {
-      fontFamily: "monospace",
-      fontSize: 12,
-      fill: 0xf6f6f6,
-      stroke: { color: 0x111111, width: 3 },
-      align: "left",
     },
   });
   private readonly debugOverlay = new DebugOverlay();
@@ -254,13 +245,14 @@ export class MainScreen extends Container {
     this.soundEnabled = userSettings.getMasterVolume() > 0;
 
     this.backgroundSprite.anchor.set(0.5);
-    this.backgroundSprite.alpha = 0.42;
+    this.backgroundSprite.alpha = 0.82;
     this.addChild(this.backgroundSprite);
     this.addChild(this.reelsLayer);
     this.addChild(this.fxLayer);
     this.addChild(this.uiLayer);
     this.addChild(this.debugOverlay);
 
+    this.reelsLayer.addChild(this.visualChrome);
     this.reelsLayer.addChild(this.slotMachine);
     this.fxLayer.addChild(this.lightningFx);
     this.fxLayer.addChild(this.winHighlight);
@@ -270,7 +262,9 @@ export class MainScreen extends Container {
     this.statusText.visible = false;
     this.titleText.anchor.set(0.5);
     this.footerText.anchor.set(0.5);
-    this.providerStateText.anchor.set(0, 1);
+    this.visualChrome.onBuyFeatureRequest = () => {
+      void this.handleBuyFeature();
+    };
 
     this.hud.applyTheme(this.shellTheme.hud);
     this.hud.applyVisibility(this.baseHudVisibility);
@@ -285,13 +279,12 @@ export class MainScreen extends Container {
     this.uiLayer.addChild(this.statusText);
     this.uiLayer.addChild(this.titleText);
     this.uiLayer.addChild(this.footerText);
-    this.uiLayer.addChild(this.providerStateText);
 
     this.slotMachine.onSpinComplete = () => this.handleSpinComplete();
     this.connectSpinHoldGesture();
     this.applyPreviewState();
     this.refreshHudState(0);
-    this.showStatus(`FEATURES: ${this.featureModules.listEnabledModules().join(", ")}`);
+    this.showStatus("NANOBANANA HERO PACK READY");
   }
 
   public prepare(): void {}
@@ -332,9 +325,12 @@ export class MainScreen extends Container {
     const machineHeight =
       CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
       (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
+    const visualPadding = Beta3VisualChrome.padding;
+    const chromeWidth = machineWidth + visualPadding.left + visualPadding.right;
+    const chromeHeight = machineHeight + visualPadding.top + visualPadding.bottom;
     const availableWidth = width - safe.left - safe.right - 48;
     const availableHeight = Math.max(320, availableBottom - availableTop);
-    const scale = Math.min(availableWidth / machineWidth, availableHeight / machineHeight);
+    const scale = Math.min(availableWidth / chromeWidth, availableHeight / chromeHeight);
     const backgroundUrl = resolveProviderBackgroundUrl(width, height);
 
     if (backgroundUrl) {
@@ -350,10 +346,11 @@ export class MainScreen extends Container {
     this.backgroundSprite.width = width;
     this.backgroundSprite.height = height;
 
+    this.visualChrome.resize(machineWidth, machineHeight);
     this.reelsLayer.scale.set(scale);
     this.fxLayer.scale.set(scale);
-    this.reelsLayer.x = centerX - (machineWidth * scale) / 2;
-    this.reelsLayer.y = centerY - (machineHeight * scale) / 2;
+    this.reelsLayer.x = centerX - (chromeWidth * scale) / 2 + visualPadding.left * scale;
+    this.reelsLayer.y = centerY - (chromeHeight * scale) / 2 + visualPadding.top * scale;
     this.fxLayer.x = this.reelsLayer.x;
     this.fxLayer.y = this.reelsLayer.y;
 
@@ -365,15 +362,13 @@ export class MainScreen extends Container {
     });
 
     this.titleText.x = width * 0.5;
-    this.titleText.y = safe.top + 40;
+    this.titleText.y = safe.top + 34;
     this.statusText.x = width * 0.5;
-    this.statusText.y = safe.top + 84;
+    this.statusText.y = safe.top + 76;
     this.winCounter.x = width * 0.5;
-    this.winCounter.y = safe.top + 172;
+    this.winCounter.y = safe.top + 156;
     this.footerText.x = width * 0.5;
     this.footerText.y = height - Math.max(24, safe.bottom + 18);
-    this.providerStateText.x = safe.left + 18;
-    this.providerStateText.y = height - Math.max(126, safe.bottom + 84);
 
     this.debugOverlay.resize(width, height);
   }
@@ -777,6 +772,8 @@ export class MainScreen extends Container {
         CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
         (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
       void this.lightningFx.play(machineWidth, machineHeight);
+      this.visualChrome.triggerBoostPulse();
+      this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.2);
     }
   }
 
@@ -792,13 +789,24 @@ export class MainScreen extends Container {
 
     const buttons = (this.hud as unknown as HudInternals).buttons;
     buttons.autoplay.text = this.autoplayActive ? "STOP AUTO" : "AUTO";
-    buttons.buyFeature.text =
+    const buyLabel =
       CRAZY_ROOSTER_BUY_TIERS[this.buyTierIndex % CRAZY_ROOSTER_BUY_TIERS.length]?.label ?? "BUY";
+    buttons.buyFeature.text = buyLabel;
+    this.visualChrome.setModeState({
+      buyLabel,
+      autoplayActive: this.autoplayActive,
+      turboSelected: this.turboSelected || this.holdTurboRequested,
+      soundEnabled: this.soundEnabled,
+      statusText: this.statusText.text || "BETONLINE READY",
+    });
   }
 
   private showStatus(text: string): void {
     this.statusText.text = text;
     this.statusText.visible = text.length > 0;
+    this.visualChrome.setModeState({
+      statusText: text || "BETONLINE READY",
+    });
   }
 
   private applyPreviewState(): void {

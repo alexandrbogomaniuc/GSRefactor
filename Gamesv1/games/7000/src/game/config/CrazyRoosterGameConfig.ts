@@ -144,7 +144,7 @@ export const CRAZY_ROOSTER_BRAND = {
   primaryColor: "#000000",
   accentColor: "#C7141A",
   surfaceColor: "#FFFFFF",
-  defaultProvider: "openai" as CrazyRoosterAssetProvider,
+  defaultProvider: "nanobanana" as CrazyRoosterAssetProvider,
 };
 
 export const CRAZY_ROOSTER_BRAND_NAME = CRAZY_ROOSTER_BRAND.brandName;

@@ -4,6 +4,7 @@ import { CRAZY_ROOSTER_LAYOUT } from "../config/CrazyRoosterGameConfig";
 import { resolveProviderFrameTexture } from "../../app/assets/providerPackRegistry";
 
 export class LightningArcFx extends Container {
+  private readonly glow = new Graphics();
   private readonly sprite = new Sprite(Texture.WHITE);
   private readonly fallback = new Graphics();
   private elapsedMs = 0;
@@ -13,6 +14,9 @@ export class LightningArcFx extends Container {
 
   constructor() {
     super();
+
+    this.glow.visible = false;
+    this.addChild(this.glow);
 
     this.sprite.anchor.set(0.5);
     this.sprite.visible = false;
@@ -38,6 +42,11 @@ export class LightningArcFx extends Container {
     this.visible = true;
     this.x = width * 0.5;
     this.y = height * 0.5;
+    this.glow.clear();
+    this.glow.ellipse(0, 0, width * 0.42, height * 0.34);
+    this.glow.fill({ color: 0xfff0a8, alpha: 0.26 });
+    this.glow.visible = true;
+    this.glow.alpha = 1;
 
     if (resolved.texture) {
       this.fallback.visible = false;
@@ -67,6 +76,7 @@ export class LightningArcFx extends Container {
   public clear(): void {
     this.active = false;
     this.visible = false;
+    this.glow.visible = false;
     this.sprite.visible = false;
     this.fallback.visible = false;
     this.elapsedMs = 0;
@@ -84,6 +94,11 @@ export class LightningArcFx extends Container {
     if (this.sprite.visible) {
       this.sprite.alpha = alpha;
       this.sprite.scale.set(0.94 + progress * 0.16);
+    }
+
+    if (this.glow.visible) {
+      this.glow.alpha = alpha * 0.9;
+      this.glow.scale.set(1 + progress * 0.22);
     }
 
     if (this.fallback.visible) {

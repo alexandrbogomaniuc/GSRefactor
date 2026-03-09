@@ -1,0 +1,252 @@
+{
+  "preloader": {
+    "shot": "/tmp/game7000-beta3-check/preloader.png",
+    "logs": [
+      {
+        "type": "debug",
+        "text": "[vite] connecting..."
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connected."
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "info",
+        "text": "[ProviderPack] Provider \"nanobanana\" validated."
+      },
+      {
+        "type": "log",
+        "text": "[SessionRuntimeStore] Snapshot updated. {sessionId: demo-session-7000, requestCounter: 1, balance: 250000}"
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}"
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+      },
+      {
+        "type": "info",
+        "text": "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key"
+      },
+      {
+        "type": "log",
+        "text": "[ResolvedRuntimeConfigStore] Updated."
+      },
+      {
+        "type": "log",
+        "text": "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules"
+      }
+    ],
+    "provider": null
+  },
+  "nanoIdle": {
+    "shot": "/tmp/game7000-beta3-check/nanobanana-idle.png",
+    "logs": [
+      {
+        "type": "debug",
+        "text": "[vite] connecting..."
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connected."
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "info",
+        "text": "[ProviderPack] Provider \"nanobanana\" validated."
+      },
+      {
+        "type": "log",
+        "text": "[SessionRuntimeStore] Snapshot updated. {sessionId: demo-session-7000, requestCounter: 1, balance: 250000}"
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}"
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+      },
+      {
+        "type": "info",
+        "text": "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key"
+      },
+      {
+        "type": "log",
+        "text": "[ResolvedRuntimeConfigStore] Updated."
+      },
+      {
+        "type": "log",
+        "text": "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules"
+      }
+    ],
+    "provider": {
+      "requestedProvider": "nanobanana",
+      "effectiveProvider": "nanobanana",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "/raw-assets/preload%7Bm%7D/logo.svg",
+      "backgrounds": {
+        "desktop": "/assets/providers/nanobanana/runtime/background-desktop-1920x1080.png",
+        "landscape": "/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png",
+        "portrait": "/assets/providers/nanobanana/runtime/background-portrait-1080x1920.png"
+      }
+    }
+  },
+  "nanoBoost": {
+    "shot": "/tmp/game7000-beta3-check/nanobanana-boost.png",
+    "logs": [
+      {
+        "type": "debug",
+        "text": "[vite] connecting..."
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connected."
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "info",
+        "text": "[ProviderPack] Provider \"nanobanana\" validated."
+      },
+      {
+        "type": "log",
+        "text": "[SessionRuntimeStore] Snapshot updated. {sessionId: demo-session-7000, requestCounter: 1, balance: 250000}"
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}"
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+      },
+      {
+        "type": "info",
+        "text": "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key"
+      },
+      {
+        "type": "log",
+        "text": "[ResolvedRuntimeConfigStore] Updated."
+      },
+      {
+        "type": "log",
+        "text": "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules"
+      }
+    ],
+    "provider": {
+      "requestedProvider": "nanobanana",
+      "effectiveProvider": "nanobanana",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "/raw-assets/preload%7Bm%7D/logo.svg",
+      "backgrounds": {
+        "desktop": "/assets/providers/nanobanana/runtime/background-desktop-1920x1080.png",
+        "landscape": "/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png",
+        "portrait": "/assets/providers/nanobanana/runtime/background-portrait-1080x1920.png"
+      }
+    }
+  },
+  "donorIdle": {
+    "shot": "/tmp/game7000-beta3-check/donorlocal-idle.png",
+    "logs": [
+      {
+        "type": "debug",
+        "text": "[vite] connecting..."
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connected."
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "warning",
+        "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+      },
+      {
+        "type": "info",
+        "text": "[ProviderPack] Provider \"donorlocal\" validated."
+      },
+      {
+        "type": "log",
+        "text": "[SessionRuntimeStore] Snapshot updated. {sessionId: demo-session-7000, requestCounter: 1, balance: 250000}"
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}"
+      },
+      {
+        "type": "warning",
+        "text": "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+      },
+      {
+        "type": "info",
+        "text": "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key"
+      },
+      {
+        "type": "log",
+        "text": "[ResolvedRuntimeConfigStore] Updated."
+      },
+      {
+        "type": "log",
+        "text": "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules"
+      }
+    ],
+    "provider": {
+      "requestedProvider": "donorlocal",
+      "effectiveProvider": "donorlocal",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "http://localhost:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/logo.2ea1fa99.png",
+      "backgrounds": {
+        "desktop": "http://localhost:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBg.af5e8e37.png",
+        "landscape": "http://localhost:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBg.af5e8e37.png",
+        "portrait": "http://localhost:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBgMobile.d924d35d.png"
+      },
+      "manifestUrl": "http://localhost:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json"
+    }
+  }
+}

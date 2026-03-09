@@ -49,3 +49,11 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
   - confirmed openai and nanobanana are atlas-driven on the fresh branch; no text-label tiles remain in the clean-browser proof.
   - fixed a real donorlocal defect in `providerPackRegistry.ts`: the local donor manifest exposes key maps (`*_keys.json`), not Pixi spritesheet JSON, so the old loader threw during `Spritesheet` construction and silently fell back to OpenAI.
   - the donorlocal loader now resolves direct per-frame image sources from the local key maps and falls back to OpenAI only for unresolved donor entries such as Spine/atlas-only mappings.
+- 2026-03-09: Started Beta 3 visual parity sprint on `codex/qa/7000-beta3-visual-parity-20260309-1410`.
+  - promoted `nanobanana` to the default hero provider in config/demo fallback while preserving the provider matrix and donorlocal benchmark behavior.
+  - rebuilt the preloader with a stronger BetOnline typographic lockup, darker premium plate, and heavier progress-bar treatment.
+  - added `src/app/screens/main/Beta3VisualChrome.ts` for the jackpot topper, rooster hero area, left buy tile, right action cluster, ambient liveness, and optional QA provider badge.
+  - upgraded reel presentation with stronger cabinet framing, richer symbol cards, and a brighter lightning/boost effect.
+  - ported the safe audio alias guard so missing hover/click SFX no longer throw repeated `.play()` exceptions.
+  - removed unused promo placeholder `.gitkeep` files that were generating asset warnings during build/runtime scans.
+  - browser proof for Beta 3 was captured against the live nanobanana build; Chrome DevTools MCP had `Transport closed` earlier in this thread, so Playwright/system Chrome was used for proof while the launcher config was being corrected separately.

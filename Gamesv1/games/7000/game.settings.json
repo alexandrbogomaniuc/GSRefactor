@@ -27,7 +27,7 @@
     "todo": "Donor-verified dropdown ladder with config-driven bounds retained for runtime flexibility."
   },
   "assets": {
-    "provider": "openai",
+    "provider": "nanobanana",
     "supportedProviders": ["openai", "nanobanana", "donorlocal"]
   },
   "features": {
