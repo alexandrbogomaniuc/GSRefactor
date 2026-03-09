@@ -3,7 +3,7 @@ import { type CrazyRoosterAssetProvider } from "../../game/config/CrazyRoosterGa
 import { getProviderPackStatus } from "./providerPackRegistry";
 
 export const resolveCrazyRoosterAssetProvider = (): CrazyRoosterAssetProvider =>
-  getProviderPackStatus().requestedProvider;
+  getProviderPackStatus().effectiveProvider;
 
 export const resolveCrazyRoosterAssetRoot = (): string =>
   `/providers/${resolveCrazyRoosterAssetProvider()}/symbols`;

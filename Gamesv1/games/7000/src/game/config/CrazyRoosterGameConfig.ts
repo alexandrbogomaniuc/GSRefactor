@@ -1,6 +1,13 @@
 import { GameConfig } from "@gamesv1/ui-kit";
 
-export type CrazyRoosterAssetProvider = "openai" | "nanobanana";
+export const CRAZY_ROOSTER_SUPPORTED_ASSET_PROVIDERS = [
+  "openai",
+  "nanobanana",
+  "donorlocal",
+] as const;
+
+export type CrazyRoosterAssetProvider =
+  (typeof CRAZY_ROOSTER_SUPPORTED_ASSET_PROVIDERS)[number];
 export type AssetProvider = CrazyRoosterAssetProvider;
 
 export const CRAZY_ROOSTER_LAYOUT = {
@@ -134,12 +141,14 @@ export const CRAZY_ROOSTER_FOOTER = CRAZY_ROOSTER_BRAND.footerText;
 export const isAssetProvider = (
   value: string | null | undefined,
 ): value is CrazyRoosterAssetProvider =>
-  value === "openai" || value === "nanobanana";
+  CRAZY_ROOSTER_SUPPORTED_ASSET_PROVIDERS.includes(value as CrazyRoosterAssetProvider);
 
 export const resolveAssetProvider = (
   params: URLSearchParams = new URLSearchParams(window.location.search),
+  envProvider = import.meta.env.VITE_ASSET_PROVIDER,
 ): CrazyRoosterAssetProvider => {
-  const requested = params.get("assetProvider") ?? params.get("provider");
+  const requested =
+    params.get("assetProvider") ?? params.get("provider") ?? envProvider;
   if (isAssetProvider(requested)) {
     return requested;
   }

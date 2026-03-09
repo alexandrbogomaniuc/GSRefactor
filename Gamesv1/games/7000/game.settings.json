@@ -28,7 +28,7 @@
   },
   "assets": {
     "provider": "openai",
-    "supportedProviders": ["openai", "nanobanana"]
+    "supportedProviders": ["openai", "nanobanana", "donorlocal"]
   },
   "features": {
     "collect": true,

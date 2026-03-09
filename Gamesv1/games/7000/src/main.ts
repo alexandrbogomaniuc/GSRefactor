@@ -28,7 +28,7 @@ setEngine(appEngine);
   });
 
   const urlParams = new URLSearchParams(window.location.search);
-  const providerPackStatus = initializeProviderPackStatus(urlParams);
+  const providerPackStatus = await initializeProviderPackStatus(urlParams);
   const brandTheme = resolveCrazyRoosterBrandKit(
     urlParams.get("brandName") ?? urlParams.get("brand"),
     undefined,

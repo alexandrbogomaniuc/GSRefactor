@@ -6,12 +6,21 @@ import { assetpackPlugin } from "./scripts/assetpack-vite-plugin";
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 const pkg = (name) => path.resolve(rootDir, "../../packages", name, "src");
+const gamesv1Root = path.resolve(rootDir, "../..");
+const donorLocalManifestFsPath = path.resolve(
+  rootDir,
+  "../../GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
+);
+const donorLocalFsRoot = path.dirname(donorLocalManifestFsPath);
 
 export default defineConfig({
   plugins: [assetpackPlugin()],
   server: {
     port: 8080,
     open: true,
+    fs: {
+      allow: [gamesv1Root, donorLocalFsRoot],
+    },
   },
   build: {
     rollupOptions: {
@@ -60,5 +69,6 @@ export default defineConfig({
   },
   define: {
     APP_VERSION: JSON.stringify(process.env.npm_package_version),
+    __DONORLOCAL_MANIFEST_FS_PATH__: JSON.stringify(donorLocalManifestFsPath),
   },
 });

@@ -5,7 +5,7 @@ import {
 import { getProviderPackStatus } from "../../app/assets/providerPackRegistry";
 
 export const resolveAssetProvider = (): CrazyRoosterAssetProvider =>
-  getProviderPackStatus().requestedProvider;
+  getProviderPackStatus().effectiveProvider;
 
 export const resolveProviderSymbolRoot = (
   provider = resolveAssetProvider(),

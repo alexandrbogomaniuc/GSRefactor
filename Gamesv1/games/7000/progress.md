@@ -26,3 +26,14 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
   - added provider selection by query param/config, startup asset-pack validation, safe placeholder fallback behavior, and a branded preloader lockup that uses the BetOnline wordmark instead of the Pixi placeholder.
   - fixed demo fallback startup for `?allowDevFallback=1` and resolved ladder-mode config validation by clamping the runtime max bet to the configured preset range.
   - produced QA proof artifacts under `docs/_visual_proof/beta1-2026-03-08/` and added `docs/BETA_QA_CHECKLIST.md` with deterministic feature URLs for smoke testing.
+- 2026-03-09: Started QA beta 2 provider-matrix pass on branch `qa/7000-beta2-provider-matrix-20260309-0754`.
+  - expanded provider selection precedence to query param > `VITE_ASSET_PROVIDER` > config default.
+  - added `donorlocal` as a DEV-only provider that loads from a runtime manifest under `Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json`.
+  - donorlocal never uses static imports; missing or incomplete local manifests now warn and fall back to `openai` without crashing.
+  - added provider-matrix docs and convenience dev scripts for one-port and three-port QA workflows.
+- 2026-03-09: Validation and smoke results for QA beta 2.
+  - `corepack pnpm -C Gamesv1 run test`, `test:layout`, `build`, and direct `corepack pnpm -C Gamesv1/games/7000 build` all passed under Node 22.
+  - browser smoke on `http://127.0.0.1:8081/?allowDevFallback=1` confirmed:
+    - `openai` resolves cleanly with `effectiveProvider=openai`.
+    - `nanobanana` keeps `effectiveProvider=nanobanana` and remains `safePlaceholder=true` because the committed pack is still missing `vfxAtlas.file`.
+    - `donorlocal` falls back to `effectiveProvider=openai` with a warning when the local manifest path is absent or returns non-JSON.

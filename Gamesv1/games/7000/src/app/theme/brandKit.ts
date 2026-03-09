@@ -4,14 +4,16 @@ import {
 } from "@gamesv1/ui-kit/shell";
 import type { ResolvedConfig } from "@gamesv1/core-compliance";
 
-import { resolveProviderWordmarkUrl } from "../assets/providerPackRegistry.ts";
+import {
+  getProviderPackStatus,
+  resolveProviderWordmarkUrl,
+} from "../assets/providerPackRegistry.ts";
 import {
   CRAZY_ROOSTER_BRAND,
   CRAZY_ROOSTER_BRAND_NAME,
   CRAZY_ROOSTER_BUY_TIERS,
   CRAZY_ROOSTER_LAYOUT,
   CRAZY_ROOSTER_PAYLINES,
-  resolveAssetProvider,
 } from "../../game/config/CrazyRoosterGameConfig.ts";
 
 export const resolveCrazyRoosterBrandKit = (
@@ -25,11 +27,11 @@ export const resolveCrazyRoosterBrandKit = (
     overrides: {
       metadata: {
         themeId: CRAZY_ROOSTER_BRAND.themeId,
-        skinId: `provider-${resolveAssetProvider(queryParams)}`,
+        skinId: `provider-${getProviderPackStatus().effectiveProvider}`,
       },
       brand: {
         displayName: brandParam?.trim() || CRAZY_ROOSTER_BRAND_NAME,
-        logoUrl: resolveProviderWordmarkUrl(queryParams),
+        logoUrl: resolveProviderWordmarkUrl(),
         primaryColor: CRAZY_ROOSTER_BRAND.primaryColor,
         accentColor: CRAZY_ROOSTER_BRAND.accentColor,
       },
