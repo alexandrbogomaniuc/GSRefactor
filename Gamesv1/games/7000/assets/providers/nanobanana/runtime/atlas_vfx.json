@@ -1,6 +1,6 @@
 {
   "frames": {
-    "reel-frame-panel": {
+    "lightning-arc-01": {
       "frame": {
         "x": 0,
         "y": 0,
@@ -22,7 +22,7 @@
     }
   },
   "meta": {
-    "image": "atlas_ui.png",
+    "image": "atlas_vfx.png",
     "format": "RGBA8888",
     "size": {
       "w": 644,

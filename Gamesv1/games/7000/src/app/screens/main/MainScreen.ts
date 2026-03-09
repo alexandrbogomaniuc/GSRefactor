@@ -32,7 +32,10 @@ import {
   SessionRuntimeStore,
 } from "../../stores";
 import { AppAssetKeys } from "../../assets/assetKeys";
-import { resolveProviderBackgroundUrl } from "../../assets/providerPackRegistry.ts";
+import {
+  getProviderDebugLine,
+  resolveProviderBackgroundUrl,
+} from "../../assets/providerPackRegistry.ts";
 import { resolveCrazyRoosterBrandKit } from "../../theme/brandKit.ts";
 import { userSettings } from "../../utils/userSettings";
 import { resolveProviderSymbolRoot } from "../../../game/assets/provider.ts";
@@ -46,6 +49,7 @@ import {
   buildGridFromColumns,
 } from "../../../game/config/CrazyRoosterGameConfig.ts";
 import { ParticleBurst } from "../../../game/fx/ParticleBurst";
+import { LightningArcFx } from "../../../game/fx/LightningArcFx";
 import { WinHighlight } from "../../../game/fx/WinHighlight";
 import { WinCounter } from "../../../game/ui/WinCounter";
 import { DebugOverlay } from "./DebugOverlay";
@@ -127,6 +131,7 @@ export class MainScreen extends Container {
   private readonly fxLayer = new Container();
   private readonly uiLayer = new Container();
   private readonly slotMachine = new CrazyRoosterSlotMachine(resolveProviderSymbolRoot());
+  private readonly lightningFx = new LightningArcFx();
   private readonly winHighlight = new WinHighlight();
   private readonly particleBurst = new ParticleBurst();
   private readonly winCounter = new WinCounter();
@@ -159,6 +164,16 @@ export class MainScreen extends Container {
       fontSize: 15,
       fill: 0xcfcfcf,
       fontWeight: "700",
+    },
+  });
+  private readonly providerStateText = new Text({
+    text: getProviderDebugLine(),
+    style: {
+      fontFamily: "monospace",
+      fontSize: 12,
+      fill: 0xf6f6f6,
+      stroke: { color: 0x111111, width: 3 },
+      align: "left",
     },
   });
   private readonly debugOverlay = new DebugOverlay();
@@ -247,6 +262,7 @@ export class MainScreen extends Container {
     this.addChild(this.debugOverlay);
 
     this.reelsLayer.addChild(this.slotMachine);
+    this.fxLayer.addChild(this.lightningFx);
     this.fxLayer.addChild(this.winHighlight);
     this.fxLayer.addChild(this.particleBurst);
 
@@ -254,6 +270,7 @@ export class MainScreen extends Container {
     this.statusText.visible = false;
     this.titleText.anchor.set(0.5);
     this.footerText.anchor.set(0.5);
+    this.providerStateText.anchor.set(0, 1);
 
     this.hud.applyTheme(this.shellTheme.hud);
     this.hud.applyVisibility(this.baseHudVisibility);
@@ -268,6 +285,7 @@ export class MainScreen extends Container {
     this.uiLayer.addChild(this.statusText);
     this.uiLayer.addChild(this.titleText);
     this.uiLayer.addChild(this.footerText);
+    this.uiLayer.addChild(this.providerStateText);
 
     this.slotMachine.onSpinComplete = () => this.handleSpinComplete();
     this.connectSpinHoldGesture();
@@ -296,6 +314,7 @@ export class MainScreen extends Container {
     this.clearAutoplayTimeout();
     this.clearWinPresentationTimeout();
     this.clearSpinHoldTimeout();
+    this.lightningFx.clear();
   }
 
   public resize(width: number, height: number): void {
@@ -353,6 +372,8 @@ export class MainScreen extends Container {
     this.winCounter.y = safe.top + 172;
     this.footerText.x = width * 0.5;
     this.footerText.y = height - Math.max(24, safe.bottom + 18);
+    this.providerStateText.x = safe.left + 18;
+    this.providerStateText.y = height - Math.max(126, safe.bottom + 84);
 
     this.debugOverlay.resize(width, height);
   }
@@ -749,6 +770,13 @@ export class MainScreen extends Container {
   private applyAnimationCue(cue: string): void {
     if (cue === "focus-status-banner") {
       this.showStatus("FEATURE EVENT");
+      const machineWidth =
+        CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
+        (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing;
+      const machineHeight =
+        CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
+        (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
+      void this.lightningFx.play(machineWidth, machineHeight);
     }
   }
 

@@ -18,7 +18,7 @@ export class CrazyRoosterReel extends Container {
 
   constructor(
     public readonly id: number,
-    assetRoot: string,
+    _assetRoot?: string,
   ) {
     super();
 
@@ -28,7 +28,7 @@ export class CrazyRoosterReel extends Container {
     const totalSymbols =
       CRAZY_ROOSTER_LAYOUT.rowCount + CRAZY_ROOSTER_LAYOUT.extraSymbols;
     for (let index = 0; index < totalSymbols; index += 1) {
-      const symbol = new CrazyRoosterSymbol(assetRoot);
+      const symbol = new CrazyRoosterSymbol();
       symbol.setSymbol(this.consumeGeneratedSymbolId());
       symbol.y = (index - 1) * symbolStep;
       this.symbols.push(symbol);

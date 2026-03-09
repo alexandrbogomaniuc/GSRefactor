@@ -1,4 +1,5 @@
 import sharedWordmarkUrl from "../../../raw-assets/preload{m}/logo.svg?url";
+import { Assets, Spritesheet, Texture, type SpritesheetData } from "pixi.js";
 
 import openaiBackgroundDesktopUrl from "../../../assets/providers/openai/runtime/background-desktop-1920x1080.png?url";
 import openaiBackgroundLandscapeUrl from "../../../assets/providers/openai/runtime/background-landscape-safe-1600x900.png?url";
@@ -17,6 +18,8 @@ import nanobananaSymbolsAtlasUrl from "../../../assets/providers/nanobanana/runt
 import nanobananaSymbolsAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_symbols.json";
 import nanobananaUiAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_ui.png?url";
 import nanobananaUiAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_ui.json";
+import nanobananaVfxAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_vfx.png?url";
+import nanobananaVfxAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_vfx.json";
 
 import {
   CRAZY_ROOSTER_BRAND,
@@ -78,6 +81,14 @@ export type ProviderPackStatus = {
   fallbackReason?: string;
 };
 
+export type ProviderAtlasKind = "symbolAtlas" | "uiAtlas" | "vfxAtlas";
+
+export type ProviderResolvedTexture = {
+  texture: Texture | null;
+  resolvedProvider: CrazyRoosterAssetProvider | null;
+  fallbackUsed: boolean;
+};
+
 const DONORLOCAL_MANIFEST_URL = `/@fs${__DONORLOCAL_MANIFEST_FS_PATH__}`;
 
 const hasFrame = (atlas: AtlasData | undefined, frameKey: string): boolean =>
@@ -121,12 +132,28 @@ const PROVIDER_PACKS: Record<CommittedProvider, ProviderPackDefinition> = {
       url: nanobananaUiAtlasUrl,
       data: nanobananaUiAtlasData as AtlasData,
     },
+    vfxAtlas: {
+      url: nanobananaVfxAtlasUrl,
+      data: nanobananaVfxAtlasData as AtlasData,
+    },
   },
 };
 
 let cachedProviderPackStatus: ProviderPackStatus | null = null;
+let cachedDonorLocalPack: ProviderPackDefinition | null = null;
+const atlasTextureCache = new Map<string, Promise<Record<string, Texture>>>();
 
 const getFallbackPack = (): ProviderPackDefinition => PROVIDER_PACKS.openai;
+
+const getPackForProvider = (
+  provider: CrazyRoosterAssetProvider,
+): ProviderPackDefinition | undefined => {
+  if (provider === "donorlocal") {
+    return cachedDonorLocalPack ?? undefined;
+  }
+
+  return PROVIDER_PACKS[provider];
+};
 
 const validatePack = (pack: ProviderPackDefinition): string[] => {
   const missing: string[] = [];
@@ -343,6 +370,7 @@ export const initializeProviderPackStatus = async (
   if (requestedProvider === "donorlocal") {
     const donorLocalPack = await loadDonorLocalPack();
     if (!donorLocalPack.pack || donorLocalPack.missingKeys.length > 0) {
+      cachedDonorLocalPack = donorLocalPack.pack ?? null;
       const fallbackPack = getFallbackPack();
       const fallbackMissingKeys = validatePack(fallbackPack);
       status = buildStatus(
@@ -362,8 +390,10 @@ export const initializeProviderPackStatus = async (
         donorLocalPack.pack,
         donorLocalPack.missingKeys,
       );
+      cachedDonorLocalPack = donorLocalPack.pack;
     }
   } else {
+    cachedDonorLocalPack = null;
     const pack = PROVIDER_PACKS[requestedProvider];
     status = buildStatus(
       requestedProvider,
@@ -408,3 +438,75 @@ export const resolveProviderBackgroundUrl = (
 };
 
 export const getDonorLocalManifestUrl = (): string => DONORLOCAL_MANIFEST_URL;
+
+const loadAtlasTextures = async (
+  provider: CrazyRoosterAssetProvider,
+  atlasKind: ProviderAtlasKind,
+): Promise<Record<string, Texture>> => {
+  const pack = getPackForProvider(provider);
+  const atlas = pack?.[atlasKind];
+
+  if (!atlas?.url || !atlas.data) {
+    return {};
+  }
+
+  const cacheKey = `${provider}:${atlasKind}:${atlas.url}`;
+  const cached = atlasTextureCache.get(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
+  const loading = (async () => {
+    await Assets.load(atlas.url!);
+    const spritesheet = new Spritesheet({
+      texture: Texture.from(atlas.url!),
+      data: atlas.data as SpritesheetData,
+      cachePrefix: `${provider}:${atlasKind}:`,
+    });
+
+    return spritesheet.parseSync();
+  })().catch((error) => {
+    console.warn(
+      `[ProviderPack] Failed to build spritesheet for ${provider}.${atlasKind}:`,
+      error,
+    );
+    atlasTextureCache.delete(cacheKey);
+    return {};
+  });
+
+  atlasTextureCache.set(cacheKey, loading);
+  return loading;
+};
+
+export const resolveProviderFrameTexture = async (
+  atlasKind: ProviderAtlasKind,
+  frameKey: string,
+  preferredProvider = getProviderPackStatus().effectiveProvider,
+): Promise<ProviderResolvedTexture> => {
+  const providerChain = Array.from(
+    new Set<CrazyRoosterAssetProvider>([preferredProvider, "openai"]),
+  );
+
+  for (const provider of providerChain) {
+    const textures = await loadAtlasTextures(provider, atlasKind);
+    const texture = textures[frameKey];
+    if (texture) {
+      return {
+        texture,
+        resolvedProvider: provider,
+        fallbackUsed: provider !== preferredProvider,
+      };
+    }
+  }
+
+  return {
+    texture: null,
+    resolvedProvider: null,
+    fallbackUsed: preferredProvider !== "openai",
+  };
+};
+
+export const getProviderDebugLine = (): string => {
+  const status = getProviderPackStatus();
+  return `provider req=${status.requestedProvider} eff=${status.effectiveProvider} safe=${status.safePlaceholder ? 1 : 0} missing=${status.missingKeys.length}`;
+};

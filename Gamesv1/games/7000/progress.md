@@ -37,3 +37,9 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
     - `openai` resolves cleanly with `effectiveProvider=openai`.
     - `nanobanana` keeps `effectiveProvider=nanobanana` and remains `safePlaceholder=true` because the committed pack is still missing `vfxAtlas.file`.
     - `donorlocal` falls back to `effectiveProvider=openai` with a warning when the local manifest path is absent or returns non-JSON.
+- 2026-03-09: Completed QA beta 2B real-provider rendering pass on branch `qa/7000-beta2b-real-provider-rendering-20260309-0956`.
+  - imported the committed NanoBanana runtime atlases from `origin/assets/7000-nanobanana-runtime-20260309-0756` under `assets/providers/nanobanana/runtime/`.
+  - replaced reel text tiles with atlas-driven symbol rendering using the fallback chain `selected provider -> openai -> placeholder`, with `debugSymbolLabels=1` as the only opt-in label mode.
+  - applied provider atlas usage to reel chrome and lightning VFX, added a prewarmed `LightningArcFx`, and surfaced `requestedProvider`, `effectiveProvider`, `safePlaceholder`, and `missingKeys` on-screen for QA.
+  - captured proof artifacts under `docs/_visual_proof/beta2b-2026-03-09/`, including openai/nanobanana/donorlocal idle states plus openai/nanobanana lightning frames and provider state JSON.
+  - donorlocal is active in this local checkout because the ignored manifest under `Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json` now satisfies the provider contract.

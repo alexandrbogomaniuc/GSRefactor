@@ -2,12 +2,17 @@ import { Container, Graphics, Sprite, Text, Texture } from "pixi.js";
 
 import {
   CRAZY_ROOSTER_LAYOUT,
+  CRAZY_ROOSTER_SYMBOL_FRAME_KEYS,
   CRAZY_ROOSTER_SYMBOL_LABELS,
 } from "../config/CrazyRoosterGameConfig";
+import {
+  getProviderPackStatus,
+  resolveProviderFrameTexture,
+} from "../../app/assets/providerPackRegistry";
 
 export class CrazyRoosterSymbol extends Container {
   private readonly backing = new Graphics();
-  private readonly sprite = new Sprite(Texture.WHITE);
+  private readonly sprite = new Sprite();
   private readonly labelText = new Text({
     text: "",
     style: {
@@ -19,10 +24,13 @@ export class CrazyRoosterSymbol extends Container {
       align: "center",
     },
   });
+  private readonly showDebugLabels =
+    new URLSearchParams(window.location.search).get("debugSymbolLabels") === "1";
+  private textureRequestToken = 0;
 
   public symbolId = -1;
 
-  constructor(private readonly assetRoot: string) {
+  constructor() {
     super();
 
     this.sprite.width = CRAZY_ROOSTER_LAYOUT.symbolWidth - 14;
@@ -35,6 +43,7 @@ export class CrazyRoosterSymbol extends Container {
     this.labelText.anchor.set(0.5);
     this.labelText.x = CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5;
     this.labelText.y = CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5;
+    this.labelText.visible = this.showDebugLabels;
     this.addChild(this.labelText);
   }
 
@@ -62,6 +71,7 @@ export class CrazyRoosterSymbol extends Container {
     this.sprite.tint = palette.fill;
     this.labelText.text = CRAZY_ROOSTER_SYMBOL_LABELS[normalized] ?? String(normalized);
     this.labelText.style.fill = palette.text;
+    void this.applyResolvedTexture(normalized, palette.fill);
   }
 
   private resolvePalette(symbolId: number): {
@@ -70,7 +80,7 @@ export class CrazyRoosterSymbol extends Container {
     border: number;
     text: number;
   } {
-    const isNanobanana = this.assetRoot.includes("nanobanana");
+    const isNanobanana = getProviderPackStatus().effectiveProvider === "nanobanana";
     const openAiPalette = [
       0xa1171f,
       0xd36c11,
@@ -103,5 +113,26 @@ export class CrazyRoosterSymbol extends Container {
       border: isNanobanana ? 0xffffff : 0xc7141a,
       text: 0xffffff,
     };
+  }
+
+  private async applyResolvedTexture(symbolId: number, fallbackTint: number): Promise<void> {
+    const requestToken = ++this.textureRequestToken;
+    const frameKey = CRAZY_ROOSTER_SYMBOL_FRAME_KEYS[symbolId];
+    const resolved = frameKey
+      ? await resolveProviderFrameTexture("symbolAtlas", frameKey)
+      : { texture: null };
+
+    if (requestToken !== this.textureRequestToken || this.symbolId !== symbolId) {
+      return;
+    }
+
+    if (resolved.texture) {
+      this.sprite.texture = resolved.texture;
+      this.sprite.tint = 0xffffff;
+      return;
+    }
+
+    this.sprite.texture = Texture.WHITE;
+    this.sprite.tint = fallbackTint;
   }
 }

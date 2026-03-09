@@ -1,7 +1,8 @@
-import { Container, Graphics, Ticker } from "pixi.js";
+import { Container, Graphics, Sprite, Texture, Ticker } from "pixi.js";
 
 import { CRAZY_ROOSTER_LAYOUT } from "../config/CrazyRoosterGameConfig";
 import { CrazyRoosterReel } from "./CrazyRoosterReel";
+import { resolveProviderFrameTexture } from "../../app/assets/providerPackRegistry";
 
 export interface CrazyRoosterSpinOptions {
   minSpinDurationMs?: number;
@@ -13,12 +14,26 @@ export interface CrazyRoosterSpinOptions {
 export class CrazyRoosterSlotMachine extends Container {
   private readonly reels: CrazyRoosterReel[] = [];
   private readonly ticker = new Ticker();
+  private readonly reelFrame = new Sprite(Texture.WHITE);
   private isSpinning = false;
 
   public onSpinComplete: () => void = () => {};
 
   constructor(assetRoot: string) {
     super();
+
+    const machineWidth =
+      CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
+      (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing;
+    const machineHeight =
+      CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
+      (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
+
+    this.reelFrame.width = machineWidth;
+    this.reelFrame.height = machineHeight;
+    this.reelFrame.alpha = 0.9;
+    this.reelFrame.tint = 0x3f0a10;
+    this.addChild(this.reelFrame);
 
     for (let index = 0; index < CRAZY_ROOSTER_LAYOUT.reelCount; index += 1) {
       const reel = new CrazyRoosterReel(index, assetRoot);
@@ -31,15 +46,14 @@ export class CrazyRoosterSlotMachine extends Container {
     mask.roundRect(
       0,
       0,
-      CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
-        (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing,
-      CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
-        (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing,
+      machineWidth,
+      machineHeight,
       18,
     );
     mask.fill(0xffffff);
     this.addChild(mask);
     this.mask = mask;
+    void this.applyReelFrameTexture();
 
     this.ticker.add((ticker) => {
       if (!this.isSpinning) {
@@ -89,5 +103,17 @@ export class CrazyRoosterSlotMachine extends Container {
 
   public getReels(): CrazyRoosterReel[] {
     return this.reels;
+  }
+
+  private async applyReelFrameTexture(): Promise<void> {
+    const resolved = await resolveProviderFrameTexture("uiAtlas", "reel-frame-panel");
+    if (resolved.texture) {
+      this.reelFrame.texture = resolved.texture;
+      this.reelFrame.tint = 0xffffff;
+      return;
+    }
+
+    this.reelFrame.texture = Texture.WHITE;
+    this.reelFrame.tint = 0x3f0a10;
   }
 }

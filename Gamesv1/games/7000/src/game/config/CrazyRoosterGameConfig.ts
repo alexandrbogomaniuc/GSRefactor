@@ -105,16 +105,29 @@ export const CRAZY_ROOSTER_FEATURE_FLAGS = {
 } as const;
 
 export const CRAZY_ROOSTER_SYMBOL_LABELS = [
-  "CHERRY",
+  "EGG",
+  "CHERRIES",
   "LEMON",
   "ORANGE",
   "PLUM",
-  "GRAPE",
-  "MELON",
   "BAR",
-  "777",
-  "CHICKEN",
-  "SUPER",
+  "SEVEN",
+  "COIN",
+  "BOLT",
+  "ROOSTER",
+] as const;
+
+export const CRAZY_ROOSTER_SYMBOL_FRAME_KEYS = [
+  "symbol-0-egg",
+  "symbol-1-cherries",
+  "symbol-2-lemon",
+  "symbol-3-orange",
+  "symbol-4-plum",
+  "symbol-5-bar",
+  "symbol-6-seven",
+  "symbol-7-coin",
+  "symbol-8-bolt",
+  "symbol-9-rooster",
 ] as const;
 
 export const CRAZY_ROOSTER_IDLE_COLUMNS = [

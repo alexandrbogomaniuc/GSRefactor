@@ -1,0 +1,97 @@
+[
+  {
+    "shot": "openai-idle.png",
+    "provider": "openai",
+    "status": {
+      "requestedProvider": "openai",
+      "effectiveProvider": "openai",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "/raw-assets/preload%7Bm%7D/logo.svg",
+      "backgrounds": {
+        "desktop": "/assets/providers/openai/runtime/background-desktop-1920x1080.png",
+        "landscape": "/assets/providers/openai/runtime/background-landscape-safe-1600x900.png",
+        "portrait": "/assets/providers/openai/runtime/background-portrait-1080x1920.png"
+      }
+    }
+  },
+  {
+    "shot": "nanobanana-idle.png",
+    "provider": "nanobanana",
+    "status": {
+      "requestedProvider": "nanobanana",
+      "effectiveProvider": "nanobanana",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "/raw-assets/preload%7Bm%7D/logo.svg",
+      "backgrounds": {
+        "desktop": "/assets/providers/nanobanana/runtime/background-desktop-1920x1080.png",
+        "landscape": "/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png",
+        "portrait": "/assets/providers/nanobanana/runtime/background-portrait-1080x1920.png"
+      }
+    }
+  },
+  {
+    "shot": "donorlocal-idle.png",
+    "provider": "donorlocal",
+    "status": {
+      "requestedProvider": "donorlocal",
+      "effectiveProvider": "donorlocal",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "http://127.0.0.1:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/logo.2ea1fa99.png",
+      "backgrounds": {
+        "desktop": "http://127.0.0.1:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBg.af5e8e37.png",
+        "landscape": "http://127.0.0.1:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBg.af5e8e37.png",
+        "portrait": "http://127.0.0.1:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/image/mainBgMobile.d924d35d.png"
+      },
+      "manifestUrl": "http://127.0.0.1:8081/@fs/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json"
+    }
+  },
+  {
+    "shot": "openai-boost.png",
+    "provider": "openai",
+    "status": {
+      "requestedProvider": "openai",
+      "effectiveProvider": "openai",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "/raw-assets/preload%7Bm%7D/logo.svg",
+      "backgrounds": {
+        "desktop": "/assets/providers/openai/runtime/background-desktop-1920x1080.png",
+        "landscape": "/assets/providers/openai/runtime/background-landscape-safe-1600x900.png",
+        "portrait": "/assets/providers/openai/runtime/background-portrait-1080x1920.png"
+      }
+    },
+    "samples": [
+      1800,
+      2200,
+      2500,
+      2800,
+      3200
+    ]
+  },
+  {
+    "shot": "nanobanana-boost.png",
+    "provider": "nanobanana",
+    "status": {
+      "requestedProvider": "nanobanana",
+      "effectiveProvider": "nanobanana",
+      "safePlaceholder": false,
+      "missingKeys": [],
+      "wordmarkUrl": "/raw-assets/preload%7Bm%7D/logo.svg",
+      "backgrounds": {
+        "desktop": "/assets/providers/nanobanana/runtime/background-desktop-1920x1080.png",
+        "landscape": "/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png",
+        "portrait": "/assets/providers/nanobanana/runtime/background-portrait-1080x1920.png"
+      }
+    },
+    "samples": [
+      1800,
+      2200,
+      2500,
+      2800,
+      3200
+    ]
+  }
+]
