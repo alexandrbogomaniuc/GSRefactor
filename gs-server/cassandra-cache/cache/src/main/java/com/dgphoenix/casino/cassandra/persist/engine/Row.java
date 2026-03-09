@@ -45,6 +45,14 @@ public class Row {
         return row.getBytes(name);
     }
 
+    public ByteBuffer getBytesUnsafe(String name) {
+        return row.getBytesUnsafe(name);
+    }
+
+    public <T> T get(String name, Class<T> elementsClass) {
+        return row.get(name, elementsClass);
+    }
+
     public UUID getUUID(String name) {
         return row.getUUID(name);
     }

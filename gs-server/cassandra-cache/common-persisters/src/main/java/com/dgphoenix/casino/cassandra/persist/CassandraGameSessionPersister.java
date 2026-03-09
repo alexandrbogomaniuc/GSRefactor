@@ -257,8 +257,8 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         }
         query.orderBy(Cql.desc(END_TIME_FIELD));
         query.limit(1);
-        com.datastax.driver.core.ResultSet rows = execute(query, "getSerialNumber");
-        com.datastax.driver.core.Row row = rows.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet rows = executeWrapped(query, "getSerialNumber");
+        com.abs.casino.cassandra.persist.engine.Row row = rows.one();
         LongPair result;
         if (row == null) {
             getLog().info("getSerialNumber: row is empty: accountId={}, gameId={}, mode={}", accountId, gameId, mode);
@@ -433,8 +433,8 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         Map<String, MutableInt> timeToCounter = new HashMap<>();
 
         Select query = getSelectAllColumnsQuery();
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "rebuidBankIndex");
-        for (com.datastax.driver.core.Row row : resultSet) {
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "rebuidBankIndex");
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             GameSession currentGameSession = convert(row);
             if (currentGameSession == null) {
                 continue;
@@ -455,7 +455,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
                     and(eq(GAME_ID_FIELD, currentGameSession.getGameId())).
                     and(eq(END_TIME_FIELD, currentGameSession.getEndTime())).
                     and(eq(ACCOUNT_ID_FIELD, currentGameSession.getAccountId())).limit(1);
-            com.datastax.driver.core.Row concreteSelectResult = execute(selectExistIdForConcreteGame,
+            com.abs.casino.cassandra.persist.engine.Row concreteSelectResult = executeWrapped(selectExistIdForConcreteGame,
                     "rebuildBankIndex: select in bankIndexTable exist game session id").one();
 
             long gameSessionId;
@@ -491,7 +491,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
                     and(eq(GAME_ID_FIELD, ALL_GAMES_ID)).
                     and(eq(END_TIME_FIELD, currentGameSession.getEndTime())).
                     and(eq(ACCOUNT_ID_FIELD, currentGameSession.getAccountId())).limit(1);
-            com.datastax.driver.core.Row forAllSelectResult = execute(selectExistIdForAllGames,
+            com.abs.casino.cassandra.persist.engine.Row forAllSelectResult = executeWrapped(selectExistIdForAllGames,
                     "rebuildBankIndex: select in bankIndexTable exist game session id for all games").one();
 
             if (forAllSelectResult == null || (gameSessionId = forAllSelectResult.getLong(GAME_SESSION_ID_FIELD)) == 0l ||
@@ -700,9 +700,9 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         where.and(Cql.lte(END_TIME_FIELD, endDate.getTime()));
         query.orderBy(Cql.asc(END_TIME_FIELD));
         query.limit(count);
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getRecords");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getRecords");
         List<GameSession> result = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             GameSession session = convert(row);
             if (session == null) {
                 continue;
@@ -728,9 +728,9 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         getLog().debug("getRecordsByDay: after tune fetchSize={}, readReadTimeout={}", query.getFetchSize(),
                 query.getReadTimeoutMillis() / 1000);
 
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getRecordsByDay", 5);
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getRecordsByDay", 5);
         List<GameSession> result = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             GameSession session = convert(row);
             if (session == null) {
                 continue;
@@ -777,8 +777,8 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
     private GameSession getRefferedSession(long gameSessionId, String refferedField) {
         Select query = getSelectColumnsQuery(refferedField);
         query.where().and(eq(getKeyColumnName(), gameSessionId));
-        com.datastax.driver.core.ResultSet rows = execute(query, "getPrevSession");
-        com.datastax.driver.core.Row row = rows.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet rows = executeWrapped(query, "getPrevSession");
+        com.abs.casino.cassandra.persist.engine.Row row = rows.one();
         if (row == null || row.isNull(refferedField)) {
             return null;
         }
@@ -798,8 +798,8 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         Select query = getSelectAllColumnsQuery(GAME_INDEX_TABLE);
         query.where().and(eq(GAME_ID_FIELD, gameId)).and(eq(ACCOUNT_ID_FIELD, accountId)).limit(1);
         query.orderBy(Cql.desc(END_TIME_FIELD));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getLastGameSession");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getLastGameSession");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         Long gameSessionId = null;
         if (row != null) {
             gameSessionId = row.getLong(GAME_SESSION_ID_FIELD);
@@ -824,8 +824,8 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
             }
             Select query = getSelectAllColumnsQuery();
             query.where().and(Cql.in(GAME_SESSION_ID_FIELD, gameSessionIds.subList(startIndex, endIndex).toArray()));
-            com.datastax.driver.core.ResultSet resultSet = execute(query, "getGameSessionList");
-            for (com.datastax.driver.core.Row row : resultSet) {
+            com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getGameSessionList");
+            for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
                 GameSession gameSession = convert(row);
                 if (gameSession != null) {
                     processor.process(gameSession);
@@ -838,7 +838,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
                                               int mode, com.abs.casino.cassandra.persist.IGameSessionProcessor processor) {
         Select selectFromIndexTable = getSelect(accountId, gameIds, startDate, endDate, mode);
         selectFromIndexTable.setFetchSize(1000);
-        com.datastax.driver.core.ResultSet result = execute(selectFromIndexTable, "selectAccountGameSessions");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(selectFromIndexTable, "selectAccountGameSessions");
         List<Long> gameSessionIds = StreamUtils.asStream(result)
                 .map(record -> record.getLong(GAME_SESSION_ID_FIELD))
                 .collect(Collectors.toList());
@@ -853,7 +853,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         Date correctedEndDate = null;
         Select lastRecordSelect = getSelect(accountId, gameIds, startDate, endDate, mode);
         lastRecordSelect.limit(1);
-        com.datastax.driver.core.Row lastRow = execute(lastRecordSelect, "getGameSessionList: lastRecordSelect").one();
+        com.abs.casino.cassandra.persist.engine.Row lastRow = executeWrapped(lastRecordSelect, "getGameSessionList: lastRecordSelect").one();
         if (lastRow != null) {
             long lastNumber = lastRow.getLong(GAME_SERIAL_NUMBER_FIELD);
             long lastGameSessionId = lastRow.getLong(GAME_SESSION_ID_FIELD);
@@ -872,7 +872,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
                 }
                 long newLastNumber = lastNumber - from;
                 query.where().and(eq(GAME_SERIAL_NUMBER_FIELD, newLastNumber));
-                com.datastax.driver.core.Row newLastRow = execute(query, "getGameSessionList: find newLastRow").one();
+                com.abs.casino.cassandra.persist.engine.Row newLastRow = executeWrapped(query, "getGameSessionList: find newLastRow").one();
                 if (newLastRow != null) {
                     long newLastGameSessionId = newLastRow.getLong(GAME_SESSION_ID_FIELD);
                     long newLastEndDate = newLastRow.getLong(END_TIME_FIELD);
@@ -891,9 +891,9 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         Select mainQuery = getSelect(accountId, gameIds, startDate,
                 correctedEndDate != null ? correctedEndDate : endDate, mode);
         mainQuery.limit(count);
-        com.datastax.driver.core.ResultSet resultSet = execute(mainQuery, "getGameSessionList");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(mainQuery, "getGameSessionList");
         List<Long> gameSessionIds = new ArrayList<>(count);
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             long gameSessionId = row.getLong(GAME_SESSION_ID_FIELD);
             gameSessionIds.add(gameSessionId);
         }
@@ -928,7 +928,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         select.where(eq(GAME_ID_FIELD, ALL_GAMES_ID))
                 .and(eq(ACCOUNT_ID_FIELD, accountId));
 
-        return StreamUtils.asStream(execute(select, "Select all accounts game sessions"))
+        return StreamUtils.asStream(executeWrapped(select, "Select all accounts game sessions"))
                 .map(row -> row.getLong(GAME_SESSION_ID_FIELD))
                 .collect(Collectors.toList());
     }
@@ -942,9 +942,9 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         where.and(Cql.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0));
         where.and(Cql.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
         query.orderBy(Cql.desc(END_TIME_FIELD));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getBankGameSessionsIds");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getBankGameSessionsIds");
         List<Long> gameSessionIds = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             long gameSessionId = row.getLong(GAME_SESSION_ID_FIELD);
             gameSessionIds.add(gameSessionId);
         }
@@ -969,9 +969,9 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         where.and(Cql.gte(END_TIME_FIELD, startDate != null ? startDate.getTime() : 0));
         where.and(Cql.lte(END_TIME_FIELD, endDate != null ? endDate.getTime() : Long.MAX_VALUE));
         query.orderBy(Cql.desc(END_TIME_FIELD));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getBankActiveAccountIds");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getBankActiveAccountIds");
         List<Long> accountIds = new ArrayList<>(count);
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             long accountId = row.getLong(ACCOUNT_ID_FIELD);
             accountIds.add(accountId);
         }
@@ -984,7 +984,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
     public GameSession get(long gameSessionId) {
         Select query = getSelectAllColumnsQuery();
         query.where(eq(getKeyColumnName(), gameSessionId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "get");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "get");
         return convert(resultSet.one());
     }
 
@@ -992,9 +992,9 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         long now = System.currentTimeMillis();
         Select query = getSelectAllColumnsQuery();
         query.where(eq(EXT_SESSION_ID_FIELD, externalId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExternalId");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByExternalId");
         GameSession resultSession = null;
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             GameSession gameSession = convert(row);
             if (gameSession == null) {
                 continue;
@@ -1009,7 +1009,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         return resultSession;
     }
 
-    private GameSession convert(com.datastax.driver.core.Row row) {
+    private GameSession convert(com.abs.casino.cassandra.persist.engine.Row row) {
         if (row == null) {
             return null;
         }
@@ -1222,7 +1222,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
             );
             batch.add(mainDelete);
         }
-        com.datastax.driver.core.ResultSet delete = execute(batch, "delete");
+        com.abs.casino.cassandra.persist.engine.ResultSet delete = executeWrapped(batch, "delete");
         return delete.wasApplied();
     }
 
@@ -1283,7 +1283,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
             );
             batch.add(mainDelete);
         }
-        com.datastax.driver.core.ResultSet delete = execute(batch, "delete");
+        com.abs.casino.cassandra.persist.engine.ResultSet delete = executeWrapped(batch, "delete");
         return delete.wasApplied();
     }
 

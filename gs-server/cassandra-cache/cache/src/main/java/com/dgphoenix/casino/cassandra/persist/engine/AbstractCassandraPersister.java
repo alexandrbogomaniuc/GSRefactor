@@ -333,6 +333,11 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return ResultSet.wrap(execute(statement, callerClassMethodIdentification, level));
     }
 
+    protected ResultSet executeWrapped(com.datastax.driver.core.querybuilder.Select statement, String callerClassMethodIdentification,
+                                       int queryReadTimeoutAttempts) {
+        return ResultSet.wrap(execute(statement, callerClassMethodIdentification, queryReadTimeoutAttempts));
+    }
+
     protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.querybuilder.Select statement, String callerClassMethodIdentification,
                                 int queryReadTimeoutAttempts) {
         com.datastax.driver.core.ResultSet resultSet = null;
