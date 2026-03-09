@@ -4,6 +4,8 @@ import com.abs.casino.cassandra.persist.engine.Cql;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.geoip.CountryRestrictionList;
@@ -70,8 +72,8 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
                 .where()
                 .and(eq(OBJECT_ID, objectId))
                 .and(eq(RESTRICTION_TYPE, type.ordinal()));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "get");
-        com.datastax.driver.core.Row row = resultSet.one();
+        ResultSet resultSet = executeWrapped(query, "get");
+        Row row = resultSet.one();
         if (row != null) {
             String json = row.getString(JSON_COLUMN_NAME);
             result = COUNTRIES_TABLE.deserializeFromJson(json, CountryRestrictionList.class);

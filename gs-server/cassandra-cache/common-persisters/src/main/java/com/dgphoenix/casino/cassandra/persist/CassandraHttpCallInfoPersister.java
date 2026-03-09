@@ -3,6 +3,8 @@ package com.abs.casino.cassandra.persist;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.util.StreamUtils;
 import com.abs.casino.common.util.support.HttpCallInfo;
@@ -147,7 +149,7 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
         com.datastax.driver.core.Statement query = select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(CF_NAME)
                 .where(eq(columnName, value));
-        com.datastax.driver.core.ResultSet rows = execute(query, "getMany");
+        ResultSet rows = executeWrapped(query, "getMany");
         return StreamUtils.asStream(rows)
                 .map(this::toHttpCallInfoOptional)
                 .filter(Optional::isPresent)
@@ -155,7 +157,7 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
                 .collect(toList());
     }
 
-    private Optional<HttpCallInfo> toHttpCallInfoOptional(com.datastax.driver.core.Row row) {
+    private Optional<HttpCallInfo> toHttpCallInfoOptional(Row row) {
         Optional<HttpCallInfo> httpCallInfo = Optional.ofNullable(row.getString(JSON_COLUMN_NAME))
                 .map(json -> TABLE.deserializeFromJson(json, HttpCallInfo.class));
 

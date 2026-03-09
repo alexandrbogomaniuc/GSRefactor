@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
@@ -41,7 +42,7 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
         com.datastax.driver.core.Statement selectExecutionTime = getSelectColumnsQuery(LAST_EXECUTION_TIME)
                 .where(eq(TASK_KEY, taskKey));
 
-        com.datastax.driver.core.Row result = execute(selectExecutionTime, "getLastExecutionTime").one();
+        Row result = executeWrapped(selectExecutionTime, "getLastExecutionTime").one();
         Long lastExecutionTime = null;
         if (result != null) {
             lastExecutionTime = result.getLong(LAST_EXECUTION_TIME);
@@ -54,7 +55,7 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
         com.datastax.driver.core.Statement selectExecutionTime = getSelectColumnsQuery(TASK_DATA)
                 .where(eq(TASK_KEY, taskKey));
 
-        com.datastax.driver.core.Row result = execute(selectExecutionTime, "getTaskData").one();
+        Row result = executeWrapped(selectExecutionTime, "getTaskData").one();
         T taskData = null;
         if (result != null) {
             String json = result.getString(JSON_COLUMN_NAME);

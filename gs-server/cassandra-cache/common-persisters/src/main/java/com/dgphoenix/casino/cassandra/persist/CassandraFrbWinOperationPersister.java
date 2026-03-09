@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.CacheKeyInfo;
 import com.abs.casino.common.cache.IDistributedCache;
@@ -81,9 +82,9 @@ public class CassandraFrbWinOperationPersister extends AbstractCassandraPersiste
 
     public List<FRBWinOperation> getByAccountId(long accountId) {
         List<FRBWinOperation> result = new LinkedList<>();
-        Iterator<com.datastax.driver.core.Row> it = getAll(eq(ACCOUNT_ID_FIELD, accountId));
+        Iterator<Row> it = getAllWrapped(eq(ACCOUNT_ID_FIELD, accountId));
         while (it.hasNext()) {
-            com.datastax.driver.core.Row row = it.next();
+            Row row = it.next();
             String json = row.getString(JSON_COLUMN_NAME);
             ByteBuffer bytes = row.getBytes(SERIALIZED_COLUMN_NAME);
             FRBWinOperation operation = TABLE.deserializeFromJson(json, FRBWinOperation.class);

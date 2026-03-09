@@ -2,6 +2,8 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.data.payment.PaymentMode;
 import com.abs.casino.common.cache.data.payment.transfer.ExternalPaymentTransaction;
@@ -69,8 +71,8 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
         String key = getInternalId(mode, internalOperationId);
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(INTERNAL_ID_FIELD, key));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByInternalId");
-        com.datastax.driver.core.Row row = resultSet.one();
+        ResultSet resultSet = executeWrapped(query, "getByInternalId");
+        Row row = resultSet.one();
         if (row == null) {
             return null;
         }

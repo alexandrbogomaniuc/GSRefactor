@@ -4,6 +4,8 @@ import com.abs.casino.cassandra.persist.engine.Cql;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.BankInfoCache;
 import com.abs.casino.common.cache.data.bank.BankInfo;
@@ -65,8 +67,8 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
         long now = System.currentTimeMillis();
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(ROUND_ID_FIELD, EXP_TIME)
                 .where(eq(TOKEN_FIELD, token));
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "getRoundId");
-        com.datastax.driver.core.Row row = resultSet.one();
+        ResultSet resultSet = executeWrapped(select, "getRoundId");
+        Row row = resultSet.one();
         if (row != null) {
             long expTime = row.getLong(EXP_TIME);
             if (expTime > now) {

@@ -3,6 +3,8 @@ package com.abs.casino.cassandra.persist;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.Cql;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.games.CdnCheckResult;
 import com.abs.casino.common.games.ICassandraHostCdnPersister;
@@ -71,10 +73,10 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
                 .column(LAST_UPDATE_FIELD)
                 .from(COLUMN_FAMILY_NAME)
                 .where(Cql.eq(IP_FIELD, ip)).limit(1000);
-        com.datastax.driver.core.ResultSet rows = execute(query, "getCdnByIp");
+        ResultSet rows = executeWrapped(query, "getCdnByIp");
 
         List<CdnCheckResult> result = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : rows) {
+        for (Row row : rows) {
             result.add(new CdnCheckResult(row.getString(CDN_FIELD), row.getInt(TIME_FIELD), row.getLong(LAST_UPDATE_FIELD)));
         }
 
