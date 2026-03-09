@@ -21,6 +21,8 @@ import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.google.common.base.Preconditions.checkState;
+import com.datastax.driver.core.querybuilder.QueryBuilder;
+
 
 /**
  * User: flsh
@@ -100,7 +102,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
     }
 
     public List<Bonus> getFinishedBonusList(Long accountId) {
-        com.datastax.driver.core.Statement select = com.datastax.driver.core.querybuilder.QueryBuilder
+        com.datastax.driver.core.Statement select = QueryBuilder
                 .select(BONUS_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(BONUS_ARCH_CF)
                 .where(eq(ACCOUNT_ID_FIELD, accountId));

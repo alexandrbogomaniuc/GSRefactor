@@ -18,6 +18,9 @@ import java.util.stream.Collectors;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import com.datastax.driver.core.querybuilder.Batch;
+import com.datastax.driver.core.querybuilder.Insert;
+
 
 public class CassandraCurrencyRatesByDatePersister extends AbstractCassandraPersister<String, String> {
     private static final String COLUMN_FAMILY = "CurrencyRatesByDateCF";
@@ -56,10 +59,10 @@ public class CassandraCurrencyRatesByDatePersister extends AbstractCassandraPers
     }
 
     public void createOrUpdate(long date, Set<CurrencyRate> currencyRates) {
-        com.datastax.driver.core.querybuilder.Batch batch = batch();
+        Batch batch = batch();
         long normalizedDate = normalizeDate(date);
         for (CurrencyRate currencyRate : currencyRates) {
-            com.datastax.driver.core.querybuilder.Insert query = getInsertQuery()
+            Insert query = getInsertQuery()
                     .value(SOURCE_FIELD, currencyRate.getSourceCurrency())
                     .value(DEST_FIELD, currencyRate.getDestinationCurrency())
                     .value(UPDATE_DATE_FIELD, normalizedDate)

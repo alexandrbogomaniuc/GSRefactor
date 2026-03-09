@@ -25,6 +25,8 @@ import java.util.Iterator;
 
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import com.datastax.driver.core.querybuilder.Insert;
+
 
 /**
  * User: flsh
@@ -134,7 +136,7 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
                     addInsertion(seq.getName(), VALUE_COLUMN_NAME, newValue).ifNotExists(),
                     "persist[insert]");
             if (!resultSet.wasApplied()) {
-                getLog().warn("com.datastax.driver.core.querybuilder.Insert failed, sequencer already exist: seq=" + seq + ", newValue=" + newValue);
+                getLog().warn("Insert failed, sequencer already exist: seq=" + seq + ", newValue=" + newValue);
                 newCurrentValue = 0l;
                 com.datastax.driver.core.Row row = resultSet.one();
                 if (row != null) {

@@ -23,6 +23,8 @@ import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.varchar;
+import com.datastax.driver.core.querybuilder.Batch;
+
 
 /**
  * User: Grien
@@ -42,7 +44,7 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
 
     public void saveAll() {
         Map<? extends Object, ? extends T> objects = getCache().getAllObjects();
-        com.datastax.driver.core.querybuilder.Batch batch = Cql.batch();
+        Batch batch = Cql.batch();
         List<ByteBuffer> list = new ArrayList<>(objects.size());
         try {
             for (Map.Entry<? extends Object, ? extends T> entry : objects.entrySet()) {
@@ -118,7 +120,7 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
         super.deleteWithCheck(id);
     }
 
-    public void persistPrepared(com.datastax.driver.core.querybuilder.Batch batch) {
+    public void persistPrepared(Batch batch) {
         execute(batch, "persistPrepared");
     }
 

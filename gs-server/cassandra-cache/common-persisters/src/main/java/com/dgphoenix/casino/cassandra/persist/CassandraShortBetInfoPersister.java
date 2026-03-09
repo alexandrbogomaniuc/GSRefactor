@@ -15,6 +15,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
+import com.datastax.driver.core.querybuilder.Insert;
+
 
 
 
@@ -104,7 +106,7 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
         String json = getMainTableDefinition().serializeToJson(betInfo);
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(betInfo);
         byteBuffersCollector.add(byteBuffer);
-        com.datastax.driver.core.querybuilder.Insert query = getInsertQuery();
+        Insert query = getInsertQuery();
         query.value(BANK_ID_FIELD, betInfo.getBankId());
         query.value(BET_TIME_FIELD, betInfo.getTime());
         query.value(ACCOUNT_ID_FIELD, betInfo.getAccountId());
@@ -117,7 +119,7 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
     }
 
     public void persist(ShortBetInfo betInfo, Integer ttl) {
-        com.datastax.driver.core.querybuilder.Insert query = getInsertQuery();
+        Insert query = getInsertQuery();
         query.value(BANK_ID_FIELD, betInfo.getBankId());
         query.value(BET_TIME_FIELD, betInfo.getTime());
         query.value(ACCOUNT_ID_FIELD, betInfo.getAccountId());

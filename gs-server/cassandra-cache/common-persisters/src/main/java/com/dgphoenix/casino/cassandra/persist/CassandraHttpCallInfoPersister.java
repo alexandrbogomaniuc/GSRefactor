@@ -24,6 +24,8 @@ import static com.abs.casino.common.util.support.AdditionalInfoAttribute.*;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
+import com.datastax.driver.core.querybuilder.Insert;
+
 
 /**
  * @author <a href="mailto:noragami@dgphoenix.com">Alexander Aldokhin</a>
@@ -65,7 +67,7 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
         Map<String, String> additionalInfo = httpCallInfo.getAdditionalInfo();
         String sessionId = additionalInfo.get(SESSION_ID.getAttributeName());
         String supportTicketId = additionalInfo.get(SUPPORT_TICKET_ID.getAttributeName());
-        com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery();
+        Insert insert = getInsertQuery();
 
         if (sessionId != null) {
             insert.value(ID_FIELD, sessionId);
