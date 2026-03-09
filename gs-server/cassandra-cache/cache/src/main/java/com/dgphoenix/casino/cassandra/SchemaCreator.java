@@ -3,6 +3,7 @@ package com.abs.casino.cassandra;
 import com.abs.casino.cassandra.config.ClusterConfig;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import com.abs.casino.cassandra.persist.engine.Session;
+import com.abs.casino.cassandra.persist.engine.SchemaCql;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.configuration.ConfigHelper;
 import com.abs.casino.common.exception.CommonException;
@@ -51,7 +52,7 @@ public class SchemaCreator {
                     .put("replication_factor", config.getReplicationFactor())
                     .build();
         }
-        com.datastax.driver.core.schemabuilder.KeyspaceOptions createKeyspace = com.datastax.driver.core.schemabuilder.SchemaBuilder.createKeyspace(keyspaceName).ifNotExists()
+        com.datastax.driver.core.schemabuilder.KeyspaceOptions createKeyspace = SchemaCql.createKeyspace(keyspaceName).ifNotExists()
                 .with()
                 .replication(replicationOptions);
         LOG.info("Creating keyspace...");
