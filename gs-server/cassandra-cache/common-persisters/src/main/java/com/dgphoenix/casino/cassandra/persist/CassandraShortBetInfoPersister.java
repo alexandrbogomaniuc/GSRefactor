@@ -61,8 +61,8 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
                 .where(eq(BANK_ID_FIELD, bankId))
                 .and(Cql.gte(BET_TIME_FIELD, startDate))
                 .and(Cql.lte(BET_TIME_FIELD, endDate));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByBank");
-        for (com.datastax.driver.core.Row row : resultSet) {
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByBank");
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             ShortBetInfo info = TABLE.deserializeFromJson(json, ShortBetInfo.class);
 
@@ -86,9 +86,9 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
                 .where(eq(BANK_ID_FIELD, bankId))
                 .and(Cql.gte(BET_TIME_FIELD, startDate))
                 .and(Cql.lte(BET_TIME_FIELD, endDate));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByBank");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByBank");
         List<ShortBetInfo> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             ShortBetInfo info = TABLE.deserializeFromJson(json, ShortBetInfo.class);
 

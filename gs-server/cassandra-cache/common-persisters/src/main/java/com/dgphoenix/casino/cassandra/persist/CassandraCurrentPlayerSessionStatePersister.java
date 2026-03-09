@@ -60,7 +60,7 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
         return LOG;
     }
 
-    private CassandraPlayerSessionState extractFromRow(com.datastax.driver.core.Row row) {
+    private CassandraPlayerSessionState extractFromRow(com.abs.casino.cassandra.persist.engine.Row row) {
 
         if(row == null) {
             return null;
@@ -83,8 +83,8 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
 
         getLog().debug("getBySid: sid={}, query={}", sid, query);
 
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getBySid");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getBySid");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         return extractFromRow(row);
     }
 
@@ -96,8 +96,8 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
 
         getLog().debug("getByExtId: extId={}, query={}", extId, query);
 
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExtId");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByExtId");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
 
         return extractFromRow(row);
     }
