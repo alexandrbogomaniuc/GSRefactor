@@ -46,9 +46,9 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where()
                 .and(eq(ACCOUNT_ID_FIELD, accountId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "get");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "get");
         List<PlayerGameSettings> result = new ArrayList();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             PlayerGameSettings settings = TABLE.deserializeFromJson(json, PlayerGameSettings.class);
 
@@ -73,8 +73,8 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
                 .where()
                 .and(eq(ACCOUNT_ID_FIELD, accountId))
                 .and(eq(GAME_ID_FIELD, gameId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "get");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "get");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         if (row != null) {
             String json = row.getString(JSON_COLUMN_NAME);
             result = TABLE.deserializeFromJson(json, PlayerGameSettings.class);

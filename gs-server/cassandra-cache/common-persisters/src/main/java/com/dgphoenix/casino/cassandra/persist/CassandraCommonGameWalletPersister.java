@@ -144,8 +144,8 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
     public CommonGameWallet getById(long accountId, int gameId) {
         Select query = Cql.select().from(getMainColumnFamilyName());
         query.where().and(eq(ACCOUNT_ID_FIELD, accountId)).and(eq(GAME_ID_FIELD, gameId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getById");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getById");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         return row == null ? null : extractFromResult(row);
     }
 
@@ -153,9 +153,9 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
     public IWallet getWallet(long accountId) {
         Select query = Cql.select().from(getMainColumnFamilyName());
         query.where().and(eq(ACCOUNT_ID_FIELD, accountId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getWallet", 2);
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getWallet", 2);
         CommonWallet wallet = new CommonWallet(accountId);
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             CommonGameWallet gameWallet = extractFromResult(row);
             wallet.addGameWallet(gameWallet);
         }
@@ -178,7 +178,7 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
         execute(query, "removeGameWallet");
     }
 
-    private CommonGameWallet extractFromResult(com.datastax.driver.core.Row result) {
+    private CommonGameWallet extractFromResult(com.abs.casino.cassandra.persist.engine.Row result) {
         long roundId = result.getLong(ROUND_ID_FIELD);
         long gameSessionId = result.getLong(GAME_SESSION_ID_FIELD);
         long winAmount = result.getLong(WIN_AMOUNT_FIELD);

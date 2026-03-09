@@ -39,7 +39,7 @@ public class CassandraRoundGameSessionPersister extends AbstractCassandraPersist
                     new ColumnDefinition(WRITE_TIME, bigint(), false, false, false)
             ), ROUND_ID_FIELD);
 
-    private static final Comparator<com.datastax.driver.core.Row> sortComparator = (o1, o2) -> (int) (o1.getLong(WRITE_TIME) - o2.getLong(WRITE_TIME));
+    private static final Comparator<com.abs.casino.cassandra.persist.engine.Row> sortComparator = (o1, o2) -> (int) (o1.getLong(WRITE_TIME) - o2.getLong(WRITE_TIME));
 
     protected CassandraRoundGameSessionPersister() {
     }
@@ -77,12 +77,12 @@ public class CassandraRoundGameSessionPersister extends AbstractCassandraPersist
                 .column(ACCOUNT_ID_FIELD)
                 .from(COLUMN_FAMILY_NAME)
                 .where(Cql.eq(ROUND_ID_FIELD, roundId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getGameSessionsByRoundId");
-        List<com.datastax.driver.core.Row> rows = Lists.newArrayList(resultSet);
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getGameSessionsByRoundId");
+        List<com.abs.casino.cassandra.persist.engine.Row> rows = Lists.newArrayList(resultSet);
         if (!rows.isEmpty()) {
             rows.sort(sortComparator);
             List<Long> result = new ArrayList<>(rows.size());
-            for (com.datastax.driver.core.Row row : rows) {
+            for (com.abs.casino.cassandra.persist.engine.Row row : rows) {
                 result.add(row.getLong(GAME_SID_FIELD));
             }
             return new Triple<>(result,
