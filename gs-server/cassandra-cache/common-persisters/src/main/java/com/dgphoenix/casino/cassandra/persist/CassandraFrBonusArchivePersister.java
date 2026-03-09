@@ -18,7 +18,7 @@ import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.google.common.base.Preconditions.checkState;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
+import com.abs.casino.cassandra.persist.engine.SchemaCql.Direction;
 
 
 

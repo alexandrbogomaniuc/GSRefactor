@@ -3,7 +3,7 @@ package com.abs.casino.cassandra.persist.engine.configuration;
 
 import static com.abs.casino.cassandra.persist.engine.SchemaCql.noRows;
 import static com.abs.casino.cassandra.persist.engine.SchemaCql.rows;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching;
+import com.abs.casino.cassandra.persist.engine.SchemaCql.KeyCaching;
 import com.abs.casino.cassandra.persist.engine.SchemaCql;
 
 /**

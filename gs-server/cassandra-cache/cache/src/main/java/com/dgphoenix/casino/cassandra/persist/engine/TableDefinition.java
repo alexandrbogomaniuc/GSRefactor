@@ -25,7 +25,6 @@ import static com.google.common.base.Preconditions.checkState;
 import static java.util.stream.Collectors.toMap;
 import static org.apache.commons.lang.StringUtils.join;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 
 /**
  * User: flsh
@@ -124,7 +123,7 @@ public class TableDefinition {
 
     public TableDefinition caching(@Nonnull Caching caching) {
         checkNotNull(caching, "Caching must be not null");
-        getOptions().caching(caching.getKeysCache(), caching.getRowsCache());
+        getOptions().caching(caching.getKeysCache().unwrap(), caching.getRowsCache());
         return this;
     }
 
@@ -146,8 +145,8 @@ public class TableDefinition {
         return this;
     }
 
-    public TableDefinition clusteringOrder(String columnName, Direction direction) {
-        getOptions().clusteringOrder(columnName, direction);
+    public TableDefinition clusteringOrder(String columnName, SchemaCql.Direction direction) {
+        getOptions().clusteringOrder(columnName, direction.unwrap());
         return this;
     }
 

@@ -16,7 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
+import com.abs.casino.cassandra.persist.engine.SchemaCql.Direction;
 
 
 

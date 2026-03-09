@@ -23,15 +23,33 @@ public final class SchemaCql {
     public static TableOptions.CachingRowsPerPartition noRows() { return SchemaBuilder.noRows(); }
     public static TableOptions.CachingRowsPerPartition rows(int rows) { return SchemaBuilder.rows(rows); }
 
-    public static final class Direction {
-        public static final SchemaBuilder.Direction ASC = SchemaBuilder.Direction.ASC;
-        public static final SchemaBuilder.Direction DESC = SchemaBuilder.Direction.DESC;
-        private Direction() {}
+    public enum Direction {
+        ASC(SchemaBuilder.Direction.ASC),
+        DESC(SchemaBuilder.Direction.DESC);
+
+        private final SchemaBuilder.Direction delegate;
+
+        Direction(SchemaBuilder.Direction delegate) {
+            this.delegate = delegate;
+        }
+
+        public SchemaBuilder.Direction unwrap() {
+            return delegate;
+        }
     }
 
-    public static final class KeyCaching {
-        public static final SchemaBuilder.KeyCaching NONE = SchemaBuilder.KeyCaching.NONE;
-        public static final SchemaBuilder.KeyCaching ALL = SchemaBuilder.KeyCaching.ALL;
-        private KeyCaching() {}
+    public enum KeyCaching {
+        NONE(SchemaBuilder.KeyCaching.NONE),
+        ALL(SchemaBuilder.KeyCaching.ALL);
+
+        private final SchemaBuilder.KeyCaching delegate;
+
+        KeyCaching(SchemaBuilder.KeyCaching delegate) {
+            this.delegate = delegate;
+        }
+
+        public SchemaBuilder.KeyCaching unwrap() {
+            return delegate;
+        }
     }
 }

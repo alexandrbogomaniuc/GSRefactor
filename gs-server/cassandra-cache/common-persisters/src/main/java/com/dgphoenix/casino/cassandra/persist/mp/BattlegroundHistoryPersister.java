@@ -20,7 +20,7 @@ import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.Delete;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
+import com.abs.casino.cassandra.persist.engine.SchemaCql.Direction;
 
 
 public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Long, String> {

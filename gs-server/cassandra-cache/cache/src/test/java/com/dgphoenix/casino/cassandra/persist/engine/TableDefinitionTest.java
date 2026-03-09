@@ -21,8 +21,8 @@ import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cboolea
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching;
+import com.abs.casino.cassandra.persist.engine.SchemaCql.Direction;
+import com.abs.casino.cassandra.persist.engine.SchemaCql.KeyCaching;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>
@@ -212,7 +212,7 @@ public class TableDefinitionTest {
                 .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .caching(KeyCaching.NONE, SchemaCql.noRows())
+                .caching(KeyCaching.NONE.unwrap(), SchemaCql.noRows())
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
@@ -228,7 +228,7 @@ public class TableDefinitionTest {
         String expectedCreateTable = createSimpleTableWithOptions()
                 .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
-                .caching(KeyCaching.NONE, SchemaCql.rows(Caching.CACHING_ROW_NUMBER))
+                .caching(KeyCaching.NONE.unwrap(), SchemaCql.rows(Caching.CACHING_ROW_NUMBER))
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
                 .getQueryString();
 
@@ -394,7 +394,7 @@ public class TableDefinitionTest {
                 .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .clusteringOrder(COL_2, Direction.DESC)
+                .clusteringOrder(COL_2, Direction.DESC.unwrap())
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
@@ -421,8 +421,8 @@ public class TableDefinitionTest {
                 .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
                 .compressionOptions(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE))
-                .clusteringOrder(COL_2, Direction.DESC)
-                .clusteringOrder(COL_3, Direction.ASC)
+                .clusteringOrder(COL_2, Direction.DESC.unwrap())
+                .clusteringOrder(COL_3, Direction.ASC.unwrap())
                 .getQueryString();
 
         assertEquals(UNEXPECTED_TABLE, expectedCreateTable, actualCreateTable);
