@@ -45,16 +45,25 @@ import {
   CRAZY_ROOSTER_PAYLINES,
   buildGridFromColumns,
 } from "../../../game/config/CrazyRoosterGameConfig.ts";
-import { ParticleBurst } from "../../../game/fx/ParticleBurst";
-import { LightningArcFx } from "../../../game/fx/LightningArcFx";
 import { WinHighlight } from "../../../game/fx/WinHighlight";
 import { WinCounter } from "../../../game/ui/WinCounter";
+import { LayeredFxController } from "../../../game/presentation/LayeredFxController";
+import { TopperMascotController } from "../../../game/presentation/TopperMascotController";
+import { WinOverlayController } from "../../../game/presentation/WinOverlayController";
 import { Beta3VisualChrome } from "./Beta3VisualChrome";
 import { DebugOverlay } from "./DebugOverlay";
 
 type PendingRoundResolution = {
   presentation: RoundPresentationModel;
   featureFrame: FeatureFrame;
+};
+
+type PendingPresentationPlan = {
+  hasCollect: boolean;
+  hasBoost: boolean;
+  hasJackpot: boolean;
+  jackpotLevel: number;
+  prefersHoldAndWinOverlay: boolean;
 };
 
 type HudButtonHandle = {
@@ -130,9 +139,10 @@ export class MainScreen extends Container {
   private readonly uiLayer = new Container();
   private readonly visualChrome = new Beta3VisualChrome();
   private readonly slotMachine = new CrazyRoosterSlotMachine(resolveProviderSymbolRoot());
-  private readonly lightningFx = new LightningArcFx();
+  private readonly topperMascot = new TopperMascotController();
+  private readonly layeredFx = new LayeredFxController();
   private readonly winHighlight = new WinHighlight();
-  private readonly particleBurst = new ParticleBurst();
+  private readonly winOverlay = new WinOverlayController();
   private readonly winCounter = new WinCounter();
   private readonly hud = new PremiumTemplateHud();
   private readonly statusText = new Text({
@@ -182,6 +192,7 @@ export class MainScreen extends Container {
   private spinHoldTimeout: number | null = null;
   private lastKnownMasterVolume = 0.8;
   private pendingRound: PendingRoundResolution | null = null;
+  private pendingPresentationPlan: PendingPresentationPlan | null = null;
 
   constructor() {
     super();
@@ -225,7 +236,7 @@ export class MainScreen extends Container {
             this.resolveTierStyleHook(tier),
           ),
         clearHeavyWinFx: () => this.winHighlight.clear(),
-        playCoinBurst: (origin) => this.particleBurst.play(origin.x, origin.y),
+        playCoinBurst: (origin) => this.layeredFx.playCoinFly(origin.x, origin.y, 7),
       },
       {
         tierLabels: this.shellTheme.winPresentation.tierLabels,
@@ -253,14 +264,16 @@ export class MainScreen extends Container {
     this.addChild(this.debugOverlay);
 
     this.reelsLayer.addChild(this.visualChrome);
+    this.reelsLayer.addChild(this.topperMascot);
     this.reelsLayer.addChild(this.slotMachine);
-    this.fxLayer.addChild(this.lightningFx);
+    this.fxLayer.addChild(this.layeredFx);
     this.fxLayer.addChild(this.winHighlight);
-    this.fxLayer.addChild(this.particleBurst);
+    this.uiLayer.addChild(this.winOverlay);
 
     this.statusText.anchor.set(0.5);
     this.statusText.visible = false;
     this.titleText.anchor.set(0.5);
+    this.titleText.visible = false;
     this.footerText.anchor.set(0.5);
     this.visualChrome.onBuyFeatureRequest = () => {
       void this.handleBuyFeature();
@@ -280,6 +293,8 @@ export class MainScreen extends Container {
     this.uiLayer.addChild(this.titleText);
     this.uiLayer.addChild(this.footerText);
 
+    this.slotMachine.onSpinStart = () => this.handleSpinStarted();
+    this.slotMachine.onReelStop = (reelIndex) => this.handleReelStop(reelIndex);
     this.slotMachine.onSpinComplete = () => this.handleSpinComplete();
     this.connectSpinHoldGesture();
     this.applyPreviewState();
@@ -307,7 +322,8 @@ export class MainScreen extends Container {
     this.clearAutoplayTimeout();
     this.clearWinPresentationTimeout();
     this.clearSpinHoldTimeout();
-    this.lightningFx.clear();
+    this.layeredFx.clearPresentation();
+    this.winOverlay.clear();
   }
 
   public resize(width: number, height: number): void {
@@ -315,7 +331,7 @@ export class MainScreen extends Container {
     const safe = viewport.safeArea;
     const hudSpace = viewport.orientation === "portrait" ? 300 : 210;
     const centerX = width * 0.5;
-    const availableTop = safe.top + 110;
+    const availableTop = safe.top + 150;
     const availableBottom = height - safe.bottom - hudSpace;
     const centerY = (availableTop + availableBottom) * 0.5;
 
@@ -347,6 +363,10 @@ export class MainScreen extends Container {
     this.backgroundSprite.height = height;
 
     this.visualChrome.resize(machineWidth, machineHeight);
+    this.topperMascot.resize(machineWidth);
+    const topperFocus = this.topperMascot.getFocusPoint();
+    this.layeredFx.resize(machineWidth, machineHeight);
+    this.layeredFx.setTopperAnchor(topperFocus.x, topperFocus.y);
     this.reelsLayer.scale.set(scale);
     this.fxLayer.scale.set(scale);
     this.reelsLayer.x = centerX - (chromeWidth * scale) / 2 + visualPadding.left * scale;
@@ -365,6 +385,7 @@ export class MainScreen extends Container {
     this.titleText.y = safe.top + 34;
     this.statusText.x = width * 0.5;
     this.statusText.y = safe.top + 76;
+    this.winOverlay.resize(width, height, safe.top);
     this.winCounter.x = width * 0.5;
     this.winCounter.y = safe.top + 156;
     this.footerText.x = width * 0.5;
@@ -425,6 +446,7 @@ export class MainScreen extends Container {
       buy: () => this.handleBuyFeature(),
       autoplay: () => this.toggleAutoplay(),
       turbo: () => this.toggleTurbo(),
+      triggerPresentation: (state: string) => this.debugTriggerPresentation(state),
       screen: this,
     };
   }
@@ -628,6 +650,7 @@ export class MainScreen extends Container {
       presentation,
       featureFrame,
     };
+    this.pendingPresentationPlan = this.resolvePendingPresentationPlan(presentation, featureFrame);
 
     this.slotMachine.spin({
       minSpinDurationMs: timing.minSpinMs,
@@ -645,6 +668,7 @@ export class MainScreen extends Container {
 
   private handleSpinComplete(): void {
     const resolution = this.pendingRound;
+    const presentationPlan = this.pendingPresentationPlan;
     if (!resolution) {
       this.isSpinning = false;
       this.showStatus("MISSING ROUND PRESENTATION PAYLOAD");
@@ -678,13 +702,28 @@ export class MainScreen extends Container {
       animationCues: [...presentation.animationCues, ...featureFrame.animationCues],
       burstOrigin: { x: 0, y: -100 },
     });
+    const overlayDuration = this.winOverlay.playSequence({
+      tier: vfxState.policyTier,
+      amountMinor: winAmount,
+      messages: mergedMessages,
+    });
+
+    if (presentationPlan?.hasJackpot) {
+      this.topperMascot.setState("react_jackpot");
+      this.layeredFx.playJackpotHit(presentationPlan.jackpotLevel);
+    } else if (vfxState.policyTier !== "none") {
+      this.topperMascot.setState("react_bigwin");
+      this.layeredFx.playWinPulse(vfxState.policyTier);
+    } else {
+      this.topperMascot.setState("idle");
+    }
 
     this.isSpinning = false;
-    this.isPresentingWin = vfxState.hasWinPresentation;
+    this.isPresentingWin = vfxState.hasWinPresentation || overlayDuration > 0;
 
     PresentationStateStore.patch({
       isSpinning: false,
-      isPresentingWin: vfxState.hasWinPresentation,
+      isPresentingWin: vfxState.hasWinPresentation || overlayDuration > 0,
       turboSelected: this.turboSelected,
       soundEnabled: this.soundEnabled,
       lastWinAmount: winAmount,
@@ -695,20 +734,21 @@ export class MainScreen extends Container {
 
     this.refreshHudState(winAmount);
 
-    if (!vfxState.hasWinPresentation) {
+    if (!vfxState.hasWinPresentation && overlayDuration <= 0) {
       this.scheduleAutoplaySpin(this.animationPolicy.getAutoplayDelayMs("none", true));
       return;
     }
 
     this.clearWinPresentationTimeout();
-    if (vfxState.durationMs <= 0) {
+    const totalPresentationDuration = Math.max(vfxState.durationMs, overlayDuration);
+    if (totalPresentationDuration <= 0) {
       this.finishWinPresentation(vfxState.policyTier, vfxState.forcedSkip);
       return;
     }
 
     this.currentWinPresentationTimeout = window.setTimeout(() => {
       this.finishWinPresentation(vfxState.policyTier, vfxState.forcedSkip);
-    }, vfxState.durationMs);
+    }, totalPresentationDuration);
   }
 
   private resolveWinningSymbols(presentation: RoundPresentationModel) {
@@ -765,15 +805,17 @@ export class MainScreen extends Container {
   private applyAnimationCue(cue: string): void {
     if (cue === "focus-status-banner") {
       this.showStatus("FEATURE EVENT");
-      const machineWidth =
-        CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
-        (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing;
-      const machineHeight =
-        CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
-        (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
-      void this.lightningFx.play(machineWidth, machineHeight);
+      void this.layeredFx.playBoostStart();
       this.visualChrome.triggerBoostPulse();
-      this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.2);
+      this.layeredFx.playCoinFly(
+        CRAZY_ROOSTER_LAYOUT.symbolWidth * 1.5,
+        CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5,
+        8,
+      );
+    }
+    if (cue === "hold-and-win-frame") {
+      this.topperMascot.setState("react_jackpot");
+      this.layeredFx.playJackpotHit(2);
     }
   }
 
@@ -803,7 +845,7 @@ export class MainScreen extends Container {
 
   private showStatus(text: string): void {
     this.statusText.text = text;
-    this.statusText.visible = text.length > 0;
+    this.statusText.visible = false;
     this.visualChrome.setModeState({
       statusText: text || "BETONLINE READY",
     });
@@ -812,6 +854,9 @@ export class MainScreen extends Container {
   private applyPreviewState(): void {
     const preview = buildPreviewPresentation();
     this.slotMachine.setPresentationColumns(preview.reels.stopColumns);
+    this.topperMascot.setState("idle");
+    this.layeredFx.clearPresentation();
+    this.winOverlay.clear();
     const featureFrame = this.featureModules.resolve(preview);
     this.applyDynamicControlVisibility(featureFrame);
     PresentationStateStore.patch({
@@ -840,6 +885,9 @@ export class MainScreen extends Container {
     skipped = false,
   ): void {
     this.wowVfx.finishWinPresentation();
+    this.winOverlay.clear();
+    this.layeredFx.clearPresentation();
+    this.topperMascot.setState("idle");
     this.isPresentingWin = false;
     PresentationStateStore.patch({
       isPresentingWin: false,
@@ -874,6 +922,150 @@ export class MainScreen extends Container {
     if (this.currentWinPresentationTimeout !== null) {
       window.clearTimeout(this.currentWinPresentationTimeout);
       this.currentWinPresentationTimeout = null;
+    }
+  }
+
+  private handleSpinStarted(): void {
+    this.layeredFx.beginSpinCycle();
+    this.topperMascot.setState("idle");
+  }
+
+  private handleReelStop(reelIndex: number): void {
+    const plan = this.pendingPresentationPlan;
+    this.topperMascot.pulseForReelStop(reelIndex);
+
+    if (!plan) {
+      return;
+    }
+
+    const reelCenterX =
+      reelIndex * (CRAZY_ROOSTER_LAYOUT.symbolWidth + CRAZY_ROOSTER_LAYOUT.reelSpacing) +
+      CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5;
+    const reelCenterY = CRAZY_ROOSTER_LAYOUT.symbolHeight * 1.65;
+
+    if (plan.hasCollect && reelIndex >= 1) {
+      this.topperMascot.setState("react_collect");
+      this.layeredFx.playCollectSweep(reelCenterX, reelCenterY);
+    }
+
+    if (plan.hasBoost) {
+      if (reelIndex === 0) {
+        this.topperMascot.setState("react_boost_start");
+        void this.layeredFx.playBoostStart();
+      } else if (reelIndex === 1) {
+        this.topperMascot.setState("react_boost_loop");
+        this.layeredFx.playBoostLoop();
+      } else {
+        this.topperMascot.setState("react_boost_finish");
+        this.layeredFx.playBoostFinish();
+      }
+      this.visualChrome.triggerBoostPulse();
+    }
+
+    if (plan.hasJackpot && reelIndex === CRAZY_ROOSTER_LAYOUT.reelCount - 1) {
+      this.topperMascot.setState("react_jackpot");
+      this.layeredFx.playJackpotHit(plan.jackpotLevel);
+    }
+  }
+
+  private resolvePendingPresentationPlan(
+    presentation: RoundPresentationModel,
+    featureFrame: FeatureFrame,
+  ): PendingPresentationPlan {
+    const labels = presentation.labels ?? {};
+    const counters = presentation.counters ?? {};
+    const animationCues = [...presentation.animationCues, ...featureFrame.animationCues];
+    const messages = [...presentation.messages, ...featureFrame.messages].join(" ").toLowerCase();
+    const jackpotLevel = Number(counters.jackpotLevel ?? 0) || 0;
+
+    return {
+      hasCollect:
+        labels.collectFeatureActive === "true" ||
+        messages.includes("collect"),
+      hasBoost:
+        labels.boostFeatureActive === "true" ||
+        animationCues.includes("focus-status-banner") ||
+        messages.includes("boost") ||
+        messages.includes("lightning"),
+      hasJackpot:
+        jackpotLevel > 0 ||
+        animationCues.includes("hold-and-win-frame"),
+      jackpotLevel,
+      prefersHoldAndWinOverlay:
+        labels.holdAndWinActive === "true" || animationCues.includes("hold-and-win-frame"),
+    };
+  }
+
+  private debugTriggerPresentation(state: string): void {
+    const normalized = state.trim().toLowerCase();
+    if (normalized === "idle") {
+      this.topperMascot.setState("idle");
+      this.layeredFx.clearPresentation();
+      this.winOverlay.clear();
+      return;
+    }
+
+    if (normalized === "collect") {
+      this.topperMascot.setState("react_collect");
+      this.layeredFx.playCollectSweep(
+        CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.8,
+        CRAZY_ROOSTER_LAYOUT.symbolHeight * 2.2,
+      );
+      return;
+    }
+
+    if (normalized === "boost-start") {
+      this.topperMascot.setState("react_boost_start");
+      void this.layeredFx.playBoostStart();
+      return;
+    }
+
+    if (normalized === "boost-loop") {
+      this.topperMascot.setState("react_boost_loop");
+      this.layeredFx.playBoostLoop();
+      return;
+    }
+
+    if (normalized === "boost-finish") {
+      this.topperMascot.setState("react_boost_finish");
+      this.layeredFx.playBoostFinish();
+      return;
+    }
+
+    if (normalized === "jackpot") {
+      this.topperMascot.setState("react_jackpot");
+      this.layeredFx.playJackpotHit(4);
+      return;
+    }
+
+    if (normalized === "big") {
+      this.topperMascot.setState("react_bigwin");
+      this.layeredFx.playWinPulse("big");
+      this.winOverlay.playSequence({
+        tier: "big",
+        amountMinor: 2200,
+        messages: ["BIG WIN", "BETA 4A DEBUG"],
+      });
+      return;
+    }
+
+    if (normalized === "mega") {
+      this.topperMascot.setState("react_bigwin");
+      this.layeredFx.playWinPulse("mega");
+      this.winOverlay.playSequence({
+        tier: "mega",
+        amountMinor: 5200,
+        messages: ["MEGA WIN", "BETA 4A DEBUG"],
+      });
+      return;
+    }
+
+    if (normalized === "total") {
+      this.winOverlay.playSequence({
+        tier: "none",
+        amountMinor: 1600,
+        messages: ["TOTAL WIN", "BETA 4A DEBUG"],
+      });
     }
   }
 }

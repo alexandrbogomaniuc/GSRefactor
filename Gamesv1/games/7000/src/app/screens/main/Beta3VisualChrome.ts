@@ -200,7 +200,9 @@ export class Beta3VisualChrome extends Container {
 
     this.mascotSprite.anchor.set(0.5, 1);
     this.mascotSprite.alpha = 0.96;
+    this.mascotSprite.visible = false;
     this.mascotCaption.anchor.set(0.5, 0.5);
+    this.mascotCaption.visible = false;
     this.jackpotTitle.anchor.set(0.5);
     this.buyTitle.anchor.set(0.5);
     this.buyValue.anchor.set(0.5);
@@ -214,9 +216,6 @@ export class Beta3VisualChrome extends Container {
       this.cabinetBackplate,
       this.cabinetGlow,
       this.topBar,
-      this.mascotHalo,
-      this.mascotSprite,
-      this.mascotCaption,
       this.jackpotTitle,
     );
 
@@ -373,14 +372,6 @@ export class Beta3VisualChrome extends Container {
     this.mascotSprite.scale.set(heroPulse);
 
     this.mascotHalo.clear();
-    this.mascotHalo.ellipse(
-      this.machineWidth * 0.5,
-      -56 + heroFloat * 0.2,
-      98 + this.boostFlash * 18,
-      28 + this.boostFlash * 8,
-    );
-    this.mascotHalo.fill({ color: 0xc7141a, alpha: 0.22 + this.boostFlash * 0.15 });
-
     this.cabinetGlow.alpha = 0.52 + Math.sin(this.ambientTime * 2.1) * 0.14 + this.boostFlash * 0.18;
     this.buyPanel.scale.set(1 + this.buyPanelHover * 0.03 + Math.sin(this.ambientTime * 2.4) * 0.008);
     this.actionPanel.scale.set(1 + Math.sin(this.ambientTime * 1.8 + 0.5) * 0.01);
@@ -542,7 +533,6 @@ export class Beta3VisualChrome extends Container {
 
   private async refreshTextures(): Promise<void> {
     const requestToken = ++this.textureRequestToken;
-    const mascot = await resolveProviderFrameTexture("symbolAtlas", "symbol-9-rooster");
     const buy = await resolveProviderFrameTexture("symbolAtlas", "collector-symbol");
     const jackpotFrames = await Promise.all([
       resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-2x"),
@@ -555,7 +545,6 @@ export class Beta3VisualChrome extends Container {
       return;
     }
 
-    this.applyTexture(this.mascotSprite, mascot.texture, 0xd34f35);
     this.applyTexture(this.buyIcon, buy.texture, 0xf1b458);
     this.jackpotCoins.forEach((coin, index) => {
       this.applyTexture(coin.sprite, jackpotFrames[index]?.texture ?? null, 0xf2b545);

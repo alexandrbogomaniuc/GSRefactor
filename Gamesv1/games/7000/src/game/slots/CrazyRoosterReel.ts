@@ -15,6 +15,7 @@ export class CrazyRoosterReel extends Container {
   private nextGeneratedSymbolId = 0;
 
   public isSpinning = false;
+  public onStopComplete: (() => void) | null = null;
 
   constructor(
     public readonly id: number,
@@ -82,6 +83,7 @@ export class CrazyRoosterReel extends Container {
         this.isSpinning = false;
         this.positionY = 0;
         this.updateSymbolPositions();
+        this.onStopComplete?.();
         return;
       }
     }

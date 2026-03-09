@@ -1,0 +1,12 @@
+{
+  "requestedProvider": "nanobanana",
+  "effectiveProvider": "nanobanana",
+  "safePlaceholder": false,
+  "missingKeys": [],
+  "wordmarkUrl": "/raw-assets/preload%7Bm%7D/logo.svg",
+  "backgrounds": {
+    "desktop": "/assets/providers/nanobanana/runtime/background-desktop-1920x1080.png",
+    "landscape": "/assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png",
+    "portrait": "/assets/providers/nanobanana/runtime/background-portrait-1080x1920.png"
+  }
+}

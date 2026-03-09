@@ -1,0 +1,122 @@
+[
+  {
+    "type": "debug",
+    "text": "[vite] connecting..."
+  },
+  {
+    "type": "debug",
+    "text": "[vite] connected."
+  },
+  {
+    "type": "warning",
+    "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+  },
+  {
+    "type": "warning",
+    "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+  },
+  {
+    "type": "warning",
+    "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+  },
+  {
+    "type": "warning",
+    "text": "[GroupMarkerNotSet(crbug.com/242999)!:A03050000C010000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content."
+  },
+  {
+    "type": "warning",
+    "text": "[.WebGL-0x11c00197800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+  },
+  {
+    "type": "warning",
+    "text": "[GroupMarkerNotSet(crbug.com/242999)!:A0C050000C010000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content."
+  },
+  {
+    "type": "warning",
+    "text": "[.WebGL-0x11c00199600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+  },
+  {
+    "type": "info",
+    "text": "[ProviderPack] Provider \"nanobanana\" validated."
+  },
+  {
+    "type": "log",
+    "text": "[SessionRuntimeStore] Snapshot updated. {sessionId: demo-session-7000, requestCounter: 1, balance: 250000}"
+  },
+  {
+    "type": "warning",
+    "text": "[ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}"
+  },
+  {
+    "type": "warning",
+    "text": "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+  },
+  {
+    "type": "info",
+    "text": "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key"
+  },
+  {
+    "type": "log",
+    "text": "[ResolvedRuntimeConfigStore] Updated."
+  },
+  {
+    "type": "log",
+    "text": "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules"
+  },
+  {
+    "type": "debug",
+    "text": "[vite] connecting..."
+  },
+  {
+    "type": "debug",
+    "text": "[vite] connected."
+  },
+  {
+    "type": "warning",
+    "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+  },
+  {
+    "type": "warning",
+    "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+  },
+  {
+    "type": "warning",
+    "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio"
+  },
+  {
+    "type": "warning",
+    "text": "[GroupMarkerNotSet(crbug.com/242999)!:A03050000C010000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content."
+  },
+  {
+    "type": "warning",
+    "text": "[GroupMarkerNotSet(crbug.com/242999)!:A0C050000C010000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content."
+  },
+  {
+    "type": "info",
+    "text": "[ProviderPack] Provider \"nanobanana\" validated."
+  },
+  {
+    "type": "log",
+    "text": "[SessionRuntimeStore] Snapshot updated. {sessionId: demo-session-7000, requestCounter: 1, balance: 250000}"
+  },
+  {
+    "type": "warning",
+    "text": "[ConfigManager] Failed to parse GS runtime config, using fallback layer {issues: Array(1)}"
+  },
+  {
+    "type": "warning",
+    "text": "[ConfigManager] Explicit dev fallback active without GS runtime payload. Using local defaults only."
+  },
+  {
+    "type": "info",
+    "text": "[ConfigResolver] Layer overrides (dev mode):\n- templateDefaults -> currencyCode: \"EUR\" => \"USD\"\n- templateDefaults -> betConfig.betLadder: [10,20,50,100,200] => [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10,15,20,25,50,75,100,150,200]\n- templateDefaults -> betConfig.coinValues: [0.01,0.02,0.05,0.1] => [0.01,0.02,0.05,0.1,0.2]\n- templateDefaults -> minBet: 10 => 0.1\n- templateDefaults -> defaultBet: 20 => 1\n- templateDefaults -> minReelSpinTime.normalMs: 2000 => 1850\n- templateDefaults -> minReelSpinTime.turboMs: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.normal: 2000 => 1850\n- templateDefaults -> capabilities.animationPolicy.minReelSpinTimeMs.turbo: 1200 => 920\n- templateDefaults -> capabilities.animationPolicy.autoplayMinDelayMs: 300 => 380\n- templateDefaults -> capabilities.features.buyFeature: false => true\n- templateDefaults -> capabilities.features.buyFeatureForCashBonus: false => true\n- templateDefaults -> capabilities.features.buyFeatureDisabledForCashBonus: true => false\n- templateDefaults -> capabilities.features.holdAndWin: false => true\n- templateDefaults -> capabilities.features.jackpotHooks: false => true\n- launchParams.GL_MAX_BET -> GL_MAX_BET: undefined => 200\n- launchParams.exposureDerivedMaxBet -> exposureDerivedMaxBet: undefined => 100000\n[ConfigResolver] Capability/config warnings:\n- currencyOverrides -> USD: no currency override found; using previously resolved values\n- launchParams -> devMode: unsupported config key"
+  },
+  {
+    "type": "log",
+    "text": "[ResolvedRuntimeConfigStore] Updated."
+  },
+  {
+    "type": "log",
+    "text": "[i18n] Initialized: lang=en, fallback=en, namespaces=common,paytable,rules"
+  }
+]

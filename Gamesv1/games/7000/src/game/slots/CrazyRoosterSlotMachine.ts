@@ -21,6 +21,8 @@ export class CrazyRoosterSlotMachine extends Container {
   private elapsed = 0;
 
   public onSpinComplete: () => void = () => {};
+  public onSpinStart: () => void = () => {};
+  public onReelStop: (reelIndex: number) => void = () => {};
 
   constructor(assetRoot: string) {
     super();
@@ -45,6 +47,9 @@ export class CrazyRoosterSlotMachine extends Container {
       this.addChild(panel);
 
       const reel = new CrazyRoosterReel(index, assetRoot);
+      reel.onStopComplete = () => {
+        this.onReelStop(index);
+      };
       reel.x = index * (CRAZY_ROOSTER_LAYOUT.symbolWidth + CRAZY_ROOSTER_LAYOUT.reelSpacing);
       this.reels.push(reel);
       this.addChild(reel);
@@ -91,6 +96,7 @@ export class CrazyRoosterSlotMachine extends Container {
     }
 
     this.isSpinning = true;
+    this.onSpinStart();
     const speedMultiplier = options.speedMultiplier ?? 1;
     const minSpinDurationMs = options.minSpinDurationMs ?? CRAZY_ROOSTER_LAYOUT.minSpinMs;
     const spinStaggerMs = options.spinStaggerMs ?? CRAZY_ROOSTER_LAYOUT.spinStaggerMs;
