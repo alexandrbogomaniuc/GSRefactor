@@ -196,6 +196,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         }
     }
 
+    protected void assertAppliedByVersion(ResultSet result, long expectedVersion) {
+        assertAppliedByVersion(result == null ? null : result.unwrap(), expectedVersion);
+    }
+
     protected com.datastax.driver.core.querybuilder.Insert getInsertQuery() {
         return getInsertQuery(getTtl() > 0 ? getTtl() : null);
     }
@@ -414,6 +418,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     protected com.datastax.driver.core.ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
         return execute(session, statement, callerClassMethodIdentification, null);
+    }
+
+    protected ResultSet executeWrapped(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return ResultSet.wrap(execute(session, statement, callerClassMethodIdentification));
     }
 
     protected com.datastax.driver.core.ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
