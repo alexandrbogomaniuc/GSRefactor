@@ -2,6 +2,8 @@ package com.abs.casino.cassandra.persist.mp;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.kpi.RoundKPIInfo;
 import org.apache.logging.log4j.LogManager;
@@ -53,9 +55,9 @@ public class RoundKPIInfoPersister extends AbstractCassandraPersister<Long, Stri
     public List<RoundKPIInfo> load(long gameSessionId) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(GAMESESSION_ID_COLUMN, gameSessionId));
-        com.datastax.driver.core.ResultSet rs = execute(query, "load");
+        ResultSet rs = executeWrapped(query, "load");
         List<RoundKPIInfo> result = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : rs) {
+        for (Row row : rs) {
             RoundKPIInfo roundKPIInfo = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME), RoundKPIInfo.class);
             if (roundKPIInfo == null) {
                 roundKPIInfo = TABLE.deserializeFrom(row.getBytes(SERIALIZED_COLUMN_NAME), RoundKPIInfo.class);

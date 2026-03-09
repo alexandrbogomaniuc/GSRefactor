@@ -2,6 +2,8 @@ package com.abs.casino.cassandra.persist.mp;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -46,10 +48,10 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
     public List<LeaderboardInfo> getLeaderboards(long bankId) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(LEADERBOARD_ID_COLUMN, START_DATE_COLUMN, END_DATE_COLUMN)
                 .where(eq(BANK_ID_COLUMN, bankId));
-        com.datastax.driver.core.ResultSet result = execute(query, "getLeaderboardIds");
+        ResultSet result = executeWrapped(query, "getLeaderboardIds");
         List<LeaderboardInfo> leaderboards = new ArrayList<>();
         if (result != null) {
-            for (com.datastax.driver.core.Row row : result) {
+            for (Row row : result) {
                 leaderboards.add(new LeaderboardInfo(
                         row.getLong(LEADERBOARD_ID_COLUMN),
                         row.getLong(START_DATE_COLUMN),
@@ -64,7 +66,7 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
                 .where(eq(BANK_ID_COLUMN, bankId))
                 .and(eq(LEADERBOARD_ID_COLUMN, leaderboardId))
                 .limit(1);
-        com.datastax.driver.core.Row row = execute(query, "getLeaderboardResult").one();
+        Row row = executeWrapped(query, "getLeaderboardResult").one();
         if (row != null) {
             return row.getString(RESULT_COLUMN);
         }

@@ -2,6 +2,8 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.data.bonus.DelayedMassAward;
 import com.abs.casino.common.web.statistics.StatisticsManager;
@@ -58,8 +60,8 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
         List<DelayedMassAward> result = new ArrayList<>();
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(GS_ID_FIELD, gameServerId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getUncompleted");
-        for (com.datastax.driver.core.Row row : resultSet) {
+        ResultSet resultSet = executeWrapped(query, "getUncompleted");
+        for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             DelayedMassAward awardFrb = TABLE.deserializeFromJson(json, DelayedMassAward.class);
             if (awardFrb == null) {
@@ -84,7 +86,7 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
                     .value(GS_ID_FIELD, gameServerId)
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
                     .value(JSON_COLUMN_NAME, json);
-            com.datastax.driver.core.ResultSet resultSet = execute(query, "create");
+            ResultSet resultSet = executeWrapped(query, "create");
             if (!resultSet.wasApplied()) {
                 getLog().error("DelayedMassAward not created: {}", award);
                 throw new RuntimeException("DelayedMassAward not created");
