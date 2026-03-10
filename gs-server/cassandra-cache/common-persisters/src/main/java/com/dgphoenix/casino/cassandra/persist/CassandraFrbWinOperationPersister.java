@@ -69,11 +69,11 @@ public class CassandraFrbWinOperationPersister extends AbstractCassandraPersiste
         ByteBuffer byteBuffer = TABLE.serializeToBytes(operation);
         String json = TABLE.serializeToJson(operation);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery().value(KEY, operation.getId()).
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery().value(KEY, operation.getId()).
                     value(ACCOUNT_ID_FIELD, operation.getAccountId()).
                     value(GAME_SESSION_ID_FIELD, operation.getGameSessionId()).
                     value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                    value(JSON_COLUMN_NAME, json);
+                    value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);

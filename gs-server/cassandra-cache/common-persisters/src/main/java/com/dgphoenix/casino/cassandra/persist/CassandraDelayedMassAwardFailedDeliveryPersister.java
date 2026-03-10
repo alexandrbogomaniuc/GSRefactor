@@ -46,10 +46,10 @@ public class CassandraDelayedMassAwardFailedDeliveryPersister extends AbstractCa
         ByteBuffer byteBuffer = TABLE.serializeToBytes(award);
         String json = TABLE.serializeToJson(award);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, award.getId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "create");
         } finally {
             releaseBuffer(byteBuffer);

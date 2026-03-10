@@ -146,9 +146,9 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
     }
 
     private List<HttpCallInfo> getMany(String columnName, Object value) {
-        com.datastax.driver.core.Statement query = select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(CF_NAME)
-                .where(eq(columnName, value));
+                .where(eq(columnName, value)));
         ResultSet rows = executeWrapped(query, "getMany");
         return StreamUtils.asStream(rows)
                 .map(this::toHttpCallInfoOptional)

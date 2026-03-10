@@ -46,9 +46,9 @@ public class CassandraFRBonusWinPersister extends AbstractCassandraPersister<Lon
         String json = TABLE.serializeToJson(win);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(win);
         try {
-            com.datastax.driver.core.Statement query = getUpdateQuery(win.getAccountId())
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateQuery(win.getAccountId())
                     .with(set(SERIALIZED_COLUMN_NAME, byteBuffer))
-                    .and(set(JSON_COLUMN_NAME, json));
+                    .and(set(JSON_COLUMN_NAME, json)));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);

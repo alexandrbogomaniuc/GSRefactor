@@ -63,9 +63,9 @@ public class CassandraExpiredBonusTrackerInfoPersister extends AbstractCassandra
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist: " + key + "=" + new Date(lastProcessedDate));
         }
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(KEY, key)
-                .value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate);
+                .value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate));
         execute(query, "persist");
     }
 
