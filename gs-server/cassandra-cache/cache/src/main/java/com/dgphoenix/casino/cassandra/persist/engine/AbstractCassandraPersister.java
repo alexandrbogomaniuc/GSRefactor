@@ -266,6 +266,14 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return executeWithCheckTimeout(statement, callerClassMethodIdentification);
     }
 
+    protected ResultSet executeWithCheckTimeout(Statement statement, String callerClassMethodIdentification) {
+        return executeWithCheckTimeout(statement.unwrap(), callerClassMethodIdentification);
+    }
+
+    protected ResultSet executeWithCheckTimeoutWrapped(Statement statement, String callerClassMethodIdentification) {
+        return executeWithCheckTimeout(statement, callerClassMethodIdentification);
+    }
+
     protected com.datastax.driver.core.ResultSetFuture executeAsync(com.datastax.driver.core.Statement query, String callerClassMethodIdentification) {
         assertInitialized();
         long now = System.currentTimeMillis();
@@ -274,6 +282,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
                 getClass().getSimpleName() + " executeAsync " + callerClassMethodIdentification,
                 System.currentTimeMillis() - now);
         return rsFuture;
+    }
+
+    protected com.datastax.driver.core.ResultSetFuture executeAsync(Statement query, String callerClassMethodIdentification) {
+        return executeAsync(query.unwrap(), callerClassMethodIdentification);
     }
 
     protected ResultSet execute(String query, String callerClassMethodIdentification) {
@@ -330,7 +342,16 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return execute(this.session, statement, callerClassMethodIdentification, level);
     }
 
+    protected ResultSet execute(Statement statement, String callerClassMethodIdentification, com.datastax.driver.core.ConsistencyLevel level) {
+        return execute(statement.unwrap(), callerClassMethodIdentification, level);
+    }
+
     protected ResultSet executeWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
+                                       com.datastax.driver.core.ConsistencyLevel level) {
+        return execute(statement, callerClassMethodIdentification, level);
+    }
+
+    protected ResultSet executeWrapped(Statement statement, String callerClassMethodIdentification,
                                        com.datastax.driver.core.ConsistencyLevel level) {
         return execute(statement, callerClassMethodIdentification, level);
     }
@@ -360,7 +381,15 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return execute(this.session, statement, callerClassMethodIdentification, null);
     }
 
+    protected ResultSet execute(Statement statement, String callerClassMethodIdentification) {
+        return execute(statement.unwrap(), callerClassMethodIdentification);
+    }
+
     protected ResultSet executeWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return execute(statement, callerClassMethodIdentification);
+    }
+
+    protected ResultSet executeWrapped(Statement statement, String callerClassMethodIdentification) {
         return execute(statement, callerClassMethodIdentification);
     }
 
@@ -418,7 +447,15 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return execute(session, statement, callerClassMethodIdentification, null);
     }
 
+    protected ResultSet execute(Session session, Statement statement, String callerClassMethodIdentification) {
+        return execute(session, statement.unwrap(), callerClassMethodIdentification);
+    }
+
     protected ResultSet executeWrapped(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return execute(session, statement, callerClassMethodIdentification);
+    }
+
+    protected ResultSet executeWrapped(Session session, Statement statement, String callerClassMethodIdentification) {
         return execute(session, statement, callerClassMethodIdentification);
     }
 

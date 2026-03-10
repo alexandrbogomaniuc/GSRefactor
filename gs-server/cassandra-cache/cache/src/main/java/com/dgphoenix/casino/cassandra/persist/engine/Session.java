@@ -57,7 +57,15 @@ public class Session implements AutoCloseable {
         return ResultSet.wrap(session.execute(statement));
     }
 
+    public ResultSet execute(Statement statement) {
+        return execute(statement.unwrap());
+    }
+
     public ResultSet executeWrapped(com.datastax.driver.core.Statement statement) {
+        return execute(statement);
+    }
+
+    public ResultSet executeWrapped(Statement statement) {
         return execute(statement);
     }
 
@@ -75,6 +83,10 @@ public class Session implements AutoCloseable {
 
     public com.datastax.driver.core.ResultSetFuture executeAsync(com.datastax.driver.core.Statement statement) {
         return session.executeAsync(statement);
+    }
+
+    public com.datastax.driver.core.ResultSetFuture executeAsync(Statement statement) {
+        return session.executeAsync(statement.unwrap());
     }
 
     public com.datastax.driver.core.PreparedStatement prepare(String query) {
