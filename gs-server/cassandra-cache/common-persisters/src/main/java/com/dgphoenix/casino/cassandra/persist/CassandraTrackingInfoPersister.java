@@ -69,9 +69,9 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
 
     public boolean isTracking(String trackerName, String trackedObjectId) {
         String key = getKey(trackerName);
-        com.datastax.driver.core.Statement query = getSelectAllColumnsQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectAllColumnsQuery()
                 .where(eq(getKeyColumnName(), key))
-                .and(eq(OBJECT_ID_FIELD, trackedObjectId));
+                .and(eq(OBJECT_ID_FIELD, trackedObjectId)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "isTracking");
         return resultSet.one() != null;
     }
@@ -82,11 +82,11 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
 
     public void persist(String trackerName, String trackedObjectId) {
         String key = getKey(trackerName);
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(KEY, key)
                 .value(OBJECT_ID_FIELD, trackedObjectId)
                 .value(SERIALIZED_COLUMN_NAME, EMPTY_BYTE_BUFFER)
-                .value(JSON_COLUMN_NAME, "");
+                .value(JSON_COLUMN_NAME, ""));
         execute(query, "persist");
     }
 
@@ -108,11 +108,11 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
         ByteBuffer byteBuffer = persistWithAdditionClassInfo ?
                 TABLE.serializeWithClassToBytes(addition) : TABLE.serializeToBytes(addition);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, key)
                     .value(OBJECT_ID_FIELD, trackedObjectId)
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -126,10 +126,10 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
 
     public void delete(String trackerName, String trackedObjectId) {
         String key = getKey(trackerName);
-        com.datastax.driver.core.Statement query = Cql.delete()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete()
                 .from(getMainColumnFamilyName())
                 .where(eq(getKeyColumnName(), key))
-                .and(eq(OBJECT_ID_FIELD, trackedObjectId));
+                .and(eq(OBJECT_ID_FIELD, trackedObjectId)));
         execute(query, " deleteColumn");
     }
 
@@ -196,12 +196,12 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
                                                   Class<T> aClass) {
         String key = getKey(trackerName);
         Map<String, T> result = new HashMap<>();
-        com.datastax.driver.core.Statement query = Cql.select()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select()
                 .column(OBJECT_ID_FIELD)
                 .column(SERIALIZED_COLUMN_NAME).writeTime(SERIALIZED_COLUMN_NAME)
                 .column(JSON_COLUMN_NAME).writeTime(JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
-                .where(eq(getKeyColumnName(), key));
+                .where(eq(getKeyColumnName(), key)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getList");
         for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String trackedObjectId = row.getString(OBJECT_ID_FIELD);
@@ -244,12 +244,12 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
 
     public <T> T getTrackingInfo(String trackerName, String trackedObjectId, boolean isPersistedWithAdditionClassInfo, Class<T> aClass) {
         String key = getKey(trackerName);
-        com.datastax.driver.core.Statement query = Cql.select()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select()
                 .column(SERIALIZED_COLUMN_NAME).writeTime(SERIALIZED_COLUMN_NAME)
                 .column(JSON_COLUMN_NAME).writeTime(JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
                 .where(eq(getKeyColumnName(), key))
-                .and(eq(OBJECT_ID_FIELD, trackedObjectId));
+                .and(eq(OBJECT_ID_FIELD, trackedObjectId)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getTrackingInfo");
         T addition = null;
         if (!resultSet.isExhausted()) {
