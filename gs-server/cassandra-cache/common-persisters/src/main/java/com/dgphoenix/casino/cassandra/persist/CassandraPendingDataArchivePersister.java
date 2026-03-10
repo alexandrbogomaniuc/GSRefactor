@@ -56,12 +56,12 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
         String json = PENDING_DATA_ARCHIVE_TABLE.serializeToJson(operation);
         ByteBuffer byteBuffer = PENDING_DATA_ARCHIVE_TABLE.serializeToBytes(operation);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(ACCOUNT_ID_FIELD, operation.getAccountId())
                     .value(DATA_NAME_FIELD, WALLET_DATA_NAME)
                     .value(CREATION_TIME_FIELD, operation.getStartTime())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "saveWalletOperation");
             LOG.debug("CommonWalletOperation={} was saved successfully", operation);
         } finally {
@@ -70,9 +70,9 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
     }
 
     public List<CommonWalletOperation> getWalletOperations(long accountId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_FIELD, accountId))
-                .and(eq(DATA_NAME_FIELD, WALLET_DATA_NAME));
+                .and(eq(DATA_NAME_FIELD, WALLET_DATA_NAME)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getWalletOperations");
         List<CommonWalletOperation> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
         for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
@@ -92,12 +92,12 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
         String json = PENDING_DATA_ARCHIVE_TABLE.serializeToJson(operation);
         ByteBuffer byteBuffer = PENDING_DATA_ARCHIVE_TABLE.serializeToBytes(operation);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(ACCOUNT_ID_FIELD, operation.getAccountId())
                     .value(DATA_NAME_FIELD, FRB_WIN_DATA_NAME)
                     .value(CREATION_TIME_FIELD, operation.getStartTime())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "saveFrbWinOperation");
             LOG.debug("FrbWinOperation={} was saved successfully", operation);
         } finally {
@@ -106,9 +106,9 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
     }
 
     public List<FRBWinOperation> getFrbWinOperations(long accountId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_FIELD, accountId))
-                .and(eq(DATA_NAME_FIELD, FRB_WIN_DATA_NAME));
+                .and(eq(DATA_NAME_FIELD, FRB_WIN_DATA_NAME)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getFrbWinOperations");
         List<FRBWinOperation> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
         for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {

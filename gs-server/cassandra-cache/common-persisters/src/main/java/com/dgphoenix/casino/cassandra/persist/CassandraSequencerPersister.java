@@ -81,8 +81,8 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
     }
 
     public Long getCurrentValue(String sequencerName) {
-        com.datastax.driver.core.Statement query = Cql.select(VALUE_COLUMN_NAME).
-                from(getMainColumnFamilyName()).where(eq("KEY", sequencerName)).limit(1);
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select(VALUE_COLUMN_NAME).
+                from(getMainColumnFamilyName()).where(eq("KEY", sequencerName)).limit(1));
         com.abs.casino.cassandra.persist.engine.ResultSet rows = executeWrapped(query, "getCurrentValue");
         com.abs.casino.cassandra.persist.engine.Row row = rows.one();
         return row == null || row.isNull(VALUE_COLUMN_NAME) ? null : row.getLong(VALUE_COLUMN_NAME);
@@ -99,10 +99,10 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
             boolean success = false;
             while (!success) {
                 //reserve block
-                com.datastax.driver.core.Statement updateQuery = getUpdateQuery()
+                com.abs.casino.cassandra.persist.engine.Statement updateQuery = com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateQuery()
                         .where(getSimpleKeyClause(name))
                         .with(Cql.set(VALUE_COLUMN_NAME, baseValue + block))
-                        .onlyIf(eq(VALUE_COLUMN_NAME, currentValue));
+                        .onlyIf(eq(VALUE_COLUMN_NAME, currentValue)));
                 com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWithCheckTimeoutWrapped(updateQuery, "allocateNextBlock");
                 success = resultSet.wasApplied();
                 if (!success) {
@@ -153,9 +153,9 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
         if (!success) {
             int attemptsCount = 0;
             while (!success) {
-                com.datastax.driver.core.Statement query = getUpdateQuery(seq.getName())
+                com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateQuery(seq.getName())
                         .with(Cql.set(VALUE_COLUMN_NAME, newDesiredValue))
-                        .onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue));
+                        .onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue)));
                 com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWithCheckTimeoutWrapped(query, "persist[update]");
 
                 success = resultSet.wasApplied();

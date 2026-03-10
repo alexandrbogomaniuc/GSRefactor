@@ -39,8 +39,8 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     }
 
     public Long getLastExecutionTime(String taskKey) {
-        com.datastax.driver.core.Statement selectExecutionTime = getSelectColumnsQuery(LAST_EXECUTION_TIME)
-                .where(eq(TASK_KEY, taskKey));
+        com.abs.casino.cassandra.persist.engine.Statement selectExecutionTime = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(LAST_EXECUTION_TIME)
+                .where(eq(TASK_KEY, taskKey)));
 
         Row result = executeWrapped(selectExecutionTime, "getLastExecutionTime").one();
         Long lastExecutionTime = null;
@@ -52,8 +52,8 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     }
 
     public <T> T getTaskData(String taskKey) {
-        com.datastax.driver.core.Statement selectExecutionTime = getSelectColumnsQuery(TASK_DATA)
-                .where(eq(TASK_KEY, taskKey));
+        com.abs.casino.cassandra.persist.engine.Statement selectExecutionTime = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(TASK_DATA)
+                .where(eq(TASK_KEY, taskKey)));
 
         Row result = executeWrapped(selectExecutionTime, "getTaskData").one();
         T taskData = null;
@@ -73,9 +73,9 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     }
 
     public void saveLastExecutionTime(String taskKey, long time) {
-        com.datastax.driver.core.Statement insert = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement insert = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(TASK_KEY, taskKey)
-                .value(LAST_EXECUTION_TIME, time);
+                .value(LAST_EXECUTION_TIME, time));
 
         execute(insert, "saveLastExecutionTime");
     }
@@ -83,10 +83,10 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     public void saveTaskData(String taskKey, Object taskData) {
         ByteBuffer taskDataAsBytes = getMainTableDefinition().serializeWithClassToBytes(taskData);
         String json = getMainTableDefinition().serializeWithClassToJson(taskData);
-        com.datastax.driver.core.Statement insert = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement insert = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(TASK_KEY, taskKey)
                 .value(TASK_DATA, taskDataAsBytes)
-                .value(JSON_COLUMN_NAME, json);
+                .value(JSON_COLUMN_NAME, json));
 
         execute(insert, "saveTaskData");
     }

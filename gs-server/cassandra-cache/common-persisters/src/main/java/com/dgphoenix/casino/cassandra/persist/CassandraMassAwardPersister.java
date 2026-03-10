@@ -103,9 +103,9 @@ public class CassandraMassAwardPersister extends AbstractLongDistributedConfigEn
     }
 
     public Long getMassAwardIdByDelayedMassAwardId(long delayedMassAwardId) {
-        com.datastax.driver.core.Statement select = Cql.select().column(MASS_AWARD_ID)
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select().column(MASS_AWARD_ID)
                 .from(DELAYED_MASS_AWARD_CF)
-                .where(eq(DELAYED_MASS_AWARD_ID, delayedMassAwardId));
+                .where(eq(DELAYED_MASS_AWARD_ID, delayedMassAwardId)));
         com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(select, "getMassAwardIdByDelayedMassAwardId");
         com.abs.casino.cassandra.persist.engine.Row row = result.one();
         if (row != null) {
@@ -115,21 +115,21 @@ public class CassandraMassAwardPersister extends AbstractLongDistributedConfigEn
     }
 
     public void saveDelayedMassAwardId(long delayedMassAwardId, long massAwardId) {
-        com.datastax.driver.core.Statement query = Cql.insertInto(DELAYED_MASS_AWARD_CF)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.insertInto(DELAYED_MASS_AWARD_CF)
                 .value(DELAYED_MASS_AWARD_ID, delayedMassAwardId)
-                .value(MASS_AWARD_ID, massAwardId);
+                .value(MASS_AWARD_ID, massAwardId));
         execute(query, "persist delayedMassAwardId");
     }
 
     private void deleteDelayedMassAwardId(long massAwardId) {
-        com.datastax.driver.core.Statement select = Cql.select().column(DELAYED_MASS_AWARD_ID)
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select().column(DELAYED_MASS_AWARD_ID)
                 .from(DELAYED_MASS_AWARD_CF)
-                .where(eq(MASS_AWARD_ID, massAwardId));
+                .where(eq(MASS_AWARD_ID, massAwardId)));
         com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(select, "getDelayedMassAwardId");
         com.abs.casino.cassandra.persist.engine.Row row = result.one();
         if (row != null) {
             long delayedMassAwardId = row.getLong(DELAYED_MASS_AWARD_ID);
-            com.datastax.driver.core.Statement delete = Cql.delete().from(DELAYED_MASS_AWARD_CF).where(eq(DELAYED_MASS_AWARD_ID, delayedMassAwardId));
+            com.abs.casino.cassandra.persist.engine.Statement delete = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete().from(DELAYED_MASS_AWARD_CF).where(eq(DELAYED_MASS_AWARD_ID, delayedMassAwardId)));
             execute(delete, "delete delayedMassAwardId");
         }
     }
