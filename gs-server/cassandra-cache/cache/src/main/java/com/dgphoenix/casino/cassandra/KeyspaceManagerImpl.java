@@ -148,7 +148,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
 
         cluster = configuration.buildCluster(com.datastax.driver.core.Cluster.builder());
         com.datastax.driver.core.KeyspaceMetadata metadata = cluster.getMetadata().getKeyspace(keyspaceName);
-        try (Session schemaSession = wrapSession(cluster.connect(), keyspaceName)) {
+        try (Session schemaSession = new Session(StringUtils.defaultString(keyspaceName), cluster.connect())) {
             List<ICassandraPersister> persisters = persistersFactory.getAllPersisters();
             if (metadata == null) {
                 checkState(configuration.isCreateSchema(), "Cassandra schema not found and schema creation disabled");
@@ -158,7 +158,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
             }
         }
 
-        session = wrapSession(cluster.connect(keyspaceName), keyspaceName);
+        session = new Session(StringUtils.defaultString(keyspaceName), cluster.connect(keyspaceName));
 
         try {
             awaitOnlineHosts(configuration.getMinimumOnlineHosts(), configuration.getLocalDataCenterName());
@@ -171,10 +171,6 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
         persistersFactory.populateSession(session);
         LOG.info("Complete initialize manager for keyspace: {}", keyspaceName);
         initialized = true;
-    }
-
-    private Session wrapSession(com.datastax.driver.core.Session rawSession, String keyspaceName) {
-        return new Session(StringUtils.defaultString(keyspaceName), rawSession);
     }
 
     private void awaitOnlineHosts(long minimumOnlineHosts, String localDataCenter) throws InterruptedException {
