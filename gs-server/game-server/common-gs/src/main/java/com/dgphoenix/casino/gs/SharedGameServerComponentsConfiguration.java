@@ -16,17 +16,20 @@ import com.abs.casino.common.util.system.SystemPropertyReader;
 import com.abs.casino.common.web.SharedServletExecutorService;
 import com.abs.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.system.configuration.identification.ServersCoordinatorService;
+import com.abs.casino.system.configuration.identification.ZookeeperConfiguration;
 import com.abs.casino.system.configuration.identification.ZookeeperProperties;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Import;
 
 /**
  * Configuration for components which can be used outside the game server.
  */
 @Configuration
+@Import(ZookeeperConfiguration.class)
 public class SharedGameServerComponentsConfiguration {
     @Bean
     public ServerCoordinatorInfoProvider serverIdLockerService(ZookeeperProperties zookeeperProperties) throws Exception {
