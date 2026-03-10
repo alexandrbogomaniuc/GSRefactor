@@ -43,9 +43,9 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
     }
 
     public List<PlayerGameSettings> get(long accountId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where()
-                .and(eq(ACCOUNT_ID_FIELD, accountId));
+                .and(eq(ACCOUNT_ID_FIELD, accountId)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "get");
         List<PlayerGameSettings> result = new ArrayList();
         for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
@@ -69,10 +69,10 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
     public PlayerGameSettings get(long accountId, int gameId) {
         long now = System.currentTimeMillis();
         PlayerGameSettings result = null;
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where()
                 .and(eq(ACCOUNT_ID_FIELD, accountId))
-                .and(eq(GAME_ID_FIELD, gameId));
+                .and(eq(GAME_ID_FIELD, gameId)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "get");
         com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         if (row != null) {
@@ -95,11 +95,11 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
         String json = TABLE.serializeToJson(entry);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(entry);
         try {
-            com.datastax.driver.core.Statement query = Cql.insertInto(getMainTableDefinition().getTableName())
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.insertInto(getMainTableDefinition().getTableName())
                     .value(ACCOUNT_ID_FIELD, accountId)
                     .value(GAME_ID_FIELD, entry.getGameId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -107,11 +107,11 @@ public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersi
     }
 
     public void delete(long accountId, int gameId) {
-        com.datastax.driver.core.Statement query = Cql.delete()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete()
                 .from(getMainColumnFamilyName())
                 .where()
                 .and(eq(ACCOUNT_ID_FIELD, accountId))
-                .and(eq(GAME_ID_FIELD, gameId));
+                .and(eq(GAME_ID_FIELD, gameId)));
         execute(query, "delete");
     }
 
