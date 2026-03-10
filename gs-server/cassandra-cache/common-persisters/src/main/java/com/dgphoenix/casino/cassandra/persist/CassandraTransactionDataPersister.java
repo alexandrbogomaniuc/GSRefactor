@@ -85,7 +85,6 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
     public static final String TRANSACTION_TRACKING_CF = "trdata_tracking_cf";
     public static final String SERVER_ID = "si";
     public static final String TRACKING_STATUS = "ts";
-    private static final com.datastax.driver.core.ProtocolVersion SERIALIZE_PROTOCOL_VERSION = com.datastax.driver.core.ProtocolVersion.NEWEST_SUPPORTED;
     protected static final Cache<String, ITransactionData> cached = CacheBuilder.
             newBuilder().
             initialCapacity(100).
@@ -685,7 +684,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
                 update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(),
                         TRACKING_INFO, data.getTrackingStateAsString())));
             }
-            luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
+            luBuffer = com.abs.casino.cassandra.persist.engine.TypeCodec.serializeAscii(data.getLastUpdateInfo());
             update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             //update.onlyIf(Cql.eq(VERSION_FIELD, data.getVersion()));
             com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(update, "persistBonus");
@@ -747,7 +746,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
                 update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
                         data.getTrackingStateAsString())));
             }
-            luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
+            luBuffer = com.abs.casino.cassandra.persist.engine.TypeCodec.serializeAscii(data.getLastUpdateInfo());
             update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(update, "persistFrBonus");
             if (LOG.isDebugEnabled()) {
@@ -807,7 +806,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
                 update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
                         data.getTrackingStateAsString())));
             }
-            luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
+            luBuffer = com.abs.casino.cassandra.persist.engine.TypeCodec.serializeAscii(data.getLastUpdateInfo());
             update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(update, "persistFrbWin");
             if (LOG.isDebugEnabled()) {
@@ -866,7 +865,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
                 update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
                         data.getTrackingStateAsString())));
             }
-            luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
+            luBuffer = com.abs.casino.cassandra.persist.engine.TypeCodec.serializeAscii(data.getLastUpdateInfo());
             update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(update, "persistFrbNotification");
             if (LOG.isDebugEnabled()) {
@@ -904,7 +903,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         ByteBuffer luBuffer = null;
         try {
             update.with(Cql.set(ACCOUNT_FIELD, accountByteBuffer));
-            luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
+            luBuffer = com.abs.casino.cassandra.persist.engine.TypeCodec.serializeAscii(data.getLastUpdateInfo());
             update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(update, "persistAccount");
             boolean wasApplied = result.wasApplied();
@@ -965,7 +964,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
                 update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(),
                         TRACKING_INFO, data.getTrackingStateAsString())));
             }
-            luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
+            luBuffer = com.abs.casino.cassandra.persist.engine.TypeCodec.serializeAscii(data.getLastUpdateInfo());
             update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(update, "persistPaymentTransaction");
             boolean wasApplied = result.wasApplied();
@@ -1031,7 +1030,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
                 update.with(Cql.set(TRACKING_INFO, serializeField(data.getBankId(), TRACKING_INFO,
                         data.getTrackingStateAsString())));
             }
-            luBuffer = com.datastax.driver.core.TypeCodec.ascii().serialize(data.getLastUpdateInfo(), SERIALIZE_PROTOCOL_VERSION);
+            luBuffer = com.abs.casino.cassandra.persist.engine.TypeCodec.serializeAscii(data.getLastUpdateInfo());
             update.with(Cql.set(LAST_UPDATE_ID_FIELD, luBuffer));
             com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(update, "persistWallet");
             boolean wasApplied = result.wasApplied();
