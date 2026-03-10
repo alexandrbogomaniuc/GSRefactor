@@ -41,11 +41,11 @@ public class RoundKPIInfoPersister extends AbstractCassandraPersister<Long, Stri
         String json = TABLE.serializeToJson(kpiInfo);
         ByteBuffer buffer = TABLE.serializeToBytes(kpiInfo);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(GAMESESSION_ID_COLUMN, gameSessionId)
                     .value(ROUND_ID_COLUMN, kpiInfo.getRoundId())
                     .value(SERIALIZED_COLUMN_NAME, buffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(buffer);
@@ -53,8 +53,8 @@ public class RoundKPIInfoPersister extends AbstractCassandraPersister<Long, Stri
     }
 
     public List<RoundKPIInfo> load(long gameSessionId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(GAMESESSION_ID_COLUMN, gameSessionId));
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(GAMESESSION_ID_COLUMN, gameSessionId)));
         ResultSet rs = executeWrapped(query, "load");
         List<RoundKPIInfo> result = new ArrayList<>();
         for (Row row : rs) {

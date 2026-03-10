@@ -60,23 +60,23 @@ public class CassandraRoundGameSessionPersister extends AbstractCassandraPersist
     }
 
     public void persist(long roundId, GameSession gameSessionId) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(ROUND_ID_FIELD, roundId)
                 .value(GAME_SID_FIELD, gameSessionId.getId())
                 .value(GAME_ID_FIELD, gameSessionId.getGameId())
                 .value(ACCOUNT_ID_FIELD, gameSessionId.getAccountId())
-                .value(WRITE_TIME, System.currentTimeMillis());
+                .value(WRITE_TIME, System.currentTimeMillis()));
         execute(query, "create");
     }
 
     public Triple<List<Long>, Long, Long> getGameSessionsByRoundId(long roundId) {
-        com.datastax.driver.core.Statement query = Cql.select()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select()
                 .column(GAME_SID_FIELD)
                 .column(WRITE_TIME)
                 .column(GAME_ID_FIELD)
                 .column(ACCOUNT_ID_FIELD)
                 .from(COLUMN_FAMILY_NAME)
-                .where(Cql.eq(ROUND_ID_FIELD, roundId));
+                .where(Cql.eq(ROUND_ID_FIELD, roundId)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getGameSessionsByRoundId");
         List<com.abs.casino.cassandra.persist.engine.Row> rows = Lists.newArrayList(resultSet);
         if (!rows.isEmpty()) {

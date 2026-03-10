@@ -35,19 +35,19 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
             ), BANK_ID_COLUMN);
 
     public void persist(long leaderboardId, long bankId, long startDate, long endDate, String result) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(BANK_ID_COLUMN, bankId)
                 .value(LEADERBOARD_ID_COLUMN, leaderboardId)
                 .value(START_DATE_COLUMN, startDate)
                 .value(END_DATE_COLUMN, endDate)
-                .value(RESULT_COLUMN, result);
+                .value(RESULT_COLUMN, result));
 
         execute(query, "persist");
     }
 
     public List<LeaderboardInfo> getLeaderboards(long bankId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(LEADERBOARD_ID_COLUMN, START_DATE_COLUMN, END_DATE_COLUMN)
-                .where(eq(BANK_ID_COLUMN, bankId));
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(LEADERBOARD_ID_COLUMN, START_DATE_COLUMN, END_DATE_COLUMN)
+                .where(eq(BANK_ID_COLUMN, bankId)));
         ResultSet result = executeWrapped(query, "getLeaderboardIds");
         List<LeaderboardInfo> leaderboards = new ArrayList<>();
         if (result != null) {
@@ -62,10 +62,10 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
     }
 
     public String getLeaderboardResult(long bankId, long leaderboardId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(RESULT_COLUMN)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(RESULT_COLUMN)
                 .where(eq(BANK_ID_COLUMN, bankId))
                 .and(eq(LEADERBOARD_ID_COLUMN, leaderboardId))
-                .limit(1);
+                .limit(1));
         Row row = executeWrapped(query, "getLeaderboardResult").one();
         if (row != null) {
             return row.getString(RESULT_COLUMN);

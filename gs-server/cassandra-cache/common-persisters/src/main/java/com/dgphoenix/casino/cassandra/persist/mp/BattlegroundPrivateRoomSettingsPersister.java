@@ -31,18 +31,18 @@ public class BattlegroundPrivateRoomSettingsPersister extends AbstractCassandraP
     public void create(String privateRoomId, BattlegroundPrivateRoomSetting battlegroundPrivateRoomSetting) {
         ByteBuffer buffer = TABLE.serializeToBytes(battlegroundPrivateRoomSetting);
         String json = TABLE.serializeToJson(battlegroundPrivateRoomSetting);
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(PRIVATE_ROOM_ID, privateRoomId)
                 .value(SERIALIZED_COLUMN_NAME, buffer)
-                .value(JSON_COLUMN_NAME, json);
+                .value(JSON_COLUMN_NAME, json));
         execute(query, "persist");
         getLog().info("create: privateRoomId: {}, BattlegroundPrivateRoomSetting: {}", privateRoomId, battlegroundPrivateRoomSetting);
     }
 
     public BattlegroundPrivateRoomSetting load(String privateRoomId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(PRIVATE_ROOM_ID, privateRoomId))
-                .limit(1);
+                .limit(1));
         Row row = executeWrapped(query, "load").one();
         if (row == null) {
             return null;

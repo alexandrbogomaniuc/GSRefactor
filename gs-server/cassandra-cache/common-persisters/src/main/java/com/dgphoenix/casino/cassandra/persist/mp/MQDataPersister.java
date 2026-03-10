@@ -34,11 +34,11 @@ public class MQDataPersister extends AbstractCassandraPersister<Long, String> {
         ByteBuffer buffer = TABLE.serializeToBytes(data);
         String json = TABLE.serializeToJson(data);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(ACCOUNT_ID_COLUMN, data.getAccountId())
                     .value(GAME_ID_COLUMN, data.getGameId())
                     .value(SERIALIZED_COLUMN_NAME, buffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(buffer);
@@ -46,10 +46,10 @@ public class MQDataPersister extends AbstractCassandraPersister<Long, String> {
     }
 
     public MQData load(long accountId, long gameId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_COLUMN, accountId))
                 .and(eq(GAME_ID_COLUMN, gameId))
-                .limit(1);
+                .limit(1));
         Row row = executeWrapped(query, "load").one();
         if (row == null) {
             return null;
