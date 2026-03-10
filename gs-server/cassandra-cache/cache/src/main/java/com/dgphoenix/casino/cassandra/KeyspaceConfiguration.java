@@ -35,6 +35,7 @@ public class KeyspaceConfiguration {
         this.configHelper = configHelper;
         this.timeProvider = timeProvider;
         configHelper.registerAlias(ClusterConfig.class);
+        configHelper.allowTypesByWildcard("com.dgphoenix.casino.cassandra.config.**", "com.abs.casino.cassandra.config.**");
     }
 
     public void load() {
