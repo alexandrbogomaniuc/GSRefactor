@@ -84,7 +84,7 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
 
     @Override
     public Set<String> getKeys() {
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(KEY);
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(KEY));
         Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getKeys").iterator();
         Set<String> result = new HashSet<>();
         while (iterator.hasNext()) {
@@ -96,8 +96,8 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
 
     @Override
     public List<BaseGameInfo> getByBank(long bankId) {
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(BANK_IDX, getBankIdx(bankId)));
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(BANK_IDX, getBankIdx(bankId))));
         Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBank", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
@@ -109,8 +109,8 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
 
     @Override
     public List<BaseGameInfo> getByBankAndCurrency(long bankId, ICurrency currency) {
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(BANK_AND_CUR_IDX, getBankAndCurIdx(bankId, currency.getCode())));
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(BANK_AND_CUR_IDX, getBankAndCurIdx(bankId, currency.getCode()))));
         Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBankAndCurrency", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
@@ -174,12 +174,12 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
         String json = TABLE.serializeToJson(copy);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(copy);
         try {
-            com.datastax.driver.core.Statement insert = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement insert = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, key)
                     .value(JSON_COLUMN_NAME, json)
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
                     .value(BANK_IDX, getBankIdx(gameInfo.getBankId()))
-                    .value(BANK_AND_CUR_IDX, getBankAndCurIdx(gameInfo.getBankId(), gameInfo.getCurrency().getCode()));
+                    .value(BANK_AND_CUR_IDX, getBankAndCurIdx(gameInfo.getBankId(), gameInfo.getCurrency().getCode())));
             execute(insert, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -236,8 +236,8 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
             throws IOException {
         if (conditionName.equals("byBank")) {
             Long bankId = (Long) conditionValues[0];
-            com.datastax.driver.core.Statement select = getSelectColumnsQuery(KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                    .where(eq(BANK_IDX, getBankIdx(bankId)));
+            com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                    .where(eq(BANK_IDX, getBankIdx(bankId))));
             Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBank").iterator();
             while (iterator.hasNext()) {
                 com.abs.casino.cassandra.persist.engine.Row row = iterator.next();

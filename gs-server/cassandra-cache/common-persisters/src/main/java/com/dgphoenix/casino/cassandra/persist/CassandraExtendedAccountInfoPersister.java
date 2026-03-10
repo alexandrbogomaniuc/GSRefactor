@@ -61,9 +61,9 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
 
     @Override
     public Map<String, String> get(long bankId, String externalId) {
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(PROPERTIES)
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(PROPERTIES)
                 .where(eq(BANK_ID, bankId))
-                .and(eq(EXTERNAL_ID, externalId));
+                .and(eq(EXTERNAL_ID, externalId)));
         Row row = executeWrapped(select, "get").one();
         if (row != null) {
             return row.getMap(PROPERTIES, String.class, String.class);
@@ -73,19 +73,19 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
 
     @Override
     public void persist(long bankId, String externalId, Map<String, String> properties) {
-        com.datastax.driver.core.Statement update = getUpdateQuery()
+        com.abs.casino.cassandra.persist.engine.Statement update = com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
-                .with(Cql.putAll(PROPERTIES, properties));
+                .with(Cql.putAll(PROPERTIES, properties)));
         execute(update, "persist");
     }
 
     @Override
     public void persist(long bankId, String externalId, String propertyName, String value) {
-        com.datastax.driver.core.Statement update = getUpdateQuery()
+        com.abs.casino.cassandra.persist.engine.Statement update = com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
-                .with(Cql.put(PROPERTIES, propertyName, value));
+                .with(Cql.put(PROPERTIES, propertyName, value)));
         execute(update, "persist");
     }
 

@@ -76,10 +76,10 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
     }
 
     public CassandraPlayerSessionState getBySid(String sid) {
-        com.datastax.driver.core.Statement query = getSelectAllColumnsQuery(getMainTableDefinition())
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectAllColumnsQuery(getMainTableDefinition())
                 .where(eq(SID_FIELD, sid))
                 .limit(1)
-                .allowFiltering();
+                .allowFiltering());
 
         getLog().debug("getBySid: sid={}, query={}", sid, query);
 
@@ -90,9 +90,9 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
 
     public CassandraPlayerSessionState getByExtId(String extId) {
 
-        com.datastax.driver.core.Statement query = getSelectAllColumnsQuery(getMainTableDefinition())
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectAllColumnsQuery(getMainTableDefinition())
                 .where(eq(KEY, extId))
-                .limit(1);
+                .limit(1));
 
         getLog().debug("getByExtId: extId={}, query={}", extId, query);
 
@@ -165,12 +165,12 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
             getLog().debug("persist: currentCassandraPlayerSessionState is null, insert new record:{}",
                     cassandraPlayerSessionState);
 
-            com.datastax.driver.core.Statement insertQuery = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement insertQuery = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, cassandraPlayerSessionState.getExtId())
                     .value(SID_FIELD, sid)
                     .value(PRIVATE_ROOM_ID_FIELD, cassandraPlayerSessionState.getPrivateRoomId())
                     .value(IS_FINISH_GAME_SESSION_FIELD, cassandraPlayerSessionState.isFinishGameSession())
-                    .value(DAY_TIME_FIELD, cassandraPlayerSessionState.getDayTime());
+                    .value(DAY_TIME_FIELD, cassandraPlayerSessionState.getDayTime()));
 
             execute(insertQuery, "insert");
             getLog().info("insert: cassandraPlayerSessionState: {}", cassandraPlayerSessionState);
@@ -180,12 +180,12 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
             getLog().debug("persist: currentCassandraPlayerSessionState is not null, update existing record to:{}",
                     cassandraPlayerSessionState);
 
-            com.datastax.driver.core.Statement updateQuery = getUpdateQuery()
+            com.abs.casino.cassandra.persist.engine.Statement updateQuery = com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateQuery()
                     .with(set(SID_FIELD, cassandraPlayerSessionState.getSid()))
                     .and(set(PRIVATE_ROOM_ID_FIELD, cassandraPlayerSessionState.getPrivateRoomId()))
                     .and(set(IS_FINISH_GAME_SESSION_FIELD, cassandraPlayerSessionState.isFinishGameSession()))
                     .and(set(DAY_TIME_FIELD, cassandraPlayerSessionState.getDayTime()))
-                    .where(eq(KEY, currentCassandraPlayerSessionState.getExtId()));
+                    .where(eq(KEY, currentCassandraPlayerSessionState.getExtId())));
 
             execute(updateQuery, "update");
             getLog().info("update: cassandraPlayerSessionState from: {} to: {}",
@@ -208,10 +208,10 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
         if (sids.length == 0) {
             return;
         }
-        com.datastax.driver.core.Statement query =
-                Cql.delete().
+        com.abs.casino.cassandra.persist.engine.Statement query =
+                com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete().
                         from(getMainColumnFamilyName()).
-                        where(Cql.in(KEY, sids));
+                        where(Cql.in(KEY, sids)));
         execute(query, "delete player Session states");
     }
 }
