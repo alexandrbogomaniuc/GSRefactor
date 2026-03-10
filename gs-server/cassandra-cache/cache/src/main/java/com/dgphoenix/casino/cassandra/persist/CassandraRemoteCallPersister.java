@@ -64,8 +64,8 @@ public class CassandraRemoteCallPersister extends AbstractCassandraPersister<Int
     public List<PersistableCall> getRemoteCalls(int serverId) {
         long now = System.currentTimeMillis();
         List<PersistableCall> result = new ArrayList<>();
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(GS_ID_FIELD, serverId));
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(GS_ID_FIELD, serverId)));
         ResultSet resultSet = executeWrapped(query, "getRemoteCalls");
         for (Row row : resultSet) {
             PersistableCall call = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME),
@@ -88,11 +88,11 @@ public class CassandraRemoteCallPersister extends AbstractCassandraPersister<Int
         ByteBuffer byteBuffer = TABLE.serializeToBytes(entry);
         String json = TABLE.serializeToJson(entry);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery().
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery().
                     value(GS_ID_FIELD, entry.getServerId()).
                     value(KEY, entry.getId()).
                     value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                    value(JSON_COLUMN_NAME, json);
+                    value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);

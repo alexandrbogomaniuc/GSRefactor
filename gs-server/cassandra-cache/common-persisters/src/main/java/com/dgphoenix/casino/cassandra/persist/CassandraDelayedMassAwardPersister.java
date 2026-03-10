@@ -58,8 +58,8 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
     public Collection<DelayedMassAward> getUncompleted(int gameServerId) {
         long now = System.currentTimeMillis();
         List<DelayedMassAward> result = new ArrayList<>();
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(GS_ID_FIELD, gameServerId));
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(GS_ID_FIELD, gameServerId)));
         ResultSet resultSet = executeWrapped(query, "getUncompleted");
         for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
@@ -81,11 +81,11 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
         String json = TABLE.serializeToJson(award);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(award);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, award.getId())
                     .value(GS_ID_FIELD, gameServerId)
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             ResultSet resultSet = executeWrapped(query, "create");
             if (!resultSet.wasApplied()) {
                 getLog().error("DelayedMassAward not created: {}", award);

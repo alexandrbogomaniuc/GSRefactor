@@ -51,10 +51,10 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
     public void persist(String date, String url, boolean isSuccess, long amount) {
         String counterColumn = isSuccess ? SUCCESS_COUNTER : FAIL_COUNTER;
 
-        com.datastax.driver.core.Statement update = getUpdateQuery()
+        com.abs.casino.cassandra.persist.engine.Statement update = com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateQuery()
                 .where(eq(DATE, date))
                 .and(eq(URL, url))
-                .with(incr(counterColumn, amount));
+                .with(incr(counterColumn, amount)));
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist " + url + ", isSuccess:" + isSuccess);
         }
@@ -72,9 +72,9 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
     }
 
     private URLCallCounters getCallStatistics(String date, String url) {
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(FAIL_COUNTER, SUCCESS_COUNTER)
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(FAIL_COUNTER, SUCCESS_COUNTER)
                 .where(eq(DATE, date))
-                .and(eq(URL, url));
+                .and(eq(URL, url)));
         Row row = executeWrapped(select, "getCallStatistics").one();
         if (row == null) {
             return new URLCallCounters(date, url, 0, 0, 0);

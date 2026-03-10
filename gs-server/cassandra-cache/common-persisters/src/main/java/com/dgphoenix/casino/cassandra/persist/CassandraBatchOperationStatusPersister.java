@@ -42,20 +42,20 @@ public class CassandraBatchOperationStatusPersister extends AbstractCassandraPer
     }
 
     public void persist(long roomId, long roundId, String operationType, Status status) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(ROOM_ID, roomId)
                 .value(ROUND_ID, roundId)
                 .value(OPERATION_TYPE, operationType)
                 .value(CHANGE_DATE, System.currentTimeMillis())
-                .value(STATUS, status.name());
+                .value(STATUS, status.name()));
         execute(query, "persist");
     }
 
     public Pair<Status, Long> getStatus(long roomId, long roundId, String operationType) {
-        com.datastax.driver.core.Statement query = Cql.select(STATUS, CHANGE_DATE).from(getMainColumnFamilyName()).where(eq(ROOM_ID, roomId))
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select(STATUS, CHANGE_DATE).from(getMainColumnFamilyName()).where(eq(ROOM_ID, roomId))
                 .and(eq(ROUND_ID, roundId))
                 .and(eq(OPERATION_TYPE, operationType))
-                .limit(1);
+                .limit(1));
         ResultSet rows = executeWrapped(query, "getStatus");
         Row row = rows.one();
         return row == null ? null : new Pair<>(Status.valueOf(row.getString(STATUS)), row.getLong(CHANGE_DATE));

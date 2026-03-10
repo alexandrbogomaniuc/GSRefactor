@@ -44,18 +44,18 @@ public class CassandraCallIssuesPersister extends AbstractCassandraPersister {
     }
 
     public void persist(URLCallCounters callStatistics) {
-        com.datastax.driver.core.Statement insert = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement insert = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(DATE_FIELD, callStatistics.getDate())
                 .value(URL_FIELD, callStatistics.getUrl())
                 .value(SUCCESS_COUNT, callStatistics.getSuccessCount())
                 .value(FAIL_COUNT, callStatistics.getFailedCount())
-                .value(LAST_UPDATE_FIELD, System.currentTimeMillis());
+                .value(LAST_UPDATE_FIELD, System.currentTimeMillis()));
         execute(insert, "persist");
     }
 
     public Collection<URLCallCounters> getByDate(final String date) {
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(URL_FIELD, SUCCESS_COUNT, FAIL_COUNT, LAST_UPDATE_FIELD)
-                .where(eq(DATE_FIELD, date));
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(URL_FIELD, SUCCESS_COUNT, FAIL_COUNT, LAST_UPDATE_FIELD)
+                .where(eq(DATE_FIELD, date)));
         ResultSet resultSet = executeWrapped(select, "getByDate");
         if (resultSet.isExhausted()) {
             return Collections.emptyList();
