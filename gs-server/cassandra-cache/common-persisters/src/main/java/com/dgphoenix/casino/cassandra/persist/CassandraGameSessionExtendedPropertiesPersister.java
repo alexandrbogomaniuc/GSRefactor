@@ -32,10 +32,10 @@ public class CassandraGameSessionExtendedPropertiesPersister extends AbstractCas
         String json = TABLE.serializeWithClassToJson(properties);
         ByteBuffer buffer = TABLE.serializeWithClassToBytes(properties);
         try {
-            com.datastax.driver.core.Statement insert = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement insert = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(GAME_SESSION_ID, gameSessionId)
                     .value(SERIALIZED_COLUMN_NAME, buffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(insert, "persist");
         } finally {
             releaseBuffer(buffer);
@@ -48,9 +48,9 @@ public class CassandraGameSessionExtendedPropertiesPersister extends AbstractCas
     }
 
     public GameSessionExtendedProperties getOrNull(long gameSessionId) {
-        com.datastax.driver.core.Statement select = getSelectAllColumnsQuery()
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectAllColumnsQuery()
                 .where(eq(GAME_SESSION_ID, gameSessionId))
-                .limit(1);
+                .limit(1));
         Row result = executeWrapped(select, "select").one();
         if (result == null) {
             return null;

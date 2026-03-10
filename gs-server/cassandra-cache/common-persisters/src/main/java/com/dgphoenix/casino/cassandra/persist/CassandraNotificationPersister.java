@@ -36,9 +36,9 @@ public class CassandraNotificationPersister extends AbstractCassandraPersister<L
     }
 
     public OnlineConcurrentMailNotification get(int concurrentLimit, int gameServerId) {
-        com.datastax.driver.core.Statement query = getSelectAllColumnsQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectAllColumnsQuery()
                 .where(eq(KEY, String.valueOf(concurrentLimit)))
-                .and(eq(SERVER_ID, gameServerId));
+                .and(eq(SERVER_ID, gameServerId)));
         ResultSet resultSet = executeWrapped(query, "getOnlineConcurrentMailNotification");
         Row row = resultSet.one();
         if (row == null) {
@@ -60,11 +60,11 @@ public class CassandraNotificationPersister extends AbstractCassandraPersister<L
         String json = CONCURRENT_NOTIFICATION_TABLE.serializeToJson(concurrentNotification);
         ByteBuffer byteBuffer = CONCURRENT_NOTIFICATION_TABLE.serializeToBytes(concurrentNotification);
         try {
-            com.datastax.driver.core.Statement insertQuery = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement insertQuery = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, String.valueOf(concurrentNotification.getConcurrentLimit())).
                     value(SERVER_ID, concurrentNotification.getGameServerId()).
                     value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                    value(JSON_COLUMN_NAME, json);
+                    value(JSON_COLUMN_NAME, json));
             execute(insertQuery, "notification persist", com.datastax.driver.core.ConsistencyLevel.ANY);
         } finally {
             releaseBuffer(byteBuffer);

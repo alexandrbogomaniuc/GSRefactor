@@ -62,13 +62,13 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         String json = TABLE.serializeToJson(info);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(info);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery(ttl).
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery(ttl).
                     value(KEY, info.getId()).
                     value(DAY_FIELD, getDay(info.getEndTime())).
                     value(GAME_SESSION_ID_FIELD, info.getGameSessionId()).
                     value(ROUND_ID_FIELD, info.getRoundId()).
                     value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                    value(JSON_COLUMN_NAME, json);
+                    value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -85,8 +85,8 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
     }
 
     public List<WalletOperationInfo> getByRoundId(long roundId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(ROUND_ID_FIELD, roundId));
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(ROUND_ID_FIELD, roundId)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByRoundId");
         if (resultSet.isExhausted()) {
             return emptyList();
@@ -271,10 +271,10 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         if (walletOperationIds.length == 0) {
             return;
         }
-        com.datastax.driver.core.Statement query =
-                Cql.delete().
+        com.abs.casino.cassandra.persist.engine.Statement query =
+                com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete().
                         from(getMainColumnFamilyName()).
-                        where(Cql.in(KEY, walletOperationIds));
+                        where(Cql.in(KEY, walletOperationIds)));
         execute(query, "delete walletOperations");
     }
 

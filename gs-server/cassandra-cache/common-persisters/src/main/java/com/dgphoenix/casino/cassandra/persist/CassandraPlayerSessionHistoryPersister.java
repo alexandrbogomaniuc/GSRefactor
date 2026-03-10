@@ -62,18 +62,18 @@ public class CassandraPlayerSessionHistoryPersister extends AbstractCassandraPer
         ByteBuffer byteBuffer = HISTORY_TABLE.serializeToBytes(entry);
         String json = HISTORY_TABLE.serializeToJson(entry);
         try {
-            com.datastax.driver.core.Statement insertQuery = entry.getExternalSessionId() == null
-                    ? getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement insertQuery = entry.getExternalSessionId() == null
+                    ? com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, entry.getSessionId())
                     .value(DAY_FIELD, getDay(entry.getEndTime()))
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json)
-                    : getInsertQuery()
+                    .value(JSON_COLUMN_NAME, json))
+                    : com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, entry.getSessionId())
                     .value(DAY_FIELD, getDay(entry.getEndTime()))
                     .value(EXT_SESSION_ID_FIELD, entry.getExternalSessionId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(insertQuery, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -101,10 +101,10 @@ public class CassandraPlayerSessionHistoryPersister extends AbstractCassandraPer
         if (sessionIds.length == 0) {
             return;
         }
-        com.datastax.driver.core.Statement query =
-                Cql.delete().
+        com.abs.casino.cassandra.persist.engine.Statement query =
+                com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete().
                         from(getMainColumnFamilyName()).
-                        where(Cql.in(KEY, sessionIds));
+                        where(Cql.in(KEY, sessionIds)));
         execute(query, "delete playerSession");
     }
 
