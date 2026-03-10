@@ -197,7 +197,7 @@ public class KeySpaceManagerTest {
         when(metadata.getAllHosts()).thenReturn(hosts);
 
         keySpaceManager.init();
-        Set<com.datastax.driver.core.Host> downHosts = keySpaceManager.getDownHosts();
+        Set<com.abs.casino.cassandra.persist.engine.Host> downHosts = keySpaceManager.getDownHosts();
 
         assertEquals("Wrong size of down hosts set", 2, downHosts.size());
     }
