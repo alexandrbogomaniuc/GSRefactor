@@ -3,6 +3,7 @@ package com.abs.casino.cassandra.persist;
 import com.abs.casino.cassandra.persist.ICassandraBaseGameInfoPersister;
 import com.abs.casino.cassandra.IEntityUpdateListener;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ConsistencyLevel;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.abs.casino.common.cache.AbstractDistributedCache;
@@ -98,7 +99,7 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     public List<BaseGameInfo> getByBank(long bankId) {
         com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_IDX, getBankIdx(bankId))));
-        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBank", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
+        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBank", ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
             com.abs.casino.cassandra.persist.engine.Row row = iterator.next();
@@ -111,7 +112,7 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     public List<BaseGameInfo> getByBankAndCurrency(long bankId, ICurrency currency) {
         com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_AND_CUR_IDX, getBankAndCurIdx(bankId, currency.getCode()))));
-        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBankAndCurrency", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
+        Iterator<com.abs.casino.cassandra.persist.engine.Row> iterator = executeWrapped(select, "getByBankAndCurrency", ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
             com.abs.casino.cassandra.persist.engine.Row row = iterator.next();

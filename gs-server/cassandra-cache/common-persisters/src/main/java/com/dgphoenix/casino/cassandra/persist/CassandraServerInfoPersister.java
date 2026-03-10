@@ -1,6 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ConsistencyLevel;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.LoadBalancerCache;
 import com.abs.casino.common.cache.data.server.IServerInfoInternalProvider;
@@ -70,7 +71,7 @@ public class CassandraServerInfoPersister extends AbstractLongDistributedConfigE
         try {
             Insert query = addInsertion(serverInfo.getId(), SERIALIZED_COLUMN_NAME, byteBuffer)
                     .value(JSON_COLUMN_NAME, json);
-            execute(query, "persist", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE);
+            execute(query, "persist", ConsistencyLevel.LOCAL_ONE);
         } finally {
             releaseBuffer(byteBuffer);
         }

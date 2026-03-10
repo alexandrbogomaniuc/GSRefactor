@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ConsistencyLevel;
 import com.abs.casino.cassandra.persist.engine.ResultSet;
 import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -65,7 +66,7 @@ public class CassandraNotificationPersister extends AbstractCassandraPersister<L
                     value(SERVER_ID, concurrentNotification.getGameServerId()).
                     value(SERIALIZED_COLUMN_NAME, byteBuffer).
                     value(JSON_COLUMN_NAME, json));
-            execute(insertQuery, "notification persist", com.datastax.driver.core.ConsistencyLevel.ANY);
+            execute(insertQuery, "notification persist", ConsistencyLevel.ANY);
         } finally {
             releaseBuffer(byteBuffer);
         }

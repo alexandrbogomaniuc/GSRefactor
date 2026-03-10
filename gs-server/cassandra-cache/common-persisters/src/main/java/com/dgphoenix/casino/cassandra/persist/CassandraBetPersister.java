@@ -367,7 +367,9 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
         Collections.sort(playerBets);
         ByteBuffer value = FastKryoHelper.serializeToBytes(playerBets, betListSerializer, 512);
         byteBuffersCollector.add(value);
-        statements.add(addInsertion(gameSessionId, SERIALIZED_COLUMN_NAME, value).setConsistencyLevel(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE));
+        com.datastax.driver.core.querybuilder.Insert insert = addInsertion(gameSessionId, SERIALIZED_COLUMN_NAME, value);
+        setConsistencyLevel(insert, com.abs.casino.cassandra.persist.engine.ConsistencyLevel.LOCAL_ONE);
+        statements.add(insert);
         tempBetPersister.addDeleteStatement(statementsMap, gameSessionId);
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + ": prepareToPersistBetsList",
                 System.currentTimeMillis() - now);
