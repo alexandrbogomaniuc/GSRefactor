@@ -104,6 +104,7 @@ public class CacheExporter {
         XStream xstream = new XStream();
         XStream.setupDefaultSecurity(xstream);
         xstream.allowTypesByWildcard(new String[]{"com.dgphoenix.casino.**", "com.abs.casino.**"});
+        xstream.aliasPackage("com.dgphoenix.casino", "com.abs.casino");
         // Local bootstrap files can contain fields from older schema revisions.
         xstream.ignoreUnknownElements();
         xstream.setMode(cache.isNoReferenceMode() ? XStream.NO_REFERENCES : XStream.XPATH_ABSOLUTE_REFERENCES);
