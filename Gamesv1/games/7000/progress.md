@@ -64,3 +64,40 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
   - upgraded `LoadScreen.ts` again with a stronger bar/plate composition and NanoBanana hero glow layers, while avoiding the baked-background mascot frame that degraded the screen.
   - kept the provider matrix intact: nanobanana remains the default hero provider, openai is still the fallback path, and donorlocal remains the local benchmark.
   - fresh proof lives in `docs/_visual_proof/beta3b-2026-03-09/`, and the Beta 3B review concludes the build is improved but still not ready for Wave 1 visual QA because the remaining blocker is quality/polish, not code wiring.
+- 2026-03-10: Started Beta 4A runtime-slot reconstruction on `codex/qa/7000-beta4a-runtime-slot-system-20260310-0841`.
+  - cherry-picked donor decomposition docs `15-23` plus `14_ANIMATION_REFERENCE.md` into the Beta 4A worktree so the donor decomposition/spec set is local to the active branch.
+  - added a new runtime slot contract and slot resolver:
+    - `src/app/assets/runtimeSlotContract.ts`
+    - `src/app/assets/slotResolver.ts`
+  - added the first explicit presentation-runtime layer:
+    - `src/game/presentation/PresentationEvents.ts`
+    - `src/game/presentation/PresentationOrchestrator.ts`
+    - `src/game/presentation/JackpotPlaqueController.ts`
+  - ported the earlier Beta 4A controller shells into the new branch and refit them onto the slot resolver:
+    - `TopperMascotController.ts`
+    - `LayeredFxController.ts`
+    - `WinOverlayController.ts`
+  - extended reel runtime seams:
+    - `CrazyRoosterSlotMachine.ts` now exposes `onSpinStart`, `onReelStop`, and optional `finalReelHoldMs`
+    - `CrazyRoosterReel.ts` now exposes `onStopSettled`
+    - `LightningArcFx.ts` now resolves `fx.lightning.path` through the slot contract instead of a raw atlas key
+  - direct package build now passes in the new worktree after installing workspace deps and restoring the ignored local `src/manifest.json` build artifact from the existing Beta 3B worktree.
+- 2026-03-10: Locked preloader composition to the approved state from user feedback.
+  - replaced the in-flight Beta 4A preloader variant with a deterministic layout in `src/app/screens/LoadScreen.ts`:
+    - top `rooster-logo.png` (approved user logo),
+    - center BetOnline SVG wordmark,
+    - raised skewed loading bar with 30% red + 70% white split,
+    - bottom `Powered by BetOnline Studios®`,
+    - completion-only shine sweep and short star sparkle.
+  - added brand assets:
+    - `raw-assets/preload{m}/rooster-logo.png`
+    - `raw-assets/preload{m}/betonline-logo.svg`
+  - proof screenshot: `/tmp/game7000-preloader-locked.png`
+  - validation: `corepack pnpm -C Gamesv1/games/7000 build` passes after lock-state update.
+- 2026-03-10: Added permanent preloader lock archive + restore docs.
+  - lock doc: `docs/PRELOADER_LOCK.md`
+  - archive snapshot: `docs/_archive/preloader-lock-2026-03-10/LoadScreen.snapshot.ts`
+  - proof baseline:
+    - `docs/_visual_proof/preloader-lock-2026-03-10/desktop-v5-aligned.png`
+    - `docs/_visual_proof/preloader-lock-2026-03-10/portrait-v5-aligned.png`
+  - intent: prevent future passes from drifting the approved preloader layout/branding; enable one-file restore.
