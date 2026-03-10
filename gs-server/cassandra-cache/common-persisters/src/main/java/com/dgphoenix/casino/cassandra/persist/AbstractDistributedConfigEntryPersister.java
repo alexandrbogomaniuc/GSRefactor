@@ -126,7 +126,7 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
 
     protected Map<KEY, T> loadAllAsMap(Class<T> entryClass) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.Statement query = Cql.select().all().from(getMainColumnFamilyName());
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select().all().from(getMainColumnFamilyName()));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "loadAllAsMap");
         if (resultSet == null || !resultSet.iterator().hasNext()) {
             getLog().error("loadAllForLongKeysAsMapKryo: rowList is null or empty");

@@ -188,10 +188,10 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
             throw new NullPointerException("Parameter 'historyItemProcessor' can't be null");
         }
 
-        com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, LAST_ATTEMPT_TIME_FIELD, ITERATIONS_FIELD, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select(SERIALIZED_COLUMN_NAME, LAST_ATTEMPT_TIME_FIELD, ITERATIONS_FIELD, JSON_COLUMN_NAME)
                 .from(HISTORY_INFORMER_ITEM_CF)
                 .where(eq(BANK_ID_FIELD, bankId))
-                .setFetchSize(3);
+                .setFetchSize(3));
 
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "processItemsForBank");
         int itemsCount = 0;

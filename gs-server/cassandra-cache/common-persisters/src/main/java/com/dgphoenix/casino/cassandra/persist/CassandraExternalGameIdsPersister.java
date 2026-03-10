@@ -140,8 +140,8 @@ public class CassandraExternalGameIdsPersister extends AbstractStringDistributed
             throws IOException {
         if ("byBank".equals(conditionName)) {
             Long bankId = (Long) conditionValues[0];
-            com.datastax.driver.core.Statement select = getSelectColumnsQuery(BANK_ID, KEY, ID)
-                    .where(eq(BANK_ID, bankId));
+            com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(BANK_ID, KEY, ID)
+                    .where(eq(BANK_ID, bankId)));
             ResultSet resultSet = executeWrapped(select, "getByBankId");
             for (Row row : resultSet) {
                 processRow(row, tableProcessor);

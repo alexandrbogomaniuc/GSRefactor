@@ -45,7 +45,7 @@ public class CassandraBlockedCountriesPersister extends AbstractCassandraPersist
     public void persist(String countryISOCode, boolean isBlocked) {
         LOG.debug("persist " + countryISOCode + " blocked=" + isBlocked);
         if (isBlocked) {
-            com.datastax.driver.core.Statement query = getInsertQuery().value(KEY, countryISOCode);
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery().value(KEY, countryISOCode));
             execute(query, "persist");
         } else {
             deleteWithCheck(KEY);
