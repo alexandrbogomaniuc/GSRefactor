@@ -46,7 +46,7 @@ public class CassandraSummaryFeedTransformerPersister extends AbstractCassandraP
                 .where(eq(TOURNAMENT_ID_COLUMN, tournamentId))
                 .limit(1);
 
-        com.datastax.driver.core.Row result = execute(select, "getTransformer").one();
+        com.abs.casino.cassandra.persist.engine.Row result = execute(select, "getTransformer").one();
         if (result != null) {
             ISummaryFeedTransformer t = TABLE.deserializeWithClassFromJson(result.getString(JSON_COLUMN_NAME));
             if (t == null) {

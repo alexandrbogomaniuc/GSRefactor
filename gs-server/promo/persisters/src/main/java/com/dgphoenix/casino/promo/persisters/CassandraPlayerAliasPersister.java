@@ -57,7 +57,7 @@ public class CassandraPlayerAliasPersister extends AbstractCassandraPersister<Lo
                 .where(eq(NETWORK_TOURNAMENT_ID, networkTournamentId))
                 .and(eq(PLAYER_ALIAS, alias))
                 .limit(1);
-        com.datastax.driver.core.ResultSet allAliases = execute(selectQuery, "isExists");
+        com.abs.casino.cassandra.persist.engine.ResultSet allAliases = execute(selectQuery, "isExists");
         return allAliases.one() != null;
     }
 
@@ -65,8 +65,8 @@ public class CassandraPlayerAliasPersister extends AbstractCassandraPersister<Lo
         com.datastax.driver.core.Statement selectQuery = getSelectAllColumnsQuery(PLAYER_ALIAS_TABLE)
                 .where(eq(NETWORK_TOURNAMENT_ID, networkTournamentId))
                 .and(eq(PLAYER_ALIAS, alias));
-        List<com.datastax.driver.core.Row> aliases = execute(selectQuery, "getAlias").all();
-        Optional<com.datastax.driver.core.Row> row = aliases.stream()
+        List<com.abs.casino.cassandra.persist.engine.Row> aliases = execute(selectQuery, "getAlias").all();
+        Optional<com.abs.casino.cassandra.persist.engine.Row> row = aliases.stream()
                 .max(Comparator.comparingLong(r -> r.getLong(ALIAS_POSTFIX)));
         if (row.isPresent()) {
             return row.get().getLong(ALIAS_POSTFIX);

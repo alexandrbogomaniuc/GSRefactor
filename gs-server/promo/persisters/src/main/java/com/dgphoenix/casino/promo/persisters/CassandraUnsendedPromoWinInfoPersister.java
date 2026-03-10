@@ -57,10 +57,10 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
     }
 
     public List<PromoWinInfo> getForGameSession(long gameSessionId) {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(GAME_SESSION_ID, gameSessionId)), "getForGameSession");
         List<PromoWinInfo> wins = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             PromoWinInfo info = TABLE.deserializeFromJson(
                     row.getString(JSON_COLUMN_NAME), PromoWinInfo.class);
 
@@ -78,7 +78,7 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
     }
 
     public PromoWinInfo getByRoundId(long roundId) {
-        com.datastax.driver.core.Row row = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Row row = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ROUND_ID, roundId)), "getByRoundId").one();
         if (row != null) {
             PromoWinInfo info = 
@@ -108,10 +108,10 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
 
     public void removeByRoundId(long roundId) {
         LOG.debug("remove: roundId={}", roundId);
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(GAME_SESSION_ID, WIN_DATE)
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getSelectColumnsQuery(GAME_SESSION_ID, WIN_DATE)
                 .where(eq(ROUND_ID, roundId)), "getAllRecordsByRoundId");
         Set<Pair<Long, Long>> pairs = new HashSet<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             pairs.add(new Pair<>(row.getLong(GAME_SESSION_ID), row.getLong(WIN_DATE)));
         }
         LOG.debug("removeByRoundId: found records for remove={}", pairs.size());

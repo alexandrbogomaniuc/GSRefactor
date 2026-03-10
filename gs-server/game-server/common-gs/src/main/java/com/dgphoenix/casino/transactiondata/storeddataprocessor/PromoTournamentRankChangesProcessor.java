@@ -28,7 +28,7 @@ public class PromoTournamentRankChangesProcessor
 
     @Override
     public void process(StoredItem<TournamentMemberRanks, StoredItemInfo<TournamentMemberRanks>> item,
-                        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+                        HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         tournamentRankPersister.prepareToPersist(statementsMap, item.getItem(), byteBuffersCollector);
     }
 }

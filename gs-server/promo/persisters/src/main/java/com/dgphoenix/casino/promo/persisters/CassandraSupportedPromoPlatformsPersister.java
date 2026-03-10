@@ -47,7 +47,7 @@ public class CassandraSupportedPromoPlatformsPersister extends AbstractCassandra
     public ISupportedPlatform getSupportedPlatform(long campaignId) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(PLATFORM)
                 .where(eq(PROMO_ID, campaignId));
-        com.datastax.driver.core.Row result = execute(query, "getSupportedPlatform").one();
+        com.abs.casino.cassandra.persist.engine.Row result = execute(query, "getSupportedPlatform").one();
 
         ISupportedPlatform supportedPlatform = SupportedPlatform.ALL;
         if (result != null) {

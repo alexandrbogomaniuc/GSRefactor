@@ -56,7 +56,7 @@ public class CassandraTournamentFeedHistoryPersister extends AbstractCassandraPe
                 .and(eq(TIME_COLUMN, time))
                 .limit(1);
 
-        com.datastax.driver.core.Row result = execute(query, "getRecords").one();
+        com.abs.casino.cassandra.persist.engine.Row result = execute(query, "getRecords").one();
         if (result == null) {
             return null;
         }

@@ -26,7 +26,7 @@ public class PlayerBetChangesProcessor implements IStoredDataProcessor<PlayerBet
     }
 
     @Override
-    public void process(StoredItem<PlayerBet, PlayerBetStoredInfo> item, HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+    public void process(StoredItem<PlayerBet, PlayerBetStoredInfo> item, HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         betPersister.prepareToPersistBet(statementsMap, item.getIdentifier().getGameSessionId(), item.getItem(), byteBuffersCollector);
     }
 }

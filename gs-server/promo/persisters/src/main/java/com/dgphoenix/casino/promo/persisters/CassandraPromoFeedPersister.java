@@ -45,7 +45,7 @@ public class CassandraPromoFeedPersister extends AbstractCassandraPersister<Stri
                 .and(eq(TIME_COLUMN, time))
                 .limit(1);
 
-        com.datastax.driver.core.Row result = execute(query, "getFeed").one();
+        com.abs.casino.cassandra.persist.engine.Row result = execute(query, "getFeed").one();
         if (result != null) {
             return result.getString(FEED_COLUMN);
         }
