@@ -57,11 +57,11 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
     }
 
     public void createOrUpdate(CurrencyRate currencyRate) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(SOURCE_FIELD, currencyRate.getSourceCurrency())
                 .value(DEST_FIELD, currencyRate.getDestinationCurrency())
                 .value(RATE_FIELD, currencyRate.getRate())
-                .value(UPDATE_DATE_FIELD, currencyRate.getUpdateDate());
+                .value(UPDATE_DATE_FIELD, currencyRate.getUpdateDate()));
         execute(query, "create");
         Pair<String, String> pair = new Pair<>(currencyRate.getSourceCurrency(), currencyRate.getDestinationCurrency());
         for (ICurrencyRateChangedListener listener : changedListeners) {
@@ -70,9 +70,9 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
     }
 
     public CurrencyRate getCurrencyRate(String source, String target) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(RATE_FIELD, UPDATE_DATE_FIELD)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(RATE_FIELD, UPDATE_DATE_FIELD)
                 .where(Cql.eq(SOURCE_FIELD, source))
-                .and(Cql.eq(DEST_FIELD, target));
+                .and(Cql.eq(DEST_FIELD, target)));
         Row row = executeWrapped(query, "getRate").one();
         CurrencyRate result = null;
         if (row != null && !row.isNull(RATE_FIELD)) {
@@ -85,7 +85,7 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
     }
 
     public Collection<CurrencyRate> getRates() {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SOURCE_FIELD, DEST_FIELD, RATE_FIELD, UPDATE_DATE_FIELD);
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SOURCE_FIELD, DEST_FIELD, RATE_FIELD, UPDATE_DATE_FIELD));
         return StreamUtils.asStream(executeWrapped(query, "getRates"))
                 .filter(Objects::nonNull)
                 .filter(row -> {

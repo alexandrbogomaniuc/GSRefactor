@@ -54,11 +54,11 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
         ByteBuffer byteBuffer = COUNTRIES_TABLE.serializeToBytes(restrictions);
         String json = COUNTRIES_TABLE.serializeToJson(restrictions);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery(type.getCassandraTtl())
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery(type.getCassandraTtl())
                 .value(OBJECT_ID, objectId)
                 .value(RESTRICTION_TYPE, type.ordinal())
                 .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                .value(JSON_COLUMN_NAME, json);
+                .value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -68,10 +68,10 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     public CountryRestrictionList get(long objectId, RestrictionType type) {
         long now = System.currentTimeMillis();
         CountryRestrictionList result = null;
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where()
                 .and(eq(OBJECT_ID, objectId))
-                .and(eq(RESTRICTION_TYPE, type.ordinal()));
+                .and(eq(RESTRICTION_TYPE, type.ordinal())));
         ResultSet resultSet = executeWrapped(query, "get");
         Row row = resultSet.one();
         if (row != null) {
@@ -90,11 +90,11 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     }
 
     public void delete(long objectId, RestrictionType type) {
-        com.datastax.driver.core.Statement query = Cql.delete()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete()
                 .from(getMainColumnFamilyName())
                 .where()
                 .and(eq(OBJECT_ID, objectId))
-                .and(eq(RESTRICTION_TYPE, type));
+                .and(eq(RESTRICTION_TYPE, type)));
         execute(query, "delete");
     }
 }

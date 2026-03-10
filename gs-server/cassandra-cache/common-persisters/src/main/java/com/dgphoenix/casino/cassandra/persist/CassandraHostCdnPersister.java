@@ -58,21 +58,21 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
 
 
     public void persist(String ip, String cdn, int time) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(IP_FIELD, ip)
                 .value(CDN_FIELD, cdn)
                 .value(TIME_FIELD, time)
-                .value(LAST_UPDATE_FIELD, System.currentTimeMillis());
+                .value(LAST_UPDATE_FIELD, System.currentTimeMillis()));
         execute(query, "create");
     }
 
     public List<CdnCheckResult> getCdnByIp(String ip) {
-        com.datastax.driver.core.Statement query = Cql.select()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.select()
                 .column(CDN_FIELD)
                 .column(TIME_FIELD)
                 .column(LAST_UPDATE_FIELD)
                 .from(COLUMN_FAMILY_NAME)
-                .where(Cql.eq(IP_FIELD, ip)).limit(1000);
+                .where(Cql.eq(IP_FIELD, ip)).limit(1000));
         ResultSet rows = executeWrapped(query, "getCdnByIp");
 
         List<CdnCheckResult> result = new ArrayList<>();
@@ -84,11 +84,11 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
     }
 
     public void remove(String ip, String cdn) {
-        com.datastax.driver.core.Statement query = Cql.delete()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete()
                 .all()
                 .from(COLUMN_FAMILY_NAME)
                 .where(Cql.eq(IP_FIELD, ip))
-                .and(Cql.eq(CDN_FIELD, cdn));
+                .and(Cql.eq(CDN_FIELD, cdn)));
         execute(query, "deleteItem");
     }
 }

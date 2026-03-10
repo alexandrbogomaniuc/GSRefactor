@@ -54,10 +54,10 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     }
 
     public void persist(String region, String nickname, long owner) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(REGION_COLUMN, region)
                 .value(NICK_NAME_COLUMN, nickname)
-                .value(OWNER_COLUMN, owner);
+                .value(OWNER_COLUMN, owner));
         execute(query, "persist");
     }
 
@@ -66,9 +66,9 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     }
 
     public boolean isExist(String region, String nickname, long owner) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(OWNER_COLUMN)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(OWNER_COLUMN)
                 .where(eq(REGION_COLUMN, region))
-                .and(eq(NICK_NAME_COLUMN, nickname));
+                .and(eq(NICK_NAME_COLUMN, nickname)));
         com.abs.casino.cassandra.persist.engine.Row result = executeWrapped(query, "isExist").one();
         return result != null && result.getLong(OWNER_COLUMN) == owner;
     }
@@ -82,15 +82,15 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     }
 
     public Set<String> getNicknames(String region, Long owner) {
-        com.datastax.driver.core.Statement query;
+        com.abs.casino.cassandra.persist.engine.Statement query;
         if (owner == null) {
-            query = getSelectColumnsQuery(NICK_NAME_COLUMN)
-                    .where(eq(REGION_COLUMN, region));
+            query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(NICK_NAME_COLUMN)
+                    .where(eq(REGION_COLUMN, region)));
         } else {
-            query = getSelectColumnsQuery(NICK_NAME_COLUMN)
+            query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(NICK_NAME_COLUMN)
                     .where(eq(REGION_COLUMN, region))
                     .and(eq(OWNER_COLUMN, owner))
-                    .allowFiltering();
+                    .allowFiltering());
         }
         com.abs.casino.cassandra.persist.engine.ResultSet rs = executeWrapped(query, "getNickNamesForRegion");
         Set<String> result = new HashSet<>(128);

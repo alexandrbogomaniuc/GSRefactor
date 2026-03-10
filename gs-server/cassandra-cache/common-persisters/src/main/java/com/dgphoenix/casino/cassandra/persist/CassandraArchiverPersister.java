@@ -47,9 +47,9 @@ public class CassandraArchiverPersister extends AbstractCassandraPersister<Strin
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist: " + cfName + "=" + new Date(lastProcessedDate));
         }
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(KEY, cfName)
-                .value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate);
+                .value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate));
         execute(query, "persist");
     }
 

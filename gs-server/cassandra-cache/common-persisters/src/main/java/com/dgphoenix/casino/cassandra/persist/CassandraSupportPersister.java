@@ -33,15 +33,15 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     }
 
     public void persist(String sessionId, long timestamp, String info) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(KEY, sessionId)
                 .value(TIMESTAMP, timestamp)
-                .value(INFO, info);
+                .value(INFO, info));
         execute(query, "persist");
     }
 
     public Iterable<String> getSessionIDs() {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(KEY);
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(KEY));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getSessionIDs");
 
         if (resultSet.isExhausted()) {
@@ -56,8 +56,8 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     }
 
     public Map<Long, String> getValuesBySessionID(String sessionId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(TIMESTAMP, INFO)
-                .where(eq(KEY, sessionId));
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(TIMESTAMP, INFO)
+                .where(eq(KEY, sessionId)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getValuesBySessionID");
 
         if (resultSet.isExhausted()) {
