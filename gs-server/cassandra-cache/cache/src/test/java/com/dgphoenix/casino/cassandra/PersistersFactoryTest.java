@@ -4,6 +4,7 @@ import com.abs.casino.cassandra.config.ColumnFamilyConfig;
 import com.abs.casino.cassandra.persist.CassandraPersisterMock;
 import com.abs.casino.cassandra.persist.CassandraRemoteCallPersister;
 import com.abs.casino.cassandra.persist.ISimplePersister;
+import com.abs.casino.cassandra.persist.engine.ConsistencyLevel;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import org.junit.Before;
 import org.junit.Rule;
@@ -17,7 +18,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static com.datastax.driver.core.ConsistencyLevel.*;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -50,7 +50,7 @@ public class PersistersFactoryTest {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(startsWith("Wrong persister class name"));
 
-        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ANY, ANY, LOCAL_SERIAL);
+        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ConsistencyLevel.ANY, ConsistencyLevel.ANY, ConsistencyLevel.LOCAL_SERIAL);
     }
 
     @Test
@@ -59,14 +59,14 @@ public class PersistersFactoryTest {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Persister must implement ICassandraPersister");
 
-        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ANY, ANY, LOCAL_SERIAL);
+        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ConsistencyLevel.ANY, ConsistencyLevel.ANY, ConsistencyLevel.LOCAL_SERIAL);
     }
 
     @Test
     public void testInitializePersisters() {
         when(cfConfig.getClassName()).thenReturn("com.abs.casino.cassandra.persist.CassandraPersisterMock");
 
-        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ANY, ANY, LOCAL_SERIAL);
+        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ConsistencyLevel.ANY, ConsistencyLevel.ANY, ConsistencyLevel.LOCAL_SERIAL);
 
         List<ICassandraPersister> persisters = persistersFactory.getAllPersisters();
         assertEquals(1, persisters.size());
@@ -77,7 +77,7 @@ public class PersistersFactoryTest {
     public void testGetPersisterByClass() {
         when(cfConfig.getClassName()).thenReturn("com.abs.casino.cassandra.persist.CassandraPersisterMock");
 
-        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ANY, ANY, LOCAL_SERIAL);
+        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ConsistencyLevel.ANY, ConsistencyLevel.ANY, ConsistencyLevel.LOCAL_SERIAL);
         ICassandraPersister persister = persistersFactory.getPersister(CassandraRemoteCallPersister.class);
 
         assertNull("For class that not in config should returns null", persister);
@@ -91,7 +91,7 @@ public class PersistersFactoryTest {
     public void testGetPersisterByInterface() {
         when(cfConfig.getClassName()).thenReturn("com.abs.casino.cassandra.persist.CassandraPersisterMock");
 
-        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ANY, ANY, LOCAL_SERIAL);
+        persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ConsistencyLevel.ANY, ConsistencyLevel.ANY, ConsistencyLevel.LOCAL_SERIAL);
         List<ISimplePersister> persister = persistersFactory.getPersistersByInterface(ISimplePersister.class);
 
         assertEquals(1, persister.size());
@@ -107,7 +107,7 @@ public class PersistersFactoryTest {
         String persisterClassName2 = "com.abs.casino.cassandra.persist.SimplePersisterImpl";
         when(config2.getClassName()).thenReturn(persisterClassName2);
 
-        persistersFactory.initializePersisters(Arrays.asList(config1, config2), ANY, ANY, LOCAL_SERIAL);
+        persistersFactory.initializePersisters(Arrays.asList(config1, config2), ConsistencyLevel.ANY, ConsistencyLevel.ANY, ConsistencyLevel.LOCAL_SERIAL);
         List<ISimplePersister> persisters = persistersFactory.getPersistersByInterface(ISimplePersister.class);
 
         assertEquals(2, persisters.size());

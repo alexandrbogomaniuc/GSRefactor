@@ -32,9 +32,9 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     protected static final int IN_CLAUSE_SIZE = 1000;
 
     private Session session;
-    private com.datastax.driver.core.ConsistencyLevel readConsistency;
-    private com.datastax.driver.core.ConsistencyLevel writeConsistency;
-    private com.datastax.driver.core.ConsistencyLevel serialConsistency;
+    private ConsistencyLevel readConsistency;
+    private ConsistencyLevel writeConsistency;
+    private ConsistencyLevel serialConsistency;
     private int ttl = 0;//load from config
 
     protected boolean initialized;
@@ -49,13 +49,19 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     @Override
-    public void setConsistencyLevels(com.datastax.driver.core.ConsistencyLevel readConsistency, com.datastax.driver.core.ConsistencyLevel writeConsistency, com.datastax.driver.core.ConsistencyLevel serialConsistency) {
+    public void setConsistencyLevels(ConsistencyLevel readConsistency, ConsistencyLevel writeConsistency, ConsistencyLevel serialConsistency) {
         if (!serialConsistency.isSerial()) {
             throw new IllegalArgumentException("Supplied consistency level is not serial: " + serialConsistency);
         }
         this.readConsistency = readConsistency;
         this.writeConsistency = writeConsistency;
         this.serialConsistency = serialConsistency;
+    }
+
+    public void setConsistencyLevels(com.datastax.driver.core.ConsistencyLevel readConsistency,
+                                     com.datastax.driver.core.ConsistencyLevel writeConsistency,
+                                     com.datastax.driver.core.ConsistencyLevel serialConsistency) {
+        setConsistencyLevels(ConsistencyLevel.wrap(readConsistency), ConsistencyLevel.wrap(writeConsistency), ConsistencyLevel.wrap(serialConsistency));
     }
 
     protected String getKeyColumnName() {
@@ -343,7 +349,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     protected ResultSet execute(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification, ConsistencyLevel level) {
-        return execute(statement, callerClassMethodIdentification, level == null ? null : level.unwrap());
+        return execute(statement, callerClassMethodIdentification, level == null ? null : level.toDriver());
     }
 
     protected ResultSet execute(Statement statement, String callerClassMethodIdentification, com.datastax.driver.core.ConsistencyLevel level) {
@@ -351,7 +357,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     protected ResultSet execute(Statement statement, String callerClassMethodIdentification, ConsistencyLevel level) {
-        return execute(statement, callerClassMethodIdentification, level == null ? null : level.unwrap());
+        return execute(statement, callerClassMethodIdentification, level == null ? null : level.toDriver());
     }
 
     protected ResultSet executeWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
@@ -521,7 +527,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     protected ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
                                 ConsistencyLevel level) {
-        return execute(session, statement, callerClassMethodIdentification, level == null ? null : level.unwrap());
+        return execute(session, statement, callerClassMethodIdentification, level == null ? null : level.toDriver());
     }
 
     protected void setStatementConsistencyLevels(com.datastax.driver.core.Statement statement) {
@@ -535,24 +541,24 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     private void setStatementReadWriteConsistencyLevel(com.datastax.driver.core.Statement statement) {
         if (statement instanceof com.datastax.driver.core.querybuilder.Select || statement instanceof com.datastax.driver.core.querybuilder.Select.Where) {
-            statement.setConsistencyLevel(readConsistency);
+            statement.setConsistencyLevel(readConsistency.toDriver());
         } else if (statement instanceof com.datastax.driver.core.querybuilder.Insert
                 || statement instanceof com.datastax.driver.core.querybuilder.Update
                 || statement instanceof com.datastax.driver.core.querybuilder.Update.Where
                 || statement instanceof com.datastax.driver.core.querybuilder.Delete
                 || statement instanceof com.datastax.driver.core.querybuilder.Delete.Where) {
 
-            statement.setConsistencyLevel(writeConsistency);
+            statement.setConsistencyLevel(writeConsistency.toDriver());
         }
     }
 
     private void setStatementSerialConsistencyLevel(com.datastax.driver.core.Statement statement) {
-        statement.setSerialConsistencyLevel(serialConsistency);
+        statement.setSerialConsistencyLevel(serialConsistency.toDriver());
     }
 
     protected void setConsistencyLevel(com.datastax.driver.core.Statement statement, ConsistencyLevel level) {
         if (statement != null && level != null) {
-            statement.setConsistencyLevel(level.unwrap());
+            statement.setConsistencyLevel(level.toDriver());
         }
     }
 
