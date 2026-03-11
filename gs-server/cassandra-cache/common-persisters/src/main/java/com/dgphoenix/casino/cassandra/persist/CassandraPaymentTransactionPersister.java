@@ -6,6 +6,7 @@ import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import com.abs.casino.cassandra.persist.engine.StatementPlan;
+import com.abs.casino.cassandra.persist.engine.Statement;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.abs.casino.common.SessionHelper;
@@ -85,8 +86,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
 
     private com.datastax.driver.core.Statement getUpdateStatement(PaymentTransaction transaction, String extIdOverride, ByteBuffer byteBuffer,
                                          String json) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(TABLE, BUCKET_FIELD, START_DATE_FIELD)
-                .where(eq(TRANSACTION_ID_FIELD, transaction.getId()));
+        Statement query = Statement.of(getSelectColumnsQuery(TABLE, BUCKET_FIELD, START_DATE_FIELD)
+                .where(eq(TRANSACTION_ID_FIELD, transaction.getId())));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getUpdateStatement");
         com.abs.casino.cassandra.persist.engine.Row stored = resultSet.one();
         int bucket;
@@ -136,8 +137,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         String json = TABLE.serializeToJson(transaction);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
         try {
-            com.datastax.driver.core.Statement query = getUpdateStatement(transaction, null, byteBuffer, json);
-            execute(query, "save");
+            Statement query = Statement.of(getUpdateStatement(transaction, null, byteBuffer, json));
+            executeWrapped(query, "save");
         } finally {
             releaseBuffer(byteBuffer);
         }
@@ -145,8 +146,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
 
     public PaymentTransaction getTransaction(long transactionId) {
         getLog().debug("getTransaction: {}", transactionId);
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(TRANSACTION_ID_FIELD, transactionId));
+        Statement select = Statement.of(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(TRANSACTION_ID_FIELD, transactionId)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(select, "getTransaction");
         com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         if (row == null) {
@@ -166,10 +167,10 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
     public void loadAndProcess(long startRangeDate, long endRangeDate, PaymentTransactionProcessor processor) {
         int count = 0;
         for (int i = 0; i < RANDOM_FACTOR; i++) {
-            com.datastax.driver.core.Statement query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+            Statement query = Statement.of(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                     .where(eq(BUCKET_FIELD, i))
                     .and(Cql.gte(START_DATE_FIELD, startRangeDate))
-                    .and(Cql.lte(START_DATE_FIELD, endRangeDate));
+                    .and(Cql.lte(START_DATE_FIELD, endRangeDate)));
             com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "loadAndProcess");
             for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
                 String json = row.getString(JSON_COLUMN_NAME);
@@ -192,10 +193,10 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         int count = 0;
         List<Long> transactionIds = new ArrayList<>();
         for (int i = 0; i < RANDOM_FACTOR; i++) {
-            com.datastax.driver.core.Statement query = getSelectColumnsQuery(TABLE, TRANSACTION_ID_FIELD)
+            Statement query = Statement.of(getSelectColumnsQuery(TABLE, TRANSACTION_ID_FIELD)
                     .where(eq(BUCKET_FIELD, i))
                     .and(Cql.gte(START_DATE_FIELD, startDate))
-                    .and(Cql.lte(START_DATE_FIELD, endDate));
+                    .and(Cql.lte(START_DATE_FIELD, endDate)));
             com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getTransactionIdsByDateRange");
             for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
                 long transactionId = row.getLong(TRANSACTION_ID_FIELD);
@@ -218,8 +219,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         String json = TABLE.serializeToJson(transaction);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
         try {
-            com.datastax.driver.core.Statement updateStatement = getUpdateStatement(transaction, extId, byteBuffer, json);
-            execute(updateStatement, "saveExternalTransactionId");
+            Statement updateStatement = Statement.of(getUpdateStatement(transaction, extId, byteBuffer, json));
+            executeWrapped(updateStatement, "saveExternalTransactionId");
         } finally {
             releaseBuffer(byteBuffer);
         }
@@ -227,8 +228,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
 
     public PaymentTransaction getTransactionByExtId(long bankId, String extId) {
         String extKey = buildExtIdKey(bankId, extId);
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(EXTERNAL_ID_FIELD, extKey));
+        Statement query = Statement.of(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(EXTERNAL_ID_FIELD, extKey)));
         com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getUncompletedTransactionIdByExtId");
         com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         if (row == null || row.isNull(SERIALIZED_COLUMN_NAME) || row.isNull(JSON_COLUMN_NAME)) {
