@@ -1,6 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.Cql;
+import com.abs.casino.cassandra.persist.engine.StatementPlan;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
@@ -336,7 +337,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
             } else {
                 LOG.error("persistPlayerBet Unknown processor for type={}", type);
             }
-            execute(statementsMap, "persistPlayerBet").getKey();
+            execute(asStatementPlan(statementsMap), "persistPlayerBet").getKey();
         } finally {
             if (storedItems != null) {
                 storedItems.remove(type);
@@ -563,7 +564,7 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
                         }
                     }
                 }
-                success = execute(statementsMap, callerClassMethodIdentification + " internal").getKey();
+                success = execute(asStatementPlan(statementsMap), callerClassMethodIdentification + " internal").getKey();
             }
             if (success) {
                 if (before != null) {
@@ -601,11 +602,18 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     protected Pair<Boolean, Map<com.abs.casino.cassandra.persist.engine.Session, List<com.abs.casino.cassandra.persist.engine.ResultSet>>> execute(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap,
                                                                    String callerClassMethodIdentification) {
+        return execute(asStatementPlan(statementsMap), callerClassMethodIdentification);
+    }
+
+    protected Pair<Boolean, Map<com.abs.casino.cassandra.persist.engine.Session, List<com.abs.casino.cassandra.persist.engine.ResultSet>>> execute(StatementPlan statementsPlan,
+                                                                   String callerClassMethodIdentification) {
         long now = System.currentTimeMillis();
         try {
-            List<com.datastax.driver.core.Statement> strongConsistencyItems = statementsMap.remove(getSession());
-            Map<com.abs.casino.cassandra.persist.engine.Session, List<com.abs.casino.cassandra.persist.engine.ResultSet>> resultSets = new HashMap<>(statementsMap.size());
-            for (Map.Entry<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> entry : statementsMap.entrySet()) {
+            Map<com.abs.casino.cassandra.persist.engine.Session, List<com.abs.casino.cassandra.persist.engine.Statement>> statementsBySession =
+                    new HashMap<>(statementsPlan.getStatementsBySession());
+            List<com.abs.casino.cassandra.persist.engine.Statement> strongConsistencyItems = statementsBySession.remove(getSession());
+            Map<com.abs.casino.cassandra.persist.engine.Session, List<com.abs.casino.cassandra.persist.engine.ResultSet>> resultSets = new HashMap<>(statementsBySession.size());
+            for (Map.Entry<com.abs.casino.cassandra.persist.engine.Session, List<com.abs.casino.cassandra.persist.engine.Statement>> entry : statementsBySession.entrySet()) {
                 Pair<Boolean, List<com.abs.casino.cassandra.persist.engine.ResultSet>> ksResult = executeSingleBatch(entry.getKey(), entry.getValue(),
                         callerClassMethodIdentification);
                 resultSets.put(entry.getKey(), ksResult.getValue());
@@ -629,13 +637,13 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
         }
     }
 
-    private Pair<Boolean, List<com.abs.casino.cassandra.persist.engine.ResultSet>> executeSingleBatch(com.abs.casino.cassandra.persist.engine.Session session, List<com.datastax.driver.core.Statement> statements,
+    private Pair<Boolean, List<com.abs.casino.cassandra.persist.engine.ResultSet>> executeSingleBatch(com.abs.casino.cassandra.persist.engine.Session session, List<com.abs.casino.cassandra.persist.engine.Statement> statements,
                                                               String callerClassMethodIdentification) {
         String keySpace = (com.abs.casino.cassandra.persist.engine.Session.class.isInstance(session) ?
                 ((com.abs.casino.cassandra.persist.engine.Session) session).getKeySpace() :
                 "unknown");
         List<com.abs.casino.cassandra.persist.engine.ResultSet> resultSetsByKs = new ArrayList<>(statements.size());
-        for (com.datastax.driver.core.Statement statement : statements) {
+        for (com.abs.casino.cassandra.persist.engine.Statement statement : statements) {
             com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(session, statement, callerClassMethodIdentification +
                     "::keySpace=" + keySpace);
             resultSetsByKs.add(resultSet);

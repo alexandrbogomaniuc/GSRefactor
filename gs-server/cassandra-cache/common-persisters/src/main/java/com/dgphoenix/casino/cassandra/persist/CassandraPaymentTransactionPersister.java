@@ -5,6 +5,7 @@ import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.StatementPlan;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.abs.casino.common.SessionHelper;
@@ -71,6 +72,15 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
         byteBuffersCollector.add(byteBuffer);
         statements.add(getUpdateStatement(transaction, null, byteBuffer, json));
+    }
+
+    public void prepareToPersist(StatementPlan statementsPlan, PaymentTransaction transaction,
+                                 List<ByteBuffer> byteBuffersCollector) {
+        List<com.abs.casino.cassandra.persist.engine.Statement> statements = getOrCreateStatements(statementsPlan);
+        String json = TABLE.serializeToJson(transaction);
+        ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
+        byteBuffersCollector.add(byteBuffer);
+        statements.add(com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateStatement(transaction, null, byteBuffer, json)));
     }
 
     private com.datastax.driver.core.Statement getUpdateStatement(PaymentTransaction transaction, String extIdOverride, ByteBuffer byteBuffer,

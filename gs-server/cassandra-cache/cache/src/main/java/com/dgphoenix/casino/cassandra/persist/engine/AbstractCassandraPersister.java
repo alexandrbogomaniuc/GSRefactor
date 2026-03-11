@@ -85,6 +85,21 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return statementsMap.computeIfAbsent(getSession(), session -> new LinkedList<>());
     }
 
+    protected List<Statement> getOrCreateStatements(StatementPlan statementPlan) {
+        return statementPlan.getOrCreateStatements(getSession());
+    }
+
+    protected StatementPlan asStatementPlan(Map<Session, List<com.datastax.driver.core.Statement>> statementsMap) {
+        StatementPlan statementPlan = new StatementPlan();
+        for (Map.Entry<Session, List<com.datastax.driver.core.Statement>> entry : statementsMap.entrySet()) {
+            List<Statement> wrappedStatements = statementPlan.getOrCreateStatements(entry.getKey());
+            for (com.datastax.driver.core.Statement statement : entry.getValue()) {
+                wrappedStatements.add(Statement.wrap(statement));
+            }
+        }
+        return statementPlan;
+    }
+
     @Override
     public void updateTable(Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata) {
         getLog().debug("updateTable: tableMetadata={}", tableMetadata);
