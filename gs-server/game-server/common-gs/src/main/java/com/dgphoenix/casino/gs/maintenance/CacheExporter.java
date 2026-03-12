@@ -53,22 +53,56 @@ public class CacheExporter {
     private final SubCasinoCache subCasinoCache;
     private final BankInfoCache bankInfoCache;
     private final BaseGameCache baseGameCache;
-    private final CassandraBankInfoPersister bankInfoPersister;
-    private final CassandraBaseGameInfoPersister baseGameInfoPersister;
+    private volatile CassandraBankInfoPersister bankInfoPersister;
+    private volatile CassandraBaseGameInfoPersister baseGameInfoPersister;
 
     public static CacheExporter getInstance() {
         return instance;
     }
 
     private CacheExporter() {
-        ApplicationContext applicationContext = ApplicationContextHelper.getApplicationContext();
-        CassandraPersistenceManager persistenceManager = applicationContext.getBean("persistenceManager", CassandraPersistenceManager.class);
-        bankInfoPersister = persistenceManager.getPersister(CassandraBankInfoPersister.class);
-        baseGameInfoPersister = persistenceManager.getPersister(CassandraBaseGameInfoPersister.class);
         currencyCache = CurrencyCache.getInstance();
         subCasinoCache = SubCasinoCache.getInstance();
         bankInfoCache = BankInfoCache.getInstance();
         baseGameCache = BaseGameCache.getInstance();
+    }
+
+    private CassandraPersistenceManager getPersistenceManager() {
+        ApplicationContext applicationContext = ApplicationContextHelper.getApplicationContext();
+        if (applicationContext == null) {
+            throw new IllegalStateException("Spring applicationContext is not initialized for CacheExporter");
+        }
+        return applicationContext.getBean("persistenceManager", CassandraPersistenceManager.class);
+    }
+
+    private CassandraBankInfoPersister getBankInfoPersister() {
+        CassandraBankInfoPersister persister = bankInfoPersister;
+        if (persister != null) {
+            return persister;
+        }
+        synchronized (this) {
+            persister = bankInfoPersister;
+            if (persister == null) {
+                persister = getPersistenceManager().getPersister(CassandraBankInfoPersister.class);
+                bankInfoPersister = persister;
+            }
+        }
+        return persister;
+    }
+
+    private CassandraBaseGameInfoPersister getBaseGameInfoPersister() {
+        CassandraBaseGameInfoPersister persister = baseGameInfoPersister;
+        if (persister != null) {
+            return persister;
+        }
+        synchronized (this) {
+            persister = baseGameInfoPersister;
+            if (persister == null) {
+                persister = getPersistenceManager().getPersister(CassandraBaseGameInfoPersister.class);
+                baseGameInfoPersister = persister;
+            }
+        }
+        return persister;
     }
 
     private RemoteCallHelper getRemoteCallHelper() {
@@ -88,7 +122,10 @@ public class CacheExporter {
 
     private AccountManager getAccountManager() {
         if(accountManager == null) {
-            accountManager = ApplicationContextHelper.getApplicationContext().getBean(AccountManager.class);
+            ApplicationContext applicationContext = ApplicationContextHelper.getApplicationContext();
+            if (applicationContext != null) {
+                accountManager = applicationContext.getBean(AccountManager.class);
+            }
         }
         return accountManager;
     }
@@ -252,7 +289,7 @@ public class CacheExporter {
 
         importCache(bankInfoCache, exportPath);
         importCache(baseGameCache, exportPath);
-        baseGameInfoPersister.saveAll();
+        getBaseGameInfoPersister().saveAll();
 
         final List<Long> bankIds = new ArrayList<>(subCasino.getBankIds());
         if (!bankIds.contains(subCasino.getDefaultBank())) {
@@ -266,7 +303,7 @@ public class CacheExporter {
                         currency.getSymbol(), bankId);
             }
             bankInfo.setSubCasinoId(subCasino.getId());
-            bankInfoPersister.persist(bankInfo.getId(), bankInfo);
+            getBankInfoPersister().persist(bankInfo.getId(), bankInfo);
             getRemoteCallHelper().sendCallToAllServers(new RefreshConfigCall(
                     BankInfoCache.class.getCanonicalName(), String.valueOf(bankInfo.getId())));
 
@@ -356,18 +393,25 @@ public class CacheExporter {
     public void importAll(final String importPath, CachesHolder cachesHolder) throws CommonException {
         importCache(currencyCache, importPath);
         importCache(ServerConfigsTemplateCache.getInstance(), importPath);
-        if (getAccountManager().size() > 0) {
+        AccountManager accountManager = getAccountManager();
+        if (accountManager != null && accountManager.size() > 0) {
             throw new CommonException("Can't import caches! Empty first!");
         }
-        Thread importAccountsCache = new Thread(() -> {
-            try {
-                importCache(getAccountManager(), importPath);
-            } catch (CommonException e) {
-                LOG.error("Can't import AccountsCache", e);
-            }
-            LOG.error("Import AccountsCache completed");
-        });
-        importAccountsCache.start();
+        Thread importAccountsCache = null;
+        if (accountManager != null) {
+            AccountManager finalAccountManager = accountManager;
+            importAccountsCache = new Thread(() -> {
+                try {
+                    importCache(finalAccountManager, importPath);
+                } catch (CommonException e) {
+                    LOG.error("Can't import AccountsCache", e);
+                }
+                LOG.error("Import AccountsCache completed");
+            });
+            importAccountsCache.start();
+        } else {
+            LOG.warn("CacheExporter:: skip AccountManager import because applicationContext is not ready yet");
+        }
         Collection<AbstractExportableCache> caches = cachesHolder.getExportableCaches();
         for (AbstractExportableCache cache : caches) {
             if (cache instanceof AccountManager || cache instanceof CurrencyCache ||
@@ -376,7 +420,7 @@ public class CacheExporter {
             }
             importCache(cache, importPath);
         }
-        while (importAccountsCache.isAlive()) {
+        while (importAccountsCache != null && importAccountsCache.isAlive()) {
             try {
                 importAccountsCache.join(60000);
                 LOG.warn("AccountsCache import in progress");
@@ -435,7 +479,7 @@ public class CacheExporter {
     public void importCache(AbstractExportableCache cache, String importPath) throws CommonException {
         LOG.warn("CacheExporter:: start import: {}", cache.getClass().getCanonicalName());
         int count = 0;
-        String inFile = importPath + cache.getClass().getCanonicalName() + FILE_EXTENSION;
+        String inFile = resolveImportFilePath(cache, importPath);
         XStream xStream = getXStream(cache);
         try (ObjectInputStream inStream = xStream.createObjectInputStream(new FileInputStream(inFile))) {
             while (true) {
@@ -466,7 +510,7 @@ public class CacheExporter {
         List<ExportableCacheEntry> result = new ArrayList<>();
         LOG.warn("CacheExporter:: start import: {}", cache.getClass().getCanonicalName());
         int count = 0;
-        String inFile = exportPath + cache.getClass().getCanonicalName() + FILE_EXTENSION;
+        String inFile = resolveImportFilePath(cache, exportPath);
         XStream xStream = getXStream(cache);
         try (ObjectInputStream inStream = xStream.createObjectInputStream(new FileInputStream(inFile))) {
             while (true) {
@@ -492,5 +536,23 @@ public class CacheExporter {
         }
         LOG.warn("CacheExporter:: end import: {}, count = {}", cache.getClass().getCanonicalName(), count);
         return result;
+    }
+
+    private String resolveImportFilePath(AbstractExportableCache cache, String importPath) {
+        String canonicalName = cache.getClass().getCanonicalName();
+        String primaryPath = importPath + canonicalName + FILE_EXTENSION;
+        File primaryFile = new File(primaryPath);
+        if (primaryFile.exists()) {
+            return primaryPath;
+        }
+        if (canonicalName.startsWith("com.abs.casino.")) {
+            String legacyPath = importPath + canonicalName.replace("com.abs.casino.", "com.dgphoenix.casino.") + FILE_EXTENSION;
+            File legacyFile = new File(legacyPath);
+            if (legacyFile.exists()) {
+                LOG.info("CacheExporter:: fallback to legacy import file: {}", legacyPath);
+                return legacyPath;
+            }
+        }
+        return primaryPath;
     }
 }
