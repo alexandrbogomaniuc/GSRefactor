@@ -41,15 +41,17 @@ public class DefaultConfigsInitializer implements IConfigsInitializer {
 
         int loadedCount = loadConfigs(persistenceManager);
         LOG.info("Loaded configs count={}", loadedCount);
+        String configImportPath = null;
+        boolean importLoadBalancerConfig = false;
         if (loadedCount == 0) {
             LOG.info("Import configs mode: first run");
-            String configImportPath = System.getProperty("CONFIG_IMPORT_PATH");
+            configImportPath = System.getProperty("CONFIG_IMPORT_PATH");
             if (configImportPath == null) {
                 configImportPath = "/www/html/gs/ROOT/export/";
             }
             try {
                 CacheExporter.getInstance().importAll(configImportPath, cachesHolder);
-                CacheExporter.getInstance().importCache(LoadBalancerCache.getInstance(), configImportPath);
+                importLoadBalancerConfig = true;
             } catch (CommonException e) {
                 LOG.error("Import error", e);
                 throw new RuntimeException(e);
@@ -57,13 +59,29 @@ public class DefaultConfigsInitializer implements IConfigsInitializer {
             CurrencyCache.getInstance().initBaseCurrencies();
             saveConfigs(persistenceManager);
             BaseGameCache.getInstance().invalidateAll();
-            ApplicationContextHelper.getBean(AccountManager.class).setCasinoSystemType(CasinoSystemType.MULTIBANK);
+            if (ApplicationContextHelper.getApplicationContext() != null) {
+                ApplicationContextHelper.getBean(AccountManager.class).setCasinoSystemType(CasinoSystemType.MULTIBANK);
+            } else {
+                LOG.warn("Skip AccountManager casino system type update: applicationContext is not initialized yet");
+            }
 
             LOG.info("Import configs completed, recommend restart server");
         }
-
-        cachesHolder.register(ApplicationContextHelper.getBean(LoadBalancerCache.class));
-        cachesHolder.register(ApplicationContextHelper.getBean(AccountManager.class));
+        if (ApplicationContextHelper.getApplicationContext() != null) {
+            LoadBalancerCache loadBalancerCache = ApplicationContextHelper.getBean(LoadBalancerCache.class);
+            if (importLoadBalancerConfig) {
+                try {
+                    CacheExporter.getInstance().importCache(loadBalancerCache, configImportPath);
+                } catch (CommonException e) {
+                    LOG.error("Import error", e);
+                    throw new RuntimeException(e);
+                }
+            }
+            cachesHolder.register(loadBalancerCache);
+            cachesHolder.register(ApplicationContextHelper.getBean(AccountManager.class));
+        } else {
+            LOG.warn("Skip spring cache registration in DefaultConfigsInitializer: applicationContext is not initialized yet");
+        }
     }
 
     private int loadConfigs(CassandraPersistenceManager manager) {
