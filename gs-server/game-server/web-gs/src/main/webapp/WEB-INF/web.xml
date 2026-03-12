@@ -230,7 +230,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>statistics</servlet-name>
-        <url-pattern>support/stat</url-pattern>
+        <url-pattern>/support/stat</url-pattern>
     </servlet-mapping>
 
     <jsp-config>
