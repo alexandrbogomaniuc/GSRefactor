@@ -53,14 +53,13 @@ public class TournamentBuyInHelper {
     private final ICurrencyRateManager currencyRateManager;
     private final CassandraExternalTransactionPersister externalTransactionPersister;
     private final CassandraLasthandPersister lasthandPersister;
-    private final AccountManager accountManager;
+    private volatile AccountManager accountManager;
     private final CassandraBattlegroundConfigPersister cassandraBattlegroundConfigPersister;
 
     public TournamentBuyInHelper(ICurrencyRateManager currencyRateManager, CassandraPersistenceManager cpm) {
         this.currencyRateManager = currencyRateManager;
         this.externalTransactionPersister = cpm.getPersister(CassandraExternalTransactionPersister.class);
         this.lasthandPersister = cpm.getPersister(CassandraLasthandPersister.class);
-        this.accountManager = AccountManager.getInstance();
         this.cassandraBattlegroundConfigPersister = cpm.getPersister(CassandraBattlegroundConfigPersister.class);
     }
 
@@ -71,7 +70,7 @@ public class TournamentBuyInHelper {
         try {
             SessionHelper.getInstance().openSession();
             SessionInfo sessionInfo = SessionHelper.getInstance().getTransactionData().getPlayerSession();
-            AccountInfo accountInfo = accountManager.getAccountInfo(sessionInfo.getAccountId());
+            AccountInfo accountInfo = getAccountManager().getAccountInfo(sessionInfo.getAccountId());
             GameSession gameSession = isBuyIn ? null : SessionHelper.getInstance().getTransactionData().getGameSession();
             long buyInAmountInPlayerCurrency = (long) currencyRateManager
                     .convert(buyInAmount, currency, accountInfo.getCurrency().getCode());
@@ -157,7 +156,7 @@ public class TournamentBuyInHelper {
         try {
             SessionHelper.getInstance().openSession();
             SessionInfo sessionInfo = SessionHelper.getInstance().getTransactionData().getPlayerSession();
-            AccountInfo accountInfo = accountManager.getAccountInfo(sessionInfo.getAccountId());
+            AccountInfo accountInfo = getAccountManager().getAccountInfo(sessionInfo.getAccountId());
             if (buyInAmount > 0) {
                 if (accountInfo.getBalance() < buyInAmount) {
                     return false;
@@ -199,6 +198,20 @@ public class TournamentBuyInHelper {
         }
         saveExternalTransaction(amount, account, betNumber, gameSession, walletBank, roundId, tournamentId);
         LOG.debug("Buy in for {} success, roundId is {}", sessionId, roundId);
+    }
+
+    private AccountManager getAccountManager() {
+        AccountManager local = accountManager;
+        if (local == null) {
+            synchronized (this) {
+                local = accountManager;
+                if (local == null) {
+                    local = AccountManager.getInstance();
+                    accountManager = local;
+                }
+            }
+        }
+        return local;
     }
 
     private void makeWalletWin(SessionInfo sessionInfo, GameSession gameSession, AccountInfo account,
