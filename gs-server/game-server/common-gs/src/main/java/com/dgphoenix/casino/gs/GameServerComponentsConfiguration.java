@@ -392,7 +392,6 @@ public class GameServerComponentsConfiguration {
                                                      KafkaRequestMultiPlayer kafkaRequestMultiPlayer) {
         return new MPGameSessionService(
                 BankInfoCache.getInstance(),
-                GameServer.getInstance(),
                 SessionHelper.getInstance(),
                 kafkaRequestMultiPlayer,
                 battlegroundService,
