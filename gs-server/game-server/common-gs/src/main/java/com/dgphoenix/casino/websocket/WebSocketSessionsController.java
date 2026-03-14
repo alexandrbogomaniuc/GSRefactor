@@ -1,5 +1,6 @@
 package com.abs.casino.websocket;
 
+import com.abs.casino.account.AccountManager;
 import com.abs.casino.common.SessionHelper;
 import com.abs.casino.common.cache.data.account.AccountInfo;
 import com.abs.casino.common.cache.data.session.SessionInfo;
@@ -112,6 +113,12 @@ public class WebSocketSessionsController implements IWebSocketSessionsController
             }
 
             AccountInfo accountInfo = transactionData.getAccount();
+            if (accountInfo == null) {
+                accountInfo = AccountManager.getInstance().getAccountInfo(playerSession.getAccountId());
+                if (accountInfo != null) {
+                    transactionData.setAccount(accountInfo);
+                }
+            }
             checkNotNull(accountInfo, "AccountInfo can't be null on open session, sessionId = {}", sessionId);
 
             int bankId = accountInfo.getBankId();

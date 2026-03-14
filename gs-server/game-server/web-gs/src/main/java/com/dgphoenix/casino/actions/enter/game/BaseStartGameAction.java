@@ -552,6 +552,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         Currency accountCurrency = (currency == null) ? bankInfo.getDefaultCurrency() : currency;
         AccountInfo account = AccountManager.getInstance().saveAccount(null, randomStr, bankInfo, subCasinoId, nickName, true, false,
                 null, ClientType.FLASH, null, null, accountCurrency, null, true);
+        SessionHelper.getInstance().getTransactionData().setAccount(account);
         return new AccountInfoAndSessionInfoPair(account);
     }
 
