@@ -106,6 +106,8 @@ public class CWGuestStartGameAction extends BaseStartGameAction<CWGuestStartGame
             if (isMultiPlayerGame(form.getGameId())) {
                 validateMpPass(request);
                 AccountManager.getInstance().setFreeBalance(accountInfo, gameId);
+                SessionHelper.getInstance().getTransactionData().setAccount(accountInfo);
+                SessionHelper.getInstance().getDomainSession().persistAccount();
                 forward = getMultiPlayerForward(request, mode, bankInfo, sessionInfo.getSessionId(), lang,
                         true, gameId);
             } else {

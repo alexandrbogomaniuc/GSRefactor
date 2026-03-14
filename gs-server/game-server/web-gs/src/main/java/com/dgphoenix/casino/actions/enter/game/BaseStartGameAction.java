@@ -553,6 +553,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         AccountInfo account = AccountManager.getInstance().saveAccount(null, randomStr, bankInfo, subCasinoId, nickName, true, false,
                 null, ClientType.FLASH, null, null, accountCurrency, null, true);
         SessionHelper.getInstance().getTransactionData().setAccount(account);
+        // Guest accounts are not written to the account store, but MP follow-up calls still need them from session TD.
+        SessionHelper.getInstance().getDomainSession().persistAccount();
         return new AccountInfoAndSessionInfoPair(account);
     }
 
