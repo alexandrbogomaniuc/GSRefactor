@@ -293,6 +293,14 @@
         <servlet-name>MainWebSocketServlet</servlet-name>
         <url-pattern>/webSocket</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MainWebSocketServlet</servlet-name>
+        <url-pattern>/webSocket/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MainWebSocketServlet</servlet-name>
+        <url-pattern>/websocket/*</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>MQTournamentLobbyWebSocketServlet</servlet-name>
