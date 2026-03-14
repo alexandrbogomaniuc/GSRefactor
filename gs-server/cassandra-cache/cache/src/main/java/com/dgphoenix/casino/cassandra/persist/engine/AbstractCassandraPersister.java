@@ -12,6 +12,8 @@ import com.esotericsoftware.kryo.util.UnsafeUtil;
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -30,6 +32,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     protected static final String JSON_COLUMN_NAME = "jcn";
     protected static final ByteBuffer EMPTY_BYTE_BUFFER = ByteBuffer.wrap(new byte[]{0});
     protected static final int IN_CLAUSE_SIZE = 1000;
+    private static final Pattern LEGACY_COMPRESSION_CLASS_PATTERN =
+            Pattern.compile("'sstable_compression'\\s*:\\s*'([^']+)'");
+    private static final Pattern LEGACY_CHUNK_LENGTH_PATTERN =
+            Pattern.compile("'chunk_length_kb'\\s*:");
 
     private Session session;
     private ConsistencyLevel readConsistency;
@@ -72,8 +78,9 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     public final void createTable(Session session, TableDefinition tableDefinition) {
         tableDefinition.defaultTimeToLive(getTtl());
         com.datastax.driver.core.schemabuilder.SchemaStatement createTable = tableDefinition.getCreateTableStatement();
-        getLog().info("createTable: create table statement: {}", createTable);
-        session.execute(createTable);
+        String createTableQuery = normalizeCompressionOptions(createTable.getQueryString());
+        getLog().info("createTable: create table statement: {}", createTableQuery);
+        session.execute(createTableQuery);
         Collection<com.datastax.driver.core.schemabuilder.SchemaStatement> createIndexes = tableDefinition.getCreateIndexStatements().values();
         for (com.datastax.driver.core.schemabuilder.SchemaStatement createIndex : createIndexes) {
             getLog().info("createTable: create index statement: {}", createIndex);
@@ -83,6 +90,26 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     protected List<com.datastax.driver.core.Statement> getOrCreateStatements(Map<Session, List<com.datastax.driver.core.Statement>> statementsMap) {
         return statementsMap.computeIfAbsent(getSession(), session -> new LinkedList<>());
+    }
+
+    static String normalizeCompressionOptions(String query) {
+        if (query == null || !query.contains("compression")) {
+            return query;
+        }
+
+        Matcher matcher = LEGACY_COMPRESSION_CLASS_PATTERN.matcher(query);
+        StringBuffer normalized = new StringBuffer();
+        while (matcher.find()) {
+            String compressor = matcher.group(1);
+            if (!compressor.contains(".")) {
+                compressor = "org.apache.cassandra.io.compress." + compressor;
+            }
+            matcher.appendReplacement(normalized, Matcher.quoteReplacement("'class' : '" + compressor + "'"));
+        }
+        matcher.appendTail(normalized);
+
+        return LEGACY_CHUNK_LENGTH_PATTERN.matcher(normalized.toString())
+                .replaceAll("'chunk_length_in_kb' :");
     }
 
     protected List<Statement> getOrCreateStatements(StatementPlan statementPlan) {
