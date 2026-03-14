@@ -171,6 +171,11 @@ public class BaseGameInfo implements IDistributedConfigEntry, Identifiable, Kryo
         return templateCache;
     }
 
+    private BaseGameInfo getDefaultGameInfo() {
+        BaseGameInfo defaultGameInfo = getTemplateCache().getDefaultGameInfo(getId());
+        return defaultGameInfo == this ? null : defaultGameInfo;
+    }
+
     public BankInfoCache getBankInfoCache() {
         if (bankInfoCache == null) {
             bankInfoCache = BankInfoCache.getInstance();
@@ -281,7 +286,11 @@ public class BaseGameInfo implements IDistributedConfigEntry, Identifiable, Kryo
 
     @Override
     public GameType getGameType() {
-        return gameType;
+        if (gameType != null) {
+            return gameType;
+        }
+        BaseGameInfo defaultGameInfo = getDefaultGameInfo();
+        return defaultGameInfo == null ? null : defaultGameInfo.getGameType();
     }
 
     @Override
@@ -291,7 +300,11 @@ public class BaseGameInfo implements IDistributedConfigEntry, Identifiable, Kryo
 
     @Override
     public GameGroup getGroup() {
-        return group;
+        if (group != null) {
+            return group;
+        }
+        BaseGameInfo defaultGameInfo = getDefaultGameInfo();
+        return defaultGameInfo == null ? null : defaultGameInfo.getGroup();
     }
 
     @Override
@@ -306,7 +319,11 @@ public class BaseGameInfo implements IDistributedConfigEntry, Identifiable, Kryo
 
     @Override
     public GameVariableType getVariableType() {
-        return variableType;
+        if (variableType != null) {
+            return variableType;
+        }
+        BaseGameInfo defaultGameInfo = getDefaultGameInfo();
+        return defaultGameInfo == null ? null : defaultGameInfo.getVariableType();
     }
 
     @Override
