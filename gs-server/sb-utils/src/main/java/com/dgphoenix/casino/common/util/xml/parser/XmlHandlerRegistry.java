@@ -9,11 +9,10 @@ import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.ObjectNotFoundException;
 import com.abs.casino.common.util.ReflectionUtils;
 import org.apache.log4j.Logger;
+import java.io.InputStream;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-
-import org.apache.commons.configuration.PropertiesConfiguration;
+import java.util.Properties;
 
 public class XmlHandlerRegistry implements IXmlHandlerRegistry {
     private static final Logger LOG = Logger.getLogger(XmlHandlerRegistry.class);
@@ -26,12 +25,16 @@ public class XmlHandlerRegistry implements IXmlHandlerRegistry {
 
     private XmlHandlerRegistry(String bundleName) {
         try {
-            PropertiesConfiguration configFile = new PropertiesConfiguration(bundleName);
-            configFile.load();
-            Iterator iterator = configFile.getKeys();
-            for (; iterator.hasNext();) {
-                String key = (String) iterator.next();
-                String newValue = configFile.getString(key);
+            Properties configFile = new Properties();
+            try (InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(bundleName)) {
+                if (inputStream == null) {
+                    throw new CommonException("Xml handler registry not found: " + bundleName);
+                }
+                configFile.load(inputStream);
+            }
+
+            for (String key : configFile.stringPropertyNames()) {
+                String newValue = configFile.getProperty(key);
                 handlersClass.put(key, (XmlHandler) ReflectionUtils.forNameWithCompatibilityAliases(newValue).newInstance());
             }
 
