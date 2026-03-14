@@ -908,7 +908,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         redirect.addParameter(BaseAction.GAME_ID_ATTRIBUTE, String.valueOf(gameId));
         redirect.addParameter(BaseAction.LANG_ID_ATTRIBUTE, lang);
         redirect.addParameter(BaseAction.GAMEMODE_ATTRIBUTE, mode.getModePath());
-        redirect.addParameter(BaseAction.WEB_SOCKET_URL, mpLobbyUrl + "/websocket/mplobby");
+        redirect.addParameter(BaseAction.WEB_SOCKET_URL, mpLobbyUrl + "/websocket/mplobby?sessionId=" + sessionId);
         redirect.addParameter(BaseAction.GAMESERVERID_ATTRIBUTE, GameServer.getInstance().getServerId());
         String cdn = request.getParameter(BaseAction.KEY_CDN);
         if (!StringUtils.isTrimmedEmpty(cdn)) {
