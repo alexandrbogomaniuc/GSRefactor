@@ -21,8 +21,8 @@ public final class ColumnDefinitions implements Iterable<ColumnDefinitions.Defin
         return columnDefinitions.size();
     }
 
-    public Object getType(String name) {
-        return columnDefinitions.getType(name);
+    public DataType getType(String name) {
+        return DataType.wrap(columnDefinitions.getType(name));
     }
 
     @Override
@@ -61,8 +61,8 @@ public final class ColumnDefinitions implements Iterable<ColumnDefinitions.Defin
             return definition.getName();
         }
 
-        public Object getType() {
-            return definition.getType();
+        public DataType getType() {
+            return DataType.wrap(definition.getType());
         }
     }
 }
