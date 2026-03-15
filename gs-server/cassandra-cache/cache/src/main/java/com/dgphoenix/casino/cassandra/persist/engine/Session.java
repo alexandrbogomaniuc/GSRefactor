@@ -89,12 +89,12 @@ public class Session implements AutoCloseable {
         return ResultSetFuture.wrap(session.executeAsync(statement.unwrap()));
     }
 
-    public com.datastax.driver.core.PreparedStatement prepare(String query) {
-        return session.prepare(query);
+    public PreparedStatement prepare(String query) {
+        return PreparedStatement.wrap(session.prepare(query));
     }
 
-    public com.datastax.driver.core.PreparedStatement prepare(com.datastax.driver.core.RegularStatement statement) {
-        return session.prepare(statement);
+    public PreparedStatement prepare(com.datastax.driver.core.RegularStatement statement) {
+        return PreparedStatement.wrap(session.prepare(statement));
     }
 
     public ListenableFuture<com.datastax.driver.core.PreparedStatement> prepareAsync(String query) {
@@ -105,8 +105,8 @@ public class Session implements AutoCloseable {
         return session.prepareAsync(statement);
     }
 
-    public com.datastax.driver.core.CloseFuture closeAsync() {
-        return session.closeAsync();
+    public CloseFuture closeAsync() {
+        return CloseFuture.wrap(session.closeAsync());
     }
 
     public void close() {
