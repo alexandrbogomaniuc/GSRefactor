@@ -97,12 +97,12 @@ public class Session implements AutoCloseable {
         return PreparedStatement.wrap(session.prepare(statement));
     }
 
-    public ListenableFuture<com.datastax.driver.core.PreparedStatement> prepareAsync(String query) {
-        return session.prepareAsync(query);
+    public PreparedStatementFuture prepareAsync(String query) {
+        return PreparedStatementFuture.wrap(session.prepareAsync(query));
     }
 
-    public ListenableFuture<com.datastax.driver.core.PreparedStatement> prepareAsync(com.datastax.driver.core.RegularStatement statement) {
-        return session.prepareAsync(statement);
+    public PreparedStatementFuture prepareAsync(com.datastax.driver.core.RegularStatement statement) {
+        return PreparedStatementFuture.wrap(session.prepareAsync(statement));
     }
 
     public CloseFuture closeAsync() {
