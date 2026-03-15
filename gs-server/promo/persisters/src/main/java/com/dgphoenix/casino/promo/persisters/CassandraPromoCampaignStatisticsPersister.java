@@ -9,6 +9,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+
 /**
  * User: flsh
  * Date: 21.09.2019.
@@ -23,10 +27,10 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GS_ID, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(ROUNDS_COUNT, com.datastax.driver.core.DataType.cint(), false, false, false),
-                    new ColumnDefinition(BET_SUM, com.datastax.driver.core.DataType.cdouble(), false, false, false)
+                    new ColumnDefinition(CAMPAIGN_ID, bigint(), false, false, true),
+                    new ColumnDefinition(GS_ID, cint(), false, false, true),
+                    new ColumnDefinition(ROUNDS_COUNT, cint(), false, false, false),
+                    new ColumnDefinition(BET_SUM, cdouble(), false, false, false)
             ), CAMPAIGN_ID);
 
     public synchronized void increment(long campaignId, int gsId, int roundsCountDelta, double betSumDelta) {
@@ -49,19 +53,19 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
     }
 
     public Pair<Integer, Double> getAverageBetPairForGs(long campaignId, int gsId) {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
                 .where(eq(CAMPAIGN_ID, campaignId))
                 .and(eq(GS_ID, gsId)), "getAverageBetPairForGs");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         return row == null ? null : new Pair<>(row.getInt(ROUNDS_COUNT), row.getDouble(BET_SUM));
     }
 
     public Pair<Integer, Double> getAverageBetPair(long campaignId) {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
                 .where(eq(CAMPAIGN_ID, campaignId)), "getAverageBetPair");
         int roundsCount = 0;
         double betSum = 0;
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             roundsCount += row.getInt(ROUNDS_COUNT);
             betSum += row.getDouble(BET_SUM);
         }

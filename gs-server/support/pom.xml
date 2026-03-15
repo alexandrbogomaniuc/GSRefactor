@@ -19,7 +19,6 @@
     </properties>
 
     <modules>
-        <module>../game-server</module>
         <module>archiver</module>
     </modules>
 </project>

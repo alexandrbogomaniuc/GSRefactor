@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.StreamUtils;
@@ -12,6 +13,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 /**
  * User: flsh
@@ -28,10 +32,10 @@ public class CassandraCurrencyRatesConfigPersister extends AbstractCassandraPers
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY,
             Arrays.asList(
-                    new ColumnDefinition(CURRENCY_NAME, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(CURRENCY_FORMULA, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(CURRENCY_TARGET, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(UPDATE_PERIOD, com.datastax.driver.core.DataType.bigint(), false, false, false) //ALTER TABLE CurrencyRatesConfigCF ADD UPDATE_PERIOD bigint;
+                    new ColumnDefinition(CURRENCY_NAME, text(), false, false, true),
+                    new ColumnDefinition(CURRENCY_FORMULA, text(), false, false, false),
+                    new ColumnDefinition(CURRENCY_TARGET, text(), false, false, false),
+                    new ColumnDefinition(UPDATE_PERIOD, bigint(), false, false, false) //ALTER TABLE CurrencyRatesConfigCF ADD UPDATE_PERIOD bigint;
             ), CURRENCY_NAME);
 
     private CassandraCurrencyRatesConfigPersister() {
@@ -49,23 +53,23 @@ public class CassandraCurrencyRatesConfigPersister extends AbstractCassandraPers
     }
 
     public void persist(String currency, String target, String formula) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(CURRENCY_NAME, currency)
                 .value(CURRENCY_FORMULA, formula)
-                .value(CURRENCY_TARGET, target);
+                .value(CURRENCY_TARGET, target));
         execute(query, "create");
     }
 
     public void persist(String currency, long updatePeriod) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(CURRENCY_NAME, currency)
-                .value(UPDATE_PERIOD, updatePeriod);
+                .value(UPDATE_PERIOD, updatePeriod));
         execute(query, "create custom update period");
     }
 
     public Map<String, Pair<String, String>> getCalculatedCurrenciesConfig() {
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(CURRENCY_NAME, CURRENCY_FORMULA, CURRENCY_TARGET);
-        return StreamUtils.asStream(execute(select, "getCalculatedCurrenciesConfig"))
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(CURRENCY_NAME, CURRENCY_FORMULA, CURRENCY_TARGET));
+        return StreamUtils.asStream(executeWrapped(select, "getCalculatedCurrenciesConfig"))
                 .filter(row -> !StringUtils.isTrimmedEmpty(row.getString(CURRENCY_FORMULA)))
                 .collect(Collectors.toMap(
                         row -> row.getString(CURRENCY_NAME),
@@ -74,7 +78,7 @@ public class CassandraCurrencyRatesConfigPersister extends AbstractCassandraPers
     }
 
     public Long getUpdatePeriod(String currency) {
-        com.datastax.driver.core.Row row = getAsRow(currency, UPDATE_PERIOD);
+        Row row = getAsWrappedRow(currency, UPDATE_PERIOD);
         return row != null && !row.isNull(UPDATE_PERIOD) ? row.getLong(UPDATE_PERIOD) : null;
     }
 

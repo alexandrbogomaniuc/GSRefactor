@@ -2,6 +2,8 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.remotecall.PersistableCall;
@@ -16,6 +18,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 02.04.13
@@ -27,10 +34,10 @@ public class CassandraRemoteCallPersister extends AbstractCassandraPersister<Int
     public static final String SERIALIZED_COLUMN_NAME = "SCN";
     private static final TableDefinition TABLE = new TableDefinition(REMOTE_CALL_CF,
             Arrays.asList(
-                    new ColumnDefinition(GS_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(GS_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), GS_ID_FIELD)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(4));
@@ -57,10 +64,10 @@ public class CassandraRemoteCallPersister extends AbstractCassandraPersister<Int
     public List<PersistableCall> getRemoteCalls(int serverId) {
         long now = System.currentTimeMillis();
         List<PersistableCall> result = new ArrayList<>();
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(GS_ID_FIELD, serverId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getRemoteCalls");
-        for (com.datastax.driver.core.Row row : resultSet) {
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(GS_ID_FIELD, serverId)));
+        ResultSet resultSet = executeWrapped(query, "getRemoteCalls");
+        for (Row row : resultSet) {
             PersistableCall call = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME),
                     PersistableCall.class);
             if (call == null) {
@@ -81,11 +88,11 @@ public class CassandraRemoteCallPersister extends AbstractCassandraPersister<Int
         ByteBuffer byteBuffer = TABLE.serializeToBytes(entry);
         String json = TABLE.serializeToJson(entry);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery().
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery().
                     value(GS_ID_FIELD, entry.getServerId()).
                     value(KEY, entry.getId()).
                     value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                    value(JSON_COLUMN_NAME, json);
+                    value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);

@@ -5,6 +5,7 @@ import com.abs.casino.cassandra.persist.CassandraTransactionDataPersister;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.abs.casino.cassandra.persist.engine.SchemaCql;
 
 /**
  * Created by grien on 17.02.15.
@@ -30,7 +31,7 @@ public class AccountDistributedLockManager extends AbstractLockManager {
     @Override
     public TableDefinition getMainTableDefinition() {
         TableDefinition tableDefinition = super.getMainTableDefinition();
-        tableDefinition.speculativeRetry(com.datastax.driver.core.schemabuilder.SchemaBuilder.always());
+        tableDefinition.speculativeRetry(SchemaCql.always());
         return tableDefinition;
     }
 

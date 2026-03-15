@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.CacheKeyInfo;
 import com.abs.casino.common.cache.IDistributedCache;
@@ -11,6 +12,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.ByteBuffer;
 import java.util.*;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 /**
  * User: flsh
@@ -26,11 +31,11 @@ public class CassandraFrbWinOperationPersister extends AbstractCassandraPersiste
     public static final String SERIALIZED_COLUMN_NAME = "SCN";
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             Collections.singletonList(KEY));
 
@@ -64,11 +69,11 @@ public class CassandraFrbWinOperationPersister extends AbstractCassandraPersiste
         ByteBuffer byteBuffer = TABLE.serializeToBytes(operation);
         String json = TABLE.serializeToJson(operation);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery().value(KEY, operation.getId()).
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery().value(KEY, operation.getId()).
                     value(ACCOUNT_ID_FIELD, operation.getAccountId()).
                     value(GAME_SESSION_ID_FIELD, operation.getGameSessionId()).
                     value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                    value(JSON_COLUMN_NAME, json);
+                    value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -77,9 +82,9 @@ public class CassandraFrbWinOperationPersister extends AbstractCassandraPersiste
 
     public List<FRBWinOperation> getByAccountId(long accountId) {
         List<FRBWinOperation> result = new LinkedList<>();
-        Iterator<com.datastax.driver.core.Row> it = getAll(eq(ACCOUNT_ID_FIELD, accountId));
+        Iterator<Row> it = getAllWrapped(eq(ACCOUNT_ID_FIELD, accountId));
         while (it.hasNext()) {
-            com.datastax.driver.core.Row row = it.next();
+            Row row = it.next();
             String json = row.getString(JSON_COLUMN_NAME);
             ByteBuffer bytes = row.getBytes(SERIALIZED_COLUMN_NAME);
             FRBWinOperation operation = TABLE.deserializeFromJson(json, FRBWinOperation.class);

@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.maxcrashgame.model;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

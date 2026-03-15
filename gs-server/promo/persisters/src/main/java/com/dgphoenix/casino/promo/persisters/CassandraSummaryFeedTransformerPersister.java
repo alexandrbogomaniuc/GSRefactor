@@ -9,6 +9,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraSummaryFeedTransformerPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraSummaryFeedTransformerPersister.class);
 
@@ -17,9 +21,9 @@ public class CassandraSummaryFeedTransformerPersister extends AbstractCassandraP
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), TOURNAMENT_ID_COLUMN);
 
     public void persist(long tournamentId, ISummaryFeedTransformer transformer) {
@@ -42,7 +46,7 @@ public class CassandraSummaryFeedTransformerPersister extends AbstractCassandraP
                 .where(eq(TOURNAMENT_ID_COLUMN, tournamentId))
                 .limit(1);
 
-        com.datastax.driver.core.Row result = execute(select, "getTransformer").one();
+        com.abs.casino.cassandra.persist.engine.Row result = execute(select, "getTransformer").one();
         if (result != null) {
             ISummaryFeedTransformer t = TABLE.deserializeWithClassFromJson(result.getString(JSON_COLUMN_NAME));
             if (t == null) {

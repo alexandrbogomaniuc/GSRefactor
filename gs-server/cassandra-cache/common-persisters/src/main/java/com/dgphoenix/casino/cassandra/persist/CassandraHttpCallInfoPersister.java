@@ -3,6 +3,8 @@ package com.abs.casino.cassandra.persist;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.util.StreamUtils;
 import com.abs.casino.common.util.support.HttpCallInfo;
@@ -16,12 +18,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.datastax.driver.core.DataType.*;
-import static com.datastax.driver.core.querybuilder.QueryBuilder.select;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import static com.abs.casino.cassandra.persist.engine.Cql.select;
 import static com.abs.casino.common.util.support.AdditionalInfoAttribute.*;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
+import com.datastax.driver.core.querybuilder.Insert;
+
 
 /**
  * @author <a href="mailto:noragami@dgphoenix.com">Alexander Aldokhin</a>
@@ -63,7 +69,7 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
         Map<String, String> additionalInfo = httpCallInfo.getAdditionalInfo();
         String sessionId = additionalInfo.get(SESSION_ID.getAttributeName());
         String supportTicketId = additionalInfo.get(SUPPORT_TICKET_ID.getAttributeName());
-        com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery();
+        Insert insert = getInsertQuery();
 
         if (sessionId != null) {
             insert.value(ID_FIELD, sessionId);
@@ -140,10 +146,10 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
     }
 
     private List<HttpCallInfo> getMany(String columnName, Object value) {
-        com.datastax.driver.core.Statement query = select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(CF_NAME)
-                .where(eq(columnName, value));
-        com.datastax.driver.core.ResultSet rows = execute(query, "getMany");
+                .where(eq(columnName, value)));
+        ResultSet rows = executeWrapped(query, "getMany");
         return StreamUtils.asStream(rows)
                 .map(this::toHttpCallInfoOptional)
                 .filter(Optional::isPresent)
@@ -151,7 +157,7 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
                 .collect(toList());
     }
 
-    private Optional<HttpCallInfo> toHttpCallInfoOptional(com.datastax.driver.core.Row row) {
+    private Optional<HttpCallInfo> toHttpCallInfoOptional(Row row) {
         Optional<HttpCallInfo> httpCallInfo = Optional.ofNullable(row.getString(JSON_COLUMN_NAME))
                 .map(json -> TABLE.deserializeFromJson(json, HttpCallInfo.class));
 

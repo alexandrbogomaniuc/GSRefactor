@@ -12,5 +12,5 @@ import java.util.List;
  * Date: 19.12.2014 15:50
  */
 public interface IStoredDataProcessor<T, I extends StoredItemInfo<T>> {
-    void process(StoredItem<T, I> item, HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector);
+    void process(StoredItem<T, I> item, HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector);
 }

@@ -1,7 +1,9 @@
 package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ConsistencyLevel;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.Session;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.Logger;
 
@@ -25,12 +27,12 @@ public class CassandraPersisterMock implements ICassandraPersister, ISimplePersi
     }
 
     @Override
-    public void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition) {
+    public void createTable(Session session, TableDefinition tableDefinition) {
 
     }
 
     @Override
-    public void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata existTableMetadata) {
+    public void updateTable(Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata existTableMetadata) {
 
     }
 
@@ -40,7 +42,7 @@ public class CassandraPersisterMock implements ICassandraPersister, ISimplePersi
     }
 
     @Override
-    public void initSession(com.datastax.driver.core.Session session) {
+    public void initSession(Session session) {
 
     }
 
@@ -65,7 +67,7 @@ public class CassandraPersisterMock implements ICassandraPersister, ISimplePersi
     }
 
     @Override
-    public void setConsistencyLevels(com.datastax.driver.core.ConsistencyLevel readConsistency, com.datastax.driver.core.ConsistencyLevel writeConsistency, com.datastax.driver.core.ConsistencyLevel serialConsistency) {
+    public void setConsistencyLevels(ConsistencyLevel readConsistency, ConsistencyLevel writeConsistency, ConsistencyLevel serialConsistency) {
 
     }
 

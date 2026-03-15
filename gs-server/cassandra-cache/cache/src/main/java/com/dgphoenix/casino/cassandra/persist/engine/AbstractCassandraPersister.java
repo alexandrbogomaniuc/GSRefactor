@@ -5,11 +5,15 @@ import com.abs.casino.cassandra.persist.engine.FakeNotAppliedResultSet;
 import com.abs.casino.common.util.StreamUtils;
 import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.esotericsoftware.kryo.KryoSerializable;
+
+import com.abs.casino.cassandra.persist.engine.Cql;
 import com.esotericsoftware.kryo.util.UnsafeUtil;
 
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -28,11 +32,15 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     protected static final String JSON_COLUMN_NAME = "jcn";
     protected static final ByteBuffer EMPTY_BYTE_BUFFER = ByteBuffer.wrap(new byte[]{0});
     protected static final int IN_CLAUSE_SIZE = 1000;
+    private static final Pattern LEGACY_COMPRESSION_CLASS_PATTERN =
+            Pattern.compile("'sstable_compression'\\s*:\\s*'([^']+)'");
+    private static final Pattern LEGACY_CHUNK_LENGTH_PATTERN =
+            Pattern.compile("'chunk_length_kb'\\s*:");
 
-    private com.datastax.driver.core.Session session;
-    private com.datastax.driver.core.ConsistencyLevel readConsistency;
-    private com.datastax.driver.core.ConsistencyLevel writeConsistency;
-    private com.datastax.driver.core.ConsistencyLevel serialConsistency;
+    private Session session;
+    private ConsistencyLevel readConsistency;
+    private ConsistencyLevel writeConsistency;
+    private ConsistencyLevel serialConsistency;
     private int ttl = 0;//load from config
 
     protected boolean initialized;
@@ -47,7 +55,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     @Override
-    public void setConsistencyLevels(com.datastax.driver.core.ConsistencyLevel readConsistency, com.datastax.driver.core.ConsistencyLevel writeConsistency, com.datastax.driver.core.ConsistencyLevel serialConsistency) {
+    public void setConsistencyLevels(ConsistencyLevel readConsistency, ConsistencyLevel writeConsistency, ConsistencyLevel serialConsistency) {
         if (!serialConsistency.isSerial()) {
             throw new IllegalArgumentException("Supplied consistency level is not serial: " + serialConsistency);
         }
@@ -56,16 +64,23 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         this.serialConsistency = serialConsistency;
     }
 
+    public void setConsistencyLevels(com.datastax.driver.core.ConsistencyLevel readConsistency,
+                                     com.datastax.driver.core.ConsistencyLevel writeConsistency,
+                                     com.datastax.driver.core.ConsistencyLevel serialConsistency) {
+        setConsistencyLevels(ConsistencyLevel.wrap(readConsistency), ConsistencyLevel.wrap(writeConsistency), ConsistencyLevel.wrap(serialConsistency));
+    }
+
     protected String getKeyColumnName() {
         return KEY;
     }
 
     @Override
-    public final void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition) {
+    public final void createTable(Session session, TableDefinition tableDefinition) {
         tableDefinition.defaultTimeToLive(getTtl());
         com.datastax.driver.core.schemabuilder.SchemaStatement createTable = tableDefinition.getCreateTableStatement();
-        getLog().info("createTable: create table statement: {}", createTable);
-        session.execute(createTable);
+        String createTableQuery = normalizeCompressionOptions(createTable.getQueryString());
+        getLog().info("createTable: create table statement: {}", createTableQuery);
+        session.execute(createTableQuery);
         Collection<com.datastax.driver.core.schemabuilder.SchemaStatement> createIndexes = tableDefinition.getCreateIndexStatements().values();
         for (com.datastax.driver.core.schemabuilder.SchemaStatement createIndex : createIndexes) {
             getLog().info("createTable: create index statement: {}", createIndex);
@@ -73,12 +88,47 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         }
     }
 
-    protected List<com.datastax.driver.core.Statement> getOrCreateStatements(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap) {
+    protected List<com.datastax.driver.core.Statement> getOrCreateStatements(Map<Session, List<com.datastax.driver.core.Statement>> statementsMap) {
         return statementsMap.computeIfAbsent(getSession(), session -> new LinkedList<>());
     }
 
+    static String normalizeCompressionOptions(String query) {
+        if (query == null || !query.contains("compression")) {
+            return query;
+        }
+
+        Matcher matcher = LEGACY_COMPRESSION_CLASS_PATTERN.matcher(query);
+        StringBuffer normalized = new StringBuffer();
+        while (matcher.find()) {
+            String compressor = matcher.group(1);
+            if (!compressor.contains(".")) {
+                compressor = "org.apache.cassandra.io.compress." + compressor;
+            }
+            matcher.appendReplacement(normalized, Matcher.quoteReplacement("'class' : '" + compressor + "'"));
+        }
+        matcher.appendTail(normalized);
+
+        return LEGACY_CHUNK_LENGTH_PATTERN.matcher(normalized.toString())
+                .replaceAll("'chunk_length_in_kb' :");
+    }
+
+    protected List<Statement> getOrCreateStatements(StatementPlan statementPlan) {
+        return statementPlan.getOrCreateStatements(getSession());
+    }
+
+    protected StatementPlan asStatementPlan(Map<Session, List<com.datastax.driver.core.Statement>> statementsMap) {
+        StatementPlan statementPlan = new StatementPlan();
+        for (Map.Entry<Session, List<com.datastax.driver.core.Statement>> entry : statementsMap.entrySet()) {
+            List<Statement> wrappedStatements = statementPlan.getOrCreateStatements(entry.getKey());
+            for (com.datastax.driver.core.Statement statement : entry.getValue()) {
+                wrappedStatements.add(Statement.wrap(statement));
+            }
+        }
+        return statementPlan;
+    }
+
     @Override
-    public void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata) {
+    public void updateTable(Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata) {
         getLog().debug("updateTable: tableMetadata={}", tableMetadata);
         for (ColumnDefinition columnDefinition : tableDefinition.getColumns()) {
             String columnName = columnDefinition.getName();
@@ -105,14 +155,14 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return "\"" + name + "\"";
     }
 
-    private void addColumn(com.datastax.driver.core.Session session, String tableName, String columnName, ColumnDefinition columnDefinition) {
-        com.datastax.driver.core.DataType type = columnDefinition.getType();
-        com.datastax.driver.core.schemabuilder.SchemaStatement addColumn = com.datastax.driver.core.schemabuilder.SchemaBuilder.alterTable(tableName).addColumn(columnName).type(type);
+    private void addColumn(Session session, String tableName, String columnName, ColumnDefinition columnDefinition) {
+        com.datastax.driver.core.DataType type = columnDefinition.getType().unwrap();
+        com.datastax.driver.core.schemabuilder.SchemaStatement addColumn = SchemaCql.alterTable(tableName).addColumn(columnName).type(type);
         getLog().info("updateTable: add column statement: {}", addColumn);
         session.execute(addColumn);
     }
 
-    private void createIndex(com.datastax.driver.core.Session session, TableDefinition tableDefinition, String columnName) {
+    private void createIndex(Session session, TableDefinition tableDefinition, String columnName) {
         com.datastax.driver.core.schemabuilder.SchemaStatement createIndex = tableDefinition.getCreateIndexStatements().get(columnName);
         getLog().info("updateTable: create index statement: {}", createIndex);
         session.execute(createIndex);
@@ -127,7 +177,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     @Override
-    public void initSession(com.datastax.driver.core.Session session) {
+    public void initSession(Session session) {
         this.session = session;
     }
 
@@ -149,25 +199,25 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return ttl;
     }
 
-    protected com.datastax.driver.core.Session getSession() {
-        checkState(session != null, "com.datastax.driver.core.Session undefined");
+    protected Session getSession() {
+        checkState(session != null, "Session undefined");
         return session;
     }
 
     protected static com.datastax.driver.core.querybuilder.Clause eq(String name, Object value) {
-        return com.datastax.driver.core.querybuilder.QueryBuilder.eq(name, value);
+        return Cql.eq(name, value);
     }
 
     protected static com.datastax.driver.core.querybuilder.Assignment set(String name, Object value) {
-        return com.datastax.driver.core.querybuilder.QueryBuilder.set(name, value);
+        return Cql.set(name, value);
     }
 
     protected com.datastax.driver.core.querybuilder.Select getSelectAllColumnsQuery(TableDefinition tableDef) {
-        return com.datastax.driver.core.querybuilder.QueryBuilder.select().all().from(tableDef.getTableName());
+        return Cql.select().all().from(tableDef.getTableName());
     }
 
     protected com.datastax.driver.core.querybuilder.Select getSelectColumnsQuery(TableDefinition tableDef, String... columns) {
-        return com.datastax.driver.core.querybuilder.QueryBuilder.select(columns).from(tableDef.getTableName());
+        return Cql.select(columns).from(tableDef.getTableName());
     }
 
     protected com.datastax.driver.core.querybuilder.Select getSelectAllColumnsQuery() {
@@ -175,24 +225,26 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     protected com.datastax.driver.core.querybuilder.Select getSelectColumnsQuery(String... columns) {
-        return com.datastax.driver.core.querybuilder.QueryBuilder.select(columns).from(getMainColumnFamilyName());
+        return Cql.select(columns).from(getMainColumnFamilyName());
     }
 
     protected com.datastax.driver.core.querybuilder.Select getDistinctSelectColumnsQuery(String... columns) {
-        com.datastax.driver.core.querybuilder.Select.Selection select = com.datastax.driver.core.querybuilder.QueryBuilder.select().distinct();
+        com.datastax.driver.core.querybuilder.Select.Selection select = Cql.select().distinct();
         for (String column : columns) {
             select.column(column);
         }
         return select.from(getMainColumnFamilyName());
     }
 
-    protected void assertAppliedByVersion(com.datastax.driver.core.ResultSet result, long expectedVersion) {
-        if (!result.wasApplied()) {
-            com.datastax.driver.core.Row row = result.one();
+    protected void assertAppliedByVersion(ResultSet result, long expectedVersion) {
+        if (result == null || !result.wasApplied()) {
+            Row row = result == null ? null : result.one();
             throw new RuntimeException("result was not applied: expected version: " + expectedVersion +
                     ", found: " + (row == null || row.isNull(VERSION_FIELD) ? "null" : row.getLong(VERSION_FIELD)));
         }
     }
+
+
 
     protected com.datastax.driver.core.querybuilder.Insert getInsertQuery() {
         return getInsertQuery(getTtl() > 0 ? getTtl() : null);
@@ -203,15 +255,15 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     protected com.datastax.driver.core.querybuilder.Insert getInsertQuery(TableDefinition tableDef, Integer ttl) {
-        com.datastax.driver.core.querybuilder.Insert insert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(tableDef.getTableName());
+        com.datastax.driver.core.querybuilder.Insert insert = Cql.insertInto(tableDef.getTableName());
         if (ttl != null) {
-            insert.using(com.datastax.driver.core.querybuilder.QueryBuilder.ttl(ttl));
+            insert.using(Cql.ttl(ttl));
         }
         return insert;
     }
 
     protected com.datastax.driver.core.querybuilder.Update getUpdateQuery() {
-        return com.datastax.driver.core.querybuilder.QueryBuilder.update(getMainTableDefinition().getTableName());
+        return Cql.update(getMainTableDefinition().getTableName());
     }
 
     protected com.datastax.driver.core.querybuilder.Update getUpdateQuery(Integer ttl, com.datastax.driver.core.querybuilder.Clause... clauses) {
@@ -221,7 +273,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
             where.and(clause);
         }
         if (ttl != null) {
-            update.using(com.datastax.driver.core.querybuilder.QueryBuilder.ttl(ttl));
+            update.using(Cql.ttl(ttl));
         }
         return update;
     }
@@ -238,7 +290,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return getUpdateQuery(eq(getKeyColumnName(), keyValue));
     }
 
-    protected com.datastax.driver.core.ResultSet executeWithCheckTimeout(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+    protected ResultSet executeWithCheckTimeout(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
         long now = System.currentTimeMillis();
         try {
             return execute(this.session, statement, callerClassMethodIdentification, true);
@@ -258,22 +310,38 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         }
     }
 
-    protected com.datastax.driver.core.ResultSetFuture executeAsync(com.datastax.driver.core.Statement query, String callerClassMethodIdentification) {
+    protected ResultSet executeWithCheckTimeoutWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return executeWithCheckTimeout(statement, callerClassMethodIdentification);
+    }
+
+    protected ResultSet executeWithCheckTimeout(Statement statement, String callerClassMethodIdentification) {
+        return executeWithCheckTimeout(statement.unwrap(), callerClassMethodIdentification);
+    }
+
+    protected ResultSet executeWithCheckTimeoutWrapped(Statement statement, String callerClassMethodIdentification) {
+        return executeWithCheckTimeout(statement, callerClassMethodIdentification);
+    }
+
+    protected ResultSetFuture executeAsync(com.datastax.driver.core.Statement query, String callerClassMethodIdentification) {
         assertInitialized();
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.ResultSetFuture rsFuture = session.executeAsync(query);
+        ResultSetFuture rsFuture = session.executeAsync(query);
         StatisticsManager.getInstance().updateRequestStatistics(
                 getClass().getSimpleName() + " executeAsync " + callerClassMethodIdentification,
                 System.currentTimeMillis() - now);
         return rsFuture;
     }
 
-    protected com.datastax.driver.core.ResultSet execute(String query, String callerClassMethodIdentification) {
+    protected ResultSetFuture executeAsync(Statement query, String callerClassMethodIdentification) {
+        return executeAsync(query.unwrap(), callerClassMethodIdentification);
+    }
+
+    protected ResultSet execute(String query, String callerClassMethodIdentification) {
         assertInitialized();
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.ResultSet rs;
+        ResultSet rs;
         try {
-            rs = session.execute(query);
+            rs = session.executeWrapped(query);
         } catch (com.datastax.driver.core.exceptions.QueryExecutionException e) {
             long duration = System.currentTimeMillis() - now;
             getLog().error("{}:{} execute com.datastax.driver.core.exceptions.QueryExecutionException, duration ms={}",getClass().getSimpleName(),
@@ -289,12 +357,16 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return rs;
     }
 
-    protected com.datastax.driver.core.ResultSet execute(String query, String callerClassMethodIdentification, Object... values) {
+    protected ResultSet executeWrapped(String query, String callerClassMethodIdentification) {
+        return execute(query, callerClassMethodIdentification);
+    }
+
+    protected ResultSet execute(String query, String callerClassMethodIdentification, Object... values) {
         assertInitialized();
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.ResultSet rs;
+        ResultSet rs;
         try {
-            rs = session.execute(query, values);
+            rs = session.executeWrapped(query, values);
         } catch (com.datastax.driver.core.exceptions.QueryExecutionException e) {
             long duration = System.currentTimeMillis() - now;
             getLog().error("{}:{} execute com.datastax.driver.core.exceptions.QueryExecutionException, duration ms={}",getClass().getSimpleName(),
@@ -310,17 +382,58 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return rs;
     }
 
-    protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification, com.datastax.driver.core.ConsistencyLevel level) {
+    protected ResultSet executeWrapped(String query, String callerClassMethodIdentification, Object... values) {
+        return execute(query, callerClassMethodIdentification, values);
+    }
+
+    protected ResultSet execute(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification, com.datastax.driver.core.ConsistencyLevel level) {
         return execute(this.session, statement, callerClassMethodIdentification, level);
     }
 
-    protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.querybuilder.Select statement, String callerClassMethodIdentification,
+    protected ResultSet execute(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification, ConsistencyLevel level) {
+        return execute(statement, callerClassMethodIdentification, level == null ? null : level.toDriver());
+    }
+
+    protected ResultSet execute(Statement statement, String callerClassMethodIdentification, com.datastax.driver.core.ConsistencyLevel level) {
+        return execute(statement.unwrap(), callerClassMethodIdentification, level);
+    }
+
+    protected ResultSet execute(Statement statement, String callerClassMethodIdentification, ConsistencyLevel level) {
+        return execute(statement, callerClassMethodIdentification, level == null ? null : level.toDriver());
+    }
+
+    protected ResultSet executeWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
+                                       com.datastax.driver.core.ConsistencyLevel level) {
+        return execute(statement, callerClassMethodIdentification, level);
+    }
+
+    protected ResultSet executeWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
+                                       ConsistencyLevel level) {
+        return execute(statement, callerClassMethodIdentification, level);
+    }
+
+    protected ResultSet executeWrapped(Statement statement, String callerClassMethodIdentification,
+                                       com.datastax.driver.core.ConsistencyLevel level) {
+        return execute(statement, callerClassMethodIdentification, level);
+    }
+
+    protected ResultSet executeWrapped(Statement statement, String callerClassMethodIdentification,
+                                       ConsistencyLevel level) {
+        return execute(statement, callerClassMethodIdentification, level);
+    }
+
+    protected ResultSet executeWrapped(com.datastax.driver.core.querybuilder.Select statement, String callerClassMethodIdentification,
+                                       int queryReadTimeoutAttempts) {
+        return execute(statement, callerClassMethodIdentification, queryReadTimeoutAttempts);
+    }
+
+    protected ResultSet execute(com.datastax.driver.core.querybuilder.Select statement, String callerClassMethodIdentification,
                                 int queryReadTimeoutAttempts) {
-        com.datastax.driver.core.ResultSet resultSet = null;
+        ResultSet resultSet = null;
         int count = 0;
         while (resultSet == null) {
             try {
-                resultSet = execute(this.session, statement, callerClassMethodIdentification, null);
+                resultSet = execute(this.session, statement, callerClassMethodIdentification, (com.datastax.driver.core.ConsistencyLevel) null);
             } catch (com.datastax.driver.core.exceptions.ReadTimeoutException e) {
                 if (++count >= queryReadTimeoutAttempts) {
                     throw e;
@@ -330,18 +443,30 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return resultSet;
     }
 
-    protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
-        return execute(this.session, statement, callerClassMethodIdentification, null);
+    protected ResultSet execute(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return execute(this.session, statement, callerClassMethodIdentification, (com.datastax.driver.core.ConsistencyLevel) null);
     }
 
-    protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
+    protected ResultSet execute(Statement statement, String callerClassMethodIdentification) {
+        return execute(statement.unwrap(), callerClassMethodIdentification);
+    }
+
+    protected ResultSet executeWrapped(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return execute(statement, callerClassMethodIdentification);
+    }
+
+    protected ResultSet executeWrapped(Statement statement, String callerClassMethodIdentification) {
+        return execute(statement, callerClassMethodIdentification);
+    }
+
+    protected ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
                                 boolean warnErrors) {
         assertInitialized();
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.ResultSet rs;
+        ResultSet rs;
         try {
             setStatementConsistencyLevels(statement);
-            rs = session.execute(statement);
+            rs = session.executeWrapped(statement);
         } catch (Exception e) {
             if (statement instanceof com.datastax.driver.core.querybuilder.BuiltStatement) {
                 com.datastax.driver.core.querybuilder.BuiltStatement bStatement = (com.datastax.driver.core.querybuilder.BuiltStatement) statement;
@@ -384,15 +509,27 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return rs;
     }
 
-    protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
-        return execute(session, statement, callerClassMethodIdentification, null);
+    protected ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return execute(session, statement, callerClassMethodIdentification, (com.datastax.driver.core.ConsistencyLevel) null);
     }
 
-    protected com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
+    protected ResultSet execute(Session session, Statement statement, String callerClassMethodIdentification) {
+        return execute(session, statement.unwrap(), callerClassMethodIdentification);
+    }
+
+    protected ResultSet executeWrapped(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification) {
+        return execute(session, statement, callerClassMethodIdentification);
+    }
+
+    protected ResultSet executeWrapped(Session session, Statement statement, String callerClassMethodIdentification) {
+        return execute(session, statement, callerClassMethodIdentification);
+    }
+
+    protected ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
                                 com.datastax.driver.core.ConsistencyLevel level) {
         assertInitialized();
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.ResultSet rs;
+        ResultSet rs;
         try {
             if (level != null) {
                 statement.setConsistencyLevel(level);
@@ -400,7 +537,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
                 //use default
                 setStatementConsistencyLevels(statement);
             }
-            rs = session.execute(statement);
+            rs = session.executeWrapped(statement);
         } catch (Exception e) {
             if (statement instanceof com.datastax.driver.core.querybuilder.BuiltStatement) {
                 com.datastax.driver.core.querybuilder.BuiltStatement bStatement = (com.datastax.driver.core.querybuilder.BuiltStatement) statement;
@@ -430,6 +567,11 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return rs;
     }
 
+    protected ResultSet execute(Session session, com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
+                                ConsistencyLevel level) {
+        return execute(session, statement, callerClassMethodIdentification, level == null ? null : level.toDriver());
+    }
+
     protected void setStatementConsistencyLevels(com.datastax.driver.core.Statement statement) {
         if (statement.getConsistencyLevel() == null) {
             setStatementReadWriteConsistencyLevel(statement);
@@ -441,39 +583,45 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     private void setStatementReadWriteConsistencyLevel(com.datastax.driver.core.Statement statement) {
         if (statement instanceof com.datastax.driver.core.querybuilder.Select || statement instanceof com.datastax.driver.core.querybuilder.Select.Where) {
-            statement.setConsistencyLevel(readConsistency);
+            statement.setConsistencyLevel(readConsistency.toDriver());
         } else if (statement instanceof com.datastax.driver.core.querybuilder.Insert
                 || statement instanceof com.datastax.driver.core.querybuilder.Update
                 || statement instanceof com.datastax.driver.core.querybuilder.Update.Where
                 || statement instanceof com.datastax.driver.core.querybuilder.Delete
                 || statement instanceof com.datastax.driver.core.querybuilder.Delete.Where) {
 
-            statement.setConsistencyLevel(writeConsistency);
+            statement.setConsistencyLevel(writeConsistency.toDriver());
         }
     }
 
     private void setStatementSerialConsistencyLevel(com.datastax.driver.core.Statement statement) {
-        statement.setSerialConsistencyLevel(serialConsistency);
+        statement.setSerialConsistencyLevel(serialConsistency.toDriver());
     }
 
-    protected com.datastax.driver.core.ResultSet insert(KEY key, String columnName, Object value) {
+    protected void setConsistencyLevel(com.datastax.driver.core.Statement statement, ConsistencyLevel level) {
+        if (statement != null && level != null) {
+            statement.setConsistencyLevel(level.toDriver());
+        }
+    }
+
+    protected ResultSet insert(KEY key, String columnName, Object value) {
         return insert(key, columnName, value, false);
     }
 
-    protected com.datastax.driver.core.ResultSet insert(KEY key, Map<String,Object> columnValues) {
+    protected ResultSet insert(KEY key, Map<String,Object> columnValues) {
         return insert(key, columnValues, false);
     }
 
-    protected com.datastax.driver.core.ResultSet insert(KEY key, String columnName, Object value, boolean ifNotExist) {
+    protected ResultSet insert(KEY key, String columnName, Object value, boolean ifNotExist) {
         return insert(key, Collections.singletonMap(columnName, value), ifNotExist);
     }
 
-    protected com.datastax.driver.core.ResultSet insert(KEY key, Map<String,Object> columnValues, boolean ifNotExist) {
+    protected ResultSet insert(KEY key, Map<String,Object> columnValues, boolean ifNotExist) {
         if (columnValues.isEmpty()) {
             throw new IllegalArgumentException("columnValues cannot be empty");
         }
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.querybuilder.Insert insert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(getMainTableDefinition().getTableName()).value(getKeyColumnName(), key);
+        com.datastax.driver.core.querybuilder.Insert insert = Cql.insertInto(getMainTableDefinition().getTableName()).value(getKeyColumnName(), key);
 
         for (Entry<String, Object> columnValue : columnValues.entrySet()) {
             insert = insert.value(columnValue.getKey(), columnValue.getValue());
@@ -482,10 +630,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         if (ifNotExist) { //Cannot provide custom timestamp for conditional updates
             insert.ifNotExists();
         }
-        com.datastax.driver.core.ResultSet resultSet;
+        ResultSet resultSet;
         try {
             setStatementConsistencyLevels(insert);
-            resultSet = session.execute(insert);
+            resultSet = session.executeWrapped(insert);
         } catch (com.datastax.driver.core.exceptions.QueryExecutionException e) {
             long duration = System.currentTimeMillis() - now;
             getLog().error(getClass().getSimpleName() + ":insert execute com.datastax.driver.core.exceptions.QueryExecutionException, duration ms=" + duration, e);
@@ -500,13 +648,13 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return resultSet;
     }
 
-    protected com.datastax.driver.core.ResultSet insert(KEY key, String columnName, Object value, int ttl) {
+    protected ResultSet insert(KEY key, String columnName, Object value, int ttl) {
         long now = System.currentTimeMillis();
         com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery().value(getKeyColumnName(), key).value(columnName, value);
-        insert.using(com.datastax.driver.core.querybuilder.QueryBuilder.ttl(ttl));
-        com.datastax.driver.core.ResultSet resultSet;
+        insert.using(Cql.ttl(ttl));
+        ResultSet resultSet;
         try {
-            resultSet = session.execute(insert);
+            resultSet = session.executeWrapped(insert);
         } catch (com.datastax.driver.core.exceptions.QueryExecutionException e) {
             long duration = System.currentTimeMillis() - now;
             getLog().error(getClass().getSimpleName() + ":insert execute com.datastax.driver.core.exceptions.QueryExecutionException, duration ms=" + duration, e);
@@ -526,13 +674,13 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     protected com.datastax.driver.core.querybuilder.Insert addInsertion(KEY key, String columnName, Object value, int ttl) {
         com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery().value(getKeyColumnName(), key).value(columnName, value);
-        insert.using(com.datastax.driver.core.querybuilder.QueryBuilder.ttl(ttl));
+        insert.using(Cql.ttl(ttl));
         return insert;
     }
 
     protected com.datastax.driver.core.querybuilder.Insert addInsertion(String columnFamily, KEY key, String columnName, Object value, int ttl) {
-        com.datastax.driver.core.querybuilder.Insert insert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(columnFamily).value(getKeyColumnName(), key).value(columnName, value);
-        insert.using(com.datastax.driver.core.querybuilder.QueryBuilder.ttl(ttl));
+        com.datastax.driver.core.querybuilder.Insert insert = Cql.insertInto(columnFamily).value(getKeyColumnName(), key).value(columnName, value);
+        insert.using(Cql.ttl(ttl));
         return insert;
     }
 
@@ -550,7 +698,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     protected com.datastax.driver.core.querybuilder.Delete addItemDeletion(String tableName, com.datastax.driver.core.querybuilder.Clause... clauses) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(tableName);
+        com.datastax.driver.core.querybuilder.Delete query = Cql.delete().from(tableName);
         com.datastax.driver.core.querybuilder.Delete.Where where = query.where();
         for (com.datastax.driver.core.querybuilder.Clause clause : clauses) {
             where.and(clause);
@@ -572,7 +720,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     protected com.datastax.driver.core.querybuilder.Delete addColumnDeletion(String tableName, String[] columns, com.datastax.driver.core.querybuilder.Clause... clauses) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete(columns).from(tableName);
+        com.datastax.driver.core.querybuilder.Delete query = Cql.delete(columns).from(tableName);
         com.datastax.driver.core.querybuilder.Delete.Where where = query.where();
         for (com.datastax.driver.core.querybuilder.Clause clause : clauses) {
             where.and(clause);
@@ -582,7 +730,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     //not rename this method to delete(), need prevent conflict with void delete() from com.hazelcast.core.MapStore
     protected boolean deleteWithCheck(KEY key) {
-        com.datastax.driver.core.ResultSet resultSet = deleteItem(key);
+        ResultSet resultSet = deleteItem(key);
         return resultSet.wasApplied();
     }
 
@@ -591,15 +739,15 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return eq(getKeyColumnName(), key);
     }
 
-    protected com.datastax.driver.core.ResultSet deleteItem(KEY key) {
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(getMainColumnFamilyName());
+    protected ResultSet deleteItem(KEY key) {
+        com.datastax.driver.core.querybuilder.Delete query = Cql.delete().from(getMainColumnFamilyName());
         query.where(getSimpleKeyClause(key));
         return execute(query, " deleteItem");
     }
 
-    protected com.datastax.driver.core.ResultSet deleteItem(com.datastax.driver.core.querybuilder.Clause... clauses) {
+    protected ResultSet deleteItem(com.datastax.driver.core.querybuilder.Clause... clauses) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(getMainColumnFamilyName());
+        com.datastax.driver.core.querybuilder.Delete query = Cql.delete().from(getMainColumnFamilyName());
         com.datastax.driver.core.querybuilder.Delete.Where where = query.where();
         for (com.datastax.driver.core.querybuilder.Clause clause : clauses) {
             where.and(clause);
@@ -607,9 +755,9 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return execute(query, " deleteItem");
     }
 
-    protected com.datastax.driver.core.ResultSet deleteMapItem(String mapColumnName, String itemKey, com.datastax.driver.core.querybuilder.Clause... clauses) {
+    protected ResultSet deleteMapItem(String mapColumnName, String itemKey, com.datastax.driver.core.querybuilder.Clause... clauses) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().mapElt(mapColumnName, itemKey).from(getMainColumnFamilyName());
+        com.datastax.driver.core.querybuilder.Delete query = Cql.delete().mapElt(mapColumnName, itemKey).from(getMainColumnFamilyName());
         com.datastax.driver.core.querybuilder.Delete.Where where = query.where();
         for (com.datastax.driver.core.querybuilder.Clause clause : clauses) {
             where.and(clause);
@@ -618,12 +766,12 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     protected com.datastax.driver.core.querybuilder.Batch batch() {
-        return com.datastax.driver.core.querybuilder.QueryBuilder.batch();
+        return Cql.batch();
     }
 
-    protected com.datastax.driver.core.ResultSet deleteColumn(String column, com.datastax.driver.core.querybuilder.Clause... clauses) {
+    protected ResultSet deleteColumn(String column, com.datastax.driver.core.querybuilder.Clause... clauses) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete(column).from(getMainColumnFamilyName());
+        com.datastax.driver.core.querybuilder.Delete query = Cql.delete(column).from(getMainColumnFamilyName());
         com.datastax.driver.core.querybuilder.Delete.Where where = query.where();
         for (com.datastax.driver.core.querybuilder.Clause clause : clauses) {
             where.and(clause);
@@ -631,9 +779,9 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return execute(query, " deleteColumn");
     }
 
-    protected com.datastax.driver.core.ResultSet deleteColumn(String[] columns, com.datastax.driver.core.querybuilder.Clause... clauses) {
+    protected ResultSet deleteColumn(String[] columns, com.datastax.driver.core.querybuilder.Clause... clauses) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete(columns).from(getMainColumnFamilyName());
+        com.datastax.driver.core.querybuilder.Delete query = Cql.delete(columns).from(getMainColumnFamilyName());
         com.datastax.driver.core.querybuilder.Delete.Where where = query.where();
         for (com.datastax.driver.core.querybuilder.Clause clause : clauses) {
             where.and(clause);
@@ -641,9 +789,9 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return execute(query, " deleteColumn");
     }
 
-    protected com.datastax.driver.core.ResultSet deleteColumn(KEY key, String column) {
+    protected ResultSet deleteColumn(KEY key, String column) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete(column).from(getMainColumnFamilyName());
+        com.datastax.driver.core.querybuilder.Delete query = Cql.delete(column).from(getMainColumnFamilyName());
         query.where(getSimpleKeyClause(key));
         return execute(query, " deleteColumn");
     }
@@ -661,14 +809,14 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     protected long count(TableDefinition tableDef, com.datastax.driver.core.querybuilder.Clause... where) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().countAll().from(tableDef.getTableName());
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().countAll().from(tableDef.getTableName());
         if (where != null) {
             for (com.datastax.driver.core.querybuilder.Clause clause : where) {
                 query.where().and(clause);
             }
         }
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "count");
-        com.datastax.driver.core.Row row = resultSet.one();
+        ResultSet resultSet = execute(query, "count");
+        Row row = resultSet.one();
         return row == null ? 0 : row.getLong("count");
     }
 
@@ -676,20 +824,24 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return count(getMainTableDefinition(), where);
     }
 
-    protected Iterator<com.datastax.driver.core.Row> getAll() {
+    protected Iterator<Row> getAll() {
         return getAll(null);
     }
 
-    protected Iterator<com.datastax.driver.core.Row> getAll(com.datastax.driver.core.querybuilder.Clause clause) {
+    protected Iterator<Row> getAllWrapped() {
+        return getAll();
+    }
+
+    protected Iterator<Row> getAll(com.datastax.driver.core.querybuilder.Clause clause) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().all().from(getMainColumnFamilyName());
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().all().from(getMainColumnFamilyName());
         if (clause != null) {
             query.where(clause);
         }
         try {
             setStatementConsistencyLevels(query);
-            com.datastax.driver.core.ResultSet execute = session.execute(query);
-            Iterator<com.datastax.driver.core.Row> iterator = execute.iterator();
+            ResultSet execute = session.executeWrapped(query);
+            Iterator<Row> iterator = execute.iterator();
             StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " getAll", System.currentTimeMillis() - now);
             return iterator;
         } catch (com.datastax.driver.core.exceptions.QueryExecutionException e) {
@@ -702,16 +854,24 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         }
     }
 
-    protected com.datastax.driver.core.Row getByKey(KEY key) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().all().from(getMainColumnFamilyName()).where(eq(getKeyColumnName(), key)).
+    protected Iterator<Row> getAllWrapped(com.datastax.driver.core.querybuilder.Clause clause) {
+        return getAll(clause);
+    }
+
+    protected Row getByKey(KEY key) {
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().all().from(getMainColumnFamilyName()).where(eq(getKeyColumnName(), key)).
                 limit(1);
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByKey");
+        ResultSet resultSet = execute(query, "getByKey");
         return resultSet.one();
+    }
+
+    protected Row getByKeyWrapped(KEY key) {
+        return getByKey(key);
     }
 
     protected ByteBuffer get(Map<String, Object> keys, String columnName) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(columnName).from(getMainColumnFamilyName());
+        com.datastax.driver.core.querybuilder.Select query = Cql.select(columnName).from(getMainColumnFamilyName());
         com.datastax.driver.core.querybuilder.Select.Where where = null;
 
         for (Map.Entry<String, Object> entry : keys.entrySet()) {
@@ -722,10 +882,10 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
             }
         }
         query.limit(1);
-        com.datastax.driver.core.ResultSet rows = execute(query, "get");
+        ResultSet rows = execute(query, "get");
         ByteBuffer result = null;
         if (rows.iterator().hasNext()) {
-            com.datastax.driver.core.Row row = rows.iterator().next();
+            Row row = rows.iterator().next();
             result = row.getBytes(columnName);
         }
         if (result == null) {
@@ -736,14 +896,14 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
 
     protected ByteBuffer get(String columnName, com.datastax.driver.core.querybuilder.Clause... clauses) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(columnName).from(getMainColumnFamilyName()).limit(1);
+        com.datastax.driver.core.querybuilder.Select query = Cql.select(columnName).from(getMainColumnFamilyName()).limit(1);
         for (com.datastax.driver.core.querybuilder.Clause clause : clauses) {
             query.where(clause);
         }
-        com.datastax.driver.core.ResultSet rows = execute(query, "get");
+        ResultSet rows = execute(query, "get");
         ByteBuffer result = null;
         if (rows.iterator().hasNext()) {
-            com.datastax.driver.core.Row row = rows.iterator().next();
+            Row row = rows.iterator().next();
             result = row.getBytes(columnName);
         }
         if (result == null) {
@@ -757,24 +917,28 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return get(columnName, clause);
     }
 
-    protected com.datastax.driver.core.Row getAsRow(KEY key, String columnName) {
+    protected Row getAsRow(KEY key, String columnName) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(getKeyColumnName(), columnName).from(getMainColumnFamilyName()).
+        com.datastax.driver.core.querybuilder.Select query = Cql.select(getKeyColumnName(), columnName).from(getMainColumnFamilyName()).
                 where(eq(getKeyColumnName(), key)).limit(1);
-        com.datastax.driver.core.ResultSet rows = execute(query, "getAsRow");
+        ResultSet rows = execute(query, "getAsRow");
         return rows.one();
+    }
+
+    protected Row getAsWrappedRow(KEY key, String columnName) {
+        return getAsRow(key, columnName);
     }
 
     protected Long getWriteTime(KEY key) {
         assertInitialized();
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().
                 writeTime(SERIALIZED_COLUMN_NAME).
                 writeTime(JSON_COLUMN_NAME).
                 from(getMainColumnFamilyName()).
                 where(eq(getKeyColumnName(), key)).
                 limit(1);
-        com.datastax.driver.core.ResultSet rows = execute(query, "getWriteTime");
-        com.datastax.driver.core.Row row = rows.one();
+        ResultSet rows = execute(query, "getWriteTime");
+        Row row = rows.one();
         if (row == null) {
             return null;
         }
@@ -787,13 +951,13 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     protected ByteBuffer get(KEY key, String columnName) {
         assertInitialized();
         com.datastax.driver.core.querybuilder.Select query =
-                com.datastax.driver.core.querybuilder.QueryBuilder.
+                Cql.
                         select(columnName).
                         from(getMainColumnFamilyName()).
                         where(eq(getKeyColumnName(), key)).
                         limit(1);
-        com.datastax.driver.core.ResultSet rows = execute(query, "get");
-        com.datastax.driver.core.Row row = rows.one();
+        ResultSet rows = execute(query, "get");
+        Row row = rows.one();
         ByteBuffer result = null;
         if (row != null) {
             result = row.getBytes(columnName);
@@ -807,13 +971,13 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     protected String getJson(KEY key) {
         assertInitialized();
         com.datastax.driver.core.querybuilder.Select query =
-                com.datastax.driver.core.querybuilder.QueryBuilder.
+                Cql.
                         select(JSON_COLUMN_NAME).
                         from(getMainColumnFamilyName()).
                         where(eq(getKeyColumnName(), key)).
                         limit(1);
-        com.datastax.driver.core.ResultSet rows = execute(query, "get");
-        com.datastax.driver.core.Row row = rows.one();
+        ResultSet rows = execute(query, "get");
+        Row row = rows.one();
         String result = null;
         if (row != null) {
             result = row.getString(JSON_COLUMN_NAME);
@@ -837,12 +1001,12 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     public void iterateAllColumnFamily(ColumnIteratorCallback callback) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().all().from(getMainColumnFamilyName());
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "iterateAllColumnFamily");
+        com.datastax.driver.core.querybuilder.Select query = Cql.select().all().from(getMainColumnFamilyName());
+        ResultSet resultSet = execute(query, "iterateAllColumnFamily");
         getLog().debug("iterateAllColumnFamily: getAvailableWithoutFetching=" +
                 resultSet.getAvailableWithoutFetching());
         int count = 0;
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (Row row : resultSet) {
             callback.process(row);
             if (resultSet.getAvailableWithoutFetching() <= 0) {
                 getLog().debug("iterateAllColumnFamily: getAvailableWithoutFetching=0, current count={}", count);
@@ -879,13 +1043,13 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return executeAndGetAsIterable(statement, callerClassMethodIdentification, getDeserializeColumnFunction(entryClass));
     }
 
-    protected <E extends KryoSerializable> Iterable<E> deserializeIterable(Iterable<com.datastax.driver.core.Row> iterable, final String entryColumnName, final Class<E> entryClass) {
+    protected <E extends KryoSerializable> Iterable<E> deserializeIterable(Iterable<Row> iterable, final String entryColumnName, final Class<E> entryClass) {
         return StreamUtils.asStream(iterable)
                 .map(getDeserializeColumnFunction(entryClass))
                 .collect(Collectors.toList());
     }
 
-    private <E> Function<com.datastax.driver.core.Row, E> getDeserializeColumnFunction(final Class<E> entryClass) {
+    private <E> Function<Row, E> getDeserializeColumnFunction(final Class<E> entryClass) {
         return row -> {
             E obj = getMainTableDefinition().deserializeFromJson(row.getString(JSON_COLUMN_NAME), entryClass);
 
@@ -897,7 +1061,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     protected <E> Iterable<E> getAsIterableSkipNull(final String[] entryColumnNames, String callerClassMethodIdentification,
-                                                    Integer readTimeout, Function<com.datastax.driver.core.Row, E> function, com.datastax.driver.core.querybuilder.Clause... clauses) {
+                                                    Integer readTimeout, Function<Row, E> function, com.datastax.driver.core.querybuilder.Clause... clauses) {
         com.datastax.driver.core.querybuilder.Select.Where select = getSelectColumnsQuery(entryColumnNames).where();
         if (readTimeout != null) {
             select.setReadTimeoutMillis(readTimeout);
@@ -909,19 +1073,19 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     protected <E> Iterable<E> getAsIterableSkipNull(final String[] entryColumnNames, String callerClassMethodIdentification,
-                                                    Function<com.datastax.driver.core.Row, E> function, com.datastax.driver.core.querybuilder.Clause... clauses) {
+                                                    Function<Row, E> function, com.datastax.driver.core.querybuilder.Clause... clauses) {
         return getAsIterableSkipNull(entryColumnNames, callerClassMethodIdentification, null, function, clauses);
     }
 
     protected <E> Iterable<E> executeAndGetAsIterableSkipNull(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
-                                                              Function<com.datastax.driver.core.Row, E> function) {
+                                                              Function<Row, E> function) {
         return StreamUtils.asStream(executeAndGetAsIterable(statement, callerClassMethodIdentification, function))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
     protected <E> Iterable<E> executeAndGetAsIterable(com.datastax.driver.core.Statement statement, String callerClassMethodIdentification,
-                                                      Function<com.datastax.driver.core.Row, E> function) {
+                                                      Function<Row, E> function) {
         return StreamUtils.asStream(execute(statement, callerClassMethodIdentification))
                 .map(function)
                 .collect(Collectors.toList());

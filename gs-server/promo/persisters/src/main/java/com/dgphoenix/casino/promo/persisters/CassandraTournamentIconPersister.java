@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraTournamentIconPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraTournamentIconPersister.class);
 
@@ -22,9 +25,9 @@ public class CassandraTournamentIconPersister extends AbstractCassandraPersister
 
     private static final TableDefinition TOURNAMENT_ICON_TABLE = new TableDefinition(TOURNAMENT_ICON_CF,
             Arrays.asList(
-                    new ColumnDefinition(ICON_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ICON_NAME_FIELD, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(ICON_HTTP_ADDRESS_FIELD, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ICON_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(ICON_NAME_FIELD, text()),
+                    new ColumnDefinition(ICON_HTTP_ADDRESS_FIELD, text())
             ), ICON_ID_FIELD);
 
     public void persist(TournamentIcon icon) {
@@ -37,7 +40,7 @@ public class CassandraTournamentIconPersister extends AbstractCassandraPersister
 
     public List<TournamentIcon> getAllIcons() {
         com.datastax.driver.core.Statement query = getSelectAllColumnsQuery();
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getAllIcons");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(query, "getAllIcons");
         return resultSet.all().stream()
                 .filter(Objects::nonNull)
                 .map(row -> {
@@ -52,7 +55,7 @@ public class CassandraTournamentIconPersister extends AbstractCassandraPersister
     public TournamentIcon getById(long id) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(ICON_NAME_FIELD, ICON_HTTP_ADDRESS_FIELD)
                 .where(eq(ICON_ID_FIELD, id)).limit(1);
-        com.datastax.driver.core.Row row = execute(query, "getById").one();
+        com.abs.casino.cassandra.persist.engine.Row row = execute(query, "getById").one();
         if (row == null) {
             return null;
         }

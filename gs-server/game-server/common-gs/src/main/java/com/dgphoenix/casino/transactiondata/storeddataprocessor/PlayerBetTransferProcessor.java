@@ -24,7 +24,7 @@ public class PlayerBetTransferProcessor implements IStoredDataProcessor<Long, Pl
 
     @Override
     public void process(StoredItem<Long, PlayerBetTransferStoredInfo> item,
-                        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+                        HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         Long gameSessionId = item.getItem();
         betPersistenceManager.prepareToPersistGameSessionBets(statementsMap, gameSessionId,
                 item.getIdentifier().getMaxPlayerBetId(), byteBuffersCollector);

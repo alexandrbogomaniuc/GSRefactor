@@ -24,6 +24,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 import static java.util.stream.Collectors.toMap;
 import static org.apache.commons.lang.StringUtils.join;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
 
 /**
  * User: flsh
@@ -52,7 +53,7 @@ public class TableDefinition {
     public TableDefinition(String tableName, List<ColumnDefinition> columns, String... partitionKey) {
         this.tableName = tableName.trim();
         this.columns = columns;
-        com.datastax.driver.core.schemabuilder.Create createStatement = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(this.tableName).ifNotExists();
+        com.datastax.driver.core.schemabuilder.Create createStatement = SchemaCql.createTable(this.tableName).ifNotExists();
         addPartitionKeyColumns(partitionKey, this.columns, createStatement);
         addColumns(columns, Arrays.asList(partitionKey), createStatement);
         indexesStatements = generateIndexes(columns);
@@ -70,7 +71,7 @@ public class TableDefinition {
                     .findFirst()
                     .get();
             checkState(addedColumns.add(partitionKeyColumn), DUPLICATE_COLUMN_ERROR, partitionKeyColumn.getName());
-            createStatement.addPartitionKey(partitionKeyColumn.getName(), partitionKeyColumn.getType());
+            createStatement.addPartitionKey(partitionKeyColumn.getName(), partitionKeyColumn.getType().unwrap());
         }
     }
 
@@ -79,7 +80,7 @@ public class TableDefinition {
             String columnName = column.getName();
             if (!skipColumns.contains(columnName)) {
                 checkState(addedColumns.add(column), DUPLICATE_COLUMN_ERROR, column.getName());
-                com.datastax.driver.core.DataType columnType = column.getType();
+                com.datastax.driver.core.DataType columnType = column.getType().unwrap();
                 if (column.isPrimaryKeyPart()) {
                     createStatement.addClusteringColumn(columnName, columnType);
                 } else if (column.isStaticField()) {
@@ -99,14 +100,14 @@ public class TableDefinition {
                     //You cannot index, delete, or and re-adding a counter column
                     checkState(isNonCounterColumn(column), "Counter column cannot be indexed");
                     String columnName = column.getName();
-                    return com.datastax.driver.core.schemabuilder.SchemaBuilder.createIndex(getIndexName(columnName)).ifNotExists()
+                    return SchemaCql.createIndex(getIndexName(columnName)).ifNotExists()
                             .onTable(tableName)
                             .andColumn(columnName);
                 }));
     }
 
     private boolean isNonCounterColumn(ColumnDefinition column) {
-        return !column.getType().equals(com.datastax.driver.core.DataType.counter());
+        return !column.getType().equals(counter());
     }
 
     public String getIndexName(String columnName) {
@@ -122,7 +123,7 @@ public class TableDefinition {
 
     public TableDefinition caching(@Nonnull Caching caching) {
         checkNotNull(caching, "Caching must be not null");
-        getOptions().caching(caching.getKeysCache(), caching.getRowsCache());
+        getOptions().caching(caching.getKeysCache().unwrap(), caching.getRowsCache());
         return this;
     }
 
@@ -144,8 +145,8 @@ public class TableDefinition {
         return this;
     }
 
-    public TableDefinition clusteringOrder(String columnName, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction direction) {
-        getOptions().clusteringOrder(columnName, direction);
+    public TableDefinition clusteringOrder(String columnName, SchemaCql.Direction direction) {
+        getOptions().clusteringOrder(columnName, direction.unwrap());
         return this;
     }
 

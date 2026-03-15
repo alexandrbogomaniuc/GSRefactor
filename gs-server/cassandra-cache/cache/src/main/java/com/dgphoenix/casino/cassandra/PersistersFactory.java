@@ -1,7 +1,9 @@
 package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.config.ColumnFamilyConfig;
+import com.abs.casino.cassandra.persist.engine.ConsistencyLevel;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.Session;
 import com.abs.casino.common.util.ReflectionUtils;
 import org.apache.commons.lang.ClassUtils;
 import org.apache.logging.log4j.LogManager;
@@ -32,9 +34,9 @@ public class PersistersFactory {
     }
 
     public void initializePersisters(List<ColumnFamilyConfig> configs,
-                                     com.datastax.driver.core.ConsistencyLevel defaultReadConsistency,
-                                     com.datastax.driver.core.ConsistencyLevel defaultWriteConsistency,
-                                     com.datastax.driver.core.ConsistencyLevel defaultSerialConsistency) {
+                                     ConsistencyLevel defaultReadConsistency,
+                                     ConsistencyLevel defaultWriteConsistency,
+                                     ConsistencyLevel defaultSerialConsistency) {
         persisters = new ArrayList<>(configs.size());
         persistersMap = new HashMap<>(configs.size());
         persistersInterfaceMap = new HashMap<>();
@@ -89,7 +91,7 @@ public class PersistersFactory {
         }
     }
 
-    public void populateSession(com.datastax.driver.core.Session session) {
+    public void populateSession(Session session) {
         persisters.forEach(persister -> persister.initSession(session));
     }
 

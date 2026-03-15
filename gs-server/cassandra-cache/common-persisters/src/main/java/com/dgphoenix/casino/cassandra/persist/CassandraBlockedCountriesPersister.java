@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.util.IGeoIp;
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +14,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraBlockedCountriesPersister extends AbstractCassandraPersister<String, String> {
     public static final String COLUMN_FAMILY_NAME = "BlockedCountriesCF";
 
@@ -20,7 +23,7 @@ public class CassandraBlockedCountriesPersister extends AbstractCassandraPersist
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Collections.singletonList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true)
+                    new ColumnDefinition(KEY, text(), false, false, true)
             ),
             KEY);
 
@@ -42,7 +45,7 @@ public class CassandraBlockedCountriesPersister extends AbstractCassandraPersist
     public void persist(String countryISOCode, boolean isBlocked) {
         LOG.debug("persist " + countryISOCode + " blocked=" + isBlocked);
         if (isBlocked) {
-            com.datastax.driver.core.Statement query = getInsertQuery().value(KEY, countryISOCode);
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery().value(KEY, countryISOCode));
             execute(query, "persist");
         } else {
             deleteWithCheck(KEY);
@@ -50,7 +53,7 @@ public class CassandraBlockedCountriesPersister extends AbstractCassandraPersist
     }
 
     public List<String> get() {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectAllColumnsQuery(), "get");
+        ResultSet resultSet = executeWrapped(getSelectAllColumnsQuery(), "get");
         List<String> blockedCountries = resultSet.all().stream()
                 .map(row -> row.getString(KEY))
                 .collect(Collectors.toList());

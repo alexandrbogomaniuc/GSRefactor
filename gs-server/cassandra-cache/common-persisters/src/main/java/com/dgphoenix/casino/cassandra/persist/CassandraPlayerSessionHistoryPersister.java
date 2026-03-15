@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -16,6 +18,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 27.03.12
@@ -29,11 +35,11 @@ public class CassandraPlayerSessionHistoryPersister extends AbstractCassandraPer
 
     private static final TableDefinition HISTORY_TABLE = new TableDefinition(PLAYER_SESSION_HISTORY_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(EXT_SESSION_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(DAY_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(EXT_SESSION_ID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(DAY_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), KEY)
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toSeconds(1))
@@ -56,18 +62,18 @@ public class CassandraPlayerSessionHistoryPersister extends AbstractCassandraPer
         ByteBuffer byteBuffer = HISTORY_TABLE.serializeToBytes(entry);
         String json = HISTORY_TABLE.serializeToJson(entry);
         try {
-            com.datastax.driver.core.Statement insertQuery = entry.getExternalSessionId() == null
-                    ? getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement insertQuery = entry.getExternalSessionId() == null
+                    ? com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, entry.getSessionId())
                     .value(DAY_FIELD, getDay(entry.getEndTime()))
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json)
-                    : getInsertQuery()
+                    .value(JSON_COLUMN_NAME, json))
+                    : com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, entry.getSessionId())
                     .value(DAY_FIELD, getDay(entry.getEndTime()))
                     .value(EXT_SESSION_ID_FIELD, entry.getExternalSessionId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(insertQuery, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -95,10 +101,10 @@ public class CassandraPlayerSessionHistoryPersister extends AbstractCassandraPer
         if (sessionIds.length == 0) {
             return;
         }
-        com.datastax.driver.core.Statement query =
-                com.datastax.driver.core.querybuilder.QueryBuilder.delete().
+        com.abs.casino.cassandra.persist.engine.Statement query =
+                com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete().
                         from(getMainColumnFamilyName()).
-                        where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, sessionIds));
+                        where(Cql.in(KEY, sessionIds)));
         execute(query, "delete playerSession");
     }
 

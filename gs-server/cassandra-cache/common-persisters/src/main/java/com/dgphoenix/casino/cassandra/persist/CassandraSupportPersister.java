@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static java.util.Collections.*;
 
 public class CassandraSupportPersister extends AbstractCassandraPersister<String, Long> {
@@ -21,9 +23,9 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(TIMESTAMP, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(INFO, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(TIMESTAMP, bigint(), false, false, true),
+                    new ColumnDefinition(INFO, text())
             ),
             KEY);
 
@@ -31,21 +33,21 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     }
 
     public void persist(String sessionId, long timestamp, String info) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(KEY, sessionId)
                 .value(TIMESTAMP, timestamp)
-                .value(INFO, info);
+                .value(INFO, info));
         execute(query, "persist");
     }
 
     public Iterable<String> getSessionIDs() {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(KEY);
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getSessionIDs");
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(KEY));
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getSessionIDs");
 
         if (resultSet.isExhausted()) {
             return emptyList();
         }
-        final List<com.datastax.driver.core.Row> rows = resultSet.all();
+        final List<com.abs.casino.cassandra.persist.engine.Row> rows = resultSet.all();
 
         return rows.stream()
                 .filter(Objects::nonNull)
@@ -54,14 +56,14 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     }
 
     public Map<Long, String> getValuesBySessionID(String sessionId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(TIMESTAMP, INFO)
-                .where(eq(KEY, sessionId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getValuesBySessionID");
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(TIMESTAMP, INFO)
+                .where(eq(KEY, sessionId)));
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getValuesBySessionID");
 
         if (resultSet.isExhausted()) {
             return emptyMap();
         }
-        List<com.datastax.driver.core.Row> rows = resultSet.all();
+        List<com.abs.casino.cassandra.persist.engine.Row> rows = resultSet.all();
         Map<Long, String> sortedByTimestamp = new TreeMap<>(reverseOrder());
         rows.forEach(row -> {
             if (row != null)

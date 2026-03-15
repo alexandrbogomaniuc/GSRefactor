@@ -83,11 +83,10 @@ public class RemoteCallHelper implements IPromoCampaignsObserver, IRemotePromoNo
     public RemoteCallHelper(IWebSocketSessionsController webSocketSessionsController,
                             IPromoCampaignManager promoCampaignManager,
                             InServiceServiceHandler inServiceServiceHandler,
-                            KafkaMessageService kafkaMessageService) {
+                            KafkaMessageService kafkaMessageService,
+                            CassandraPersistenceManager persistenceManager) {
         this.webSocketSessionsController = webSocketSessionsController;
         promoCampaignManager.registerPromoCampaignsObserver(this);
-        CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getApplicationContext()
-                .getBean("persistenceManager", CassandraPersistenceManager.class);
         serverConfigTemplatePersister = persistenceManager.getPersister(CassandraServerConfigTemplatePersister.class);
         subCasinoPersister = persistenceManager.getPersister(CassandraSubCasinoPersister.class);
         subCasinoGroupPersister = persistenceManager.getPersister(CassandraSubCasinoGroupPersister.class);

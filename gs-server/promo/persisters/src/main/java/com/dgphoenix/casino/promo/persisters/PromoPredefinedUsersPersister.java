@@ -12,6 +12,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Long, Long> {
     private static final Logger LOG = LogManager.getLogger(PromoPredefinedUsersPersister.class);
     private static final String BG_CONFIG_CF = "PromoPredefinedUsersPersisterCF";
@@ -23,10 +26,10 @@ public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Lo
 
     private static final TableDefinition PROMO_PREDEFINED_TABLE = new TableDefinition(BG_CONFIG_CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(PROMO_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(EXT_USER_ID, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, true, false)
+                    new ColumnDefinition(BANK_ID, bigint(), false, false, true),
+                    new ColumnDefinition(PROMO_ID, bigint(), false, false, true),
+                    new ColumnDefinition(EXT_USER_ID, text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID, bigint(), false, true, false)
             ), BANK_ID)
             .compaction(CompactionStrategy.LEVELED);
 
@@ -63,13 +66,13 @@ public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Lo
 
     public boolean isExist(long promoId, long bankId, long accountId) {
         com.datastax.driver.core.querybuilder.Select select = getSelectByClause(promoId, bankId, eq(ACCOUNT_ID, accountId));
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "isExists [by accountId]");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(select, "isExists [by accountId]");
         return resultSet.one() != null;
     }
 
     public boolean isExist(long promoId, long bankId, String extUserId) {
         com.datastax.driver.core.querybuilder.Select select = getSelectByClause(promoId, bankId, eq(EXT_USER_ID, extUserId));
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "isExists [by extUserId]");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(select, "isExists [by extUserId]");
         return resultSet.one() != null;
     }
 
@@ -97,9 +100,9 @@ public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Lo
     public Set<Pair<String, Long>> getByPromoId(long promoId, long bankId) {
         com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(EXT_USER_ID, ACCOUNT_ID);
         select.where(eq(PROMO_ID, promoId)).and(eq(BANK_ID, bankId));
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "getByPromoId");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(select, "getByPromoId");
         Set<Pair<String, Long>> pairs = new HashSet<>();
-        for (com.datastax.driver.core.Row row : resultSet.all()) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet.all()) {
             pairs.add(new Pair<>(row.getString(EXT_USER_ID), row.getLong(ACCOUNT_ID)));
         }
         return pairs;

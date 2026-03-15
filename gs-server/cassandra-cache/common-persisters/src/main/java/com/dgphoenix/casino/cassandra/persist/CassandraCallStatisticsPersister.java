@@ -3,6 +3,7 @@ package com.abs.casino.cassandra.persist;
 import com.abs.casino.cassandra.persist.IHttpClientStatisticsPersister;
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.data.URLCallCounters;
 import org.apache.logging.log4j.LogManager;
@@ -11,7 +12,9 @@ import org.apache.logging.log4j.Logger;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
-import static com.datastax.driver.core.querybuilder.QueryBuilder.incr;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.counter;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import static com.abs.casino.cassandra.persist.engine.Cql.incr;
 
 public class CassandraCallStatisticsPersister extends AbstractCassandraPersister<String, String> implements IHttpClientStatisticsPersister {
     private static final Logger LOG = LogManager.getLogger(CassandraCallStatisticsPersister.class);
@@ -28,10 +31,10 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
     private static final TableDefinition TABLE = new TableDefinition(
             COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(DATE, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(URL, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(SUCCESS_COUNTER, com.datastax.driver.core.DataType.counter()),
-                    new ColumnDefinition(FAIL_COUNTER, com.datastax.driver.core.DataType.counter())
+                    new ColumnDefinition(DATE, text(), false, false, true),
+                    new ColumnDefinition(URL, text(), false, false, true),
+                    new ColumnDefinition(SUCCESS_COUNTER, counter()),
+                    new ColumnDefinition(FAIL_COUNTER, counter())
             ),
             DATE
     );
@@ -48,10 +51,10 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
     public void persist(String date, String url, boolean isSuccess, long amount) {
         String counterColumn = isSuccess ? SUCCESS_COUNTER : FAIL_COUNTER;
 
-        com.datastax.driver.core.Statement update = getUpdateQuery()
+        com.abs.casino.cassandra.persist.engine.Statement update = com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateQuery()
                 .where(eq(DATE, date))
                 .and(eq(URL, url))
-                .with(incr(counterColumn, amount));
+                .with(incr(counterColumn, amount)));
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist " + url + ", isSuccess:" + isSuccess);
         }
@@ -69,10 +72,10 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
     }
 
     private URLCallCounters getCallStatistics(String date, String url) {
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(FAIL_COUNTER, SUCCESS_COUNTER)
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(FAIL_COUNTER, SUCCESS_COUNTER)
                 .where(eq(DATE, date))
-                .and(eq(URL, url));
-        com.datastax.driver.core.Row row = execute(select, "getCallStatistics").one();
+                .and(eq(URL, url)));
+        Row row = executeWrapped(select, "getCallStatistics").one();
         if (row == null) {
             return new URLCallCounters(date, url, 0, 0, 0);
         } else {

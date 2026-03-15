@@ -552,6 +552,9 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         Currency accountCurrency = (currency == null) ? bankInfo.getDefaultCurrency() : currency;
         AccountInfo account = AccountManager.getInstance().saveAccount(null, randomStr, bankInfo, subCasinoId, nickName, true, false,
                 null, ClientType.FLASH, null, null, accountCurrency, null, true);
+        SessionHelper.getInstance().getTransactionData().setAccount(account);
+        // Guest accounts are not written to the account store, but MP follow-up calls still need them from session TD.
+        SessionHelper.getInstance().getDomainSession().persistAccount();
         return new AccountInfoAndSessionInfoPair(account);
     }
 
@@ -908,7 +911,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         redirect.addParameter(BaseAction.GAME_ID_ATTRIBUTE, String.valueOf(gameId));
         redirect.addParameter(BaseAction.LANG_ID_ATTRIBUTE, lang);
         redirect.addParameter(BaseAction.GAMEMODE_ATTRIBUTE, mode.getModePath());
-        redirect.addParameter(BaseAction.WEB_SOCKET_URL, mpLobbyUrl + "/websocket/mplobby");
+        redirect.addParameter(BaseAction.WEB_SOCKET_URL, mpLobbyUrl + "/websocket/mplobby?sessionId=" + sessionId);
         redirect.addParameter(BaseAction.GAMESERVERID_ATTRIBUTE, GameServer.getInstance().getServerId());
         String cdn = request.getParameter(BaseAction.KEY_CDN);
         if (!StringUtils.isTrimmedEmpty(cdn)) {

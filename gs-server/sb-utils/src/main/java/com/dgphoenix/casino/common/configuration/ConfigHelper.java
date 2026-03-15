@@ -33,6 +33,10 @@ public class ConfigHelper {
         xstream.processAnnotations(klazz);
     }
 
+    public void allowTypesByWildcard(String... patterns) {
+        xstream.allowTypesByWildcard(patterns);
+    }
+
     public String getPlainConfig(String fileName) {
         try {
             File f = ConfigurationUtils.fileFromURL(ConfigurationUtils.locate(fileName));

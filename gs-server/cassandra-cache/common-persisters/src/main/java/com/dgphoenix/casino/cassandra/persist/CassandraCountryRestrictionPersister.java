@@ -1,7 +1,11 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.geoip.CountryRestrictionList;
@@ -13,6 +17,11 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraCountryRestrictionPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(CassandraCountryRestrictionPersister.class);
     private static final String COLUMN_FAMILY_NAME = "CountryRestrictionsCF";
@@ -21,10 +30,10 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
 
     private static final TableDefinition COUNTRIES_TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
         Arrays.asList(
-            new ColumnDefinition(OBJECT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-            new ColumnDefinition(RESTRICTION_TYPE, com.datastax.driver.core.DataType.cint(), false, false, true),
-            new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob(), false, false, false),
-            new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+            new ColumnDefinition(OBJECT_ID, bigint(), false, false, true),
+            new ColumnDefinition(RESTRICTION_TYPE, cint(), false, false, true),
+            new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob(), false, false, false),
+            new ColumnDefinition(JSON_COLUMN_NAME, text())
         ), OBJECT_ID)
         .compaction(CompactionStrategy.LEVELED);
 
@@ -45,11 +54,11 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
         ByteBuffer byteBuffer = COUNTRIES_TABLE.serializeToBytes(restrictions);
         String json = COUNTRIES_TABLE.serializeToJson(restrictions);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery(type.getCassandraTtl())
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery(type.getCassandraTtl())
                 .value(OBJECT_ID, objectId)
                 .value(RESTRICTION_TYPE, type.ordinal())
                 .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                .value(JSON_COLUMN_NAME, json);
+                .value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -59,12 +68,12 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     public CountryRestrictionList get(long objectId, RestrictionType type) {
         long now = System.currentTimeMillis();
         CountryRestrictionList result = null;
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where()
                 .and(eq(OBJECT_ID, objectId))
-                .and(eq(RESTRICTION_TYPE, type.ordinal()));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "get");
-        com.datastax.driver.core.Row row = resultSet.one();
+                .and(eq(RESTRICTION_TYPE, type.ordinal())));
+        ResultSet resultSet = executeWrapped(query, "get");
+        Row row = resultSet.one();
         if (row != null) {
             String json = row.getString(JSON_COLUMN_NAME);
             result = COUNTRIES_TABLE.deserializeFromJson(json, CountryRestrictionList.class);
@@ -81,11 +90,11 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     }
 
     public void delete(long objectId, RestrictionType type) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.delete()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete()
                 .from(getMainColumnFamilyName())
                 .where()
                 .and(eq(OBJECT_ID, objectId))
-                .and(eq(RESTRICTION_TYPE, type));
+                .and(eq(RESTRICTION_TYPE, type)));
         execute(query, "delete");
     }
 }

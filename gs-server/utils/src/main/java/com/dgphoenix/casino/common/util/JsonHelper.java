@@ -27,7 +27,7 @@ public class JsonHelper implements InitializingBean {
 
     private final ObjectMapper jsonMapper;
 
-    public JsonHelper(String packageName) {
+    public JsonHelper(String... packageNames) {
         jsonMapper = JsonMapper
             .builder()
             .configure(MapperFeature.REQUIRE_SETTERS_FOR_GETTERS, true)
@@ -37,7 +37,7 @@ public class JsonHelper implements InitializingBean {
                     DefaultTyping.OBJECT_AND_NON_CONCRETE, CLASS_FIELD)
             .enable(StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION)
             .addModule(new JavaTimeModule())
-            .addModule(new JsonDeserializableModule(packageName))
+            .addModule(new JsonDeserializableModule(packageNames))
             .addModule(new UniversalCollectionModule())
             .build();
 

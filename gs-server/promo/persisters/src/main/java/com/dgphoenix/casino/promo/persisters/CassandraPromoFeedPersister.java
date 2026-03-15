@@ -9,6 +9,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.varchar;
+
 public class CassandraPromoFeedPersister extends AbstractCassandraPersister<String, String> implements IPromoFeedPersister {
     private static final Logger LOG = LogManager.getLogger(CassandraPromoFeedPersister.class);
 
@@ -19,9 +23,9 @@ public class CassandraPromoFeedPersister extends AbstractCassandraPersister<Stri
 
     private static final TableDefinition FEED_TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(TIME_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(FEED_COLUMN, com.datastax.driver.core.DataType.varchar())
+                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(TIME_COLUMN, cint(), false, false, true),
+                    new ColumnDefinition(FEED_COLUMN, varchar())
             ), TOURNAMENT_ID_COLUMN);
 
     @Override
@@ -41,7 +45,7 @@ public class CassandraPromoFeedPersister extends AbstractCassandraPersister<Stri
                 .and(eq(TIME_COLUMN, time))
                 .limit(1);
 
-        com.datastax.driver.core.Row result = execute(query, "getFeed").one();
+        com.abs.casino.cassandra.persist.engine.Row result = execute(query, "getFeed").one();
         if (result != null) {
             return result.getString(FEED_COLUMN);
         }

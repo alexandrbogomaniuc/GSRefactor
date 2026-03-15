@@ -41,10 +41,6 @@
             <artifactId>gsn-cache-restricted</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-cassandra</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.datastax.cassandra</groupId>
             <artifactId>cassandra-driver-core</artifactId>
             <classifier>shaded</classifier>

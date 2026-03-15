@@ -2,6 +2,8 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.data.bonus.DelayedMassAward;
 import com.abs.casino.common.web.statistics.StatisticsManager;
@@ -14,6 +16,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 20.12.13
@@ -24,10 +31,10 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
     private static final String GS_ID_FIELD = "GsId";
     private static final TableDefinition TABLE = new TableDefinition(DELAYED_MASS_AWARD_CF,
             Arrays.asList(
-                    new ColumnDefinition(GS_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, true, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(GS_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(KEY, bigint(), false, true, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             GS_ID_FIELD);
 
@@ -51,10 +58,10 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
     public Collection<DelayedMassAward> getUncompleted(int gameServerId) {
         long now = System.currentTimeMillis();
         List<DelayedMassAward> result = new ArrayList<>();
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(GS_ID_FIELD, gameServerId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getUncompleted");
-        for (com.datastax.driver.core.Row row : resultSet) {
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(GS_ID_FIELD, gameServerId)));
+        ResultSet resultSet = executeWrapped(query, "getUncompleted");
+        for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             DelayedMassAward awardFrb = TABLE.deserializeFromJson(json, DelayedMassAward.class);
             if (awardFrb == null) {
@@ -74,12 +81,12 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
         String json = TABLE.serializeToJson(award);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(award);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(KEY, award.getId())
                     .value(GS_ID_FIELD, gameServerId)
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
-            com.datastax.driver.core.ResultSet resultSet = execute(query, "create");
+                    .value(JSON_COLUMN_NAME, json));
+            ResultSet resultSet = executeWrapped(query, "create");
             if (!resultSet.wasApplied()) {
                 getLog().error("DelayedMassAward not created: {}", award);
                 throw new RuntimeException("DelayedMassAward not created");

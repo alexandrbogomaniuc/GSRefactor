@@ -1,9 +1,12 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
 import com.abs.casino.common.cache.CacheKeyInfo;
 import com.abs.casino.common.cache.IDistributedCache;
 import com.abs.casino.common.cache.data.account.LasthandInfo;
@@ -35,18 +38,18 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
 
     private static final TableDefinition REAL_TABLE = new TableDefinition(REAL_LASTHAND_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(LASTHAND_DATA_FIELD, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(LASTHAND_DATA_FIELD, text())
             ), ACCOUNT_ID_FIELD);
 
     private static final TableDefinition BONUS_TABLE = new TableDefinition(BONUS_LASTHAND_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BONUS_TYPE_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(LASTHAND_DATA_FIELD, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(BONUS_TYPE_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(BONUS_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(LASTHAND_DATA_FIELD, text())
             ), ACCOUNT_ID_FIELD, BONUS_TYPE_FIELD, BONUS_ID_FIELD);
 
     private CassandraLasthandPersister() {
@@ -77,7 +80,7 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
         }
     }
 
-    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long accountId, long gameId, Long bonusId, String lasthandData,
+    public void prepareToPersist(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long accountId, long gameId, Long bonusId, String lasthandData,
                                  BonusSystemType bonusSystemType) {
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         statements.add(getPersistStatement(accountId, gameId, bonusSystemType, bonusId, lasthandData));
@@ -107,7 +110,7 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
         persist(accountId, gameId, bonusId, "", bonusSystemType);
     }
 
-    public void prepareToDeletion(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long accountId, long gameId,
+    public void prepareToDeletion(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long accountId, long gameId,
                                   Long bonusId, BonusSystemType bonusSystemType) {
         prepareToPersist(statementsMap, accountId, gameId, bonusId, "", bonusSystemType);
     }
@@ -121,11 +124,11 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
 
     //key: gameId, value is pair writetime/lasthand
     public Map<Long, Pair<Long, String>> getRealModeLasthandsWithWriteTime(long accountId) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select().column(LASTHAND_DATA_FIELD).column(GAME_ID_FIELD).writeTime(LASTHAND_DATA_FIELD)
+        com.datastax.driver.core.Statement query = Cql.select().column(LASTHAND_DATA_FIELD).column(GAME_ID_FIELD).writeTime(LASTHAND_DATA_FIELD)
                 .from(REAL_TABLE.getTableName()).where().and(eq(ACCOUNT_ID_FIELD, accountId)).limit(10000);
-        com.datastax.driver.core.ResultSet rows = execute(query, "getRealModeLasthandsWithWriteTime");
+        com.abs.casino.cassandra.persist.engine.ResultSet rows = executeWrapped(query, "getRealModeLasthandsWithWriteTime");
         Map<Long, Pair<Long, String>> result = new HashMap<>();
-        for (com.datastax.driver.core.Row row : rows) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : rows) {
             String lasthand = row.getString(LASTHAND_DATA_FIELD);
             Long writeTime = row.getLong("writetime(" + LASTHAND_DATA_FIELD + ")");
             if (!StringUtils.isTrimmedEmpty(lasthand)) {
@@ -139,9 +142,9 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
     public Map<Long, String> getRealModeLasthands(long accountId) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(REAL_TABLE, LASTHAND_DATA_FIELD, GAME_ID_FIELD)
                 .where().and(eq(ACCOUNT_ID_FIELD, accountId)).limit(10000);
-        com.datastax.driver.core.ResultSet rows = execute(query, "get from REAL");
+        com.abs.casino.cassandra.persist.engine.ResultSet rows = executeWrapped(query, "get from REAL");
         Map<Long, String> result = new HashMap<>();
-        for (com.datastax.driver.core.Row row : rows) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : rows) {
             String lasthand = row.getString(LASTHAND_DATA_FIELD);
             if (!StringUtils.isTrimmedEmpty(lasthand)) {
                 Long gameId = row.getLong(GAME_ID_FIELD);
@@ -158,7 +161,7 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
                     .and(eq(ACCOUNT_ID_FIELD, accountId))
                     .and(eq(GAME_ID_FIELD, gameId))
                     .limit(1);
-            com.datastax.driver.core.Row row = execute(query, "get from REAL").one();
+            com.abs.casino.cassandra.persist.engine.Row row = executeWrapped(query, "get from REAL").one();
             return row == null ? null : row.getString(LASTHAND_DATA_FIELD);
         }
         assert bonusId != null : "BonusId is null for bonusSystemType=" + bonusSystemType;
@@ -169,7 +172,7 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
                 .and(eq(BONUS_ID_FIELD, bonusId))
                 .and(eq(GAME_ID_FIELD, gameId))
                 .limit(1);
-        com.datastax.driver.core.Row row = execute(query, "get from BONUS").one();
+        com.abs.casino.cassandra.persist.engine.Row row = executeWrapped(query, "get from BONUS").one();
         return row == null ? null : row.getString(LASTHAND_DATA_FIELD);
     }
 

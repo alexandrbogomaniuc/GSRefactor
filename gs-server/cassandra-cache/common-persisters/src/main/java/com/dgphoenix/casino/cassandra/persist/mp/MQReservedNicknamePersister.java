@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 13.02.2020.
@@ -27,9 +30,9 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     //owner: -1 for entire system, else - bankId
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(REGION_COLUMN, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(NICK_NAME_COLUMN, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(OWNER_COLUMN, com.datastax.driver.core.DataType.bigint(), false, true, false)
+                    new ColumnDefinition(REGION_COLUMN, text(), false, false, true),
+                    new ColumnDefinition(NICK_NAME_COLUMN, text(), false, false, true),
+                    new ColumnDefinition(OWNER_COLUMN, bigint(), false, true, false)
             ), REGION_COLUMN);
 
     @Override
@@ -51,10 +54,10 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     }
 
     public void persist(String region, String nickname, long owner) {
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(REGION_COLUMN, region)
                 .value(NICK_NAME_COLUMN, nickname)
-                .value(OWNER_COLUMN, owner);
+                .value(OWNER_COLUMN, owner));
         execute(query, "persist");
     }
 
@@ -63,10 +66,10 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     }
 
     public boolean isExist(String region, String nickname, long owner) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(OWNER_COLUMN)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(OWNER_COLUMN)
                 .where(eq(REGION_COLUMN, region))
-                .and(eq(NICK_NAME_COLUMN, nickname));
-        com.datastax.driver.core.Row result = execute(query, "isExist").one();
+                .and(eq(NICK_NAME_COLUMN, nickname)));
+        com.abs.casino.cassandra.persist.engine.Row result = executeWrapped(query, "isExist").one();
         return result != null && result.getLong(OWNER_COLUMN) == owner;
     }
 
@@ -79,19 +82,19 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     }
 
     public Set<String> getNicknames(String region, Long owner) {
-        com.datastax.driver.core.Statement query;
+        com.abs.casino.cassandra.persist.engine.Statement query;
         if (owner == null) {
-            query = getSelectColumnsQuery(NICK_NAME_COLUMN)
-                    .where(eq(REGION_COLUMN, region));
+            query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(NICK_NAME_COLUMN)
+                    .where(eq(REGION_COLUMN, region)));
         } else {
-            query = getSelectColumnsQuery(NICK_NAME_COLUMN)
+            query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(NICK_NAME_COLUMN)
                     .where(eq(REGION_COLUMN, region))
                     .and(eq(OWNER_COLUMN, owner))
-                    .allowFiltering();
+                    .allowFiltering());
         }
-        com.datastax.driver.core.ResultSet rs = execute(query, "getNickNamesForRegion");
+        com.abs.casino.cassandra.persist.engine.ResultSet rs = executeWrapped(query, "getNickNamesForRegion");
         Set<String> result = new HashSet<>(128);
-        for (com.datastax.driver.core.Row row : rs) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : rs) {
             result.add(row.getString(NICK_NAME_COLUMN));
         }
         return result;

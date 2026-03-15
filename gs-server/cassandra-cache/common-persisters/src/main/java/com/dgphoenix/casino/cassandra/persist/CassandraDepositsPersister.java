@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
@@ -11,6 +12,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 public class CassandraDepositsPersister extends AbstractCassandraPersister<String, Long> {
     private static final Logger LOG = LogManager.getLogger(CassandraDepositsPersister.class);
     private static final String SESSION_ID = "sessId";
@@ -18,8 +22,8 @@ public class CassandraDepositsPersister extends AbstractCassandraPersister<Strin
     private static final String TABLE_NAME = "depositsCF";
     private static final TableDefinition TABLE = new TableDefinition(TABLE_NAME,
             Arrays.asList(
-                    new ColumnDefinition(SESSION_ID, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(AMOUNT, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(SESSION_ID, text(), false, false, true),
+                    new ColumnDefinition(AMOUNT, bigint(), false, false, false)
             ), SESSION_ID)
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toMillis(1))
@@ -32,7 +36,7 @@ public class CassandraDepositsPersister extends AbstractCassandraPersister<Strin
     }
 
     public Long getDeposit(String sessionId) {
-        com.datastax.driver.core.Row result = getAsRow(sessionId, AMOUNT);
+        Row result = getAsWrappedRow(sessionId, AMOUNT);
         return result == null ? null : result.getLong(AMOUNT);
     }
 

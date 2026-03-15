@@ -37,7 +37,7 @@
         <form-bean name="CWStartGameFormV2" type="com.abs.casino.actions.enter.game.cwv3.CWStartGameForm"/>
         <form-bean name="CWStartGameBySessionForm" type="com.abs.casino.actions.enter.game.cwv3.CWStartGameBySessionForm"/>
         <form-bean name="GetBalanceForm" type="com.abs.casino.actions.api.GetBalanceForm"/>
-        <form-bean name="CWGuestLoginForm" type="com.dgphoenix.casino.actions.enter.cw.CWGuestLoginForm"/>
+        <form-bean name="CWGuestLoginForm" type="com.abs.casino.actions.enter.cw.CWGuestLoginForm"/>
 
         <form-bean name="CWRegisterForm" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWRegisterForm"/>
 

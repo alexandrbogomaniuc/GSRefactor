@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 11.02.2020.
@@ -25,9 +28,9 @@ public class ReservedNicknamePersister extends AbstractCassandraPersister<String
     //owner: -1 for entire system, else - bankId
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(REGION_COLUMN, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(NICK_NAME_COLUMN, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(OWNER_COLUMN, com.datastax.driver.core.DataType.bigint(), false, true, false)
+                    new ColumnDefinition(REGION_COLUMN, text(), false, false, true),
+                    new ColumnDefinition(NICK_NAME_COLUMN, text(), false, false, true),
+                    new ColumnDefinition(OWNER_COLUMN, bigint(), false, true, false)
             ), REGION_COLUMN);
 
     @Override

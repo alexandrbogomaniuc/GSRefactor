@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.CacheKeyInfo;
@@ -11,11 +12,22 @@ import com.abs.casino.common.cache.data.bonus.BonusStatus;
 import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.CalendarUtils;
 import com.abs.casino.common.web.statistics.StatisticsManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.nio.ByteBuffer;
 import java.util.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import com.datastax.driver.core.querybuilder.Batch;
+import com.datastax.driver.core.querybuilder.Delete;
+import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.querybuilder.Select;
+
+
+
+
+
 
 /**
  * User: flsh
@@ -41,17 +53,17 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
 
     private static final TableDefinition TABLE = new TableDefinition(BONUS_CF,
             Arrays.asList(
-                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(EXPIRATION_DATE_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(BONUS_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(EXPIRATION_DATE_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), BONUS_ID_FIELD);
 
     private static final TableDefinition ACCOUNT_INDEX_TABLE = new TableDefinition(BONUS_ACC_INDX,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true)
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(BONUS_ID_FIELD, bigint(), false, false, true)
             ), ACCOUNT_ID_FIELD);
 
     private CassandraBonusPersister() {
@@ -91,8 +103,8 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist bonus: " + bonus);
         }
-        com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
-        com.datastax.driver.core.querybuilder.Insert query = getInsertQuery();
+        Batch batch = Cql.batch();
+        Insert query = getInsertQuery();
         String externalKey = composeKey(bonus.getBankId(), bonus.getExtId());
         String json = TABLE.serializeToJson(bonus);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(bonus);
@@ -105,12 +117,12 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
                         value(SERIALIZED_COLUMN_NAME, byteBuffer).
                         value(JSON_COLUMN_NAME, json);
                 batch.add(query);
-                com.datastax.driver.core.querybuilder.Insert indexQuery = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(BONUS_ACC_INDX);
+                Insert indexQuery = Cql.insertInto(BONUS_ACC_INDX);
                 indexQuery.value(ACCOUNT_ID_FIELD, bonus.getAccountId()).value(BONUS_ID_FIELD, bonus.getId());
                 batch.add(indexQuery);
             } else {
                 bonusArchivePersister.persist(bonus);
-                com.datastax.driver.core.querybuilder.Delete activeTable = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(BONUS_CF);
+                Delete activeTable = Cql.delete().from(BONUS_CF);
                 activeTable.where(eq(BONUS_ID_FIELD, bonus.getId()));
                 batch.add(activeTable);
             }
@@ -124,11 +136,11 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
         if (bonusIds == null || bonusIds.isEmpty()) {
             return Collections.emptyList();
         }
-        com.datastax.driver.core.querybuilder.Select select = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(BONUS_CF);
-        select.where().and(com.datastax.driver.core.querybuilder.QueryBuilder.in(BONUS_ID_FIELD, bonusIds.toArray()));
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "getBonuses");
+        Select select = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(BONUS_CF);
+        select.where().and(Cql.in(BONUS_ID_FIELD, bonusIds.toArray()));
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(select, "getBonuses");
         Map<Long, Bonus> resultsMap = new HashMap<>(bonusIds.size());
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             Bonus bonus = TABLE.deserializeFromJson(json, Bonus.class);
 
@@ -160,11 +172,11 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
 
     public List<Bonus> getActiveBonuses(Long accountId) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(BONUS_ID_FIELD).from(BONUS_ACC_INDX);
+        Select query = Cql.select(BONUS_ID_FIELD).from(BONUS_ACC_INDX);
         query.where(eq(ACCOUNT_ID_FIELD, accountId));
-        com.datastax.driver.core.ResultSet rows = execute(query, "getActiveBonuses");
+        com.abs.casino.cassandra.persist.engine.ResultSet rows = executeWrapped(query, "getActiveBonuses");
         List<Long> bonusIds = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : rows) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : rows) {
             long bonusId = row.getLong(BONUS_ID_FIELD);
             if (bonusId > 0) {
                 bonusIds.add(bonusId);
@@ -178,11 +190,11 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
 
     public List<Long> getByExpirationDate(long expirationDate) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(BONUS_ID_FIELD);
+        Select query = getSelectColumnsQuery(BONUS_ID_FIELD);
         query.where(eq(EXPIRATION_DATE_FIELD, expirationDate));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExpirationDate");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByExpirationDate");
         List<Long> ids = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             ids.add(row.getLong(BONUS_ID_FIELD));
         }
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " getByExpirationDate",
@@ -205,10 +217,10 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
     public Bonus getByCompositeKey(long bankId, String externalId) {
         long now = System.currentTimeMillis();
         String key = composeKey(bankId, externalId);
-        com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
+        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         query.where(eq(EXTERNAL_ID_FIELD, key));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByCompositeKey");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByCompositeKey");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
 
         if (row == null) {
             return null;

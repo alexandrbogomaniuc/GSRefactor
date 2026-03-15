@@ -14,6 +14,9 @@ import java.util.Map.Entry;
 import java.util.stream.StreamSupport;
 
 import static java.util.stream.Collectors.toSet;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 public class SocketClientCountPersister extends AbstractCassandraPersister<Long, String>
         implements MapStore<Long, SocketClientsStats> {
@@ -23,9 +26,9 @@ public class SocketClientCountPersister extends AbstractCassandraPersister<Long,
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), KEY);
 
     @Override
