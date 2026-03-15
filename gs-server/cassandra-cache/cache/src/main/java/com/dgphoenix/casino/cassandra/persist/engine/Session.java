@@ -69,24 +69,24 @@ public class Session implements AutoCloseable {
         return execute(statement);
     }
 
-    public com.datastax.driver.core.ResultSetFuture executeAsync(String query) {
-        return session.executeAsync(query);
+    public ResultSetFuture executeAsync(String query) {
+        return ResultSetFuture.wrap(session.executeAsync(query));
     }
 
-    public com.datastax.driver.core.ResultSetFuture executeAsync(String query, Object... values) {
-        return session.executeAsync(query, values);
+    public ResultSetFuture executeAsync(String query, Object... values) {
+        return ResultSetFuture.wrap(session.executeAsync(query, values));
     }
 
-    public com.datastax.driver.core.ResultSetFuture executeAsync(String query, Map<String, Object> values) {
-        return session.executeAsync(query, values);
+    public ResultSetFuture executeAsync(String query, Map<String, Object> values) {
+        return ResultSetFuture.wrap(session.executeAsync(query, values));
     }
 
-    public com.datastax.driver.core.ResultSetFuture executeAsync(com.datastax.driver.core.Statement statement) {
-        return session.executeAsync(statement);
+    public ResultSetFuture executeAsync(com.datastax.driver.core.Statement statement) {
+        return ResultSetFuture.wrap(session.executeAsync(statement));
     }
 
-    public com.datastax.driver.core.ResultSetFuture executeAsync(Statement statement) {
-        return session.executeAsync(statement.unwrap());
+    public ResultSetFuture executeAsync(Statement statement) {
+        return ResultSetFuture.wrap(session.executeAsync(statement.unwrap()));
     }
 
     public com.datastax.driver.core.PreparedStatement prepare(String query) {

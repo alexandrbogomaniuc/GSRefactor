@@ -322,17 +322,17 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return executeWithCheckTimeout(statement, callerClassMethodIdentification);
     }
 
-    protected com.datastax.driver.core.ResultSetFuture executeAsync(com.datastax.driver.core.Statement query, String callerClassMethodIdentification) {
+    protected ResultSetFuture executeAsync(com.datastax.driver.core.Statement query, String callerClassMethodIdentification) {
         assertInitialized();
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.ResultSetFuture rsFuture = session.executeAsync(query);
+        ResultSetFuture rsFuture = session.executeAsync(query);
         StatisticsManager.getInstance().updateRequestStatistics(
                 getClass().getSimpleName() + " executeAsync " + callerClassMethodIdentification,
                 System.currentTimeMillis() - now);
         return rsFuture;
     }
 
-    protected com.datastax.driver.core.ResultSetFuture executeAsync(Statement query, String callerClassMethodIdentification) {
+    protected ResultSetFuture executeAsync(Statement query, String callerClassMethodIdentification) {
         return executeAsync(query.unwrap(), callerClassMethodIdentification);
     }
 
