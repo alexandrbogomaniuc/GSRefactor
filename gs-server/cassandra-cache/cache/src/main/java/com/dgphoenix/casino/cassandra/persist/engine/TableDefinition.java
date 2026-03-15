@@ -71,7 +71,7 @@ public class TableDefinition {
                     .findFirst()
                     .get();
             checkState(addedColumns.add(partitionKeyColumn), DUPLICATE_COLUMN_ERROR, partitionKeyColumn.getName());
-            createStatement.addPartitionKey(partitionKeyColumn.getName(), partitionKeyColumn.getType());
+            createStatement.addPartitionKey(partitionKeyColumn.getName(), partitionKeyColumn.getType().unwrap());
         }
     }
 
@@ -80,7 +80,7 @@ public class TableDefinition {
             String columnName = column.getName();
             if (!skipColumns.contains(columnName)) {
                 checkState(addedColumns.add(column), DUPLICATE_COLUMN_ERROR, column.getName());
-                com.datastax.driver.core.DataType columnType = column.getType();
+                com.datastax.driver.core.DataType columnType = column.getType().unwrap();
                 if (column.isPrimaryKeyPart()) {
                     createStatement.addClusteringColumn(columnName, columnType);
                 } else if (column.isStaticField()) {

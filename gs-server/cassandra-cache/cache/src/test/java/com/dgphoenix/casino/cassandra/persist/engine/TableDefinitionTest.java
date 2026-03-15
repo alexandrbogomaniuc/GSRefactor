@@ -58,8 +58,8 @@ public class TableDefinitionTest {
 
         String expectedCreateTable = SchemaCql.createTable(TABLE_NAME)
                 .ifNotExists()
-                .addPartitionKey(COL_1, cint())
-                .addColumn(COL_2, cboolean())
+                .addPartitionKey(COL_1, cint().unwrap())
+                .addColumn(COL_2, cboolean().unwrap())
                 .withOptions()
                 .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -134,9 +134,9 @@ public class TableDefinitionTest {
 
         String expectedCreateTable = SchemaCql.createTable(TABLE_NAME)
                 .ifNotExists()
-                .addPartitionKey(COL_1, cint())
-                .addPartitionKey(COL_2, ascii())
-                .addClusteringColumn(COL_3, cboolean())
+                .addPartitionKey(COL_1, cint().unwrap())
+                .addPartitionKey(COL_2, ascii().unwrap())
+                .addClusteringColumn(COL_3, cboolean().unwrap())
                 .withOptions()
                 .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -157,9 +157,9 @@ public class TableDefinitionTest {
 
         String expectedCreateTable = SchemaCql.createTable(TABLE_NAME)
                 .ifNotExists()
-                .addPartitionKey(COL_1, cint())
-                .addStaticColumn(COL_2, ascii())
-                .addClusteringColumn(COL_3, ascii())
+                .addPartitionKey(COL_1, cint().unwrap())
+                .addStaticColumn(COL_2, ascii().unwrap())
+                .addClusteringColumn(COL_3, ascii().unwrap())
                 .withOptions()
                 .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -388,8 +388,8 @@ public class TableDefinitionTest {
                 .getQueryString();
 
         String expectedCreateTable = SchemaCql.createTable(TABLE_NAME).ifNotExists()
-                .addPartitionKey(COL_1, cint())
-                .addClusteringColumn(COL_2, ascii())
+                .addPartitionKey(COL_1, cint().unwrap())
+                .addClusteringColumn(COL_2, ascii().unwrap())
                 .withOptions()
                 .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -414,9 +414,9 @@ public class TableDefinitionTest {
                 .getQueryString();
 
         String expectedCreateTable = SchemaCql.createTable(TABLE_NAME).ifNotExists()
-                .addPartitionKey(COL_1, cint())
-                .addClusteringColumn(COL_2, ascii())
-                .addClusteringColumn(COL_3, ascii())
+                .addPartitionKey(COL_1, cint().unwrap())
+                .addClusteringColumn(COL_2, ascii().unwrap())
+                .addClusteringColumn(COL_3, ascii().unwrap())
                 .withOptions()
                 .compactionOptions(SchemaCql.sizedTieredStategy())
                 .gcGraceSeconds(DEFAULT_GC_GRACE_PERIOD_IN_SECONDS)
@@ -459,8 +459,8 @@ public class TableDefinitionTest {
 
     private com.datastax.driver.core.schemabuilder.Create.Options createSimpleTableWithOptions() {
         return SchemaCql.createTable(TABLE_NAME).ifNotExists()
-                .addPartitionKey(COL_1, cint())
-                .addColumn(COL_2, ascii())
+                .addPartitionKey(COL_1, cint().unwrap())
+                .addColumn(COL_2, ascii().unwrap())
                 .withOptions();
     }
 }
