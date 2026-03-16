@@ -3,7 +3,7 @@
 This directory captures the release-candidate topology that was re-validated on 2026-03-16 with:
 
 - migration guard: `runtime_smoke/status/latest.env` updated from `iter_01_20260316_081816`
-- fullstack smoke: `runtime_smoke/logs/fullstack_20260316_082422`
+- fullstack smoke: `runtime_smoke/logs/fullstack_20260316_145528`
 - health: `200` on `/support/health/check.jsp`
 - gameplay canary: `302 -> 200` via `cwguestlogin.do`
 
@@ -22,7 +22,7 @@ The earlier `refactored_versoin` consolidation is still useful reference materia
 | `fullstacksmoke-fullstack-cassandra-1` | `cassandra:5.0.6` | App runtime | 1 | internal only | `docker exec fullstacksmoke-fullstack-cassandra-1 cqlsh -e "SELECT release_version FROM system.local;"` | Resolved inside the harness network as `fullstack-cassandra`. |
 | `fullstacksmoke-fullstack-zookeeper-1` | `zookeeper:3.9` | Kafka + app runtime | 2 | internal only | `docker exec fullstacksmoke-fullstack-zookeeper-1 sh -c 'echo ruok | nc 127.0.0.1 2181'` | Resolved as `fullstack-zookeeper`. |
 | `fullstacksmoke-fullstack-kafka-1` | `confluentinc/cp-kafka:7.6.1` | App runtime | 3 | internal only | `docker exec fullstacksmoke-fullstack-kafka-1 kafka-topics --bootstrap-server fullstack-kafka:9092 --list` | Resolved as `fullstack-kafka`. |
-| `webgs-static-fullstack` | `nginx:1.27-alpine` | Browser game assets | 4 | `18081 -> 80` | `GET /html5pc/actiongames/dragonstone/lobby/version.json` returns `200` | Serves legacy html5 assets for gameplay. |
+| `webgs-static-fullstack` | `nginx:1.27-alpine` | Browser game assets | 4 | `18080 -> 80` in the latest proof | `GET /html5pc/actiongames/dragonstone/lobby/version.json` returns `200` | Serves legacy html5 assets for gameplay. The harness chooses a free host port from `18080..18085`. |
 | `webgs-smoke-fullstack` | `tomcat:9-jdk11` | Healthcheck + playable launch | 5 | `8080 -> 8080` | `GET /support/health/check.jsp` returns `200` | Mounts patched `ROOT.war` and export config bundle. |
 
 ## Migration Support Services
@@ -47,11 +47,11 @@ The earlier `refactored_versoin` consolidation is still useful reference materia
 
 - Health: `http://127.0.0.1:8080/support/health/check.jsp`
 - Gameplay entry: `http://127.0.0.1:8080/cwguestlogin.do?bankId=271&gameId=838&lang=en`
-- Proven follow-up template URL source: `runtime_smoke/logs/fullstack_20260316_082422/summary.env`
-- Static asset host currently used by the green baseline: `127.0.0.1:18081`
+- Proven follow-up template URL source: `runtime_smoke/logs/fullstack_20260316_145528/summary.env`
+- Static asset host used by the latest green baseline: `127.0.0.1:18080`
 
 ## Evidence Pointers
 
 - Migration proof snapshot: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/status/latest.env`
 - Fresh migration iteration: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/iter_01_20260316_081816`
-- Fresh fullstack iteration: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_082422`
+- Fresh fullstack iteration: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_145528`

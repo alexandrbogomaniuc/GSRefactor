@@ -25,7 +25,7 @@ Current verified baseline
     v
   webgs-smoke-fullstack            :8080
     |
-    +--> webgs-static-fullstack    :18081
+    +--> webgs-static-fullstack    :18080
     |
     +--> fullstacksmoke compose project
     |      |

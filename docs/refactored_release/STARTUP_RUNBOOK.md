@@ -27,6 +27,8 @@ The older `refactored_versoin` consolidation remains useful reference, but it is
 - Runtime assets available under `runtime_smoke`
 - Runtime-only harness scripts present under:
   - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/bin/`
+- Repo-tracked release template manifests under:
+  - `/Users/alexb/WorkspaceArchive/Dev_20260304/canonical/GSRefactor_canonical_20260307_091032/gs-server/deploy/refactored_release/`
 
 ## Build the Web Application
 
@@ -118,8 +120,19 @@ The harness currently starts:
 The latest proven run wrote:
 
 - `COMPOSE_PROJECT=fullstacksmoke`
-- `STATIC_EXTERNAL_PORT=18081`
+- `STATIC_EXTERNAL_PORT=18080`
 - `WEBGS_CONTAINER_NAME=webgs-smoke-fullstack`
+
+## Repo-Tracked Release Template
+
+For operator rehearsal without depending on `runtime_smoke` scripts as the knowledge source, the repo now includes:
+
+- `gs-server/deploy/refactored_release/docker-compose.yml`
+- `gs-server/deploy/refactored_release/.env.example`
+- `gs-server/deploy/refactored_release/nginx/default.conf`
+- `gs-server/deploy/refactored_release/nginx/games.override.conf`
+
+This template mirrors the current green topology and required service wiring, but it is still a release template. The authoritative gate evidence remains the runtime-smoke baseline until the repo-tracked compose path itself is rehearsed and signed off.
 
 ## Validation
 
@@ -158,7 +171,7 @@ Expected:
 
 If the direct `Location:` header omits `:8080` in a local smoke run, use the `GUEST_LAUNCH_URL` captured in the fullstack `summary.env` as the authoritative follow-up URL. The latest proven summary is:
 
-- `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_082422/summary.env`
+- `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_145528/summary.env`
 
 ### 3. Migration Guard
 
@@ -179,8 +192,9 @@ Expected keys:
 Fresh evidence used for this runbook:
 
 - migration iteration: `iter_01_20260316_081816`
-- fullstack iteration: `fullstack_20260316_082422`
-- current static external port in the proven fullstack run: `18081`
+- fullstack iteration: `fullstack_20260316_145528`
+- current static external port in the proven fullstack run: `18080`
+- note: the runtime-smoke harness selects a free static port from `18080..18085`; operator rehearsals should verify the actual value from `summary.env`
 
 ## Failure Triage Order
 

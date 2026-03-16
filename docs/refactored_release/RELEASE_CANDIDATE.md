@@ -44,7 +44,15 @@
 - `curl -i http://127.0.0.1:8080/support/health/check.jsp` returns `200`
 - `curl -i "http://127.0.0.1:8080/cwguestlogin.do?bankId=271&gameId=838&lang=en"` returns `302`
 - followed template returns `200`
-- authoritative smoke follow-up URLs live in `runtime_smoke/logs/fullstack_20260316_082422/summary.env`
+- authoritative smoke follow-up URLs live in `runtime_smoke/logs/fullstack_20260316_145528/summary.env`
+
+### Operational time buckets
+
+- schema export + sanitize + import: minutes
+- row copy with `cqlsh COPY`: minutes to hours depending on dataset size
+- application boot + smoke verification: minutes
+
+These are planning buckets for release rehearsal, not performance guarantees.
 
 ### Migration / rollback
 
@@ -69,7 +77,8 @@ Expected:
 
 - `gs-server/game-server/web-gs/target/ROOT.war`
 - `gs-server/support/archiver/target/casino-archiver.jar`
-- runtime-only patched WAR for smoke validation under `runtime_smoke/logs/fullstack_20260316_082422/ROOT.patched.war`
+- runtime-only patched WAR for smoke validation under `runtime_smoke/logs/fullstack_20260316_145528/ROOT.patched.war`
+- repo-tracked release template manifests under `gs-server/deploy/refactored_release/`
 
 ## Docker Images Used In Smoke
 
@@ -118,8 +127,9 @@ Expected:
 ## Evidence
 
 - migration: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/iter_01_20260316_081816`
-- fullstack: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_082422`
+- fullstack: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_145528`
 - release docs: `docs/refactored_release/`
+- latest summary: `docs/refactored_release/evidence/README_latest.md`
 
 ## Known Risks / Follow-Ups
 
