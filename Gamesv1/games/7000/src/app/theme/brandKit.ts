@@ -2,6 +2,7 @@ import {
   resolveShellThemeTokens,
   type ShellThemeTokens,
 } from "@gamesv1/ui-kit/shell";
+import { UiAssetKeys } from "@gamesv1/ui-kit";
 import type { ResolvedConfig } from "@gamesv1/core-compliance";
 
 import {
@@ -51,6 +52,98 @@ export const resolveCrazyRoosterBrandKit = (
         heroFx: "energyRing",
         vfxIntensity: 0.88,
         audioStingerCue: "preloader-stinger",
+      },
+      audio: {
+        cueOverrides: {
+          "line-win-standard": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_HOVER,
+              volume: 0.46,
+              respectSoundEnabled: true,
+            },
+          ],
+          "line-sequence-advance": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_HOVER,
+              volume: 0.34,
+              respectSoundEnabled: true,
+            },
+          ],
+          "line-win-collect": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_HOVER,
+              volume: 0.58,
+              respectSoundEnabled: true,
+            },
+          ],
+          "line-win-boost": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_PRESS,
+              volume: 0.7,
+              respectSoundEnabled: true,
+            },
+          ],
+          "line-win-bonus": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_PRESS,
+              volume: 0.64,
+              respectSoundEnabled: true,
+            },
+          ],
+          "line-win-jackpot": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_PRESS,
+              volume: 0.88,
+              respectSoundEnabled: true,
+            },
+          ],
+          "feature-collect-enter": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_HOVER,
+              volume: 0.72,
+              respectSoundEnabled: true,
+            },
+          ],
+          "feature-boost-enter": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_PRESS,
+              volume: 0.82,
+              respectSoundEnabled: true,
+            },
+          ],
+          "feature-bonus-enter": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_PRESS,
+              volume: 0.76,
+              respectSoundEnabled: true,
+            },
+          ],
+          "feature-jackpot-enter": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_PRESS,
+              volume: 1,
+              respectSoundEnabled: true,
+            },
+          ],
+          "feature-win-tier": [
+            {
+              type: "sfx",
+              assetKey: UiAssetKeys.SFX_PRESS,
+              volume: 0.66,
+              respectSoundEnabled: true,
+            },
+          ],
+        },
       },
       roundActions: {
         bet: {

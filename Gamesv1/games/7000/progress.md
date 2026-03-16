@@ -120,3 +120,15 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
     - `boost` as `BOOST STRIKE`,
     - `jackpot` as `JACKPOT RUN`,
     - `bonus` bonus-entry smoke as `HOLD & WIN` + `BONUS ENTRY`.
+- 2026-03-16: Started beta5d authored line-presentation pass on branch `codex/qa/7000-beta5d-authored-line-presentation-20260316-1907`.
+  - kept the beta5c exact payline + multiplier bridge but promoted the line sequence into the cabinet/topper/plaque layer:
+    - `MainScreen.ts` now routes per-line choreography into the existing donorlocal cabinet stack,
+    - `LayeredFxController` is now used in the main screen for fire/lightning/coin-flight sync,
+    - `Beta3VisualChrome.ts` now exposes `beginSpinCycle()` and `triggerPresentationCue(...)` so topper text, plaque pulses, glow, and caption timing can follow line/feature events.
+  - strengthened safe audio integration by adding explicit beta5d cue names in `brandKit.ts` for line wins and feature transitions while keeping missing assets non-fatal.
+  - completed donorlocal proof capture for:
+    - `normal` multiline sequence,
+    - `collect`,
+    - `boost`,
+    - `jackpot`.
+  - `PaylineOverlay.ts` already had atlas-backed line plate/badge/chip hooks in this branch; beta5d polished their typography/layout and paired them with the richer topper/plaque reactions rather than replacing the geometry logic.

@@ -22,6 +22,7 @@ import {
   type PremiumHudVisibility,
   type PresentationWinTier,
   type RoundPresentationModel,
+  UiAssetKeys,
   WowVfxOrchestrator,
 } from "@gamesv1/ui-kit";
 
@@ -51,13 +52,14 @@ import {
   buildGridFromColumns,
 } from "../../../game/config/CrazyRoosterGameConfig.ts";
 import { ParticleBurst } from "../../../game/fx/ParticleBurst";
-import { LightningArcFx } from "../../../game/fx/LightningArcFx";
 import {
   PaylineOverlay,
   type PaylineOverlayLine,
   type PaylineOverlayTone,
 } from "../../../game/fx/PaylineOverlay";
 import { WinHighlight } from "../../../game/fx/WinHighlight";
+import { LayeredFxController } from "../../../game/presentation/LayeredFxController";
+import { TopperMascotController } from "../../../game/presentation/TopperMascotController";
 import { WinCounter } from "../../../game/ui/WinCounter";
 import { Beta3VisualChrome } from "./Beta3VisualChrome";
 import { DebugOverlay } from "./DebugOverlay";
@@ -118,6 +120,106 @@ const readHudFeatureFlagsFromQuery = (): PremiumHudFeatureFlags => {
 const formatMessages = (messages: string[]): string =>
   messages.filter(Boolean).slice(0, 3).join(" | ");
 
+const BETA5D_AUDIO_CUE_OVERRIDES = {
+  "line-win-standard": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_HOVER,
+      volume: 0.42,
+      respectSoundEnabled: true,
+    },
+  ],
+  "line-sequence-advance": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_HOVER,
+      volume: 0.35,
+      respectSoundEnabled: true,
+    },
+  ],
+  "line-win-collect": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_HOVER,
+      volume: 0.54,
+      respectSoundEnabled: true,
+    },
+  ],
+  "line-win-boost": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_PRESS,
+      volume: 0.62,
+      respectSoundEnabled: true,
+    },
+  ],
+  "line-win-bonus": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_PRESS,
+      volume: 0.58,
+      respectSoundEnabled: true,
+    },
+  ],
+  "line-win-jackpot": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_PRESS,
+      volume: 0.8,
+      respectSoundEnabled: true,
+    },
+  ],
+  "feature-collect-enter": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_HOVER,
+      volume: 0.68,
+      respectSoundEnabled: true,
+    },
+  ],
+  "feature-boost-enter": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_PRESS,
+      volume: 0.76,
+      respectSoundEnabled: true,
+    },
+  ],
+  "feature-bonus-enter": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_PRESS,
+      volume: 0.74,
+      respectSoundEnabled: true,
+    },
+  ],
+  "feature-jackpot-enter": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_PRESS,
+      volume: 0.9,
+      respectSoundEnabled: true,
+    },
+  ],
+  "feature-win-tier": [
+    {
+      type: "sfx" as const,
+      assetKey: UiAssetKeys.SFX_PRESS,
+      volume: 0.7,
+      respectSoundEnabled: true,
+    },
+  ],
+};
+
+const formatLineMultiplier = (value: number): string => {
+  const rounded = Math.round(value * 100) / 100;
+  return Number.isInteger(rounded)
+    ? `${rounded}`
+    : rounded.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+};
+
+const formatMinorCurrency = (valueMinor: number): string => `$${(valueMinor / 100).toFixed(2)}`;
+
 const buildPreviewPresentation = (): RoundPresentationModel => ({
   roundId: "preview-idle",
   winAmount: 0,
@@ -173,8 +275,9 @@ export class MainScreen extends Container {
   private readonly fxLayer = new Container();
   private readonly uiLayer = new Container();
   private readonly visualChrome = new Beta3VisualChrome();
+  private readonly topperMascot = new TopperMascotController();
   private readonly slotMachine = new CrazyRoosterSlotMachine(resolveProviderSymbolRoot());
-  private readonly lightningFx = new LightningArcFx();
+  private readonly layeredFx = new LayeredFxController();
   private readonly paylineOverlay = new PaylineOverlay();
   private readonly paylineHighlight = new WinHighlight();
   private readonly winHighlight = new WinHighlight();
@@ -224,6 +327,7 @@ export class MainScreen extends Container {
   private autoplayActive = false;
   private holdTurboRequested = false;
   private buyTierIndex = 0;
+  private activeMathBridgeHints: MathBridgePresentationHints | null = null;
   private currentWinPresentationTimeout: number | null = null;
   private autoplayTimeout: number | null = null;
   private spinHoldTimeout: number | null = null;
@@ -254,7 +358,10 @@ export class MainScreen extends Container {
     this.roundActionBuilder = new RoundActionBuilder(this.shellTheme.roundActions);
     this.featureModules = new FeatureModuleManager(this.runtimeConfig);
     this.audioCueRegistry = createAudioCueRegistry({
-      overrides: this.shellTheme.audio.cueOverrides,
+      overrides: {
+        ...BETA5D_AUDIO_CUE_OVERRIDES,
+        ...this.shellTheme.audio.cueOverrides,
+      },
       themedOverrides: this.shellTheme.audio.themedCueOverrides,
       themeId: this.shellTheme.metadata.themeId,
       skinId: this.shellTheme.metadata.skinId,
@@ -301,8 +408,9 @@ export class MainScreen extends Container {
     this.addChild(this.debugOverlay);
 
     this.reelsLayer.addChild(this.visualChrome);
+    this.reelsLayer.addChild(this.topperMascot);
     this.reelsLayer.addChild(this.slotMachine);
-    this.fxLayer.addChild(this.lightningFx);
+    this.fxLayer.addChild(this.layeredFx);
     this.fxLayer.addChild(this.paylineOverlay);
     this.fxLayer.addChild(this.paylineHighlight);
     this.fxLayer.addChild(this.winHighlight);
@@ -359,10 +467,13 @@ export class MainScreen extends Container {
     this.clearWinPresentationTimeout();
     this.clearSpinHoldTimeout();
     this.clearMathBridgeTimeouts();
-    this.lightningFx.clear();
+    this.layeredFx.clearPresentation();
+    this.topperMascot.setState("idle");
     this.paylineOverlay.clear();
     this.paylineHighlight.clear();
     this.debugOverlay.setMathBridgeSummary(null);
+    this.visualChrome.clearPresentationCue();
+    this.activeMathBridgeHints = null;
   }
 
   public resize(width: number, height: number): void {
@@ -402,6 +513,10 @@ export class MainScreen extends Container {
     this.backgroundSprite.height = height;
 
     this.visualChrome.resize(machineWidth, machineHeight);
+    this.topperMascot.resize(machineWidth);
+    this.layeredFx.resize(machineWidth, machineHeight);
+    const topperFocus = this.topperMascot.getFocusPoint();
+    this.layeredFx.setTopperAnchor(topperFocus.x, topperFocus.y);
     this.reelsLayer.scale.set(scale);
     this.fxLayer.scale.set(scale);
     this.reelsLayer.x = centerX - (chromeWidth * scale) / 2 + visualPadding.left * scale;
@@ -466,6 +581,10 @@ export class MainScreen extends Container {
     this.clearWinPresentationTimeout();
     this.clearSpinHoldTimeout();
     this.clearMathBridgeTimeouts();
+    this.layeredFx.clearPresentation();
+    this.topperMascot.setState("idle");
+    this.visualChrome.clearPresentationCue();
+    this.activeMathBridgeHints = null;
   }
 
   public blur(): void {
@@ -680,6 +799,8 @@ export class MainScreen extends Container {
         window.clearTimeout(timeout);
       }
     }
+    this.layeredFx.clearPresentation();
+    this.topperMascot.setState("idle");
     this.paylineOverlay.clear();
     this.paylineHighlight.clear();
   }
@@ -761,6 +882,13 @@ export class MainScreen extends Container {
           styleHook,
           tone,
         });
+        this.playLinePresentationChoreography(
+          linePresentation,
+          mathBridgeHints,
+          tone,
+          index,
+          linePresentations.length,
+        );
       }, startDelay);
       const hideTimeout = window.setTimeout(() => {
         this.paylineOverlay.clear();
@@ -828,6 +956,163 @@ export class MainScreen extends Container {
       return "neon";
     }
     return mathBridgeHints.winTier === "none" ? "subtle" : "neon";
+  }
+
+  private playLinePresentationChoreography(
+    linePresentation: ResolvedLinePresentation,
+    mathBridgeHints: MathBridgePresentationHints,
+    tone: PaylineOverlayTone,
+    lineIndex: number,
+    lineCount: number,
+  ): void {
+    const origin =
+      linePresentation.points[Math.floor(linePresentation.points.length * 0.5)] ??
+      linePresentation.points[0] ?? {
+        x:
+          CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5,
+        y:
+          CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5,
+      };
+    const captionParts = [
+      `L${linePresentation.lineId}`,
+      `x${formatLineMultiplier(linePresentation.multiplier)}`,
+      formatMinorCurrency(linePresentation.amountMinor),
+    ];
+    if (lineCount > 1) {
+      captionParts.push(`${lineIndex + 1}/${lineCount}`);
+    }
+
+    this.visualChrome.triggerPresentationCue({
+      tone,
+      title: this.resolveLinePresentationTitle(tone),
+      caption: captionParts.join("  •  "),
+      holdMs: tone === "jackpot" ? 980 : 760,
+      jackpotTier: mathBridgeHints.jackpotTier,
+      plaqueIndexes: this.resolveLinePlaqueIndexes(linePresentation, tone, lineIndex, lineCount),
+    });
+
+    switch (tone) {
+      case "collect":
+        this.topperMascot.setState("react_collect");
+        this.layeredFx.playCollectSweep(origin.x, origin.y);
+        break;
+      case "boost":
+        this.topperMascot.setState(lineIndex === 0 ? "react_boost_start" : "react_boost_loop");
+        void this.layeredFx.playBoostStart();
+        this.layeredFx.playCoinFly(origin.x, origin.y, 6);
+        break;
+      case "bonus":
+        this.topperMascot.setState("react_bigwin");
+        this.layeredFx.playBoostLoop();
+        this.layeredFx.playCoinFly(origin.x, origin.y, 7);
+        break;
+      case "jackpot":
+        this.topperMascot.setState("react_jackpot");
+        this.layeredFx.playJackpotHit(
+          this.resolveJackpotReactionLevel(mathBridgeHints.jackpotTier),
+        );
+        break;
+      case "standard":
+      default:
+        this.topperMascot.setState(
+          mathBridgeHints.winTier === "none" ? "react_collect" : "react_bigwin",
+        );
+        this.layeredFx.playCoinFly(origin.x, origin.y, lineCount > 1 ? 5 : 4);
+        if (lineIndex === lineCount - 1 && mathBridgeHints.winTier !== "none") {
+          this.layeredFx.playWinPulse(mathBridgeHints.winTier);
+        }
+        break;
+    }
+
+    this.particleBurst.play(origin.x, Math.max(24, origin.y - 8));
+    this.applySoundCue(this.resolveLineAudioCue(tone, lineIndex, lineCount));
+  }
+
+  private resolveLinePresentationTitle(tone: PaylineOverlayTone): string {
+    switch (tone) {
+      case "collect":
+        return "COLLECT PAY";
+      case "boost":
+        return "BOOST STRIKE";
+      case "bonus":
+        return "BONUS ENTRY";
+      case "jackpot":
+        return "JACKPOT RUN";
+      case "standard":
+      default:
+        return "WINNING LINE";
+    }
+  }
+
+  private resolveLineAudioCue(
+    tone: PaylineOverlayTone,
+    lineIndex: number,
+    lineCount: number,
+  ): string {
+    if (lineCount > 1 && lineIndex > 0) {
+      return "line-sequence-advance";
+    }
+
+    switch (tone) {
+      case "collect":
+        return "line-win-collect";
+      case "boost":
+        return "line-win-boost";
+      case "bonus":
+        return "line-win-bonus";
+      case "jackpot":
+        return "line-win-jackpot";
+      case "standard":
+      default:
+        return "line-win-standard";
+    }
+  }
+
+  private resolveLinePlaqueIndexes(
+    linePresentation: ResolvedLinePresentation,
+    tone: PaylineOverlayTone,
+    lineIndex: number,
+    lineCount: number,
+  ): number[] {
+    if (tone === "jackpot") {
+      return [this.resolveJackpotReactionLevel(this.activeMathBridgeHints?.jackpotTier ?? null) - 1];
+    }
+    if (tone === "bonus") {
+      return [1, 2];
+    }
+    if (tone === "boost") {
+      return linePresentation.multiplier >= 5 ? [2, 3] : [2];
+    }
+    if (tone === "collect") {
+      return linePresentation.multiplier >= 3 ? [0, 1] : [0];
+    }
+    if (lineCount > 1) {
+      return [lineIndex % 2 === 0 ? 1 : 2];
+    }
+    if (linePresentation.multiplier >= 8) {
+      return [3];
+    }
+    if (linePresentation.multiplier >= 5) {
+      return [2];
+    }
+    if (linePresentation.multiplier >= 3) {
+      return [1];
+    }
+    return [0];
+  }
+
+  private resolveJackpotReactionLevel(jackpotTier: string | null): number {
+    switch ((jackpotTier ?? "").toLowerCase()) {
+      case "grand":
+        return 4;
+      case "major":
+        return 3;
+      case "minor":
+        return 2;
+      case "mini":
+      default:
+        return 1;
+    }
   }
 
   private resolveTierStyleHook(tier: PresentationWinTier): string | undefined {
@@ -1014,6 +1299,7 @@ export class MainScreen extends Container {
     mathBridgeHints: MathBridgePresentationHints | null,
   ): void {
     this.clearMathBridgeTimeouts();
+    this.activeMathBridgeHints = mathBridgeHints;
     this.debugOverlay.setMathBridgeSummary(
       mathBridgeHints
         ? {
@@ -1053,6 +1339,9 @@ export class MainScreen extends Container {
       speedMultiplier: timing.speedMultiplier,
       reelStopColumns: presentation.reels.stopColumns,
     });
+    this.layeredFx.beginSpinCycle();
+    this.topperMascot.setState("idle");
+    this.visualChrome.beginSpinCycle();
 
     PresentationStateStore.patch({
       isSpinning: true,
@@ -1247,56 +1536,136 @@ export class MainScreen extends Container {
     const machineHeight =
       CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
       (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
+    const reelStopMatch = /^round\.reel\.stop\.(\d)(?:\.bonusHold)?$/.exec(cue);
+
+    if (reelStopMatch) {
+      const reelIndex = Number(reelStopMatch[1]) - 1;
+      const plaqueIndex = Math.max(0, Math.min(3, reelIndex + (cue.endsWith("bonusHold") ? 1 : 0)));
+      this.visualChrome.triggerPresentationCue({
+        tone: cue.endsWith("bonusHold") ? "bonus" : "standard",
+        title: cue.endsWith("bonusHold") ? "BONUS HOLD" : `REEL ${reelIndex + 1} LOCK`,
+        caption: cue.endsWith("bonusHold") ? "FINAL REEL HELD" : "STOP CASCADE",
+        holdMs: cue.endsWith("bonusHold") ? 760 : 340,
+        plaqueIndexes: [plaqueIndex],
+      });
+      if (!cue.endsWith("bonusHold")) {
+        this.particleBurst.play(
+          machineWidth * (0.22 + reelIndex * 0.28),
+          machineHeight * 0.58,
+        );
+      }
+      return;
+    }
 
     if (cue === "focus-status-banner") {
       this.showStatus("BOOST FEATURE");
-      void this.lightningFx.play(machineWidth, machineHeight);
-      this.visualChrome.triggerBoostPulse();
+      this.visualChrome.triggerPresentationCue({
+        tone: "boost",
+        title: "BOOST FEATURE",
+        caption: "LIGHTNING LOCK",
+        holdMs: 880,
+      });
+      void this.layeredFx.playBoostStart();
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.2);
+      this.applySoundCue("feature-boost-enter");
       return;
     }
 
     if (cue === "feature.collect.triggered") {
       this.showStatus("COLLECT FEATURE");
-      this.visualChrome.triggerBoostPulse();
+      this.visualChrome.triggerPresentationCue({
+        tone: "collect",
+        title: "COLLECT FEATURE",
+        caption: "TOPPER SWEEP",
+        holdMs: 860,
+      });
+      this.layeredFx.playCollectSweep(machineWidth * 0.5, machineHeight * 0.44);
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.44);
+      this.applySoundCue("feature-collect-enter");
       return;
     }
 
     if (cue === "collect-sweep") {
+      this.layeredFx.playCoinFly(machineWidth * 0.5, machineHeight * 0.32, 5);
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.44);
       return;
     }
 
     if (cue === "feature.boost.triggered") {
       this.showStatus("BOOST FEATURE");
-      this.visualChrome.triggerBoostPulse();
-      void this.lightningFx.play(machineWidth, machineHeight);
+      this.visualChrome.triggerPresentationCue({
+        tone: "boost",
+        title: "BOOST FEATURE",
+        caption: "STRIKE CHARGE",
+        holdMs: 920,
+      });
+      void this.layeredFx.playBoostStart();
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.22);
+      this.applySoundCue("feature-boost-enter");
       return;
     }
 
     if (cue === "feature.bonus.enter") {
       this.showStatus("HOLD & WIN");
-      this.visualChrome.triggerBoostPulse();
+      this.visualChrome.triggerPresentationCue({
+        tone: "bonus",
+        title: "HOLD & WIN",
+        caption: "BONUS ENTRY",
+        holdMs: 940,
+      });
+      this.layeredFx.playBoostLoop();
+      this.layeredFx.playCoinFly(machineWidth * 0.5, machineHeight * 0.2, 7);
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.18);
+      this.applySoundCue("feature-bonus-enter");
       return;
     }
 
     if (cue === "feature.jackpot.attached" || cue === "jackpot-overlay") {
       this.showStatus("JACKPOT HIT");
-      this.visualChrome.triggerBoostPulse();
+      this.visualChrome.triggerPresentationCue({
+        tone: "jackpot",
+        title: "JACKPOT HIT",
+        caption:
+          this.activeMathBridgeHints?.jackpotTier?.toUpperCase() ?? "PLAQUE REACTION",
+        holdMs: 1120,
+        jackpotTier: this.activeMathBridgeHints?.jackpotTier ?? null,
+      });
+      this.layeredFx.playJackpotHit(
+        this.resolveJackpotReactionLevel(this.activeMathBridgeHints?.jackpotTier ?? null),
+      );
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.1);
+      this.applySoundCue("feature-jackpot-enter");
       return;
     }
 
     if (cue === "coin-fly") {
+      this.layeredFx.playCoinFly(machineWidth * 0.5, machineHeight * 0.32, 6);
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.32);
+      return;
+    }
+
+    if (cue === "overlay.winTier.enter") {
+      const tier = this.activeMathBridgeHints?.winTier ?? "none";
+      this.visualChrome.triggerPresentationCue({
+        tone: tier === "mega" ? "jackpot" : "standard",
+        title: tier === "none" ? "TOTAL WIN" : `${tier.toUpperCase()} WIN`,
+        caption: "COUNTER CHARGE",
+        holdMs: 980,
+        jackpotTier: this.activeMathBridgeHints?.jackpotTier ?? null,
+      });
+      this.layeredFx.playWinPulse(tier);
+      this.applySoundCue("feature-win-tier");
       return;
     }
 
     if (cue === "round.reel.stop.3.bonusHold") {
       this.showStatus("BONUS HOLD");
+      this.visualChrome.triggerPresentationCue({
+        tone: "bonus",
+        title: "BONUS HOLD",
+        caption: "FINAL REEL HELD",
+        holdMs: 760,
+      });
       return;
     }
   }
@@ -1346,6 +1715,8 @@ export class MainScreen extends Container {
     this.paylineOverlay.clear();
     this.paylineHighlight.clear();
     this.debugOverlay.setMathBridgeSummary(null);
+    this.layeredFx.clearPresentation();
+    this.visualChrome.clearPresentationCue();
     const featureFrame = this.featureModules.resolve(preview);
     this.applyDynamicControlVisibility(featureFrame);
     PresentationStateStore.patch({
@@ -1382,9 +1753,12 @@ export class MainScreen extends Container {
     skipped = false,
   ): void {
     this.wowVfx.finishWinPresentation();
+    this.layeredFx.clearPresentation();
     this.paylineOverlay.clear();
     this.paylineHighlight.clear();
     this.isPresentingWin = false;
+    this.activeMathBridgeHints = null;
+    this.visualChrome.clearPresentationCue();
     PresentationStateStore.patch({
       isPresentingWin: false,
       statusText: skipped ? "ROUND_PRESENTATION_SKIPPED" : "ROUND_PRESENTATION_FINISHED",

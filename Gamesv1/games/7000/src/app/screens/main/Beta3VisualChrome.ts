@@ -16,6 +16,18 @@ type ChromeModes = {
   statusText: string;
 };
 
+type ChromeReactionTone = "standard" | "collect" | "boost" | "bonus" | "jackpot";
+
+type ChromeReactionInput = {
+  tone: ChromeReactionTone;
+  title: string;
+  caption?: string;
+  emphasis?: number;
+  holdMs?: number;
+  jackpotTier?: string | null;
+  plaqueIndexes?: number[];
+};
+
 type JackpotCoinVisual = {
   halo: Graphics;
   sprite: Sprite;
@@ -29,6 +41,9 @@ type JackpotCoinVisual = {
 
 const readDebugProviderFlag = (): boolean =>
   new URLSearchParams(window.location.search).get("providerDebug") === "1";
+
+const DEFAULT_TOPPER_TITLE = "JACKPOT RUN";
+const DEFAULT_TOPPER_CAPTION = "ROOSTER RUSH";
 
 export class Beta3VisualChrome extends Container {
   public static readonly padding = {
@@ -195,6 +210,13 @@ export class Beta3VisualChrome extends Container {
     soundEnabled: true,
     statusText: "BETONLINE READY",
   };
+  private reactionTone: ChromeReactionTone = "standard";
+  private reactionPulse = 0;
+  private reactionHoldMs = 0;
+  private plaquePulse = 0;
+  private activePlaqueIndexes: number[] = [];
+  private titleOverride: string | null = null;
+  private captionOverride: string | null = null;
 
   public onBuyFeatureRequest: (() => void) | null = null;
 
@@ -369,6 +391,49 @@ export class Beta3VisualChrome extends Container {
     this.boostFlash = 1;
   }
 
+  public beginSpinCycle(): void {
+    this.boostFlash = Math.max(this.boostFlash, 0.18);
+    this.reactionPulse = Math.max(this.reactionPulse, 0.2);
+    this.reactionHoldMs = Math.max(this.reactionHoldMs, 220);
+    this.plaquePulse = Math.max(this.plaquePulse, 0.16);
+    this.activePlaqueIndexes = [];
+    this.titleOverride = null;
+    this.captionOverride = null;
+    this.reactionTone = "standard";
+    this.updateReactionText();
+  }
+
+  public triggerPresentationCue(input: ChromeReactionInput): void {
+    this.reactionTone = input.tone;
+    this.reactionPulse = Math.max(
+      this.reactionPulse,
+      input.emphasis ?? this.resolveReactionEmphasis(input.tone),
+    );
+    this.reactionHoldMs = Math.max(this.reactionHoldMs, input.holdMs ?? 780);
+    this.plaquePulse = Math.max(
+      this.plaquePulse,
+      input.tone === "jackpot" ? 1 : input.tone === "boost" ? 0.8 : input.tone === "collect" ? 0.64 : 0.52,
+    );
+    this.activePlaqueIndexes =
+      input.plaqueIndexes ?? this.resolvePlaqueIndexes(input.tone, input.jackpotTier);
+    this.titleOverride = input.title;
+    this.captionOverride = input.caption ?? DEFAULT_TOPPER_CAPTION;
+    this.boostFlash = Math.max(this.boostFlash, this.reactionPulse * 0.72);
+    this.updateReactionText();
+  }
+
+  public clearPresentationCue(): void {
+    this.boostFlash = 0;
+    this.reactionPulse = 0;
+    this.reactionHoldMs = 0;
+    this.plaquePulse = 0;
+    this.activePlaqueIndexes = [];
+    this.titleOverride = null;
+    this.captionOverride = null;
+    this.reactionTone = "standard";
+    this.updateReactionText();
+  }
+
   private tick(deltaMs: number): void {
     if (this.machineWidth <= 0 || this.machineHeight <= 0) {
       return;
@@ -376,52 +441,126 @@ export class Beta3VisualChrome extends Container {
 
     this.ambientTime += deltaMs / 1000;
     this.boostFlash = Math.max(0, this.boostFlash - deltaMs / 520);
+    this.reactionPulse = Math.max(0, this.reactionPulse - deltaMs / 920);
+    this.plaquePulse = Math.max(0, this.plaquePulse - deltaMs / 1120);
+    this.reactionHoldMs = Math.max(0, this.reactionHoldMs - deltaMs);
+    if (
+      this.reactionHoldMs <= 0 &&
+      this.reactionPulse <= 0.08 &&
+      (this.titleOverride || this.captionOverride || this.activePlaqueIndexes.length > 0)
+    ) {
+      this.titleOverride = null;
+      this.captionOverride = null;
+      this.activePlaqueIndexes = [];
+      this.reactionTone = "standard";
+      this.updateReactionText();
+    }
 
     const heroFloat = Math.sin(this.ambientTime * 1.35) * 7;
-    const heroPulse = 1 + Math.sin(this.ambientTime * 1.7) * 0.035 + this.boostFlash * 0.06;
+    const reactionPalette = this.resolveReactionPalette();
+    const heroPulse =
+      1 +
+      Math.sin(this.ambientTime * 1.7) * 0.035 +
+      this.boostFlash * 0.06 +
+      this.reactionPulse * 0.04;
     this.mascotSprite.y = -72 + heroFloat;
     this.mascotSprite.scale.set(heroPulse);
     this.heroGlowSprite.y = -70 + heroFloat * 0.18;
-    this.heroGlowSprite.scale.set(1.02 + Math.sin(this.ambientTime * 1.9) * 0.04 + this.boostFlash * 0.08);
-    this.heroGlowSprite.alpha = 0.22 + this.boostFlash * 0.22;
+    this.heroGlowSprite.scale.set(
+      1.02 +
+        Math.sin(this.ambientTime * 1.9) * 0.04 +
+        this.boostFlash * 0.08 +
+        this.reactionPulse * 0.05,
+    );
+    this.heroGlowSprite.alpha = 0.22 + this.boostFlash * 0.22 + this.reactionPulse * 0.12;
+    this.heroGlowSprite.tint = reactionPalette.glow;
     this.heroPulseSprite.y = -80 + heroFloat * 0.12;
-    this.heroPulseSprite.scale.set(0.98 + Math.sin(this.ambientTime * 2.2 + 0.4) * 0.05 + this.boostFlash * 0.1);
-    this.heroPulseSprite.alpha = 0.14 + this.boostFlash * 0.18;
+    this.heroPulseSprite.scale.set(
+      0.98 +
+        Math.sin(this.ambientTime * 2.2 + 0.4) * 0.05 +
+        this.boostFlash * 0.1 +
+        this.reactionPulse * 0.06,
+    );
+    this.heroPulseSprite.alpha = 0.14 + this.boostFlash * 0.18 + this.reactionPulse * 0.14;
+    this.heroPulseSprite.tint = reactionPalette.accent;
 
     this.mascotHalo.clear();
     this.mascotHalo.ellipse(
       this.machineWidth * 0.5,
       -56 + heroFloat * 0.2,
-      98 + this.boostFlash * 18,
-      28 + this.boostFlash * 8,
+      98 + this.boostFlash * 18 + this.reactionPulse * 18,
+      28 + this.boostFlash * 8 + this.reactionPulse * 7,
     );
-    this.mascotHalo.fill({ color: 0xc7141a, alpha: 0.22 + this.boostFlash * 0.15 });
+    this.mascotHalo.fill({
+      color: reactionPalette.glow,
+      alpha: 0.2 + this.boostFlash * 0.15 + this.reactionPulse * 0.12,
+    });
 
-    this.cabinetGlow.alpha = 0.52 + Math.sin(this.ambientTime * 2.1) * 0.14 + this.boostFlash * 0.18;
+    this.cabinetGlow.alpha =
+      0.52 +
+      Math.sin(this.ambientTime * 2.1) * 0.14 +
+      this.boostFlash * 0.18 +
+      this.reactionPulse * 0.12;
     this.buyPanel.scale.set(1 + this.buyPanelHover * 0.03 + Math.sin(this.ambientTime * 2.4) * 0.008);
     this.actionPanel.scale.set(1 + Math.sin(this.ambientTime * 1.8 + 0.5) * 0.01);
 
+    this.redrawTopBar();
+    this.jackpotTitle.style.fill = reactionPalette.titleFill;
+    this.mascotCaption.style.fill = reactionPalette.captionFill;
+
     this.jackpotCoins.forEach((coin, index) => {
+      const plaqueHot = this.activePlaqueIndexes.includes(index) ? 1 : 0;
       const drift = Math.sin(this.ambientTime * 1.8 + coin.phase) * 5;
-      const pulse = 1 + Math.sin(this.ambientTime * 2.3 + coin.phase) * 0.05 + this.boostFlash * 0.03;
+      const pulse =
+        1 +
+        Math.sin(this.ambientTime * 2.3 + coin.phase) * 0.05 +
+        this.boostFlash * 0.03 +
+        plaqueHot * this.plaquePulse * 0.08;
       coin.sprite.x = coin.baseX;
       coin.sprite.y = coin.baseY + drift;
       coin.sprite.scale.set(pulse);
+      coin.sprite.tint = coin.heroTextureActive ? 0xffffff : reactionPalette.coinTint;
       coin.halo.clear();
       if (coin.heroTextureActive) {
-        coin.halo.circle(coin.baseX, coin.baseY + drift, 46 + index * 2 + this.boostFlash * 6);
-        coin.halo.fill({ color: 0xffcf73, alpha: 0.18 + this.boostFlash * 0.08 });
+        coin.halo.circle(
+          coin.baseX,
+          coin.baseY + drift,
+          46 + index * 2 + this.boostFlash * 6 + plaqueHot * this.plaquePulse * 14,
+        );
+        coin.halo.fill({
+          color: reactionPalette.accent,
+          alpha: 0.16 + this.boostFlash * 0.08 + plaqueHot * this.plaquePulse * 0.18,
+        });
       } else {
-        coin.halo.circle(coin.baseX, coin.baseY + drift, 33 + index * 2 + this.boostFlash * 4);
-        coin.halo.fill({ color: 0xe5b357, alpha: 0.98 });
-        coin.halo.stroke({ color: 0xfff0c1, width: 4, alpha: 0.95 });
-        coin.halo.circle(coin.baseX, coin.baseY + drift, 24 + index * 2 + this.boostFlash * 2);
-        coin.halo.fill({ color: 0x9f5519, alpha: 0.28 });
+        coin.halo.circle(
+          coin.baseX,
+          coin.baseY + drift,
+          33 + index * 2 + this.boostFlash * 4 + plaqueHot * this.plaquePulse * 10,
+        );
+        coin.halo.fill({
+          color: reactionPalette.coinTint,
+          alpha: 0.8 + plaqueHot * this.plaquePulse * 0.24,
+        });
+        coin.halo.stroke({
+          color: reactionPalette.accent,
+          width: 4,
+          alpha: 0.92 + plaqueHot * this.plaquePulse * 0.08,
+        });
+        coin.halo.circle(
+          coin.baseX,
+          coin.baseY + drift,
+          24 + index * 2 + this.boostFlash * 2 + plaqueHot * this.plaquePulse * 6,
+        );
+        coin.halo.fill({ color: reactionPalette.shadow, alpha: 0.28 + plaqueHot * this.plaquePulse * 0.12 });
       }
       coin.label.x = coin.baseX;
       coin.label.y = coin.baseY + 10 + drift * 0.1;
+      coin.label.style.fill = reactionPalette.captionFill;
+      coin.label.scale.set(1 + plaqueHot * this.plaquePulse * 0.04);
       coin.value.x = coin.baseX;
       coin.value.y = coin.baseY + 28 + drift * 0.1;
+      coin.value.style.fill = reactionPalette.titleFill;
+      coin.value.scale.set(1 + plaqueHot * this.plaquePulse * 0.05);
     });
   }
 
@@ -453,10 +592,7 @@ export class Beta3VisualChrome extends Container {
     this.cabinetGlow.roundRect(left - 10, top - 8, width + 20, height + 16, 48);
     this.cabinetGlow.stroke({ color: 0xc7141a, width: 10, alpha: 0.42 });
 
-    this.topBar.clear();
-    this.topBar.roundRect(this.machineWidth * 0.5 - 176, -178, 352, 40, 20);
-    this.topBar.fill({ color: 0x100204, alpha: 0.9 });
-    this.topBar.stroke({ color: 0xffd782, width: 2, alpha: 0.9 });
+    this.redrawTopBar();
 
     this.mascotSprite.x = this.machineWidth * 0.5;
     this.mascotSprite.y = -72;
@@ -535,6 +671,138 @@ export class Beta3VisualChrome extends Container {
     this.actionPanelBackground.stroke({ color: 0xffd88a, width: 3, alpha: 0.85 });
   }
 
+  private redrawTopBar(): void {
+    if (this.machineWidth <= 0) {
+      return;
+    }
+
+    const reactionPalette = this.resolveReactionPalette();
+    this.topBar.clear();
+    this.topBar.roundRect(this.machineWidth * 0.5 - 176, -178, 352, 40, 20);
+    this.topBar.fill({
+      color: reactionPalette.shadow,
+      alpha: 0.84 + this.reactionPulse * 0.12,
+    });
+    this.topBar.stroke({
+      color: reactionPalette.accent,
+      width: 2 + this.reactionPulse * 2,
+      alpha: 0.86 + this.reactionPulse * 0.12,
+    });
+  }
+
+  private resolveReactionEmphasis(tone: ChromeReactionTone): number {
+    switch (tone) {
+      case "jackpot":
+        return 1;
+      case "boost":
+        return 0.86;
+      case "collect":
+        return 0.72;
+      case "bonus":
+        return 0.78;
+      case "standard":
+      default:
+        return 0.56;
+    }
+  }
+
+  private resolvePlaqueIndexes(
+    tone: ChromeReactionTone,
+    jackpotTier: string | null | undefined,
+  ): number[] {
+    if (tone === "jackpot") {
+      switch ((jackpotTier ?? "").toLowerCase()) {
+        case "mini":
+          return [0];
+        case "minor":
+          return [1];
+        case "major":
+          return [2];
+        case "grand":
+          return [3];
+        default:
+          return [0, 1, 2, 3];
+      }
+    }
+
+    if (tone === "boost") {
+      return [2, 3];
+    }
+
+    if (tone === "collect") {
+      return [0, 1];
+    }
+
+    if (tone === "bonus") {
+      return [1, 2];
+    }
+
+    return [1];
+  }
+
+  private updateReactionText(): void {
+    this.jackpotTitle.text = this.titleOverride ?? DEFAULT_TOPPER_TITLE;
+    this.mascotCaption.text = this.captionOverride ?? DEFAULT_TOPPER_CAPTION;
+  }
+
+  private resolveReactionPalette(): {
+    glow: number;
+    accent: number;
+    titleFill: number;
+    captionFill: number;
+    coinTint: number;
+    shadow: number;
+  } {
+    switch (this.reactionTone) {
+      case "collect":
+        return {
+          glow: 0xe39524,
+          accent: 0xffe7a1,
+          titleFill: 0xfff0c5,
+          captionFill: 0xffe4b5,
+          coinTint: 0xf0b74e,
+          shadow: 0x2d1204,
+        };
+      case "boost":
+        return {
+          glow: 0xc7141a,
+          accent: 0xffd49f,
+          titleFill: 0xfff3dc,
+          captionFill: 0xffdcc8,
+          coinTint: 0xff8d47,
+          shadow: 0x330608,
+        };
+      case "bonus":
+        return {
+          glow: 0xb66a15,
+          accent: 0xffd68a,
+          titleFill: 0xfff0d4,
+          captionFill: 0xffe1bf,
+          coinTint: 0xf0b15e,
+          shadow: 0x341206,
+        };
+      case "jackpot":
+        return {
+          glow: 0xe0ad2f,
+          accent: 0xfff0c4,
+          titleFill: 0xfff5dc,
+          captionFill: 0xffecc0,
+          coinTint: 0xf6ce63,
+          shadow: 0x3d1605,
+        };
+      case "standard":
+      default:
+        return {
+          glow: 0xc7141a,
+          accent: 0xffd782,
+          titleFill: 0xffefb0,
+          captionFill: 0xfff4cf,
+          coinTint: 0xe5b357,
+          shadow: 0x100204,
+        };
+    }
+  }
+
   private updateProviderDebug(): void {
     if (!this.showProviderDebug) {
       return;
@@ -599,7 +867,7 @@ export class Beta3VisualChrome extends Container {
       coin.label.visible = !coin.heroTextureActive;
       coin.value.visible = !coin.heroTextureActive;
     });
-    this.mascotCaption.visible = false;
+    this.mascotCaption.visible = true;
   }
 
   private applyTexture(sprite: Sprite, texture: Texture | null, fallbackTint: number): void {

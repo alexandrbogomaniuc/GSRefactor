@@ -1,5 +1,6 @@
-import { Container, Graphics, Text, Ticker } from "pixi.js";
+import { Container, Graphics, Sprite, Text, Texture, Ticker } from "pixi.js";
 
+import { resolveProviderFrameTexture } from "../../app/assets/providerPackRegistry";
 import paylinesData from "../../../math/paylines.json";
 import paytableData from "../../../math/paytable.json";
 
@@ -74,6 +75,13 @@ type PaylineOverlayStyle = {
   detailFill: number;
 };
 
+type PaylineOverlayTextureState = {
+  plate: Texture | null;
+  sequence: Texture | null;
+  badge: Texture | null;
+  multiplier: Texture | null;
+};
+
 export class PaylineOverlay extends Container {
   private static readonly CALLOUT_WIDTH = 348;
   private static readonly CALLOUT_HEIGHT = 94;
@@ -85,10 +93,15 @@ export class PaylineOverlay extends Container {
   private readonly nodes = new Graphics();
   private readonly callout = new Container();
   private readonly calloutShadow = new Graphics();
+  private readonly plateSprite = new Sprite(Texture.WHITE);
   private readonly calloutBase = new Graphics();
+  private readonly accentSprite = new Sprite(Texture.WHITE);
   private readonly calloutAccent = new Graphics();
+  private readonly badgeSprite = new Sprite(Texture.WHITE);
   private readonly lineBadge = new Graphics();
+  private readonly sequenceSprite = new Sprite(Texture.WHITE);
   private readonly sequenceBadge = new Graphics();
+  private readonly multiplierSprite = new Sprite(Texture.WHITE);
   private readonly featureTag = new Text({
     text: "",
     style: {
@@ -172,9 +185,27 @@ export class PaylineOverlay extends Container {
   private displayElapsedMs = 0;
   private sequenceIndex = 0;
   private sequenceCount = 1;
+  private textureRequestToken = 0;
+  private textureState: PaylineOverlayTextureState = {
+    plate: null,
+    sequence: null,
+    badge: null,
+    multiplier: null,
+  };
 
   constructor() {
     super();
+
+    this.plateSprite.anchor.set(0.5);
+    this.plateSprite.visible = false;
+    this.accentSprite.anchor.set(0.5);
+    this.accentSprite.visible = false;
+    this.badgeSprite.anchor.set(0.5);
+    this.badgeSprite.visible = false;
+    this.sequenceSprite.anchor.set(0.5);
+    this.sequenceSprite.visible = false;
+    this.multiplierSprite.anchor.set(0.5);
+    this.multiplierSprite.visible = false;
 
     this.featureTag.anchor.set(0.5);
     this.lineBadgeText.anchor.set(0.5);
@@ -185,10 +216,15 @@ export class PaylineOverlay extends Container {
 
     this.callout.addChild(
       this.calloutShadow,
+      this.plateSprite,
       this.calloutBase,
+      this.accentSprite,
       this.calloutAccent,
+      this.badgeSprite,
       this.lineBadge,
+      this.sequenceSprite,
       this.sequenceBadge,
+      this.multiplierSprite,
       this.featureTag,
       this.lineBadgeText,
       this.sequenceText,
@@ -237,6 +273,7 @@ export class PaylineOverlay extends Container {
     this.sequenceIndex = Math.max(0, options.sequenceIndex ?? 0);
     this.sequenceCount = Math.max(1, options.sequenceCount ?? 1);
     this.callout.visible = true;
+    void this.refreshTextures();
     this.redraw();
   }
 
@@ -251,6 +288,7 @@ export class PaylineOverlay extends Container {
     this.sparkTrail.clear();
     this.nodes.clear();
     this.callout.visible = false;
+    this.textureRequestToken += 1;
   }
 
   private redraw(): void {
@@ -350,11 +388,15 @@ export class PaylineOverlay extends Container {
       minCenter <= maxCenter
         ? Math.max(minCenter, Math.min(maxCenter, centerPoint.x))
         : centerPoint.x;
-    const preferredY = Math.max(54, minY - 74);
+    const preferredY = Math.max(60, minY - 80);
     const symbolKey =
       SYMBOL_KEY_BY_ID.get(this.activeLine.symbolId) ?? `SYMBOL ${this.activeLine.symbolId}`;
     const paylineName =
       PAYLINE_NAME_BY_ID.get(this.activeLine.lineId) ?? `LINE ${this.activeLine.lineId}`;
+    const hasPlateTexture = this.plateSprite.visible;
+    const hasBadgeTexture = this.badgeSprite.visible;
+    const hasSequenceTexture = this.sequenceSprite.visible && this.sequenceCount > 1;
+    const hasMultiplierTexture = this.multiplierSprite.visible;
 
     this.calloutShadow.clear();
     this.calloutShadow.roundRect(
@@ -374,8 +416,15 @@ export class PaylineOverlay extends Container {
       PaylineOverlay.CALLOUT_HEIGHT,
       26,
     );
-    this.calloutBase.fill({ color: style.panelFill, alpha: visibility * 0.96 });
-    this.calloutBase.stroke({ color: style.panelStroke, width: 4, alpha: visibility * 0.98 });
+    this.calloutBase.fill({
+      color: style.panelFill,
+      alpha: visibility * (hasPlateTexture ? 0.54 : 0.96),
+    });
+    this.calloutBase.stroke({
+      color: style.panelStroke,
+      width: 4,
+      alpha: visibility * (hasPlateTexture ? 0.48 : 0.98),
+    });
 
     this.calloutAccent.clear();
     this.calloutAccent.roundRect(
@@ -385,24 +434,40 @@ export class PaylineOverlay extends Container {
       22,
       18,
     );
-    this.calloutAccent.fill({ color: style.accentFill, alpha: visibility * 0.94 });
+    this.calloutAccent.fill({ color: style.accentFill, alpha: visibility * 0.9 });
 
     this.lineBadge.clear();
     this.lineBadge.circle(-halfWidth + 36, 6, 24);
-    this.lineBadge.fill({ color: style.badgeFill, alpha: visibility * 0.96 });
-    this.lineBadge.stroke({ color: style.badgeStroke, width: 3, alpha: visibility * 0.98 });
+    this.lineBadge.fill({
+      color: style.badgeFill,
+      alpha: visibility * (hasBadgeTexture ? 0.42 : 0.96),
+    });
+    this.lineBadge.stroke({
+      color: style.badgeStroke,
+      width: 3,
+      alpha: visibility * (hasBadgeTexture ? 0.5 : 0.98),
+    });
 
     this.sequenceBadge.clear();
     if (this.sequenceCount > 1) {
       this.sequenceBadge.roundRect(halfWidth - 76, -36, 58, 26, 14);
-      this.sequenceBadge.fill({ color: style.sequenceFill, alpha: visibility * 0.94 });
-      this.sequenceBadge.stroke({ color: style.badgeStroke, width: 2, alpha: visibility * 0.98 });
+      this.sequenceBadge.fill({
+        color: style.sequenceFill,
+        alpha: visibility * (hasSequenceTexture ? 0.4 : 0.94),
+      });
+      this.sequenceBadge.stroke({
+        color: style.badgeStroke,
+        width: 2,
+        alpha: visibility * (hasSequenceTexture ? 0.45 : 0.98),
+      });
     }
 
     this.callout.x = preferredX;
     this.callout.y = preferredY;
     this.callout.alpha = visibility;
     this.callout.scale.set(0.96 + easeOutCubic(clamp01(this.displayElapsedMs / 180)) * 0.04);
+
+    this.layoutTexturedSprites(style, visibility, halfWidth);
 
     this.featureTag.style.fill = style.detailFill;
     this.lineBadgeText.style.fill = style.multiplierFill;
@@ -424,7 +489,7 @@ export class PaylineOverlay extends Container {
     this.sequenceText.y = -23;
 
     this.multiplierText.text = `x${formatMultiplier(this.activeLine.multiplier)}`;
-    this.multiplierText.x = -18;
+    this.multiplierText.x = hasMultiplierTexture ? -4 : -18;
     this.multiplierText.y = 4;
 
     this.payoutText.text = `PAY ${formatCurrencyMinor(this.activeLine.amountMinor)}`;
@@ -434,6 +499,43 @@ export class PaylineOverlay extends Container {
     this.detailText.text = `${symbolKey}  •  ${paylineName}`;
     this.detailText.x = 12;
     this.detailText.y = 22;
+  }
+
+  private layoutTexturedSprites(
+    style: PaylineOverlayStyle,
+    visibility: number,
+    halfWidth: number,
+  ): void {
+    this.plateSprite.alpha = visibility * 0.84;
+    this.plateSprite.width =
+      PaylineOverlay.CALLOUT_WIDTH + (this.activeTone === "boost" || this.activeTone === "jackpot" ? 22 : 0);
+    this.plateSprite.height = PaylineOverlay.CALLOUT_HEIGHT + 10;
+    this.plateSprite.x = 0;
+    this.plateSprite.y = 0;
+    this.plateSprite.tint = 0xffffff;
+
+    this.accentSprite.visible = false;
+
+    this.badgeSprite.alpha = visibility * 0.98;
+    this.badgeSprite.width = 52;
+    this.badgeSprite.height = 52;
+    this.badgeSprite.x = -halfWidth + 36;
+    this.badgeSprite.y = 6;
+    this.badgeSprite.tint = 0xffffff;
+
+    this.sequenceSprite.alpha = visibility * 0.88;
+    this.sequenceSprite.width = 72;
+    this.sequenceSprite.height = 30;
+    this.sequenceSprite.x = halfWidth - 47;
+    this.sequenceSprite.y = -23;
+    this.sequenceSprite.tint = style.sequenceFill;
+
+    this.multiplierSprite.alpha = visibility * 0.96;
+    this.multiplierSprite.width = 50;
+    this.multiplierSprite.height = 50;
+    this.multiplierSprite.x = -84;
+    this.multiplierSprite.y = 3;
+    this.multiplierSprite.tint = 0xffffff;
   }
 
   private resolveVisibilityAlpha(): number {
@@ -491,6 +593,46 @@ export class PaylineOverlay extends Container {
       join: "round",
       alignment: 0.5,
     });
+  }
+
+  private async refreshTextures(): Promise<void> {
+    if (!this.activeLine) {
+      return;
+    }
+
+    const requestToken = ++this.textureRequestToken;
+    const line = this.activeLine;
+    const tone = this.activeTone;
+    const plateKey = tone === "boost" || tone === "jackpot" ? "button-buybonus" : "payline-pill";
+    const badgeKey = resolveToneBadgeKey(tone);
+    const multiplierKey = resolveMultiplierCoinKey(line.multiplier);
+    const [plate, sequence, badge, multiplier] = await Promise.all([
+      resolveProviderFrameTexture("uiAtlas", plateKey),
+      resolveProviderFrameTexture("uiAtlas", "payline-pill"),
+      resolveProviderFrameTexture("symbolAtlas", badgeKey),
+      resolveProviderFrameTexture("symbolAtlas", multiplierKey),
+    ]);
+
+    if (requestToken !== this.textureRequestToken || !this.activeLine) {
+      return;
+    }
+
+    this.textureState = {
+      plate: plate.texture,
+      sequence: sequence.texture,
+      badge: badge.texture,
+      multiplier: multiplier.texture,
+    };
+    this.applyTexture(this.plateSprite, this.textureState.plate);
+    this.applyTexture(this.sequenceSprite, this.textureState.sequence);
+    this.applyTexture(this.badgeSprite, this.textureState.badge);
+    this.applyTexture(this.multiplierSprite, this.textureState.multiplier);
+    this.redraw();
+  }
+
+  private applyTexture(sprite: Sprite, texture: Texture | null): void {
+    sprite.texture = texture ?? Texture.WHITE;
+    sprite.visible = Boolean(texture);
   }
 
   private resolveStyle(
@@ -670,3 +812,32 @@ const formatMultiplier = (value: number): string => {
 };
 
 const formatCurrencyMinor = (valueMinor: number): string => `$${(valueMinor / 100).toFixed(2)}`;
+
+const resolveToneBadgeKey = (tone: PaylineOverlayTone): string => {
+  switch (tone) {
+    case "collect":
+      return "collector-symbol";
+    case "boost":
+      return "symbol-8-bolt";
+    case "jackpot":
+      return "coin-multiplier-10x";
+    case "bonus":
+      return "symbol-7-coin";
+    case "standard":
+    default:
+      return "symbol-7-coin";
+  }
+};
+
+const resolveMultiplierCoinKey = (multiplier: number): string => {
+  if (multiplier >= 10) {
+    return "coin-multiplier-10x";
+  }
+  if (multiplier >= 5) {
+    return "coin-multiplier-5x";
+  }
+  if (multiplier >= 3) {
+    return "coin-multiplier-3x";
+  }
+  return "coin-multiplier-2x";
+};
