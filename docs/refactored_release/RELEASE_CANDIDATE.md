@@ -3,7 +3,7 @@
 ## Candidate Status
 
 - Track: Option A / production-track stabilization
-- Runtime-proven application baseline commit: `d1d92c6820a409e01a2bb4037deab7c0313444a8`
+- Runtime-proven application baseline commit: `b4ce7aa725f472ee2dff92f4ed690b0241cdf3f4`
 - Branch: `cassandra-refactoring`
 - Intended decision output: `GO` only if all checklist items below stay green
 
@@ -11,11 +11,12 @@
 
 ### Required services
 
-- `fullstacksmoke-fullstack-cassandra-1`
-- `fullstacksmoke-fullstack-zookeeper-1`
-- `fullstacksmoke-fullstack-kafka-1`
-- `webgs-static-fullstack`
-- `webgs-smoke-fullstack`
+- `refactored_release-fullstack-cassandra-1`
+- `refactored_release-fullstack-zookeeper-1`
+- `refactored_release-fullstack-kafka-1`
+- `refactored_release-cassandra-init-1` during startup only
+- `refactored_release-webgs-static-1`
+- `refactored_release-webgs-1`
 - `cassandra-legacy` only while migration parity still needs proof or rollback confidence
 - `cassandra-target` + `zookeeper-smoke` for the migration guard
 
@@ -25,8 +26,9 @@
 2. `cassandra-target`
 3. `zookeeper-smoke`
 4. `run_migration_smoke_loop.sh --once`
-5. `run_fullstack_smoke.sh`
-6. verify `webgs-static-fullstack` and `webgs-smoke-fullstack`
+5. `prepare_runtime.sh`
+6. `docker compose -p refactored_release --env-file .env up -d --remove-orphans`
+7. verify `refactored_release-webgs-static-1` and `refactored_release-webgs-1`
 
 ### Required runtime config
 
@@ -43,8 +45,8 @@
 - migration guard PASS/PASS in `runtime_smoke/status/latest.env`
 - `curl -i http://127.0.0.1:8080/support/health/check.jsp` returns `200`
 - `curl -i "http://127.0.0.1:8080/cwguestlogin.do?bankId=271&gameId=838&lang=en"` returns `302`
-- followed template returns `200`
-- authoritative smoke follow-up URLs live in `runtime_smoke/logs/fullstack_20260316_145528/summary.env`
+- followed template returns `200` after rewriting `http://127.0.0.1/...` to `http://127.0.0.1:8080/...` if needed
+- `WEB_SOCKET_URL` in the launch URL resolves to `ws://127.0.0.1:8080/websocket/mplobby?...`
 
 ### Operational time buckets
 
@@ -77,8 +79,8 @@ Expected:
 
 - `gs-server/game-server/web-gs/target/ROOT.war`
 - `gs-server/support/archiver/target/casino-archiver.jar`
-- runtime-only patched WAR for smoke validation under `runtime_smoke/logs/fullstack_20260316_145528/ROOT.patched.war`
-- repo-tracked release template manifests under `gs-server/deploy/refactored_release/`
+- repo-tracked prepared runtime bundle under `gs-server/deploy/refactored_release/runtime/`
+- repo-tracked release manifests under `gs-server/deploy/refactored_release/`
 
 ## Docker Images Used In Smoke
 
@@ -106,6 +108,7 @@ Secret handling rules:
 - do not commit credentials or environment-specific endpoints into the repository
 - inject sensitive values at deploy time through mounted config, deployment-managed environment variables, or secret storage
 - treat runtime-smoke generated assets as rehearsal-only evidence, not release artifacts to commit
+- keep `.env` local only; it is operator input and must not carry secrets in git
 
 ## Runtime Gate Commands
 
@@ -122,12 +125,12 @@ Expected:
 - `ARCHIVER_LEGACY_OK=1`
 - `ARCHIVER_TARGET_OK=1`
 - `HTTP/1.1 200` for health
-- `HTTP/1.1 302` for the canary entry and `200` for the follow-up template URL recorded by the smoke summary
+- `HTTP/1.1 302` for the canary entry and `200` for the follow-up template URL after local port rewrite if the header omits `:8080`
 
 ## Evidence
 
-- migration: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/iter_01_20260316_081816`
-- fullstack: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_145528`
+- migration: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/iter_01_20260316_171634`
+- repo compose runtime: live `:8080` rehearsal from `2026-03-16 17:31 Europe/London`
 - release docs: `docs/refactored_release/`
 - latest summary: `docs/refactored_release/evidence/README_latest.md`
 
@@ -135,7 +138,7 @@ Expected:
 
 - Remaining `com.datastax.driver.core` usage still exists in active modules; it is a tracked follow-up, not a release blocker for Option A.
 - Rerunning the legacy smoke harness can recreate some live GSRefactor containers without compose labels, so docker cleanup must continue to classify by proven role plus script evidence, not labels alone.
-- The current validated startup topology is still the hybrid runtime-smoke harness layout rather than a single tracked deploy asset; promoting a unified compose/deploy topology into the repo should be a separate review after release-candidate stabilization.
+- The repo compose path still expects an operator-provided html5 asset bundle if local gameplay needs the standalone static facade beyond the `302 -> 200` canary.
 - `cqlsh COPY` is the proven migration path today, but it may need a throughput review before large production data moves.
 
 ## Rollback Trigger and Action

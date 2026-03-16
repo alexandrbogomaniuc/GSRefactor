@@ -12,12 +12,12 @@ This runbook describes the release-candidate startup procedure that matches the 
 
 ## Important Constraint
 
-The currently proven baseline is not yet a single repo-tracked production Compose file. The authoritative green path today is the runtime-only harness:
+The green release-candidate baseline is now split into two authoritative paths:
 
-- `run_migration_smoke_loop.sh --once` for migration proof
-- `run_fullstack_smoke.sh` for playable fullstack boot
+- repo-tracked compose under `gs-server/deploy/refactored_release/` for the playable web runtime on `:8080`
+- `run_migration_smoke_loop.sh --once` for migration proof against legacy `3.11` and target `5.0.6`
 
-The older `refactored_versoin` consolidation remains useful reference, but it is not the current release-candidate source of truth after the latest smoke reruns.
+This keeps production startup and migration rehearsal explicit without reopening broad refactor work.
 
 ## Prerequisites
 
@@ -43,25 +43,25 @@ Expected result:
 
 ## Prepare Runtime Assets
 
-The validated stack depends on:
+The repo-tracked compose expects a prepared local runtime bundle:
 
 - patched `ROOT.war`
-- `export_localmachine` config bundle
-- flattened html5 runtime assets under `runtime_smoke/out/fullstack_runtime/webapps/gs/ROOT/html5pc`
+- `export_localmachine` config bundle with `MP_LOBBY_WS_HOST` set for the chosen port
+- optional `html5pc` asset path for the standalone static facade
 
-The currently proven automation that prepares these artifacts is the runtime-only fullstack smoke launcher:
-
-```bash
-bash /Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/bin/run_fullstack_smoke.sh
-```
-
-If you need a manual rebuild of html5 assets, the working smoke pipeline uses:
+Generate that bundle from the repo checkout:
 
 ```bash
-bash /Users/alexb/WorkspaceArchive/Dev_20260304/canonical/GSRefactor_canonical_20260307_091032/gs-server/deploy/scripts/refactor-bootstrap-runtime.sh
+cd /Users/alexb/WorkspaceArchive/Dev_20260304/canonical/GSRefactor_canonical_20260307_091032/gs-server/deploy/refactored_release
+MP_LOBBY_WS_HOST=127.0.0.1:8080 \
+STATIC_HTML5_SOURCE=/absolute/path/to/html5pc \
+./prepare_runtime.sh
 ```
 
-with runtime-smoke environment variables pointing at the legacy client and runtime output directories.
+Notes:
+
+- `STATIC_HTML5_SOURCE` is optional for the healthcheck and `302 -> 200` gameplay canary.
+- use a real `html5pc` bundle when you want the local static facade to serve legacy client assets during gameplay rehearsal.
 
 ## Required Runtime Configuration
 
@@ -105,34 +105,35 @@ The working runtime uses:
 
 ## Bring Up the Stack
 
-The current release-candidate baseline is brought up by the runtime-only harness:
+Bring up the repo-tracked runtime:
 
 ```bash
-bash /Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/bin/run_fullstack_smoke.sh
+cd /Users/alexb/WorkspaceArchive/Dev_20260304/canonical/GSRefactor_canonical_20260307_091032/gs-server/deploy/refactored_release
+cp -n .env.example .env
+docker compose -p refactored_release --env-file .env up -d --remove-orphans
+docker compose -p refactored_release --env-file .env ps
 ```
 
-The harness currently starts:
+The current proven compose runtime starts:
 
-- Compose project `fullstacksmoke` for Cassandra, ZooKeeper, and Kafka
-- standalone `webgs-static-fullstack`
-- standalone `webgs-smoke-fullstack`
-
-The latest proven run wrote:
-
-- `COMPOSE_PROJECT=fullstacksmoke`
-- `STATIC_EXTERNAL_PORT=18080`
-- `WEBGS_CONTAINER_NAME=webgs-smoke-fullstack`
+- `refactored_release-fullstack-cassandra-1`
+- `refactored_release-fullstack-zookeeper-1`
+- `refactored_release-fullstack-kafka-1`
+- `refactored_release-cassandra-init-1` as a one-shot keyspace/bootstrap gate
+- `refactored_release-webgs-static-1`
+- `refactored_release-webgs-1`
 
 ## Repo-Tracked Release Template
 
-For operator rehearsal without depending on `runtime_smoke` scripts as the knowledge source, the repo now includes:
+The repo-tracked deploy assets are now the authoritative playable runtime path:
 
 - `gs-server/deploy/refactored_release/docker-compose.yml`
 - `gs-server/deploy/refactored_release/.env.example`
+- `gs-server/deploy/refactored_release/prepare_runtime.sh`
 - `gs-server/deploy/refactored_release/nginx/default.conf`
 - `gs-server/deploy/refactored_release/nginx/games.override.conf`
 
-This template mirrors the current green topology and required service wiring, but it is still a release template. The authoritative gate evidence remains the runtime-smoke baseline until the repo-tracked compose path itself is rehearsed and signed off.
+`runtime_smoke` remains authoritative for migration PASS/PASS evidence and local archival bundles.
 
 ## Validation
 
@@ -169,9 +170,7 @@ Expected:
 
 - `HTTP/1.1 200`
 
-If the direct `Location:` header omits `:8080` in a local smoke run, use the `GUEST_LAUNCH_URL` captured in the fullstack `summary.env` as the authoritative follow-up URL. The latest proven summary is:
-
-- `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_145528/summary.env`
+If the direct `Location:` header omits `:8080` in a local smoke run, rewrite the host to `http://127.0.0.1:8080/...` before following it.
 
 ### 3. Migration Guard
 
@@ -191,10 +190,9 @@ Expected keys:
 
 Fresh evidence used for this runbook:
 
-- migration iteration: `iter_01_20260316_081816`
-- fullstack iteration: `fullstack_20260316_145528`
-- current static external port in the proven fullstack run: `18080`
-- note: the runtime-smoke harness selects a free static port from `18080..18085`; operator rehearsals should verify the actual value from `summary.env`
+- migration iteration: `iter_01_20260316_171634`
+- repo compose health/gameplay proof on `:8080`: `2026-03-16 17:31 Europe/London`
+- auxiliary repo compose rehearsal on `:18088`: `2026-03-16 17:29 Europe/London`
 
 ## Failure Triage Order
 
