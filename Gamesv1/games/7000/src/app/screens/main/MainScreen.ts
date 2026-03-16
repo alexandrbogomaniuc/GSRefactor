@@ -1541,6 +1541,7 @@ export class MainScreen extends Container {
     if (reelStopMatch) {
       const reelIndex = Number(reelStopMatch[1]) - 1;
       const plaqueIndex = Math.max(0, Math.min(3, reelIndex + (cue.endsWith("bonusHold") ? 1 : 0)));
+      this.topperMascot.pulseForReelStop(reelIndex);
       this.visualChrome.triggerPresentationCue({
         tone: cue.endsWith("bonusHold") ? "bonus" : "standard",
         title: cue.endsWith("bonusHold") ? "BONUS HOLD" : `REEL ${reelIndex + 1} LOCK`,
@@ -1559,6 +1560,7 @@ export class MainScreen extends Container {
 
     if (cue === "focus-status-banner") {
       this.showStatus("BOOST FEATURE");
+      this.topperMascot.setState("react_boost_start");
       this.visualChrome.triggerPresentationCue({
         tone: "boost",
         title: "BOOST FEATURE",
@@ -1573,6 +1575,7 @@ export class MainScreen extends Container {
 
     if (cue === "feature.collect.triggered") {
       this.showStatus("COLLECT FEATURE");
+      this.topperMascot.setState("react_collect");
       this.visualChrome.triggerPresentationCue({
         tone: "collect",
         title: "COLLECT FEATURE",
@@ -1593,6 +1596,7 @@ export class MainScreen extends Container {
 
     if (cue === "feature.boost.triggered") {
       this.showStatus("BOOST FEATURE");
+      this.topperMascot.setState("react_boost_loop");
       this.visualChrome.triggerPresentationCue({
         tone: "boost",
         title: "BOOST FEATURE",
@@ -1607,6 +1611,7 @@ export class MainScreen extends Container {
 
     if (cue === "feature.bonus.enter") {
       this.showStatus("HOLD & WIN");
+      this.topperMascot.setState("react_bigwin");
       this.visualChrome.triggerPresentationCue({
         tone: "bonus",
         title: "HOLD & WIN",
@@ -1622,6 +1627,7 @@ export class MainScreen extends Container {
 
     if (cue === "feature.jackpot.attached" || cue === "jackpot-overlay") {
       this.showStatus("JACKPOT HIT");
+      this.topperMascot.setState("react_jackpot");
       this.visualChrome.triggerPresentationCue({
         tone: "jackpot",
         title: "JACKPOT HIT",
@@ -1646,6 +1652,9 @@ export class MainScreen extends Container {
 
     if (cue === "overlay.winTier.enter") {
       const tier = this.activeMathBridgeHints?.winTier ?? "none";
+      if (tier !== "none") {
+        this.topperMascot.setState("react_bigwin");
+      }
       this.visualChrome.triggerPresentationCue({
         tone: tier === "mega" ? "jackpot" : "standard",
         title: tier === "none" ? "TOTAL WIN" : `${tier.toUpperCase()} WIN`,
@@ -1716,6 +1725,7 @@ export class MainScreen extends Container {
     this.paylineHighlight.clear();
     this.debugOverlay.setMathBridgeSummary(null);
     this.layeredFx.clearPresentation();
+    this.topperMascot.setState("idle");
     this.visualChrome.clearPresentationCue();
     const featureFrame = this.featureModules.resolve(preview);
     this.applyDynamicControlVisibility(featureFrame);
@@ -1754,6 +1764,7 @@ export class MainScreen extends Container {
   ): void {
     this.wowVfx.finishWinPresentation();
     this.layeredFx.clearPresentation();
+    this.topperMascot.setState("idle");
     this.paylineOverlay.clear();
     this.paylineHighlight.clear();
     this.isPresentingWin = false;
