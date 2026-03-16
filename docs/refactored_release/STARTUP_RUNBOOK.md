@@ -12,7 +12,12 @@ This runbook describes the release-candidate startup procedure that matches the 
 
 ## Important Constraint
 
-Docker Compose rejected the requested mixed-case project id `Refactored_versoin`. The validated runtime uses lowercase project id `refactored_versoin`. Keep the human-facing label `Refactored_versoin`, but use lowercase for the actual Compose invocation.
+The currently proven baseline is not yet a single repo-tracked production Compose file. The authoritative green path today is the runtime-only harness:
+
+- `run_migration_smoke_loop.sh --once` for migration proof
+- `run_fullstack_smoke.sh` for playable fullstack boot
+
+The older `refactored_versoin` consolidation remains useful reference, but it is not the current release-candidate source of truth after the latest smoke reruns.
 
 ## Prerequisites
 
@@ -20,8 +25,8 @@ Docker Compose rejected the requested mixed-case project id `Refactored_versoin`
 - Canonical checkout on `cassandra-refactoring`
 - Maven available
 - Runtime assets available under `runtime_smoke`
-- Runtime-only Compose file present at:
-  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/bin/docker-compose.Refactored_versoin.yml`
+- Runtime-only harness scripts present under:
+  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/bin/`
 
 ## Build the Web Application
 
@@ -58,7 +63,7 @@ with runtime-smoke environment variables pointing at the legacy client and runti
 
 ## Required Runtime Configuration
 
-### Network aliases
+### Network aliases inside the fullstack runtime
 
 `webgs-smoke-fullstack` must resolve these aliases:
 
@@ -78,31 +83,43 @@ The working runtime uses:
 -Dkafka.bootstrap.servers=fullstack-kafka:9092
 ```
 
-### Required mounts
+### Required configuration files and mounts
 
 - patched WAR -> `/usr/local/tomcat/webapps/ROOT.war`
 - export bundle -> `/www/html/gs/ROOT/export`
 - html5 assets -> nginx `/usr/share/nginx/html/html5pc`
+- application classpath properties in `WEB-INF/classes/`, especially:
+  - `ClusterConfig.xml`
+  - `SCClusterConfig.xml`
+  - `BigStorageClusterConfig.xml`
+  - `cluster-hosts.properties`
+  - `settings.properties`
+
+### Secret handling
+
+- Do not commit operator credentials or environment-specific hostnames into the repo.
+- Supply sensitive values through deployment-managed environment variables, mounted runtime config, or secret storage injected at container start.
+- Treat the runtime-smoke bundles as local rehearsal assets only.
 
 ## Bring Up the Stack
 
-Start infrastructure first:
+The current release-candidate baseline is brought up by the runtime-only harness:
 
 ```bash
-docker compose -p refactored_versoin   -f /Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/bin/docker-compose.Refactored_versoin.yml   up -d cassandra_target cassandra_legacy zookeeper kafka webgs_static
+bash /Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/bin/run_fullstack_smoke.sh
 ```
 
-Wait until:
+The harness currently starts:
 
-- `cassandra-target` answers `cqlsh`
-- `zookeeper-smoke` answers `ruok`
-- `kafka-smoke` lists topics
+- Compose project `fullstacksmoke` for Cassandra, ZooKeeper, and Kafka
+- standalone `webgs-static-fullstack`
+- standalone `webgs-smoke-fullstack`
 
-Then start web-gs:
+The latest proven run wrote:
 
-```bash
-docker compose -p refactored_versoin   -f /Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/bin/docker-compose.Refactored_versoin.yml   up -d webgs
-```
+- `COMPOSE_PROJECT=fullstacksmoke`
+- `STATIC_EXTERNAL_PORT=18081`
+- `WEBGS_CONTAINER_NAME=webgs-smoke-fullstack`
 
 ## Validation
 
@@ -132,12 +149,16 @@ Expected:
 Follow the redirect:
 
 ```bash
-curl -i "<Location header with :8080 restored if needed>"
+curl -i "<Location header>"
 ```
 
 Expected:
 
 - `HTTP/1.1 200`
+
+If the direct `Location:` header omits `:8080` in a local smoke run, use the `GUEST_LAUNCH_URL` captured in the fullstack `summary.env` as the authoritative follow-up URL. The latest proven summary is:
+
+- `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_082422/summary.env`
 
 ### 3. Migration Guard
 
@@ -159,6 +180,7 @@ Fresh evidence used for this runbook:
 
 - migration iteration: `iter_01_20260316_081816`
 - fullstack iteration: `fullstack_20260316_082422`
+- current static external port in the proven fullstack run: `18081`
 
 ## Failure Triage Order
 

@@ -1,6 +1,6 @@
 # Refactored Release Diagram
 
-## Before vs After
+## Before vs Current Release-Candidate Baseline
 
 ```text
 Before
@@ -19,21 +19,23 @@ Before
     +--> kafka-smoke / zookeeper-smoke (separate migration containers)
     +--> mp-smoke-fullstack (legacy gameplay helper)
 
-After
+Current verified baseline
   Browser
     |
     v
-  refactored_versoin compose project
+  webgs-smoke-fullstack            :8080
     |
-    +--> webgs-smoke-fullstack      :8080
+    +--> webgs-static-fullstack    :18081
+    |
+    +--> fullstacksmoke compose project
     |      |
-    |      +--> fullstack-cassandra alias -> cassandra-target :9043->9042
-    |      +--> fullstack-zookeeper alias -> zookeeper-smoke  :2181
-    |      +--> fullstack-kafka alias     -> kafka-smoke      :9092
-    |
-    +--> webgs-static-fullstack     :18080
+    |      +--> fullstacksmoke-fullstack-cassandra-1
+    |      +--> fullstacksmoke-fullstack-zookeeper-1
+    |      +--> fullstacksmoke-fullstack-kafka-1
     |
     +--> cassandra-legacy           :9042
+    +--> cassandra-target           :9043
+    +--> zookeeper-smoke            :2181
            ^
            |
       migration source + rollback anchor
@@ -70,12 +72,12 @@ web-gs runtime (health + guest launch + gameplay canary)
 
 ## Release-Candidate Interpretation
 
-- `cassandra-target` is the runtime database for the refactored stack.
+- The current green baseline is still a hybrid rehearsal topology rather than a single tracked deploy asset.
 - `cassandra-legacy` remains online so migration parity stays provable and rollback stays low-risk.
 - The playable minimum is:
-  - target Cassandra
-  - ZooKeeper
-  - Kafka
+  - fullstack Cassandra
+  - fullstack ZooKeeper
+  - fullstack Kafka
   - static asset nginx
   - web-gs
-- The release-candidate topology is operationally simpler than the earlier scattered smoke layout, even though the validated Compose project id must remain lowercase: `refactored_versoin`.
+- Migration proof remains separate and authoritative until a production deployment topology is promoted and re-validated.

@@ -37,6 +37,8 @@ For the current production-track release candidate, the chosen copy tool is `cql
 - latest green status file:
   - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/status/latest.env`
 
+These migration-proof containers are separate from the `fullstacksmoke` Cassandra/ZooKeeper/Kafka services used by the playable web-gs rehearsal.
+
 ## Operator Procedure
 
 ### 1. Start Both Cassandra Clusters
