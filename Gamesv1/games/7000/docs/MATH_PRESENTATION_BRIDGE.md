@@ -113,3 +113,16 @@ Use these deterministic presets:
 
 These are intended for presentation/staging validation (line highlights, topper reactions, FX layering, win-tier flow) without waiting for random outcomes.
 
+## Runtime Control API (DevTools)
+
+When `MainScreen` is active, use:
+
+- `window.__game7000.math.state()`
+- `window.__game7000.math.setSource("provisional")`
+- `window.__game7000.math.setPreset("collect")`
+- `window.__game7000.math.setMode("buy75")`
+- `window.__game7000.math.clearPreset()`
+- `window.__game7000.math.spinPreset("jackpot")`
+- `window.__game7000.math.spinPreset("mega", "buy300")`
+
+These helpers update query params in-place (`history.replaceState`) and then drive the existing spin pipeline, so feature choreography can be tested without page reload.

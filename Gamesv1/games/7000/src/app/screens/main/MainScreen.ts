@@ -124,6 +124,24 @@ const buildPreviewPresentation = (): RoundPresentationModel => ({
   },
 });
 
+const SUPPORTED_MATH_PRESETS = [
+  "normal",
+  "collect",
+  "boost",
+  "bonus",
+  "jackpot",
+  "mega",
+] as const;
+type SupportedMathPreset = (typeof SUPPORTED_MATH_PRESETS)[number];
+const SUPPORTED_MATH_MODES = ["base", "buy75", "buy200", "buy300"] as const;
+type SupportedMathMode = (typeof SUPPORTED_MATH_MODES)[number];
+
+const isSupportedMathPreset = (value: string): value is SupportedMathPreset =>
+  (SUPPORTED_MATH_PRESETS as readonly string[]).includes(value);
+
+const isSupportedMathMode = (value: string): value is SupportedMathMode =>
+  (SUPPORTED_MATH_MODES as readonly string[]).includes(value);
+
 export class MainScreen extends Container {
   public static assetBundles = ["main"];
 
@@ -444,8 +462,163 @@ export class MainScreen extends Container {
       buy: () => this.handleBuyFeature(),
       autoplay: () => this.toggleAutoplay(),
       turbo: () => this.toggleTurbo(),
+      math: {
+        presets: [...SUPPORTED_MATH_PRESETS],
+        modes: [...SUPPORTED_MATH_MODES],
+        state: () => this.readMathControlState(),
+        setSource: (source: unknown) => this.setMathSourceControl(source),
+        setPreset: (preset: unknown) => this.setMathPresetControl(preset),
+        setMode: (mode: unknown) => this.setMathModeControl(mode),
+        clearPreset: () => this.setMathPresetControl(null),
+        spinPreset: async (preset: unknown, mode?: unknown) =>
+          this.spinWithMathControls(preset, mode),
+        help: () => ({
+          spin: "window.__game7000.math.spinPreset('collect')",
+          mode: "window.__game7000.math.setMode('buy75')",
+          source: "window.__game7000.math.setSource('provisional')",
+          state: "window.__game7000.math.state()",
+        }),
+      },
       screen: this,
     };
+  }
+
+  private readMathControlState(): {
+    source: string | null;
+    preset: string | null;
+    mode: string | null;
+    allowDevFallback: string | null;
+  } {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      source: params.get("mathSource"),
+      preset: params.get("mathPreset"),
+      mode: params.get("mathMode"),
+      allowDevFallback: params.get("allowDevFallback"),
+    };
+  }
+
+  private replaceSearchParams(mutator: (params: URLSearchParams) => void): void {
+    const params = new URLSearchParams(window.location.search);
+    mutator(params);
+    const nextQuery = params.toString();
+    const nextUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
+    window.history.replaceState({}, "", nextUrl);
+  }
+
+  private ensureProvisionalMathSourceParams(): void {
+    this.replaceSearchParams((params) => {
+      params.set("allowDevFallback", "1");
+      params.set("mathSource", "provisional");
+    });
+  }
+
+  private setMathSourceControl(source: unknown): {
+    ok: boolean;
+    state: ReturnType<MainScreen["readMathControlState"]>;
+    error?: string;
+  } {
+    if (source === null || source === undefined || source === "") {
+      this.replaceSearchParams((params) => {
+        params.delete("mathSource");
+      });
+      this.showStatus("MATH SOURCE CLEARED");
+      return { ok: true, state: this.readMathControlState() };
+    }
+
+    if (source !== "provisional") {
+      return {
+        ok: false,
+        state: this.readMathControlState(),
+        error: `Unsupported math source: ${String(source)}`,
+      };
+    }
+
+    this.ensureProvisionalMathSourceParams();
+    this.showStatus("MATH SOURCE: PROVISIONAL");
+    return { ok: true, state: this.readMathControlState() };
+  }
+
+  private setMathPresetControl(preset: unknown): {
+    ok: boolean;
+    state: ReturnType<MainScreen["readMathControlState"]>;
+    error?: string;
+  } {
+    if (preset === null || preset === undefined || preset === "") {
+      this.replaceSearchParams((params) => {
+        params.delete("mathPreset");
+      });
+      this.showStatus("MATH PRESET CLEARED");
+      return { ok: true, state: this.readMathControlState() };
+    }
+
+    if (typeof preset !== "string" || !isSupportedMathPreset(preset)) {
+      return {
+        ok: false,
+        state: this.readMathControlState(),
+        error: `Unsupported math preset: ${String(preset)}`,
+      };
+    }
+
+    this.ensureProvisionalMathSourceParams();
+    this.replaceSearchParams((params) => {
+      params.set("mathPreset", preset);
+    });
+    this.showStatus(`MATH PRESET: ${preset.toUpperCase()}`);
+    return { ok: true, state: this.readMathControlState() };
+  }
+
+  private setMathModeControl(mode: unknown): {
+    ok: boolean;
+    state: ReturnType<MainScreen["readMathControlState"]>;
+    error?: string;
+  } {
+    if (mode === null || mode === undefined || mode === "") {
+      this.replaceSearchParams((params) => {
+        params.delete("mathMode");
+      });
+      this.showStatus("MATH MODE CLEARED");
+      return { ok: true, state: this.readMathControlState() };
+    }
+
+    if (typeof mode !== "string" || !isSupportedMathMode(mode)) {
+      return {
+        ok: false,
+        state: this.readMathControlState(),
+        error: `Unsupported math mode: ${String(mode)}`,
+      };
+    }
+
+    this.ensureProvisionalMathSourceParams();
+    this.replaceSearchParams((params) => {
+      params.set("mathMode", mode);
+    });
+    this.showStatus(`MATH MODE: ${mode.toUpperCase()}`);
+    return { ok: true, state: this.readMathControlState() };
+  }
+
+  private async spinWithMathControls(
+    preset: unknown,
+    mode?: unknown,
+  ): Promise<{
+    ok: boolean;
+    state: ReturnType<MainScreen["readMathControlState"]>;
+    error?: string;
+  }> {
+    const presetResult = this.setMathPresetControl(preset);
+    if (!presetResult.ok) {
+      return presetResult;
+    }
+
+    if (mode !== undefined) {
+      const modeResult = this.setMathModeControl(mode);
+      if (!modeResult.ok) {
+        return modeResult;
+      }
+    }
+
+    await this.handleSpin();
+    return { ok: true, state: this.readMathControlState() };
   }
 
   private connectSpinHoldGesture(): void {
