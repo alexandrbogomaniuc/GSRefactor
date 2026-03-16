@@ -15,6 +15,20 @@ The working migration proof is:
 7. run the archiver against both clusters
 8. compare row proof + archiver success classification
 
+## Chosen Data Copy Strategy
+
+For the current production-track release candidate, the chosen copy tool is `cqlsh COPY`.
+
+### Why `cqlsh COPY`
+
+- it is the only row-copy path already proven by the current PASS/PASS smoke evidence
+- it fits the existing migration smoke pipeline without introducing a new operational dependency right before release
+- the current proof artifacts already show schema import plus row copy success on Cassandra 5.0.6
+
+### Tradeoff
+
+`cqlsh COPY` is not the fastest option for very large production datasets. If throughput becomes the blocking concern later, review `DSBulk` as a separate post-release hardening task instead of changing the release-candidate path now.
+
 ## Validated Runtime Inputs
 
 - legacy source node: `cassandra-legacy` on host port `9042`
@@ -32,7 +46,11 @@ The working migration proof is:
 
 Keep both running until migration proof and release validation are complete.
 
-### 2. Normalize Keyspace Replication
+### 2. Export Authoritative Schema
+
+Use legacy Cassandra as the authoritative source and export schema with `DESCRIBE KEYSPACE`.
+
+### 3. Normalize Keyspace Replication
 
 For the one-node smoke topology, keyspaces are normalized to:
 
@@ -42,7 +60,7 @@ For the one-node smoke topology, keyspaces are normalized to:
 
 This avoids false negatives caused by production replication settings in a one-node local environment.
 
-### 3. Sanitize Legacy Schema
+### 4. Sanitize Legacy Schema
 
 The tested path sanitizes schema differences before import into Cassandra 5.x:
 
@@ -52,19 +70,19 @@ The tested path sanitizes schema differences before import into Cassandra 5.x:
 
 The important rule is to change compatibility metadata only, not business data semantics.
 
-### 4. Apply Schema to Target
+### 5. Apply Schema to Target
 
 Apply the sanitized CQL to the target cluster before row copy.
 
-### 5. Copy Data
+### 6. Copy Data with `cqlsh COPY`
 
-The working smoke proof copies rows after schema import and then validates:
+The current proven path copies rows after schema import and then validates:
 
 - schema exists on target
 - sample row proof matches
 - archiver runs succeed on both clusters
 
-### 6. Validate PASS/PASS
+### 7. Validate PASS/PASS
 
 Run:
 

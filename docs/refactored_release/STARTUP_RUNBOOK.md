@@ -56,6 +56,34 @@ bash /Users/alexb/WorkspaceArchive/Dev_20260304/canonical/GSRefactor_canonical_2
 
 with runtime-smoke environment variables pointing at the legacy client and runtime output directories.
 
+## Required Runtime Configuration
+
+### Network aliases
+
+`webgs-smoke-fullstack` must resolve these aliases:
+
+- `fullstack-cassandra`
+- `fullstack-zookeeper`
+- `fullstack-kafka`
+
+### Required JVM flags
+
+The working runtime uses:
+
+```text
+-Dcassandra.hosts=fullstack-cassandra:9042
+-Dzookeeper.connect=fullstack-zookeeper:2181
+-Dzookeeper.hosts=fullstack-zookeeper:2181
+-Dkafka.hosts=fullstack-kafka:9092
+-Dkafka.bootstrap.servers=fullstack-kafka:9092
+```
+
+### Required mounts
+
+- patched WAR -> `/usr/local/tomcat/webapps/ROOT.war`
+- export bundle -> `/www/html/gs/ROOT/export`
+- html5 assets -> nginx `/usr/share/nginx/html/html5pc`
+
 ## Bring Up the Stack
 
 Start infrastructure first:
