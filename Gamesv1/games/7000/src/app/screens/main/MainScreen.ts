@@ -55,6 +55,7 @@ import { LightningArcFx } from "../../../game/fx/LightningArcFx";
 import {
   PaylineOverlay,
   type PaylineOverlayLine,
+  type PaylineOverlayTone,
 } from "../../../game/fx/PaylineOverlay";
 import { WinHighlight } from "../../../game/fx/WinHighlight";
 import { WinCounter } from "../../../game/ui/WinCounter";
@@ -685,26 +686,52 @@ export class MainScreen extends Container {
 
   private scheduleMathBridgeFeatureCues(
     mathBridgeHints: MathBridgePresentationHints | null,
+    lineCount: number,
   ): void {
     if (!mathBridgeHints) {
       return;
     }
 
-    const featureDelay = Math.max(0, mathBridgeHints.timingHints.featureStartDelayMs);
-    const lineDelay = Math.max(0, mathBridgeHints.timingHints.lineHighlightDelayMs);
+    const lineTiming = this.resolveLineSequenceTiming(mathBridgeHints, lineCount);
+    const featureDelay = Math.max(
+      Math.max(0, mathBridgeHints.timingHints.featureStartDelayMs),
+      lineTiming.sequenceEndDelayMs + 80,
+    );
+    const summaryDelay =
+      lineCount > 0
+        ? Math.max(lineTiming.delayMs, lineTiming.sequenceEndDelayMs - Math.round(lineTiming.durationMs * 0.4))
+        : Math.max(0, mathBridgeHints.timingHints.lineHighlightDelayMs);
 
     for (const cue of mathBridgeHints.eventTriggers) {
       if (cue.startsWith("round.reel.stop")) {
         continue;
       }
+      if (
+        (mathBridgeHints.triggers.boost || mathBridgeHints.triggers.bonus) &&
+        cue === "feature.collect.triggered"
+      ) {
+        continue;
+      }
+      if (
+        (mathBridgeHints.triggers.bonus || mathBridgeHints.triggers.jackpot) &&
+        cue === "feature.boost.triggered"
+      ) {
+        continue;
+      }
 
       let delay = featureDelay;
       if (cue === "overlay.totalSummary.update") {
-        delay = lineDelay;
+        delay = summaryDelay;
+      } else if (cue === "feature.collect.triggered") {
+        delay = featureDelay;
+      } else if (cue === "feature.boost.triggered") {
+        delay = featureDelay + 90;
+      } else if (cue === "feature.bonus.enter") {
+        delay = featureDelay + 170;
       } else if (cue === "feature.jackpot.attached") {
-        delay = featureDelay + 120;
+        delay = featureDelay + 250;
       } else if (cue === "overlay.winTier.enter") {
-        delay = featureDelay + 180;
+        delay = featureDelay + 330;
       }
 
       this.scheduleMathBridgeCue(cue, delay);
@@ -719,23 +746,88 @@ export class MainScreen extends Container {
       return;
     }
 
-    const delay = Math.max(0, mathBridgeHints.timingHints.lineHighlightDelayMs);
-    const duration = Math.max(280, mathBridgeHints.timingHints.lineHighlightDurationMs);
-    const gap = Math.min(120, Math.max(40, Math.round(duration * 0.12)));
-    const styleHook = mathBridgeHints.winTier === "none" ? "subtle" : "neon";
+    const timing = this.resolveLineSequenceTiming(mathBridgeHints, linePresentations.length);
+    const tone = this.resolveLineTone(mathBridgeHints);
 
     linePresentations.forEach((linePresentation, index) => {
-      const startDelay = delay + index * (duration + gap);
+      const startDelay = timing.delayMs + index * (timing.durationMs + timing.gapMs);
       const showTimeout = window.setTimeout(() => {
+        const styleHook = this.resolveLineStyleHook(mathBridgeHints, index, linePresentations.length);
         this.paylineHighlight.showWin(linePresentation.symbols, styleHook);
-        this.paylineOverlay.showLine(linePresentation, styleHook, duration);
+        this.paylineOverlay.showLine(linePresentation, {
+          durationMs: timing.durationMs,
+          sequenceCount: linePresentations.length,
+          sequenceIndex: index,
+          styleHook,
+          tone,
+        });
       }, startDelay);
       const hideTimeout = window.setTimeout(() => {
         this.paylineOverlay.clear();
         this.paylineHighlight.clear();
-      }, startDelay + duration);
+      }, startDelay + timing.durationMs);
       this.mathBridgeTimeouts.push(showTimeout, hideTimeout);
     });
+  }
+
+  private resolveLineSequenceTiming(
+    mathBridgeHints: MathBridgePresentationHints,
+    lineCount: number,
+  ): {
+    delayMs: number;
+    durationMs: number;
+    gapMs: number;
+    sequenceEndDelayMs: number;
+  } {
+    const delayMs = Math.max(0, mathBridgeHints.timingHints.lineHighlightDelayMs);
+    const durationMs = Math.max(360, mathBridgeHints.timingHints.lineHighlightDurationMs);
+    const gapMs = Math.min(180, Math.max(70, Math.round(durationMs * 0.18)));
+    const sequenceEndDelayMs =
+      lineCount > 0 ? delayMs + lineCount * durationMs + Math.max(0, lineCount - 1) * gapMs : delayMs;
+    return {
+      delayMs,
+      durationMs,
+      gapMs,
+      sequenceEndDelayMs,
+    };
+  }
+
+  private resolveLineTone(
+    mathBridgeHints: MathBridgePresentationHints,
+  ): PaylineOverlayTone {
+    if (mathBridgeHints.triggers.jackpot) {
+      return "jackpot";
+    }
+    if (mathBridgeHints.triggers.bonus) {
+      return "bonus";
+    }
+    if (mathBridgeHints.triggers.boost) {
+      return "boost";
+    }
+    if (mathBridgeHints.triggers.collect) {
+      return "collect";
+    }
+    return "standard";
+  }
+
+  private resolveLineStyleHook(
+    mathBridgeHints: MathBridgePresentationHints,
+    lineIndex: number,
+    lineCount: number,
+  ): string {
+    if (mathBridgeHints.triggers.jackpot) {
+      return "intense";
+    }
+    if (mathBridgeHints.triggers.boost || mathBridgeHints.triggers.bonus) {
+      return lineIndex === lineCount - 1 ? "intense" : "neon";
+    }
+    if (mathBridgeHints.triggers.collect) {
+      return "neon";
+    }
+    if (lineCount > 1 && lineIndex === lineCount - 1) {
+      return "neon";
+    }
+    return mathBridgeHints.winTier === "none" ? "subtle" : "neon";
   }
 
   private resolveTierStyleHook(tier: PresentationWinTier): string | undefined {
@@ -998,7 +1090,7 @@ export class MainScreen extends Container {
     const winAmount = presentation.winAmount;
     const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
 
-    this.scheduleMathBridgeFeatureCues(mathBridgeHints);
+    this.scheduleMathBridgeFeatureCues(mathBridgeHints, linePresentations.length);
     this.scheduleLineVisualization(mathBridgeHints, linePresentations);
 
     const vfxState = this.wowVfx.startWinPresentation({
@@ -1157,16 +1249,21 @@ export class MainScreen extends Container {
       (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
 
     if (cue === "focus-status-banner") {
-      this.showStatus("FEATURE EVENT");
+      this.showStatus("BOOST FEATURE");
       void this.lightningFx.play(machineWidth, machineHeight);
       this.visualChrome.triggerBoostPulse();
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.2);
       return;
     }
 
-    if (cue === "feature.collect.triggered" || cue === "collect-sweep") {
+    if (cue === "feature.collect.triggered") {
       this.showStatus("COLLECT FEATURE");
       this.visualChrome.triggerBoostPulse();
+      this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.44);
+      return;
+    }
+
+    if (cue === "collect-sweep") {
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.44);
       return;
     }

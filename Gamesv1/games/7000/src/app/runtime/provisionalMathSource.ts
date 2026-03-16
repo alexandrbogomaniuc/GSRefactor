@@ -291,9 +291,9 @@ const DONOR_REEL_STOP_BONUS_HOLD: [number, number, number] = [483, 567, 5000];
 const PRESET_OVERRIDES: Partial<Record<ProvisionalMathPreset, PresetOverride>> = {
   normal: {
     columns: [
-      [4, 1, 2, 3],
-      [0, 4, 2, 5],
-      [6, 1, 4, 0],
+      [4, 6, 5, 1],
+      [0, 4, 6, 5],
+      [2, 3, 4, 6],
     ],
   },
   collect: {
@@ -866,7 +866,7 @@ export class ProvisionalMathSource {
     }
 
     const animationCues = [...eventTriggers];
-    if (boostTriggered) {
+    if (boostTriggered && !bonusTriggered && !jackpotTriggered) {
       animationCues.push("focus-status-banner");
     }
     if (collectTriggered) {

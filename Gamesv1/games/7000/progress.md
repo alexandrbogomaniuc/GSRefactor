@@ -110,3 +110,13 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
   - fixed the payline callout payout formatting to use currency from minor units instead of raw minor integers.
   - widened donorlocal manifest discovery in `vite.config.ts` so `assetProvider=donorlocal` can validate against the first available local donor bundle in `/Users/alexb/Documents/Dev`, even when the active worktree does not contain the ignored donor manifest.
   - direct package validation: `corepack pnpm -C Gamesv1/games/7000 build` PASS after the donorlocal/preset follow-up pass.
+- 2026-03-16: Started beta5c win-choreography parity pass on branch `codex/qa/7000-beta5c-win-choreography-parity-20260316-1511`.
+  - converted the deterministic `normal` preset into a true multi-line QA case so line sequencing can be proven on donorlocal instead of inferred from single-line boards.
+  - rebuilt `PaylineOverlay.ts` into a richer donor-inspired banner system with sequence chips, line badges, feature labels, animated spark travel, and feature-specific tones (`standard`, `collect`, `boost`, `bonus`, `jackpot`).
+  - retimed `MainScreen.ts` so feature cues are staged after the line sequence window and lower-priority cues are suppressed when a stronger state is present (for example boost no longer collapses back into collect messaging, and bonus entry no longer inherits boost banner text).
+  - browser proof on donorlocal now shows:
+    - `normal` as a visible `2/2` multi-line sequence,
+    - `collect` as `COLLECT PAY`,
+    - `boost` as `BOOST STRIKE`,
+    - `jackpot` as `JACKPOT RUN`,
+    - `bonus` bonus-entry smoke as `HOLD & WIN` + `BONUS ENTRY`.
