@@ -1,0 +1,26 @@
+{
+  "gameId": 7000,
+  "specVersion": "0.3.0-provisional",
+  "certified": false,
+  "unit": "bet_multiplier",
+  "levels": {
+    "mini": 25,
+    "minor": 50,
+    "major": 150,
+    "grand": 1000
+  },
+  "triggerAssumptions": {
+    "sourceSymbolId": 9,
+    "selectionWeights": {
+      "mini": 70,
+      "minor": 22,
+      "major": 7,
+      "grand": 1
+    },
+    "status": "provisional"
+  },
+  "notes": [
+    "Multiplier levels are treated as verified product constraints for this sprint.",
+    "Actual jackpot trigger frequencies and tier weight tables remain provisional pending backend/certified math."
+  ]
+}

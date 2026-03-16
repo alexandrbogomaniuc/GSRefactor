@@ -1,0 +1,75 @@
+{
+  "gameId": 7000,
+  "specVersion": "0.3.0-provisional",
+  "certified": false,
+  "unit": "bet_multiplier_cost",
+  "tiers": [
+    {
+      "tier": 75,
+      "modeKey": "buy75",
+      "entryMode": "weighted_start",
+      "costMultiplier": 75,
+      "guaranteedBonusEntry": true,
+      "startingLockedSymbolRange": [4, 6],
+      "startingTypeWeights": {
+        "coin": 80,
+        "collector": 17,
+        "jackpot": 3
+      },
+      "bonusLandingChanceByRespinIndex": [0.24, 0.2, 0.17],
+      "jackpotTierWeightOverride": {
+        "mini": 72,
+        "minor": 21,
+        "major": 6,
+        "grand": 1
+      },
+      "status": "provisional"
+    },
+    {
+      "tier": 200,
+      "modeKey": "buy200",
+      "entryMode": "weighted_start",
+      "costMultiplier": 200,
+      "guaranteedBonusEntry": true,
+      "startingLockedSymbolRange": [6, 8],
+      "startingTypeWeights": {
+        "coin": 74,
+        "collector": 20,
+        "jackpot": 6
+      },
+      "bonusLandingChanceByRespinIndex": [0.26, 0.22, 0.18],
+      "jackpotTierWeightOverride": {
+        "mini": 66,
+        "minor": 24,
+        "major": 8,
+        "grand": 2
+      },
+      "status": "provisional"
+    },
+    {
+      "tier": 300,
+      "modeKey": "buy300",
+      "entryMode": "weighted_start",
+      "costMultiplier": 300,
+      "guaranteedBonusEntry": true,
+      "startingLockedSymbolRange": [8, 10],
+      "startingTypeWeights": {
+        "coin": 67,
+        "collector": 24,
+        "jackpot": 9
+      },
+      "bonusLandingChanceByRespinIndex": [0.29, 0.24, 0.2],
+      "jackpotTierWeightOverride": {
+        "mini": 60,
+        "minor": 26,
+        "major": 11,
+        "grand": 3
+      },
+      "status": "provisional"
+    }
+  ],
+  "notes": [
+    "These buy tables are intentionally provisional for design/simulation and are not certified production math.",
+    "Backend-certified buy-entry symbol composition can replace this file without changing runtime source-of-truth contracts."
+  ]
+}

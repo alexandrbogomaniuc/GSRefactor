@@ -1,0 +1,52 @@
+{
+  "gameId": 7000,
+  "specVersion": "0.3.0-provisional",
+  "certified": false,
+  "layout": {
+    "reels": 3,
+    "rows": 4
+  },
+  "orderStatus": "verified_in_repo_order",
+  "paylines": [
+    {
+      "lineId": 1,
+      "name": "TOP",
+      "rowsByReel": [0, 0, 0]
+    },
+    {
+      "lineId": 2,
+      "name": "UPPER_MID",
+      "rowsByReel": [1, 1, 1]
+    },
+    {
+      "lineId": 3,
+      "name": "LOWER_MID",
+      "rowsByReel": [2, 2, 2]
+    },
+    {
+      "lineId": 4,
+      "name": "BOTTOM",
+      "rowsByReel": [3, 3, 3]
+    },
+    {
+      "lineId": 5,
+      "name": "DIAGONAL_DOWN",
+      "rowsByReel": [0, 1, 2]
+    },
+    {
+      "lineId": 6,
+      "name": "DIAGONAL_DOWN_STEEP",
+      "rowsByReel": [1, 2, 3]
+    },
+    {
+      "lineId": 7,
+      "name": "DIAGONAL_UP",
+      "rowsByReel": [2, 1, 0]
+    },
+    {
+      "lineId": 8,
+      "name": "DIAGONAL_UP_STEEP",
+      "rowsByReel": [3, 2, 1]
+    }
+  ]
+}

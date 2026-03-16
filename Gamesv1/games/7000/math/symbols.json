@@ -1,0 +1,131 @@
+{
+  "gameId": 7000,
+  "specVersion": "0.3.0-provisional",
+  "certified": false,
+  "sourceOfTruth": "GS/fixture runtime outcomes remain authoritative",
+  "symbolIdModelVerified": true,
+  "symbols": [
+    {
+      "id": 0,
+      "key": "EGG",
+      "label": "EGG",
+      "class": "regular",
+      "linePays": true,
+      "collectParticipant": false,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 1,
+      "key": "CHERRIES",
+      "label": "CHERRIES",
+      "class": "regular",
+      "linePays": true,
+      "collectParticipant": false,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 2,
+      "key": "LEMON",
+      "label": "LEMON",
+      "class": "regular",
+      "linePays": true,
+      "collectParticipant": false,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 3,
+      "key": "ORANGE",
+      "label": "ORANGE",
+      "class": "regular",
+      "linePays": true,
+      "collectParticipant": false,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 4,
+      "key": "PLUM",
+      "label": "PLUM",
+      "class": "regular",
+      "linePays": true,
+      "collectParticipant": false,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 5,
+      "key": "BAR",
+      "label": "BAR",
+      "class": "regular",
+      "linePays": true,
+      "collectParticipant": false,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 6,
+      "key": "SEVEN",
+      "label": "SEVEN",
+      "class": "wild",
+      "linePays": true,
+      "collectParticipant": false,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 7,
+      "key": "COIN",
+      "label": "COIN",
+      "class": "multiplier",
+      "linePays": false,
+      "collectParticipant": true,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 8,
+      "key": "BOLT",
+      "label": "BOLT",
+      "class": "collector",
+      "linePays": false,
+      "collectParticipant": true,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 9,
+      "key": "ROOSTER",
+      "label": "ROOSTER",
+      "class": "jackpot",
+      "linePays": false,
+      "collectParticipant": true,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
+    }
+  ],
+  "wildSubstitution": {
+    "symbolId": 6,
+    "substitutesForSymbolIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "status": "provisional"
+  }
+}

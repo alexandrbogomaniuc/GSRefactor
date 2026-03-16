@@ -1,0 +1,12 @@
+{
+  "gameId": 7000,
+  "specVersion": "0.3.0-provisional",
+  "certified": false,
+  "unit": "bet_multiplier",
+  "thresholds": {
+    "big": 10,
+    "huge": 25,
+    "mega": 50
+  },
+  "status": "aligned_with_current_runtime_intent"
+}

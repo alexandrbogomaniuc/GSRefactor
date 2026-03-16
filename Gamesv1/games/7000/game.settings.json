@@ -76,9 +76,9 @@
     },
     "mathModels": [
       {
-        "id": "M1",
-        "rtp": 96.54,
-        "label": "Default"
+        "id": "7000-math-provisional",
+        "rtp": 90.05,
+        "label": "Provisional v0.3.0"
       }
     ],
     "volatility": "medium-high",

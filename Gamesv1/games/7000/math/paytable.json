@@ -1,0 +1,72 @@
+{
+  "gameId": 7000,
+  "specVersion": "0.3.0-provisional",
+  "certified": false,
+  "unit": "bet_multiplier",
+  "lineWinRule": {
+    "kind": "left_to_right",
+    "minMatchCount": 3,
+    "reelCount": 3,
+    "stackedPaylines": 8
+  },
+  "linePayouts": {
+    "0": {
+      "symbolKey": "EGG",
+      "pays": {
+        "3": 0.4
+      }
+    },
+    "1": {
+      "symbolKey": "CHERRIES",
+      "pays": {
+        "3": 0.55
+      }
+    },
+    "2": {
+      "symbolKey": "LEMON",
+      "pays": {
+        "3": 0.7
+      }
+    },
+    "3": {
+      "symbolKey": "ORANGE",
+      "pays": {
+        "3": 0.95
+      }
+    },
+    "4": {
+      "symbolKey": "PLUM",
+      "pays": {
+        "3": 1.35
+      }
+    },
+    "5": {
+      "symbolKey": "BAR",
+      "pays": {
+        "3": 2.7
+      }
+    },
+    "6": {
+      "symbolKey": "SEVEN",
+      "pays": {
+        "3": 5.4
+      }
+    }
+  },
+  "nonLinePayouts": {
+    "coinMultiplierPool": {
+      "symbolId": 7,
+      "possibleMultipliers": [1, 2, 3, 4, 5, 7],
+      "status": "provisional"
+    },
+    "jackpotPool": {
+      "symbolId": 9,
+      "sourceFile": "jackpots.json",
+      "status": "provisional"
+    }
+  },
+  "notes": [
+    "Symbol IDs are verified from runtime config.",
+    "Payout values are provisional and for simulation/design only until certified math package is supplied."
+  ]
+}

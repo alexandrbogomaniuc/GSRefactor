@@ -1,8 +1,27 @@
 {
-  "id": "7000-math-default",
-  "modelVersion": "0.1.0-stub",
-  "rtp": 96.02,
-  "volatility": "high",
+  "id": "7000-math-provisional",
+  "modelVersion": "0.3.0-provisional",
+  "status": "provisional_uncertified",
   "certified": false,
-  "source": "replace-with-certified-crazy-rooster-math-package-before-production"
+  "rtpTarget": 90.05,
+  "rtpEstimateMode": "provisional_simulation_base_mode",
+  "volatility": "medium-high",
+  "possibleMaxWinMultiplier": 5000,
+  "capWinMultiplier": 10000,
+  "sourceOfTruth": "GS/fixture runtime outcomes",
+  "simulationOnly": true,
+  "tables": {
+    "symbols": "math/symbols.json",
+    "paylines": "math/paylines.json",
+    "paytable": "math/paytable.json",
+    "reelModel": "math/reel-strips-or-weights.json",
+    "features": "math/feature-tables.json",
+    "buyBonus": "math/buy-bonus-tables.json",
+    "jackpots": "math/jackpots.json",
+    "winThresholds": "math/win-thresholds.json"
+  },
+  "notes": [
+    "This package is simulation and design support only.",
+    "Replace with certified backend package before production math sign-off."
+  ]
 }

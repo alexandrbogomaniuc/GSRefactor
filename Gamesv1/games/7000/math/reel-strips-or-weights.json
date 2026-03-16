@@ -1,0 +1,60 @@
+{
+  "gameId": 7000,
+  "specVersion": "0.3.0-provisional",
+  "certified": false,
+  "distributionMode": "weights_provisional",
+  "notes": [
+    "Exact donor reel strips are not yet certified in this repository.",
+    "These weights are provisional and chosen for internal simulation/design balancing."
+  ],
+  "reels": [
+    {
+      "reelIndex": 0,
+      "totalWeight": 100,
+      "symbolWeights": {
+        "0": 16,
+        "1": 15,
+        "2": 13,
+        "3": 12,
+        "4": 11,
+        "5": 8,
+        "6": 6,
+        "7": 11,
+        "8": 6,
+        "9": 2
+      }
+    },
+    {
+      "reelIndex": 1,
+      "totalWeight": 100,
+      "symbolWeights": {
+        "0": 16,
+        "1": 14,
+        "2": 13,
+        "3": 12,
+        "4": 12,
+        "5": 8,
+        "6": 6,
+        "7": 11,
+        "8": 6,
+        "9": 2
+      }
+    },
+    {
+      "reelIndex": 2,
+      "totalWeight": 100,
+      "symbolWeights": {
+        "0": 17,
+        "1": 14,
+        "2": 13,
+        "3": 12,
+        "4": 12,
+        "5": 8,
+        "6": 6,
+        "7": 10,
+        "8": 7,
+        "9": 2
+      }
+    }
+  ]
+}

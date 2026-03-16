@@ -1,0 +1,55 @@
+{
+  "gameId": 7000,
+  "specVersion": "0.3.0-provisional",
+  "certified": false,
+  "baseGame": {
+    "bonusTrigger": {
+      "name": "hold_and_win_trigger",
+      "rule": "trigger when 6 or more bonus-family symbols appear on the 3x4 board",
+      "bonusFamilySymbolIds": [7, 8, 9],
+      "status": "provisional"
+    },
+    "collectRules": {
+      "collectorSymbolId": 8,
+      "multiplierSymbolId": 7,
+      "rule": "collector adds currently visible coin multipliers into the running bonus total",
+      "status": "provisional"
+    },
+    "boostRules": {
+      "name": "lightning_boost_overlay",
+      "effect": "presentation and pacing boost only, no direct payout by itself in this provisional model",
+      "status": "provisional"
+    }
+  },
+  "holdAndWinBonus": {
+    "entrySpins": 3,
+    "resetToThreeOnNewLock": true,
+    "lockedSymbolsPersist": true,
+    "maxGridSymbols": 12,
+    "newSymbolChanceByRespinIndex": [0.2, 0.18, 0.16],
+    "newBonusSymbolWeights": {
+      "coin": 82,
+      "collector": 18,
+      "jackpot": 0.8
+    },
+    "coinValueMultipliers": [1, 2, 3, 4, 5, 7],
+    "jackpotSymbolId": 9,
+    "jackpotSource": "jackpots.json",
+    "status": "provisional"
+  },
+  "jackpotTriggerLogic": {
+    "rule": "each jackpot symbol resolved in bonus awards one jackpot tier outcome",
+    "tierSelectionWeights": {
+      "mini": 92,
+      "minor": 7,
+      "major": 0.9,
+      "grand": 0.1
+    },
+    "status": "provisional"
+  },
+  "unresolvedItems": [
+    "Certified donor trigger density by reel-stop state is not yet available.",
+    "Certified hold-and-win per-respin landing probabilities are not yet available.",
+    "Certified jackpot-tier selection table per mode (base vs buy tiers) is not yet available."
+  ]
+}
