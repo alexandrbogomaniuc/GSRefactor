@@ -52,6 +52,10 @@ import {
 } from "../../../game/config/CrazyRoosterGameConfig.ts";
 import { ParticleBurst } from "../../../game/fx/ParticleBurst";
 import { LightningArcFx } from "../../../game/fx/LightningArcFx";
+import {
+  PaylineOverlay,
+  type PaylineOverlayLine,
+} from "../../../game/fx/PaylineOverlay";
 import { WinHighlight } from "../../../game/fx/WinHighlight";
 import { WinCounter } from "../../../game/ui/WinCounter";
 import { Beta3VisualChrome } from "./Beta3VisualChrome";
@@ -62,6 +66,14 @@ type PendingRoundResolution = {
   presentation: RoundPresentationModel;
   featureFrame: FeatureFrame;
   mathBridgeHints: MathBridgePresentationHints | null;
+};
+
+type HighlightSymbolLike = {
+  getGlobalPosition: () => { x: number; y: number };
+};
+
+type ResolvedLinePresentation = PaylineOverlayLine & {
+  symbols: HighlightSymbolLike[];
 };
 
 type HudButtonHandle = {
@@ -162,6 +174,8 @@ export class MainScreen extends Container {
   private readonly visualChrome = new Beta3VisualChrome();
   private readonly slotMachine = new CrazyRoosterSlotMachine(resolveProviderSymbolRoot());
   private readonly lightningFx = new LightningArcFx();
+  private readonly paylineOverlay = new PaylineOverlay();
+  private readonly paylineHighlight = new WinHighlight();
   private readonly winHighlight = new WinHighlight();
   private readonly particleBurst = new ParticleBurst();
   private readonly winCounter = new WinCounter();
@@ -288,6 +302,8 @@ export class MainScreen extends Container {
     this.reelsLayer.addChild(this.visualChrome);
     this.reelsLayer.addChild(this.slotMachine);
     this.fxLayer.addChild(this.lightningFx);
+    this.fxLayer.addChild(this.paylineOverlay);
+    this.fxLayer.addChild(this.paylineHighlight);
     this.fxLayer.addChild(this.winHighlight);
     this.fxLayer.addChild(this.particleBurst);
 
@@ -343,6 +359,9 @@ export class MainScreen extends Container {
     this.clearSpinHoldTimeout();
     this.clearMathBridgeTimeouts();
     this.lightningFx.clear();
+    this.paylineOverlay.clear();
+    this.paylineHighlight.clear();
+    this.debugOverlay.setMathBridgeSummary(null);
   }
 
   public resize(width: number, height: number): void {
@@ -660,6 +679,8 @@ export class MainScreen extends Container {
         window.clearTimeout(timeout);
       }
     }
+    this.paylineOverlay.clear();
+    this.paylineHighlight.clear();
   }
 
   private scheduleMathBridgeFeatureCues(
@@ -690,27 +711,31 @@ export class MainScreen extends Container {
     }
   }
 
-  private scheduleLineHighlight(
+  private scheduleLineVisualization(
     mathBridgeHints: MathBridgePresentationHints | null,
-    winSymbols: Array<{ getGlobalPosition: () => { x: number; y: number } }>,
+    linePresentations: ResolvedLinePresentation[],
   ): void {
-    if (!mathBridgeHints || mathBridgeHints.lineWins.length === 0 || winSymbols.length === 0) {
+    if (!mathBridgeHints || linePresentations.length === 0) {
       return;
     }
 
     const delay = Math.max(0, mathBridgeHints.timingHints.lineHighlightDelayMs);
-    const duration = Math.max(150, mathBridgeHints.timingHints.lineHighlightDurationMs);
+    const duration = Math.max(280, mathBridgeHints.timingHints.lineHighlightDurationMs);
+    const gap = Math.min(120, Math.max(40, Math.round(duration * 0.12)));
     const styleHook = mathBridgeHints.winTier === "none" ? "subtle" : "neon";
-    const showTimeout = window.setTimeout(() => {
-      this.winHighlight.showWin(winSymbols, styleHook);
+
+    linePresentations.forEach((linePresentation, index) => {
+      const startDelay = delay + index * (duration + gap);
+      const showTimeout = window.setTimeout(() => {
+        this.paylineHighlight.showWin(linePresentation.symbols, styleHook);
+        this.paylineOverlay.showLine(linePresentation, styleHook, duration);
+      }, startDelay);
       const hideTimeout = window.setTimeout(() => {
-        if (!this.isPresentingWin) {
-          this.winHighlight.clear();
-        }
-      }, duration);
-      this.mathBridgeTimeouts.push(hideTimeout);
-    }, delay);
-    this.mathBridgeTimeouts.push(showTimeout);
+        this.paylineOverlay.clear();
+        this.paylineHighlight.clear();
+      }, startDelay + duration);
+      this.mathBridgeTimeouts.push(showTimeout, hideTimeout);
+    });
   }
 
   private resolveTierStyleHook(tier: PresentationWinTier): string | undefined {
@@ -861,6 +886,9 @@ export class MainScreen extends Container {
     this.isSpinning = true;
     this.pendingRound = null;
     this.winHighlight.clear();
+    this.paylineHighlight.clear();
+    this.paylineOverlay.clear();
+    this.debugOverlay.setMathBridgeSummary(null);
     this.clearAutoplayTimeout();
 
     const requestTurbo = this.turboSelected || this.holdTurboRequested;
@@ -894,6 +922,15 @@ export class MainScreen extends Container {
     mathBridgeHints: MathBridgePresentationHints | null,
   ): void {
     this.clearMathBridgeTimeouts();
+    this.debugOverlay.setMathBridgeSummary(
+      mathBridgeHints
+        ? {
+            lineIds: mathBridgeHints.lineWins.map((line) => line.lineId),
+            lineMultipliers: mathBridgeHints.lineWins.map((line) => line.multiplier),
+            totalWinMultiplier: mathBridgeHints.totalWinMultiplier,
+          }
+        : null,
+    );
     const featureFrame = this.featureModules.resolve(presentation);
     this.pendingRound = {
       presentation,
@@ -957,11 +994,12 @@ export class MainScreen extends Container {
     this.showStatus(formatMessages(mergedMessages));
 
     const winSymbols = this.resolveWinningSymbols(presentation, mathBridgeHints);
+    const linePresentations = this.resolveLinePresentations(mathBridgeHints);
     const winAmount = presentation.winAmount;
     const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
 
     this.scheduleMathBridgeFeatureCues(mathBridgeHints);
-    this.scheduleLineHighlight(mathBridgeHints, winSymbols);
+    this.scheduleLineVisualization(mathBridgeHints, linePresentations);
 
     const vfxState = this.wowVfx.startWinPresentation({
       winAmountMinor: winAmount,
@@ -1040,6 +1078,45 @@ export class MainScreen extends Container {
     return reels
       .map((reel) => reel.getVisibleSymbols()[Math.min(1, CRAZY_ROOSTER_LAYOUT.rowCount - 1)])
       .filter(Boolean);
+  }
+
+  private resolveLinePresentations(
+    mathBridgeHints: MathBridgePresentationHints | null,
+  ): ResolvedLinePresentation[] {
+    if (!mathBridgeHints || mathBridgeHints.lineWins.length === 0) {
+      return [];
+    }
+
+    const reels = this.slotMachine.getReels();
+    return mathBridgeHints.lineWins
+      .map((lineWin) => {
+        const symbols = lineWin.positions
+          .map((position) => reels[position.reelIndex]?.getVisibleSymbols()[position.rowIndex])
+          .filter(Boolean) as HighlightSymbolLike[];
+
+        if (symbols.length === 0) {
+          return null;
+        }
+
+        return {
+          lineId: lineWin.lineId,
+          symbolId: lineWin.symbolId,
+          multiplier: lineWin.multiplier,
+          amountMinor: lineWin.amountMinor,
+          points: symbols.map((symbol) => this.resolveFxLayerCenter(symbol)),
+          symbols,
+        };
+      })
+      .filter((entry): entry is ResolvedLinePresentation => Boolean(entry));
+  }
+
+  private resolveFxLayerCenter(symbol: HighlightSymbolLike): { x: number; y: number } {
+    const globalPoint = symbol.getGlobalPosition();
+    const localPoint = this.fxLayer.toLocal(globalPoint);
+    return {
+      x: localPoint.x + CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5,
+      y: localPoint.y + CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5,
+    };
   }
 
   private applyDynamicControlVisibility(featureFrame: FeatureFrame): void {
@@ -1169,6 +1246,9 @@ export class MainScreen extends Container {
   private applyPreviewState(): void {
     const preview = buildPreviewPresentation();
     this.slotMachine.setPresentationColumns(preview.reels.stopColumns);
+    this.paylineOverlay.clear();
+    this.paylineHighlight.clear();
+    this.debugOverlay.setMathBridgeSummary(null);
     const featureFrame = this.featureModules.resolve(preview);
     this.applyDynamicControlVisibility(featureFrame);
     PresentationStateStore.patch({
@@ -1205,6 +1285,8 @@ export class MainScreen extends Container {
     skipped = false,
   ): void {
     this.wowVfx.finishWinPresentation();
+    this.paylineOverlay.clear();
+    this.paylineHighlight.clear();
     this.isPresentingWin = false;
     PresentationStateStore.patch({
       isPresentingWin: false,

@@ -127,6 +127,9 @@ export type MathBridgePresentationHints = {
   eventTriggers: string[];
   timingHints: ProvisionalMathTimingHints;
   jackpotTier: ProvisionalJackpotTier | null;
+  lineWinMultiplier: number;
+  bonusWinMultiplier: number;
+  totalWinMultiplier: number;
 };
 
 export type ProvisionalMathAdaptedResult = {
@@ -138,11 +141,7 @@ export type ProvisionalMathAdaptedResult = {
   animationCues: string[];
   counters: Record<string, unknown>;
   labels: Record<string, string>;
-  mathBridge: MathBridgePresentationHints & {
-    lineWinMultiplier: number;
-    bonusWinMultiplier: number;
-    totalWinMultiplier: number;
-  };
+  mathBridge: MathBridgePresentationHints;
 };
 
 type NextOutcomeInput = {
@@ -289,29 +288,36 @@ const BASE_BONUS_TRIGGER_COUNT = 6;
 const DONOR_REEL_STOP_NORMAL: [number, number, number] = [483, 567, 650];
 const DONOR_REEL_STOP_BONUS_HOLD: [number, number, number] = [483, 567, 5000];
 
-const PRESET_OVERRIDES: Record<Exclude<ProvisionalMathPreset, "normal">, PresetOverride> = {
+const PRESET_OVERRIDES: Partial<Record<ProvisionalMathPreset, PresetOverride>> = {
+  normal: {
+    columns: [
+      [4, 1, 2, 3],
+      [0, 4, 2, 5],
+      [6, 1, 4, 0],
+    ],
+  },
   collect: {
     columns: [
-      [8, 1, 2, 3],
-      [7, 5, 2, 4],
-      [0, 7, 3, 1],
+      [1, 3, 5, 8],
+      [0, 5, 4, 2],
+      [5, 1, 3, 7],
     ],
     forceCollect: true,
   },
   boost: {
     columns: [
-      [8, 7, 2, 3],
-      [8, 1, 7, 4],
-      [2, 8, 3, 0],
+      [1, 6, 3, 8],
+      [0, 2, 6, 8],
+      [7, 1, 4, 6],
     ],
     forceCollect: true,
     forceBoost: true,
   },
   bonus: {
     columns: [
-      [8, 7, 9, 2],
-      [7, 8, 9, 1],
-      [7, 8, 2, 3],
+      [6, 8, 7, 1],
+      [0, 6, 8, 7],
+      [7, 3, 6, 8],
     ],
     forceCollect: true,
     forceBoost: true,
@@ -319,9 +325,9 @@ const PRESET_OVERRIDES: Record<Exclude<ProvisionalMathPreset, "normal">, PresetO
   },
   jackpot: {
     columns: [
-      [9, 7, 8, 2],
-      [8, 9, 7, 1],
-      [7, 8, 9, 3],
+      [9, 8, 3, 6],
+      [8, 2, 6, 7],
+      [7, 6, 9, 4],
     ],
     forceCollect: true,
     forceBoost: true,
@@ -754,8 +760,7 @@ export class ProvisionalMathSource {
 
   public nextOutcome(input: NextOutcomeInput): ProvisionalMathOutcome {
     const preset = input.requestedPreset ?? "normal";
-    const presetOverride =
-      preset === "normal" ? null : PRESET_OVERRIDES[preset];
+    const presetOverride = PRESET_OVERRIDES[preset] ?? null;
     const mode = presetOverride?.modeOverride ?? input.mode;
     const totalBetMinor = Math.max(1, Math.round(input.totalBetMinor));
     const columns = normalizeColumns(

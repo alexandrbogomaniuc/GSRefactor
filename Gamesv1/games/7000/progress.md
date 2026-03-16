@@ -101,3 +101,12 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
     - `docs/_visual_proof/preloader-lock-2026-03-10/desktop-v5-aligned.png`
     - `docs/_visual_proof/preloader-lock-2026-03-10/portrait-v5-aligned.png`
   - intent: prevent future passes from drifting the approved preloader layout/branding; enable one-file restore.
+- 2026-03-16: Started beta5b donorlocal line-visualization pass on branch `codex/qa/7000-beta5b-line-visualization-20260316-1428`.
+  - added a dedicated payline presentation layer in `src/game/fx/PaylineOverlay.ts` so math-driven line wins can draw traced donor-style paths and payout/multiplier callouts independently of the heavy-win `WowVfxOrchestrator` path.
+  - widened math-bridge hint parsing so `lineWinMultiplier`, `bonusWinMultiplier`, and `totalWinMultiplier` survive into `MainScreen` and can feed dev QA status.
+  - updated `MainScreen.ts` to schedule sequential line visualization from `mathBridge.lineWins`, pair it with a dedicated symbol-highlight layer, and clear it safely across reset/spin/win-finish transitions.
+  - extended `DebugOverlay.ts` with a dev-only math summary strip (`line ids`, `line multipliers`, `total win multiplier`) that appears when dev fallback / provisional math is active.
+  - upgraded the deterministic preset boards so `normal`, `collect`, `boost`, `bonus`, and `jackpot` all produce explicit line wins with distinct payline shapes for donorlocal QA.
+  - fixed the payline callout payout formatting to use currency from minor units instead of raw minor integers.
+  - widened donorlocal manifest discovery in `vite.config.ts` so `assetProvider=donorlocal` can validate against the first available local donor bundle in `/Users/alexb/Documents/Dev`, even when the active worktree does not contain the ignored donor manifest.
+  - direct package validation: `corepack pnpm -C Gamesv1/games/7000 build` PASS after the donorlocal/preset follow-up pass.

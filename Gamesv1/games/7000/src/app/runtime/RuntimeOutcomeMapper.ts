@@ -49,6 +49,9 @@ export const readMathBridgeHints = (
   const mode = asString(bridge.mode);
   const preset = asString(bridge.preset);
   const winTier = asString(bridge.winTier);
+  const lineWinMultiplier = asNumber(bridge.lineWinMultiplier) ?? 0;
+  const bonusWinMultiplier = asNumber(bridge.bonusWinMultiplier) ?? 0;
+  const totalWinMultiplier = asNumber(bridge.totalWinMultiplier) ?? 0;
   if (
     source !== "provisional" ||
     !mode ||
@@ -143,6 +146,9 @@ export const readMathBridgeHints = (
       coinFlyDurationMs: asNumber(timingHintsRaw.coinFlyDurationMs) ?? 880,
     },
     jackpotTier: asString(bridge.jackpotTier) as MathBridgePresentationHints["jackpotTier"],
+    lineWinMultiplier,
+    bonusWinMultiplier,
+    totalWinMultiplier,
   };
 };
 
