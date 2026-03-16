@@ -1,0 +1,37 @@
+{
+  "gameId": 7000,
+  "packageVersion": "0.3.0-provisional",
+  "certified": false,
+  "startedAt": "2026-03-16T10:57:08.724Z",
+  "seed": 700016,
+  "roundsPerMode": 25000,
+  "sourceOfTruthNote": "Simulation only. GS/fixture runtime remains authoritative for production outcomes.",
+  "modes": {
+    "base": {
+      "mode": "base",
+      "rounds": 25000,
+      "costPerRoundMultiplier": 1,
+      "rtpPercent": 96.932,
+      "hitFrequencyPercent": 27.276,
+      "bonusFrequencyPercent": 1.62,
+      "jackpotFrequencyPercent": 0.852,
+      "averagePayoutMultiplier": 0.969,
+      "averageWinOnHitMultiplier": 3.554,
+      "maxObservedWinMultiplier": 204.96,
+      "tierDistribution": {
+        "none": 18181,
+        "small": 6422,
+        "big": 83,
+        "huge": 193,
+        "mega": 121
+      },
+      "jackpotTierHits": {
+        "mini": 265,
+        "minor": 20,
+        "major": 2,
+        "grand": 0
+      }
+    }
+  },
+  "finishedAt": "2026-03-16T10:57:08.878Z"
+}

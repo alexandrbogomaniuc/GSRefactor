@@ -25,7 +25,12 @@ import {
   WowVfxOrchestrator,
 } from "@gamesv1/ui-kit";
 
-import { gsRuntimeClient, mapPlayRoundToPresentation } from "../../runtime";
+import {
+  gsRuntimeClient,
+  mapPlayRoundToPresentation,
+  readMathBridgeHints,
+  type MathBridgePresentationHints,
+} from "../../runtime";
 import {
   PresentationStateStore,
   ResolvedRuntimeConfigStore,
@@ -56,6 +61,7 @@ import { HeroHudChrome } from "./HeroHudChrome";
 type PendingRoundResolution = {
   presentation: RoundPresentationModel;
   featureFrame: FeatureFrame;
+  mathBridgeHints: MathBridgePresentationHints | null;
 };
 
 type HudButtonHandle = {
@@ -188,6 +194,7 @@ export class MainScreen extends Container {
   private currentWinPresentationTimeout: number | null = null;
   private autoplayTimeout: number | null = null;
   private spinHoldTimeout: number | null = null;
+  private readonly mathBridgeTimeouts: number[] = [];
   private lastKnownMasterVolume = 0.8;
   private pendingRound: PendingRoundResolution | null = null;
 
@@ -316,6 +323,7 @@ export class MainScreen extends Container {
     this.clearAutoplayTimeout();
     this.clearWinPresentationTimeout();
     this.clearSpinHoldTimeout();
+    this.clearMathBridgeTimeouts();
     this.lightningFx.clear();
   }
 
@@ -419,6 +427,7 @@ export class MainScreen extends Container {
     this.clearAutoplayTimeout();
     this.clearWinPresentationTimeout();
     this.clearSpinHoldTimeout();
+    this.clearMathBridgeTimeouts();
   }
 
   public blur(): void {
@@ -462,6 +471,73 @@ export class MainScreen extends Container {
       window.clearTimeout(this.spinHoldTimeout);
       this.spinHoldTimeout = null;
     }
+  }
+
+  private scheduleMathBridgeCue(cue: string, delayMs: number): void {
+    const timeout = window.setTimeout(() => {
+      this.applyAnimationCue(cue);
+    }, Math.max(0, delayMs));
+    this.mathBridgeTimeouts.push(timeout);
+  }
+
+  private clearMathBridgeTimeouts(): void {
+    while (this.mathBridgeTimeouts.length > 0) {
+      const timeout = this.mathBridgeTimeouts.pop();
+      if (timeout !== undefined) {
+        window.clearTimeout(timeout);
+      }
+    }
+  }
+
+  private scheduleMathBridgeFeatureCues(
+    mathBridgeHints: MathBridgePresentationHints | null,
+  ): void {
+    if (!mathBridgeHints) {
+      return;
+    }
+
+    const featureDelay = Math.max(0, mathBridgeHints.timingHints.featureStartDelayMs);
+    const lineDelay = Math.max(0, mathBridgeHints.timingHints.lineHighlightDelayMs);
+
+    for (const cue of mathBridgeHints.eventTriggers) {
+      if (cue.startsWith("round.reel.stop")) {
+        continue;
+      }
+
+      let delay = featureDelay;
+      if (cue === "overlay.totalSummary.update") {
+        delay = lineDelay;
+      } else if (cue === "feature.jackpot.attached") {
+        delay = featureDelay + 120;
+      } else if (cue === "overlay.winTier.enter") {
+        delay = featureDelay + 180;
+      }
+
+      this.scheduleMathBridgeCue(cue, delay);
+    }
+  }
+
+  private scheduleLineHighlight(
+    mathBridgeHints: MathBridgePresentationHints | null,
+    winSymbols: Array<{ getGlobalPosition: () => { x: number; y: number } }>,
+  ): void {
+    if (!mathBridgeHints || mathBridgeHints.lineWins.length === 0 || winSymbols.length === 0) {
+      return;
+    }
+
+    const delay = Math.max(0, mathBridgeHints.timingHints.lineHighlightDelayMs);
+    const duration = Math.max(150, mathBridgeHints.timingHints.lineHighlightDurationMs);
+    const styleHook = mathBridgeHints.winTier === "none" ? "subtle" : "neon";
+    const showTimeout = window.setTimeout(() => {
+      this.winHighlight.showWin(winSymbols, styleHook);
+      const hideTimeout = window.setTimeout(() => {
+        if (!this.isPresentingWin) {
+          this.winHighlight.clear();
+        }
+      }, duration);
+      this.mathBridgeTimeouts.push(hideTimeout);
+    }, delay);
+    this.mathBridgeTimeouts.push(showTimeout);
   }
 
   private resolveTierStyleHook(tier: PresentationWinTier): string | undefined {
@@ -587,7 +663,12 @@ export class MainScreen extends Container {
       });
 
       const timing = this.animationPolicy.resolveSpinTiming(false);
-      this.queueRuntimeEnvelope(mapPlayRoundToPresentation(response), timing);
+      const mathBridgeHints = readMathBridgeHints(response);
+      this.queueRuntimeEnvelope(
+        mapPlayRoundToPresentation(response),
+        timing,
+        mathBridgeHints,
+      );
       this.showStatus(`${tier.label} TRIGGERED`);
     } catch (error) {
       this.showStatus(`BUY FEATURE FAILED: ${String(error)}`);
@@ -617,7 +698,12 @@ export class MainScreen extends Container {
 
     try {
       const round = await gsRuntimeClient.playround(selectedBet);
-      this.queueRuntimeEnvelope(mapPlayRoundToPresentation(round), timing);
+      const mathBridgeHints = readMathBridgeHints(round);
+      this.queueRuntimeEnvelope(
+        mapPlayRoundToPresentation(round),
+        timing,
+        mathBridgeHints,
+      );
     } catch (error) {
       this.isSpinning = false;
       this.pendingRound = null;
@@ -632,12 +718,32 @@ export class MainScreen extends Container {
   private queueRuntimeEnvelope(
     presentation: RoundPresentationModel,
     timing: ReturnType<AnimationPolicyEngine["resolveSpinTiming"]>,
+    mathBridgeHints: MathBridgePresentationHints | null,
   ): void {
+    this.clearMathBridgeTimeouts();
     const featureFrame = this.featureModules.resolve(presentation);
     this.pendingRound = {
       presentation,
       featureFrame,
+      mathBridgeHints,
     };
+
+    if (mathBridgeHints) {
+      const reelCueBase = Math.max(0, timing.minSpinMs);
+      const reelCueMap = [
+        "round.reel.stop.1",
+        "round.reel.stop.2",
+        mathBridgeHints.timingHints.reelStopDelaysMs[2] >= 3000
+          ? "round.reel.stop.3.bonusHold"
+          : "round.reel.stop.3",
+      ] as const;
+      reelCueMap.forEach((cue, index) => {
+        const offset =
+          mathBridgeHints.timingHints.reelStopDelaysMs[index] ??
+          (index + 1) * timing.spinStaggerMs;
+        this.scheduleMathBridgeCue(cue, reelCueBase + Math.max(0, offset));
+      });
+    }
 
     this.slotMachine.spin({
       minSpinDurationMs: timing.minSpinMs,
@@ -667,7 +773,7 @@ export class MainScreen extends Container {
 
     this.pendingRound = null;
 
-    const { presentation, featureFrame } = resolution;
+    const { presentation, featureFrame, mathBridgeHints } = resolution;
     this.applyDynamicControlVisibility(featureFrame);
 
     const mergedMessages = [
@@ -677,9 +783,13 @@ export class MainScreen extends Container {
     ];
     this.showStatus(formatMessages(mergedMessages));
 
-    const winSymbols = this.resolveWinningSymbols(presentation);
+    const winSymbols = this.resolveWinningSymbols(presentation, mathBridgeHints);
     const winAmount = presentation.winAmount;
     const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
+
+    this.scheduleMathBridgeFeatureCues(mathBridgeHints);
+    this.scheduleLineHighlight(mathBridgeHints, winSymbols);
+
     const vfxState = this.wowVfx.startWinPresentation({
       winAmountMinor: winAmount,
       defaultBetMinor: defaultBet,
@@ -721,8 +831,23 @@ export class MainScreen extends Container {
     }, vfxState.durationMs);
   }
 
-  private resolveWinningSymbols(presentation: RoundPresentationModel) {
+  private resolveWinningSymbols(
+    presentation: RoundPresentationModel,
+    mathBridgeHints: MathBridgePresentationHints | null,
+  ) {
     const reels = this.slotMachine.getReels();
+
+    const hintedLine = mathBridgeHints?.lineWins[0];
+    if (hintedLine?.positions?.length) {
+      const hintedSymbols = hintedLine.positions
+        .map((position) =>
+          reels[position.reelIndex]?.getVisibleSymbols()[position.rowIndex],
+        )
+        .filter(Boolean);
+      if (hintedSymbols.length > 0) {
+        return hintedSymbols;
+      }
+    }
 
     for (const payline of CRAZY_ROOSTER_PAYLINES) {
       const symbols = payline.map(
@@ -774,17 +899,58 @@ export class MainScreen extends Container {
   }
 
   private applyAnimationCue(cue: string): void {
+    const machineWidth =
+      CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
+      (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing;
+    const machineHeight =
+      CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
+      (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
+
     if (cue === "focus-status-banner") {
       this.showStatus("FEATURE EVENT");
-      const machineWidth =
-        CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
-        (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing;
-      const machineHeight =
-        CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
-        (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
       void this.lightningFx.play(machineWidth, machineHeight);
       this.visualChrome.triggerBoostPulse();
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.2);
+      return;
+    }
+
+    if (cue === "feature.collect.triggered" || cue === "collect-sweep") {
+      this.showStatus("COLLECT FEATURE");
+      this.visualChrome.triggerBoostPulse();
+      this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.44);
+      return;
+    }
+
+    if (cue === "feature.boost.triggered") {
+      this.showStatus("BOOST FEATURE");
+      this.visualChrome.triggerBoostPulse();
+      void this.lightningFx.play(machineWidth, machineHeight);
+      this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.22);
+      return;
+    }
+
+    if (cue === "feature.bonus.enter") {
+      this.showStatus("HOLD & WIN");
+      this.visualChrome.triggerBoostPulse();
+      this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.18);
+      return;
+    }
+
+    if (cue === "feature.jackpot.attached" || cue === "jackpot-overlay") {
+      this.showStatus("JACKPOT HIT");
+      this.visualChrome.triggerBoostPulse();
+      this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.1);
+      return;
+    }
+
+    if (cue === "coin-fly") {
+      this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.32);
+      return;
+    }
+
+    if (cue === "round.reel.stop.3.bonusHold") {
+      this.showStatus("BONUS HOLD");
+      return;
     }
   }
 
