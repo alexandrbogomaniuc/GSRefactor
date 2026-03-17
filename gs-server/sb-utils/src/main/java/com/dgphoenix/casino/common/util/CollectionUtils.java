@@ -249,7 +249,7 @@ public class CollectionUtils {
      * String -> map converter. Trims entries, trims keys/values. Does not permit duplicated and empty keys, empty values.
      * Provides basic Map operations on property in chain-style. Preserves order of entries in string and map.
      *
-     * Obtain instance via static factory method modifyStringProperty in {@link com.dgphoenix.casino.common.util.CollectionUtils}
+     * Obtain instance via static factory method modifyStringProperty in {@link com.abs.casino.common.util.CollectionUtils}
      */
     private static class StringPropertyHelperImpl implements StringPropertyHelper {
         private final String entrySeparator;
