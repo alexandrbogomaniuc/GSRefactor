@@ -132,3 +132,16 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
     - `boost`,
     - `jackpot`.
   - `PaylineOverlay.ts` already had atlas-backed line plate/badge/chip hooks in this branch; beta5d polished their typography/layout and paired them with the richer topper/plaque reactions rather than replacing the geometry logic.
+- 2026-03-17: Started donorlocal benchmark-mode pass on branch `codex/qa/7000-donorlocal-benchmark-mode-20260317-1117`.
+  - changed the safe committed default provider back to `openai` in `CrazyRoosterGameConfig.ts` so non-dev and donorlocal fallback paths no longer inherit the older NanoBanana default.
+  - updated `providerPackRegistry.ts` so explicit query/env provider selections still win, but DEV mode now auto-requests `donorlocal` when no explicit provider is supplied and a valid ignored local manifest is available.
+  - preserved the existing donorlocal local-only runtime contract:
+    - ignored local manifest loaded through Vite `/@fs/...`,
+    - no donor binaries committed,
+    - missing or invalid donorlocal manifest now warns and cleanly falls back to `openai` instead of crashing.
+  - added benchmark launch/docs updates:
+    - new `docs/DONORLOCAL_BENCHMARK_MODE.md`,
+    - refreshed `docs/BETA_PROVIDER_MATRIX.md`,
+    - added `package.json` alias `dev:benchmark`.
+  - browser smoke against `http://127.0.0.1:8085/?allowDevFallback=1&mathSource=provisional` confirmed `requestedProvider=donorlocal` and `effectiveProvider=donorlocal`.
+  - browser smoke against `http://127.0.0.1:8085/?allowDevFallback=1&mathSource=provisional&assetProvider=openai` confirmed explicit override still forces `requestedProvider=effectiveProvider=openai`.

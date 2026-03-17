@@ -144,7 +144,7 @@ export const CRAZY_ROOSTER_BRAND = {
   primaryColor: "#000000",
   accentColor: "#C7141A",
   surfaceColor: "#FFFFFF",
-  defaultProvider: "nanobanana" as CrazyRoosterAssetProvider,
+  defaultProvider: "openai" as CrazyRoosterAssetProvider,
 };
 
 export const CRAZY_ROOSTER_BRAND_NAME = CRAZY_ROOSTER_BRAND.brandName;
@@ -156,16 +156,20 @@ export const isAssetProvider = (
 ): value is CrazyRoosterAssetProvider =>
   CRAZY_ROOSTER_SUPPORTED_ASSET_PROVIDERS.includes(value as CrazyRoosterAssetProvider);
 
+export const resolveExplicitAssetProvider = (
+  params: URLSearchParams = new URLSearchParams(window.location.search),
+  envProvider = import.meta.env.VITE_ASSET_PROVIDER,
+): CrazyRoosterAssetProvider | null => {
+  const requested =
+    params.get("assetProvider") ?? params.get("provider") ?? envProvider;
+  return isAssetProvider(requested) ? requested : null;
+};
+
 export const resolveAssetProvider = (
   params: URLSearchParams = new URLSearchParams(window.location.search),
   envProvider = import.meta.env.VITE_ASSET_PROVIDER,
 ): CrazyRoosterAssetProvider => {
-  const requested =
-    params.get("assetProvider") ?? params.get("provider") ?? envProvider;
-  if (isAssetProvider(requested)) {
-    return requested;
-  }
-  return CRAZY_ROOSTER_BRAND.defaultProvider;
+  return resolveExplicitAssetProvider(params, envProvider) ?? CRAZY_ROOSTER_BRAND.defaultProvider;
 };
 
 export const applyCrazyRoosterSharedGameConfig = (): void => {

@@ -8,6 +8,7 @@
     "build": "vite build && tsc --noEmit",
     "lint": "eslint .",
     "dev": "vite",
+    "dev:benchmark": "vite --host 127.0.0.1 --port 8081",
     "dev:oneport": "vite --host 127.0.0.1 --port 8081",
     "dev:openai": "VITE_ASSET_PROVIDER=openai vite --host 127.0.0.1 --port 8081",
     "dev:nanobanana": "VITE_ASSET_PROVIDER=nanobanana vite --host 127.0.0.1 --port 8082",
