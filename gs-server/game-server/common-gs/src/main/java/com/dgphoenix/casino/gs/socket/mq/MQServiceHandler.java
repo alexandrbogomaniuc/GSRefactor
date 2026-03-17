@@ -1654,7 +1654,7 @@ public class MQServiceHandler {
 
     /**
      * Invite Players To PrivateRoom
-     * @param players list of players, externalIds will be used in JSON body to submit to Canex
+     * @param players list of players, externalIds will be used in the wallet request body
      * @return true if success or false
      * @throws TException if any unexpected error occur
      */
@@ -1665,7 +1665,7 @@ public class MQServiceHandler {
 
     /**
      * Invite Players To PrivateRoom
-     * @param players list of players, externalIds will be used in JSON body to submit to Canex
+     * @param players list of players, externalIds will be used in the wallet request body
      * @param bankIdAsLong can be null, if null Default BankInfo is used
      * @return true if success or false
      * @throws TException if any unexpected error occur
@@ -1836,7 +1836,7 @@ public class MQServiceHandler {
 
     /**
      * get List of Friends for a specified player-friend
-     * @param friend specified, externalIds will be used to submit to Canex
+     * @param friend specified, externalIds will be used in the wallet request
      * @return List of friends  if success or null
      * @throws TException if any unexpected error occur
      */
@@ -1847,7 +1847,7 @@ public class MQServiceHandler {
 
     /**
      * get List of Friends for a specified player-tbgFriend
-     * @param tbgFriend specified, externalIds will be used to submit to Canex
+     * @param tbgFriend specified, externalIds will be used in the wallet request
      * @param bankIdAsLong can be null, if null Default BankInfo is used
      * @return List of friends  if success or null
      * @throws TException if any unexpected error occur
