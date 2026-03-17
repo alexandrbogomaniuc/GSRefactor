@@ -145,3 +145,13 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
     - added `package.json` alias `dev:benchmark`.
   - browser smoke against `http://127.0.0.1:8085/?allowDevFallback=1&mathSource=provisional` confirmed `requestedProvider=donorlocal` and `effectiveProvider=donorlocal`.
   - browser smoke against `http://127.0.0.1:8085/?allowDevFallback=1&mathSource=provisional&assetProvider=openai` confirmed explicit override still forces `requestedProvider=effectiveProvider=openai`.
+- 2026-03-17: Started beta6 donorlocal parity pass on branch `codex/qa/7000-beta6-donorlocal-parity-pass-20260317-1210`.
+  - made benchmark launch deterministic by locking `dev:benchmark` and related one-port scripts to `127.0.0.1:8081` with `--strictPort`, then updated benchmark docs to remove the old `8085` ambiguity.
+  - improved donorlocal benchmark composition in the highest-value visible areas:
+    - stronger preloader plate/bar/flair composition in `src/app/screens/LoadScreen.ts`,
+    - stronger cabinet depth, stage aura, top framing, and side panel placement in `src/app/screens/main/Beta3VisualChrome.ts`,
+    - richer bottom control rail treatment in `src/app/screens/main/HeroHudChrome.ts`,
+    - stronger topper plate/aura spacing in `src/game/presentation/TopperMascotController.ts`,
+    - stronger collect/boost/jackpot presentation intensity in `src/game/presentation/LayeredFxController.ts`,
+    - cleaner benchmark status language and less cluttered top stack in `src/app/screens/main/MainScreen.ts`.
+  - captured proof for the new donorlocal baseline under `docs/_visual_proof/beta6-2026-03-17/` covering `preloader`, `idle`, `top-area`, `control-cluster`, `collect`, `boost`, and `jackpot`.

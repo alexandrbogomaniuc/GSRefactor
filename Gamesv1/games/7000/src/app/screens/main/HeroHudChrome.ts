@@ -30,6 +30,7 @@ type SecondaryControlVisual = {
   glow: Graphics;
   fallbackPlate: Graphics;
   art: Sprite;
+  badgePlate: Graphics;
   badge: Text;
 };
 
@@ -49,9 +50,12 @@ const secondarySpecs: Array<{
 export class HeroHudChrome extends Container {
   private readonly railGlow = new Graphics();
   private readonly railPlate = new Graphics();
+  private readonly railInset = new Graphics();
+  private readonly spinShadow = new Graphics();
   private readonly spinGlow = new Graphics();
   private readonly spinPlate = new Graphics();
   private readonly spinFace = new Graphics();
+  private readonly spinBadgePlate = new Graphics();
   private readonly spinText = new Text({
     text: "SPIN",
     style: {
@@ -93,7 +97,16 @@ export class HeroHudChrome extends Container {
     this.visible = false;
     this.spinText.anchor.set(0.5);
     this.spinSubtext.anchor.set(0.5);
-    this.addChild(this.railGlow, this.railPlate, this.spinGlow, this.spinPlate, this.spinFace);
+    this.addChild(
+      this.railGlow,
+      this.railPlate,
+      this.railInset,
+      this.spinShadow,
+      this.spinGlow,
+      this.spinPlate,
+      this.spinFace,
+      this.spinBadgePlate,
+    );
     this.addChild(this.spinText, this.spinSubtext);
 
     this.secondaryVisuals = secondarySpecs.map((spec) => {
@@ -101,6 +114,7 @@ export class HeroHudChrome extends Container {
       const glow = new Graphics();
       const fallbackPlate = new Graphics();
       const art = new Sprite(Texture.WHITE);
+      const badgePlate = new Graphics();
       const badge = new Text({
         text: "",
         style: {
@@ -115,7 +129,7 @@ export class HeroHudChrome extends Container {
 
       art.anchor.set(0.5);
       badge.anchor.set(0.5);
-      container.addChild(glow, fallbackPlate, art, badge);
+      container.addChild(glow, fallbackPlate, art, badgePlate, badge);
       this.addChild(container);
 
       return {
@@ -125,6 +139,7 @@ export class HeroHudChrome extends Container {
         glow,
         fallbackPlate,
         art,
+        badgePlate,
         badge,
       };
     });
@@ -218,19 +233,53 @@ export class HeroHudChrome extends Container {
     }
 
     this.railGlow.clear();
-    this.railGlow.roundRect(minLeft - 26, minTop - 28, maxRight - minLeft + 52, maxBottom - minTop + 54, 42);
-    this.railGlow.stroke({ color: 0xc7141a, width: 14, alpha: 0.28 });
+    this.railGlow.roundRect(
+      minLeft - 34,
+      minTop - 34,
+      maxRight - minLeft + 68,
+      maxBottom - minTop + 68,
+      48,
+    );
+    this.railGlow.fill({ color: 0x53090e, alpha: 0.16 });
+    this.railGlow.stroke({ color: 0xc7141a, width: 16, alpha: 0.24 });
 
     this.railPlate.clear();
-    this.railPlate.roundRect(minLeft - 18, minTop - 18, maxRight - minLeft + 36, maxBottom - minTop + 34, 38);
-    this.railPlate.fill({ color: 0x070305, alpha: 0.5 });
-    this.railPlate.stroke({ color: 0xf3c575, width: 3, alpha: 0.74 });
+    this.railPlate.roundRect(
+      minLeft - 22,
+      minTop - 22,
+      maxRight - minLeft + 44,
+      maxBottom - minTop + 42,
+      42,
+    );
+    this.railPlate.fill({ color: 0x090305, alpha: 0.78 });
+    this.railPlate.stroke({ color: 0xf3c575, width: 4, alpha: 0.82 });
+
+    this.railInset.clear();
+    this.railInset.roundRect(
+      minLeft - 12,
+      minTop - 12,
+      maxRight - minLeft + 24,
+      maxBottom - minTop + 18,
+      34,
+    );
+    this.railInset.fill({ color: 0x1c0408, alpha: 0.76 });
+    this.railInset.stroke({ color: 0x5d0c11, width: 2, alpha: 0.74 });
 
     const spinButton = this.buttons.spin;
     this.spinText.x = spinButton.x;
-    this.spinText.y = spinButton.y - 6;
+    this.spinText.y = spinButton.y - 10;
     this.spinSubtext.x = spinButton.x;
     this.spinSubtext.y = spinButton.y + spinButton.height * 0.36;
+
+    this.spinShadow.clear();
+    this.spinShadow.roundRect(
+      spinButton.x - spinButton.width * 0.58,
+      spinButton.y - spinButton.height * 0.5 + 10,
+      spinButton.width * 1.16,
+      spinButton.height * 1.08,
+      42,
+    );
+    this.spinShadow.fill({ color: 0x050102, alpha: 0.4 });
 
     this.spinGlow.clear();
     this.spinGlow.roundRect(
@@ -264,27 +313,43 @@ export class HeroHudChrome extends Container {
     this.spinFace.fill({ color: 0xc7141a, alpha: 0.94 });
     this.spinFace.stroke({ color: 0xfff2d2, width: 3, alpha: 0.95 });
 
+    this.spinBadgePlate.clear();
+    this.spinBadgePlate.roundRect(
+      spinButton.x - spinButton.width * 0.26,
+      spinButton.y + spinButton.height * 0.22,
+      spinButton.width * 0.52,
+      24,
+      12,
+    );
+    this.spinBadgePlate.fill({ color: 0x3b080b, alpha: 0.9 });
+    this.spinBadgePlate.stroke({ color: 0xffd78a, width: 2, alpha: 0.82 });
+
     for (const visual of this.secondaryVisuals) {
       const button = this.buttons[visual.controlId];
       const centerX = button.x;
       const centerY = button.y;
-      const artSize = visual.controlId === "buyFeature" ? 112 : 102;
+      const artSize = visual.controlId === "buyFeature" ? 118 : 104;
 
       visual.container.visible = button.visible;
       visual.container.position.set(centerX, centerY - 2);
 
       visual.glow.clear();
-      visual.glow.circle(0, 0, artSize * 0.56);
-      visual.glow.fill({ color: 0xc7141a, alpha: 0.22 });
+      visual.glow.circle(0, 0, artSize * 0.58);
+      visual.glow.fill({ color: 0xc7141a, alpha: 0.18 });
+      visual.glow.stroke({ color: 0xffc96e, width: 3, alpha: 0.14 });
 
       visual.fallbackPlate.clear();
-      visual.fallbackPlate.circle(0, 0, artSize * 0.46);
+      visual.fallbackPlate.circle(0, 0, artSize * 0.48);
       visual.fallbackPlate.fill({ color: 0x180406, alpha: 0.96 });
       visual.fallbackPlate.stroke({ color: 0xf3c575, width: 4, alpha: 0.9 });
 
       visual.art.width = artSize;
       visual.art.height = artSize;
-      visual.badge.y = artSize * 0.44;
+      visual.badgePlate.clear();
+      visual.badgePlate.roundRect(-30, artSize * 0.38, 60, 20, 10);
+      visual.badgePlate.fill({ color: 0x3b080b, alpha: 0.9 });
+      visual.badgePlate.stroke({ color: 0xffd78a, width: 2, alpha: 0.82 });
+      visual.badge.y = artSize * 0.48;
     }
   }
 

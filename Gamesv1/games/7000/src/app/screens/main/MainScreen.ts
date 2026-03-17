@@ -38,7 +38,10 @@ import {
   SessionRuntimeStore,
 } from "../../stores";
 import { AppAssetKeys } from "../../assets/assetKeys";
-import { resolveProviderBackgroundUrl } from "../../assets/providerPackRegistry.ts";
+import {
+  getProviderPackStatus,
+  resolveProviderBackgroundUrl,
+} from "../../assets/providerPackRegistry.ts";
 import { resolveCrazyRoosterBrandKit } from "../../theme/brandKit.ts";
 import { userSettings } from "../../utils/userSettings";
 import { resolveProviderSymbolRoot } from "../../../game/assets/provider.ts";
@@ -116,6 +119,9 @@ const readHudFeatureFlagsFromQuery = (): PremiumHudFeatureFlags => {
 
   return { controls };
 };
+
+const readLegacyTopUiFlag = (): boolean =>
+  new URLSearchParams(window.location.search).get("legacyTopUi") === "1";
 
 const formatMessages = (messages: string[]): string =>
   messages.filter(Boolean).slice(0, 3).join(" | ");
@@ -318,6 +324,7 @@ export class MainScreen extends Container {
     },
   });
   private readonly debugOverlay = new DebugOverlay();
+  private readonly showLegacyTopUi = readLegacyTopUiFlag();
 
   private paused = false;
   private isSpinning = false;
@@ -419,6 +426,7 @@ export class MainScreen extends Container {
     this.statusText.anchor.set(0.5);
     this.statusText.visible = false;
     this.titleText.anchor.set(0.5);
+    this.titleText.visible = this.showLegacyTopUi;
     this.footerText.anchor.set(0.5);
     this.visualChrome.onBuyFeatureRequest = () => {
       void this.handleBuyFeature();
@@ -443,7 +451,7 @@ export class MainScreen extends Container {
     this.connectSpinHoldGesture();
     this.applyPreviewState();
     this.refreshHudState(0);
-    this.showStatus("NANOBANANA HERO PACK READY");
+    this.showStatus(this.resolveBenchmarkReadyStatus());
   }
 
   public prepare(): void {}
@@ -533,9 +541,9 @@ export class MainScreen extends Container {
     this.syncHudChrome();
 
     this.titleText.x = width * 0.5;
-    this.titleText.y = safe.top + 34;
+    this.titleText.y = safe.top + 28;
     this.statusText.x = width * 0.5;
-    this.statusText.y = safe.top + 76;
+    this.statusText.y = safe.top + 68;
     this.winCounter.x = width * 0.5;
     this.winCounter.y = safe.top + 156;
     this.footerText.x = width * 0.5;
@@ -1031,16 +1039,16 @@ export class MainScreen extends Container {
   private resolveLinePresentationTitle(tone: PaylineOverlayTone): string {
     switch (tone) {
       case "collect":
-        return "COLLECT PAY";
+        return "COLLECT RUN";
       case "boost":
         return "BOOST STRIKE";
       case "bonus":
         return "BONUS ENTRY";
       case "jackpot":
-        return "JACKPOT RUN";
+        return "JACKPOT CALL";
       case "standard":
       default:
-        return "WINNING LINE";
+        return "ROOSTER WIN";
     }
   }
 
@@ -1113,6 +1121,17 @@ export class MainScreen extends Container {
       default:
         return 1;
     }
+  }
+
+  private resolveBenchmarkReadyStatus(): string {
+    const provider = getProviderPackStatus().effectiveProvider;
+    if (provider === "donorlocal") {
+      return "DONORLOCAL BENCHMARK READY";
+    }
+    if (provider === "openai") {
+      return "OPENAI FALLBACK READY";
+    }
+    return `${provider.toUpperCase()} READY`;
   }
 
   private resolveTierStyleHook(tier: PresentationWinTier): string | undefined {
@@ -1559,13 +1578,13 @@ export class MainScreen extends Container {
     }
 
     if (cue === "focus-status-banner") {
-      this.showStatus("BOOST FEATURE");
+      this.showStatus("LIGHTNING BOOST");
       this.topperMascot.setState("react_boost_start");
       this.visualChrome.triggerPresentationCue({
         tone: "boost",
-        title: "BOOST FEATURE",
-        caption: "LIGHTNING LOCK",
-        holdMs: 880,
+        title: "LIGHTNING BOOST",
+        caption: "STAGE IGNITE",
+        holdMs: 980,
       });
       void this.layeredFx.playBoostStart();
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.2);
@@ -1574,13 +1593,13 @@ export class MainScreen extends Container {
     }
 
     if (cue === "feature.collect.triggered") {
-      this.showStatus("COLLECT FEATURE");
+      this.showStatus("COLLECT RUN");
       this.topperMascot.setState("react_collect");
       this.visualChrome.triggerPresentationCue({
         tone: "collect",
-        title: "COLLECT FEATURE",
-        caption: "TOPPER SWEEP",
-        holdMs: 860,
+        title: "COLLECT RUN",
+        caption: "COIN SWEEP",
+        holdMs: 940,
       });
       this.layeredFx.playCollectSweep(machineWidth * 0.5, machineHeight * 0.44);
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.44);
@@ -1595,13 +1614,13 @@ export class MainScreen extends Container {
     }
 
     if (cue === "feature.boost.triggered") {
-      this.showStatus("BOOST FEATURE");
+      this.showStatus("BOOST CHARGE");
       this.topperMascot.setState("react_boost_loop");
       this.visualChrome.triggerPresentationCue({
         tone: "boost",
-        title: "BOOST FEATURE",
-        caption: "STRIKE CHARGE",
-        holdMs: 920,
+        title: "BOOST CHARGE",
+        caption: "LIGHTNING SURGE",
+        holdMs: 1020,
       });
       void this.layeredFx.playBoostStart();
       this.particleBurst.play(machineWidth * 0.5, machineHeight * 0.22);
@@ -1615,8 +1634,8 @@ export class MainScreen extends Container {
       this.visualChrome.triggerPresentationCue({
         tone: "bonus",
         title: "HOLD & WIN",
-        caption: "BONUS ENTRY",
-        holdMs: 940,
+        caption: "LOCKED ENTRY",
+        holdMs: 1020,
       });
       this.layeredFx.playBoostLoop();
       this.layeredFx.playCoinFly(machineWidth * 0.5, machineHeight * 0.2, 7);
@@ -1626,14 +1645,14 @@ export class MainScreen extends Container {
     }
 
     if (cue === "feature.jackpot.attached" || cue === "jackpot-overlay") {
-      this.showStatus("JACKPOT HIT");
+      this.showStatus("JACKPOT CALL");
       this.topperMascot.setState("react_jackpot");
       this.visualChrome.triggerPresentationCue({
         tone: "jackpot",
-        title: "JACKPOT HIT",
+        title: "JACKPOT CALL",
         caption:
-          this.activeMathBridgeHints?.jackpotTier?.toUpperCase() ?? "PLAQUE REACTION",
-        holdMs: 1120,
+          this.activeMathBridgeHints?.jackpotTier?.toUpperCase() ?? "PLAQUE STRIKE",
+        holdMs: 1220,
         jackpotTier: this.activeMathBridgeHints?.jackpotTier ?? null,
       });
       this.layeredFx.playJackpotHit(
@@ -1659,7 +1678,7 @@ export class MainScreen extends Container {
         tone: tier === "mega" ? "jackpot" : "standard",
         title: tier === "none" ? "TOTAL WIN" : `${tier.toUpperCase()} WIN`,
         caption: "COUNTER CHARGE",
-        holdMs: 980,
+        holdMs: 1080,
         jackpotTier: this.activeMathBridgeHints?.jackpotTier ?? null,
       });
       this.layeredFx.playWinPulse(tier);
@@ -1712,7 +1731,7 @@ export class MainScreen extends Container {
 
   private showStatus(text: string): void {
     this.statusText.text = text;
-    this.statusText.visible = text.length > 0;
+    this.statusText.visible = this.showLegacyTopUi && text.length > 0;
     this.visualChrome.setModeState({
       statusText: text || "BETONLINE READY",
     });

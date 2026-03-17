@@ -114,13 +114,18 @@ export class Beta3VisualChrome extends Container {
     },
   });
   private readonly buyCaption = new Text({
-    text: "Tap to launch Hold&Win",
+    text: "LAUNCH HOLD & WIN",
     style: {
       fontFamily: "Trebuchet MS, Arial, sans-serif",
-      fontSize: 14,
-      fontWeight: "700",
-      fill: 0xffd8d0,
+      fontSize: 13,
+      fontWeight: "800",
+      fill: 0xffe3c2,
+      stroke: { color: 0x170406, width: 2 },
       align: "center",
+      letterSpacing: 0.5,
+      wordWrap: true,
+      wordWrapWidth: 126,
+      lineHeight: 14,
     },
   });
   private readonly actionPanel = new Container();
@@ -177,7 +182,7 @@ export class Beta3VisualChrome extends Container {
       fill: 0xffd8d0,
       align: "center",
       wordWrap: true,
-      wordWrapWidth: 180,
+      wordWrapWidth: 148,
     },
   });
   private readonly providerBadge = new Container();
@@ -575,22 +580,32 @@ export class Beta3VisualChrome extends Container {
     const height = this.machineHeight + 48;
 
     this.stageAura.clear();
-    this.stageAura.roundRect(-118, -166, this.machineWidth + 236, this.machineHeight + 210, 76);
-    this.stageAura.fill({ color: 0x5e0408, alpha: 0.34 });
-    this.stageAura.stroke({ color: 0xc7141a, width: 4, alpha: 0.22 });
+    this.stageAura.roundRect(-132, -184, this.machineWidth + 264, this.machineHeight + 242, 82);
+    this.stageAura.fill({ color: 0x4a0408, alpha: 0.36 });
+    this.stageAura.stroke({ color: 0xc7141a, width: 4, alpha: 0.24 });
+    this.stageAura.roundRect(-82, -146, this.machineWidth + 164, this.machineHeight + 182, 62);
+    this.stageAura.fill({ color: 0x200306, alpha: 0.22 });
 
     this.cabinetShadow.clear();
-    this.cabinetShadow.roundRect(left + 12, top + 24, width, height, 42);
+    this.cabinetShadow.roundRect(left + 16, top + 28, width + 10, height + 8, 46);
     this.cabinetShadow.fill({ color: 0x060202, alpha: 0.42 });
 
     this.cabinetBackplate.clear();
     this.cabinetBackplate.roundRect(left, top, width, height, 42);
     this.cabinetBackplate.fill({ color: 0x180406, alpha: 0.95 });
     this.cabinetBackplate.stroke({ color: 0xe1b465, width: 5, alpha: 0.9 });
+    this.cabinetBackplate.roundRect(left + 16, top + 18, width - 32, height - 44, 34);
+    this.cabinetBackplate.fill({ color: 0x260609, alpha: 0.78 });
+    this.cabinetBackplate.stroke({ color: 0x5c0c11, width: 3, alpha: 0.82 });
+    this.cabinetBackplate.roundRect(left + 28, top + this.machineHeight + 8, width - 56, 40, 20);
+    this.cabinetBackplate.fill({ color: 0x100204, alpha: 0.88 });
+    this.cabinetBackplate.stroke({ color: 0xffd88a, width: 2, alpha: 0.42 });
 
     this.cabinetGlow.clear();
     this.cabinetGlow.roundRect(left - 10, top - 8, width + 20, height + 16, 48);
     this.cabinetGlow.stroke({ color: 0xc7141a, width: 10, alpha: 0.42 });
+    this.cabinetGlow.roundRect(left + 14, top + 14, width - 28, height - 32, 36);
+    this.cabinetGlow.stroke({ color: 0xffd48a, width: 3, alpha: 0.16 });
 
     this.redrawTopBar();
 
@@ -605,41 +620,41 @@ export class Beta3VisualChrome extends Container {
     this.heroPulseSprite.width = 168;
     this.heroPulseSprite.height = 168;
     this.mascotCaption.x = this.machineWidth * 0.5;
-    this.mascotCaption.y = 108;
+    this.mascotCaption.y = 106;
     this.jackpotTitle.x = this.machineWidth * 0.5;
-    this.jackpotTitle.y = -158;
+    this.jackpotTitle.y = -186;
 
-    const coinStartX = this.machineWidth * 0.5 - 132;
+    const coinStartX = this.machineWidth * 0.5 - 144;
     this.jackpotCoins.forEach((coin, index) => {
-      coin.baseX = coinStartX + index * 88;
-      coin.baseY = -116 + (index % 2 === 0 ? -5 : 5);
-      coin.sprite.width = coin.heroTextureActive ? 92 : 58;
-      coin.sprite.height = coin.heroTextureActive ? 92 : 58;
+      coin.baseX = coinStartX + index * 96;
+      coin.baseY = -112 + (index % 2 === 0 ? -6 : 4);
+      coin.sprite.width = coin.heroTextureActive ? 100 : 64;
+      coin.sprite.height = coin.heroTextureActive ? 100 : 64;
     });
 
-    this.buyPanel.position.set(-162, this.machineHeight * 0.44 - 84);
-    this.buyIcon.x = 76;
-    this.buyIcon.y = 76;
-    this.buyIcon.width = 84;
-    this.buyIcon.height = 84;
-    this.buyTitle.x = 76;
-    this.buyTitle.y = 24;
-    this.buyValue.x = 76;
-    this.buyValue.y = 142;
-    this.buyCaption.x = 76;
-    this.buyCaption.y = 174;
+    this.buyPanel.position.set(-184, this.machineHeight * 0.435 - 82);
+    this.buyIcon.x = 86;
+    this.buyIcon.y = 82;
+    this.buyIcon.width = 88;
+    this.buyIcon.height = 88;
+    this.buyTitle.x = 86;
+    this.buyTitle.y = 28;
+    this.buyValue.x = 86;
+    this.buyValue.y = 148;
+    this.buyCaption.x = 86;
+    this.buyCaption.y = 188;
 
-    this.actionPanel.position.set(this.machineWidth + 22, this.machineHeight * 0.4 - 80);
-    this.actionTitle.x = 86;
-    this.actionTitle.y = 24;
-    this.autoState.x = 18;
-    this.autoState.y = 66;
-    this.turboState.x = 18;
-    this.turboState.y = 98;
-    this.soundState.x = 18;
-    this.soundState.y = 130;
-    this.statusChip.x = 86;
-    this.statusChip.y = 164;
+    this.actionPanel.position.set(this.machineWidth + 32, this.machineHeight * 0.392 - 80);
+    this.actionTitle.x = 93;
+    this.actionTitle.y = 26;
+    this.autoState.x = 22;
+    this.autoState.y = 72;
+    this.turboState.x = 22;
+    this.turboState.y = 106;
+    this.soundState.x = 22;
+    this.soundState.y = 140;
+    this.statusChip.x = 93;
+    this.statusChip.y = 172;
 
     if (this.showProviderDebug) {
       this.providerBadge.x = this.machineWidth + 26;
@@ -653,22 +668,32 @@ export class Beta3VisualChrome extends Container {
   private redrawPanels(): void {
     const buyAccent = this.buyPanelHover > 0 ? 0xffe39f : 0xe5b35e;
     this.buyPanelGlow.clear();
-    this.buyPanelGlow.roundRect(0, 0, 152, 196, 30);
-    this.buyPanelGlow.stroke({ color: 0xc7141a, width: 8, alpha: 0.34 });
+    this.buyPanelGlow.roundRect(0, 0, 172, 218, 32);
+    this.buyPanelGlow.fill({ color: 0x49070b, alpha: 0.14 });
+    this.buyPanelGlow.stroke({ color: 0xc7141a, width: 9, alpha: 0.3 });
 
     this.buyPanelBackground.clear();
-    this.buyPanelBackground.roundRect(0, 0, 152, 196, 30);
-    this.buyPanelBackground.fill({ color: 0x170406, alpha: 0.94 });
+    this.buyPanelBackground.roundRect(0, 0, 172, 218, 32);
+    this.buyPanelBackground.fill({ color: 0x160406, alpha: 0.95 });
     this.buyPanelBackground.stroke({ color: buyAccent, width: 3, alpha: 0.92 });
+    this.buyPanelBackground.roundRect(12, 12, 148, 68, 22);
+    this.buyPanelBackground.fill({ color: 0x2a070a, alpha: 0.7 });
+    this.buyPanelBackground.roundRect(18, 144, 136, 34, 16);
+    this.buyPanelBackground.fill({ color: 0x3a090d, alpha: 0.84 });
 
     this.actionPanelGlow.clear();
-    this.actionPanelGlow.roundRect(0, 0, 172, 206, 28);
+    this.actionPanelGlow.roundRect(0, 0, 186, 216, 30);
+    this.actionPanelGlow.fill({ color: 0x46070b, alpha: 0.12 });
     this.actionPanelGlow.stroke({ color: 0xc7141a, width: 8, alpha: 0.28 });
 
     this.actionPanelBackground.clear();
-    this.actionPanelBackground.roundRect(0, 0, 172, 206, 28);
-    this.actionPanelBackground.fill({ color: 0x130406, alpha: 0.92 });
+    this.actionPanelBackground.roundRect(0, 0, 186, 216, 30);
+    this.actionPanelBackground.fill({ color: 0x130406, alpha: 0.93 });
     this.actionPanelBackground.stroke({ color: 0xffd88a, width: 3, alpha: 0.85 });
+    this.actionPanelBackground.roundRect(14, 14, 158, 54, 20);
+    this.actionPanelBackground.fill({ color: 0x29070a, alpha: 0.68 });
+    this.actionPanelBackground.roundRect(18, 166, 150, 30, 14);
+    this.actionPanelBackground.fill({ color: 0x39090d, alpha: 0.82 });
   }
 
   private redrawTopBar(): void {
@@ -678,16 +703,19 @@ export class Beta3VisualChrome extends Container {
 
     const reactionPalette = this.resolveReactionPalette();
     this.topBar.clear();
-    this.topBar.roundRect(this.machineWidth * 0.5 - 176, -178, 352, 40, 20);
+    this.topBar.roundRect(this.machineWidth * 0.5 - 196, -186, 392, 54, 26);
     this.topBar.fill({
       color: reactionPalette.shadow,
-      alpha: 0.84 + this.reactionPulse * 0.12,
+      alpha: 0.88 + this.reactionPulse * 0.12,
     });
     this.topBar.stroke({
       color: reactionPalette.accent,
       width: 2 + this.reactionPulse * 2,
       alpha: 0.86 + this.reactionPulse * 0.12,
     });
+    this.topBar.roundRect(this.machineWidth * 0.5 - 174, -174, 348, 30, 16);
+    this.topBar.fill({ color: 0x4a0b0f, alpha: 0.54 + this.reactionPulse * 0.08 });
+    this.topBar.stroke({ color: 0xfff0c4, width: 1.5, alpha: 0.4 + this.reactionPulse * 0.06 });
   }
 
   private resolveReactionEmphasis(tone: ChromeReactionTone): number {

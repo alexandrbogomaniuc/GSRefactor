@@ -38,8 +38,10 @@ type MascotPalette = {
 };
 
 export class TopperMascotController extends Container {
+  private readonly plateGlow = new Graphics();
   private readonly plateShadow = new Graphics();
   private readonly plate = new Graphics();
+  private readonly plateInset = new Graphics();
   private readonly aura = new Graphics();
   private readonly energyRing = new Graphics();
   private readonly mascotSprite = new Sprite(Texture.WHITE);
@@ -72,7 +74,7 @@ export class TopperMascotController extends Container {
 
   private machineWidth = 0;
   private anchorX = 0;
-  private anchorY = -42;
+  private anchorY = -58;
   private ambientTime = 0;
   private currentState: MascotReactionState = "idle";
   private stateElapsedMs = 0;
@@ -89,8 +91,10 @@ export class TopperMascotController extends Container {
     this.stateText.anchor.set(0.5);
 
     this.addChild(
+      this.plateGlow,
       this.plateShadow,
       this.plate,
+      this.plateInset,
       this.aura,
       this.energyRing,
       this.accentSprite,
@@ -127,36 +131,72 @@ export class TopperMascotController extends Container {
   }
 
   public getFocusPoint(): { x: number; y: number } {
-    return { x: this.anchorX, y: this.anchorY - 72 };
+    return { x: this.anchorX, y: this.anchorY - 80 };
   }
 
   private redrawBase(): void {
-    const plateWidth = 262;
-    const plateHeight = 148;
+    const plateWidth = 304;
+    const plateHeight = 170;
+
+    this.plateGlow.clear();
+    this.plateGlow.roundRect(
+      this.anchorX - plateWidth * 0.5 - 14,
+      this.anchorY - 174,
+      plateWidth + 28,
+      plateHeight + 26,
+      44,
+    );
+    this.plateGlow.fill({ color: 0x701017, alpha: 0.28 });
+    this.plateGlow.stroke({ color: 0xc7141a, width: 10, alpha: 0.26 });
 
     this.plateShadow.clear();
-    this.plateShadow.roundRect(this.anchorX - plateWidth * 0.5 + 10, this.anchorY - 144, plateWidth, plateHeight, 38);
+    this.plateShadow.roundRect(
+      this.anchorX - plateWidth * 0.5 + 12,
+      this.anchorY - 150,
+      plateWidth,
+      plateHeight,
+      42,
+    );
     this.plateShadow.fill({ color: 0x050102, alpha: 0.38 });
 
     this.plate.clear();
-    this.plate.roundRect(this.anchorX - plateWidth * 0.5, this.anchorY - 154, plateWidth, plateHeight, 38);
+    this.plate.roundRect(
+      this.anchorX - plateWidth * 0.5,
+      this.anchorY - 160,
+      plateWidth,
+      plateHeight,
+      42,
+    );
     this.plate.fill({ color: 0x150305, alpha: 0.9 });
     this.plate.stroke({ color: 0xe8bb74, width: 3, alpha: 0.88 });
 
+    this.plateInset.clear();
+    this.plateInset.roundRect(
+      this.anchorX - plateWidth * 0.5 + 12,
+      this.anchorY - 148,
+      plateWidth - 24,
+      plateHeight - 36,
+      34,
+    );
+    this.plateInset.fill({ color: 0x2a070a, alpha: 0.72 });
+    this.plateInset.stroke({ color: 0xffe0a2, width: 2, alpha: 0.45 });
+
     this.mascotSprite.x = this.anchorX;
     this.mascotSprite.y = this.anchorY;
-    this.mascotSprite.width = 138;
-    this.mascotSprite.height = 138;
+    this.mascotSprite.width = 154;
+    this.mascotSprite.height = 154;
 
-    this.accentSprite.x = this.anchorX + 88;
-    this.accentSprite.y = this.anchorY - 108;
-    this.accentSprite.width = 42;
-    this.accentSprite.height = 42;
+    this.accentSprite.x = this.anchorX + 102;
+    this.accentSprite.y = this.anchorY - 122;
+    this.accentSprite.width = 50;
+    this.accentSprite.height = 50;
 
     this.titleText.x = this.anchorX;
-    this.titleText.y = this.anchorY - 138;
+    this.titleText.y = this.anchorY - 150;
+    this.titleText.style.fontSize = 28;
     this.stateText.x = this.anchorX;
-    this.stateText.y = this.anchorY + 12;
+    this.stateText.y = this.anchorY + 4;
+    this.stateText.style.fontSize = 14;
   }
 
   private tick(deltaMs: number): void {
@@ -179,8 +219,8 @@ export class TopperMascotController extends Container {
 
     const palette = this.resolvePalette();
     const statePulse = this.resolveStatePulse();
-    const floatY = Math.sin(this.ambientTime * 1.45) * 5 + this.reelImpact * -7;
-    const scale = 1 + statePulse.scaleBoost + Math.sin(this.ambientTime * 1.8) * 0.025;
+    const floatY = Math.sin(this.ambientTime * 1.45) * 6 + this.reelImpact * -8;
+    const scale = 1 + statePulse.scaleBoost + Math.sin(this.ambientTime * 1.8) * 0.03;
 
     this.mascotSprite.y = this.anchorY + floatY;
     this.mascotSprite.scale.set(scale);
@@ -194,9 +234,9 @@ export class TopperMascotController extends Container {
     this.aura.clear();
     this.aura.ellipse(
       this.anchorX,
-      this.anchorY - 40 + floatY * 0.2,
-      118 + statePulse.glowRadius,
-      34 + statePulse.glowRadius * 0.18,
+      this.anchorY - 42 + floatY * 0.2,
+      132 + statePulse.glowRadius,
+      40 + statePulse.glowRadius * 0.2,
     );
     this.aura.fill({
       color: palette.auraColor,
@@ -204,7 +244,11 @@ export class TopperMascotController extends Container {
     });
 
     this.energyRing.clear();
-    this.energyRing.circle(this.anchorX, this.anchorY - 62 + floatY * 0.12, 68 + statePulse.glowRadius * 0.4);
+    this.energyRing.circle(
+      this.anchorX,
+      this.anchorY - 66 + floatY * 0.12,
+      76 + statePulse.glowRadius * 0.44,
+    );
     this.energyRing.stroke({
       color: palette.accentColor,
       width: 3 + statePulse.scaleBoost * 20,

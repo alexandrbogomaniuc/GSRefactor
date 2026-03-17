@@ -50,6 +50,8 @@ export PATH=/Users/alexb/.nvm/versions/node/v22.22.1/bin:$PATH
 corepack pnpm -C Gamesv1/games/7000 dev:benchmark
 ```
 
+`dev:benchmark` now uses Vite `--strictPort`, so port `8081` is mandatory. If `8081` is already occupied, the command fails loudly instead of silently shifting to another port.
+
 OpenAI-pinned command:
 
 ```bash

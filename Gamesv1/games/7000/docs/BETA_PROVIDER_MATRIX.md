@@ -20,6 +20,8 @@ export PATH=/Users/alexb/.nvm/versions/node/v22.22.1/bin:$PATH
 corepack pnpm -C Gamesv1/games/7000 dev:benchmark
 ```
 
+`dev:benchmark` uses `--strictPort`, so the benchmark stays on `127.0.0.1:8081` or fails immediately if that port is busy.
+
 URLs:
 
 - donorlocal benchmark default: `http://127.0.0.1:8081/?allowDevFallback=1`

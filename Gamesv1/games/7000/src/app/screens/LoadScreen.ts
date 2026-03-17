@@ -20,6 +20,12 @@ export class LoadScreen extends Container {
 
   private readonly preloader: WowPreloader;
   private readonly backdrop = new Graphics();
+  private readonly backdropGlow = new Graphics();
+  private readonly backdropFlares = new Graphics();
+  private readonly floorGlow = new Graphics();
+  private readonly lockupPlateShadow = new Graphics();
+  private readonly lockupPlate = new Graphics();
+  private readonly lockupInset = new Graphics();
   private readonly roosterLogo = new Sprite(Texture.EMPTY);
   private readonly roosterFallbackText = new Text({
     text: "CRAZY ROOSTER\nHOLD AND WIN",
@@ -50,10 +56,13 @@ export class LoadScreen extends Container {
   private readonly statusText: Text;
   private readonly logoShine = new Graphics();
   private readonly completionStar = new Graphics();
+  private readonly statusPlate = new Graphics();
+  private readonly loadingGlow = new Graphics();
   private readonly loadingFrame = new Graphics();
   private readonly loadingTrack = new Graphics();
   private readonly loadingFill = new Graphics();
   private readonly loadingBorderSpark = new Graphics();
+  private readonly emberLayer = new Graphics();
   private readonly footerText: Text;
   private readonly proofHoldMs = Math.max(
     0,
@@ -73,6 +82,7 @@ export class LoadScreen extends Container {
   private betonlineReady = false;
   private roosterBaseWidth = 0;
   private roosterBaseHeight = 0;
+  private lockupRect = { x: 0, y: 0, width: 0, height: 0 };
   private trackRect = { x: 0, y: 0, width: 0, height: 0, skew: 0 };
   private betonlineRect = { x: 0, y: 0, width: 0, height: 0 };
 
@@ -118,6 +128,12 @@ export class LoadScreen extends Container {
     this.completionStar.visible = false;
     this.addChild(
       this.backdrop,
+      this.backdropGlow,
+      this.backdropFlares,
+      this.floorGlow,
+      this.lockupPlateShadow,
+      this.lockupPlate,
+      this.lockupInset,
       this.preloader,
       this.roosterLogo,
       this.roosterFallbackText,
@@ -125,11 +141,14 @@ export class LoadScreen extends Container {
       this.betonlineFallbackText,
       this.logoShine,
       this.completionStar,
+      this.statusPlate,
       this.statusText,
+      this.loadingGlow,
       this.loadingFrame,
       this.loadingTrack,
       this.loadingFill,
       this.loadingBorderSpark,
+      this.emberLayer,
     );
 
     this.footerText = new Text({
@@ -179,13 +198,13 @@ export class LoadScreen extends Container {
     const isPortrait = height > width;
     const stackCenterX = width * 0.5 + (isPortrait ? 12 : 0);
 
-    const roosterWidthBase = Math.min(width * 0.274, 374);
+    const roosterWidthBase = Math.min(width * 0.29, 402);
     const roosterWidth = Math.min(
-      roosterWidthBase * (isPortrait ? 1.95 : 1),
-      isPortrait ? 640 : 374,
+      roosterWidthBase * (isPortrait ? 2.05 : 1),
+      isPortrait ? 660 : 402,
     );
     const roosterHeight = roosterWidth * (1024 / 1536);
-    const roosterY = height * (isPortrait ? 0.32 : 0.29);
+    const roosterY = height * (isPortrait ? 0.305 : 0.275);
     this.roosterLogo.x = stackCenterX;
     this.roosterLogo.y = roosterY;
     this.roosterBaseWidth = roosterWidth;
@@ -196,10 +215,10 @@ export class LoadScreen extends Container {
     this.roosterFallbackText.y = roosterY;
     this.roosterFallbackText.visible = !this.roosterReady;
 
-    const betonlineBaseWidth = Math.min(width * 0.598, 728);
+    const betonlineBaseWidth = Math.min(width * 0.62, 760);
     const betonlineHeight = betonlineBaseWidth * (289 / 735);
-    const betonlineWidth = betonlineBaseWidth * 1.1;
-    const betonlineY = height * 0.47;
+    const betonlineWidth = betonlineBaseWidth * 1.08;
+    const betonlineY = height * (isPortrait ? 0.468 : 0.462);
     this.betonlineLogo.x = stackCenterX;
     this.betonlineLogo.y = betonlineY;
     this.betonlineLogo.width = betonlineWidth;
@@ -214,9 +233,16 @@ export class LoadScreen extends Container {
       height: this.betonlineLogo.height,
     };
 
-    const trackWidth = Math.min(width * 0.34, 430);
-    const trackHeight = Math.max(20, Math.min(26, height * 0.034));
-    const trackY = betonlineY + betonlineHeight * 0.74;
+    this.lockupRect = {
+      x: stackCenterX - Math.min(width * 0.39, 430),
+      y: roosterY - roosterHeight * 0.72,
+      width: Math.min(width * 0.78, 860),
+      height: (betonlineY + betonlineHeight * 0.78) - (roosterY - roosterHeight * 0.72),
+    };
+
+    const trackWidth = Math.min(width * 0.38, 460);
+    const trackHeight = Math.max(22, Math.min(30, height * 0.036));
+    const trackY = betonlineY + betonlineHeight * 0.9;
     this.trackRect = {
       x: stackCenterX - trackWidth * 0.5,
       y: trackY,
@@ -226,7 +252,7 @@ export class LoadScreen extends Container {
     };
 
     this.statusText.x = stackCenterX;
-    this.statusText.y = trackY - 56;
+    this.statusText.y = trackY - 62;
     this.footerText.x = width * 0.5;
     this.footerText.y = height - 26;
 
@@ -270,7 +296,63 @@ export class LoadScreen extends Container {
     const height = this.preloader.height || window.innerHeight || 720;
     this.backdrop.clear();
     this.backdrop.rect(0, 0, width, height);
-    this.backdrop.fill({ color: 0x2f3237, alpha: 1 });
+    this.backdrop.fill({ color: 0x1d1f24, alpha: 1 });
+
+    this.backdropGlow.clear();
+    this.backdropGlow.ellipse(width * 0.5, height * 0.46, width * 0.38, height * 0.34);
+    this.backdropGlow.fill({ color: 0x7b0d14, alpha: 0.26 });
+    this.backdropGlow.ellipse(width * 0.5, height * 0.4, width * 0.24, height * 0.18);
+    this.backdropGlow.fill({ color: 0xe3aa45, alpha: 0.1 });
+
+    this.backdropFlares.clear();
+    this.backdropFlares.moveTo(width * 0.16, height * 0.12);
+    this.backdropFlares.lineTo(width * 0.26, height * 0.18);
+    this.backdropFlares.lineTo(width * 0.2, height * 0.72);
+    this.backdropFlares.lineTo(width * 0.08, height * 0.62);
+    this.backdropFlares.closePath();
+    this.backdropFlares.fill({ color: 0x5a0b11, alpha: 0.16 });
+    this.backdropFlares.moveTo(width * 0.84, height * 0.12);
+    this.backdropFlares.lineTo(width * 0.92, height * 0.62);
+    this.backdropFlares.lineTo(width * 0.8, height * 0.72);
+    this.backdropFlares.lineTo(width * 0.74, height * 0.18);
+    this.backdropFlares.closePath();
+    this.backdropFlares.fill({ color: 0x5a0b11, alpha: 0.16 });
+
+    this.floorGlow.clear();
+    this.floorGlow.ellipse(width * 0.5, height * 0.86, width * 0.38, height * 0.08);
+    this.floorGlow.fill({ color: 0xffb046, alpha: 0.08 });
+
+    this.lockupPlateShadow.clear();
+    this.lockupPlateShadow.roundRect(
+      this.lockupRect.x + 18,
+      this.lockupRect.y + 22,
+      this.lockupRect.width,
+      this.lockupRect.height + 26,
+      42,
+    );
+    this.lockupPlateShadow.fill({ color: 0x050102, alpha: 0.36 });
+
+    this.lockupPlate.clear();
+    this.lockupPlate.roundRect(
+      this.lockupRect.x,
+      this.lockupRect.y,
+      this.lockupRect.width,
+      this.lockupRect.height + 18,
+      42,
+    );
+    this.lockupPlate.fill({ color: 0x150306, alpha: 0.92 });
+    this.lockupPlate.stroke({ color: 0xf0c877, width: 4, alpha: 0.88 });
+
+    this.lockupInset.clear();
+    this.lockupInset.roundRect(
+      this.lockupRect.x + 16,
+      this.lockupRect.y + 18,
+      this.lockupRect.width - 32,
+      this.lockupRect.height - 10,
+      34,
+    );
+    this.lockupInset.fill({ color: 0x2a070a, alpha: 0.74 });
+    this.lockupInset.stroke({ color: 0x5d0c11, width: 2, alpha: 0.72 });
 
     this.statusText.text = this.statusLabel;
 
@@ -287,17 +369,41 @@ export class LoadScreen extends Container {
     const fillWidth = Math.max(0, (this.trackRect.width - innerPadding * 2) * fillRatio);
     const fillHeight = this.trackRect.height - innerPadding * 2;
 
+    this.statusPlate.clear();
+    this.statusPlate.roundRect(
+      this.statusText.x - Math.max(118, this.statusText.width * 0.5 + 20),
+      this.statusText.y - 18,
+      Math.max(236, this.statusText.width + 40),
+      36,
+      16,
+    );
+    this.statusPlate.fill({ color: 0x36080c, alpha: 0.88 });
+    this.statusPlate.stroke({ color: 0xffd78a, width: 2, alpha: 0.78 });
+
+    this.loadingGlow.clear();
+    this.drawSkewRect(
+      this.loadingGlow,
+      this.trackRect.x - 18,
+      this.trackRect.y - 16,
+      this.trackRect.width + 36,
+      this.trackRect.height + 30,
+      this.trackRect.skew + 4,
+      0x6f0c12,
+      0.18,
+    );
+
     this.loadingFrame.clear();
     this.drawSkewRect(
       this.loadingFrame,
-      this.trackRect.x - 8,
-      this.trackRect.y - 8,
-      this.trackRect.width + 16,
-      this.trackRect.height + 16,
+      this.trackRect.x - 10,
+      this.trackRect.y - 10,
+      this.trackRect.width + 20,
+      this.trackRect.height + 20,
       this.trackRect.skew,
       0xc7141a,
-      0.18,
+      0.22,
     );
+    this.loadingFrame.stroke({ color: 0xffd78a, width: 2, alpha: 0.34 });
 
     this.loadingTrack.clear();
     this.drawSkewRect(
@@ -307,10 +413,10 @@ export class LoadScreen extends Container {
       this.trackRect.width,
       this.trackRect.height,
       this.trackRect.skew,
-      0x14161a,
+      0x121418,
       0.95,
     );
-    this.loadingTrack.stroke({ color: 0x42464e, width: 2, alpha: 0.96 });
+    this.loadingTrack.stroke({ color: 0x5f6772, width: 2, alpha: 0.96 });
 
     this.loadingFill.clear();
     if (fillWidth > 0) {
@@ -342,6 +448,16 @@ export class LoadScreen extends Container {
           0.95,
         );
       }
+      this.drawSkewRect(
+        this.loadingFill,
+        fillX + Math.max(0, fillWidth - 24),
+        fillY,
+        Math.min(24, fillWidth),
+        fillHeight,
+        Math.max(8, this.trackRect.skew - 8),
+        0xfff4d4,
+        0.72,
+      );
     }
 
     const sparkPhase = (this.ambientTime * 0.9) % 1;
@@ -355,6 +471,15 @@ export class LoadScreen extends Container {
     this.loadingBorderSpark.lineTo(sparkX - 4, sparkY);
     this.loadingBorderSpark.closePath();
     this.loadingBorderSpark.fill({ color: 0xfff4d4, alpha: Math.max(0, sparkAlpha) });
+
+    this.emberLayer.clear();
+    for (let index = 0; index < 6; index += 1) {
+      const phase = this.ambientTime * 0.7 + index * 0.8;
+      const emberX = this.lockupRect.x + 40 + ((index + 1) / 7) * (this.lockupRect.width - 80);
+      const emberY = this.trackRect.y + 44 + Math.sin(phase) * 8;
+      this.emberLayer.circle(emberX, emberY, 3 + (index % 2));
+      this.emberLayer.fill({ color: 0xffc76f, alpha: 0.12 + Math.sin(phase + 0.8) * 0.04 });
+    }
 
     if (!this.reducedMotion && this.shineProgress >= 0 && this.shineProgress <= 1) {
       this.shineProgress += deltaSeconds / 0.7;
