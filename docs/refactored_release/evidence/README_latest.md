@@ -3,7 +3,7 @@
 ## Canonical Truth
 
 - branch: `cassandra-refactoring`
-- baseline head under test: `adf1dc98597465eae8070d9d8f446432f2ccad03`
+- baseline head under test: `cb00cf441ff9d689c32afd0f726d1111e6a1cf65`
 
 ## Evidence Timestamp
 
@@ -65,17 +65,43 @@ Expected running services:
 ## Local Archived Evidence
 
 - runtime-only bundle:
-  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive_20260317_050241/release_rehearsal_02.zip`
-- docker inventory archive:
-  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive_20260317_050241/release_rehearsal_02/`
-- repo compose rehearsal bundle contents:
-  - `docker_compose_config.yml`
-  - `docker_compose_ps.txt`
-  - `docker_compose_logs.txt`
-  - `docker_ps_a.txt`
-  - `latest.env`
-  - `health_headers.txt`
-  - `canary_entry_headers.txt`
-  - `canary_follow_headers.txt`
+  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive_20260317_093403/release_rehearsal_04.zip`
+- production-scale proof bundle:
+  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive_20260317_121415/prod_scale_proof_01.zip`
+- local volume summary:
+  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive_20260317_121415/prod_scale_proof_01/volume_scan_summary.txt`
 
-These paths are intentionally local and not release artifacts to publish from the repo.
+## Migration Scale Decision Status
+
+What is proven:
+
+- runtime parity is green:
+  - migration guard `PASS/PASS`
+  - health `200`
+  - gameplay `302 -> 200`
+- the canonical app baseline referenced by the proof bundles was clean and synced at `cb00cf441ff9d689c32afd0f726d1111e6a1cf65`
+
+What is not proven:
+
+- production-scale Cassandra migration duration
+- a credible local choice between `cqlsh COPY` and `DSBulk` for production-volume tables
+
+What local search already proved:
+
+- the older archived full-copy run exists but is tiny:
+  - total source rows `1573`
+  - largest tables `315 / 241 / 180 / 137`
+- `gp3_cassandra-data` is mostly commitlog
+- relevant local payloads are tiny:
+  - about `1,609,056 bytes` relevant in that volume
+  - largest relevant local payload found anywhere is about `4,467,540 bytes`
+- local archaeology is closed for this workstation
+
+Next decision artifacts:
+
+- `docs/refactored_release/PROD_MIGRATION_SCALE_DECISION_NOTE.md`
+- `docs/refactored_release/PROD_MIGRATION_APPROVAL_REQUEST.md`
+- `docs/refactored_release/REHEARSAL_TEMPLATE_OPTION1_SNAPSHOT.md`
+- `docs/refactored_release/REHEARSAL_TEMPLATE_OPTION2_DSBULK.md`
+
+These paths are intentionally local evidence and operator references, not release artifacts to publish from the repo.

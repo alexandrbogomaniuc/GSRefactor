@@ -3,9 +3,12 @@
 ## Candidate Status
 
 - Track: Option A / production-track stabilization
-- Runtime-proven application baseline commit: `adf1dc98597465eae8070d9d8f446432f2ccad03`
+- Runtime-proven application baseline commit: `cb00cf441ff9d689c32afd0f726d1111e6a1cf65`
 - Branch: `cassandra-refactoring`
 - Intended decision output: `GO` only if all checklist items below stay green
+- Production migration scale decision is still pending external input; see:
+  - `docs/refactored_release/PROD_MIGRATION_SCALE_DECISION_NOTE.md`
+  - `docs/refactored_release/PROD_MIGRATION_APPROVAL_REQUEST.md`
 
 ## GO / NO-GO Checklist
 
@@ -140,6 +143,10 @@ Expected:
 - Rerunning the legacy smoke harness can recreate some live GSRefactor containers without compose labels, so docker cleanup must continue to classify by proven role plus script evidence, not labels alone.
 - The repo compose path still expects an operator-provided html5 asset bundle if local gameplay needs the standalone static facade beyond the `302 -> 200` canary.
 - `cqlsh COPY` is the proven migration path today, but it may need a throughput review before large production data moves.
+- Local archaeology for production-scale timing is closed on the current workstation:
+  - archived full-copy data is real but tiny
+  - old Docker volumes are mostly commitlog or smoke-scale payloads
+  - use the decision note and approval request above instead of continuing local data digs
 
 ## Rollback Trigger and Action
 
