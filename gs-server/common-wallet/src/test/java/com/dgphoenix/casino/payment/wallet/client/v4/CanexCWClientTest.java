@@ -38,7 +38,7 @@ public class CanexCWClientTest extends RestAPIClientTest {
         restTemplate.setGsonSerializer(serializer);
         restTemplate.setContentType(getMediaType());
         MockRestServiceServer mockServer = MockRestServiceServer.bindTo(restTemplate).build();
-        ResponseActions responseActions = mockServer.expect(manyTimes(), requestTo(startsWith("https://test.canex.com")))
+        ResponseActions responseActions = mockServer.expect(manyTimes(), requestTo(startsWith("https://test.abs.com")))
                 .andExpect(method(HttpMethod.POST))
                 .andExpect(content().contentType(getMediaType()));
 
@@ -53,7 +53,7 @@ public class CanexCWClientTest extends RestAPIClientTest {
         params.put("gameId", "777");
         params.put("hash", "some-hash");
         params.put(TestCanexCWClient.requestTypeKey(), RequestType.AUTH.name());
-        client.doRequestPublic(params, "https://test.canex.com/auth", 123L, 10);
+        client.doRequestPublic(params, "https://test.abs.com/auth", 123L, 10);
 
     }
 
