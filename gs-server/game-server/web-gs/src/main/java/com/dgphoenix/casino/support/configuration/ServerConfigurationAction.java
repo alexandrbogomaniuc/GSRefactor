@@ -399,7 +399,7 @@ public class ServerConfigurationAction extends Action {
     }
 
     /**
-     * Getter for field property "trustedIp" in {@link com.dgphoenix.casino.common.config.GameServerConfig}
+     * Getter for field property "trustedIp" in {@link com.abs.casino.common.config.GameServerConfig}
      *
      * @param config Game server configuration
      * @return Value for field
@@ -423,7 +423,7 @@ public class ServerConfigurationAction extends Action {
     }
 
     /**
-     * Getter for field property "casinoSystemType" in {@link com.dgphoenix.casino.common.config.GameServerConfig}
+     * Getter for field property "casinoSystemType" in {@link com.abs.casino.common.config.GameServerConfig}
      *
      * @param config Game server configuration
      * @return Value for property
