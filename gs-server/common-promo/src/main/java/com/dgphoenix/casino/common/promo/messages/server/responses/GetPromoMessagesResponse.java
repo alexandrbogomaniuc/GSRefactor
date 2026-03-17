@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @deprecated It is the old version of {@link com.dgphoenix.casino.common.promo.messages.server.responses.GetPromoNotificationsResponse}
+ * @deprecated It is the old version of {@link com.abs.casino.common.promo.messages.server.responses.GetPromoNotificationsResponse}
  * Left only for backward capability. Should be removed in near future.
  */
 public class GetPromoMessagesResponse extends ServerResponse {
