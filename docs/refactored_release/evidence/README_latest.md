@@ -3,11 +3,11 @@
 ## Canonical Truth
 
 - branch: `cassandra-refactoring`
-- baseline head under test: `b4ce7aa725f472ee2dff92f4ed690b0241cdf3f4`
+- baseline head under test: `adf1dc98597465eae8070d9d8f446432f2ccad03`
 
 ## Evidence Timestamp
 
-- summary generated: `2026-03-16 Europe/London`
+- summary generated: `2026-03-17 Europe/London`
 
 ## Migration Guard Snapshot
 
@@ -18,7 +18,7 @@ SCHEMA_OK=1
 ROWPROOF_OK=1
 ARCHIVER_LEGACY_OK=1
 ARCHIVER_TARGET_OK=1
-ITER_DIR=/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/iter_01_20260316_171634
+ITER_DIR=/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/iter_01_20260317_045853
 ```
 
 ## Fullstack Health
@@ -65,10 +65,17 @@ Expected running services:
 ## Local Archived Evidence
 
 - runtime-only bundle:
-  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive_20260316_144223/evidence_bundle`
+  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive_20260317_050241/release_rehearsal_02.zip`
 - docker inventory archive:
-  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive_20260316_144223/docker_cleanup`
-- repo compose rehearsal logs:
-  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/fullstack_20260316_171704`
+  - `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive_20260317_050241/release_rehearsal_02/`
+- repo compose rehearsal bundle contents:
+  - `docker_compose_config.yml`
+  - `docker_compose_ps.txt`
+  - `docker_compose_logs.txt`
+  - `docker_ps_a.txt`
+  - `latest.env`
+  - `health_headers.txt`
+  - `canary_entry_headers.txt`
+  - `canary_follow_headers.txt`
 
 These paths are intentionally local and not release artifacts to publish from the repo.

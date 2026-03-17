@@ -3,7 +3,7 @@
 ## Candidate Status
 
 - Track: Option A / production-track stabilization
-- Runtime-proven application baseline commit: `b4ce7aa725f472ee2dff92f4ed690b0241cdf3f4`
+- Runtime-proven application baseline commit: `adf1dc98597465eae8070d9d8f446432f2ccad03`
 - Branch: `cassandra-refactoring`
 - Intended decision output: `GO` only if all checklist items below stay green
 
@@ -129,8 +129,8 @@ Expected:
 
 ## Evidence
 
-- migration: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/iter_01_20260316_171634`
-- repo compose runtime: live `:8080` rehearsal from `2026-03-16 17:31 Europe/London`
+- migration: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/logs/iter_01_20260317_045853`
+- repo compose runtime: live `:8080` rehearsal from `2026-03-17 05:02 Europe/London`
 - release docs: `docs/refactored_release/`
 - latest summary: `docs/refactored_release/evidence/README_latest.md`
 

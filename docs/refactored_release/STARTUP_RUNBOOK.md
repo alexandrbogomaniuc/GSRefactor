@@ -198,6 +198,6 @@ Fresh evidence used for this runbook:
 
 1. Cassandra target not reachable
 2. ZooKeeper/Kafka not ready
-3. `webgs-smoke-fullstack` failed Spring startup
+3. `refactored_release-webgs-1` failed Spring startup
 4. healthcheck returns non-`200`
 5. gameplay entry returns non-`302` or follow-up template returns non-`200`
