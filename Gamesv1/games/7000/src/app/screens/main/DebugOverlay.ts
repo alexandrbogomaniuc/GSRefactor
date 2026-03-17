@@ -12,6 +12,9 @@ const showFpsOverlay = (): boolean => readParams().get("debugOverlay") === "1";
 
 const showMathOverlay = (): boolean => {
   const params = readParams();
+  if (params.get("mathOverlay") === "0") {
+    return false;
+  }
   return (
     params.get("allowDevFallback") === "1" ||
     params.get("mathSource") === "provisional" ||

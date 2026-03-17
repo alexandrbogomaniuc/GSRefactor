@@ -20,6 +20,9 @@ export class LayeredFxController extends Container {
   private readonly fireBack = new Graphics();
   private readonly stageGlow = new Graphics();
   private readonly topperAura = new Graphics();
+  private readonly collectRingSprite = new Sprite(Texture.EMPTY);
+  private readonly boostBurstSprite = new Sprite(Texture.EMPTY);
+  private readonly jackpotBurstSprite = new Sprite(Texture.EMPTY);
   private readonly fireFront = new Graphics();
   private readonly coinLayer = new Container();
   private readonly lightningFx = new LightningArcFx();
@@ -41,7 +44,26 @@ export class LayeredFxController extends Container {
 
   constructor() {
     super();
-    this.addChild(this.fireBack, this.stageGlow, this.topperAura, this.coinLayer, this.lightningFx, this.fireFront);
+    this.collectRingSprite.anchor.set(0.5);
+    this.collectRingSprite.visible = false;
+    this.collectRingSprite.blendMode = "add";
+    this.boostBurstSprite.anchor.set(0.5);
+    this.boostBurstSprite.visible = false;
+    this.boostBurstSprite.blendMode = "add";
+    this.jackpotBurstSprite.anchor.set(0.5);
+    this.jackpotBurstSprite.visible = false;
+    this.jackpotBurstSprite.blendMode = "add";
+    this.addChild(
+      this.fireBack,
+      this.stageGlow,
+      this.topperAura,
+      this.collectRingSprite,
+      this.boostBurstSprite,
+      this.jackpotBurstSprite,
+      this.coinLayer,
+      this.lightningFx,
+      this.fireFront,
+    );
     Ticker.shared.add(this.motionTicker);
     void this.refreshTextures();
   }
@@ -145,6 +167,7 @@ export class LayeredFxController extends Container {
     this.redrawFireBack();
     this.redrawStageGlow();
     this.redrawTopperAura();
+    this.redrawFeatureBursts();
     this.redrawFireFront();
     this.tickCoinFlights(deltaMs);
   }
@@ -204,6 +227,37 @@ export class LayeredFxController extends Container {
     this.topperAura.fill({ color: 0xfff0bf, alpha: 0.04 + intensity * 0.14 });
     this.topperAura.circle(this.topperAnchor.x, this.topperAnchor.y - 86, 74 + intensity * 26);
     this.topperAura.stroke({ color: 0xc7141a, width: 2 + intensity * 5, alpha: 0.16 + intensity * 0.5 });
+  }
+
+  private redrawFeatureBursts(): void {
+    this.collectRingSprite.visible = this.collectPulse > 0.02 && this.collectRingSprite.texture !== Texture.EMPTY;
+    if (this.collectRingSprite.visible) {
+      this.collectRingSprite.position.set(this.topperAnchor.x, this.topperAnchor.y - 30);
+      this.collectRingSprite.scale.set(0.9 + this.collectPulse * 0.8 + Math.sin(this.ambientTime * 5) * 0.04);
+      this.collectRingSprite.alpha = 0.16 + this.collectPulse * 0.42;
+      this.collectRingSprite.tint = 0xffd36f;
+      this.collectRingSprite.rotation = this.ambientTime * 0.6;
+    }
+
+    this.boostBurstSprite.visible =
+      (this.boostPulse > 0.02 || this.boostLoop > 0.08) && this.boostBurstSprite.texture !== Texture.EMPTY;
+    if (this.boostBurstSprite.visible) {
+      const boostLevel = Math.max(this.boostPulse * 0.9, this.boostLoop * 0.7);
+      this.boostBurstSprite.position.set(this.topperAnchor.x, this.topperAnchor.y - 58);
+      this.boostBurstSprite.scale.set(0.92 + boostLevel * 0.74 + Math.sin(this.ambientTime * 8) * 0.05);
+      this.boostBurstSprite.alpha = 0.14 + boostLevel * 0.36;
+      this.boostBurstSprite.tint = 0xfff0cf;
+      this.boostBurstSprite.rotation = -this.ambientTime * 1.6;
+    }
+
+    this.jackpotBurstSprite.visible = this.jackpotPulse > 0.02 && this.jackpotBurstSprite.texture !== Texture.EMPTY;
+    if (this.jackpotBurstSprite.visible) {
+      this.jackpotBurstSprite.position.set(this.topperAnchor.x, this.topperAnchor.y - 74);
+      this.jackpotBurstSprite.scale.set(1.04 + this.jackpotPulse * 0.92 + Math.sin(this.ambientTime * 10) * 0.06);
+      this.jackpotBurstSprite.alpha = 0.18 + this.jackpotPulse * 0.46;
+      this.jackpotBurstSprite.tint = 0xffdf94;
+      this.jackpotBurstSprite.rotation = this.ambientTime * 2.1;
+    }
   }
 
   private redrawFireFront(): void {
@@ -312,10 +366,18 @@ export class LayeredFxController extends Container {
 
   private async refreshTextures(): Promise<void> {
     const requestToken = ++this.textureRequestToken;
-    const coin = await resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-2x");
+    const [coin, collectRing, boostBurst, jackpotBurst] = await Promise.all([
+      resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-2x"),
+      resolveProviderFrameTexture("vfxAtlas", "collector-ring"),
+      resolveProviderFrameTexture("vfxAtlas", "spark-burst-01"),
+      resolveProviderFrameTexture("vfxAtlas", "spark-burst-03"),
+    ]);
     if (requestToken !== this.textureRequestToken) {
       return;
     }
     this.coinTexture = coin.texture;
+    this.collectRingSprite.texture = collectRing.texture ?? Texture.EMPTY;
+    this.boostBurstSprite.texture = boostBurst.texture ?? Texture.EMPTY;
+    this.jackpotBurstSprite.texture = jackpotBurst.texture ?? Texture.EMPTY;
   }
 }

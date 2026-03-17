@@ -1,6 +1,10 @@
-import { Container, Graphics, Sprite, Text, Texture, Ticker } from "pixi.js";
+import { Assets, Container, Graphics, Sprite, Text, Texture, Ticker } from "pixi.js";
 
-import { resolveProviderFrameTexture } from "../../app/assets/providerPackRegistry";
+import {
+  getDonorLocalManifestUrl,
+  getProviderPackStatus,
+  resolveProviderFrameTexture,
+} from "../../app/assets/providerPackRegistry";
 
 export type MascotReactionState =
   | "idle"
@@ -37,7 +41,14 @@ type MascotPalette = {
   captionColor: number;
 };
 
+type DonorMascotTextures = {
+  strike: Texture | null;
+  superStrike: Texture | null;
+};
+
 export class TopperMascotController extends Container {
+  private static donorMascotTexturesPromise: Promise<DonorMascotTextures> | null = null;
+
   private readonly plateGlow = new Graphics();
   private readonly plateShadow = new Graphics();
   private readonly plate = new Graphics();
@@ -135,68 +146,69 @@ export class TopperMascotController extends Container {
   }
 
   private redrawBase(): void {
-    const plateWidth = 304;
-    const plateHeight = 170;
+    const isDonorlocal = getProviderPackStatus().effectiveProvider === "donorlocal";
+    const plateWidth = isDonorlocal ? 274 : 304;
+    const plateHeight = isDonorlocal ? 144 : 170;
 
     this.plateGlow.clear();
     this.plateGlow.roundRect(
       this.anchorX - plateWidth * 0.5 - 14,
-      this.anchorY - 174,
+      this.anchorY - (isDonorlocal ? 150 : 174),
       plateWidth + 28,
-      plateHeight + 26,
-      44,
+      plateHeight + (isDonorlocal ? 20 : 26),
+      isDonorlocal ? 34 : 44,
     );
-    this.plateGlow.fill({ color: 0x701017, alpha: 0.28 });
-    this.plateGlow.stroke({ color: 0xc7141a, width: 10, alpha: 0.26 });
+    this.plateGlow.fill({ color: isDonorlocal ? 0x541706 : 0x701017, alpha: isDonorlocal ? 0.16 : 0.28 });
+    this.plateGlow.stroke({ color: isDonorlocal ? 0xf3cb74 : 0xc7141a, width: isDonorlocal ? 6 : 10, alpha: isDonorlocal ? 0.18 : 0.26 });
 
     this.plateShadow.clear();
     this.plateShadow.roundRect(
       this.anchorX - plateWidth * 0.5 + 12,
-      this.anchorY - 150,
+      this.anchorY - (isDonorlocal ? 132 : 150),
       plateWidth,
       plateHeight,
-      42,
+      isDonorlocal ? 30 : 42,
     );
-    this.plateShadow.fill({ color: 0x050102, alpha: 0.38 });
+    this.plateShadow.fill({ color: 0x050102, alpha: isDonorlocal ? 0.24 : 0.38 });
 
     this.plate.clear();
     this.plate.roundRect(
       this.anchorX - plateWidth * 0.5,
-      this.anchorY - 160,
+      this.anchorY - (isDonorlocal ? 140 : 160),
       plateWidth,
       plateHeight,
-      42,
+      isDonorlocal ? 30 : 42,
     );
-    this.plate.fill({ color: 0x150305, alpha: 0.9 });
-    this.plate.stroke({ color: 0xe8bb74, width: 3, alpha: 0.88 });
+    this.plate.fill({ color: isDonorlocal ? 0x120305 : 0x150305, alpha: isDonorlocal ? 0.82 : 0.9 });
+    this.plate.stroke({ color: 0xe8bb74, width: 3, alpha: isDonorlocal ? 0.72 : 0.88 });
 
     this.plateInset.clear();
     this.plateInset.roundRect(
       this.anchorX - plateWidth * 0.5 + 12,
-      this.anchorY - 148,
+      this.anchorY - (isDonorlocal ? 128 : 148),
       plateWidth - 24,
-      plateHeight - 36,
-      34,
+      plateHeight - (isDonorlocal ? 24 : 36),
+      isDonorlocal ? 24 : 34,
     );
-    this.plateInset.fill({ color: 0x2a070a, alpha: 0.72 });
-    this.plateInset.stroke({ color: 0xffe0a2, width: 2, alpha: 0.45 });
+    this.plateInset.fill({ color: isDonorlocal ? 0x250705 : 0x2a070a, alpha: isDonorlocal ? 0.52 : 0.72 });
+    this.plateInset.stroke({ color: 0xffe0a2, width: 2, alpha: isDonorlocal ? 0.28 : 0.45 });
 
     this.mascotSprite.x = this.anchorX;
-    this.mascotSprite.y = this.anchorY;
-    this.mascotSprite.width = 154;
-    this.mascotSprite.height = 154;
+    this.mascotSprite.y = this.anchorY + (isDonorlocal ? 4 : 0);
+    this.mascotSprite.width = isDonorlocal ? 172 : 154;
+    this.mascotSprite.height = isDonorlocal ? 172 : 154;
 
-    this.accentSprite.x = this.anchorX + 102;
-    this.accentSprite.y = this.anchorY - 122;
-    this.accentSprite.width = 50;
-    this.accentSprite.height = 50;
+    this.accentSprite.x = this.anchorX + (isDonorlocal ? 84 : 102);
+    this.accentSprite.y = this.anchorY - (isDonorlocal ? 110 : 122);
+    this.accentSprite.width = isDonorlocal ? 58 : 50;
+    this.accentSprite.height = isDonorlocal ? 58 : 50;
 
     this.titleText.x = this.anchorX;
-    this.titleText.y = this.anchorY - 150;
-    this.titleText.style.fontSize = 28;
+    this.titleText.y = this.anchorY - (isDonorlocal ? 128 : 150);
+    this.titleText.style.fontSize = isDonorlocal ? 24 : 28;
     this.stateText.x = this.anchorX;
-    this.stateText.y = this.anchorY + 4;
-    this.stateText.style.fontSize = 14;
+    this.stateText.y = this.anchorY + (isDonorlocal ? 14 : 4);
+    this.stateText.style.fontSize = isDonorlocal ? 13 : 14;
   }
 
   private tick(deltaMs: number): void {
@@ -219,8 +231,9 @@ export class TopperMascotController extends Container {
 
     const palette = this.resolvePalette();
     const statePulse = this.resolveStatePulse();
-    const floatY = Math.sin(this.ambientTime * 1.45) * 6 + this.reelImpact * -8;
-    const scale = 1 + statePulse.scaleBoost + Math.sin(this.ambientTime * 1.8) * 0.03;
+    const isDonorlocal = getProviderPackStatus().effectiveProvider === "donorlocal";
+    const floatY = Math.sin(this.ambientTime * (isDonorlocal ? 1.7 : 1.45)) * (isDonorlocal ? 4 : 6) + this.reelImpact * (isDonorlocal ? -6 : -8);
+    const scale = 1 + statePulse.scaleBoost + Math.sin(this.ambientTime * 1.8) * (isDonorlocal ? 0.018 : 0.03);
 
     this.mascotSprite.y = this.anchorY + floatY;
     this.mascotSprite.scale.set(scale);
@@ -234,25 +247,25 @@ export class TopperMascotController extends Container {
     this.aura.clear();
     this.aura.ellipse(
       this.anchorX,
-      this.anchorY - 42 + floatY * 0.2,
-      132 + statePulse.glowRadius,
-      40 + statePulse.glowRadius * 0.2,
+      this.anchorY - (isDonorlocal ? 24 : 42) + floatY * 0.2,
+      (isDonorlocal ? 118 : 132) + statePulse.glowRadius,
+      (isDonorlocal ? 34 : 40) + statePulse.glowRadius * 0.2,
     );
     this.aura.fill({
       color: palette.auraColor,
-      alpha: palette.auraAlpha + statePulse.alphaBoost,
+      alpha: (isDonorlocal ? palette.auraAlpha * 0.9 : palette.auraAlpha) + statePulse.alphaBoost,
     });
 
     this.energyRing.clear();
     this.energyRing.circle(
       this.anchorX,
-      this.anchorY - 66 + floatY * 0.12,
-      76 + statePulse.glowRadius * 0.44,
+      this.anchorY - (isDonorlocal ? 44 : 66) + floatY * 0.12,
+      (isDonorlocal ? 68 : 76) + statePulse.glowRadius * 0.44,
     );
     this.energyRing.stroke({
       color: palette.accentColor,
-      width: 3 + statePulse.scaleBoost * 20,
-      alpha: 0.38 + statePulse.alphaBoost * 0.65,
+      width: (isDonorlocal ? 2 : 3) + statePulse.scaleBoost * (isDonorlocal ? 12 : 20),
+      alpha: (isDonorlocal ? 0.28 : 0.38) + statePulse.alphaBoost * 0.65,
     });
 
     this.titleText.style.fill = palette.captionColor;
@@ -355,19 +368,35 @@ export class TopperMascotController extends Container {
 
   private async refreshTextures(): Promise<void> {
     const requestToken = ++this.textureRequestToken;
+    const isDonorlocal = getProviderPackStatus().effectiveProvider === "donorlocal";
     const [mascot, collect, boost, jackpot] = await Promise.all([
       resolveProviderFrameTexture("symbolAtlas", "symbol-9-rooster"),
       resolveProviderFrameTexture("symbolAtlas", "collector-symbol"),
       resolveProviderFrameTexture("symbolAtlas", "symbol-8-bolt"),
       resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-10x"),
     ]);
+    const donorTextures = isDonorlocal
+      ? await TopperMascotController.resolveDonorMascotTextures()
+      : null;
 
     if (requestToken !== this.textureRequestToken) {
       return;
     }
 
-    this.mascotSprite.texture = mascot.texture ?? Texture.WHITE;
-    this.mascotSprite.tint = mascot.texture ? 0xffffff : 0xd14d30;
+    const donorMascotTexture =
+      isDonorlocal &&
+      (this.currentState === "react_boost_start" ||
+        this.currentState === "react_boost_loop" ||
+        this.currentState === "react_boost_finish" ||
+        this.currentState === "react_jackpot" ||
+        this.currentState === "react_bigwin")
+        ? donorTextures?.superStrike ?? null
+        : isDonorlocal
+          ? donorTextures?.strike ?? null
+          : null;
+
+    this.mascotSprite.texture = donorMascotTexture ?? mascot.texture ?? Texture.WHITE;
+    this.mascotSprite.tint = donorMascotTexture || mascot.texture ? 0xffffff : 0xd14d30;
 
     let accentTexture: Texture | null = null;
     let accentTint = 0xffefb0;
@@ -388,5 +417,34 @@ export class TopperMascotController extends Container {
 
     this.accentSprite.texture = accentTexture ?? Texture.WHITE;
     this.accentSprite.tint = accentTexture ? 0xffffff : accentTint;
+    this.redrawBase();
+  }
+
+  private static async resolveDonorMascotTextures(): Promise<DonorMascotTextures> {
+    if (!TopperMascotController.donorMascotTexturesPromise) {
+      TopperMascotController.donorMascotTexturesPromise = (async () => {
+        const manifestUrl = new URL(getDonorLocalManifestUrl(), window.location.origin).toString();
+        const urls = {
+          strike: new URL("../image/img_strike_coin.9ea8c29f.png", manifestUrl).toString(),
+          superStrike: new URL("../image/img_super_strike_coin.d11daf84.png", manifestUrl).toString(),
+        };
+
+        const loadTexture = async (url: string): Promise<Texture | null> => {
+          try {
+            await Assets.load(url);
+            return Texture.from(url);
+          } catch {
+            return null;
+          }
+        };
+
+        return {
+          strike: await loadTexture(urls.strike),
+          superStrike: await loadTexture(urls.superStrike),
+        };
+      })();
+    }
+
+    return TopperMascotController.donorMascotTexturesPromise;
   }
 }

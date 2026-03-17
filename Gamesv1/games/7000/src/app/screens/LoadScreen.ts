@@ -11,6 +11,12 @@ import {
 
 import roosterLogoUrl from "../../../raw-assets/preload{m}/rooster-logo.png?url";
 import betonlineLogoUrl from "../../../raw-assets/preload{m}/betonline-logo.svg?url";
+import {
+  getDonorLocalManifestUrl,
+  getProviderPackStatus,
+  resolveProviderBackgroundUrl,
+  resolveProviderWordmarkUrl,
+} from "../assets/providerPackRegistry.ts";
 import { userSettings } from "../utils/userSettings";
 
 export class LoadScreen extends Container {
@@ -19,6 +25,7 @@ export class LoadScreen extends Container {
   private static audioRegistry: AudioCueRegistry = createAudioCueRegistry();
 
   private readonly preloader: WowPreloader;
+  private readonly providerBackdrop = new Sprite(Texture.EMPTY);
   private readonly backdrop = new Graphics();
   private readonly backdropGlow = new Graphics();
   private readonly backdropFlares = new Graphics();
@@ -85,6 +92,7 @@ export class LoadScreen extends Container {
   private lockupRect = { x: 0, y: 0, width: 0, height: 0 };
   private trackRect = { x: 0, y: 0, width: 0, height: 0, skew: 0 };
   private betonlineRect = { x: 0, y: 0, width: 0, height: 0 };
+  private donorBenchmarkMode = false;
 
   public static configure(input: {
     themeTokens: ShellThemeTokens;
@@ -104,6 +112,8 @@ export class LoadScreen extends Container {
     this.preloader.alpha = 0;
     this.preloader.eventMode = "none";
 
+    this.providerBackdrop.anchor.set(0.5);
+    this.providerBackdrop.visible = false;
     this.roosterLogo.anchor.set(0.5);
     this.roosterLogo.visible = false;
     this.roosterFallbackText.anchor.set(0.5);
@@ -127,6 +137,7 @@ export class LoadScreen extends Container {
     this.logoShine.visible = false;
     this.completionStar.visible = false;
     this.addChild(
+      this.providerBackdrop,
       this.backdrop,
       this.backdropGlow,
       this.backdropFlares,
@@ -197,14 +208,25 @@ export class LoadScreen extends Container {
     this.preloader.resize(width, height);
     const isPortrait = height > width;
     const stackCenterX = width * 0.5 + (isPortrait ? 12 : 0);
+    this.providerBackdrop.x = width * 0.5;
+    this.providerBackdrop.y = height * 0.5;
+    this.providerBackdrop.width = width;
+    this.providerBackdrop.height = height;
 
-    const roosterWidthBase = Math.min(width * 0.29, 402);
-    const roosterWidth = Math.min(
-      roosterWidthBase * (isPortrait ? 2.05 : 1),
-      isPortrait ? 660 : 402,
-    );
-    const roosterHeight = roosterWidth * (1024 / 1536);
-    const roosterY = height * (isPortrait ? 0.305 : 0.275);
+    const roosterRatio =
+      this.roosterLogo.texture.width > 0
+        ? this.roosterLogo.texture.height / this.roosterLogo.texture.width
+        : 1024 / 1536;
+    const roosterWidthBase = this.donorBenchmarkMode
+      ? Math.min(width * (isPortrait ? 0.56 : 0.28), isPortrait ? 420 : 340)
+      : Math.min(width * 0.29, 402);
+    const roosterWidth = this.donorBenchmarkMode
+      ? roosterWidthBase
+      : Math.min(roosterWidthBase * (isPortrait ? 2.05 : 1), isPortrait ? 660 : 402);
+    const roosterHeight = roosterWidth * roosterRatio;
+    const roosterY = this.donorBenchmarkMode
+      ? height * (isPortrait ? 0.14 : 0.165)
+      : height * (isPortrait ? 0.305 : 0.275);
     this.roosterLogo.x = stackCenterX;
     this.roosterLogo.y = roosterY;
     this.roosterBaseWidth = roosterWidth;
@@ -215,10 +237,18 @@ export class LoadScreen extends Container {
     this.roosterFallbackText.y = roosterY;
     this.roosterFallbackText.visible = !this.roosterReady;
 
-    const betonlineBaseWidth = Math.min(width * 0.62, 760);
-    const betonlineHeight = betonlineBaseWidth * (289 / 735);
-    const betonlineWidth = betonlineBaseWidth * 1.08;
-    const betonlineY = height * (isPortrait ? 0.468 : 0.462);
+    const betonlineRatio =
+      this.betonlineLogo.texture.width > 0
+        ? this.betonlineLogo.texture.height / this.betonlineLogo.texture.width
+        : 289 / 735;
+    const betonlineBaseWidth = this.donorBenchmarkMode
+      ? Math.min(width * (isPortrait ? 0.78 : 0.38), isPortrait ? 560 : 470)
+      : Math.min(width * 0.62, 760);
+    const betonlineHeight = betonlineBaseWidth * betonlineRatio;
+    const betonlineWidth = this.donorBenchmarkMode ? betonlineBaseWidth : betonlineBaseWidth * 1.08;
+    const betonlineY = this.donorBenchmarkMode
+      ? height * (isPortrait ? 0.42 : 0.455)
+      : height * (isPortrait ? 0.468 : 0.462);
     this.betonlineLogo.x = stackCenterX;
     this.betonlineLogo.y = betonlineY;
     this.betonlineLogo.width = betonlineWidth;
@@ -234,27 +264,30 @@ export class LoadScreen extends Container {
     };
 
     this.lockupRect = {
-      x: stackCenterX - Math.min(width * 0.39, 430),
-      y: roosterY - roosterHeight * 0.72,
-      width: Math.min(width * 0.78, 860),
-      height: (betonlineY + betonlineHeight * 0.78) - (roosterY - roosterHeight * 0.72),
+      x: stackCenterX - Math.min(width * (this.donorBenchmarkMode ? 0.27 : 0.39), this.donorBenchmarkMode ? 320 : 430),
+      y: roosterY - roosterHeight * (this.donorBenchmarkMode ? 0.48 : 0.72),
+      width: Math.min(width * (this.donorBenchmarkMode ? 0.54 : 0.78), this.donorBenchmarkMode ? 640 : 860),
+      height:
+        (betonlineY + betonlineHeight * (this.donorBenchmarkMode ? 0.66 : 0.78)) -
+        (roosterY - roosterHeight * (this.donorBenchmarkMode ? 0.48 : 0.72)),
     };
 
-    const trackWidth = Math.min(width * 0.38, 460);
-    const trackHeight = Math.max(22, Math.min(30, height * 0.036));
-    const trackY = betonlineY + betonlineHeight * 0.9;
+    const trackWidth = Math.min(width * (this.donorBenchmarkMode ? 0.34 : 0.38), this.donorBenchmarkMode ? 420 : 460);
+    const trackHeight = Math.max(this.donorBenchmarkMode ? 20 : 22, Math.min(this.donorBenchmarkMode ? 28 : 30, height * 0.036));
+    const trackY = betonlineY + betonlineHeight * (this.donorBenchmarkMode ? 0.74 : 0.9);
     this.trackRect = {
       x: stackCenterX - trackWidth * 0.5,
       y: trackY,
       width: trackWidth,
       height: trackHeight,
-      skew: Math.max(14, trackHeight * 0.8),
+      skew: Math.max(this.donorBenchmarkMode ? 10 : 14, trackHeight * 0.8),
     };
 
     this.statusText.x = stackCenterX;
-    this.statusText.y = trackY - 62;
+    this.statusText.y = trackY - (this.donorBenchmarkMode ? 46 : 62);
     this.footerText.x = width * 0.5;
     this.footerText.y = height - 26;
+    this.footerText.visible = !this.donorBenchmarkMode;
 
     this.redrawOverlay();
   }
@@ -294,33 +327,42 @@ export class LoadScreen extends Container {
   private redrawOverlay(deltaSeconds = 0): void {
     const width = this.preloader.width || window.innerWidth || 1280;
     const height = this.preloader.height || window.innerHeight || 720;
+    this.providerBackdrop.visible = this.donorBenchmarkMode && this.providerBackdrop.texture !== Texture.EMPTY;
     this.backdrop.clear();
     this.backdrop.rect(0, 0, width, height);
-    this.backdrop.fill({ color: 0x1d1f24, alpha: 1 });
+    this.backdrop.fill({
+      color: this.donorBenchmarkMode ? 0x080103 : 0x1d1f24,
+      alpha: this.donorBenchmarkMode ? 0.44 : 1,
+    });
 
     this.backdropGlow.clear();
     this.backdropGlow.ellipse(width * 0.5, height * 0.46, width * 0.38, height * 0.34);
-    this.backdropGlow.fill({ color: 0x7b0d14, alpha: 0.26 });
-    this.backdropGlow.ellipse(width * 0.5, height * 0.4, width * 0.24, height * 0.18);
-    this.backdropGlow.fill({ color: 0xe3aa45, alpha: 0.1 });
+    this.backdropGlow.fill({
+      color: this.donorBenchmarkMode ? 0x4c0e04 : 0x7b0d14,
+      alpha: this.donorBenchmarkMode ? 0.18 : 0.26,
+    });
+    this.backdropGlow.ellipse(width * 0.5, height * (this.donorBenchmarkMode ? 0.38 : 0.4), width * 0.24, height * 0.18);
+    this.backdropGlow.fill({ color: 0xe3aa45, alpha: this.donorBenchmarkMode ? 0.16 : 0.1 });
 
     this.backdropFlares.clear();
-    this.backdropFlares.moveTo(width * 0.16, height * 0.12);
-    this.backdropFlares.lineTo(width * 0.26, height * 0.18);
-    this.backdropFlares.lineTo(width * 0.2, height * 0.72);
-    this.backdropFlares.lineTo(width * 0.08, height * 0.62);
-    this.backdropFlares.closePath();
-    this.backdropFlares.fill({ color: 0x5a0b11, alpha: 0.16 });
-    this.backdropFlares.moveTo(width * 0.84, height * 0.12);
-    this.backdropFlares.lineTo(width * 0.92, height * 0.62);
-    this.backdropFlares.lineTo(width * 0.8, height * 0.72);
-    this.backdropFlares.lineTo(width * 0.74, height * 0.18);
-    this.backdropFlares.closePath();
-    this.backdropFlares.fill({ color: 0x5a0b11, alpha: 0.16 });
+    if (!this.donorBenchmarkMode) {
+      this.backdropFlares.moveTo(width * 0.16, height * 0.12);
+      this.backdropFlares.lineTo(width * 0.26, height * 0.18);
+      this.backdropFlares.lineTo(width * 0.2, height * 0.72);
+      this.backdropFlares.lineTo(width * 0.08, height * 0.62);
+      this.backdropFlares.closePath();
+      this.backdropFlares.fill({ color: 0x5a0b11, alpha: 0.16 });
+      this.backdropFlares.moveTo(width * 0.84, height * 0.12);
+      this.backdropFlares.lineTo(width * 0.92, height * 0.62);
+      this.backdropFlares.lineTo(width * 0.8, height * 0.72);
+      this.backdropFlares.lineTo(width * 0.74, height * 0.18);
+      this.backdropFlares.closePath();
+      this.backdropFlares.fill({ color: 0x5a0b11, alpha: 0.16 });
+    }
 
     this.floorGlow.clear();
     this.floorGlow.ellipse(width * 0.5, height * 0.86, width * 0.38, height * 0.08);
-    this.floorGlow.fill({ color: 0xffb046, alpha: 0.08 });
+    this.floorGlow.fill({ color: 0xffb046, alpha: this.donorBenchmarkMode ? 0.13 : 0.08 });
 
     this.lockupPlateShadow.clear();
     this.lockupPlateShadow.roundRect(
@@ -340,8 +382,8 @@ export class LoadScreen extends Container {
       this.lockupRect.height + 18,
       42,
     );
-    this.lockupPlate.fill({ color: 0x150306, alpha: 0.92 });
-    this.lockupPlate.stroke({ color: 0xf0c877, width: 4, alpha: 0.88 });
+    this.lockupPlate.fill({ color: this.donorBenchmarkMode ? 0x1a0604 : 0x150306, alpha: this.donorBenchmarkMode ? 0.7 : 0.92 });
+    this.lockupPlate.stroke({ color: 0xf0c877, width: this.donorBenchmarkMode ? 3 : 4, alpha: this.donorBenchmarkMode ? 0.74 : 0.88 });
 
     this.lockupInset.clear();
     this.lockupInset.roundRect(
@@ -351,8 +393,8 @@ export class LoadScreen extends Container {
       this.lockupRect.height - 10,
       34,
     );
-    this.lockupInset.fill({ color: 0x2a070a, alpha: 0.74 });
-    this.lockupInset.stroke({ color: 0x5d0c11, width: 2, alpha: 0.72 });
+    this.lockupInset.fill({ color: this.donorBenchmarkMode ? 0x2a0704 : 0x2a070a, alpha: this.donorBenchmarkMode ? 0.48 : 0.74 });
+    this.lockupInset.stroke({ color: 0x5d0c11, width: 2, alpha: this.donorBenchmarkMode ? 0.4 : 0.72 });
 
     this.statusText.text = this.statusLabel;
 
@@ -377,8 +419,8 @@ export class LoadScreen extends Container {
       36,
       16,
     );
-    this.statusPlate.fill({ color: 0x36080c, alpha: 0.88 });
-    this.statusPlate.stroke({ color: 0xffd78a, width: 2, alpha: 0.78 });
+    this.statusPlate.fill({ color: this.donorBenchmarkMode ? 0x311004 : 0x36080c, alpha: 0.88 });
+    this.statusPlate.stroke({ color: 0xffd78a, width: 2, alpha: this.donorBenchmarkMode ? 0.86 : 0.78 });
 
     this.loadingGlow.clear();
     this.drawSkewRect(
@@ -388,8 +430,8 @@ export class LoadScreen extends Container {
       this.trackRect.width + 36,
       this.trackRect.height + 30,
       this.trackRect.skew + 4,
-      0x6f0c12,
-      0.18,
+      this.donorBenchmarkMode ? 0x94440a : 0x6f0c12,
+      this.donorBenchmarkMode ? 0.16 : 0.18,
     );
 
     this.loadingFrame.clear();
@@ -400,10 +442,10 @@ export class LoadScreen extends Container {
       this.trackRect.width + 20,
       this.trackRect.height + 20,
       this.trackRect.skew,
-      0xc7141a,
-      0.22,
+      this.donorBenchmarkMode ? 0xe0982b : 0xc7141a,
+      this.donorBenchmarkMode ? 0.28 : 0.22,
     );
-    this.loadingFrame.stroke({ color: 0xffd78a, width: 2, alpha: 0.34 });
+    this.loadingFrame.stroke({ color: 0xfff0bf, width: 2, alpha: this.donorBenchmarkMode ? 0.46 : 0.34 });
 
     this.loadingTrack.clear();
     this.drawSkewRect(
@@ -413,10 +455,10 @@ export class LoadScreen extends Container {
       this.trackRect.width,
       this.trackRect.height,
       this.trackRect.skew,
-      0x121418,
+      this.donorBenchmarkMode ? 0x1b1006 : 0x121418,
       0.95,
     );
-    this.loadingTrack.stroke({ color: 0x5f6772, width: 2, alpha: 0.96 });
+    this.loadingTrack.stroke({ color: this.donorBenchmarkMode ? 0x8d6d2b : 0x5f6772, width: 2, alpha: 0.96 });
 
     this.loadingFill.clear();
     if (fillWidth > 0) {
@@ -431,7 +473,7 @@ export class LoadScreen extends Container {
           redWidth,
           fillHeight,
           Math.max(8, this.trackRect.skew - 6),
-          0xc7141a,
+          this.donorBenchmarkMode ? 0xf2a728 : 0xc7141a,
           0.98,
         );
       }
@@ -444,7 +486,7 @@ export class LoadScreen extends Container {
           whiteWidth,
           fillHeight,
           Math.max(8, this.trackRect.skew - 6),
-          0xffffff,
+          this.donorBenchmarkMode ? 0xfff2bf : 0xffffff,
           0.95,
         );
       }
@@ -473,12 +515,15 @@ export class LoadScreen extends Container {
     this.loadingBorderSpark.fill({ color: 0xfff4d4, alpha: Math.max(0, sparkAlpha) });
 
     this.emberLayer.clear();
-    for (let index = 0; index < 6; index += 1) {
+    for (let index = 0; index < (this.donorBenchmarkMode ? 9 : 6); index += 1) {
       const phase = this.ambientTime * 0.7 + index * 0.8;
       const emberX = this.lockupRect.x + 40 + ((index + 1) / 7) * (this.lockupRect.width - 80);
       const emberY = this.trackRect.y + 44 + Math.sin(phase) * 8;
       this.emberLayer.circle(emberX, emberY, 3 + (index % 2));
-      this.emberLayer.fill({ color: 0xffc76f, alpha: 0.12 + Math.sin(phase + 0.8) * 0.04 });
+      this.emberLayer.fill({
+        color: this.donorBenchmarkMode ? 0xffd985 : 0xffc76f,
+        alpha: (this.donorBenchmarkMode ? 0.18 : 0.12) + Math.sin(phase + 0.8) * 0.04,
+      });
     }
 
     if (!this.reducedMotion && this.shineProgress >= 0 && this.shineProgress <= 1) {
@@ -576,6 +621,60 @@ export class LoadScreen extends Container {
   }
 
   private async loadBrandTextures(): Promise<void> {
+    this.donorBenchmarkMode = getProviderPackStatus().effectiveProvider === "donorlocal";
+    if (this.donorBenchmarkMode) {
+      const manifestUrl = new URL(getDonorLocalManifestUrl(), window.location.origin).toString();
+      const backgroundUrl = resolveProviderBackgroundUrl(window.innerWidth, window.innerHeight);
+      const wordmarkUrl = resolveProviderWordmarkUrl();
+      const donorCardUrl = new URL("../image/startScreen1.222f7cdf.png", manifestUrl).toString();
+
+      if (backgroundUrl) {
+        try {
+          await Assets.load(backgroundUrl);
+          this.providerBackdrop.texture = Texture.from(backgroundUrl);
+          this.providerBackdrop.tint = 0xffffff;
+          this.providerBackdrop.visible = true;
+        } catch {
+          this.providerBackdrop.visible = false;
+        }
+      } else {
+        this.providerBackdrop.visible = false;
+      }
+
+      if (wordmarkUrl) {
+        try {
+          await Assets.load(wordmarkUrl);
+          this.roosterLogo.texture = Texture.from(wordmarkUrl);
+          this.roosterLogo.tint = 0xffffff;
+          this.roosterReady = true;
+          this.roosterLogo.visible = true;
+        } catch {
+          this.roosterReady = false;
+          this.roosterLogo.visible = false;
+        }
+      } else {
+        this.roosterReady = false;
+        this.roosterLogo.visible = false;
+      }
+
+      try {
+        await Assets.load(donorCardUrl);
+        this.betonlineLogo.texture = Texture.from(donorCardUrl);
+        this.betonlineLogo.tint = 0xffffff;
+        this.betonlineReady = true;
+        this.betonlineLogo.visible = true;
+      } catch {
+        this.betonlineReady = false;
+        this.betonlineLogo.visible = false;
+      }
+
+      this.roosterFallbackText.visible = !this.roosterReady;
+      this.betonlineFallbackText.visible = false;
+      this.footerText.visible = false;
+      this.resize(this.preloader.width || window.innerWidth, this.preloader.height || window.innerHeight);
+      return;
+    }
+
     try {
       await Assets.load(roosterLogoUrl);
       this.roosterLogo.texture = Texture.from(roosterLogoUrl);

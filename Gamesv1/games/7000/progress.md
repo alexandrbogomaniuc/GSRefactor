@@ -155,3 +155,13 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
     - stronger collect/boost/jackpot presentation intensity in `src/game/presentation/LayeredFxController.ts`,
     - cleaner benchmark status language and less cluttered top stack in `src/app/screens/main/MainScreen.ts`.
   - captured proof for the new donorlocal baseline under `docs/_visual_proof/beta6-2026-03-17/` covering `preloader`, `idle`, `top-area`, `control-cluster`, `collect`, `boost`, and `jackpot`.
+- 2026-03-17: Started beta7 donorlocal reconstruction pass on branch `codex/qa/7000-beta7-donorlocal-reconstruction-20260317-1304`.
+  - fixed a donorlocal-only loader bug across the new benchmark art pass: direct donor image URLs must be built from an absolute manifest URL (`window.location.origin + /@fs/...`), otherwise the browser treats the manifest path as an invalid base and silently falls back to white textures.
+  - pushed the benchmark path materially closer to donor by switching these visible areas onto local donor assets where mapping exists:
+    - preloader now uses donorlocal background + donorlocal wordmark/card composition in `src/app/screens/LoadScreen.ts`,
+    - top cluster now uses donorlocal hero card plus strike/super-strike topper art in `src/app/screens/main/Beta3VisualChrome.ts` and `src/game/presentation/TopperMascotController.ts`,
+    - reel bed now uses the donorlocal slot-sheet crop in `src/game/slots/CrazyRoosterSlotMachine.ts`,
+    - bottom rail now uses donorlocal buy/turbo/autoplay art with cleaner placeholder fallback for unmapped controls in `src/app/screens/main/HeroHudChrome.ts`,
+    - feature stack now uses donorlocal collector ring / spark burst layers in `src/game/presentation/LayeredFxController.ts`.
+  - added `mathOverlay=0` in `src/app/screens/main/DebugOverlay.ts` so proof capture can hide the dev math panel while keeping the QA-visible overlay on by default for benchmark work.
+  - captured fresh proof under `docs/_visual_proof/beta7-2026-03-17/` for `preloader`, `idle`, `top-area`, `control-cluster`, `collect`, `boost`, and `jackpot`.
