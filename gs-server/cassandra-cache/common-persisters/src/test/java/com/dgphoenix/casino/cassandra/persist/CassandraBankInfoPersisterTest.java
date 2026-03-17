@@ -36,12 +36,12 @@ public class CassandraBankInfoPersisterTest extends TestCase {
         bank.setPersistWalletOps(false);
         bank.setSubCasinoId(subCasinoId);
 
-        bank.setProperty(BankInfo.KEY_PSM_CLASS, "com.dgphoenix.casino.slotstories.sm.SlotsStoriesPlayerSessionManager");
+        bank.setProperty(BankInfo.KEY_PSM_CLASS, "com.abs.casino.slotstories.sm.SlotsStoriesPlayerSessionManager");
         bank.setProperty(BankInfo.KEY_REPLACE_START_GS_FROM, "games");
         bank.setProperty(BankInfo.KEY_REPLACE_START_GS_TO, "gss");
 
-        bank.setProperty(BankInfo.KEY_TRANSACTION_DATA_CLASS, "com.dgphoenix.casino.slotsstories.transactiondata.TransactionDataStorageHelper");
-        bank.setProperty(BankInfo.KEY_EXTENDED_GAMEPLAY_PROCESSOR, "com.dgphoenix.casino.slotsstories.game.ExtendedGameplayProcessor");
+        bank.setProperty(BankInfo.KEY_TRANSACTION_DATA_CLASS, "com.abs.casino.slotsstories.transactiondata.TransactionDataStorageHelper");
+        bank.setProperty(BankInfo.KEY_EXTENDED_GAMEPLAY_PROCESSOR, "com.abs.casino.slotsstories.game.ExtendedGameplayProcessor");
         //byte[] bytes = CassandraBankInfoPersister.getInstance().serializeToBytes(bank);
 
         //BankInfo deserialized = CassandraBankInfoPersister.getInstance().deserializeFrom(bytes, BankInfo.class);
