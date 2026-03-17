@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * User: flsh
  * Date: 15.02.17.
- * com.dgphoenix.casino.common.cache.data.bonus.Bonus created with: BonusType.PROMO, BonusGameMode.ONLY
+ * com.abs.casino.common.cache.data.bonus.Bonus created with: BonusType.PROMO, BonusGameMode.ONLY
  */
 public class CacheBonusPrize extends AbstractPrize {
     private static final byte VERSION = 0;
