@@ -26,7 +26,7 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 @Ignore
 public class CanexCWClientTest extends RestAPIClientTest {
 
-    private static final String BASE_PATH = "canex/";
+    private static final String BASE_PATH = "abs/";
 
     private TestCanexCWClient client;
 
