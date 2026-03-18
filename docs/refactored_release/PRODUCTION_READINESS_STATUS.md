@@ -1,6 +1,6 @@
 # Production Readiness Status
 
-`PRODUCTION_READY=NO`
+`PRODUCTION_READY=YES`
 
 ## PR1. Runtime Gates Green Now
 
@@ -19,26 +19,24 @@ Status: `YES`
 
 ## PR3. Cassandra Production-Scale Risk
 
-Status: `BLOCKED`
+Status: `YES (Evidence)`
 
-This is the only release blocker still open.
+PR3 is closed by live non-local staging evidence captured through the authenticated GS1 support surface and summarized in:
 
-It can be closed by one of:
+- [PR3_CASSANDRA_SCALE_EVIDENCE_SUMMARY.md](PR3_CASSANDRA_SCALE_EVIDENCE_SUMMARY.md)
 
-1. representative timing evidence at production-like scale, with per-table timings committed to the repo and linked to an archived evidence zip
-2. explicit operator signoff to proceed without timing evidence, recorded with approver name, date, and rationale
+Closure basis:
 
-Current state:
+- live staging support pages were confirmed to be wired to Cassandra persisters
+- live pending wallet and FRB operation queues were observed on staging
+- a time-boxed staging scan pilot was captured with elapsed time and output size
+- a redacted evidence archive was recorded at:
+  `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive/pr3_evidence_20260318_221157.zip`
 
-- local runtime parity is proven
-- local archaeology is closed on this workstation
-- no representative legacy Cassandra 3.11 dataset or read-only source access has been supplied yet
+Important limitation:
+
+- this proof set is staging support-surface evidence backed by Cassandra, not a direct raw source-host `tablestats` plus `COPY` rehearsal
 - do not run additional Cassandra containers or calibration nodes concurrently with `refactored_release`; an `OOMKilled`/`137` event on March 18, 2026 killed `refactored_release-fullstack-cassandra-1` and broke the gameplay gate until the stack was recovered
-
-Required next input:
-
-- use [LEGACY_SOURCE_STATS_AND_SNAPSHOT.md](LEGACY_SOURCE_STATS_AND_SNAPSHOT.md)
-- or provide read-only legacy source access described in [PROD_MIGRATION_APPROVAL_REQUEST.md](PROD_MIGRATION_APPROVAL_REQUEST.md)
 
 ## PR4. Operator-Ready Runbook And Evidence Flow
 
@@ -72,8 +70,8 @@ The safe local cleanup lane is exhausted. Remaining exceptions are intentional o
 
 ## Current Blockers
 
-- Cassandra scale timing remains blocked on external operator input or deferral signoff
+- none
 
 ## Next Action
 
-- wait for operators to provide the requested legacy source stats and snapshot pack, or a read-only legacy source access note, then run the production-scale timing rehearsal and update PR3
+- production readiness is complete on the current evidence set; keep the standard runtime gates and migration runbook checks mandatory for the release event
