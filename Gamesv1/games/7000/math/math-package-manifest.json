@@ -1,10 +1,10 @@
 {
   "id": "7000-math-provisional",
-  "modelVersion": "0.3.0-provisional",
+  "modelVersion": "0.5.0-math-calibration-pass",
   "status": "provisional_uncertified",
   "certified": false,
-  "rtpTarget": 90.05,
-  "rtpEstimateMode": "provisional_simulation_base_mode",
+  "rtpTarget": 92.5,
+  "rtpEstimateMode": "provisional_multi_seed_calibration",
   "volatility": "medium-high",
   "possibleMaxWinMultiplier": 5000,
   "capWinMultiplier": 10000,
@@ -22,6 +22,8 @@
   },
   "notes": [
     "This package is simulation and design support only.",
+    "Donor rule intent is locked and a multi-seed provisional calibration pass has been applied.",
+    "Calibration is development-only and remains uncertified until backend/certified math package handoff.",
     "Replace with certified backend package before production math sign-off."
   ]
 }

@@ -14,7 +14,8 @@ import {
 
 import { BootstrapConfigStore } from "../stores/BootstrapConfigStore";
 import { SessionRuntimeStore } from "../stores/SessionRuntimeStore";
-import { crazyRoosterDemoRuntime } from "./demoRuntime";
+import { crazyRoosterDemoRuntime, isDemoRuntimeRequested } from "./demoRuntime";
+import { isProvisionalMathSourceRequested } from "./provisionalMathSource";
 
 const CONTRACT_VERSION = "slot-browser-v1";
 const DEFAULT_API_BASE = "http://127.0.0.1:6400";
@@ -124,10 +125,8 @@ const readLaunchParams = () => {
     bootstrapRef:
       asBootstrapRef(params.get("bootstrapRef")) ??
       asBootstrapRef(params.get("BOOTSTRAPREF")),
-    demoRequested:
-      params.get("allowDevFallback") === "1" ||
-      params.get("devConfig") === "1" ||
-      params.has("proofState"),
+    demoRequested: isDemoRuntimeRequested(params),
+    mathSourceProvisional: isProvisionalMathSourceRequested(params),
   };
 };
 
@@ -158,6 +157,10 @@ export class GsRuntimeClient {
 
   public async bootstrap(): Promise<BootstrapFlowSnapshot> {
     const launch = readLaunchParams();
+
+    if (launch.mathSourceProvisional) {
+      return this.bootstrapDemo();
+    }
 
     if (!launch.sessionId && launch.demoRequested) {
       return this.bootstrapDemo();

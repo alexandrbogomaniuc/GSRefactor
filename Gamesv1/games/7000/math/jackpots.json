@@ -1,6 +1,6 @@
 {
   "gameId": 7000,
-  "specVersion": "0.3.0-provisional",
+  "specVersion": "0.5.0-math-calibration-pass",
   "certified": false,
   "unit": "bet_multiplier",
   "levels": {
@@ -10,17 +10,21 @@
     "grand": 1000
   },
   "triggerAssumptions": {
-    "sourceSymbolId": 9,
-    "selectionWeights": {
-      "mini": 70,
-      "minor": 22,
-      "major": 7,
-      "grand": 1
+    "sourceSymbolIds": {
+      "superChickenCoin": 9,
+      "bonusCoin": 7
     },
-    "status": "provisional"
+    "attachedVia": ["chicken_boost_jackpot", "bonus_coin_jackpot_outcome"],
+    "selectionWeights": {
+      "mini": 93,
+      "minor": 5.5,
+      "major": 1.3,
+      "grand": 0.2
+    },
+    "status": "aligned_donor_rule_provisional_weights"
   },
   "notes": [
-    "Multiplier levels are treated as verified product constraints for this sprint.",
-    "Actual jackpot trigger frequencies and tier weight tables remain provisional pending backend/certified math."
+    "Jackpot multiplier levels are donor-locked (25x/50x/150x/1000x).",
+    "Tier frequencies are provisional until certified backend math tables are delivered."
   ]
 }

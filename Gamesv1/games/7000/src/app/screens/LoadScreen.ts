@@ -13,6 +13,7 @@ import roosterLogoUrl from "../../../raw-assets/preload{m}/rooster-logo.png?url"
 import betonlineLogoUrl from "../../../raw-assets/preload{m}/betonline-logo.svg?url";
 import { userSettings } from "../utils/userSettings";
 
+// PRELOADER LOCK: this screen is an approved baseline; do not change without explicit user/product approval.
 export class LoadScreen extends Container {
   public static assetBundles = ["preload"];
   private static themeTokens: ShellThemeTokens | null = null;
@@ -55,9 +56,9 @@ export class LoadScreen extends Container {
   private readonly loadingFill = new Graphics();
   private readonly loadingBorderSpark = new Graphics();
   private readonly footerText: Text;
-  private readonly proofHoldMs = Math.max(
-    0,
-    Number(new URLSearchParams(window.location.search).get("preloaderHoldMs") ?? "0") || 0,
+  private readonly minimumHoldMs = Math.max(
+    4000,
+    Number(new URLSearchParams(window.location.search).get("preloaderHoldMs") ?? "4000") || 4000,
   );
   private readonly reducedMotion =
     new URLSearchParams(window.location.search).get("motion") === "minimal" ||
@@ -254,7 +255,7 @@ export class LoadScreen extends Container {
 
   public async hide(): Promise<void> {
     const elapsedMs = performance.now() - this.shownAtMs;
-    const remainingHoldMs = this.proofHoldMs - elapsedMs;
+    const remainingHoldMs = this.minimumHoldMs - elapsedMs;
     if (remainingHoldMs > 0) {
       await new Promise((resolve) => {
         window.setTimeout(resolve, remainingHoldMs);

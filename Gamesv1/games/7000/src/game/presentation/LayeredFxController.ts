@@ -20,6 +20,9 @@ export class LayeredFxController extends Container {
   private readonly fireBack = new Graphics();
   private readonly stageGlow = new Graphics();
   private readonly topperAura = new Graphics();
+  private readonly collectRingSprite = new Sprite(Texture.EMPTY);
+  private readonly boostBurstSprite = new Sprite(Texture.EMPTY);
+  private readonly jackpotBurstSprite = new Sprite(Texture.EMPTY);
   private readonly fireFront = new Graphics();
   private readonly coinLayer = new Container();
   private readonly lightningFx = new LightningArcFx();
@@ -41,7 +44,26 @@ export class LayeredFxController extends Container {
 
   constructor() {
     super();
-    this.addChild(this.fireBack, this.stageGlow, this.topperAura, this.coinLayer, this.lightningFx, this.fireFront);
+    this.collectRingSprite.anchor.set(0.5);
+    this.collectRingSprite.visible = false;
+    this.collectRingSprite.blendMode = "add";
+    this.boostBurstSprite.anchor.set(0.5);
+    this.boostBurstSprite.visible = false;
+    this.boostBurstSprite.blendMode = "add";
+    this.jackpotBurstSprite.anchor.set(0.5);
+    this.jackpotBurstSprite.visible = false;
+    this.jackpotBurstSprite.blendMode = "add";
+    this.addChild(
+      this.fireBack,
+      this.stageGlow,
+      this.topperAura,
+      this.collectRingSprite,
+      this.boostBurstSprite,
+      this.jackpotBurstSprite,
+      this.coinLayer,
+      this.lightningFx,
+      this.fireFront,
+    );
     Ticker.shared.add(this.motionTicker);
     void this.refreshTextures();
   }
@@ -63,7 +85,7 @@ export class LayeredFxController extends Container {
   public beginSpinCycle(): void {
     this.collectPulse = 0;
     this.jackpotPulse = 0;
-    this.winPulse = 0;
+    this.winPulse = 0.08;
     this.boostPulse = 0.22;
     this.boostLoop = 0;
     this.lightningFx.clear();
@@ -88,12 +110,23 @@ export class LayeredFxController extends Container {
 
   public playCollectSweep(fromX: number, fromY: number): void {
     this.collectPulse = Math.max(this.collectPulse, 1);
-    this.spawnCoinFlight(fromX, fromY, this.topperAnchor.x, this.topperAnchor.y - 24, 7);
+    this.winPulse = Math.max(this.winPulse, 0.28);
+    this.spawnCoinFlight(fromX, fromY, this.topperAnchor.x, this.topperAnchor.y - 24, 10);
   }
 
   public playJackpotHit(level = 1): void {
-    this.jackpotPulse = Math.max(this.jackpotPulse, 0.55 + level * 0.08);
-    this.spawnCoinFlight(this.machineWidth * 0.5, this.machineHeight * 0.28, this.topperAnchor.x, this.topperAnchor.y - 32, 9 + level);
+    this.jackpotPulse = Math.max(this.jackpotPulse, 0.68 + level * 0.1);
+    this.boostPulse = Math.max(this.boostPulse, 0.54);
+    if (this.machineWidth > 0 && this.machineHeight > 0) {
+      void this.lightningFx.play(this.machineWidth, this.machineHeight);
+    }
+    this.spawnCoinFlight(
+      this.machineWidth * 0.5,
+      this.machineHeight * 0.28,
+      this.topperAnchor.x,
+      this.topperAnchor.y - 32,
+      12 + level * 2,
+    );
   }
 
   public playWinPulse(intensity: "big" | "huge" | "mega" | "none"): void {
@@ -134,6 +167,7 @@ export class LayeredFxController extends Container {
     this.redrawFireBack();
     this.redrawStageGlow();
     this.redrawTopperAura();
+    this.redrawFeatureBursts();
     this.redrawFireFront();
     this.tickCoinFlights(deltaMs);
   }
@@ -156,7 +190,12 @@ export class LayeredFxController extends Container {
   }
 
   private redrawStageGlow(): void {
-    const intensity = 0.18 + this.boostPulse * 0.28 + this.winPulse * 0.22;
+    const intensity =
+      0.2 +
+      this.collectPulse * 0.08 +
+      this.boostPulse * 0.28 +
+      this.jackpotPulse * 0.12 +
+      this.winPulse * 0.22;
     this.stageGlow.clear();
     this.stageGlow.roundRect(-72, -88, this.machineWidth + 144, this.machineHeight + 136, 64);
     this.stageGlow.fill({ color: 0x6a0811, alpha: 0.08 + intensity });
@@ -164,8 +203,13 @@ export class LayeredFxController extends Container {
   }
 
   private redrawTopperAura(): void {
-    const intensity = 0.1 + this.collectPulse * 0.16 + this.boostLoop * 0.28 + this.jackpotPulse * 0.32 + this.winPulse * 0.18;
-    const pulse = Math.sin(this.ambientTime * 2.8) * 6;
+    const intensity =
+      0.14 +
+      this.collectPulse * 0.18 +
+      this.boostLoop * 0.28 +
+      this.jackpotPulse * 0.34 +
+      this.winPulse * 0.18;
+    const pulse = Math.sin(this.ambientTime * 2.8) * 8;
     this.topperAura.clear();
     this.topperAura.ellipse(
       this.topperAnchor.x,
@@ -174,19 +218,57 @@ export class LayeredFxController extends Container {
       34 + intensity * 18 + pulse * 0.2,
     );
     this.topperAura.fill({ color: 0xffcf6f, alpha: 0.08 + intensity * 0.32 });
+    this.topperAura.ellipse(
+      this.topperAnchor.x,
+      this.topperAnchor.y - 38,
+      62 + intensity * 28,
+      18 + intensity * 8,
+    );
+    this.topperAura.fill({ color: 0xfff0bf, alpha: 0.04 + intensity * 0.14 });
     this.topperAura.circle(this.topperAnchor.x, this.topperAnchor.y - 86, 74 + intensity * 26);
     this.topperAura.stroke({ color: 0xc7141a, width: 2 + intensity * 5, alpha: 0.16 + intensity * 0.5 });
   }
 
+  private redrawFeatureBursts(): void {
+    this.collectRingSprite.visible = this.collectPulse > 0.02 && this.collectRingSprite.texture !== Texture.EMPTY;
+    if (this.collectRingSprite.visible) {
+      this.collectRingSprite.position.set(this.topperAnchor.x, this.topperAnchor.y - 30);
+      this.collectRingSprite.scale.set(0.9 + this.collectPulse * 0.8 + Math.sin(this.ambientTime * 5) * 0.04);
+      this.collectRingSprite.alpha = 0.16 + this.collectPulse * 0.42;
+      this.collectRingSprite.tint = 0xffd36f;
+      this.collectRingSprite.rotation = this.ambientTime * 0.6;
+    }
+
+    this.boostBurstSprite.visible =
+      (this.boostPulse > 0.02 || this.boostLoop > 0.08) && this.boostBurstSprite.texture !== Texture.EMPTY;
+    if (this.boostBurstSprite.visible) {
+      const boostLevel = Math.max(this.boostPulse * 0.9, this.boostLoop * 0.7);
+      this.boostBurstSprite.position.set(this.topperAnchor.x, this.topperAnchor.y - 58);
+      this.boostBurstSprite.scale.set(0.92 + boostLevel * 0.74 + Math.sin(this.ambientTime * 8) * 0.05);
+      this.boostBurstSprite.alpha = 0.14 + boostLevel * 0.36;
+      this.boostBurstSprite.tint = 0xfff0cf;
+      this.boostBurstSprite.rotation = -this.ambientTime * 1.6;
+    }
+
+    this.jackpotBurstSprite.visible = this.jackpotPulse > 0.02 && this.jackpotBurstSprite.texture !== Texture.EMPTY;
+    if (this.jackpotBurstSprite.visible) {
+      this.jackpotBurstSprite.position.set(this.topperAnchor.x, this.topperAnchor.y - 74);
+      this.jackpotBurstSprite.scale.set(1.04 + this.jackpotPulse * 0.92 + Math.sin(this.ambientTime * 10) * 0.06);
+      this.jackpotBurstSprite.alpha = 0.18 + this.jackpotPulse * 0.46;
+      this.jackpotBurstSprite.tint = 0xffdf94;
+      this.jackpotBurstSprite.rotation = this.ambientTime * 2.1;
+    }
+  }
+
   private redrawFireFront(): void {
-    const intensity = 0.12 + this.boostPulse * 0.18 + this.winPulse * 0.14;
+    const intensity = 0.16 + this.boostPulse * 0.18 + this.jackpotPulse * 0.12 + this.winPulse * 0.14;
     const topY = this.machineHeight * 0.08;
     this.fireFront.clear();
 
     for (let index = 0; index < 4; index += 1) {
       const phase = this.ambientTime * 3 + index * 1.2;
       const x = this.machineWidth * (0.22 + index * 0.18);
-      this.fireFront.ellipse(x, topY + Math.sin(phase) * 6, 26 + intensity * 12, 10 + intensity * 8);
+      this.fireFront.ellipse(x, topY + Math.sin(phase) * 6, 30 + intensity * 14, 12 + intensity * 9);
       this.fireFront.fill({ color: 0xffd877, alpha: 0.06 + intensity * 0.14 });
     }
   }
@@ -284,10 +366,18 @@ export class LayeredFxController extends Container {
 
   private async refreshTextures(): Promise<void> {
     const requestToken = ++this.textureRequestToken;
-    const coin = await resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-2x");
+    const [coin, collectRing, boostBurst, jackpotBurst] = await Promise.all([
+      resolveProviderFrameTexture("symbolAtlas", "coin-multiplier-2x"),
+      resolveProviderFrameTexture("vfxAtlas", "collector-ring"),
+      resolveProviderFrameTexture("vfxAtlas", "spark-burst-01"),
+      resolveProviderFrameTexture("vfxAtlas", "spark-burst-03"),
+    ]);
     if (requestToken !== this.textureRequestToken) {
       return;
     }
     this.coinTexture = coin.texture;
+    this.collectRingSprite.texture = collectRing.texture ?? Texture.EMPTY;
+    this.boostBurstSprite.texture = boostBurst.texture ?? Texture.EMPTY;
+    this.jackpotBurstSprite.texture = jackpotBurst.texture ?? Texture.EMPTY;
   }
 }

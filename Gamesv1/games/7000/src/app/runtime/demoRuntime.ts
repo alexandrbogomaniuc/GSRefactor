@@ -19,6 +19,16 @@ import {
   buildGridFromColumns,
   pickBuyTier,
 } from "../../game/config/CrazyRoosterGameConfig";
+import {
+  adaptProvisionalMathOutcome,
+  isProvisionalMathSourceRequested,
+  ProvisionalMathSource,
+  readMathModeParam,
+  readMathPresetParam,
+  readMathSeedParam,
+  type ProvisionalMathMode,
+  type ProvisionalMathPreset,
+} from "./provisionalMathSource";
 
 type DemoScenarioId =
   | "idle"
@@ -44,7 +54,7 @@ type DemoScenario = {
 
 type DemoHistoryItem = {
   roundId: string;
-  scenario: DemoScenarioId;
+  scenario: string;
   winAmountMinor: number;
 };
 
@@ -264,6 +274,7 @@ export class CrazyRoosterDemoRuntime {
   private balanceMinor = 250_000;
   private roundIndex = 0;
   private history: DemoHistoryItem[] = [];
+  private provisionalMathSource: ProvisionalMathSource | null = null;
 
   private nextRequestId(prefix: string): string {
     this.requestCounter += 1;
@@ -294,6 +305,39 @@ export class CrazyRoosterDemoRuntime {
     const scenario = SEQUENCE[this.roundIndex % SEQUENCE.length];
     this.roundIndex += 1;
     return scenario;
+  }
+
+  private isProvisionalMathMode(): boolean {
+    return isProvisionalMathSourceRequested();
+  }
+
+  private resolveMathPreset(): ProvisionalMathPreset | null {
+    const params = new URLSearchParams(window.location.search);
+    const preset = readMathPresetParam(params);
+    if (preset) {
+      return preset;
+    }
+
+    const proofState = this.currentProofState();
+    if (proofState === "collect") return "collect";
+    if (proofState === "boost") return "boost";
+    if (proofState === "bonus") return "bonus";
+    if (proofState === "mega") return "mega";
+    return null;
+  }
+
+  private resolveMathMode(fallback: ProvisionalMathMode = "base"): ProvisionalMathMode {
+    return readMathModeParam(new URLSearchParams(window.location.search)) ?? fallback;
+  }
+
+  private getProvisionalMathSource(): ProvisionalMathSource {
+    if (this.provisionalMathSource) {
+      return this.provisionalMathSource;
+    }
+    this.provisionalMathSource = new ProvisionalMathSource(
+      readMathSeedParam(new URLSearchParams(window.location.search)),
+    );
+    return this.provisionalMathSource;
   }
 
   private envelopeFromScenario(
@@ -351,6 +395,77 @@ export class CrazyRoosterDemoRuntime {
         hasUnfinishedRound: false,
         resumeRef: {
           roundId: `${scenario.roundIdPrefix}-${this.requestCounter}`,
+        },
+      },
+      idempotency: {},
+      retry: {},
+    };
+  }
+
+  private envelopeFromProvisionalMath(
+    prefix: string,
+    selectedBet: SelectedBet | null,
+    mode: ProvisionalMathMode,
+  ): OpenGameResponse {
+    const requestId = this.nextRequestId(prefix);
+    const totalBetMinor = selectedBet?.totalBetMinor ?? CRAZY_ROOSTER_BET_LIMITS.defaultBet;
+    const source = this.getProvisionalMathSource();
+    const outcome = source.nextOutcome({
+      totalBetMinor,
+      mode,
+      requestedPreset: this.resolveMathPreset(),
+    });
+    const adapted = adaptProvisionalMathOutcome(outcome);
+
+    if (prefix !== "opengame" && prefix !== "history") {
+      this.balanceMinor = Math.max(0, this.balanceMinor - totalBetMinor + adapted.winAmountMinor);
+      this.history.unshift({
+        roundId: `math-${this.requestCounter}`,
+        scenario: `math-${outcome.mode}-${outcome.preset}`,
+        winAmountMinor: adapted.winAmountMinor,
+      });
+      this.history = this.history.slice(0, 20);
+    }
+
+    return {
+      ok: true,
+      requestId,
+      sessionId: this.sessionId,
+      requestCounter: this.requestCounter,
+      stateVersion: this.stateVersion,
+      wallet: {
+        balanceMinor: this.balanceMinor,
+        currencyCode: "USD",
+      },
+      round: {
+        roundId: `math-${this.requestCounter}`,
+        winAmountMinor: adapted.winAmountMinor,
+        totalBetMinor,
+        totalWinMultiplier: adapted.mathBridge.totalWinMultiplier,
+        lineWinMultiplier: adapted.mathBridge.lineWinMultiplier,
+        bonusWinMultiplier: adapted.mathBridge.bonusWinMultiplier,
+      },
+      feature: {
+        history: this.history.map((item) => ({
+          roundId: item.roundId,
+          featureType: item.scenario,
+          winAmountMinor: item.winAmountMinor,
+        })),
+      },
+      presentationPayload: {
+        reelStops: adapted.reelStops,
+        symbolGrid: adapted.symbolGrid,
+        uiMessages: adapted.uiMessages,
+        audioCues: adapted.audioCues,
+        animationCues: adapted.animationCues,
+        counters: adapted.counters,
+        labels: adapted.labels,
+        mathBridge: adapted.mathBridge,
+      },
+      restore: {
+        hasUnfinishedRound: false,
+        resumeRef: {
+          roundId: `math-${this.requestCounter}`,
         },
       },
       idempotency: {},
@@ -417,6 +532,13 @@ export class CrazyRoosterDemoRuntime {
   }
 
   public playround(selectedBet: SelectedBet): PlayRoundResponse {
+    if (this.isProvisionalMathMode()) {
+      return this.envelopeFromProvisionalMath(
+        "playround",
+        selectedBet,
+        this.resolveMathMode("base"),
+      );
+    }
     return this.envelopeFromScenario(this.resolveSpinScenario(), "playround", selectedBet);
   }
 
@@ -438,6 +560,16 @@ export class CrazyRoosterDemoRuntime {
           ? "buy-200"
           : "buy-75";
 
+    if (this.isProvisionalMathMode()) {
+      const mode: ProvisionalMathMode =
+        requestedTier.priceMultiplier === 300
+          ? "buy300"
+          : requestedTier.priceMultiplier === 200
+            ? "buy200"
+            : "buy75";
+      return this.envelopeFromProvisionalMath("featureaction", selectedBet, mode);
+    }
+
     return this.envelopeFromScenario(scenarioId, "featureaction", selectedBet);
   }
 
@@ -450,6 +582,19 @@ export class CrazyRoosterDemoRuntime {
   }
 
   public resumegame(): OpenGameResponse {
+    if (this.isProvisionalMathMode()) {
+      return this.envelopeFromProvisionalMath(
+        "resumegame",
+        {
+          coinValueMinor: 1,
+          lines: CRAZY_ROOSTER_LAYOUT.reelCount,
+          multiplier: 1,
+          totalBetMinor: CRAZY_ROOSTER_BET_LIMITS.defaultBet,
+        },
+        this.resolveMathMode("base"),
+      );
+    }
+
     return this.envelopeFromScenario(this.currentProofState(), "resumegame", {
       coinValueMinor: 1,
       lines: CRAZY_ROOSTER_LAYOUT.reelCount,
@@ -464,6 +609,7 @@ export class CrazyRoosterDemoRuntime {
     this.balanceMinor = 250_000;
     this.roundIndex = 0;
     this.history = [];
+    this.provisionalMathSource = null;
   }
 
   public close(): void {
@@ -478,5 +624,7 @@ export const isDemoRuntimeRequested = (
 ): boolean =>
   params.get("devConfig") === "1" ||
   params.get("allowDevFallback") === "1" ||
+  params.has("mathPreset") ||
+  isProvisionalMathSourceRequested(params) ||
   params.has("proofState") ||
   (import.meta.env.DEV && import.meta.env.VITE_ALLOW_DEV_CONFIG_FALLBACK === "1");

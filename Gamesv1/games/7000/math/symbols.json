@@ -114,6 +114,17 @@
       "bonusOnly": false,
       "baseGameOnly": false,
       "status": "id_verified_behavior_provisional"
+    },
+    {
+      "id": 10,
+      "key": "BELL",
+      "label": "BELL",
+      "class": "regular",
+      "linePays": true,
+      "collectParticipant": false,
+      "bonusOnly": false,
+      "baseGameOnly": false,
+      "status": "id_verified_behavior_provisional"
     }
   ],
   "wildSubstitution": {
@@ -124,7 +135,8 @@
       2,
       3,
       4,
-      5
+      5,
+      10
     ],
     "status": "provisional"
   }

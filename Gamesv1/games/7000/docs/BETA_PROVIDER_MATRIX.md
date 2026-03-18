@@ -1,34 +1,39 @@
 # Beta Provider Matrix
 
-Game 7000 supports a single selector workflow for `openai`, `nanobanana`, and `donorlocal`.
+Game 7000 keeps three selectable provider modes: `openai`, `nanobanana`, and `donorlocal`.
+
+`donorlocal` is now the internal DEV benchmark default when no explicit provider is selected and a valid ignored local manifest is available. `openai` remains the committed fallback provider. `nanobanana` support stays available by explicit opt-in, but it is paused as the benchmark target for current presentation work.
 
 ## Selection precedence
 
 1. Query param: `assetProvider=openai|nanobanana|donorlocal`
 2. Env var: `VITE_ASSET_PROVIDER=openai|nanobanana|donorlocal`
-3. Config default: `game.settings.json -> assets.provider`
+3. DEV-only benchmark default: `donorlocal`, only when no explicit provider is set and the ignored local manifest validates
+4. Safe committed fallback: `openai`
 
 ## Preferred one-port workflow
 
 Run:
 
 ```bash
-export PATH=/Users/alexb/.local/v22.22.1/bin:$PATH
-corepack pnpm -C Gamesv1/games/7000 dev:oneport
+export PATH=/Users/alexb/.nvm/versions/node/v22.22.1/bin:$PATH
+corepack pnpm -C Gamesv1/games/7000 dev:benchmark
 ```
+
+`dev:benchmark` uses `--strictPort`, so the benchmark stays on `127.0.0.1:8081` or fails immediately if that port is busy.
 
 URLs:
 
-- OpenAI: `http://localhost:8081/?allowDevFallback=1&assetProvider=openai`
-- NanoBanana: `http://localhost:8081/?allowDevFallback=1&assetProvider=nanobanana`
-- donorlocal: `http://localhost:8081/?allowDevFallback=1&assetProvider=donorlocal`
+- donorlocal benchmark default: `http://127.0.0.1:8081/?allowDevFallback=1`
+- OpenAI fallback override: `http://127.0.0.1:8081/?allowDevFallback=1&assetProvider=openai`
+- NanoBanana explicit override: `http://127.0.0.1:8081/?allowDevFallback=1&assetProvider=nanobanana`
 
-## Optional 3-port workflow
+## Optional explicit provider scripts
 
-Run one per terminal:
+Run one per terminal if you need a hard-pinned provider:
 
 ```bash
-export PATH=/Users/alexb/.local/v22.22.1/bin:$PATH
+export PATH=/Users/alexb/.nvm/versions/node/v22.22.1/bin:$PATH
 corepack pnpm -C Gamesv1/games/7000 dev:openai
 corepack pnpm -C Gamesv1/games/7000 dev:nanobanana
 corepack pnpm -C Gamesv1/games/7000 dev:donorlocal
@@ -36,44 +41,19 @@ corepack pnpm -C Gamesv1/games/7000 dev:donorlocal
 
 URLs:
 
-- OpenAI: `http://localhost:8081/?allowDevFallback=1`
-- NanoBanana: `http://localhost:8082/?allowDevFallback=1`
-- donorlocal: `http://localhost:8083/?allowDevFallback=1`
+- OpenAI: `http://127.0.0.1:8081/?allowDevFallback=1`
+- NanoBanana: `http://127.0.0.1:8082/?allowDevFallback=1`
+- donorlocal: `http://127.0.0.1:8083/?allowDevFallback=1`
 
 ## donorlocal requirements
 
 `donorlocal` is DEV-only and never statically imported into the committed bundle.
 
-Required local manifest path:
+Preferred local manifest path:
 
 `Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json`
 
 Relative URLs inside the manifest are resolved relative to that file.
-
-Expected manifest shape:
-
-```json
-{
-  "wordmarkUrl": "./logo.svg",
-  "backgrounds": {
-    "desktop": "./background-desktop-1920x1080.png",
-    "landscape": "./background-landscape-safe-1600x900.png",
-    "portrait": "./background-portrait-1080x1920.png"
-  },
-  "uiAtlas": {
-    "imageUrl": "./atlas_ui.png",
-    "dataUrl": "./atlas_ui.json"
-  },
-  "symbolAtlas": {
-    "imageUrl": "./atlas_symbols.png",
-    "dataUrl": "./atlas_symbols.json"
-  },
-  "vfxAtlas": {
-    "imageUrl": "./atlas_vfx.png",
-    "dataUrl": "./atlas_vfx.json"
-  }
-}
-```
 
 Required provider keys:
 
@@ -85,11 +65,11 @@ Required provider keys:
 
 ## Expected fallback behavior
 
-- If `donorlocal` manifest is missing: warn and fallback to `openai`
-- If `donorlocal` manifest is incomplete: warn, expose missing keys, and fallback to `openai`
+- If DEV benchmark mode auto-selects donorlocal and the local manifest is missing or invalid: warn once and continue on `openai`
+- If `assetProvider=donorlocal` is set but the manifest is missing or invalid: warn once and continue on `openai`
 - If `nanobanana` is selected with an incomplete committed pack: keep the requested provider, log missing keys, and use the existing safe-placeholder behavior instead of crashing
 
 ## Debug hooks
 
 - `window.__game7000ProviderPack` exposes `requestedProvider`, `effectiveProvider`, `missingKeys`, `fallbackReason`, and selected backgrounds
-- `window.__game7000` keeps the existing demo controls for spin and proof-state checks
+- `window.__game7000` keeps the existing demo controls for spin, proof-state checks, and provisional math presets

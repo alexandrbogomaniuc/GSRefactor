@@ -27,7 +27,7 @@ import nanobananaHeroVfxAtlasData from "../../../assets/providers/nanobanana/run
 
 import {
   CRAZY_ROOSTER_BRAND,
-  resolveAssetProvider,
+  resolveExplicitAssetProvider,
   type CrazyRoosterAssetProvider,
 } from "../../game/config/CrazyRoosterGameConfig";
 
@@ -317,6 +317,21 @@ const logStatus = (status: ProviderPackStatus): void => {
   );
 };
 
+const buildDonorLocalFallbackReason = (
+  fallbackReason: string | undefined,
+  usedDevBenchmarkDefault: boolean,
+): string => {
+  const normalized =
+    fallbackReason ??
+    "local donor manifest is incomplete and did not satisfy the provider contract.";
+
+  if (!usedDevBenchmarkDefault) {
+    return normalized;
+  }
+
+  return `DEV benchmark mode defaulted to donorlocal because no explicit provider was set, but ${normalized}`;
+};
+
 const resolveRelativeUrl = (value: string | undefined, baseUrl: string): string | undefined => {
   if (!value?.trim()) {
     return undefined;
@@ -441,7 +456,11 @@ const loadDonorLocalPack = async (): Promise<{
 export const initializeProviderPackStatus = async (
   queryParams = new URLSearchParams(window.location.search),
 ): Promise<ProviderPackStatus> => {
-  const requestedProvider = resolveAssetProvider(queryParams);
+  const explicitProvider = resolveExplicitAssetProvider(queryParams);
+  const usedDevBenchmarkDefault = import.meta.env.DEV && !explicitProvider;
+  const requestedProvider =
+    explicitProvider ??
+    (usedDevBenchmarkDefault ? "donorlocal" : CRAZY_ROOSTER_BRAND.defaultProvider);
 
   let status: ProviderPackStatus;
   if (requestedProvider === "donorlocal") {
@@ -452,11 +471,13 @@ export const initializeProviderPackStatus = async (
       const fallbackMissingKeys = validatePack(fallbackPack);
       status = buildStatus(
         requestedProvider,
-        CRAZY_ROOSTER_BRAND.defaultProvider,
+        "openai",
         fallbackPack,
         donorLocalPack.missingKeys,
-        donorLocalPack.fallbackReason ??
-          "local donor manifest is incomplete and did not satisfy the provider contract.",
+        buildDonorLocalFallbackReason(
+          donorLocalPack.fallbackReason,
+          usedDevBenchmarkDefault,
+        ),
         fallbackMissingKeys.length > 0,
       );
       status.manifestUrl = donorLocalPack.pack?.manifestUrl ?? DONORLOCAL_MANIFEST_URL;

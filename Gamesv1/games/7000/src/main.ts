@@ -50,6 +50,8 @@ setEngine(appEngine);
   const explicitDevFallback =
     urlParams.get("devConfig") === "1" ||
     urlParams.get("allowDevFallback") === "1" ||
+    urlParams.get("mathSource") === "provisional" ||
+    urlParams.has("mathPreset") ||
     urlParams.has("proofState") ||
     (import.meta.env.DEV && import.meta.env.VITE_ALLOW_DEV_CONFIG_FALLBACK === "1");
 

@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
@@ -7,10 +8,52 @@ import { assetpackPlugin } from "./scripts/assetpack-vite-plugin";
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 const pkg = (name) => path.resolve(rootDir, "../../packages", name, "src");
 const gamesv1Root = path.resolve(rootDir, "../..");
-const donorLocalManifestFsPath = path.resolve(
+const devWorkspaceRoot = path.resolve(rootDir, "../../../../..");
+
+const collectManifestCandidates = (baseDir: string): string[] => {
+  if (!fs.existsSync(baseDir)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(baseDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) =>
+      path.join(
+        baseDir,
+        entry.name,
+        "Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
+      ),
+    );
+};
+
+const parseEnvManifestOverride = (): string | null => {
+  const raw = process.env.VITE_DONORLOCAL_MANIFEST_FS_PATH?.trim();
+  if (!raw) {
+    return null;
+  }
+  return path.isAbsolute(raw) ? raw : path.resolve(rootDir, raw);
+};
+
+const envManifestOverride = parseEnvManifestOverride();
+const benchmarkWorkspaceManifestFsPath = path.resolve(
+  devWorkspaceRoot,
+  "GSRefactor-beta-local-procedure-live-20260307/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
+);
+const preferredDonorLocalManifestFsPath = path.resolve(
   rootDir,
   "../../GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
 );
+const donorLocalManifestFsPath =
+  [
+    envManifestOverride,
+    benchmarkWorkspaceManifestFsPath,
+    preferredDonorLocalManifestFsPath,
+    ...collectManifestCandidates(devWorkspaceRoot),
+    ...collectManifestCandidates(path.join(devWorkspaceRoot, "_worktrees")),
+  ]
+    .filter((candidate): candidate is string => Boolean(candidate))
+    .find((candidate) => fs.existsSync(candidate)) ?? preferredDonorLocalManifestFsPath;
 const donorLocalFsRoot = path.dirname(donorLocalManifestFsPath);
 
 export default defineConfig({
@@ -19,7 +62,7 @@ export default defineConfig({
     port: 8080,
     open: true,
     fs: {
-      allow: [gamesv1Root, donorLocalFsRoot],
+      allow: [gamesv1Root, devWorkspaceRoot, donorLocalFsRoot],
     },
   },
   build: {

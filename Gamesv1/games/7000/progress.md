@@ -101,3 +101,67 @@ Original prompt: GAME ENGINEERING -- GAME #7000 "Crazy Rooster Hold&Win" (FIRST 
     - `docs/_visual_proof/preloader-lock-2026-03-10/desktop-v5-aligned.png`
     - `docs/_visual_proof/preloader-lock-2026-03-10/portrait-v5-aligned.png`
   - intent: prevent future passes from drifting the approved preloader layout/branding; enable one-file restore.
+- 2026-03-16: Started beta5b donorlocal line-visualization pass on branch `codex/qa/7000-beta5b-line-visualization-20260316-1428`.
+  - added a dedicated payline presentation layer in `src/game/fx/PaylineOverlay.ts` so math-driven line wins can draw traced donor-style paths and payout/multiplier callouts independently of the heavy-win `WowVfxOrchestrator` path.
+  - widened math-bridge hint parsing so `lineWinMultiplier`, `bonusWinMultiplier`, and `totalWinMultiplier` survive into `MainScreen` and can feed dev QA status.
+  - updated `MainScreen.ts` to schedule sequential line visualization from `mathBridge.lineWins`, pair it with a dedicated symbol-highlight layer, and clear it safely across reset/spin/win-finish transitions.
+  - extended `DebugOverlay.ts` with a dev-only math summary strip (`line ids`, `line multipliers`, `total win multiplier`) that appears when dev fallback / provisional math is active.
+  - upgraded the deterministic preset boards so `normal`, `collect`, `boost`, `bonus`, and `jackpot` all produce explicit line wins with distinct payline shapes for donorlocal QA.
+  - fixed the payline callout payout formatting to use currency from minor units instead of raw minor integers.
+  - widened donorlocal manifest discovery in `vite.config.ts` so `assetProvider=donorlocal` can validate against the first available local donor bundle in `/Users/alexb/Documents/Dev`, even when the active worktree does not contain the ignored donor manifest.
+  - direct package validation: `corepack pnpm -C Gamesv1/games/7000 build` PASS after the donorlocal/preset follow-up pass.
+- 2026-03-16: Started beta5c win-choreography parity pass on branch `codex/qa/7000-beta5c-win-choreography-parity-20260316-1511`.
+  - converted the deterministic `normal` preset into a true multi-line QA case so line sequencing can be proven on donorlocal instead of inferred from single-line boards.
+  - rebuilt `PaylineOverlay.ts` into a richer donor-inspired banner system with sequence chips, line badges, feature labels, animated spark travel, and feature-specific tones (`standard`, `collect`, `boost`, `bonus`, `jackpot`).
+  - retimed `MainScreen.ts` so feature cues are staged after the line sequence window and lower-priority cues are suppressed when a stronger state is present (for example boost no longer collapses back into collect messaging, and bonus entry no longer inherits boost banner text).
+  - browser proof on donorlocal now shows:
+    - `normal` as a visible `2/2` multi-line sequence,
+    - `collect` as `COLLECT PAY`,
+    - `boost` as `BOOST STRIKE`,
+    - `jackpot` as `JACKPOT RUN`,
+    - `bonus` bonus-entry smoke as `HOLD & WIN` + `BONUS ENTRY`.
+- 2026-03-16: Started beta5d authored line-presentation pass on branch `codex/qa/7000-beta5d-authored-line-presentation-20260316-1907`.
+  - kept the beta5c exact payline + multiplier bridge but promoted the line sequence into the cabinet/topper/plaque layer:
+    - `MainScreen.ts` now routes per-line choreography into the existing donorlocal cabinet stack,
+    - `LayeredFxController` is now used in the main screen for fire/lightning/coin-flight sync,
+    - `Beta3VisualChrome.ts` now exposes `beginSpinCycle()` and `triggerPresentationCue(...)` so topper text, plaque pulses, glow, and caption timing can follow line/feature events.
+  - strengthened safe audio integration by adding explicit beta5d cue names in `brandKit.ts` for line wins and feature transitions while keeping missing assets non-fatal.
+  - completed donorlocal proof capture for:
+    - `normal` multiline sequence,
+    - `collect`,
+    - `boost`,
+    - `jackpot`.
+  - `PaylineOverlay.ts` already had atlas-backed line plate/badge/chip hooks in this branch; beta5d polished their typography/layout and paired them with the richer topper/plaque reactions rather than replacing the geometry logic.
+- 2026-03-17: Started donorlocal benchmark-mode pass on branch `codex/qa/7000-donorlocal-benchmark-mode-20260317-1117`.
+  - changed the safe committed default provider back to `openai` in `CrazyRoosterGameConfig.ts` so non-dev and donorlocal fallback paths no longer inherit the older NanoBanana default.
+  - updated `providerPackRegistry.ts` so explicit query/env provider selections still win, but DEV mode now auto-requests `donorlocal` when no explicit provider is supplied and a valid ignored local manifest is available.
+  - preserved the existing donorlocal local-only runtime contract:
+    - ignored local manifest loaded through Vite `/@fs/...`,
+    - no donor binaries committed,
+    - missing or invalid donorlocal manifest now warns and cleanly falls back to `openai` instead of crashing.
+  - added benchmark launch/docs updates:
+    - new `docs/DONORLOCAL_BENCHMARK_MODE.md`,
+    - refreshed `docs/BETA_PROVIDER_MATRIX.md`,
+    - added `package.json` alias `dev:benchmark`.
+  - browser smoke against `http://127.0.0.1:8085/?allowDevFallback=1&mathSource=provisional` confirmed `requestedProvider=donorlocal` and `effectiveProvider=donorlocal`.
+  - browser smoke against `http://127.0.0.1:8085/?allowDevFallback=1&mathSource=provisional&assetProvider=openai` confirmed explicit override still forces `requestedProvider=effectiveProvider=openai`.
+- 2026-03-17: Started beta6 donorlocal parity pass on branch `codex/qa/7000-beta6-donorlocal-parity-pass-20260317-1210`.
+  - made benchmark launch deterministic by locking `dev:benchmark` and related one-port scripts to `127.0.0.1:8081` with `--strictPort`, then updated benchmark docs to remove the old `8085` ambiguity.
+  - improved donorlocal benchmark composition in the highest-value visible areas:
+    - stronger preloader plate/bar/flair composition in `src/app/screens/LoadScreen.ts`,
+    - stronger cabinet depth, stage aura, top framing, and side panel placement in `src/app/screens/main/Beta3VisualChrome.ts`,
+    - richer bottom control rail treatment in `src/app/screens/main/HeroHudChrome.ts`,
+    - stronger topper plate/aura spacing in `src/game/presentation/TopperMascotController.ts`,
+    - stronger collect/boost/jackpot presentation intensity in `src/game/presentation/LayeredFxController.ts`,
+    - cleaner benchmark status language and less cluttered top stack in `src/app/screens/main/MainScreen.ts`.
+  - captured proof for the new donorlocal baseline under `docs/_visual_proof/beta6-2026-03-17/` covering `preloader`, `idle`, `top-area`, `control-cluster`, `collect`, `boost`, and `jackpot`.
+- 2026-03-17: Started beta7 donorlocal reconstruction pass on branch `codex/qa/7000-beta7-donorlocal-reconstruction-20260317-1304`.
+  - fixed a donorlocal-only loader bug across the new benchmark art pass: direct donor image URLs must be built from an absolute manifest URL (`window.location.origin + /@fs/...`), otherwise the browser treats the manifest path as an invalid base and silently falls back to white textures.
+  - pushed the benchmark path materially closer to donor by switching these visible areas onto local donor assets where mapping exists:
+    - preloader now uses donorlocal background + donorlocal wordmark/card composition in `src/app/screens/LoadScreen.ts`,
+    - top cluster now uses donorlocal hero card plus strike/super-strike topper art in `src/app/screens/main/Beta3VisualChrome.ts` and `src/game/presentation/TopperMascotController.ts`,
+    - reel bed now uses the donorlocal slot-sheet crop in `src/game/slots/CrazyRoosterSlotMachine.ts`,
+    - bottom rail now uses donorlocal buy/turbo/autoplay art with cleaner placeholder fallback for unmapped controls in `src/app/screens/main/HeroHudChrome.ts`,
+    - feature stack now uses donorlocal collector ring / spark burst layers in `src/game/presentation/LayeredFxController.ts`.
+  - added `mathOverlay=0` in `src/app/screens/main/DebugOverlay.ts` so proof capture can hide the dev math panel while keeping the QA-visible overlay on by default for benchmark work.
+  - captured fresh proof under `docs/_visual_proof/beta7-2026-03-17/` for `preloader`, `idle`, `top-area`, `control-cluster`, `collect`, `boost`, and `jackpot`.

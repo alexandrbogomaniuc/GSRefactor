@@ -369,6 +369,40 @@ export class Beta3VisualChrome extends Container {
     this.boostFlash = 1;
   }
 
+  public beginSpinCycle(): void {
+    this.boostFlash = Math.max(this.boostFlash, 0.35);
+  }
+
+  public triggerPresentationCue(
+    cue:
+      | string
+      | {
+          tone?: string;
+          title?: string;
+          caption?: string;
+          holdMs?: number;
+          jackpotTier?: string | null;
+          plaqueIndexes?: number[];
+        },
+  ): void {
+    if (!cue) {
+      return;
+    }
+    const cueText = typeof cue === "string"
+      ? cue
+      : [cue.tone, cue.title, cue.caption, cue.jackpotTier].filter(Boolean).join(" ").toLowerCase();
+    if (cueText.includes("boost") || cueText.includes("jackpot") || cueText.includes("collect")) {
+      this.boostFlash = 1;
+    }
+    if (cueText.includes("line")) {
+      this.boostFlash = Math.max(this.boostFlash, 0.55);
+    }
+  }
+
+  public clearPresentationCue(_cue?: string): void {
+    this.boostFlash = Math.max(0, this.boostFlash * 0.45);
+  }
+
   private tick(deltaMs: number): void {
     if (this.machineWidth <= 0 || this.machineHeight <= 0) {
       return;

@@ -1,0 +1,151 @@
+{
+  "gameId": 7000,
+  "packageVersion": "0.4.0-donor-rules-lock",
+  "certified": false,
+  "startedAt": "2026-03-18T13:53:05.390Z",
+  "seed": 700020260319,
+  "roundsPerMode": 200000,
+  "sourceOfTruthNote": "Simulation only. GS/fixture runtime remains authoritative for production outcomes.",
+  "donorRulesLocked": {
+    "board": "3x4",
+    "paylines": 8,
+    "leftToRightHighestPerLine": true,
+    "bonusTrigger": "bonusCoin@reels1+3 + chickenOrSuper@reel2",
+    "bonusSymbolSet": [
+      "bonusCoin",
+      "chickenCoin",
+      "superChickenCoin"
+    ],
+    "boostOutcomes": {
+      "multipliers": [
+        2,
+        3,
+        5,
+        7,
+        10
+      ],
+      "extraBonusCoins": [
+        2,
+        3,
+        5
+      ],
+      "jackpotTiers": {
+        "mini": 25,
+        "minor": 50,
+        "major": 150,
+        "grand": 1000
+      }
+    }
+  },
+  "modes": {
+    "base": {
+      "mode": "base",
+      "rounds": 200000,
+      "costPerRoundMultiplier": 1,
+      "rtpPercent": 468.105,
+      "hitFrequencyPercent": 56.854,
+      "bonusFrequencyPercent": 0.043,
+      "collectFrequencyPercent": 21.379,
+      "boostFrequencyPercent": 11.825,
+      "jackpotFrequencyPercent": 3.55,
+      "averagePayoutMultiplier": 4.681,
+      "averageWinOnHitMultiplier": 8.233,
+      "maxObservedWinMultiplier": 1127,
+      "tierDistribution": {
+        "none": 86292,
+        "small": 89696,
+        "big": 11358,
+        "huge": 8345,
+        "mega": 4309
+      },
+      "jackpotTierHits": {
+        "mini": 5868,
+        "minor": 978,
+        "major": 346,
+        "grand": 52
+      }
+    },
+    "buy75": {
+      "mode": "buy75",
+      "rounds": 200000,
+      "costPerRoundMultiplier": 75,
+      "rtpPercent": 62.152,
+      "hitFrequencyPercent": 100,
+      "bonusFrequencyPercent": 100,
+      "collectFrequencyPercent": 100,
+      "boostFrequencyPercent": 18.379,
+      "jackpotFrequencyPercent": 20.384,
+      "averagePayoutMultiplier": 46.614,
+      "averageWinOnHitMultiplier": 46.614,
+      "maxObservedWinMultiplier": 1259,
+      "tierDistribution": {
+        "none": 0,
+        "small": 1315,
+        "big": 43164,
+        "huge": 96587,
+        "mega": 58934
+      },
+      "jackpotTierHits": {
+        "mini": 35490,
+        "minor": 6865,
+        "major": 2626,
+        "grand": 423
+      }
+    },
+    "buy200": {
+      "mode": "buy200",
+      "rounds": 200000,
+      "costPerRoundMultiplier": 200,
+      "rtpPercent": 31.5,
+      "hitFrequencyPercent": 100,
+      "bonusFrequencyPercent": 100,
+      "collectFrequencyPercent": 100,
+      "boostFrequencyPercent": 13.709,
+      "jackpotFrequencyPercent": 22.651,
+      "averagePayoutMultiplier": 63,
+      "averageWinOnHitMultiplier": 63,
+      "maxObservedWinMultiplier": 2073,
+      "tierDistribution": {
+        "none": 0,
+        "small": 26,
+        "big": 12519,
+        "huge": 99464,
+        "mega": 87991
+      },
+      "jackpotTierHits": {
+        "mini": 35498,
+        "minor": 9627,
+        "major": 4165,
+        "grand": 1478
+      }
+    },
+    "buy300": {
+      "mode": "buy300",
+      "rounds": 200000,
+      "costPerRoundMultiplier": 300,
+      "rtpPercent": 47.965,
+      "hitFrequencyPercent": 100,
+      "bonusFrequencyPercent": 100,
+      "collectFrequencyPercent": 100,
+      "boostFrequencyPercent": 100,
+      "jackpotFrequencyPercent": 53.287,
+      "averagePayoutMultiplier": 143.896,
+      "averageWinOnHitMultiplier": 143.896,
+      "maxObservedWinMultiplier": 2295,
+      "tierDistribution": {
+        "none": 0,
+        "small": 0,
+        "big": 310,
+        "huge": 17443,
+        "mega": 182247
+      },
+      "jackpotTierHits": {
+        "mini": 88960,
+        "minor": 31368,
+        "major": 15720,
+        "grand": 6906
+      }
+    }
+  },
+  "finishedAt": "2026-03-18T13:53:08.879Z"
+}

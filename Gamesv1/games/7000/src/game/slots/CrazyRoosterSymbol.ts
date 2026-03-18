@@ -112,6 +112,7 @@ export class CrazyRoosterSymbol extends Container {
       0xc2a03d,
       0x8e0d13,
       0xf3d24e,
+      0xbf8c24,
     ];
     const nanoPalette = [
       0x93181c,
@@ -124,6 +125,7 @@ export class CrazyRoosterSymbol extends Container {
       0xd24f2b,
       0xb4171d,
       0xf0cf5c,
+      0xa57816,
     ];
     const fill = (isNanobanana ? nanoPalette : openAiPalette)[symbolId] ?? 0x404040;
 
@@ -137,22 +139,41 @@ export class CrazyRoosterSymbol extends Container {
 
   private async applyResolvedTexture(symbolId: number, fallbackTint: number): Promise<void> {
     const requestToken = ++this.textureRequestToken;
-    const frameKey = CRAZY_ROOSTER_SYMBOL_FRAME_KEYS[symbolId];
-    const resolved = frameKey
-      ? await resolveProviderFrameTexture("symbolAtlas", frameKey)
-      : { texture: null };
+    const frameCandidates = this.resolveFrameCandidates(symbolId);
+    let resolvedTexture: Texture | null = null;
+    for (const frameKey of frameCandidates) {
+      const resolved = await resolveProviderFrameTexture("symbolAtlas", frameKey);
+      if (resolved.texture) {
+        resolvedTexture = resolved.texture;
+        break;
+      }
+    }
 
     if (requestToken !== this.textureRequestToken || this.symbolId !== symbolId) {
       return;
     }
 
-    if (resolved.texture) {
-      this.sprite.texture = resolved.texture;
+    if (resolvedTexture) {
+      this.sprite.texture = resolvedTexture;
       this.sprite.tint = 0xffffff;
       return;
     }
 
     this.sprite.texture = Texture.WHITE;
     this.sprite.tint = fallbackTint;
+  }
+
+  private resolveFrameCandidates(symbolId: number): string[] {
+    const primary = CRAZY_ROOSTER_SYMBOL_FRAME_KEYS[symbolId];
+    if (!primary) {
+      return [];
+    }
+
+    if (symbolId === 10) {
+      // Bell is donorlocal-first; other providers fall back to BAR art until dedicated bell art lands.
+      return [primary, "symbol-5-bar"];
+    }
+
+    return [primary];
   }
 }

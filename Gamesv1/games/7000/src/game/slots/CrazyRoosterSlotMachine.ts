@@ -1,8 +1,12 @@
-import { Container, Graphics, Sprite, Texture, Ticker } from "pixi.js";
+import { Assets, Container, Graphics, Sprite, Texture, Ticker } from "pixi.js";
 
 import { CRAZY_ROOSTER_LAYOUT } from "../config/CrazyRoosterGameConfig";
 import { CrazyRoosterReel } from "./CrazyRoosterReel";
-import { resolveProviderFrameTexture } from "../../app/assets/providerPackRegistry";
+import {
+  getDonorLocalManifestUrl,
+  getProviderPackStatus,
+  resolveProviderFrameTexture,
+} from "../../app/assets/providerPackRegistry";
 
 export interface CrazyRoosterSpinOptions {
   minSpinDurationMs?: number;
@@ -16,6 +20,7 @@ export class CrazyRoosterSlotMachine extends Container {
   private readonly ticker = new Ticker();
   private readonly cabinetBase = new Graphics();
   private readonly cabinetGlow = new Graphics();
+  private readonly reelBedSprite = new Sprite(Texture.WHITE);
   private readonly reelPanels: Sprite[] = [];
   private isSpinning = false;
   private elapsed = 0;
@@ -33,7 +38,8 @@ export class CrazyRoosterSlotMachine extends Container {
       (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
 
     this.redrawCabinet(machineWidth, machineHeight);
-    this.addChild(this.cabinetBase, this.cabinetGlow);
+    this.reelBedSprite.visible = false;
+    this.addChild(this.cabinetBase, this.cabinetGlow, this.reelBedSprite);
 
     for (let index = 0; index < CRAZY_ROOSTER_LAYOUT.reelCount; index += 1) {
       const panel = new Sprite(Texture.WHITE);
@@ -116,6 +122,15 @@ export class CrazyRoosterSlotMachine extends Container {
   }
 
   private async applyReelFrameTexture(): Promise<void> {
+    if (getProviderPackStatus().effectiveProvider === "donorlocal") {
+      await this.applyDonorlocalCabinetTexture();
+      return;
+    }
+
+    this.reelBedSprite.visible = false;
+    this.reelPanels.forEach((panel) => {
+      panel.visible = true;
+    });
     const resolved = await resolveProviderFrameTexture("uiAtlas", "reel-frame-panel");
     const resolvedTexture = resolved.texture;
     if (resolvedTexture) {
@@ -130,6 +145,60 @@ export class CrazyRoosterSlotMachine extends Container {
       panel.texture = Texture.WHITE;
       panel.tint = 0x3f0a10;
     });
+  }
+
+  private async applyDonorlocalCabinetTexture(): Promise<void> {
+    try {
+      const manifestUrl = new URL(getDonorLocalManifestUrl(), window.location.origin).toString();
+      const donorSlotUrl = new URL("../image/slot.d8edf336.png", manifestUrl).toString();
+      await Assets.load(donorSlotUrl);
+      const slotTexture = Texture.from(donorSlotUrl);
+      const bedTexture = this.createDonorCropTexture(slotTexture, 1032, 24, 828, 650);
+      this.reelBedSprite.texture = bedTexture ?? Texture.WHITE;
+      this.reelBedSprite.tint = bedTexture ? 0xffffff : 0x20135c;
+      this.reelBedSprite.alpha = 0.98;
+      this.reelBedSprite.width =
+        CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
+        (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing;
+      this.reelBedSprite.height =
+        CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
+        (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
+      this.reelBedSprite.visible = true;
+      this.reelPanels.forEach((panel) => {
+        panel.visible = false;
+      });
+    } catch (error) {
+      console.warn("[CrazyRoosterSlotMachine] Failed to load donorlocal cabinet texture", error);
+      this.reelBedSprite.visible = false;
+      this.reelPanels.forEach((panel) => {
+        panel.visible = true;
+      });
+    }
+  }
+
+  private createDonorCropTexture(
+    atlasTexture: Texture,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+  ): Texture | null {
+    const source = atlasTexture.source;
+    const image = source?.resource;
+    if (!(image instanceof HTMLImageElement) && !(image instanceof HTMLCanvasElement)) {
+      return null;
+    }
+
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext("2d");
+    if (!context) {
+      return null;
+    }
+
+    context.drawImage(image, x, y, width, height, 0, 0, width, height);
+    return Texture.from(canvas);
   }
 
   private redrawCabinet(machineWidth: number, machineHeight: number): void {

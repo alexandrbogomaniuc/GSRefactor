@@ -1,59 +1,63 @@
 {
   "gameId": 7000,
-  "specVersion": "0.3.0-provisional",
+  "specVersion": "0.5.0-math-calibration-pass",
   "certified": false,
   "distributionMode": "weights_provisional",
   "notes": [
-    "Exact donor reel strips are not yet certified in this repository.",
-    "These weights are provisional and chosen for internal simulation/design balancing."
+    "Bonus Coin (symbol 7) is restricted to reels 1 and 3 per donor rule lock.",
+    "Bell (symbol 10) is now a dedicated runtime-pay symbol for donor paytable parity.",
+    "Exact certified strips remain unresolved; these are donor-rule-aligned provisional weights for simulation."
   ],
   "reels": [
     {
       "reelIndex": 0,
       "totalWeight": 100,
       "symbolWeights": {
-        "0": 16,
-        "1": 15,
-        "2": 13,
-        "3": 12,
-        "4": 11,
-        "5": 8,
-        "6": 6,
-        "7": 11,
-        "8": 6,
-        "9": 2
+        "0": 16.5,
+        "1": 15.8,
+        "2": 14,
+        "3": 13,
+        "4": 11.2,
+        "5": 9.5,
+        "6": 7.7,
+        "7": 6,
+        "8": 0.2,
+        "9": 0.1,
+        "10": 6
       }
     },
     {
       "reelIndex": 1,
       "totalWeight": 100,
       "symbolWeights": {
-        "0": 16,
-        "1": 14,
-        "2": 13,
-        "3": 12,
-        "4": 12,
-        "5": 8,
-        "6": 6,
-        "7": 11,
-        "8": 6,
-        "9": 2
+        "0": 17.3,
+        "1": 15.8,
+        "2": 15.1,
+        "3": 14.2,
+        "4": 13.3,
+        "5": 9.6,
+        "6": 8,
+        "7": 0,
+        "8": 1,
+        "9": 0.2,
+        "10": 5.5
       }
     },
     {
       "reelIndex": 2,
       "totalWeight": 100,
       "symbolWeights": {
-        "0": 17,
-        "1": 14,
-        "2": 13,
-        "3": 12,
-        "4": 12,
-        "5": 8,
-        "6": 6,
-        "7": 10,
-        "8": 7,
-        "9": 2
+        "0": 16.5,
+        "1": 15.8,
+        "2": 14,
+        "3": 13,
+        "4": 11.2,
+        "5": 9.5,
+        "6": 7.7,
+        "7": 6,
+        "8": 0.2,
+        "9": 0.1,
+        "10": 6
       }
     }
   ]

@@ -23,9 +23,76 @@ const buyTables = readJson("buy-bonus-tables.json");
 const jackpots = readJson("jackpots.json");
 const winThresholds = readJson("win-thresholds.json");
 
-const symbolById = new Map(symbols.symbols.map((s) => [s.id, s]));
+const wildSymbolId =
+  symbols?.symbols?.find?.((entry) => String(entry?.class ?? "").toLowerCase() === "wild")?.id ?? 6;
+const activePaylines = Math.max(1, Number(paytable?.lineWinRule?.stackedPaylines ?? 8));
 const linePayouts = new Map(
-  Object.entries(paytable.linePayouts).map(([id, entry]) => [Number(id), Number(entry.pays["3"] ?? 0)]),
+  Object.entries(paytable.linePayouts).map(([id, entry]) => [
+    Number(id),
+    Number(entry.pays?.["3"] ?? 0) / activePaylines,
+  ]),
+);
+const reels = reelModel.reels.map((reel) => reel.symbolWeights);
+const jackpotLevels = jackpots.levels;
+const thresholds = winThresholds.thresholds;
+
+const baseSymbolIds = featureTables?.baseGame?.symbolIds ?? {};
+const bonusCoinSymbolId = Number(baseSymbolIds.bonusCoin ?? 7);
+const chickenCoinSymbolId = Number(baseSymbolIds.chickenCoin ?? 8);
+const superChickenCoinSymbolId = Number(baseSymbolIds.superChickenCoin ?? 9);
+const triggerReelIndexes = featureTables?.baseGame?.bonusTrigger?.bonusCoinReelIndexes ?? [0, 2];
+const triggerCenterReelIndex = Number(featureTables?.baseGame?.bonusTrigger?.chickenTriggerReelIndex ?? 1);
+const triggerCenterSymbolIds = featureTables?.baseGame?.bonusTrigger?.chickenTriggerSymbolIds ?? [
+  chickenCoinSymbolId,
+  superChickenCoinSymbolId,
+];
+
+const boostOutcomeWeights = sanitizeWeights(
+  featureTables?.baseGame?.boostRules?.outcomeWeights ?? {
+    multiplierBoost: 62,
+    jackpotAttach: 23,
+    extraCoins: 15,
+  },
+);
+const boostMultipliers = sanitizeNumberList(featureTables?.baseGame?.boostRules?.multiplierOptions, [2, 3, 5, 7, 10]);
+const boostExtraCoinCounts = sanitizeNumberList(
+  featureTables?.baseGame?.boostRules?.extraCoinCountOptions,
+  [2, 3, 5],
+);
+
+const holdAndWinConfig = {
+  entrySpins: Number(featureTables?.holdAndWinBonus?.entrySpins ?? 3),
+  maxGridSymbols: Number(featureTables?.holdAndWinBonus?.maxGridSymbols ?? 12),
+  newSymbolChanceByRespinIndex: sanitizeNumberList(
+    featureTables?.holdAndWinBonus?.newSymbolChanceByRespinIndex,
+    [0.24, 0.2, 0.17],
+  ),
+  newBonusSymbolWeights: normalizeFeatureCoinWeights(featureTables?.holdAndWinBonus?.newBonusSymbolWeights),
+  coinValueMultipliers: sanitizeNumberList(featureTables?.holdAndWinBonus?.coinValueMultipliers, [1, 2, 3, 5, 7, 10]),
+  jackpotAttachChanceOnBonusCoin: Number(featureTables?.holdAndWinBonus?.jackpotAttachChanceOnBonusCoin ?? 0),
+};
+const jackpotLogic = {
+  tierSelectionWeights: sanitizeWeights(featureTables?.jackpotTriggerLogic?.tierSelectionWeights),
+};
+
+const buyTierByMode = new Map(
+  (buyTables.tiers ?? []).map((entry) => [
+    String(entry.modeKey),
+    {
+      modeKey: String(entry.modeKey),
+      costMultiplier: Number(entry.costMultiplier ?? 0),
+      startingLockedSymbolRange: sanitizeRange(entry.startingLockedSymbolRange, [4, 6]),
+      guaranteedChickenRange: sanitizeRange(entry.guaranteedChickenRange, [0, 0]),
+      guaranteedSuperChickenCount: Number(entry.guaranteedSuperChickenCount ?? 0),
+      autoBoostOnEntry: Boolean(entry.autoBoostOnEntry),
+      startingTypeWeights: normalizeFeatureCoinWeights(entry.startingTypeWeights),
+      bonusLandingChanceByRespinIndex: sanitizeNumberList(
+        entry.bonusLandingChanceByRespinIndex,
+        holdAndWinConfig.newSymbolChanceByRespinIndex,
+      ),
+      jackpotTierWeightOverride: sanitizeWeights(entry.jackpotTierWeightOverride),
+    },
+  ]),
 );
 
 const validModes = new Set(["all", "base", "buy75", "buy200", "buy300"]);
@@ -38,12 +105,24 @@ const modeKeys = args.mode === "all" ? ["base", "buy75", "buy200", "buy300"] : [
 const startedAt = new Date().toISOString();
 const report = {
   gameId: 7000,
-  packageVersion: "0.3.0-provisional",
+  packageVersion: String(paytable.specVersion ?? "0.4.0-donor-rules-lock"),
   certified: false,
   startedAt,
   seed,
   roundsPerMode: args.rounds,
   sourceOfTruthNote: "Simulation only. GS/fixture runtime remains authoritative for production outcomes.",
+  donorRulesLocked: {
+    board: "3x4",
+    paylines: 8,
+    leftToRightHighestPerLine: true,
+    bonusTrigger: "bonusCoin@reels1+3 + chickenOrSuper@reel2",
+    bonusSymbolSet: ["bonusCoin", "chickenCoin", "superChickenCoin"],
+    boostOutcomes: {
+      multipliers: [...boostMultipliers],
+      extraBonusCoins: [...boostExtraCoinCounts],
+      jackpotTiers: { ...jackpotLevels },
+    },
+  },
   modes: {},
 };
 
@@ -108,8 +187,12 @@ function mulberry32(seedValue) {
 }
 
 function weightedPick(weightMap, randomFn) {
-  const entries = Object.entries(weightMap);
+  const entries = Object.entries(weightMap).filter(([, value]) => Number(value) > 0);
   const total = entries.reduce((sum, [, weight]) => sum + Number(weight), 0);
+  if (entries.length === 0 || total <= 0) {
+    return "";
+  }
+
   let roll = randomFn() * total;
   for (const [key, weightRaw] of entries) {
     const weight = Number(weightRaw);
@@ -118,15 +201,68 @@ function weightedPick(weightMap, randomFn) {
       return key;
     }
   }
-  return entries[entries.length - 1]?.[0];
+  return entries[entries.length - 1]?.[0] ?? "";
 }
 
 function randIntInclusive(min, max, randomFn) {
-  return min + Math.floor(randomFn() * (max - min + 1));
+  const lower = Number(min);
+  const upper = Number(max);
+  if (!Number.isFinite(lower) || !Number.isFinite(upper) || upper <= lower) {
+    return Math.max(0, Math.round(lower));
+  }
+  return lower + Math.floor(randomFn() * (upper - lower + 1));
+}
+
+function sanitizeWeights(value) {
+  if (!value || typeof value !== "object") {
+    return {};
+  }
+  const output = {};
+  for (const [key, raw] of Object.entries(value)) {
+    const numeric = Number(raw);
+    if (Number.isFinite(numeric) && numeric > 0) {
+      output[key] = numeric;
+    }
+  }
+  return output;
+}
+
+function sanitizeNumberList(value, fallback = []) {
+  if (!Array.isArray(value)) {
+    return [...fallback];
+  }
+  const output = value.map((entry) => Number(entry)).filter((entry) => Number.isFinite(entry) && entry > 0);
+  return output.length > 0 ? output : [...fallback];
+}
+
+function sanitizeRange(value, fallback) {
+  const values = Array.isArray(value) ? value.map((entry) => Number(entry)) : [];
+  if (values.length < 2 || !Number.isFinite(values[0]) || !Number.isFinite(values[1])) {
+    return [...fallback];
+  }
+  const lower = Math.max(0, Math.round(values[0]));
+  const upper = Math.max(lower, Math.round(values[1]));
+  return [lower, upper];
+}
+
+function normalizeFeatureCoinWeights(value) {
+  const weights = sanitizeWeights(value);
+  return {
+    bonus: Number(weights.bonus ?? weights.coin ?? 0),
+    chicken: Number(weights.chicken ?? weights.collector ?? 0),
+    superChicken: Number(weights.superChicken ?? weights.jackpot ?? 0),
+  };
+}
+
+function pickArrayValue(values, randomFn, fallback = 1) {
+  if (!Array.isArray(values) || values.length === 0) {
+    return fallback;
+  }
+  const index = Math.max(0, Math.min(values.length - 1, Math.floor(randomFn() * values.length)));
+  return Number(values[index] ?? fallback) || fallback;
 }
 
 function spinBoard(randomFn) {
-  const reels = reelModel.reels.map((reel) => reel.symbolWeights);
   const board = Array.from({ length: reels.length }, () => Array.from({ length: 4 }, () => 0));
   for (let reelIndex = 0; reelIndex < reels.length; reelIndex += 1) {
     for (let rowIndex = 0; rowIndex < 4; rowIndex += 1) {
@@ -134,6 +270,15 @@ function spinBoard(randomFn) {
     }
   }
   return board;
+}
+
+function matchesBonusTrigger(board) {
+  const [leftReel, rightReel] = triggerReelIndexes;
+  const leftHasBonus = board[leftReel]?.some((symbolId) => symbolId === bonusCoinSymbolId) ?? false;
+  const rightHasBonus = board[rightReel]?.some((symbolId) => symbolId === bonusCoinSymbolId) ?? false;
+  const centerHasChicken =
+    board[triggerCenterReelIndex]?.some((symbolId) => triggerCenterSymbolIds.includes(symbolId)) ?? false;
+  return leftHasBonus && rightHasBonus && centerHasChicken;
 }
 
 function evaluateLineWin(board) {
@@ -147,40 +292,307 @@ function evaluateLineWin(board) {
 }
 
 function evaluateThreeSymbolLine(values) {
-  const wildId = 6;
-  const allWild = values.every((id) => id === wildId);
+  const allWild = values.every((id) => id === wildSymbolId);
   if (allWild) {
-    return linePayouts.get(wildId) ?? 0;
+    return linePayouts.get(wildSymbolId) ?? 0;
   }
 
   let bestPay = 0;
-  for (let symbolId = 0; symbolId <= 5; symbolId += 1) {
-    const matched = values.every((id) => id === symbolId || id === wildId);
+  for (const [symbolId, payout] of linePayouts.entries()) {
+    const matched = values.every((id) => id === symbolId || id === wildSymbolId);
     if (!matched) {
       continue;
     }
-    const pay = linePayouts.get(symbolId) ?? 0;
-    if (pay > bestPay) {
-      bestPay = pay;
+    if (payout > bestPay) {
+      bestPay = payout;
     }
   }
   return bestPay;
 }
 
-function collectBonusFamilyCount(board) {
-  let count = 0;
-  for (const reel of board) {
-    for (const symbolId of reel) {
-      if (symbolId === 7 || symbolId === 8 || symbolId === 9) {
-        count += 1;
+function createFeatureCoin({
+  type,
+  randomFn,
+  jackpotWeights,
+  forcedJackpotTier,
+  jackpotTierHits,
+  allowBoost,
+}) {
+  let value = pickArrayValue(holdAndWinConfig.coinValueMultipliers, randomFn, 1);
+  let jackpotAttached = false;
+  let boostApplied = false;
+  let extraBonusCount = 0;
+
+  if (type === "superChicken" && allowBoost) {
+    const boostOutcome = weightedPick(boostOutcomeWeights, randomFn);
+    if (boostOutcome === "multiplierBoost") {
+      const multiplier = pickArrayValue(boostMultipliers, randomFn, 2);
+      value *= multiplier;
+      boostApplied = true;
+    } else if (boostOutcome === "jackpotAttach") {
+      const tier =
+        forcedJackpotTier && jackpotTierHits[forcedJackpotTier] === 0
+          ? forcedJackpotTier
+          : weightedPick(jackpotWeights, randomFn);
+      const jackpotValue = Number(jackpotLevels[tier] ?? 0);
+      value += jackpotValue;
+      jackpotTierHits[tier] += 1;
+      jackpotAttached = jackpotValue > 0;
+      boostApplied = true;
+    } else if (boostOutcome === "extraCoins") {
+      extraBonusCount = Math.max(0, Math.round(pickArrayValue(boostExtraCoinCounts, randomFn, 2)));
+      boostApplied = extraBonusCount > 0;
+    }
+  } else if (type === "bonus" && holdAndWinConfig.jackpotAttachChanceOnBonusCoin > 0) {
+    if (randomFn() < holdAndWinConfig.jackpotAttachChanceOnBonusCoin) {
+      const tier = weightedPick(jackpotWeights, randomFn);
+      const jackpotValue = Number(jackpotLevels[tier] ?? 0);
+      value += jackpotValue;
+      jackpotTierHits[tier] += 1;
+      jackpotAttached = jackpotValue > 0;
+    }
+  }
+
+  return {
+    type,
+    value: Number(value.toFixed(3)),
+    jackpotAttached,
+    boostApplied,
+    extraBonusCount,
+  };
+}
+
+function extractFeatureTypesFromBoard(board) {
+  const featureTypes = [];
+  for (const column of board) {
+    for (const symbolId of column) {
+      if (symbolId === bonusCoinSymbolId) {
+        featureTypes.push("bonus");
+      } else if (symbolId === chickenCoinSymbolId) {
+        featureTypes.push("chicken");
+      } else if (symbolId === superChickenCoinSymbolId) {
+        featureTypes.push("superChicken");
       }
     }
   }
-  return count;
+  return featureTypes;
+}
+
+function simulateBaseFeatureRound({
+  board,
+  randomFn,
+  forcedJackpotTier,
+}) {
+  const jackpotTierHits = {
+    mini: 0,
+    minor: 0,
+    major: 0,
+    grand: 0,
+  };
+  const featureTypes = extractFeatureTypesFromBoard(board);
+  const jackpotWeights = jackpotLogic.tierSelectionWeights;
+  const locked = [];
+  let boostTriggered = false;
+
+  for (const type of featureTypes) {
+    const coin = createFeatureCoin({
+      type,
+      randomFn,
+      jackpotWeights,
+      forcedJackpotTier,
+      jackpotTierHits,
+      allowBoost: true,
+    });
+    locked.push(coin);
+    boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+    if (coin.extraBonusCount > 0) {
+      for (let index = 0; index < coin.extraBonusCount; index += 1) {
+        locked.push(
+          createFeatureCoin({
+            type: "bonus",
+            randomFn,
+            jackpotWeights,
+            forcedJackpotTier,
+            jackpotTierHits,
+            allowBoost: false,
+          }),
+        );
+      }
+    }
+  }
+
+  const hasChicken = locked.some((entry) => entry.type === "chicken" || entry.type === "superChicken");
+  const featureValueSum = locked.reduce((sum, entry) => sum + entry.value, 0);
+
+  const collectTriggered = hasChicken;
+  const totalWin = collectTriggered ? featureValueSum : 0;
+
+  return {
+    totalWin: round3(totalWin),
+    collectTriggered,
+    boostTriggered,
+    jackpotTierHits,
+  };
+}
+
+function simulateHoldAndWin({ randomFn, buyConfig, board, forcedJackpotTier }) {
+  const jackpotWeights =
+    buyConfig?.jackpotTierWeightOverride &&
+    Object.keys(buyConfig.jackpotTierWeightOverride).length > 0
+      ? buyConfig.jackpotTierWeightOverride
+      : jackpotLogic.tierSelectionWeights;
+
+  const jackpotTierHits = {
+    mini: 0,
+    minor: 0,
+    major: 0,
+    grand: 0,
+  };
+  const locked = [];
+  let boostTriggered = Boolean(buyConfig?.autoBoostOnEntry);
+
+  if (buyConfig) {
+    const [minStart, maxStart] = buyConfig.startingLockedSymbolRange;
+    let initialCount = randIntInclusive(minStart, maxStart, randomFn);
+
+    const guaranteedSuper = Math.max(0, Number(buyConfig.guaranteedSuperChickenCount ?? 0));
+    for (let index = 0; index < guaranteedSuper; index += 1) {
+      const coin = createFeatureCoin({
+        type: "superChicken",
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        allowBoost: true,
+      });
+      boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+      locked.push(coin);
+    }
+
+    const [minChicken, maxChicken] = buyConfig.guaranteedChickenRange ?? [0, 0];
+    const guaranteedChicken = randIntInclusive(minChicken, maxChicken, randomFn);
+    for (let index = 0; index < guaranteedChicken; index += 1) {
+      const coin = createFeatureCoin({
+        type: "chicken",
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        allowBoost: true,
+      });
+      boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+      locked.push(coin);
+    }
+
+    initialCount = Math.max(initialCount, locked.length);
+    const fillCount = Math.max(0, initialCount - locked.length);
+    for (let index = 0; index < fillCount; index += 1) {
+      const type = weightedPick(buyConfig.startingTypeWeights, randomFn);
+      const coin = createFeatureCoin({
+        type: type || "bonus",
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        allowBoost: true,
+      });
+      boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+      locked.push(coin);
+    }
+  } else if (board) {
+    const featureTypes = extractFeatureTypesFromBoard(board);
+    for (const type of featureTypes) {
+      const coin = createFeatureCoin({
+        type,
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        allowBoost: true,
+      });
+      boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+      locked.push(coin);
+    }
+  }
+
+  let spinsLeft = Number(holdAndWinConfig.entrySpins);
+  while (spinsLeft > 0 && locked.length < holdAndWinConfig.maxGridSymbols) {
+    const stageIndex = Math.max(0, Math.min(holdAndWinConfig.entrySpins - spinsLeft, holdAndWinConfig.newSymbolChanceByRespinIndex.length - 1));
+    const stageChance = Number(
+      (buyConfig?.bonusLandingChanceByRespinIndex ?? holdAndWinConfig.newSymbolChanceByRespinIndex)[stageIndex] ??
+        holdAndWinConfig.newSymbolChanceByRespinIndex[stageIndex] ??
+        0.18,
+    );
+    const emptySlots = holdAndWinConfig.maxGridSymbols - locked.length;
+    const perSlotChance = Math.max(0, stageChance / 4);
+    let landedThisSpin = 0;
+
+    for (let index = 0; index < emptySlots; index += 1) {
+      if (randomFn() >= perSlotChance) {
+        continue;
+      }
+      const type = weightedPick(holdAndWinConfig.newBonusSymbolWeights, randomFn) || "bonus";
+      const coin = createFeatureCoin({
+        type,
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        allowBoost: true,
+      });
+      locked.push(coin);
+      landedThisSpin += 1;
+      boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+
+      if (coin.extraBonusCount > 0) {
+        for (
+          let extraIndex = 0;
+          extraIndex < coin.extraBonusCount && locked.length < holdAndWinConfig.maxGridSymbols;
+          extraIndex += 1
+        ) {
+          locked.push(
+            createFeatureCoin({
+              type: "bonus",
+              randomFn,
+              jackpotWeights,
+              forcedJackpotTier,
+              jackpotTierHits,
+              allowBoost: false,
+            }),
+          );
+          landedThisSpin += 1;
+        }
+      }
+    }
+
+    if (landedThisSpin > 0) {
+      spinsLeft = Number(holdAndWinConfig.entrySpins);
+    } else {
+      spinsLeft -= 1;
+    }
+  }
+
+  const bonusValueSum = locked.filter((entry) => entry.type === "bonus").reduce((sum, entry) => sum + entry.value, 0);
+  const chickenValueSum = locked.filter((entry) => entry.type === "chicken").reduce((sum, entry) => sum + entry.value, 0);
+  const superValueSum = locked
+    .filter((entry) => entry.type === "superChicken")
+    .reduce((sum, entry) => sum + entry.value, 0);
+
+  const collectTriggered = chickenValueSum > 0 || superValueSum > 0;
+  const collectExtension = collectTriggered ? chickenValueSum + superValueSum : 0;
+  const totalWin = round3(bonusValueSum + collectExtension);
+
+  return {
+    totalWin,
+    collectTriggered,
+    boostTriggered,
+    jackpotHit: Object.values(jackpotTierHits).some((count) => count > 0),
+    jackpotTierHits,
+    holdAndWinRemaining: Math.max(0, spinsLeft),
+  };
 }
 
 function runModeSimulation(mode, rounds, randomFn) {
-  const thresholds = winThresholds.thresholds;
   const tierCounts = {
     none: 0,
     small: 0,
@@ -199,42 +611,65 @@ function runModeSimulation(mode, rounds, randomFn) {
   let payoutTotal = 0;
   let hitCount = 0;
   let bonusCount = 0;
+  let collectCount = 0;
+  let boostCount = 0;
   let jackpotRoundCount = 0;
   let maxWin = 0;
 
-  const buyConfig =
-    mode === "base" ? null : buyTables.tiers.find((entry) => entry.modeKey === mode) ?? null;
+  const buyConfig = mode === "base" ? null : buyTierByMode.get(mode) ?? null;
   const costPerRound = buyConfig ? Number(buyConfig.costMultiplier) : 1;
 
   for (let spin = 0; spin < rounds; spin += 1) {
-    let lineWin = 0;
-    let bonusTriggered = false;
-    let jackpotHit = false;
     let totalWin = 0;
+    let bonusTriggered = false;
+    let collectTriggered = false;
+    let boostTriggered = false;
+    let jackpotHit = false;
+    const perRoundJackpotHits = {
+      mini: 0,
+      minor: 0,
+      major: 0,
+      grand: 0,
+    };
 
     if (buyConfig) {
       bonusTriggered = true;
-      const bonusResult = simulateHoldAndWin({ randomFn, buyConfig, board: null });
+      const bonusResult = simulateHoldAndWin({
+        randomFn,
+        buyConfig,
+        board: null,
+      });
       totalWin = bonusResult.totalWin;
+      collectTriggered = bonusResult.collectTriggered;
+      boostTriggered = bonusResult.boostTriggered;
       jackpotHit = bonusResult.jackpotHit;
-      for (const [tier, count] of Object.entries(bonusResult.jackpotTierHits)) {
-        jackpotTierHits[tier] += count;
-      }
+      mergeCounts(perRoundJackpotHits, bonusResult.jackpotTierHits);
     } else {
       const board = spinBoard(randomFn);
-      lineWin = evaluateLineWin(board);
-      const bonusFamilyCount = collectBonusFamilyCount(board);
-      const triggerThreshold = 6;
-      if (bonusFamilyCount >= triggerThreshold) {
-        bonusTriggered = true;
-        const bonusResult = simulateHoldAndWin({ randomFn, buyConfig: null, board });
-        totalWin = lineWin + bonusResult.totalWin;
+      const lineWin = evaluateLineWin(board);
+      bonusTriggered = matchesBonusTrigger(board);
+
+      if (bonusTriggered) {
+        const bonusResult = simulateHoldAndWin({
+          randomFn,
+          buyConfig: null,
+          board,
+        });
+        totalWin = round3(lineWin + bonusResult.totalWin);
+        collectTriggered = bonusResult.collectTriggered;
+        boostTriggered = bonusResult.boostTriggered;
         jackpotHit = bonusResult.jackpotHit;
-        for (const [tier, count] of Object.entries(bonusResult.jackpotTierHits)) {
-          jackpotTierHits[tier] += count;
-        }
+        mergeCounts(perRoundJackpotHits, bonusResult.jackpotTierHits);
       } else {
-        totalWin = lineWin;
+        const baseFeatureResult = simulateBaseFeatureRound({
+          board,
+          randomFn,
+        });
+        totalWin = round3(lineWin + baseFeatureResult.totalWin);
+        collectTriggered = baseFeatureResult.collectTriggered;
+        boostTriggered = baseFeatureResult.boostTriggered;
+        jackpotHit = Object.values(baseFeatureResult.jackpotTierHits).some((count) => count > 0);
+        mergeCounts(perRoundJackpotHits, baseFeatureResult.jackpotTierHits);
       }
     }
 
@@ -248,9 +683,16 @@ function runModeSimulation(mode, rounds, randomFn) {
     if (bonusTriggered) {
       bonusCount += 1;
     }
+    if (collectTriggered) {
+      collectCount += 1;
+    }
+    if (boostTriggered) {
+      boostCount += 1;
+    }
     if (jackpotHit) {
       jackpotRoundCount += 1;
     }
+    mergeCounts(jackpotTierHits, perRoundJackpotHits);
 
     if (totalWin <= 0) {
       tierCounts.none += 1;
@@ -269,9 +711,11 @@ function runModeSimulation(mode, rounds, randomFn) {
     mode,
     rounds,
     costPerRoundMultiplier: costPerRound,
-    rtpPercent: toPercent(payoutTotal / wagerTotal),
+    rtpPercent: toPercent(payoutTotal / Math.max(1, wagerTotal)),
     hitFrequencyPercent: toPercent(hitCount / rounds),
     bonusFrequencyPercent: toPercent(bonusCount / rounds),
+    collectFrequencyPercent: toPercent(collectCount / rounds),
+    boostFrequencyPercent: toPercent(boostCount / rounds),
     jackpotFrequencyPercent: toPercent(jackpotRoundCount / rounds),
     averagePayoutMultiplier: round3(payoutTotal / rounds),
     averageWinOnHitMultiplier: round3(hitCount > 0 ? payoutTotal / hitCount : 0),
@@ -281,104 +725,10 @@ function runModeSimulation(mode, rounds, randomFn) {
   };
 }
 
-function simulateHoldAndWin({ randomFn, buyConfig, board }) {
-  const bonusConfig = featureTables.holdAndWinBonus;
-  const jackpotLogic = featureTables.jackpotTriggerLogic;
-  const locked = [];
-  const jackpotTierHits = {
-    mini: 0,
-    minor: 0,
-    major: 0,
-    grand: 0,
-  };
-
-  if (buyConfig) {
-    const [minStart, maxStart] = buyConfig.startingLockedSymbolRange;
-    const initialCount = randIntInclusive(minStart, maxStart, randomFn);
-    for (let i = 0; i < initialCount; i += 1) {
-      const type = weightedPick(buyConfig.startingTypeWeights, randomFn);
-      locked.push(resolveBonusSymbol(type, buyConfig, jackpotLogic, randomFn, jackpotTierHits));
-    }
-  } else if (board) {
-    for (const reel of board) {
-      for (const symbolId of reel) {
-        if (symbolId === 7) {
-          locked.push(resolveBonusSymbol("coin", null, jackpotLogic, randomFn, jackpotTierHits));
-        } else if (symbolId === 8) {
-          locked.push(resolveBonusSymbol("collector", null, jackpotLogic, randomFn, jackpotTierHits));
-        } else if (symbolId === 9) {
-          locked.push(resolveBonusSymbol("jackpot", null, jackpotLogic, randomFn, jackpotTierHits));
-        }
-      }
-    }
+function mergeCounts(target, source) {
+  for (const key of Object.keys(target)) {
+    target[key] += Number(source[key] ?? 0);
   }
-
-  let spinsLeft = Number(bonusConfig.entrySpins);
-  while (spinsLeft > 0 && locked.length < bonusConfig.maxGridSymbols) {
-    const stageIndex = Math.max(0, Math.min(2, bonusConfig.entrySpins - spinsLeft));
-    const stageChance = Number(
-      (buyConfig?.bonusLandingChanceByRespinIndex ?? bonusConfig.newSymbolChanceByRespinIndex)[stageIndex],
-    );
-    const empties = bonusConfig.maxGridSymbols - locked.length;
-    let landedThisSpin = 0;
-    const perSlotChance = stageChance / 4;
-
-    for (let i = 0; i < empties; i += 1) {
-      if (randomFn() < perSlotChance) {
-        const type = weightedPick(bonusConfig.newBonusSymbolWeights, randomFn);
-        locked.push(resolveBonusSymbol(type, buyConfig, jackpotLogic, randomFn, jackpotTierHits));
-        landedThisSpin += 1;
-      }
-    }
-
-    if (landedThisSpin > 0) {
-      spinsLeft = Number(bonusConfig.entrySpins);
-    } else {
-      spinsLeft -= 1;
-    }
-  }
-
-  const coinSum = locked.filter((item) => item.type === "coin").reduce((sum, item) => sum + item.value, 0);
-  const collectorCount = locked.filter((item) => item.type === "collector").length;
-  const jackpotSum = locked
-    .filter((item) => item.type === "jackpot")
-    .reduce((sum, item) => sum + item.value, 0);
-  const collectWin = round3(coinSum * collectorCount * 0.24);
-  const totalWin = round3(coinSum + collectWin + jackpotSum);
-
-  return {
-    totalWin,
-    jackpotHit: jackpotSum > 0,
-    jackpotTierHits,
-  };
-}
-
-function resolveBonusSymbol(typeRaw, buyConfig, jackpotLogic, randomFn, jackpotTierHits) {
-  const type = String(typeRaw);
-  if (type === "coin") {
-    const pool = featureTables.holdAndWinBonus.coinValueMultipliers;
-    const idx = Math.floor(randomFn() * pool.length);
-    return {
-      type: "coin",
-      value: Number(pool[idx]),
-    };
-  }
-  if (type === "collector") {
-    return {
-      type: "collector",
-      value: 0,
-    };
-  }
-
-  const weights = buyConfig?.jackpotTierWeightOverride ?? jackpotLogic.tierSelectionWeights;
-  const tier = weightedPick(weights, randomFn);
-  const value = Number(jackpots.levels[tier] ?? 0);
-  jackpotTierHits[tier] += 1;
-  return {
-    type: "jackpot",
-    tier,
-    value,
-  };
 }
 
 function toPercent(value) {
@@ -399,6 +749,8 @@ function printSummary(result, outPathValue) {
         `rtp=${modeResult.rtpPercent}%`,
         `hit=${modeResult.hitFrequencyPercent}%`,
         `bonus=${modeResult.bonusFrequencyPercent}%`,
+        `collect=${modeResult.collectFrequencyPercent}%`,
+        `boost=${modeResult.boostFrequencyPercent}%`,
         `jackpot=${modeResult.jackpotFrequencyPercent}%`,
         `avgWin=${modeResult.averagePayoutMultiplier}x`,
       ].join(" "),
