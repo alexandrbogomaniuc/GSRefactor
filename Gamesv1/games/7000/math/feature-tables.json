@@ -1,24 +1,40 @@
 {
   "gameId": 7000,
-  "specVersion": "0.3.0-provisional",
+  "specVersion": "0.4.0-donor-rules-lock",
   "certified": false,
   "baseGame": {
+    "symbolIds": {
+      "bonusCoin": 7,
+      "chickenCoin": 8,
+      "superChickenCoin": 9
+    },
     "bonusTrigger": {
       "name": "hold_and_win_trigger",
-      "rule": "trigger when 6 or more bonus-family symbols appear on the 3x4 board",
-      "bonusFamilySymbolIds": [7, 8, 9],
-      "status": "provisional"
+      "rule": "trigger when Bonus Coin appears on reels 1 and 3 and Chicken or Super Chicken lands on reel 2",
+      "bonusCoinSymbolId": 7,
+      "bonusCoinReelIndexes": [0, 2],
+      "chickenTriggerReelIndex": 1,
+      "chickenTriggerSymbolIds": [8, 9],
+      "status": "locked_donor_rule"
     },
     "collectRules": {
-      "collectorSymbolId": 8,
-      "multiplierSymbolId": 7,
-      "rule": "collector adds currently visible coin multipliers into the running bonus total",
-      "status": "provisional"
+      "triggerSymbolIds": [8, 9],
+      "collectsSymbolIds": [7, 8, 9],
+      "rule": "Chicken Coin triggers collect in both modes; Super Chicken also triggers collect and gathers Chicken values in Bonus Game",
+      "status": "locked_donor_rule"
     },
     "boostRules": {
-      "name": "lightning_boost_overlay",
-      "effect": "presentation and pacing boost only, no direct payout by itself in this provisional model",
-      "status": "provisional"
+      "name": "chicken_boost_feature",
+      "triggerSymbolId": 9,
+      "rule": "Super Chicken can apply multiplier boost, attach jackpot, or add extra bonus coins",
+      "outcomeWeights": {
+        "multiplierBoost": 62,
+        "jackpotAttach": 23,
+        "extraCoins": 15
+      },
+      "multiplierOptions": [2, 3, 5, 7, 10],
+      "extraCoinCountOptions": [2, 3, 5],
+      "status": "locked_donor_rule_with_provisional_weights"
     }
   },
   "holdAndWinBonus": {
@@ -26,30 +42,31 @@
     "resetToThreeOnNewLock": true,
     "lockedSymbolsPersist": true,
     "maxGridSymbols": 12,
-    "newSymbolChanceByRespinIndex": [0.2, 0.18, 0.16],
+    "allowedSymbolIds": [7, 8, 9],
+    "newSymbolChanceByRespinIndex": [0.24, 0.2, 0.17],
     "newBonusSymbolWeights": {
-      "coin": 82,
-      "collector": 18,
-      "jackpot": 0.8
+      "bonus": 62,
+      "chicken": 28,
+      "superChicken": 10
     },
-    "coinValueMultipliers": [1, 2, 3, 4, 5, 7],
-    "jackpotSymbolId": 9,
+    "coinValueMultipliers": [1, 2, 3, 5, 7, 10],
+    "collectAtFeatureEndSymbolIds": [8, 9],
+    "jackpotAttachChanceOnBonusCoin": 0.04,
     "jackpotSource": "jackpots.json",
-    "status": "provisional"
+    "status": "aligned_donor_rule_provisional_weights"
   },
   "jackpotTriggerLogic": {
-    "rule": "each jackpot symbol resolved in bonus awards one jackpot tier outcome",
+    "rule": "jackpots can attach in base or bonus mode through Super Chicken boost and occasional bonus coin jackpot outcome",
     "tierSelectionWeights": {
-      "mini": 92,
-      "minor": 7,
-      "major": 0.9,
-      "grand": 0.1
+      "mini": 80,
+      "minor": 14,
+      "major": 5,
+      "grand": 1
     },
-    "status": "provisional"
+    "status": "aligned_donor_rule_provisional_weights"
   },
   "unresolvedItems": [
-    "Certified donor trigger density by reel-stop state is not yet available.",
-    "Certified hold-and-win per-respin landing probabilities are not yet available.",
-    "Certified jackpot-tier selection table per mode (base vs buy tiers) is not yet available."
+    "Certified reel-strip frequency, symbol-value distribution, and jackpot weighting remain unresolved and are still provisional.",
+    "Exact donor RTP/volatility targets and certified hold-and-win state machine constants are still pending backend/certified math."
   ]
 }

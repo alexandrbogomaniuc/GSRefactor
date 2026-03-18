@@ -1,6 +1,6 @@
 {
   "gameId": 7000,
-  "specVersion": "0.3.0-provisional",
+  "specVersion": "0.4.0-donor-rules-lock",
   "certified": false,
   "unit": "bet_multiplier_cost",
   "tiers": [
@@ -11,19 +11,22 @@
       "costMultiplier": 75,
       "guaranteedBonusEntry": true,
       "startingLockedSymbolRange": [4, 6],
+      "guaranteedChickenRange": [1, 2],
+      "guaranteedSuperChickenCount": 0,
+      "autoBoostOnEntry": false,
       "startingTypeWeights": {
-        "coin": 80,
-        "collector": 17,
-        "jackpot": 3
+        "bonus": 68,
+        "chicken": 26,
+        "superChicken": 6
       },
-      "bonusLandingChanceByRespinIndex": [0.24, 0.2, 0.17],
+      "bonusLandingChanceByRespinIndex": [0.25, 0.21, 0.18],
       "jackpotTierWeightOverride": {
-        "mini": 72,
-        "minor": 21,
+        "mini": 78,
+        "minor": 15,
         "major": 6,
         "grand": 1
       },
-      "status": "provisional"
+      "status": "aligned_donor_rule_provisional_weights"
     },
     {
       "tier": 200,
@@ -32,19 +35,22 @@
       "costMultiplier": 200,
       "guaranteedBonusEntry": true,
       "startingLockedSymbolRange": [6, 8],
+      "guaranteedChickenRange": [2, 4],
+      "guaranteedSuperChickenCount": 0,
+      "autoBoostOnEntry": false,
       "startingTypeWeights": {
-        "coin": 74,
-        "collector": 20,
-        "jackpot": 6
+        "bonus": 58,
+        "chicken": 31,
+        "superChicken": 11
       },
-      "bonusLandingChanceByRespinIndex": [0.26, 0.22, 0.18],
+      "bonusLandingChanceByRespinIndex": [0.28, 0.24, 0.2],
       "jackpotTierWeightOverride": {
-        "mini": 66,
-        "minor": 24,
+        "mini": 70,
+        "minor": 19,
         "major": 8,
-        "grand": 2
+        "grand": 3
       },
-      "status": "provisional"
+      "status": "aligned_donor_rule_provisional_weights"
     },
     {
       "tier": 300,
@@ -53,23 +59,26 @@
       "costMultiplier": 300,
       "guaranteedBonusEntry": true,
       "startingLockedSymbolRange": [8, 10],
+      "guaranteedChickenRange": [2, 3],
+      "guaranteedSuperChickenCount": 1,
+      "autoBoostOnEntry": true,
       "startingTypeWeights": {
-        "coin": 67,
-        "collector": 24,
-        "jackpot": 9
+        "bonus": 42,
+        "chicken": 30,
+        "superChicken": 28
       },
-      "bonusLandingChanceByRespinIndex": [0.29, 0.24, 0.2],
+      "bonusLandingChanceByRespinIndex": [0.31, 0.27, 0.23],
       "jackpotTierWeightOverride": {
-        "mini": 60,
-        "minor": 26,
+        "mini": 62,
+        "minor": 22,
         "major": 11,
-        "grand": 3
+        "grand": 5
       },
-      "status": "provisional"
+      "status": "aligned_donor_rule_provisional_weights"
     }
   ],
   "notes": [
-    "These buy tables are intentionally provisional for design/simulation and are not certified production math.",
-    "Backend-certified buy-entry symbol composition can replace this file without changing runtime source-of-truth contracts."
+    "Buy tiers are locked to donor behavior intent: 75 starts with chicken presence, 200 increases chicken density/high-win potential, 300 guarantees Super Chicken and immediate boost context.",
+    "Exact certified buy-entry composition and weighting remain provisional until backend/certified math handoff."
   ]
 }

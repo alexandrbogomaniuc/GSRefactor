@@ -1,10 +1,10 @@
 {
   "id": "7000-math-provisional",
-  "modelVersion": "0.3.0-provisional",
+  "modelVersion": "0.4.0-donor-rules-lock",
   "status": "provisional_uncertified",
   "certified": false,
   "rtpTarget": 90.05,
-  "rtpEstimateMode": "provisional_simulation_base_mode",
+  "rtpEstimateMode": "provisional_simulation_not_calibrated",
   "volatility": "medium-high",
   "possibleMaxWinMultiplier": 5000,
   "capWinMultiplier": 10000,
@@ -22,6 +22,7 @@
   },
   "notes": [
     "This package is simulation and design support only.",
+    "Donor rule intent is locked in this version, but payout calibration is still provisional.",
     "Replace with certified backend package before production math sign-off."
   ]
 }

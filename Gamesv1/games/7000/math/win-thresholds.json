@@ -1,6 +1,6 @@
 {
   "gameId": 7000,
-  "specVersion": "0.3.0-provisional",
+  "specVersion": "0.4.0-donor-rules-lock",
   "certified": false,
   "unit": "bet_multiplier",
   "thresholds": {
@@ -8,5 +8,9 @@
     "huge": 25,
     "mega": 50
   },
-  "status": "aligned_with_current_runtime_intent"
+  "status": "provisional_until_donor_threshold_certification",
+  "notes": [
+    "Donor win-overlay packages exist but exact certified trigger thresholds are still unresolved.",
+    "These thresholds remain stable for UI choreography continuity in this sprint."
+  ]
 }

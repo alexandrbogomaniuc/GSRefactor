@@ -2,7 +2,7 @@
   "gameId": 7000,
   "packageVersion": "0.4.0-donor-rules-lock",
   "certified": false,
-  "startedAt": "2026-03-18T13:12:47.913Z",
+  "startedAt": "2026-03-18T13:12:46.373Z",
   "seed": 700020260318,
   "roundsPerMode": 100000,
   "sourceOfTruthNote": "Simulation only. GS/fixture runtime remains authoritative for production outcomes.",
@@ -147,5 +147,5 @@
       }
     }
   },
-  "finishedAt": "2026-03-18T13:12:49.385Z"
+  "finishedAt": "2026-03-18T13:12:47.881Z"
 }

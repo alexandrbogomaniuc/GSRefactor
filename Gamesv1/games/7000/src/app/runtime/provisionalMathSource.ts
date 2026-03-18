@@ -32,6 +32,9 @@ type BuyTierConfig = {
   startingLockedSymbolRange: [number, number];
   startingTypeWeights: WeightedNumberMap;
   bonusLandingChanceByRespinIndex: number[];
+  guaranteedChickenRange: [number, number];
+  guaranteedSuperChickenCount: number;
+  autoBoostOnEntry: boolean;
   jackpotTierWeightOverride?: WeightedNumberMap;
 };
 
@@ -41,18 +44,28 @@ type HoldAndWinConfig = {
   newSymbolChanceByRespinIndex: number[];
   newBonusSymbolWeights: WeightedNumberMap;
   coinValueMultipliers: number[];
+  jackpotAttachChanceOnBonusCoin: number;
 };
 
 type JackpotLogicConfig = {
   tierSelectionWeights: WeightedNumberMap;
 };
 
-type BonusSymbolType = "coin" | "collector" | "jackpot";
+type BoostRulesConfig = {
+  outcomeWeights: WeightedNumberMap;
+  multiplierOptions: number[];
+  extraCoinCountOptions: number[];
+};
+
+type BonusSymbolType = "bonus" | "chicken" | "superChicken";
 
 type BonusLockedSymbol = {
   type: BonusSymbolType;
   value: number;
   tier?: ProvisionalJackpotTier;
+  extraBonusCount?: number;
+  boostApplied?: boolean;
+  jackpotAttached?: boolean;
 };
 
 type PresetOverride = {
@@ -173,6 +186,25 @@ const asWeightedNumberMap = (value: unknown): WeightedNumberMap => {
   return output;
 };
 
+const asFeatureCoinWeights = (value: unknown): WeightedNumberMap => {
+  const parsed = asWeightedNumberMap(value);
+  return {
+    bonus: asNumber(parsed.bonus, asNumber(parsed.coin, 0)),
+    chicken: asNumber(parsed.chicken, asNumber(parsed.collector, 0)),
+    superChicken: asNumber(parsed.superChicken, asNumber(parsed.jackpot, 0)),
+  };
+};
+
+const asRange = (value: unknown, fallback: [number, number]): [number, number] => {
+  const parsed = asNumberArray(value);
+  if (parsed.length < 2) {
+    return fallback;
+  }
+  const min = Math.max(0, Math.round(asNumber(parsed[0], fallback[0])));
+  const max = Math.max(min, Math.round(asNumber(parsed[1], fallback[1])));
+  return [min, max];
+};
+
 const asPaylines = (value: unknown): PaylineDefinition[] => {
   if (!Array.isArray(value)) {
     return [];
@@ -195,16 +227,15 @@ const asBuyTiers = (value: unknown): BuyTierConfig[] => {
   return value
     .map((entry) => {
       const parsed = asRecord(entry);
-      const range = asNumberArray(parsed.startingLockedSymbolRange);
       return {
         modeKey: String(parsed.modeKey ?? "base") as ProvisionalMathMode,
         costMultiplier: asNumber(parsed.costMultiplier, 0),
-        startingLockedSymbolRange: [
-          asNumber(range[0], 0),
-          asNumber(range[1], 0),
-        ] as [number, number],
-        startingTypeWeights: asWeightedNumberMap(parsed.startingTypeWeights),
+        startingLockedSymbolRange: asRange(parsed.startingLockedSymbolRange, [4, 6]),
+        startingTypeWeights: asFeatureCoinWeights(parsed.startingTypeWeights),
         bonusLandingChanceByRespinIndex: asNumberArray(parsed.bonusLandingChanceByRespinIndex),
+        guaranteedChickenRange: asRange(parsed.guaranteedChickenRange, [0, 0]),
+        guaranteedSuperChickenCount: Math.max(0, Math.round(asNumber(parsed.guaranteedSuperChickenCount, 0))),
+        autoBoostOnEntry: Boolean(parsed.autoBoostOnEntry),
         jackpotTierWeightOverride: asWeightedNumberMap(parsed.jackpotTierWeightOverride),
       };
     })
@@ -228,6 +259,10 @@ const asReelWeights = (value: unknown): Array<Record<string, number>> => {
 
 const REEL_WEIGHTS = asReelWeights(asRecord(reelModelData).reels);
 const PAYLINES = asPaylines(asRecord(paylinesData).paylines);
+const ACTIVE_PAYLINES = Math.max(
+  1,
+  asNumber(asRecord(asRecord(paytableData).lineWinRule).stackedPaylines, 8),
+);
 const LINE_PAYOUTS = Object.entries(
   asRecord(asRecord(paytableData).linePayouts),
 ).reduce(
@@ -238,7 +273,7 @@ const LINE_PAYOUTS = Object.entries(
     }
     const entry = asRecord(lineEntry);
     const payouts = asRecord(entry.pays);
-    const payout3 = asNumber(payouts["3"]);
+    const payout3 = asNumber(payouts["3"]) / ACTIVE_PAYLINES;
     if (payout3 > 0) {
       map.set(symbolId, payout3);
     }
@@ -253,11 +288,15 @@ const HOLD_AND_WIN_CONFIG: HoldAndWinConfig = {
   newSymbolChanceByRespinIndex: asNumberArray(
     asRecord(asRecord(featureTablesData).holdAndWinBonus).newSymbolChanceByRespinIndex,
   ),
-  newBonusSymbolWeights: asWeightedNumberMap(
+  newBonusSymbolWeights: asFeatureCoinWeights(
     asRecord(asRecord(featureTablesData).holdAndWinBonus).newBonusSymbolWeights,
   ),
   coinValueMultipliers: asNumberArray(
     asRecord(asRecord(featureTablesData).holdAndWinBonus).coinValueMultipliers,
+  ),
+  jackpotAttachChanceOnBonusCoin: asNumber(
+    asRecord(asRecord(featureTablesData).holdAndWinBonus).jackpotAttachChanceOnBonusCoin,
+    0,
   ),
 };
 
@@ -265,6 +304,13 @@ const JACKPOT_LOGIC: JackpotLogicConfig = {
   tierSelectionWeights: asWeightedNumberMap(
     asRecord(asRecord(featureTablesData).jackpotTriggerLogic).tierSelectionWeights,
   ),
+};
+
+const BASE_BOOST_RULES = asRecord(asRecord(asRecord(featureTablesData).baseGame).boostRules);
+const BOOST_RULES: BoostRulesConfig = {
+  outcomeWeights: asWeightedNumberMap(BASE_BOOST_RULES.outcomeWeights),
+  multiplierOptions: asNumberArray(BASE_BOOST_RULES.multiplierOptions),
+  extraCoinCountOptions: asNumberArray(BASE_BOOST_RULES.extraCoinCountOptions),
 };
 
 const BUY_TIERS = asBuyTiers(asRecord(buyBonusTablesData).tiers);
@@ -279,11 +325,15 @@ const WIN_THRESHOLDS = asRecord(winThresholdsData).thresholds as {
   mega: number;
 };
 
+const BASE_SYMBOL_IDS = asRecord(asRecord(asRecord(featureTablesData).baseGame).symbolIds);
 const WILD_SYMBOL_ID = 6;
-const COIN_SYMBOL_ID = 7;
-const COLLECTOR_SYMBOL_ID = 8;
-const JACKPOT_SYMBOL_ID = 9;
-const BASE_BONUS_TRIGGER_COUNT = 6;
+const BONUS_COIN_SYMBOL_ID = asNumber(BASE_SYMBOL_IDS.bonusCoin, 7);
+const CHICKEN_COIN_SYMBOL_ID = asNumber(BASE_SYMBOL_IDS.chickenCoin, 8);
+const SUPER_CHICKEN_COIN_SYMBOL_ID = asNumber(BASE_SYMBOL_IDS.superChickenCoin, 9);
+const BONUS_TRIGGER_RULE = asRecord(asRecord(asRecord(featureTablesData).baseGame).bonusTrigger);
+const BASE_BONUS_TRIGGER_REELS = asNumberArray(BONUS_TRIGGER_RULE.bonusCoinReelIndexes);
+const BASE_BONUS_CENTER_REEL_INDEX = asNumber(BONUS_TRIGGER_RULE.chickenTriggerReelIndex, 1);
+const BASE_BONUS_CENTER_SYMBOL_IDS = asNumberArray(BONUS_TRIGGER_RULE.chickenTriggerSymbolIds);
 
 const DONOR_REEL_STOP_NORMAL: [number, number, number] = [483, 567, 650];
 const DONOR_REEL_STOP_BONUS_HOLD: [number, number, number] = [483, 567, 5000];
@@ -298,16 +348,16 @@ const PRESET_OVERRIDES: Partial<Record<ProvisionalMathPreset, PresetOverride>> =
   },
   collect: {
     columns: [
-      [1, 3, 5, 8],
-      [0, 5, 4, 2],
-      [5, 1, 3, 7],
+      [7, 3, 5, 8],
+      [0, 8, 4, 2],
+      [5, 1, 7, 3],
     ],
     forceCollect: true,
   },
   boost: {
     columns: [
-      [1, 6, 3, 8],
-      [0, 2, 6, 8],
+      [7, 6, 3, 9],
+      [0, 9, 6, 8],
       [7, 1, 4, 6],
     ],
     forceCollect: true,
@@ -315,8 +365,8 @@ const PRESET_OVERRIDES: Partial<Record<ProvisionalMathPreset, PresetOverride>> =
   },
   bonus: {
     columns: [
-      [6, 8, 7, 1],
-      [0, 6, 8, 7],
+      [7, 8, 3, 1],
+      [0, 9, 8, 2],
       [7, 3, 6, 8],
     ],
     forceCollect: true,
@@ -325,8 +375,8 @@ const PRESET_OVERRIDES: Partial<Record<ProvisionalMathPreset, PresetOverride>> =
   },
   jackpot: {
     columns: [
-      [9, 8, 3, 6],
-      [8, 2, 6, 7],
+      [7, 9, 3, 6],
+      [8, 2, 9, 7],
       [7, 6, 9, 4],
     ],
     forceCollect: true,
@@ -430,8 +480,40 @@ const randomIntInclusive = (
   return min + Math.floor(randomFn() * (max - min + 1));
 };
 
+const pickFromArray = (
+  values: number[],
+  randomFn: () => number,
+  fallback: number,
+): number => {
+  if (values.length === 0) {
+    return fallback;
+  }
+  const index = Math.max(
+    0,
+    Math.min(values.length - 1, Math.floor(randomFn() * values.length)),
+  );
+  return asNumber(values[index], fallback);
+};
+
 const normalizeColumns = (columns: number[][]): number[][] =>
   columns.map((column) => [...column].slice(0, 4).map((value) => Number(value) || 0));
+
+const isBaseBonusTrigger = (columns: number[][]): boolean => {
+  const [leftReelIndex, rightReelIndex] = BASE_BONUS_TRIGGER_REELS.length >= 2
+    ? [BASE_BONUS_TRIGGER_REELS[0], BASE_BONUS_TRIGGER_REELS[1]]
+    : [0, 2];
+  const centerSymbols =
+    BASE_BONUS_CENTER_SYMBOL_IDS.length > 0
+      ? BASE_BONUS_CENTER_SYMBOL_IDS
+      : [CHICKEN_COIN_SYMBOL_ID, SUPER_CHICKEN_COIN_SYMBOL_ID];
+
+  const leftHasBonus = columns[leftReelIndex]?.some((symbolId) => symbolId === BONUS_COIN_SYMBOL_ID) ?? false;
+  const rightHasBonus = columns[rightReelIndex]?.some((symbolId) => symbolId === BONUS_COIN_SYMBOL_ID) ?? false;
+  const centerHasChicken =
+    columns[BASE_BONUS_CENTER_REEL_INDEX]?.some((symbolId) => centerSymbols.includes(symbolId)) ?? false;
+
+  return leftHasBonus && rightHasBonus && centerHasChicken;
+};
 
 const evaluateThreeSymbolLine = (values: number[]): { symbolId: number; multiplier: number } | null => {
   if (values.length < 3) {
@@ -511,6 +593,8 @@ type HoldAndWinSimulationResult = {
   bonusWinMultiplier: number;
   jackpotTierHits: Record<ProvisionalJackpotTier, number>;
   holdAndWinRemaining: number;
+  collectTriggered: boolean;
+  boostTriggered: boolean;
 };
 
 const resolveBonusSymbol = (
@@ -519,33 +603,146 @@ const resolveBonusSymbol = (
   jackpotWeights: WeightedNumberMap,
   forcedJackpotTier: ProvisionalJackpotTier | undefined,
   jackpotTierHits: Record<ProvisionalJackpotTier, number>,
+  allowBoost = true,
 ): BonusLockedSymbol => {
-  if (typeRaw === "coin") {
-    const pool = HOLD_AND_WIN_CONFIG.coinValueMultipliers;
-    const index = Math.floor(randomFn() * Math.max(1, pool.length));
-    return {
-      type: "coin",
-      value: asNumber(pool[index], 1),
-    };
+  let value = pickFromArray(HOLD_AND_WIN_CONFIG.coinValueMultipliers, randomFn, 1);
+  let tier: ProvisionalJackpotTier | undefined;
+  let boostApplied = false;
+  let jackpotAttached = false;
+  let extraBonusCount = 0;
+
+  if (typeRaw === "superChicken" && allowBoost) {
+    const boostOutcome = weightedPick(
+      Object.keys(BOOST_RULES.outcomeWeights).length > 0
+        ? BOOST_RULES.outcomeWeights
+        : { multiplierBoost: 62, jackpotAttach: 23, extraCoins: 15 },
+      randomFn,
+    );
+    if (boostOutcome === "multiplierBoost") {
+      const multiplier = pickFromArray(BOOST_RULES.multiplierOptions, randomFn, 2);
+      value = round3(value * Math.max(1, multiplier));
+      boostApplied = true;
+    } else if (boostOutcome === "jackpotAttach") {
+      tier =
+        forcedJackpotTier && jackpotTierHits[forcedJackpotTier] === 0
+          ? forcedJackpotTier
+          : (weightedPick(jackpotWeights, randomFn) as ProvisionalJackpotTier);
+      if (tier) {
+        const jackpotValue = asNumber(JACKPOT_LEVELS[tier], 0);
+        if (jackpotValue > 0) {
+          value = round3(value + jackpotValue);
+          jackpotTierHits[tier] += 1;
+          jackpotAttached = true;
+        }
+      }
+      boostApplied = true;
+    } else if (boostOutcome === "extraCoins") {
+      extraBonusCount = Math.max(
+        0,
+        Math.round(pickFromArray(BOOST_RULES.extraCoinCountOptions, randomFn, 2)),
+      );
+      boostApplied = extraBonusCount > 0;
+    }
+  } else if (
+    typeRaw === "bonus" &&
+    HOLD_AND_WIN_CONFIG.jackpotAttachChanceOnBonusCoin > 0 &&
+    randomFn() < HOLD_AND_WIN_CONFIG.jackpotAttachChanceOnBonusCoin
+  ) {
+    tier =
+      forcedJackpotTier && jackpotTierHits[forcedJackpotTier] === 0
+        ? forcedJackpotTier
+        : (weightedPick(jackpotWeights, randomFn) as ProvisionalJackpotTier);
+    if (tier) {
+      const jackpotValue = asNumber(JACKPOT_LEVELS[tier], 0);
+      if (jackpotValue > 0) {
+        value = round3(value + jackpotValue);
+        jackpotTierHits[tier] += 1;
+        jackpotAttached = true;
+      }
+    }
   }
 
-  if (typeRaw === "collector") {
-    return {
-      type: "collector",
-      value: 0,
-    };
-  }
-
-  const resolvedTier =
-    forcedJackpotTier && jackpotTierHits[forcedJackpotTier] === 0
-      ? forcedJackpotTier
-      : (weightedPick(jackpotWeights, randomFn) as ProvisionalJackpotTier);
-  const value = asNumber(JACKPOT_LEVELS[resolvedTier], 0);
-  jackpotTierHits[resolvedTier] += 1;
   return {
-    type: "jackpot",
-    tier: resolvedTier,
+    type: typeRaw,
     value,
+    tier,
+    boostApplied,
+    jackpotAttached,
+    extraBonusCount,
+  };
+};
+
+const resolveFeatureTypeFromSymbolId = (symbolId: number): BonusSymbolType | null => {
+  if (symbolId === BONUS_COIN_SYMBOL_ID) {
+    return "bonus";
+  }
+  if (symbolId === CHICKEN_COIN_SYMBOL_ID) {
+    return "chicken";
+  }
+  if (symbolId === SUPER_CHICKEN_COIN_SYMBOL_ID) {
+    return "superChicken";
+  }
+  return null;
+};
+
+const simulateBaseCollectFromBoard = (
+  board: number[][],
+  randomFn: () => number,
+  forcedJackpotTier?: ProvisionalJackpotTier,
+): Pick<HoldAndWinSimulationResult, "bonusWinMultiplier" | "jackpotTierHits" | "collectTriggered" | "boostTriggered"> => {
+  const jackpotTierHits: Record<ProvisionalJackpotTier, number> = {
+    mini: 0,
+    minor: 0,
+    major: 0,
+    grand: 0,
+  };
+  const jackpotWeights = JACKPOT_LOGIC.tierSelectionWeights;
+  const locked: BonusLockedSymbol[] = [];
+  let boostTriggered = false;
+
+  for (const column of board) {
+    for (const symbolId of column) {
+      const type = resolveFeatureTypeFromSymbolId(symbolId);
+      if (!type) {
+        continue;
+      }
+      const resolved = resolveBonusSymbol(
+        type,
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        true,
+      );
+      boostTriggered ||= Boolean(resolved.boostApplied || resolved.jackpotAttached);
+      locked.push(resolved);
+
+      const extraCount = Math.max(0, Math.round(asNumber(resolved.extraBonusCount, 0)));
+      for (let index = 0; index < extraCount; index += 1) {
+        locked.push(
+          resolveBonusSymbol(
+            "bonus",
+            randomFn,
+            jackpotWeights,
+            forcedJackpotTier,
+            jackpotTierHits,
+            false,
+          ),
+        );
+      }
+    }
+  }
+
+  const collectTriggered = locked.some(
+    (entry) => entry.type === "chicken" || entry.type === "superChicken",
+  );
+  const totalValue = locked.reduce((sum, entry) => sum + entry.value, 0);
+
+  return {
+    bonusWinMultiplier: collectTriggered ? round3(totalValue) : 0,
+    jackpotTierHits,
+    collectTriggered,
+    boostTriggered,
   };
 };
 
@@ -568,18 +765,30 @@ const simulateHoldAndWin = ({
     Object.keys(buyTier.jackpotTierWeightOverride).length > 0
       ? buyTier.jackpotTierWeightOverride
       : JACKPOT_LOGIC.tierSelectionWeights;
+  let boostTriggered = Boolean(buyTier?.autoBoostOnEntry);
 
   if (buyTier) {
     const [minStart, maxStart] = buyTier.startingLockedSymbolRange;
-    const initialCount = randomIntInclusive(minStart, maxStart, randomFn);
-    for (let index = 0; index < initialCount; index += 1) {
-      const type = weightedPick(
-        buyTier.startingTypeWeights,
+    let initialCount = randomIntInclusive(minStart, maxStart, randomFn);
+    const [minChicken, maxChicken] = buyTier.guaranteedChickenRange;
+    const guaranteedChicken = randomIntInclusive(minChicken, maxChicken, randomFn);
+    const guaranteedSuper = Math.max(0, buyTier.guaranteedSuperChickenCount);
+
+    for (let index = 0; index < guaranteedSuper; index += 1) {
+      const resolved = resolveBonusSymbol(
+        "superChicken",
         randomFn,
-      ) as BonusSymbolType;
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+      );
+      boostTriggered ||= Boolean(resolved.boostApplied || resolved.jackpotAttached);
+      locked.push(resolved);
+    }
+    for (let index = 0; index < guaranteedChicken; index += 1) {
       locked.push(
         resolveBonusSymbol(
-          type,
+          "chicken",
           randomFn,
           jackpotWeights,
           forcedJackpotTier,
@@ -587,37 +796,51 @@ const simulateHoldAndWin = ({
         ),
       );
     }
+
+    initialCount = Math.max(initialCount, locked.length);
+    const fillCount = Math.max(0, initialCount - locked.length);
+    for (let index = 0; index < fillCount; index += 1) {
+      const type = weightedPick(
+        buyTier.startingTypeWeights,
+        randomFn,
+      ) as BonusSymbolType;
+      const resolved = resolveBonusSymbol(
+        type || "bonus",
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+      );
+      boostTriggered ||= Boolean(resolved.boostApplied || resolved.jackpotAttached);
+      locked.push(resolved);
+    }
   } else if (board) {
     for (const column of board) {
       for (const symbolId of column) {
-        if (symbolId === COIN_SYMBOL_ID) {
+        const type = resolveFeatureTypeFromSymbolId(symbolId);
+        if (!type) {
+          continue;
+        }
+        const resolved = resolveBonusSymbol(
+          type,
+          randomFn,
+          jackpotWeights,
+          forcedJackpotTier,
+          jackpotTierHits,
+        );
+        boostTriggered ||= Boolean(resolved.boostApplied || resolved.jackpotAttached);
+        locked.push(resolved);
+
+        const extraCount = Math.max(0, Math.round(asNumber(resolved.extraBonusCount, 0)));
+        for (let extraIndex = 0; extraIndex < extraCount; extraIndex += 1) {
           locked.push(
             resolveBonusSymbol(
-              "coin",
+              "bonus",
               randomFn,
               jackpotWeights,
               forcedJackpotTier,
               jackpotTierHits,
-            ),
-          );
-        } else if (symbolId === COLLECTOR_SYMBOL_ID) {
-          locked.push(
-            resolveBonusSymbol(
-              "collector",
-              randomFn,
-              jackpotWeights,
-              forcedJackpotTier,
-              jackpotTierHits,
-            ),
-          );
-        } else if (symbolId === JACKPOT_SYMBOL_ID) {
-          locked.push(
-            resolveBonusSymbol(
-              "jackpot",
-              randomFn,
-              jackpotWeights,
-              forcedJackpotTier,
-              jackpotTierHits,
+              false,
             ),
           );
         }
@@ -650,16 +873,35 @@ const simulateHoldAndWin = ({
           HOLD_AND_WIN_CONFIG.newBonusSymbolWeights,
           randomFn,
         ) as BonusSymbolType;
-        locked.push(
-          resolveBonusSymbol(
-            type,
-            randomFn,
-            jackpotWeights,
-            forcedJackpotTier,
-            jackpotTierHits,
-          ),
+        const resolved = resolveBonusSymbol(
+          type || "bonus",
+          randomFn,
+          jackpotWeights,
+          forcedJackpotTier,
+          jackpotTierHits,
         );
+        boostTriggered ||= Boolean(resolved.boostApplied || resolved.jackpotAttached);
+        locked.push(resolved);
         landedThisSpin += 1;
+
+        const extraCount = Math.max(0, Math.round(asNumber(resolved.extraBonusCount, 0)));
+        for (
+          let extraIndex = 0;
+          extraIndex < extraCount && locked.length < HOLD_AND_WIN_CONFIG.maxGridSymbols;
+          extraIndex += 1
+        ) {
+          locked.push(
+            resolveBonusSymbol(
+              "bonus",
+              randomFn,
+              jackpotWeights,
+              forcedJackpotTier,
+              jackpotTierHits,
+              false,
+            ),
+          );
+          landedThisSpin += 1;
+        }
       }
     }
 
@@ -670,20 +912,25 @@ const simulateHoldAndWin = ({
     }
   }
 
-  const coinSum = locked
-    .filter((entry) => entry.type === "coin")
+  const bonusSum = locked
+    .filter((entry) => entry.type === "bonus")
     .reduce((sum, entry) => sum + entry.value, 0);
-  const collectorCount = locked.filter((entry) => entry.type === "collector").length;
-  const jackpotSum = locked
-    .filter((entry) => entry.type === "jackpot")
+  const chickenSum = locked
+    .filter((entry) => entry.type === "chicken")
+    .reduce((sum, entry) => sum + entry.value, 0);
+  const superChickenSum = locked
+    .filter((entry) => entry.type === "superChicken")
     .reduce((sum, entry) => sum + entry.value, 0);
 
-  const collectWin = round3(coinSum * collectorCount * 0.24);
-  const bonusWinMultiplier = round3(coinSum + collectWin + jackpotSum);
+  const collectTriggered = chickenSum > 0 || superChickenSum > 0;
+  const collectWin = collectTriggered ? round3(chickenSum + superChickenSum) : 0;
+  const bonusWinMultiplier = round3(bonusSum + collectWin);
   return {
     bonusWinMultiplier,
     jackpotTierHits,
     holdAndWinRemaining: Math.max(0, spinsLeft),
+    collectTriggered,
+    boostTriggered,
   };
 };
 
@@ -769,19 +1016,19 @@ export class ProvisionalMathSource {
     const symbolGrid = buildGridFromColumns(columns);
     const counts = columns.flat().reduce(
       (acc, symbolId) => {
-        if (symbolId === COIN_SYMBOL_ID) acc.coin += 1;
-        if (symbolId === COLLECTOR_SYMBOL_ID) acc.collector += 1;
-        if (symbolId === JACKPOT_SYMBOL_ID) acc.jackpot += 1;
+        if (symbolId === BONUS_COIN_SYMBOL_ID) acc.bonus += 1;
+        if (symbolId === CHICKEN_COIN_SYMBOL_ID) acc.chicken += 1;
+        if (symbolId === SUPER_CHICKEN_COIN_SYMBOL_ID) acc.superChicken += 1;
         if (
-          symbolId === COIN_SYMBOL_ID ||
-          symbolId === COLLECTOR_SYMBOL_ID ||
-          symbolId === JACKPOT_SYMBOL_ID
+          symbolId === BONUS_COIN_SYMBOL_ID ||
+          symbolId === CHICKEN_COIN_SYMBOL_ID ||
+          symbolId === SUPER_CHICKEN_COIN_SYMBOL_ID
         ) {
-          acc.bonusFamily += 1;
+          acc.featureFamily += 1;
         }
         return acc;
       },
-      { coin: 0, collector: 0, jackpot: 0, bonusFamily: 0 },
+      { bonus: 0, chicken: 0, superChicken: 0, featureFamily: 0 },
     );
 
     const { lineWins, lineWinMultiplier, lineWinAmountMinor } =
@@ -790,16 +1037,13 @@ export class ProvisionalMathSource {
     const bonusTriggered =
       presetOverride?.forceBonus === true ||
       mode !== "base" ||
-      counts.bonusFamily >= BASE_BONUS_TRIGGER_COUNT;
+      isBaseBonusTrigger(columns);
     const collectTriggered =
       presetOverride?.forceCollect === true ||
-      (counts.collector > 0 && counts.coin > 0);
-    const boostTriggered =
-      presetOverride?.forceBoost === true ||
-      counts.collector >= 2 ||
-      (counts.collector > 0 && counts.jackpot > 0);
+      counts.chicken > 0 ||
+      counts.superChicken > 0;
 
-    const holdAndWin = bonusTriggered
+    const holdAndWinResult = bonusTriggered
       ? simulateHoldAndWin({
           mode,
           board: mode === "base" ? columns : null,
@@ -815,9 +1059,48 @@ export class ProvisionalMathSource {
             grand: 0,
           },
           holdAndWinRemaining: 0,
+          collectTriggered: false,
+          boostTriggered: false,
         };
 
-    let bonusWinMultiplier = holdAndWin.bonusWinMultiplier;
+    const baseCollectResult =
+      !bonusTriggered && collectTriggered
+        ? simulateBaseCollectFromBoard(
+            columns,
+            this.random,
+            presetOverride?.forcedJackpotTier,
+          )
+      : {
+          bonusWinMultiplier: 0,
+          jackpotTierHits: {
+            mini: 0,
+            minor: 0,
+            major: 0,
+            grand: 0,
+          },
+          collectTriggered: false,
+          boostTriggered: false,
+        };
+
+    const mergedJackpotTierHits: Record<ProvisionalJackpotTier, number> = {
+      mini: holdAndWinResult.jackpotTierHits.mini + baseCollectResult.jackpotTierHits.mini,
+      minor: holdAndWinResult.jackpotTierHits.minor + baseCollectResult.jackpotTierHits.minor,
+      major: holdAndWinResult.jackpotTierHits.major + baseCollectResult.jackpotTierHits.major,
+      grand: holdAndWinResult.jackpotTierHits.grand + baseCollectResult.jackpotTierHits.grand,
+    };
+
+    const boostTriggered =
+      presetOverride?.forceBoost === true ||
+      holdAndWinResult.boostTriggered ||
+      baseCollectResult.boostTriggered;
+    const effectiveCollectTriggered =
+      collectTriggered ||
+      holdAndWinResult.collectTriggered ||
+      baseCollectResult.collectTriggered;
+
+    let bonusWinMultiplier = round3(
+      holdAndWinResult.bonusWinMultiplier + baseCollectResult.bonusWinMultiplier,
+    );
     let totalWinMultiplier = round3(lineWinMultiplier + bonusWinMultiplier);
     if (
       presetOverride?.minimumTotalMultiplier &&
@@ -833,7 +1116,7 @@ export class ProvisionalMathSource {
       0,
       Math.round(totalWinMultiplier * totalBetMinor),
     );
-    const jackpotTier = resolveHighestJackpotTier(holdAndWin.jackpotTierHits);
+    const jackpotTier = resolveHighestJackpotTier(mergedJackpotTierHits);
     const jackpotLevel = resolveJackpotLevel(jackpotTier);
     const jackpotTriggered = jackpotTier !== null;
     const winTier = classifyWinTier(totalWinMultiplier);
@@ -849,7 +1132,7 @@ export class ProvisionalMathSource {
     if (lineWins.length > 0) {
       eventTriggers.push("overlay.totalSummary.update");
     }
-    if (collectTriggered) {
+    if (effectiveCollectTriggered) {
       eventTriggers.push("feature.collect.triggered");
     }
     if (boostTriggered) {
@@ -869,7 +1152,7 @@ export class ProvisionalMathSource {
     if (boostTriggered && !bonusTriggered && !jackpotTriggered) {
       animationCues.push("focus-status-banner");
     }
-    if (collectTriggered) {
+    if (effectiveCollectTriggered) {
       animationCues.push("collect-sweep");
       animationCues.push("coin-fly");
     }
@@ -898,7 +1181,7 @@ export class ProvisionalMathSource {
     } else {
       messages.push("NO LINE WIN");
     }
-    if (collectTriggered) {
+    if (effectiveCollectTriggered) {
       messages.push("COLLECT TRIGGERED");
     }
     if (boostTriggered) {
@@ -921,7 +1204,7 @@ export class ProvisionalMathSource {
       state: preset === "normal" ? "provisional" : `provisional-${preset}`,
       mathSource: "provisional",
       mathPreset: preset,
-      collectFeatureActive: toBoolLabel(collectTriggered),
+      collectFeatureActive: toBoolLabel(effectiveCollectTriggered),
       boostFeatureActive: toBoolLabel(boostTriggered),
       bonusGameActive: toBoolLabel(bonusTriggered),
       holdAndWinActive: toBoolLabel(bonusTriggered),
@@ -938,7 +1221,7 @@ export class ProvisionalMathSource {
       buyFeatureAvailable: !bonusTriggered,
     };
     if (bonusTriggered) {
-      counters.holdAndWinRemaining = Math.max(0, holdAndWin.holdAndWinRemaining);
+      counters.holdAndWinRemaining = Math.max(0, holdAndWinResult.holdAndWinRemaining);
     }
     if (jackpotLevel !== null) {
       counters.jackpotLevel = jackpotLevel;
@@ -956,7 +1239,7 @@ export class ProvisionalMathSource {
       totalWinMultiplier,
       totalWinAmountMinor,
       triggers: {
-        collect: collectTriggered,
+        collect: effectiveCollectTriggered,
         boost: boostTriggered,
         bonus: bonusTriggered,
         jackpot: jackpotTriggered,

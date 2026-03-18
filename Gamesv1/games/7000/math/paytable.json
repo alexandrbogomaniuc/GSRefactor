@@ -1,72 +1,87 @@
 {
   "gameId": 7000,
-  "specVersion": "0.3.0-provisional",
+  "specVersion": "0.4.0-donor-rules-lock",
   "certified": false,
   "unit": "bet_multiplier",
   "lineWinRule": {
-    "kind": "left_to_right",
+    "kind": "left_to_right_highest_per_line",
     "minMatchCount": 3,
     "reelCount": 3,
-    "stackedPaylines": 8
+    "stackedPaylines": 8,
+    "highestOnlyPerLine": true
+  },
+  "donorReferencePaytable": {
+    "SEVEN_777": 30,
+    "BELL": 20,
+    "BAR": 15,
+    "WATERMELON": 8,
+    "GRAPES": 8,
+    "ORANGE": 2,
+    "LEMON": 2,
+    "PLUM": 2,
+    "CHERRIES": 1
   },
   "linePayouts": {
     "0": {
-      "symbolKey": "EGG",
+      "symbolKey": "WATERMELON_OR_GRAPES",
+      "donorEquivalentKeys": ["WATERMELON", "GRAPES"],
       "pays": {
-        "3": 0.4
+        "3": 8
       }
     },
     "1": {
       "symbolKey": "CHERRIES",
       "pays": {
-        "3": 0.55
+        "3": 1
       }
     },
     "2": {
       "symbolKey": "LEMON",
       "pays": {
-        "3": 0.7
+        "3": 2
       }
     },
     "3": {
       "symbolKey": "ORANGE",
       "pays": {
-        "3": 0.95
+        "3": 2
       }
     },
     "4": {
       "symbolKey": "PLUM",
       "pays": {
-        "3": 1.35
+        "3": 2
       }
     },
     "5": {
       "symbolKey": "BAR",
       "pays": {
-        "3": 2.7
+        "3": 15
       }
     },
     "6": {
-      "symbolKey": "SEVEN",
+      "symbolKey": "SEVEN_777",
       "pays": {
-        "3": 5.4
+        "3": 30
       }
     }
   },
+  "unresolvedMappings": [
+    "BELL payout 20x is locked in donorReferencePaytable but still lacks a dedicated runtime symbol slot in the current 10-symbol model."
+  ],
   "nonLinePayouts": {
-    "coinMultiplierPool": {
-      "symbolId": 7,
-      "possibleMultipliers": [1, 2, 3, 4, 5, 7],
-      "status": "provisional"
+    "boostMultiplierPool": {
+      "triggerSymbolId": 9,
+      "possibleMultipliers": [2, 3, 5, 7, 10],
+      "status": "aligned_donor_rule_provisional_weights"
     },
     "jackpotPool": {
-      "symbolId": 9,
       "sourceFile": "jackpots.json",
-      "status": "provisional"
+      "status": "aligned_donor_rule_provisional_weights"
     }
   },
   "notes": [
-    "Symbol IDs are verified from runtime config.",
-    "Payout values are provisional and for simulation/design only until certified math package is supplied."
+    "This file locks donor help rule intent while remaining provisional for uncertified symbol inventory and reel strips.",
+    "GS/fixture runtime remains the authoritative production source of truth."
   ]
 }
