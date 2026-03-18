@@ -68,11 +68,14 @@ export class LoadScreen extends Container {
   private progress = 0;
   private statusLabel = "BOOTSTRAPPING";
   private ambientTime = 0;
+  private shineProgress = -1;
+  private starLife = 0;
   private roosterReady = false;
   private betonlineReady = false;
   private roosterBaseWidth = 0;
   private roosterBaseHeight = 0;
   private trackRect = { x: 0, y: 0, width: 0, height: 0, skew: 0 };
+  private betonlineRect = { x: 0, y: 0, width: 0, height: 0 };
 
   public static configure(input: {
     themeTokens: ShellThemeTokens;
@@ -166,6 +169,9 @@ export class LoadScreen extends Container {
     this.preloader.setProgress(weightedProgress);
     this.statusLabel = progress >= 100 ? "READY TO PLAY" : "LOADING ASSETS";
     this.progress = weightedProgress;
+    if (weightedProgress >= 100 && this.shineProgress < 0) {
+      this.shineProgress = 0;
+    }
     this.redrawOverlay();
   }
 
@@ -202,6 +208,13 @@ export class LoadScreen extends Container {
     this.betonlineFallbackText.x = stackCenterX;
     this.betonlineFallbackText.y = betonlineY;
     this.betonlineFallbackText.visible = !this.betonlineReady;
+    this.betonlineRect = {
+      x: this.betonlineLogo.x - this.betonlineLogo.width * 0.5,
+      y: this.betonlineLogo.y - this.betonlineLogo.height * 0.5,
+      width: this.betonlineLogo.width,
+      height: this.betonlineLogo.height,
+    };
+
     const trackWidth = Math.min(width * 0.34, 430);
     const trackHeight = Math.max(20, Math.min(26, height * 0.034));
     const trackY = betonlineY + betonlineHeight * 0.74;
@@ -224,7 +237,7 @@ export class LoadScreen extends Container {
   public update(ticker: { deltaMS: number }): void {
     this.ambientTime += ticker.deltaMS / 1000;
     this.preloader.tick(ticker.deltaMS);
-    this.redrawOverlay();
+    this.redrawOverlay(ticker.deltaMS / 1000);
   }
 
   public async show(): Promise<void> {
@@ -234,6 +247,8 @@ export class LoadScreen extends Container {
     this.preloader.setStatus("BOOTSTRAPPING");
     this.progress = 6;
     this.statusLabel = "BOOTSTRAPPING";
+    this.shineProgress = -1;
+    this.starLife = 0;
     this.redrawOverlay();
     window.addEventListener("pointerdown", this.tryPlayAudioStinger, { once: true });
   }
@@ -251,7 +266,7 @@ export class LoadScreen extends Container {
     window.removeEventListener("pointerdown", this.tryPlayAudioStinger);
   }
 
-  private redrawOverlay(): void {
+  private redrawOverlay(deltaSeconds = 0): void {
     const width = this.preloader.width || window.innerWidth || 1280;
     const height = this.preloader.height || window.innerHeight || 720;
     this.backdrop.clear();
@@ -342,10 +357,51 @@ export class LoadScreen extends Container {
     this.loadingBorderSpark.closePath();
     this.loadingBorderSpark.fill({ color: 0xfff4d4, alpha: Math.max(0, sparkAlpha) });
 
+    if (!this.reducedMotion && this.shineProgress >= 0 && this.shineProgress <= 1) {
+      this.shineProgress += deltaSeconds / 0.7;
+    }
+    if (this.reducedMotion && this.shineProgress >= 0) {
+      this.shineProgress = 1.05;
+    }
+
     this.logoShine.clear();
-    this.logoShine.visible = false;
+    this.logoShine.visible =
+      !this.reducedMotion && this.shineProgress >= 0 && this.shineProgress <= 1;
+    if (this.logoShine.visible) {
+      const startX = this.betonlineRect.x - 40;
+      const endX = this.betonlineRect.x + this.betonlineRect.width + 40;
+      const lineX = startX + (endX - startX) * this.shineProgress;
+      this.logoShine.moveTo(lineX - 3, this.betonlineRect.y + this.betonlineRect.height + 16);
+      this.logoShine.lineTo(lineX + 7, this.betonlineRect.y - 16);
+      this.logoShine.lineTo(lineX + 16, this.betonlineRect.y - 16);
+      this.logoShine.lineTo(lineX + 6, this.betonlineRect.y + this.betonlineRect.height + 16);
+      this.logoShine.closePath();
+      this.logoShine.fill({ color: 0xffffff, alpha: 0.74 });
+      this.logoShine.stroke({ color: 0xffffff, width: 1, alpha: 0.95 });
+    }
+
+    if (!this.reducedMotion && this.shineProgress > 1 && this.starLife <= 0) {
+      this.starLife = 1;
+    }
+    this.starLife = Math.max(0, this.starLife - deltaSeconds / 0.55);
+    const starPulse = Math.sin(this.ambientTime * 11) * 0.12;
     this.completionStar.clear();
-    this.completionStar.visible = false;
+    this.completionStar.visible = this.starLife > 0;
+    if (this.completionStar.visible) {
+      const starSize = 10 + starPulse * 4;
+      const starX = this.betonlineRect.x + this.betonlineRect.width + 12;
+      const starY = this.betonlineRect.y - 6;
+      this.completionStar.moveTo(starX, starY - starSize);
+      this.completionStar.lineTo(starX + starSize * 0.35, starY - starSize * 0.35);
+      this.completionStar.lineTo(starX + starSize, starY);
+      this.completionStar.lineTo(starX + starSize * 0.35, starY + starSize * 0.35);
+      this.completionStar.lineTo(starX, starY + starSize);
+      this.completionStar.lineTo(starX - starSize * 0.35, starY + starSize * 0.35);
+      this.completionStar.lineTo(starX - starSize, starY);
+      this.completionStar.lineTo(starX - starSize * 0.35, starY - starSize * 0.35);
+      this.completionStar.closePath();
+      this.completionStar.fill({ color: 0xffffff, alpha: this.starLife * 0.9 });
+    }
   }
 
   private readonly tryPlayAudioStinger = (): void => {

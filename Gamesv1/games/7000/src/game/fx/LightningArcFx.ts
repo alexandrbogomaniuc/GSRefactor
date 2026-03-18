@@ -3,14 +3,6 @@ import { Container, Graphics, Sprite, Texture, Ticker } from "pixi.js";
 import { CRAZY_ROOSTER_LAYOUT } from "../config/CrazyRoosterGameConfig";
 import { resolveProviderFrameTexture } from "../../app/assets/providerPackRegistry";
 
-type LightningPlayOptions = {
-  sourceX?: number;
-  sourceY?: number;
-  targetX?: number;
-  targetY?: number;
-  durationMs?: number;
-};
-
 export class LightningArcFx extends Container {
   private readonly glow = new Graphics();
   private readonly sprite = new Sprite(Texture.WHITE);
@@ -19,8 +11,6 @@ export class LightningArcFx extends Container {
   private durationMs = 420;
   private active = false;
   private requestToken = 0;
-  private localStart = { x: 0, y: 0 };
-  private localEnd = { x: 0, y: 0 };
 
   constructor() {
     super();
@@ -40,69 +30,45 @@ export class LightningArcFx extends Container {
     void this.prewarm();
   }
 
-  public async play(
-    width: number,
-    height: number,
-    options: LightningPlayOptions = {},
-  ): Promise<void> {
+  public async play(width: number, height: number): Promise<void> {
     const requestToken = ++this.requestToken;
     const resolved = await resolveProviderFrameTexture("vfxAtlas", "lightning-arc-01");
     if (requestToken !== this.requestToken) {
       return;
     }
 
-    const sourceX = options.sourceX ?? width * 0.18;
-    const sourceY = options.sourceY ?? -height * 0.18;
-    const targetX = options.targetX ?? width * 0.82;
-    const targetY = options.targetY ?? height * 0.18;
-    const dx = targetX - sourceX;
-    const dy = targetY - sourceY;
-    const distance = Math.max(1, Math.hypot(dx, dy));
-    const midX = (sourceX + targetX) * 0.5;
-    const midY = (sourceY + targetY) * 0.5;
-    const angle = Math.atan2(dy, dx);
-
     this.elapsedMs = 0;
-    this.durationMs = Math.max(360, options.durationMs ?? 520);
     this.active = true;
     this.visible = true;
-    this.position.set(midX, midY);
-    this.rotation = angle;
-    this.localStart = { x: -distance * 0.5, y: 0 };
-    this.localEnd = { x: distance * 0.5, y: 0 };
+    this.x = width * 0.5;
+    this.y = height * 0.5;
     this.glow.clear();
-    this.glow.ellipse(0, 0, distance * 0.56, Math.max(48, distance * 0.18));
-    this.glow.fill({ color: 0xfff0a8, alpha: 0.38 });
+    this.glow.ellipse(0, 0, width * 0.42, height * 0.34);
+    this.glow.fill({ color: 0xfff0a8, alpha: 0.26 });
     this.glow.visible = true;
     this.glow.alpha = 1;
-    this.glow.scale.set(1);
-    this.fallback.clear();
-    this.fallback.moveTo(this.localStart.x, this.localStart.y);
-    this.fallback.lineTo(this.localStart.x + distance * 0.24, -distance * 0.12);
-    this.fallback.lineTo(this.localStart.x + distance * 0.42, distance * 0.06);
-    this.fallback.lineTo(0, -distance * 0.08);
-    this.fallback.lineTo(this.localEnd.x - distance * 0.2, distance * 0.1);
-    this.fallback.lineTo(this.localEnd.x - distance * 0.06, -distance * 0.04);
-    this.fallback.lineTo(this.localEnd.x, this.localEnd.y);
 
     if (resolved.texture) {
-      this.fallback.stroke({ width: 8, color: 0xfff8c8, alpha: 0.76 });
-      this.fallback.visible = true;
+      this.fallback.visible = false;
       this.sprite.visible = true;
       this.sprite.texture = resolved.texture;
       this.sprite.tint = 0xffffff;
-      this.sprite.width = Math.max(distance * 1.2, CRAZY_ROOSTER_LAYOUT.symbolWidth * 1.95);
-      this.sprite.height = Math.max(
-        CRAZY_ROOSTER_LAYOUT.symbolHeight * 1.95,
-        Math.min(height * 0.64, 124 + distance * 0.2),
-      );
+      this.sprite.width = width * 0.96;
+      this.sprite.height = Math.max(height * 0.9, CRAZY_ROOSTER_LAYOUT.symbolHeight * 4.2);
       this.sprite.alpha = 1;
-      this.sprite.scale.set(1);
+      this.sprite.scale.set(0.94);
       return;
     }
 
     this.sprite.visible = false;
-    this.fallback.stroke({ width: 14, color: 0xfff3a0, alpha: 0.96 });
+    this.fallback.clear();
+    this.fallback.moveTo(-width * 0.45, -height * 0.45);
+    this.fallback.lineTo(-width * 0.15, -height * 0.12);
+    this.fallback.lineTo(0, -height * 0.2);
+    this.fallback.lineTo(width * 0.16, height * 0.04);
+    this.fallback.lineTo(width * 0.04, height * 0.04);
+    this.fallback.lineTo(width * 0.25, height * 0.42);
+    this.fallback.stroke({ width: 10, color: 0xfff3a0, alpha: 0.92 });
     this.fallback.visible = true;
     this.fallback.alpha = 1;
   }
@@ -110,7 +76,6 @@ export class LightningArcFx extends Container {
   public clear(): void {
     this.active = false;
     this.visible = false;
-    this.rotation = 0;
     this.glow.visible = false;
     this.sprite.visible = false;
     this.fallback.visible = false;
@@ -128,17 +93,17 @@ export class LightningArcFx extends Container {
 
     if (this.sprite.visible) {
       this.sprite.alpha = alpha;
-      this.sprite.scale.set(1 + progress * 0.18);
+      this.sprite.scale.set(0.94 + progress * 0.16);
     }
 
     if (this.glow.visible) {
-      this.glow.alpha = alpha * 0.96;
-      this.glow.scale.set(1 + progress * 0.28);
+      this.glow.alpha = alpha * 0.9;
+      this.glow.scale.set(1 + progress * 0.22);
     }
 
     if (this.fallback.visible) {
       this.fallback.alpha = alpha;
-      this.fallback.scale.set(1 + progress * 0.14);
+      this.fallback.scale.set(1 + progress * 0.08);
     }
 
     if (progress >= 1) {

@@ -58,17 +58,6 @@ export class ParticleBurst extends Container {
     }
   }
 
-  public clear(): void {
-    for (const particle of this.particles) {
-      if (particle.sprite.parent === this) {
-        this.removeChild(particle.sprite);
-        this.pool.push(particle.sprite);
-      }
-    }
-    this.particles = [];
-    this.isActive = false;
-  }
-
   private tick(dt: number) {
     if (!this.isActive) return;
 

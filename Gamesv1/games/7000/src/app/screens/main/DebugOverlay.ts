@@ -15,10 +15,11 @@ const showMathOverlay = (): boolean => {
   if (params.get("mathOverlay") === "0") {
     return false;
   }
-  if (params.get("mathOverlay") === "1") {
-    return true;
-  }
-  return params.get("mathSource") === "provisional" || params.has("mathPreset");
+  return (
+    params.get("allowDevFallback") === "1" ||
+    params.get("mathSource") === "provisional" ||
+    params.has("mathPreset")
+  );
 };
 
 export class DebugOverlay extends Container {
