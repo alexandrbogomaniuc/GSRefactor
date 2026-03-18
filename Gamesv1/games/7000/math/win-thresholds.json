@@ -1,12 +1,12 @@
 {
   "gameId": 7000,
-  "specVersion": "0.4.0-donor-rules-lock",
+  "specVersion": "0.5.0-math-calibration-pass",
   "certified": false,
   "unit": "bet_multiplier",
   "thresholds": {
-    "big": 10,
-    "huge": 25,
-    "mega": 50
+    "big": 8,
+    "huge": 20,
+    "mega": 40
   },
   "status": "provisional_until_donor_threshold_certification",
   "notes": [

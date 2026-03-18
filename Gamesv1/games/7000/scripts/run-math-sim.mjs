@@ -457,61 +457,61 @@ function simulateHoldAndWin({ randomFn, buyConfig, board, forcedJackpotTier }) {
 
     const guaranteedSuper = Math.max(0, Number(buyConfig.guaranteedSuperChickenCount ?? 0));
     for (let index = 0; index < guaranteedSuper; index += 1) {
-      locked.push(
-        createFeatureCoin({
-          type: "superChicken",
-          randomFn,
-          jackpotWeights,
-          forcedJackpotTier,
-          jackpotTierHits,
-          allowBoost: true,
-        }),
-      );
+      const coin = createFeatureCoin({
+        type: "superChicken",
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        allowBoost: true,
+      });
+      boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+      locked.push(coin);
     }
 
     const [minChicken, maxChicken] = buyConfig.guaranteedChickenRange ?? [0, 0];
     const guaranteedChicken = randIntInclusive(minChicken, maxChicken, randomFn);
     for (let index = 0; index < guaranteedChicken; index += 1) {
-      locked.push(
-        createFeatureCoin({
-          type: "chicken",
-          randomFn,
-          jackpotWeights,
-          forcedJackpotTier,
-          jackpotTierHits,
-          allowBoost: true,
-        }),
-      );
+      const coin = createFeatureCoin({
+        type: "chicken",
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        allowBoost: true,
+      });
+      boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+      locked.push(coin);
     }
 
     initialCount = Math.max(initialCount, locked.length);
     const fillCount = Math.max(0, initialCount - locked.length);
     for (let index = 0; index < fillCount; index += 1) {
       const type = weightedPick(buyConfig.startingTypeWeights, randomFn);
-      locked.push(
-        createFeatureCoin({
-          type: type || "bonus",
-          randomFn,
-          jackpotWeights,
-          forcedJackpotTier,
-          jackpotTierHits,
-          allowBoost: true,
-        }),
-      );
+      const coin = createFeatureCoin({
+        type: type || "bonus",
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        allowBoost: true,
+      });
+      boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+      locked.push(coin);
     }
   } else if (board) {
     const featureTypes = extractFeatureTypesFromBoard(board);
     for (const type of featureTypes) {
-      locked.push(
-        createFeatureCoin({
-          type,
-          randomFn,
-          jackpotWeights,
-          forcedJackpotTier,
-          jackpotTierHits,
-          allowBoost: true,
-        }),
-      );
+      const coin = createFeatureCoin({
+        type,
+        randomFn,
+        jackpotWeights,
+        forcedJackpotTier,
+        jackpotTierHits,
+        allowBoost: true,
+      });
+      boostTriggered ||= coin.boostApplied || coin.jackpotAttached || coin.extraBonusCount > 0;
+      locked.push(coin);
     }
   }
 

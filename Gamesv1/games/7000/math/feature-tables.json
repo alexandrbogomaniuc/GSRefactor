@@ -1,6 +1,6 @@
 {
   "gameId": 7000,
-  "specVersion": "0.4.0-donor-rules-lock",
+  "specVersion": "0.5.0-math-calibration-pass",
   "certified": false,
   "baseGame": {
     "symbolIds": {
@@ -28,9 +28,9 @@
       "triggerSymbolId": 9,
       "rule": "Super Chicken can apply multiplier boost, attach jackpot, or add extra bonus coins",
       "outcomeWeights": {
-        "multiplierBoost": 62,
-        "jackpotAttach": 23,
-        "extraCoins": 15
+        "multiplierBoost": 72,
+        "jackpotAttach": 4,
+        "extraCoins": 24
       },
       "multiplierOptions": [2, 3, 5, 7, 10],
       "extraCoinCountOptions": [2, 3, 5],
@@ -43,25 +43,25 @@
     "lockedSymbolsPersist": true,
     "maxGridSymbols": 12,
     "allowedSymbolIds": [7, 8, 9],
-    "newSymbolChanceByRespinIndex": [0.24, 0.2, 0.17],
+    "newSymbolChanceByRespinIndex": [0.18, 0.14, 0.1],
     "newBonusSymbolWeights": {
-      "bonus": 62,
-      "chicken": 28,
-      "superChicken": 10
+      "bonus": 76,
+      "chicken": 19,
+      "superChicken": 5
     },
-    "coinValueMultipliers": [1, 2, 3, 5, 7, 10],
+    "coinValueMultipliers": [0.5, 1, 2, 3, 4, 6, 8],
     "collectAtFeatureEndSymbolIds": [8, 9],
-    "jackpotAttachChanceOnBonusCoin": 0.04,
+    "jackpotAttachChanceOnBonusCoin": 0.001,
     "jackpotSource": "jackpots.json",
     "status": "aligned_donor_rule_provisional_weights"
   },
   "jackpotTriggerLogic": {
     "rule": "jackpots can attach in base or bonus mode through Super Chicken boost and occasional bonus coin jackpot outcome",
     "tierSelectionWeights": {
-      "mini": 80,
-      "minor": 14,
-      "major": 5,
-      "grand": 1
+      "mini": 93,
+      "minor": 5.5,
+      "major": 1.3,
+      "grand": 0.2
     },
     "status": "aligned_donor_rule_provisional_weights"
   },

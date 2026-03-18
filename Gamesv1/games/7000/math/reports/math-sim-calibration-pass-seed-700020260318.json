@@ -2,7 +2,7 @@
   "gameId": 7000,
   "packageVersion": "0.5.0-math-calibration-pass",
   "certified": false,
-  "startedAt": "2026-03-18T14:06:58.186Z",
+  "startedAt": "2026-03-18T14:06:36.603Z",
   "seed": 700020260318,
   "roundsPerMode": 300000,
   "sourceOfTruthNote": "Simulation only. GS/fixture runtime remains authoritative for production outcomes.",
@@ -147,5 +147,5 @@
       }
     }
   },
-  "finishedAt": "2026-03-18T14:07:05.519Z"
+  "finishedAt": "2026-03-18T14:06:41.605Z"
 }

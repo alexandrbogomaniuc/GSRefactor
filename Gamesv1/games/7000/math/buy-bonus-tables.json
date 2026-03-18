@@ -1,6 +1,6 @@
 {
   "gameId": 7000,
-  "specVersion": "0.4.0-donor-rules-lock",
+  "specVersion": "0.5.0-math-calibration-pass",
   "certified": false,
   "unit": "bet_multiplier_cost",
   "tiers": [
@@ -11,20 +11,20 @@
       "costMultiplier": 75,
       "guaranteedBonusEntry": true,
       "startingLockedSymbolRange": [4, 6],
-      "guaranteedChickenRange": [1, 2],
+      "guaranteedChickenRange": [1, 1],
       "guaranteedSuperChickenCount": 0,
       "autoBoostOnEntry": false,
       "startingTypeWeights": {
-        "bonus": 68,
-        "chicken": 26,
-        "superChicken": 6
+        "bonus": 78,
+        "chicken": 18,
+        "superChicken": 4
       },
-      "bonusLandingChanceByRespinIndex": [0.25, 0.21, 0.18],
+      "bonusLandingChanceByRespinIndex": [0.2, 0.16, 0.12],
       "jackpotTierWeightOverride": {
-        "mini": 78,
-        "minor": 15,
-        "major": 6,
-        "grand": 1
+        "mini": 94,
+        "minor": 5,
+        "major": 1,
+        "grand": 0
       },
       "status": "aligned_donor_rule_provisional_weights"
     },
@@ -34,21 +34,21 @@
       "entryMode": "weighted_start",
       "costMultiplier": 200,
       "guaranteedBonusEntry": true,
-      "startingLockedSymbolRange": [6, 8],
-      "guaranteedChickenRange": [2, 4],
-      "guaranteedSuperChickenCount": 0,
+      "startingLockedSymbolRange": [9, 11],
+      "guaranteedChickenRange": [2, 3],
+      "guaranteedSuperChickenCount": 3,
       "autoBoostOnEntry": false,
       "startingTypeWeights": {
-        "bonus": 58,
-        "chicken": 31,
-        "superChicken": 11
+        "bonus": 46,
+        "chicken": 24,
+        "superChicken": 30
       },
-      "bonusLandingChanceByRespinIndex": [0.28, 0.24, 0.2],
+      "bonusLandingChanceByRespinIndex": [0.45, 0.38, 0.3],
       "jackpotTierWeightOverride": {
-        "mini": 70,
-        "minor": 19,
-        "major": 8,
-        "grand": 3
+        "mini": 80,
+        "minor": 12,
+        "major": 6,
+        "grand": 2
       },
       "status": "aligned_donor_rule_provisional_weights"
     },
@@ -58,21 +58,21 @@
       "entryMode": "weighted_start",
       "costMultiplier": 300,
       "guaranteedBonusEntry": true,
-      "startingLockedSymbolRange": [8, 10],
+      "startingLockedSymbolRange": [11, 12],
       "guaranteedChickenRange": [2, 3],
-      "guaranteedSuperChickenCount": 1,
+      "guaranteedSuperChickenCount": 6,
       "autoBoostOnEntry": true,
       "startingTypeWeights": {
-        "bonus": 42,
-        "chicken": 30,
-        "superChicken": 28
+        "bonus": 28,
+        "chicken": 20,
+        "superChicken": 52
       },
-      "bonusLandingChanceByRespinIndex": [0.31, 0.27, 0.23],
+      "bonusLandingChanceByRespinIndex": [0.62, 0.5, 0.4],
       "jackpotTierWeightOverride": {
-        "mini": 62,
-        "minor": 22,
-        "major": 11,
-        "grand": 5
+        "mini": 70,
+        "minor": 16,
+        "major": 10,
+        "grand": 4
       },
       "status": "aligned_donor_rule_provisional_weights"
     }

@@ -5,3 +5,5 @@ Primary setup and launch entrypoint:
 
 This repository is the refactor workspace. Use the refactor onboarding flow here, not legacy startup scripts from other workspaces.
 
+Node runtime note:
+- use `nvm use` in this worktree (pins to `.nvmrc` -> Node `22.22.1`) before running `pnpm` test/build commands.

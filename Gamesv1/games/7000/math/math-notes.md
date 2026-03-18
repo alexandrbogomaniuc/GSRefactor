@@ -27,6 +27,16 @@
 - Bet bounds: `minBet=0.1`, `maxBet=20000`.
 - Symbol ID map `0..9` from `CrazyRoosterGameConfig.ts`.
 
+## Calibration Summary (2026-03-18)
+- This pass preserves donor-rule topology and only tunes provisional weight/value parameters.
+- Base metrics moved from unstable (`rtp=477.265%`) to development-sane (`rtp=92.526%` average across four seeds).
+- Trigger frequencies were rebalanced:
+  - bonus: `0.045%` -> `0.228%`
+  - collect: `21.468%` -> `6.956%`
+  - boost: `11.892%` -> `1.644%`
+  - jackpot: `3.557%` -> `0.113%`
+- Buy-tier ordering is now monotonic and plausible for dev (`buy75 < buy200 < buy300`), while still provisional.
+
 ## Still Provisional / Assumed
 - Bell has no dedicated runtime symbol slot in the current 10-symbol runtime inventory, so donor Bell payout remains a benchmark reference until symbol inventory expansion.
 - Reel distributions are donor-rule aligned but not certified strips.
