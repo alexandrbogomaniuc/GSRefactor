@@ -151,11 +151,68 @@ printf "table=%s.%s\nstart_utc=%s\nend_utc=%s\nelapsed_seconds=%s\noutput_bytes=
   > "$META"
 ```
 
+### Remote Operator Mode (No CSV Transfer)
+
+If operators cannot write directly into the GSRefactor inbox path, run the same collection flow on the legacy or staging node using `/tmp`. Keep the CSV local to that node, delete it after measuring `output_bytes`, and send back only the `tablestats` text, schema text, and pilot `.meta.txt` content.
+
+```bash
+COLLECTION_TS="$(date +%Y%m%d_%H%M%S)"
+HOST_LABEL="$(hostname -s)"
+REMOTE_ROOT="/tmp/gsrefactor_legacy_source_$COLLECTION_TS"
+mkdir -p "$REMOTE_ROOT/stats" "$REMOTE_ROOT/schema" "$REMOTE_ROOT/pilot"
+
+nodetool tablestats rcasinoks > "$REMOTE_ROOT/stats/${HOST_LABEL}__rcasinoks.tablestats.txt"
+nodetool tablestats rcasinoscks > "$REMOTE_ROOT/stats/${HOST_LABEL}__rcasinoscks.tablestats.txt"
+cqlsh -e "DESCRIBE KEYSPACE rcasinoks" > "$REMOTE_ROOT/schema/${HOST_LABEL}__rcasinoks.cql"
+cqlsh -e "DESCRIBE KEYSPACE rcasinoscks" > "$REMOTE_ROOT/schema/${HOST_LABEL}__rcasinoscks.cql"
+
+TABLE_KEYSPACE=<rcasinoks_or_rcasinoscks>
+TABLE_NAME=<largest_table_name>
+START_TS="$(date -u +%Y%m%dT%H%M%SZ)"
+OUT="/tmp/${HOST_LABEL}__${TABLE_KEYSPACE}__${TABLE_NAME}__${START_TS}.csv"
+META="$REMOTE_ROOT/pilot/${HOST_LABEL}__${TABLE_KEYSPACE}__${TABLE_NAME}__${START_TS}.meta.txt"
+PILOT_SECONDS="${PILOT_SECONDS:-900}"
+
+START_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+START_EPOCH="$(date +%s)"
+ABORTED=false
+COPY_RC=0
+
+if command -v timeout >/dev/null 2>&1; then
+  timeout "$PILOT_SECONDS" cqlsh -e "COPY ${TABLE_KEYSPACE}.${TABLE_NAME} TO '${OUT}' WITH HEADER = true"
+  COPY_RC=$?
+  if [ "$COPY_RC" -eq 124 ] || [ "$COPY_RC" -eq 130 ]; then
+    ABORTED=true
+  fi
+else
+  echo "Run this command for 5-15 minutes, then press Ctrl-C to stop it early if needed:"
+  echo "cqlsh -e \"COPY ${TABLE_KEYSPACE}.${TABLE_NAME} TO '${OUT}' WITH HEADER = true\""
+fi
+
+END_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+END_EPOCH="$(date +%s)"
+ELAPSED_SECONDS="$((END_EPOCH - START_EPOCH))"
+OUTPUT_BYTES="$(wc -c < "$OUT" 2>/dev/null || echo 0)"
+
+printf "table=%s.%s\nstart_utc=%s\nend_utc=%s\nelapsed_seconds=%s\noutput_bytes=%s\naborted=%s\n" \
+  "$TABLE_KEYSPACE" "$TABLE_NAME" "$START_UTC" "$END_UTC" "$ELAPSED_SECONDS" "$OUTPUT_BYTES" "$ABORTED" \
+  > "$META"
+
+rm -f "$OUT"
+```
+
+Return methods for Remote operator mode:
+
+- paste the `tablestats`, `DESCRIBE KEYSPACE`, and `.meta.txt` contents directly into Slack or the release ticket
+- or attach a tiny `tar.gz` containing only `*.txt`, `*.cql`, and `*.meta.txt`
+
+Do not send the CSV itself.
+
 This path is intended to close PR3 using source sizing plus one representative timed pilot, without exporting full keyspace snapshots from production-like systems.
 
 ## D. What To Send Back
 
-Please send back the artifacts for the option you used. For Option C, the full timestamped drop folder below is enough; snapshot tarballs are not required.
+Please send back the artifacts for the option you used. For Option C, either return the full timestamped drop folder if you can write into the GSRefactor inbox path, or return only the text artifacts from Remote operator mode. Do not send the CSV.
 
 - `rcasinoks_${SNAP_TAG}.tgz`
 - `rcasinoscks_${SNAP_TAG}.tgz`
@@ -165,6 +222,7 @@ Please send back the artifacts for the option you used. For Option C, the full t
 - approximate hardware info if possible: CPU, RAM, disk type
 - start and end timestamps for any pilot copy that was run
 - `elapsed_seconds`, `output_bytes`, and `aborted=true/false` in each pilot `.meta.txt`
+- for Remote operator mode, either paste the text outputs into Slack/ticket or attach a tiny `tar.gz` containing only `*.txt`, `*.cql`, and `*.meta.txt`
 
 For the stats + timed pilot path, return the full timestamped drop folder under:
 
