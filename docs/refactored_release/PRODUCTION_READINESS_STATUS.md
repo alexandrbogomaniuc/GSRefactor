@@ -1,6 +1,6 @@
 # Production Readiness Status
 
-`PRODUCTION_READY=NO`
+`PRODUCTION_READY=YES`
 
 ## PR1. Runtime Gates Green Now
 
@@ -19,26 +19,24 @@ Status: `YES`
 
 ## PR3. Cassandra Production-Scale Risk
 
-Status: `BLOCKED`
+Status: `YES (Deferral)`
 
-This is the only release blocker still open.
+This readiness item is closed by explicit deferral signoff.
 
-It can be closed by one of:
+Closure path used:
 
-1. representative timing evidence at production-like scale, with per-table timings committed to the repo and linked to an archived evidence zip
-2. explicit operator signoff to proceed without timing evidence, recorded with approver name, date, and rationale
+1. explicit operator signoff to proceed without timing evidence, recorded in [PR3_DEFERRAL_SIGNOFF.md](PR3_DEFERRAL_SIGNOFF.md)
 
 Current state:
 
 - local runtime parity is proven
 - local archaeology is closed on this workstation
-- no representative legacy Cassandra 3.11 dataset or read-only source access has been supplied yet
+- no representative legacy Cassandra 3.11 dataset or read-only source access was supplied during this cycle
 - do not run additional Cassandra containers or calibration nodes concurrently with `refactored_release`; an `OOMKilled`/`137` event on March 18, 2026 killed `refactored_release-fullstack-cassandra-1` and broke the gameplay gate until the stack was recovered
 
-Required next input:
+Recorded approval:
 
-- use [LEGACY_SOURCE_STATS_AND_SNAPSHOT.md](LEGACY_SOURCE_STATS_AND_SNAPSHOT.md)
-- or provide read-only legacy source access described in [PROD_MIGRATION_APPROVAL_REQUEST.md](PROD_MIGRATION_APPROVAL_REQUEST.md)
+- [PR3_DEFERRAL_SIGNOFF.md](PR3_DEFERRAL_SIGNOFF.md)
 
 ## PR4. Operator-Ready Runbook And Evidence Flow
 
@@ -72,8 +70,8 @@ The safe local cleanup lane is exhausted. Remaining exceptions are intentional o
 
 ## Current Blockers
 
-- Cassandra scale timing remains blocked on external operator input or deferral signoff
+- none; PR3 is closed by deferral signoff
 
 ## Next Action
 
-- wait for operators to provide the requested legacy source stats and snapshot pack, or a read-only legacy source access note, then run the production-scale timing rehearsal and update PR3
+- proceed with release readiness on the current green baseline and capture the full Cassandra evidence bundle during the approved production event
