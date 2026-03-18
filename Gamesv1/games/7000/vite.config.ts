@@ -19,17 +19,13 @@ const parseEnvManifestOverride = (): string | null => {
 };
 
 const envManifestOverride = parseEnvManifestOverride();
-const canonicalBenchmarkManifestFsPath = path.resolve(
-  devWorkspaceRoot,
-  "GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
-);
-const knownLegacyManifestFsPath = path.resolve(
-  devWorkspaceRoot,
-  "GSRefactor-beta-local-procedure-live-20260307/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
+const preferredDonorLocalRootFsPath = path.resolve(
+  rootDir,
+  "../../GameseDonors/ChickenGame/assets/_donor_raw_local",
 );
 const preferredDonorLocalManifestFsPath = path.resolve(
-  rootDir,
-  "../../GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
+  preferredDonorLocalRootFsPath,
+  "runtime/manifest.json",
 );
 const selectDonorLocalManifestFsPath = (): string => {
   if (envManifestOverride) {
@@ -41,28 +37,20 @@ const selectDonorLocalManifestFsPath = (): string => {
     return envManifestOverride;
   }
 
-  if (fs.existsSync(canonicalBenchmarkManifestFsPath)) {
-    return canonicalBenchmarkManifestFsPath;
+  if (fs.existsSync(preferredDonorLocalRootFsPath)) {
+    const rootStat = fs.lstatSync(preferredDonorLocalRootFsPath);
+    if (rootStat.isSymbolicLink()) {
+      throw new Error(
+        `[7000] donorlocal root must be a real folder at ${preferredDonorLocalRootFsPath}; symlink detected. Run games/7000/scripts/lock-donorlocal-assets.sh.`,
+      );
+    }
   }
 
   return preferredDonorLocalManifestFsPath;
 };
 
 const donorLocalManifestFsPath = selectDonorLocalManifestFsPath();
-const donorLocalManifestResolvedFsPath = fs.existsSync(donorLocalManifestFsPath)
-  ? fs.realpathSync(donorLocalManifestFsPath)
-  : donorLocalManifestFsPath;
-
-if (
-  !envManifestOverride &&
-  donorLocalManifestResolvedFsPath === knownLegacyManifestFsPath
-) {
-  throw new Error(
-    `[7000] donorlocal manifest resolved to non-baseline donor bundle (${donorLocalManifestResolvedFsPath}). Run games/7000/scripts/lock-donorlocal-assets.sh.`,
-  );
-}
-
-const donorLocalFsRoot = path.dirname(donorLocalManifestResolvedFsPath);
+const donorLocalFsRoot = path.dirname(donorLocalManifestFsPath);
 
 export default defineConfig({
   plugins: [assetpackPlugin()],
@@ -120,8 +108,6 @@ export default defineConfig({
   },
   define: {
     APP_VERSION: JSON.stringify(process.env.npm_package_version),
-    __DONORLOCAL_MANIFEST_FS_PATH__: JSON.stringify(
-      donorLocalManifestResolvedFsPath,
-    ),
+    __DONORLOCAL_MANIFEST_FS_PATH__: JSON.stringify(donorLocalManifestFsPath),
   },
 });
