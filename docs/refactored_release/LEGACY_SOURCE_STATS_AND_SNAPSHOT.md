@@ -81,7 +81,67 @@ Do not include:
 - system keyspaces
 - any secrets or unrelated host files
 
-## C. What To Send Back
+## C. Stats + Timed Pilot (No Snapshot Export)
+
+If snapshot export is not available, collect source sizing plus one timed pilot on the 1-2 largest tables in a staging or prod-like environment. Prefer an off-peak window if this is being run on shared infrastructure.
+
+Create a timestamped inbox drop first:
+
+```bash
+COLLECTION_TS="$(date +%Y%m%d_%H%M%S)"
+DROP_ROOT="/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/inbox/cassandra_scale/$COLLECTION_TS"
+mkdir -p "$DROP_ROOT/stats" "$DROP_ROOT/schema" "$DROP_ROOT/pilot"
+HOST_LABEL="$(hostname -s)"
+```
+
+Collect `tablestats` for the two source keyspaces:
+
+```bash
+nodetool tablestats rcasinoks > "$DROP_ROOT/stats/${HOST_LABEL}__rcasinoks.tablestats.txt"
+nodetool tablestats rcasinoscks > "$DROP_ROOT/stats/${HOST_LABEL}__rcasinoscks.tablestats.txt"
+```
+
+If `cfstats` is available, collect that too:
+
+```bash
+nodetool cfstats rcasinoks > "$DROP_ROOT/stats/${HOST_LABEL}__rcasinoks.cfstats.txt"
+nodetool cfstats rcasinoscks > "$DROP_ROOT/stats/${HOST_LABEL}__rcasinoscks.cfstats.txt"
+```
+
+Collect schema for both keyspaces:
+
+```bash
+cqlsh -e "DESCRIBE KEYSPACE rcasinoks" > "$DROP_ROOT/schema/${HOST_LABEL}__rcasinoks.cql"
+cqlsh -e "DESCRIBE KEYSPACE rcasinoscks" > "$DROP_ROOT/schema/${HOST_LABEL}__rcasinoscks.cql"
+```
+
+After identifying the 1-2 largest tables from the `tablestats` output, run one timed pilot per selected table. Replace `TABLE_KEYSPACE` and `TABLE_NAME` before running:
+
+```bash
+TABLE_KEYSPACE=<rcasinoks_or_rcasinoscks>
+TABLE_NAME=<largest_table_name>
+START_TS="$(date -u +%Y%m%dT%H%M%SZ)"
+OUT="$DROP_ROOT/pilot/${HOST_LABEL}__${TABLE_KEYSPACE}__${TABLE_NAME}__${START_TS}.csv"
+META="$DROP_ROOT/pilot/${HOST_LABEL}__${TABLE_KEYSPACE}__${TABLE_NAME}__${START_TS}.meta.txt"
+
+START_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+START_EPOCH="$(date +%s)"
+
+cqlsh -e "COPY ${TABLE_KEYSPACE}.${TABLE_NAME} TO '${OUT}' WITH HEADER = true"
+
+END_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+END_EPOCH="$(date +%s)"
+ELAPSED_SECONDS="$((END_EPOCH - START_EPOCH))"
+OUTPUT_BYTES="$(wc -c < "$OUT")"
+
+printf "table=%s.%s\nstart_utc=%s\nend_utc=%s\nelapsed_seconds=%s\noutput_bytes=%s\n" \
+  "$TABLE_KEYSPACE" "$TABLE_NAME" "$START_UTC" "$END_UTC" "$ELAPSED_SECONDS" "$OUTPUT_BYTES" \
+  > "$META"
+```
+
+This path is intended to close PR3 using source sizing plus one representative timed pilot, without exporting full keyspace snapshots from production-like systems.
+
+## D. What To Send Back
 
 Please send back all of the following:
 
@@ -93,7 +153,11 @@ Please send back all of the following:
 - approximate hardware info if possible: CPU, RAM, disk type
 - start and end timestamps for any pilot copy that was run
 
-## D. Rehearsal Success Criteria
+For the stats + timed pilot path, return the full timestamped drop folder under:
+
+- `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/inbox/cassandra_scale/<collection_ts>/`
+
+## E. Rehearsal Success Criteria
 
 The rehearsal is good enough to make a tool decision only if it returns:
 
