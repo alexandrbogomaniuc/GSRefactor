@@ -21,11 +21,11 @@ const parseEnvManifestOverride = (): string | null => {
 const envManifestOverride = parseEnvManifestOverride();
 const canonicalBenchmarkManifestFsPath = path.resolve(
   devWorkspaceRoot,
-  "GSRefactor-beta-local-procedure-live-20260307/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
+  "GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
 );
 const knownLegacyManifestFsPath = path.resolve(
   devWorkspaceRoot,
-  "GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
+  "GSRefactor-beta-local-procedure-live-20260307/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
 );
 const preferredDonorLocalManifestFsPath = path.resolve(
   rootDir,
@@ -58,7 +58,7 @@ if (
   donorLocalManifestResolvedFsPath === knownLegacyManifestFsPath
 ) {
   throw new Error(
-    `[7000] donorlocal manifest resolved to legacy phase1a asset source (${donorLocalManifestResolvedFsPath}). Run games/7000/scripts/lock-donorlocal-assets.sh.`,
+    `[7000] donorlocal manifest resolved to non-baseline donor bundle (${donorLocalManifestResolvedFsPath}). Run games/7000/scripts/lock-donorlocal-assets.sh.`,
   );
 }
 

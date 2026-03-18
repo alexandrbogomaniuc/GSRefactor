@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LINK_PATH="$ROOT_DIR/../../GameseDonors/ChickenGame/assets/_donor_raw_local"
-LOCKED_TARGET="/Users/alexb/Documents/Dev/GSRefactor-beta-local-procedure-live-20260307/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local"
+LOCKED_TARGET="/Users/alexb/Documents/Dev/GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local"
 LOCKED_MANIFEST="$LOCKED_TARGET/runtime/manifest.json"
 
 if [[ ! -f "$LOCKED_MANIFEST" ]]; then
