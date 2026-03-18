@@ -23,6 +23,7 @@ This preloader is now a protected baseline for Game 7000 and must not be changed
   - BetOnline logo middle,
   - status phrase and skewed progress bar below,
   - `Powered by BetOnline Studios®` footer at bottom.
+- Preloader visibility has a hard minimum hold of `4000ms` before transition.
 - BetOnline logo must preserve original SVG aspect ratio (no vertical stretch).
 - Rooster logo keeps visible slow pulse.
 - Portrait mode keeps enlarged rooster treatment and aligned center axis.
