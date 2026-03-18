@@ -15,6 +15,8 @@ The local Option A release-track baseline is green, but production-scale migrati
 
 Approve one of the following inputs so a representative timing rehearsal can be run.
 
+Use [LEGACY_SOURCE_STATS_AND_SNAPSHOT.md](LEGACY_SOURCE_STATS_AND_SNAPSHOT.md) for the exact operator command pack.
+
 ### Option 1: Representative Snapshot Rehearsal
 
 Provide a representative Cassandra 3.11 snapshot, SSTable tar, or equivalent export for:
