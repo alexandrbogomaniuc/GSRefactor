@@ -41,12 +41,24 @@ Current resolved local manifest on this workstation:
 
 Vite selection precedence for donorlocal manifest path:
 
-1. `VITE_DONORLOCAL_MANIFEST_FS_PATH` (if set)
+1. `VITE_DONORLOCAL_MANIFEST_FS_PATH` (if set and exists)
 2. `/Users/alexb/Documents/Dev/GSRefactor-beta-local-procedure-live-20260307/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json`
 3. branch-local `Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json`
-4. workspace scan fallback (root first, `_worktrees` last)
+4. hard fail if path resolves to legacy `GSRefactor_phase1a_20260305-1323` donor bundle
 
-This prevents accidental pickup of stale `_worktrees/*` donor dumps when a canonical local benchmark bundle exists.
+This prevents accidental pickup of stale donor dumps.
+
+## Asset source lock (do not change)
+
+Use this before donorlocal runs to lock the symlinked branch path to the approved benchmark bundle:
+
+```bash
+corepack pnpm -C Gamesv1/games/7000 run donorlocal:lock-assets
+```
+
+Locked source:
+
+`/Users/alexb/Documents/Dev/GSRefactor-beta-local-procedure-live-20260307/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local`
 
 ## Launch commands
 
@@ -54,31 +66,31 @@ Preferred benchmark command:
 
 ```bash
 export PATH=/Users/alexb/.nvm/versions/node/v22.22.1/bin:$PATH
-corepack pnpm -C Gamesv1/games/7000 dev:benchmark
+corepack pnpm -C Gamesv1/games/7000 run dev:donorlocal
 ```
 
-`dev:benchmark` now uses Vite `--strictPort`, so port `8081` is mandatory. If `8081` is already occupied, the command fails loudly instead of silently shifting to another port.
+`dev:donorlocal` now applies donorlocal asset lock and uses Vite `--strictPort` on port `8091`. If `8091` is occupied, the command fails loudly.
 
 OpenAI-pinned command:
 
 ```bash
 export PATH=/Users/alexb/.nvm/versions/node/v22.22.1/bin:$PATH
-corepack pnpm -C Gamesv1/games/7000 dev:openai
+corepack pnpm -C Gamesv1/games/7000 run dev:openai
 ```
 
 ## Launch URLs
 
 Donorlocal benchmark:
 
-`http://127.0.0.1:8081/?allowDevFallback=1&mathSource=provisional`
+`http://127.0.0.1:8091/?allowDevFallback=1&mathSource=provisional`
 
 OpenAI fallback:
 
-`http://127.0.0.1:8081/?allowDevFallback=1&mathSource=provisional&assetProvider=openai`
+`http://127.0.0.1:8091/?allowDevFallback=1&mathSource=provisional&assetProvider=openai`
 
 Optional explicit donorlocal pin:
 
-`http://127.0.0.1:8081/?allowDevFallback=1&mathSource=provisional&assetProvider=donorlocal`
+`http://127.0.0.1:8091/?allowDevFallback=1&mathSource=provisional&assetProvider=donorlocal`
 
 ## Fallback behavior
 

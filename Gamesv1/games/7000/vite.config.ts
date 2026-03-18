@@ -19,15 +19,50 @@ const parseEnvManifestOverride = (): string | null => {
 };
 
 const envManifestOverride = parseEnvManifestOverride();
+const canonicalBenchmarkManifestFsPath = path.resolve(
+  devWorkspaceRoot,
+  "GSRefactor-beta-local-procedure-live-20260307/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
+);
+const knownLegacyManifestFsPath = path.resolve(
+  devWorkspaceRoot,
+  "GSRefactor_phase1a_20260305-1323/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
+);
 const preferredDonorLocalManifestFsPath = path.resolve(
   rootDir,
   "../../GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json",
 );
-const donorLocalManifestFsPath =
-  envManifestOverride && fs.existsSync(envManifestOverride)
-    ? envManifestOverride
-    : preferredDonorLocalManifestFsPath;
-const donorLocalFsRoot = path.dirname(donorLocalManifestFsPath);
+const selectDonorLocalManifestFsPath = (): string => {
+  if (envManifestOverride) {
+    if (!fs.existsSync(envManifestOverride)) {
+      throw new Error(
+        `[7000] VITE_DONORLOCAL_MANIFEST_FS_PATH does not exist: ${envManifestOverride}`,
+      );
+    }
+    return envManifestOverride;
+  }
+
+  if (fs.existsSync(canonicalBenchmarkManifestFsPath)) {
+    return canonicalBenchmarkManifestFsPath;
+  }
+
+  return preferredDonorLocalManifestFsPath;
+};
+
+const donorLocalManifestFsPath = selectDonorLocalManifestFsPath();
+const donorLocalManifestResolvedFsPath = fs.existsSync(donorLocalManifestFsPath)
+  ? fs.realpathSync(donorLocalManifestFsPath)
+  : donorLocalManifestFsPath;
+
+if (
+  !envManifestOverride &&
+  donorLocalManifestResolvedFsPath === knownLegacyManifestFsPath
+) {
+  throw new Error(
+    `[7000] donorlocal manifest resolved to legacy phase1a asset source (${donorLocalManifestResolvedFsPath}). Run games/7000/scripts/lock-donorlocal-assets.sh.`,
+  );
+}
+
+const donorLocalFsRoot = path.dirname(donorLocalManifestResolvedFsPath);
 
 export default defineConfig({
   plugins: [assetpackPlugin()],
@@ -85,6 +120,8 @@ export default defineConfig({
   },
   define: {
     APP_VERSION: JSON.stringify(process.env.npm_package_version),
-    __DONORLOCAL_MANIFEST_FS_PATH__: JSON.stringify(donorLocalManifestFsPath),
+    __DONORLOCAL_MANIFEST_FS_PATH__: JSON.stringify(
+      donorLocalManifestResolvedFsPath,
+    ),
   },
 });
