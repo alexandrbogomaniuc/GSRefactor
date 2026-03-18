@@ -3,6 +3,14 @@
 ## Status
 This preloader is now a protected baseline for Game 7000 and must not be changed by later asset/polish passes unless explicitly requested by product review.
 
+## Reconfirmed lock (2026-03-18)
+- User re-approved this exact preloader composition during live validation on 2026-03-18.
+- Runtime file hash at reconfirmation:
+  - `Gamesv1/games/7000/src/app/screens/LoadScreen.ts`
+  - `sha1: f647ba0a62557e56313b2fc4324cd91cc7f9f6e2`
+- Enforcement rule:
+  - Any preloader changes after this point require explicit user approval before merge.
+
 ## Source of truth
 - Runtime screen logic: `Gamesv1/games/7000/src/app/screens/LoadScreen.ts`
 - Locked logo assets:
