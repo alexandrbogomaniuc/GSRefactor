@@ -77,6 +77,7 @@ type PaylineOverlayStyle = {
 
 type PaylineOverlayTextureState = {
   plate: Texture | null;
+  accent: Texture | null;
   sequence: Texture | null;
   badge: Texture | null;
   multiplier: Texture | null;
@@ -188,6 +189,7 @@ export class PaylineOverlay extends Container {
   private textureRequestToken = 0;
   private textureState: PaylineOverlayTextureState = {
     plate: null,
+    accent: null,
     sequence: null,
     badge: null,
     multiplier: null,
@@ -514,18 +516,25 @@ export class PaylineOverlay extends Container {
     this.plateSprite.y = 0;
     this.plateSprite.tint = 0xffffff;
 
-    this.accentSprite.visible = false;
+    this.accentSprite.visible = Boolean(this.textureState.accent);
+    this.accentSprite.alpha = visibility * 0.94;
+    this.accentSprite.width = PaylineOverlay.CALLOUT_WIDTH - 52;
+    this.accentSprite.height =
+      this.activeTone === "boost" ? 34 : this.activeTone === "jackpot" ? 28 : 24;
+    this.accentSprite.x = 0;
+    this.accentSprite.y = this.activeTone === "boost" ? -18 : -30;
+    this.accentSprite.tint = 0xffffff;
 
     this.badgeSprite.alpha = visibility * 0.98;
-    this.badgeSprite.width = 52;
-    this.badgeSprite.height = 52;
+    this.badgeSprite.width = 64;
+    this.badgeSprite.height = 42;
     this.badgeSprite.x = -halfWidth + 36;
     this.badgeSprite.y = 6;
     this.badgeSprite.tint = 0xffffff;
 
     this.sequenceSprite.alpha = visibility * 0.88;
-    this.sequenceSprite.width = 72;
-    this.sequenceSprite.height = 30;
+    this.sequenceSprite.width = 66;
+    this.sequenceSprite.height = 28;
     this.sequenceSprite.x = halfWidth - 47;
     this.sequenceSprite.y = -23;
     this.sequenceSprite.tint = style.sequenceFill;
@@ -603,13 +612,16 @@ export class PaylineOverlay extends Container {
     const requestToken = ++this.textureRequestToken;
     const line = this.activeLine;
     const tone = this.activeTone;
-    const plateKey = tone === "boost" || tone === "jackpot" ? "button-buybonus" : "payline-pill";
-    const badgeKey = resolveToneBadgeKey(tone);
+    const accentPromise =
+      tone === "boost"
+        ? resolveProviderFrameTexture("heroUiAtlas", "boost-banner")
+        : Promise.resolve({ texture: null, resolvedProvider: null, fallbackUsed: false });
     const multiplierKey = resolveMultiplierCoinKey(line.multiplier);
-    const [plate, sequence, badge, multiplier] = await Promise.all([
-      resolveProviderFrameTexture("uiAtlas", plateKey),
-      resolveProviderFrameTexture("uiAtlas", "payline-pill"),
-      resolveProviderFrameTexture("symbolAtlas", badgeKey),
+    const [plate, accent, sequence, badge, multiplier] = await Promise.all([
+      resolveProviderFrameTexture("uiAtlas", "payline-plate"),
+      accentPromise,
+      resolveProviderFrameTexture("uiAtlas", "payline-sequence-chip"),
+      resolveProviderFrameTexture("uiAtlas", "payline-badge"),
       resolveProviderFrameTexture("symbolAtlas", multiplierKey),
     ]);
 
@@ -619,11 +631,13 @@ export class PaylineOverlay extends Container {
 
     this.textureState = {
       plate: plate.texture,
+      accent: accent.texture ?? null,
       sequence: sequence.texture,
       badge: badge.texture,
       multiplier: multiplier.texture,
     };
     this.applyTexture(this.plateSprite, this.textureState.plate);
+    this.applyTexture(this.accentSprite, this.textureState.accent);
     this.applyTexture(this.sequenceSprite, this.textureState.sequence);
     this.applyTexture(this.badgeSprite, this.textureState.badge);
     this.applyTexture(this.multiplierSprite, this.textureState.multiplier);
@@ -812,22 +826,6 @@ const formatMultiplier = (value: number): string => {
 };
 
 const formatCurrencyMinor = (valueMinor: number): string => `$${(valueMinor / 100).toFixed(2)}`;
-
-const resolveToneBadgeKey = (tone: PaylineOverlayTone): string => {
-  switch (tone) {
-    case "collect":
-      return "collector-symbol";
-    case "boost":
-      return "symbol-8-bolt";
-    case "jackpot":
-      return "coin-multiplier-10x";
-    case "bonus":
-      return "symbol-7-coin";
-    case "standard":
-    default:
-      return "symbol-7-coin";
-  }
-};
 
 const resolveMultiplierCoinKey = (multiplier: number): string => {
   if (multiplier >= 10) {
