@@ -33,6 +33,7 @@ Current state:
 - local runtime parity is proven
 - local archaeology is closed on this workstation
 - no representative legacy Cassandra 3.11 dataset or read-only source access has been supplied yet
+- do not run additional Cassandra containers or calibration nodes concurrently with `refactored_release`; an `OOMKilled`/`137` event on March 18, 2026 killed `refactored_release-fullstack-cassandra-1` and broke the gameplay gate until the stack was recovered
 
 Required next input:
 
