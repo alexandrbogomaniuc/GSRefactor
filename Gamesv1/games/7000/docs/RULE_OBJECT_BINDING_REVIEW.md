@@ -14,24 +14,30 @@ Validation branch:
 
 ## What Remains Partial
 
-- Jackpot presentation is still partly generic even though trigger binding is complete; plaque/numeral treatment is mixed between donorlocal art and runtime text.
+- Jackpot presentation now prefers mapped donorlocal numeral slots (`heroUiAtlas.jackpot-numeral-*`) but still uses fallback/runtime-composed glow/choreography layers, so final polish is still partial.
 - Bonus 3-spin reset logic is implemented in math, but the reset state lacks a dedicated authored runtime counter/surface.
 - Pile-of-gold behavior is routed functionally (coin flights and topper-anchor reactions), but still uses runtime-composed FX rather than full authored donorlocal choreography layers.
 
 ## Exact Donorlocal Slots Still Missing
 
-- `heroUiAtlas.jackpot-numeral-mini`
-- `heroUiAtlas.jackpot-numeral-minor`
-- `heroUiAtlas.jackpot-numeral-major`
-- `heroUiAtlas.jackpot-numeral-grand`
-- `uiAtlas.payline-plate-1..8` (authored line plates; runtime currently uses `payline-pill` fallback path)
+- `heroUiAtlas.win-overlay-huge` (still unavailable in donorlocal slot-hunt scope)
+- `nonDonorProvider.symbol-bell-dedicated` (openai/nanobanana dedicated bell art remains unavailable; runtime fallback still maps Bell to BAR art)
+
+## Newly Mapped In Active Donorlocal Runtime
+
+- `heroUiAtlas.jackpot-numeral-mini/minor/major/grand`
+- `uiAtlas.payline-plate-1..8`
 - `uiAtlas.payline-sequence-chip`
 - `heroVfxAtlas.boost-charge`
 - `heroVfxAtlas.jackpot-burst`
 - `uiAtlas.hud-history-shell`
 - `uiAtlas.hud-settings-shell`
 - `uiAtlas.hud-sound-shell`
-- `openai/nanobanana symbol bell art` equivalent for non-donorlocal providers (runtime fallback currently maps Bell to BAR art)
+
+## Newly Consumed In Runtime (This Pass)
+
+- `HeroHudChrome` now tries donorlocal side-shell slots first for `sound`, `settings`, `history` and safely falls back to prior button keys.
+- `JackpotPlaqueController` now tries donorlocal mapped numeral slots first and only falls back to atlas frame extraction when a mapped slot is unavailable.
 
 ## Next Blocker Classification
 

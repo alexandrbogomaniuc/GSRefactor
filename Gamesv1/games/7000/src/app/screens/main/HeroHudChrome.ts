@@ -33,7 +33,7 @@ type HudChromeState = {
 
 type SecondaryControlVisual = {
   controlId: Exclude<PremiumHudControlId, "spin">;
-  frameKey: string;
+  frameKeys: readonly string[];
   container: Container;
   glow: Graphics;
   fallbackPlate: Graphics;
@@ -46,15 +46,27 @@ const resolveDonorManifestUrl = (): string =>
 
 const secondarySpecs: Array<{
   controlId: Exclude<PremiumHudControlId, "spin">;
-  frameKey: string;
+  frameKeys: readonly string[];
   fallbackTint: number;
 }> = [
-  { controlId: "turbo", frameKey: "button-turbo", fallbackTint: 0x37a860 },
-  { controlId: "autoplay", frameKey: "button-autoplay", fallbackTint: 0x2f2f2f },
-  { controlId: "buyFeature", frameKey: "button-buybonus", fallbackTint: 0xffbc52 },
-  { controlId: "sound", frameKey: "button-sound", fallbackTint: 0x2f2f2f },
-  { controlId: "settings", frameKey: "button-settings", fallbackTint: 0x2f2f2f },
-  { controlId: "history", frameKey: "button-history", fallbackTint: 0x2f2f2f },
+  { controlId: "turbo", frameKeys: ["button-turbo"], fallbackTint: 0x37a860 },
+  { controlId: "autoplay", frameKeys: ["button-autoplay"], fallbackTint: 0x2f2f2f },
+  { controlId: "buyFeature", frameKeys: ["button-buybonus"], fallbackTint: 0xffbc52 },
+  {
+    controlId: "sound",
+    frameKeys: ["uiAtlas.hud-sound-shell", "hud-sound-shell", "button-sound"],
+    fallbackTint: 0x2f2f2f,
+  },
+  {
+    controlId: "settings",
+    frameKeys: ["uiAtlas.hud-settings-shell", "hud-settings-shell", "button-settings"],
+    fallbackTint: 0x2f2f2f,
+  },
+  {
+    controlId: "history",
+    frameKeys: ["uiAtlas.hud-history-shell", "hud-history-shell", "button-history"],
+    fallbackTint: 0x2f2f2f,
+  },
 ];
 
 export class HeroHudChrome extends Container {
@@ -223,7 +235,7 @@ export class HeroHudChrome extends Container {
 
       return {
         controlId: spec.controlId,
-        frameKey: spec.frameKey,
+        frameKeys: spec.frameKeys,
         container,
         glow,
         fallbackPlate,
@@ -747,7 +759,7 @@ export class HeroHudChrome extends Container {
   private async refreshTextures(): Promise<void> {
     const textures = await Promise.all(
       this.secondaryVisuals.map((visual) =>
-        this.resolveControlTexture(visual.frameKey),
+        this.resolveControlTexture(visual.frameKeys),
       ),
     );
 
@@ -786,15 +798,20 @@ export class HeroHudChrome extends Container {
     this.layout();
   }
 
-  private async resolveControlTexture(frameKey: string): Promise<{
+  private async resolveControlTexture(frameKeys: readonly string[]): Promise<{
     texture: Texture | null;
   }> {
-    const heroResolved = await resolveProviderFrameTexture("heroUiAtlas", frameKey);
-    if (heroResolved.texture) {
-      return { texture: heroResolved.texture };
-    }
+    for (const frameKey of frameKeys) {
+      const heroResolved = await resolveProviderFrameTexture("heroUiAtlas", frameKey);
+      if (heroResolved.texture) {
+        return { texture: heroResolved.texture };
+      }
 
-    const uiResolved = await resolveProviderFrameTexture("uiAtlas", frameKey);
-    return { texture: uiResolved.texture ?? null };
+      const uiResolved = await resolveProviderFrameTexture("uiAtlas", frameKey);
+      if (uiResolved.texture) {
+        return { texture: uiResolved.texture };
+      }
+    }
+    return { texture: null };
   }
 }

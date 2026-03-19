@@ -4,6 +4,7 @@ import { CRAZY_ROOSTER_JACKPOTS } from "../config/CrazyRoosterGameConfig";
 import {
   getDonorLocalManifestUrl,
   getProviderPackStatus,
+  resolveProviderFrameTexture,
 } from "../../app/assets/providerPackRegistry";
 
 type JackpotLevel = "mini" | "minor" | "major" | "grand";
@@ -302,18 +303,42 @@ export class JackpotPlaqueController extends Container {
   private static async loadDonorTitleTextures(): Promise<Map<JackpotLevel, Texture | null>> {
     if (!JackpotPlaqueController.donorTitleTexturesPromise) {
       JackpotPlaqueController.donorTitleTexturesPromise = (async () => {
-        const manifestUrl = resolveDonorManifestUrl();
-        const atlasUrl = new URL("../anims_v5/coins_render.atlas", manifestUrl).toString();
-        const atlasImageUrl = new URL("../anims_v5/coins_render.png", manifestUrl).toString();
-
         const result = new Map<JackpotLevel, Texture | null>([
           ["grand", null],
           ["major", null],
           ["minor", null],
           ["mini", null],
         ]);
+        const donorSlotKeys: Record<JackpotLevel, readonly string[]> = {
+          grand: ["heroUiAtlas.jackpot-numeral-grand", "jackpot-numeral-grand"],
+          major: ["heroUiAtlas.jackpot-numeral-major", "jackpot-numeral-major"],
+          minor: ["heroUiAtlas.jackpot-numeral-minor", "jackpot-numeral-minor"],
+          mini: ["heroUiAtlas.jackpot-numeral-mini", "jackpot-numeral-mini"],
+        };
+
+        for (const [level, keys] of Object.entries(donorSlotKeys) as Array<
+          [JackpotLevel, readonly string[]]
+        >) {
+          for (const key of keys) {
+            const resolved = await resolveProviderFrameTexture("heroUiAtlas", key, "donorlocal");
+            if (resolved.texture) {
+              result.set(level, resolved.texture);
+              break;
+            }
+          }
+        }
+
+        const unresolvedLevels = (Array.from(result.entries()) as Array<[JackpotLevel, Texture | null]>)
+          .filter(([, texture]) => texture === null)
+          .map(([level]) => level);
+        if (unresolvedLevels.length === 0) {
+          return result;
+        }
 
         try {
+          const manifestUrl = resolveDonorManifestUrl();
+          const atlasUrl = new URL("../anims_v5/coins_render.atlas", manifestUrl).toString();
+          const atlasImageUrl = new URL("../anims_v5/coins_render.png", manifestUrl).toString();
           const response = await fetch(atlasUrl);
           if (!response.ok) {
             return result;
@@ -322,23 +347,22 @@ export class JackpotPlaqueController extends Container {
           const atlasText = await response.text();
           const atlasImage = await JackpotPlaqueController.loadAtlasImage(atlasImageUrl);
           const frames = JackpotPlaqueController.parseAtlasFrames(atlasText);
+          const fallbackFrameNames: Record<JackpotLevel, string> = {
+            grand: "slot/num_grand",
+            major: "slot/num_major",
+            minor: "slot/num_minor",
+            mini: "slot/num_mini",
+          };
 
-          result.set(
-            "grand",
-            JackpotPlaqueController.createAtlasTexture(frames.get("slot/num_grand"), atlasImage),
-          );
-          result.set(
-            "major",
-            JackpotPlaqueController.createAtlasTexture(frames.get("slot/num_major"), atlasImage),
-          );
-          result.set(
-            "minor",
-            JackpotPlaqueController.createAtlasTexture(frames.get("slot/num_minor"), atlasImage),
-          );
-          result.set(
-            "mini",
-            JackpotPlaqueController.createAtlasTexture(frames.get("slot/num_mini"), atlasImage),
-          );
+          unresolvedLevels.forEach((level) => {
+            result.set(
+              level,
+              JackpotPlaqueController.createAtlasTexture(
+                frames.get(fallbackFrameNames[level]),
+                atlasImage,
+              ),
+            );
+          });
         } catch {
           return result;
         }
