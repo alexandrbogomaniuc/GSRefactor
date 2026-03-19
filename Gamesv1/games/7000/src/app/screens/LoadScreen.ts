@@ -258,7 +258,7 @@ export class LoadScreen extends Container {
     this.backdrop.rect(0, 0, width, height);
     this.backdrop.fill({ color: 0x2f3237, alpha: 1 });
 
-    this.statusText.text = this.statusLabel;
+    this.statusText.text = this.getDisplayStatusText();
 
     const roosterPulse = this.reducedMotion
       ? 1
@@ -360,6 +360,23 @@ export class LoadScreen extends Container {
     const elapsedMs = Math.max(0, performance.now() - this.shownAtMs);
     const timedProgress = 6 + Math.min(1, elapsedMs / this.minimumHoldMs) * 94;
     return Math.max(6, Math.min(100, timedProgress));
+  }
+
+  private getDisplayStatusText(): string {
+    if (this.shownAtMs <= 0) {
+      return this.statusLabel;
+    }
+
+    const elapsedMs = Math.max(0, performance.now() - this.shownAtMs);
+    const readyPhaseMs = 1000;
+    const loadingPhaseMs = Math.max(0, this.minimumHoldMs - readyPhaseMs);
+
+    if (elapsedMs < loadingPhaseMs) {
+      const dots = 1 + Math.floor((elapsedMs % 900) / 300);
+      return `ASSETS ARE LOADING${".".repeat(dots)}`;
+    }
+
+    return "READY TO PLAY";
   }
 
   private readonly tryPlayAudioStinger = (): void => {
