@@ -6,6 +6,17 @@ This lock exists to prevent accidental donorlocal asset regressions.
 
 `/Users/alexb/Documents/Dev/_worktrees/7000-beta4a-runtime-slot-system-20260310-0841/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local`
 
+## Locked baseline checkpoint
+
+- Approved manifest path:
+  `/Users/alexb/Documents/Dev/_worktrees/7000-beta4a-runtime-slot-system-20260310-0841/Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local/runtime/manifest.json`
+- Approved manifest sha256:
+  `b6c0fe4c6677df0926f0e3eb572b9f44b0117f060a7422e082c4bff569830188`
+- Runtime URL used for validation:
+  `http://127.0.0.1:8091/?allowDevFallback=1&assetProvider=donorlocal`
+- Visual approval marker:
+  preloader baseline without the vertical sweep line artifact across the BETONLINE logo.
+
 ## Branch path that must point to approved source
 
 `Gamesv1/GameseDonors/ChickenGame/assets/_donor_raw_local`
