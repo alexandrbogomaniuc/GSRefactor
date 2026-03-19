@@ -6,7 +6,7 @@ Branch baseline:
 
 Working branch:
 
-- `codex/qa/7000-rule-object-binding-20260318-1440`
+- `codex/qa/7000-rule-object-binding-20260319-1157`
 
 Scope:
 

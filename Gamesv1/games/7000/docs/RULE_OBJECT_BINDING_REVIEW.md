@@ -1,5 +1,9 @@
 # Rule-Object Binding Review (Sprint Pass)
 
+Validation branch:
+
+- `codex/qa/7000-rule-object-binding-20260319-1157`
+
 ## What Is Now Fully Bound
 
 - Core payline rule chain is fully bound: `paytable.lineWinRule` -> provisional line evaluator -> `PaylineOverlay` path trace -> symbol highlight -> staged line callouts.
