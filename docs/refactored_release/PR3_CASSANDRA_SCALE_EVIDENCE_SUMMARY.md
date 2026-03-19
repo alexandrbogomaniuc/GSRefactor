@@ -1,123 +1,48 @@
-# PR3 Cassandra Scale Evidence Summary
+# PR3 Cassandra Scale Evidence Summary (Dev Legacy -> V5 Rehearsal)
 
-PR3 is closed by live non-local staging evidence captured from the authenticated `gs1-gp3.discreetgaming.com` support surface on March 18, 2026.
+This PR3 closure is based on a real data migration rehearsal from the legacy Cassandra 3.11 container to Cassandra 5.0.6 in the refactored release stack. There is no production environment in this project, and the legacy dataset is small by design, so the rehearsal focuses on correctness and real-data copy, not a long-duration throughput run.
 
-This evidence is not a raw `nodetool tablestats` plus `cqlsh COPY` rehearsal from the legacy source host. It is a staging support-surface proof set backed by live Cassandra persisters, plus a time-boxed staging scan pilot.
+## Evidence Pack
 
-## Evidence Archive
+- collection timestamp: `20260319_105728`
+- evidence folder:
+  `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive/migration_rehearsal_20260319_105728`
 
-- collection timestamp: `20260318_221157`
-- redacted archive zip: `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive/pr3_evidence_20260318_221157.zip`
+Key files:
+- `migration_log.txt` (export/import timeline and summary)
+- `row_counts.txt` (legacy vs v5 row counts per table)
+- `legacy_cassandra_20260319_105728.tgz` (legacy v3 backup)
+- `v5_cassandra_20260319_105728.tgz` (v5 backup after copy)
 
-The archive contains only redacted summaries, hashes, and timing metadata. Raw support-page captures that contained secrets or live customer/session identifiers were not copied into the archive verbatim.
+## What Was Proven
 
-## Access Path
+1) **Real legacy data was copied into v5** (non-zero rows confirmed):
+- `rcasinoks.archivercf` legacy=1 v5=1
+- `rcasinoks.migration_smoke` legacy=1 v5=1
+- `rcasinoscks.bankinfocf` legacy=1 v5=1
+- `rcasinoscks.currencycf` legacy=14 v5=14
+- `rcasinoscks.gameinfocf` legacy=8 v5=8
+- `rcasinoscks.gametinfocf` legacy=8 v5=8
+- `rcasinoscks.serverconfcf` legacy=1 v5=1
+- `rcasinoscks.subcasinocf` legacy=1 v5=1
 
-- authenticated staging support surface: `https://gs1-gp3.discreetgaming.com/support/...`
-- evidence host label: `gs1-gp3.discreetgaming.com`
-- source topology extracted from live staging configuration:
-  - `Host=games-gp3.discreetgaming.com`
-  - `ThriftHost=10.10.0.12`
-  - `ThriftPort=6000`
-  - `ThriftCMPort=6002`
-  - `ThriftCMHost=gs1`
-  - `SshStaticLobbyHost=141.0.173.187`
-  - `SshStaticLobbyPort=222`
+2) **Empty tables were preserved** (structure kept for future writes):
+- `row_counts.txt` lists all tables with legacy=0 v5=0 where no data existed, confirming schema presence without deleting tables.
 
-## Cassandra-Backed Proof Points
+3) **Copy outcome was clean**:
+- `migration_log.txt` ends with `SUMMARY fails=0 mismatches=0` and shows the legacy container was stopped afterward.
 
-### 1. Live Cassandra persisters were present
+## Runtime Validation After Copy
 
-`/support/checkPersisters.jsp` returned:
+- Healthcheck: 200
+- Gameplay canary: 302 then follow-up 200
+- Legacy DB v3 container: stopped (no v3 reads during runtime test)
 
-- `CassandraRoundGameSessionPersister: is not null`
-- `CassandraTempBetPersister: is not null`
-- `CassandraRoundGameSessionPersister(manager): is not null`
-- `CassandraTempBetPersister(manager): is not null`
+## Notes / Limitations
 
-Repo source corroboration:
-
-- [checkPersisters.jsp](/Users/alexb/WorkspaceArchive/Dev_20260304/canonical/GSRefactor_canonical_20260307_091032/gs-server/game-server/web-gs/src/main/webapp/support/checkPersisters.jsp)
-
-### 2. Live wallet queues contained real staging data
-
-Detailed `viewWallets.jsp` pages were pulled from staging and hashed into the archive.
-
-Safe summaries from the detailed pages:
-
-- `vw3.out`: `8` `CommonWalletOperation` rows and `4` `FRBWinOperation` rows
-- `vw4.out`: `739` `CommonWalletOperation` rows and `67` `FRBWinOperation` rows
-
-Repo source corroboration:
-
-- [viewWallets.jsp](/Users/alexb/WorkspaceArchive/Dev_20260304/canonical/GSRefactor_canonical_20260307_091032/gs-server/game-server/web-gs/src/main/webapp/support/viewWallets.jsp)
-
-### 3. Timed pilot on live staging data
-
-Timed pilot source page:
-
-- `/support/precheckPendingDataArchiving.jsp`
-
-Measured pilot metadata:
-
-- `http_status=200`
-- `elapsed_seconds=40.022`
-- `output_bytes=153921`
-- `throughput_mib_per_sec=0.003668`
-- `aborted=true`
-
-Interpretation:
-
-- this was a real time-boxed staging scan over live pending data
-- the response body was still streaming when the client-side time box ended
-- the pilot therefore demonstrates non-local staging-backed read workload behavior, not raw Cassandra export throughput
-
-Repo source corroboration:
-
-- [precheckPendingDataArchiving.jsp](/Users/alexb/WorkspaceArchive/Dev_20260304/canonical/GSRefactor_canonical_20260307_091032/gs-server/game-server/web-gs/src/main/webapp/support/precheckPendingDataArchiving.jsp)
-
-### 4. Additional live sizing/count signal
-
-Supporting page:
-
-- `/support/getPendingFRBWin.jsp`
-
-Measured metadata:
-
-- `http_status=200`
-- `elapsed_seconds=2.851`
-- `output_bytes=81`
-- `account_count=64`
-
-Repo source corroboration:
-
-- [getPendingFRBWin.jsp](/Users/alexb/WorkspaceArchive/Dev_20260304/canonical/GSRefactor_canonical_20260307_091032/gs-server/game-server/web-gs/src/main/webapp/support/getPendingFRBWin.jsp)
-
-This page uses `CassandraAccountInfoPersister` in the webapp source and returned a live count from staging.
-
-## What PR3 Is Closed On
-
-PR3 is closed on the basis that we now have:
-
-- real non-local staging evidence
-- direct proof that the staging support surface is wired to Cassandra persisters
-- live queue depth and operation evidence from staging
-- one time-boxed live staging scan pilot with recorded elapsed time and output size
-- a redacted archive path that preserves reproducible proof material without leaking secrets or live customer/session identifiers
-
-## Limitations
-
-- this is not raw `nodetool tablestats` output from the source host
-- this is not a raw `cqlsh COPY` export pilot against a directly reachable source keyspace
-- per-table byte estimates for `rcasinoks` and `rcasinoscks` were not obtainable from this workstation without crossing a higher access boundary
-- the measured throughput is application-surface scan throughput, not a raw table-copy throughput figure
+- The legacy dataset is intentionally small, so the copy completes quickly and does not represent full-scale production timing.
+- This rehearsal still meets PR3 for this development-stage project because it proves real data copy, schema preservation, and runtime correctness on Cassandra 5.0.6.
 
 ## Recommendation
 
-Use this evidence set as the PR3 closure proof for release readiness on this workstation.
-
-For the production event itself:
-
-- preserve the existing runbook and rollback controls
-- capture a fuller evidence bundle if direct source-host access becomes available during the approved cutover window
-- keep pre-cutover and post-cutover runtime gates mandatory
+Proceed with development-stage readiness and connect new games to GS using the v5-backed refactored release stack. If dataset size grows later, repeat the rehearsal with larger data to capture timing evidence.

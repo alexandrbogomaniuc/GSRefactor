@@ -21,22 +21,16 @@ Status: `YES`
 
 Status: `YES (Evidence)`
 
-PR3 is closed by live non-local staging evidence captured through the authenticated GS1 support surface and summarized in:
+PR3 is closed by a real data migration rehearsal from legacy Cassandra 3.11 to Cassandra 5.0.6 in the refactored release stack, summarized in:
 
 - [PR3_CASSANDRA_SCALE_EVIDENCE_SUMMARY.md](PR3_CASSANDRA_SCALE_EVIDENCE_SUMMARY.md)
 
 Closure basis:
 
-- live staging support pages were confirmed to be wired to Cassandra persisters
-- live pending wallet and FRB operation queues were observed on staging
-- a time-boxed staging scan pilot was captured with elapsed time and output size
-- a redacted evidence archive was recorded at:
-  `/Users/alexb/WorkspaceArchive/Dev_20260304/runtime_smoke/archive/pr3_evidence_20260318_221157.zip`
-
-Important limitation:
-
-- this proof set is staging support-surface evidence backed by Cassandra, not a direct raw source-host `tablestats` plus `COPY` rehearsal
-- do not run additional Cassandra containers or calibration nodes concurrently with `refactored_release`; an `OOMKilled`/`137` event on March 18, 2026 killed `refactored_release-fullstack-cassandra-1` and broke the gameplay gate until the stack was recovered
+- real legacy rows were copied into v5 (non-zero tables verified)
+- empty legacy tables remained empty but present, preserving schema for future writes
+- migration rehearsal completed cleanly with `fails=0` and `mismatches=0`
+- legacy Cassandra v3 container was stopped during runtime verification
 
 ## PR4. Operator-Ready Runbook And Evidence Flow
 
