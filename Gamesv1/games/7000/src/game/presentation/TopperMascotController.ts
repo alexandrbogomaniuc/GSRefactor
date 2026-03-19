@@ -478,6 +478,9 @@ export class TopperMascotController extends Container {
         this.donorSpine.state.addAnimation(0, "idle", true, 0);
         break;
       case "react_jackpot":
+        this.donorSpine.state.setAnimation(0, "action1", false);
+        this.donorSpine.state.addAnimation(0, "idle", true, 0);
+        break;
       case "react_bigwin":
         this.donorSpine.state.setAnimation(0, "action2", false);
         this.donorSpine.state.addAnimation(0, "idle", true, 0);

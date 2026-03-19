@@ -206,6 +206,9 @@ export class DonorFeatureIntroOverlay extends Container {
   }
 
   public clear(): void {
+    // Invalidate in-flight async `play` operations so stale completions
+    // cannot re-show the overlay over a newer scene owner.
+    this.requestToken += 1;
     this.activeVariant = null;
     this.layout = null;
     this.boardPreviewActive = false;

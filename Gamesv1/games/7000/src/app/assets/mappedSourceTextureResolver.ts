@@ -250,17 +250,40 @@ export const resolveMappedSourceTexture = async ({
         return null;
       }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(
-        sourceImage,
-        frame.frame.x,
-        frame.frame.y,
-        frame.frame.w,
-        frame.frame.h,
-        frame.spriteSourceSize.x,
-        frame.spriteSourceSize.y,
-        frame.frame.w,
-        frame.frame.h,
-      );
+      if (!frame.rotated) {
+        ctx.drawImage(
+          sourceImage,
+          frame.frame.x,
+          frame.frame.y,
+          frame.frame.w,
+          frame.frame.h,
+          frame.spriteSourceSize.x,
+          frame.spriteSourceSize.y,
+          frame.frame.w,
+          frame.frame.h,
+        );
+      } else {
+        // Spine atlas 90-degree packed regions must be unrotated when rasterized,
+        // otherwise frames appear cropped/misaligned in runtime particle flights.
+        ctx.save();
+        ctx.translate(
+          frame.spriteSourceSize.x,
+          frame.spriteSourceSize.y + frame.frame.w,
+        );
+        ctx.rotate(-Math.PI / 2);
+        ctx.drawImage(
+          sourceImage,
+          frame.frame.x,
+          frame.frame.y,
+          frame.frame.w,
+          frame.frame.h,
+          0,
+          0,
+          frame.frame.w,
+          frame.frame.h,
+        );
+        ctx.restore();
+      }
       return Texture.from(canvas);
     })().catch((error) => {
       console.warn("[ProviderPack] Failed to rasterize mapped atlas texture source:", error);

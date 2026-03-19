@@ -1002,31 +1002,86 @@ export class MainScreen extends Container {
     cue: string,
     mathBridgeHints: MathBridgePresentationHints | null = this.activeMathBridgeHints,
   ): boolean {
-    if (!mathBridgeHints) {
+    if (!mathBridgeHints || !this.isDonorFeatureScenario(mathBridgeHints)) {
       return false;
     }
 
+    const dominantFeatureCue = this.resolveDominantFeatureCue(mathBridgeHints);
+    if (cue.startsWith("feature.") && dominantFeatureCue && cue !== dominantFeatureCue) {
+      return true;
+    }
+
+    return (
+      cue === "collect-sweep" ||
+      cue === "focus-status-banner" ||
+      cue === "coin-fly" ||
+      cue === "jackpot-overlay" ||
+      cue === "overlay.winTier.enter"
+    );
+  }
+
+  private resolveDominantFeatureCue(
+    mathBridgeHints: MathBridgePresentationHints | null = this.activeMathBridgeHints,
+  ): string | null {
+    if (!mathBridgeHints) {
+      return null;
+    }
+
     if (mathBridgeHints.triggers.jackpot) {
-      return (
-        cue === "feature.collect.triggered" ||
-        cue === "collect-sweep" ||
-        cue === "feature.boost.triggered" ||
-        cue === "feature.bonus.enter"
-      );
+      return "feature.jackpot.attached";
     }
-
     if (mathBridgeHints.triggers.bonus) {
+      return "feature.bonus.enter";
+    }
+    if (mathBridgeHints.triggers.boost) {
+      return "feature.boost.triggered";
+    }
+    if (mathBridgeHints.triggers.collect) {
+      return "feature.collect.triggered";
+    }
+    return null;
+  }
+
+  private shouldSuppressFeatureCueInSchedule(
+    cue: string,
+    mathBridgeHints: MathBridgePresentationHints,
+  ): boolean {
+    if (!this.isDonorFeatureScenario(mathBridgeHints)) {
+      return false;
+    }
+
+    const dominantFeatureCue = this.resolveDominantFeatureCue(mathBridgeHints);
+    if (cue.startsWith("feature.")) {
+      return dominantFeatureCue !== null && cue !== dominantFeatureCue;
+    }
+
+    if (cue.startsWith("round.reel.stop")) {
+      return false;
+    }
+
+    if (cue === "overlay.totalSummary.update") {
+      return false;
+    }
+
+    if (
+      cue === "collect-sweep" ||
+      cue === "coin-fly" ||
+      cue === "focus-status-banner" ||
+      cue === "jackpot-overlay" ||
+      cue === "overlay.winTier.enter"
+    ) {
+      return true;
+    }
+
+    if (cue.startsWith("feature.")) {
       return (
-        cue === "feature.collect.triggered" ||
-        cue === "collect-sweep" ||
-        cue === "feature.boost.triggered"
+        dominantFeatureCue !== null &&
+        cue !== dominantFeatureCue
       );
     }
-
-    if (mathBridgeHints.triggers.boost) {
-      return cue === "feature.collect.triggered" || cue === "collect-sweep";
+    if (cue.startsWith("overlay.")) {
+      return true;
     }
-
     return false;
   }
 
@@ -1190,6 +1245,9 @@ export class MainScreen extends Container {
         : Math.max(0, mathBridgeHints.timingHints.lineHighlightDelayMs);
 
     for (const cue of mathBridgeHints.eventTriggers) {
+      if (this.shouldSuppressFeatureCueInSchedule(cue, mathBridgeHints)) {
+        continue;
+      }
       if (cue.startsWith("round.reel.stop")) {
         continue;
       }
