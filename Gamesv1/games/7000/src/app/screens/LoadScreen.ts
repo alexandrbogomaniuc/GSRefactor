@@ -267,7 +267,7 @@ export class LoadScreen extends Container {
     this.roosterLogo.height = this.roosterBaseHeight * roosterPulse;
     this.roosterFallbackText.scale.set(roosterPulse);
 
-    const clampedProgress = Math.max(0, Math.min(100, this.progress));
+    const clampedProgress = this.getDisplayProgress();
     const innerPadding = 4;
     const fillRatio = clampedProgress / 100;
     const fillWidth = Math.max(0, (this.trackRect.width - innerPadding * 2) * fillRatio);
@@ -346,6 +346,20 @@ export class LoadScreen extends Container {
     this.logoShine.visible = false;
     this.completionStar.clear();
     this.completionStar.visible = false;
+  }
+
+  private getDisplayProgress(): number {
+    const actualProgress = Math.max(0, Math.min(100, this.progress));
+    if (this.shownAtMs <= 0) {
+      return actualProgress;
+    }
+    if (actualProgress < 6) {
+      return actualProgress;
+    }
+
+    const elapsedMs = Math.max(0, performance.now() - this.shownAtMs);
+    const timedProgress = 6 + Math.min(1, elapsedMs / this.minimumHoldMs) * 94;
+    return Math.max(6, Math.min(100, timedProgress));
   }
 
   private readonly tryPlayAudioStinger = (): void => {
