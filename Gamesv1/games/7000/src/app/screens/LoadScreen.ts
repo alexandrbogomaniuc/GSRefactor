@@ -49,6 +49,7 @@ export class LoadScreen extends Container {
     },
   });
   private readonly statusText: Text;
+  private readonly statusDotsText: Text;
   private readonly logoShine = new Graphics();
   private readonly completionStar = new Graphics();
   private readonly loadingFrame = new Graphics();
@@ -112,6 +113,20 @@ export class LoadScreen extends Container {
       },
     });
     this.statusText.anchor.set(0.5);
+    this.statusDotsText = new Text({
+      text: "",
+      style: {
+        fontFamily: "Trebuchet MS, Arial, sans-serif",
+        fontSize: 19,
+        fontWeight: "900",
+        fill: 0xf4f4f4,
+        stroke: { color: 0x24272b, width: 4 },
+        align: "left",
+        letterSpacing: 2,
+      },
+    });
+    this.statusDotsText.anchor.set(0, 0.5);
+    this.statusDotsText.visible = false;
     this.logoShine.visible = false;
     this.completionStar.visible = false;
     this.addChild(
@@ -124,6 +139,7 @@ export class LoadScreen extends Container {
       this.logoShine,
       this.completionStar,
       this.statusText,
+      this.statusDotsText,
       this.loadingFrame,
       this.loadingTrack,
       this.loadingFill,
@@ -215,6 +231,7 @@ export class LoadScreen extends Container {
 
     this.statusText.x = stackCenterX;
     this.statusText.y = trackY - 56;
+    this.statusDotsText.y = this.statusText.y;
     this.footerText.x = width * 0.5;
     this.footerText.y = height - 26;
 
@@ -258,7 +275,12 @@ export class LoadScreen extends Container {
     this.backdrop.rect(0, 0, width, height);
     this.backdrop.fill({ color: 0x2f3237, alpha: 1 });
 
-    this.statusText.text = this.getDisplayStatusText();
+    const statusState = this.getDisplayStatusState();
+    this.statusText.text = statusState.label;
+    this.statusDotsText.text = statusState.dots;
+    this.statusDotsText.visible = statusState.dots.length > 0;
+    this.statusDotsText.x = this.statusText.x + this.statusText.width * 0.5 + 6;
+    this.statusDotsText.y = this.statusText.y;
 
     const roosterPulse = this.reducedMotion
       ? 1
@@ -362,9 +384,9 @@ export class LoadScreen extends Container {
     return Math.max(6, Math.min(100, timedProgress));
   }
 
-  private getDisplayStatusText(): string {
+  private getDisplayStatusState(): { label: string; dots: string } {
     if (this.shownAtMs <= 0) {
-      return this.statusLabel;
+      return { label: this.statusLabel, dots: "" };
     }
 
     const elapsedMs = Math.max(0, performance.now() - this.shownAtMs);
@@ -373,10 +395,10 @@ export class LoadScreen extends Container {
 
     if (elapsedMs < loadingPhaseMs) {
       const dots = 1 + Math.floor((elapsedMs % 900) / 300);
-      return `ASSETS ARE LOADING${".".repeat(dots)}`;
+      return { label: "ASSETS ARE LOADING", dots: ".".repeat(dots) };
     }
 
-    return "READY TO PLAY";
+    return { label: "READY TO PLAY", dots: "" };
   }
 
   private readonly tryPlayAudioStinger = (): void => {
