@@ -422,8 +422,13 @@
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>
 
-        <action path="/guestmode"
+        <action path="/startGuestgame"
                 type="com.abs.casino.actions.enter.cw.CWGuestLogin" name="CWGuestLoginForm"
+                validate="true" input="/error_pages/error.jsp" scope="request">
+        </action>
+
+        <action path="/guestmode"
+                type="com.abs.casino.actions.game.cw.CWGuestStartGameAction" name="CWGuestStartGameForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>
 

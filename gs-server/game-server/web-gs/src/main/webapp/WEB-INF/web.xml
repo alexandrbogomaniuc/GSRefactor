@@ -277,6 +277,10 @@
         <servlet-name>action</servlet-name>
         <url-pattern>/startgame</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>/startGuestgame</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>default</servlet-name>
