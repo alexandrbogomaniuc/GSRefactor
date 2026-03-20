@@ -507,7 +507,11 @@ export class CrazyRoosterSymbol extends Container {
     }
 
     if (resolved.texture) {
-      this.setSpriteTexture(resolved.texture);
+      const stretchToCell =
+        provider === "donorlocal" &&
+        symbolId >= 0 &&
+        symbolId <= 6;
+      this.setSpriteTexture(resolved.texture, 0xffffff, !stretchToCell);
       this.shadow.visible = false;
       this.backing.visible = false;
       this.highlight.visible = false;
@@ -645,23 +649,20 @@ export class CrazyRoosterSymbol extends Container {
     this.sprite.y = CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5;
 
     if (texture === Texture.EMPTY) {
-      this.sprite.width = 0;
-      this.sprite.height = 0;
+      this.sprite.scale.set(0);
       return;
     }
+
+    const nativeWidth = texture.frame.width > 0 ? texture.frame.width : 1;
+    const nativeHeight = texture.frame.height > 0 ? texture.frame.height : 1;
 
     if (!preserveAspect) {
-      this.sprite.width = maxWidth;
-      this.sprite.height = maxHeight;
+      this.sprite.scale.set(maxWidth / nativeWidth, maxHeight / nativeHeight);
       return;
     }
 
-    const sourceWidth = texture.orig.width > 0 ? texture.orig.width : maxWidth;
-    const sourceHeight = texture.orig.height > 0 ? texture.orig.height : maxHeight;
-    const fitScale = Math.min(maxWidth / sourceWidth, maxHeight / sourceHeight);
-
-    this.sprite.width = sourceWidth * fitScale;
-    this.sprite.height = sourceHeight * fitScale;
+    const fitScale = Math.min(maxWidth / nativeWidth, maxHeight / nativeHeight);
+    this.sprite.scale.set(fitScale);
   }
 
   private resolveDonorMultiplierVariant(symbolId: number): DonorMultiplierVariantKey {
