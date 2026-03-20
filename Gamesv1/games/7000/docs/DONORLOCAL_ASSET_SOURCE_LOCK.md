@@ -29,6 +29,10 @@ This path must be a real folder in the active 7000 worktree (not a symlink).
 corepack pnpm -C Gamesv1/games/7000 run donorlocal:lock-assets
 ```
 
+The lock now hard-fails if either condition is true:
+- `runtime/manifest.json` hash is not the approved baseline hash.
+- `runtime/slot_hunt_latest/` exists in the active benchmark bundle.
+
 ## Why this exists
 
 Previous regressions came from `_donor_raw_local` resolving via symlink or rsync overwrite to a different donor bundle than the approved baseline, which made donorlocal load wrong atlases/effects while the URL looked correct.
