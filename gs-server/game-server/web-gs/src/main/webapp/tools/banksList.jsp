@@ -7,4 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:forward page="../support/cache/bank/common/banksList.jsp"/>
+<%
+    String subcasinoId = request.getParameter("subcasinoId");
+    if (subcasinoId == null || subcasinoId.trim().length() == 0) {
+        request.getRequestDispatcher("/support/cache/bank/common/subcasinoSelect.jsp").forward(request, response);
+        return;
+    }
+    request.getRequestDispatcher("/support/cache/bank/common/banksList.jsp").forward(request, response);
+%>

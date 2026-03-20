@@ -6,9 +6,44 @@
 <%@ page import="com.abs.casino.common.exception.CommonException" %>
 <%@ page import="com.abs.casino.common.cache.SubCasinoCache" %>
 <%@ page import="com.abs.casino.common.cache.data.bank.SubCasino" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
 <%
+    String bankIdParam = request.getParameter("bankId");
+    if (StringUtils.isTrimmedEmpty(bankIdParam)) {
+        Map<Long, BankInfo> allBanksMap = BankInfoCache.getInstance().getAllObjects();
+        List<Long> bankIds = new ArrayList<Long>(allBanksMap.keySet());
+        Collections.sort(bankIds);
+%>
+<html>
+<head>
+    <title>API Service Tool</title>
+</head>
+<body>
+<h2>API Service Tool</h2>
+<p>Select a bank to open the API/environment helper page.</p>
+<form method="get" action="<%=request.getRequestURI()%>">
+    <label for="bankId">Bank</label>
+    <select name="bankId" id="bankId">
+        <% for (Long candidateBankId : bankIds) {
+            BankInfo candidateBank = allBanksMap.get(candidateBankId);
+            String label = candidateBank == null ? String.valueOf(candidateBankId) : candidateBank.getExternalBankIdDescription();
+        %>
+        <option value="<%=candidateBankId%>"><%=candidateBankId%> - <%=label%></option>
+        <% } %>
+    </select>
+    <input type="hidden" name="fromSupport" value="1"/>
+    <button type="submit">Open tool</button>
+</form>
+</body>
+</html>
+<%
+        return;
+    }
 
-    long bankId = Long.parseLong(request.getParameter("bankId"));
+    long bankId = Long.parseLong(bankIdParam);
     String userId = request.getParameter("userId");
     String fromSupport = request.getParameter("fromSupport");
     boolean isFromSupport = false;

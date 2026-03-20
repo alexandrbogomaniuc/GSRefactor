@@ -682,9 +682,9 @@
             </tr>
             <tr>
                 <td>Bank + subcasino control</td>
-                <td><a href="<%=absoluteUrl(request, "/support/BankNSubCasinoControl.do")%>"><code><%=esc(absoluteUrl(request, "/support/BankNSubCasinoControl.do"))%></code></a></td>
+                <td><a href="<%=absoluteUrl(request, "/support/BankNSubCasinoControl.do?button=remove")%>"><code><%=esc(absoluteUrl(request, "/support/BankNSubCasinoControl.do?button=remove"))%></code></a></td>
                 <td>Management entry for the combined banks/subcasinos control flow.</td>
-                <td>Use when you want the consolidated control page rather than opening a single bank directly.</td>
+                <td>Use when you want the consolidated control page rather than opening a single bank directly. The read-mode parameter avoids the legacy empty-form 500 on a bare request.</td>
             </tr>
             <tr>
                 <td>Subcasino editor</td>
@@ -722,9 +722,9 @@
             </tr>
             <tr>
                 <td>API service tool</td>
-                <td><a href="<%=absoluteUrl(request, "/tools/api/service.jsp")%>"><code><%=esc(absoluteUrl(request, "/tools/api/service.jsp"))%></code></a></td>
+                <td><a href="<%=absoluteUrl(request, "/tools/api/service.jsp?bankId=" + realBankId + "&fromSupport=1")%>"><code><%=esc(absoluteUrl(request, "/tools/api/service.jsp?bankId=" + realBankId + "&fromSupport=1"))%></code></a></td>
                 <td>Support-side API helper page for testing/checking external service integration by bank.</td>
-                <td>Use when you want to inspect bank-linked API wiring or test API-related support flows.</td>
+                <td>Opens directly against the selected bank. If you remove the parameters, the page now shows a bank chooser instead of failing.</td>
             </tr>
             <tr>
                 <td>Bank endpoints report</td>
@@ -740,15 +740,21 @@
             </tr>
             <tr>
                 <td>Legacy CommonWallet EC API test</td>
-                <td><a href="<%=absoluteUrl(request, "/tools/test/api/commonWallet.do")%>"><code><%=esc(absoluteUrl(request, "/tools/test/api/commonWallet.do"))%></code></a></td>
-                <td>Legacy support-index reference for a Common Wallet API tester.</td>
-                <td>Referenced in <code>support/index.jsp</code>, but not deployed in the current build: both <code>/tools/test/api/commonWallet.do</code> and <code>/support/test/api/commonWallet.do</code> return 404, and there is no active servlet/Struts mapping for them.</td>
+                <td><a href="<%=absoluteUrl(request, "/support/test/api/commonWallet.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/test/api/commonWallet.jsp"))%></code></a></td>
+                <td>Compatibility launcher for the retired CommonWallet EC API test path.</td>
+                <td>Use this support page instead of the dead legacy <code>/tools/test/api/commonWallet.do</code> path. It lets you choose a bank and then opens the current API service helper.</td>
             </tr>
             <tr>
                 <td>Bank properties dump</td>
                 <td><a href="<%=absoluteUrl(request, "/tools/bankProperties.jsp?bankId=" + realBankId)%>"><code><%=esc(absoluteUrl(request, "/tools/bankProperties.jsp?bankId=" + realBankId))%></code></a></td>
                 <td>Compact dump of non-sensitive bank properties for one bank.</td>
                 <td>Use for a fast read-only property snapshot when you already know the bank id.</td>
+            </tr>
+            <tr>
+                <td>Banks list</td>
+                <td><a href="<%=absoluteUrl(request, "/tools/banksList.jsp?subcasinoId=" + realSubCasinoId)%>"><code><%=esc(absoluteUrl(request, "/tools/banksList.jsp?subcasinoId=" + realSubCasinoId))%></code></a></td>
+                <td>Shows the bank list for one subcasino; the bare endpoint now falls back to the subcasino landing page instead of erroring.</td>
+                <td>Use this when you want the smaller banks-only selector rather than the full subcasino landing page.</td>
             </tr>
             <tr>
                 <td>Subcasino info report</td>
