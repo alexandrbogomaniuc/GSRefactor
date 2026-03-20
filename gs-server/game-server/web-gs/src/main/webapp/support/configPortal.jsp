@@ -145,6 +145,42 @@
         }
         return result;
     }
+
+    private String buildBaseUrl(javax.servlet.http.HttpServletRequest request) {
+        String scheme = request.getScheme();
+        String host = request.getServerName();
+        if (host != null && host.indexOf(':') > -1 && !(host.startsWith("[") && host.endsWith("]"))) {
+            int split = host.lastIndexOf(':');
+            if (split > -1 && split < host.length() - 1) {
+                String maybePort = host.substring(split + 1);
+                boolean numericPort = true;
+                for (int i = 0; i < maybePort.length(); i++) {
+                    if (!Character.isDigit(maybePort.charAt(i))) {
+                        numericPort = false;
+                        break;
+                    }
+                }
+                if (numericPort) {
+                    host = host.substring(0, split);
+                }
+            }
+        }
+        int port = request.getServerPort();
+        String contextPath = request.getContextPath();
+        boolean defaultPort = ("http".equalsIgnoreCase(scheme) && port == 80)
+                || ("https".equalsIgnoreCase(scheme) && port == 443);
+        return scheme + "://" + host + (defaultPort ? "" : ":" + port) + (contextPath == null ? "" : contextPath);
+    }
+
+    private String absoluteUrl(javax.servlet.http.HttpServletRequest request, String pathAndQuery) {
+        if (isBlank(pathAndQuery)) {
+            return buildBaseUrl(request);
+        }
+        if (pathAndQuery.startsWith("http://") || pathAndQuery.startsWith("https://")) {
+            return pathAndQuery;
+        }
+        return buildBaseUrl(request) + (pathAndQuery.startsWith("/") ? pathAndQuery : "/" + pathAndQuery);
+    }
 %>
 <%
     String query = request.getParameter("q");
@@ -194,6 +230,14 @@
         selectedBankId = bankIds.get(0);
     }
     BankInfo selectedBank = selectedBankId == null ? null : allBanksMap.get(selectedBankId.longValue());
+    String guestBankId = "271";
+    String guestGameId = "838";
+    String guestLang = "en";
+    String realBankId = (selectedBankId == null || selectedBankId.longValue() <= 0L) ? "6275" : String.valueOf(selectedBankId.longValue());
+    String realSubCasinoId = (selectedBank == null || selectedBank.getSubCasinoId() <= 0L) ? "507" : String.valueOf(selectedBank.getSubCasinoId());
+    String realGameId = "838";
+    String realToken = "bav_game_session_001";
+    String sampleAccountId = "40962";
 
     List<Map<String, String>> propertyDefs = new ArrayList<Map<String, String>>();
     Map<String, Map<String, String>> propertyDefsByKey = new HashMap<String, Map<String, String>>();
@@ -548,181 +592,189 @@
             <tbody>
             <tr>
                 <td>Legacy full catalog</td>
-                <td><code>/support/index.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/index.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/index.jsp"))%></code></a></td>
                 <td>Full legacy support-tools inventory shipped with GS.</td>
                 <td>Open this if you need the widest possible list. Use this portal for the cleaner day-to-day shortlist.</td>
             </tr>
             <tr>
                 <td>Config portal</td>
-                <td><code>/support/configPortal.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/configPortal.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/configPortal.jsp"))%></code></a></td>
                 <td>Unified view of cluster settings, bank-property catalog, and effective bank values.</td>
                 <td>Start here to inspect configuration quickly, then jump to the detailed editor pages below.</td>
             </tr>
             <tr>
                 <td>Cluster hosts</td>
-                <td><code>/support/clusterHosts.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/clusterHosts.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/clusterHosts.jsp"))%></code></a></td>
                 <td>Shows host, port, and cluster-level runtime wiring values.</td>
                 <td>Use this to confirm service hostnames, ports, and deployment-level connection targets.</td>
             </tr>
             <tr>
                 <td>Health check</td>
-                <td><code>/support/health/check.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/health/check.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/health/check.jsp"))%></code></a></td>
                 <td>Fast liveness/readiness probe for the GS runtime.</td>
                 <td>Open directly in a browser or curl it. Expected result in the current environment is HTTP 200.</td>
             </tr>
             <tr>
                 <td>Guest launch</td>
-                <td><code>/startGuestgame?bankId=[bankId]&amp;gameId=[gameId]&amp;lang=[lang]</code></td>
+                <td><a href="<%=absoluteUrl(request, "/startGuestgame?bankId=" + guestBankId + "&gameId=" + guestGameId + "&lang=" + guestLang)%>"><code><%=esc(absoluteUrl(request, "/startGuestgame?bankId=" + guestBankId + "&gameId=" + guestGameId + "&lang=" + guestLang))%></code></a></td>
                 <td>Starts guest mode without casino-side auth; injects missing subCasinoId when possible.</td>
                 <td>Use for game smoke checks where you want GS + MP + static only, without real wallet traffic.</td>
             </tr>
             <tr>
                 <td>Real launch</td>
-                <td><code>/startgame?bankId=[bankId]&amp;subCasinoId=[subCasinoId]&amp;gameId=[gameId]&amp;mode=real&amp;token=[token]&amp;lang=[lang]</code></td>
+                <td><a href="<%=absoluteUrl(request, "/startgame?bankId=" + realBankId + "&subCasinoId=" + realSubCasinoId + "&gameId=" + realGameId + "&mode=real&token=" + realToken + "&lang=" + guestLang)%>"><code><%=esc(absoluteUrl(request, "/startgame?bankId=" + realBankId + "&subCasinoId=" + realSubCasinoId + "&gameId=" + realGameId + "&mode=real&token=" + realToken + "&lang=" + guestLang))%></code></a></td>
                 <td>Starts real-money flow, validates token, and continues via wallet/casino integration.</td>
                 <td>Use for real integration checks. In localhost-style setups, pass <code>subCasinoId</code> explicitly.</td>
             </tr>
             <tr>
                 <td>Server configuration</td>
-                <td><code>/support/serverConfiguration.do</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/serverConfiguration.do")%>"><code><%=esc(absoluteUrl(request, "/support/serverConfiguration.do"))%></code></a></td>
                 <td>Shows the server-configuration form backed by <code>ServerConfigurationAction</code>.</td>
                 <td>Use when you need the GS-level server config page rather than bank-specific properties.</td>
             </tr>
             <tr>
                 <td>Cache viewer</td>
-                <td><code>/support/cacheviewer.do</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/cacheviewer.do")%>"><code><%=esc(absoluteUrl(request, "/support/cacheviewer.do"))%></code></a></td>
                 <td>Reads and displays selected runtime cache contents.</td>
                 <td>Use to inspect loaded cache objects without going directly to Cassandra or log files.</td>
             </tr>
             <tr>
                 <td>Log viewer</td>
-                <td><code>/support/logviewer.do</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/logviewer.do")%>"><code><%=esc(absoluteUrl(request, "/support/logviewer.do"))%></code></a></td>
                 <td>Browser-side reader for GS support logs and captured HTTP call details.</td>
                 <td>Use when you want a support UI for logs instead of tailing files or container output.</td>
             </tr>
             <tr>
                 <td>Server statistics</td>
-                <td><code>/support/stat</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/stat")%>"><code><%=esc(absoluteUrl(request, "/support/stat"))%></code></a></td>
                 <td>Shows server-side request/query statistics.</td>
                 <td>Use for quick traffic/performance snapshots. <code>?getter=true</code> can be slower but more detailed.</td>
             </tr>
             <tr>
                 <td>System diagnosis</td>
-                <td><code>/systemdiagnosis.servlet</code></td>
+                <td><a href="<%=absoluteUrl(request, "/systemdiagnosis.servlet")%>"><code><%=esc(absoluteUrl(request, "/systemdiagnosis.servlet"))%></code></a></td>
                 <td>Runs a broader health/diagnostic servlet for the GS runtime.</td>
                 <td>Use when you need a larger system-level diagnosis than the simple health check.</td>
             </tr>
             <tr>
                 <td>API issues</td>
-                <td><code>/support/showAPIIssues.do</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/showAPIIssues.do")%>"><code><%=esc(absoluteUrl(request, "/support/showAPIIssues.do"))%></code></a></td>
                 <td>Lists API issues captured by the support/API-issues action.</td>
                 <td>Use this when partner or wallet integration errors need a support-side review page.</td>
             </tr>
             <tr>
                 <td>Wallet info</td>
-                <td><code>/support/walletinfo.do</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/walletinfo.do")%>"><code><%=esc(absoluteUrl(request, "/support/walletinfo.do"))%></code></a></td>
                 <td>Support form for wallet/account change tracing.</td>
                 <td>Use when you need to inspect wallet/account transitions or support account-level balance questions.</td>
             </tr>
             <tr>
                 <td>Wallet list</td>
-                <td><code>/support/viewWallets.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/viewWallets.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/viewWallets.jsp"))%></code></a></td>
                 <td>Support-side wallet overview page.</td>
                 <td>Use for a quick wallet inventory view before drilling into a specific account or bank.</td>
             </tr>
             <tr>
                 <td>Subcasino / bank landing</td>
-                <td><code>/support/cache/bank/common/subcasinoSelect.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/cache/bank/common/subcasinoSelect.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/cache/bank/common/subcasinoSelect.jsp"))%></code></a></td>
                 <td>Main UI entry for bank/subcasino configuration work.</td>
                 <td>Use this first when you want to add a bank, edit a bank, inspect a subcasino, or navigate to game configuration.</td>
             </tr>
             <tr>
                 <td>Bank + subcasino control</td>
-                <td><code>/support/BankNSubCasinoControl.do</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/BankNSubCasinoControl.do")%>"><code><%=esc(absoluteUrl(request, "/support/BankNSubCasinoControl.do"))%></code></a></td>
                 <td>Management entry for the combined banks/subcasinos control flow.</td>
                 <td>Use when you want the consolidated control page rather than opening a single bank directly.</td>
             </tr>
             <tr>
                 <td>Subcasino editor</td>
-                <td><code>/support/subCasino.do?subcasinoId=[id]</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/subCasino.do?subcasinoId=" + realSubCasinoId)%>"><code><%=esc(absoluteUrl(request, "/support/subCasino.do?subcasinoId=" + realSubCasinoId))%></code></a></td>
                 <td>Shows and edits one subcasino, including linked banks and domain names.</td>
                 <td>Open with a concrete <code>subcasinoId</code> to review domain mapping, bank membership, and related settings.</td>
             </tr>
             <tr>
                 <td>Bank editor</td>
-                <td><code>/support/bankInfo.do?bankId=[id]</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/bankInfo.do?bankId=" + realBankId)%>"><code><%=esc(absoluteUrl(request, "/support/bankInfo.do?bankId=" + realBankId))%></code></a></td>
                 <td>Shows and edits one bank’s effective configuration and game assignments.</td>
                 <td>Use this to inspect or change one bank’s core settings after selecting it from the subcasino landing page.</td>
             </tr>
             <tr>
                 <td>Bank properties editor</td>
-                <td><code>/support/bankSupport.do</code> or <code>/support/bankSelectAction.do?bankId=[id]</code></td>
+                <td>
+                    <a href="<%=absoluteUrl(request, "/support/bankSupport.do")%>"><code><%=esc(absoluteUrl(request, "/support/bankSupport.do"))%></code></a>
+                    <br/>
+                    <a href="<%=absoluteUrl(request, "/support/bankSelectAction.do?bankId=" + realBankId)%>"><code><%=esc(absoluteUrl(request, "/support/bankSelectAction.do?bankId=" + realBankId))%></code></a>
+                </td>
                 <td>Edits the property-level bank configuration set.</td>
                 <td>Use <code>bankSupport.do</code> to choose a bank, then open <code>bankSelectAction.do</code> for direct property editing.</td>
             </tr>
             <tr>
                 <td>Game editor</td>
-                <td><code>/support/loadgameinfo.do?bankId=[id]&amp;gameId=[id]</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/loadgameinfo.do?bankId=" + realBankId + "&gameId=" + realGameId)%>"><code><%=esc(absoluteUrl(request, "/support/loadgameinfo.do?bankId=" + realBankId + "&gameId=" + realGameId))%></code></a></td>
                 <td>Loads a bank/game pair into the support editor.</td>
                 <td>Use this from bank info pages when you need game-specific limits, properties, or routing values.</td>
             </tr>
             <tr>
                 <td>Domain whitelist</td>
-                <td><code>/support/domainwl.do</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/domainwl.do")%>"><code><%=esc(absoluteUrl(request, "/support/domainwl.do"))%></code></a></td>
                 <td>Domain whitelist / domain-management support page.</td>
                 <td>Use this when validating which hostnames are allowed to launch under GS.</td>
             </tr>
             <tr>
                 <td>API service tool</td>
-                <td><code>/tools/api/service.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/tools/api/service.jsp")%>"><code><%=esc(absoluteUrl(request, "/tools/api/service.jsp"))%></code></a></td>
                 <td>Support-side API helper page for testing/checking external service integration by bank.</td>
                 <td>Use when you want to inspect bank-linked API wiring or test API-related support flows.</td>
             </tr>
             <tr>
                 <td>Bank endpoints report</td>
-                <td><code>/tools/bankEndpoints.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/tools/bankEndpoints.jsp")%>"><code><%=esc(absoluteUrl(request, "/tools/bankEndpoints.jsp"))%></code></a></td>
                 <td>Shows endpoint-level bank release/report information.</td>
                 <td>Use to review endpoint wiring and release-facing bank endpoint summaries.</td>
             </tr>
             <tr>
                 <td>Wallets manager tool</td>
-                <td><code>/tools/walletsManager.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/tools/walletsManager.jsp")%>"><code><%=esc(absoluteUrl(request, "/tools/walletsManager.jsp"))%></code></a></td>
                 <td>Support tool for wallet/account operations with bank and subcasino context.</td>
                 <td>Use when investigating wallet behavior beyond the simpler wallet-info page.</td>
             </tr>
             <tr>
                 <td>Game history</td>
-                <td><code>/support/gamehistory.do?accountId=[accountId]</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/gamehistory.do?accountId=" + sampleAccountId)%>"><code><%=esc(absoluteUrl(request, "/support/gamehistory.do?accountId=" + sampleAccountId))%></code></a></td>
                 <td>Support action for account-level game history lookup.</td>
                 <td>Use when player support requires looking up a specific account’s round/session history.</td>
             </tr>
             <tr>
                 <td>Compare banks</td>
-                <td><code>/support/compare/banks.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/compare/banks.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/compare/banks.jsp"))%></code></a></td>
                 <td>Diffs bank-level configuration between two banks.</td>
                 <td>Use before copying or aligning settings from one bank to another.</td>
             </tr>
             <tr>
                 <td>Compare templates</td>
-                <td><code>/support/compare/gameTemplates.jsp</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/compare/gameTemplates.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/compare/gameTemplates.jsp"))%></code></a></td>
                 <td>Diffs game-template configuration.</td>
                 <td>Use when comparing template-level setup rather than bank-level values.</td>
             </tr>
             <tr>
                 <td>Game config by banks</td>
-                <td><code>/support/GameConfig/getGamesConfigByBanks.jsp?banks=[bankId]&amp;editmode=true&amp;mode=coins,frb,limit,defcoin</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/GameConfig/getGamesConfigByBanks.jsp?banks=" + realBankId + "&editmode=true&mode=coins,frb,limit,defcoin")%>"><code><%=esc(absoluteUrl(request, "/support/GameConfig/getGamesConfigByBanks.jsp?banks=" + realBankId + "&editmode=true&mode=coins,frb,limit,defcoin"))%></code></a></td>
                 <td>Bulk game-config inspection page across one or more banks.</td>
                 <td>Use when you need a wider grid-style review of coins, FRB, limits, and default-coin setup.</td>
             </tr>
             <tr>
                 <td>Cassandra account view</td>
-                <td><code>/support/showcassandra_account.jsp?accountId=[accountId]</code></td>
+                <td><a href="<%=absoluteUrl(request, "/support/showcassandra_account.jsp?accountId=" + sampleAccountId)%>"><code><%=esc(absoluteUrl(request, "/support/showcassandra_account.jsp?accountId=" + sampleAccountId))%></code></a></td>
                 <td>Direct support-side Cassandra-backed account inspection page.</td>
                 <td>Use for fast account debugging when you already know the account id and want storage-side details.</td>
             </tr>
             <tr>
                 <td>Modernization docs</td>
-                <td><code>/support/modernizationDocs.jsp</code> and <code>/support/modernizationRunbook.jsp</code></td>
+                <td>
+                    <a href="<%=absoluteUrl(request, "/support/modernizationDocs.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/modernizationDocs.jsp"))%></code></a>
+                    <br/>
+                    <a href="<%=absoluteUrl(request, "/support/modernizationRunbook.jsp")%>"><code><%=esc(absoluteUrl(request, "/support/modernizationRunbook.jsp"))%></code></a>
+                </td>
                 <td>Project-specific support docs, runbook, and migration notes.</td>
                 <td>Use for modernization/rehearsal context rather than day-to-day bank operations.</td>
             </tr>
