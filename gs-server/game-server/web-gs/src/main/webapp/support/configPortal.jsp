@@ -740,7 +740,7 @@
             </tr>
             <tr>
                 <td>Legacy CommonWallet EC API test</td>
-                <td><code>/tools/test/api/commonWallet.do</code></td>
+                <td><a href="<%=absoluteUrl(request, "/tools/test/api/commonWallet.do")%>"><code><%=esc(absoluteUrl(request, "/tools/test/api/commonWallet.do"))%></code></a></td>
                 <td>Legacy support-index reference for a Common Wallet API tester.</td>
                 <td>Referenced in <code>support/index.jsp</code>, but not deployed in the current build: both <code>/tools/test/api/commonWallet.do</code> and <code>/support/test/api/commonWallet.do</code> return 404, and there is no active servlet/Struts mapping for them.</td>
             </tr>
@@ -758,25 +758,25 @@
             </tr>
             <tr>
                 <td>Pending CT operations</td>
-                <td><code>/tools/pendingOperations.jsp?accountId=[accountId]</code></td>
+                <td><a href="<%=absoluteUrl(request, "/tools/pendingOperations.jsp?accountId=" + sampleAccountId)%>"><code><%=esc(absoluteUrl(request, "/tools/pendingOperations.jsp?accountId=" + sampleAccountId))%></code></a></td>
                 <td>Support page that inspects and can delete a pending CT transaction for an account or bank/ext-user lock.</td>
-                <td>Dangerous support tool. It requires explicit identifiers and can delete pending operations, so it is intentionally listed but not one-click linked.</td>
+                <td>Opens with a safe sample account id for inspection. Deletion still requires a second explicit action on the page.</td>
             </tr>
             <tr>
                 <td>Stub account balance setter</td>
-                <td><code>/tools/setStubAccountBalance.jsp?bankId=[bankId]&amp;extUserId=[extUserId]&amp;newBalance=[cents]</code></td>
+                <td><code><%=esc(absoluteUrl(request, "/tools/setStubAccountBalance.jsp?bankId=[bankId]&extUserId=[extUserId]&newBalance=[cents]"))%></code></td>
                 <td>Directly rewrites stub-wallet balance for a stub-mode bank in non-production clusters.</td>
                 <td>Dangerous mutation tool. Use only for stub-bank testing, and only with explicit values; intentionally not one-click linked.</td>
             </tr>
             <tr>
                 <td>Battleground config seeder</td>
-                <td><code>/tools/addBattlegroundGames.jsp</code></td>
+                <td><code><%=esc(absoluteUrl(request, "/tools/addBattlegroundGames.jsp"))%></code></td>
                 <td>One-shot maintenance script that clears and reseeds battleground buy-in configs for hard-coded banks/games.</td>
                 <td>Dangerous write-on-open tool. It executes immediately on GET, so it is documented here but intentionally not linked.</td>
             </tr>
             <tr>
                 <td>Battleground crash-folder fixer</td>
-                <td><code>/tools/editBattlegroundChrashGameFolder.jsp</code></td>
+                <td><code><%=esc(absoluteUrl(request, "/tools/editBattlegroundChrashGameFolder.jsp"))%></code></td>
                 <td>One-shot maintenance script that rewrites the MP game folder name for hard-coded battleground crash games.</td>
                 <td>Dangerous write-on-open tool. It persists changes immediately, so it is intentionally listed without a direct link.</td>
             </tr>
