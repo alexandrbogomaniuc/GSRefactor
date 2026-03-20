@@ -3054,7 +3054,12 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
             allowedRefererDomains = new RefererDomains(input.readString());
             forbiddenRefererDomains = new RefererDomains(input.readString());
         }
-        pgsType = kryo.readObject(input, PlayerGameSettingsType.class);
+        try {
+            pgsType = kryo.readObject(input, PlayerGameSettingsType.class);
+        } catch (Exception e) {
+            LOG.error("read error: invalid pgsType for bankId=" + id, e);
+            pgsType = PlayerGameSettingsType.NONE;
+        }
         pgsTTL = input.readInt();
     }
 

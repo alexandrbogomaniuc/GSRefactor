@@ -16,6 +16,9 @@ services:
       release-net:
         aliases:
           - fullstack-cassandra
+          - c1.gsmp.lan
+          - c2.gsmp.lan
+          - c3.gsmp.lan
 
   fullstack-zookeeper:
     image: ${ZOOKEEPER_IMAGE:-zookeeper:3.9}
