@@ -15,6 +15,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cboolean;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 31.03.17.
@@ -57,17 +61,17 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
     private static final TableDefinition SUMMARY_PROMO_FEED_TABLE = new TableDefinition(
             SUMMARY_PROMO_FEED_CF,
             Arrays.asList(
-                    new ColumnDefinition(ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(FEED_URL, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(START_DATE, com.datastax.driver.core.DataType.bigint(), true, false, false),
-                    new ColumnDefinition(END_DATE, com.datastax.driver.core.DataType.bigint(), true, false, false),
-                    new ColumnDefinition(BANK_NAME, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(CHECKSUM, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(TOURNAMENT_TYPE, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(UPDATE_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(FEED_BODY, com.datastax.driver.core.DataType.text()),
-                    new ColumnDefinition(MASK_NAME, com.datastax.driver.core.DataType.cboolean(), false, false, false),
-                    new ColumnDefinition(TOURNAMENT_ID, com.datastax.driver.core.DataType.bigint(), false, true, false)
+                    new ColumnDefinition(ID, bigint(), false, false, true),
+                    new ColumnDefinition(FEED_URL, text(), false, false, true),
+                    new ColumnDefinition(START_DATE, bigint(), true, false, false),
+                    new ColumnDefinition(END_DATE, bigint(), true, false, false),
+                    new ColumnDefinition(BANK_NAME, text(), false, false, false),
+                    new ColumnDefinition(CHECKSUM, text(), false, false, false),
+                    new ColumnDefinition(TOURNAMENT_TYPE, text(), false, false, false),
+                    new ColumnDefinition(UPDATE_TIME, bigint(), false, false, false),
+                    new ColumnDefinition(FEED_BODY, text()),
+                    new ColumnDefinition(MASK_NAME, cboolean(), false, false, false),
+                    new ColumnDefinition(TOURNAMENT_ID, bigint(), false, true, false)
             ), ID)
             .compaction(CompactionStrategy.LEVELED);
 
@@ -126,9 +130,9 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
 
     public List<SummaryTournamentFeed> getAllFeeds() {
         List<SummaryTournamentFeed> feeds = new ArrayList<>();
-        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
+        com.abs.casino.cassandra.persist.engine.ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
                 MASK_NAME), "getAllFeeds");
-        for (com.datastax.driver.core.Row row : result) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : result) {
             feeds.add(convert(row));
         }
         return feeds;
@@ -136,10 +140,10 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
 
     public List<SummaryTournamentFeed> getFeeds(long id) {
         List<SummaryTournamentFeed> feeds = new ArrayList<>();
-        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
+        com.abs.casino.cassandra.persist.engine.ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
                 MASK_NAME)
                 .where(eq(ID, id)), "getFeeds");
-        for (com.datastax.driver.core.Row row : result) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : result) {
             feeds.add(convert(row));
         }
         return feeds;
@@ -167,9 +171,9 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
 
     //key: url
     public Map<String, List<SummaryTournamentFeedEntry>> getEntriesForStatement(com.datastax.driver.core.Statement select, long id) {
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "getAllFeedEntries");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(select, "getAllFeedEntries");
         Map<String, List<SummaryTournamentFeedEntry>> result = new HashMap<>(resultSet.getAvailableWithoutFetching());
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String feedBody = row.getString(FEED_BODY);
             String url = row.getString(FEED_URL);
             String bankName = row.getString(BANK_NAME);
@@ -200,7 +204,7 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
     }
 
     public List<SummaryTournamentFeedEntry> getFeedEntries(long id, String feedUrl) {
-        com.datastax.driver.core.Row row = execute(getSelectColumnsQuery(FEED_BODY, BANK_NAME, TOURNAMENT_TYPE)
+        com.abs.casino.cassandra.persist.engine.Row row = execute(getSelectColumnsQuery(FEED_BODY, BANK_NAME, TOURNAMENT_TYPE)
                 .where(eq(ID, id))
                 .and(eq(FEED_URL, feedUrl)), "getFeedEntries").one();
         List<SummaryTournamentFeedEntry> feedEntries = new ArrayList<>();
@@ -220,7 +224,7 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
         return feedEntries;
     }
 
-    private SummaryTournamentFeed convert(com.datastax.driver.core.Row row) {
+    private SummaryTournamentFeed convert(com.abs.casino.cassandra.persist.engine.Row row) {
         String tournamentType = row.getString(TOURNAMENT_TYPE);
         TournamentObjective type = TournamentObjective.valueOf(tournamentType);
         return new SummaryTournamentFeed(row.getLong(ID), row.getString(FEED_URL), row.getString(BANK_NAME),

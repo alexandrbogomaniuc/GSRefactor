@@ -428,10 +428,6 @@
           <string>true</string>
         </entry>
         <entry>
-          <string>MQ_WEAPONS_MODE</string>
-          <string>LOOT_BOX</string>
-        </entry>
-        <entry>
           <string>ABS_WEAPONS_MODE</string>
           <string>LOOT_BOX</string>
         </entry>

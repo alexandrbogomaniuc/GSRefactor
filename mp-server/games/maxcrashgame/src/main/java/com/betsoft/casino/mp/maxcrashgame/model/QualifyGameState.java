@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.common.SharedCrashGameState;
 import com.betsoft.casino.mp.model.ISharedGameStateService;
 import com.betsoft.casino.mp.model.PlaySubround;
 import com.betsoft.casino.mp.model.RoomState;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 public class QualifyGameState extends AbstractQualifyGameState<AbstractCrashGameRoom, Seat, GameMap, QualifyGameState> {
     public QualifyGameState() {}

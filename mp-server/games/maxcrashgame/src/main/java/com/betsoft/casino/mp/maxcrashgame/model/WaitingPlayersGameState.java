@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.room.IRoomInfo;
 import com.betsoft.casino.mp.utils.ErrorCodes;
 import com.betsoft.casino.utils.ITransportObject;
 import com.betsoft.casino.utils.TInboundObject;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

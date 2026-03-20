@@ -7,7 +7,7 @@ ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 OUT_DIR="${ROOT}/docs/phase7/cassandra/full-copy"
 SOURCE_CONTAINER="gp3-c1-1"
 TARGET_CONTAINER="refactor-c1-refactor-1"
-KEYSPACES_CSV="rcasinoscks,rcasinoks"
+KEYSPACES_CSV="rcasinoscks,rcasinoks,mpmain,mpmqb2"
 TRUNCATE_TARGET="false"
 WAIT_SECONDS="10"
 
@@ -52,6 +52,12 @@ REPORT="${OUT_DIR}/phase7-cassandra-full-data-copy-${TS}.md"
 STATUS_TSV="${RUN_DIR}/status.tsv"
 TABLES_FILE="${RUN_DIR}/tables.txt"
 
+echo -e "table\tstage\tstatus\tdetail" > "${STATUS_TSV}"
+
+record_status() {
+  printf '%s\t%s\t%s\t%s\n' "$1" "$2" "$3" "$4" >> "${STATUS_TSV}"
+}
+
 cqlsh_bin_exec() {
   local container="$1"
   shift
@@ -91,18 +97,27 @@ discover_tables_for_keyspace() {
 
 IFS=',' read -r -a keyspaces <<< "${KEYSPACES_CSV}"
 > "${TABLES_FILE}"
+keyspaces_requested=0
+keyspaces_discovered=0
+keyspace_discovery_failures=0
 for ks in "${keyspaces[@]}"; do
   ks="$(echo "${ks}" | xargs)"
   [[ -z "${ks}" ]] && continue
-  discover_tables_for_keyspace "${ks}" >> "${TABLES_FILE}"
+  keyspaces_requested=$((keyspaces_requested + 1))
+  discover_err="${LOG_DIR}/${ks//[^a-zA-Z0-9_-]/_}.discover.err"
+  if discovered_tables="$(discover_tables_for_keyspace "${ks}" 2> "${discover_err}")"; then
+    keyspaces_discovered=$((keyspaces_discovered + 1))
+    if [[ -n "${discovered_tables}" ]]; then
+      printf '%s\n' "${discovered_tables}" >> "${TABLES_FILE}"
+    fi
+  else
+    keyspace_discovery_failures=$((keyspace_discovery_failures + 1))
+    discovery_reason="$(tail -n 1 "${discover_err}" 2>/dev/null | tr '\t' ' ')"
+    [[ -n "${discovery_reason}" ]] || discovery_reason="DESCRIBE KEYSPACE failed"
+    record_status "${ks}" "discover" "FAIL" "${discovery_reason}"
+  fi
 done
 sort -u -o "${TABLES_FILE}" "${TABLES_FILE}"
-
-echo -e "table\tstage\tstatus\tdetail" > "${STATUS_TSV}"
-
-record_status() {
-  printf '%s\t%s\t%s\t%s\n' "$1" "$2" "$3" "$4" >> "${STATUS_TSV}"
-}
 
 truncate_failed=0
 if [[ "${TRUNCATE_TARGET}" == "true" ]]; then
@@ -182,6 +197,9 @@ empty_imports="$(awk -F'\t' '$2=="import" && $3=="EMPTY"{c++} END{print c+0}' "$
   echo "- Source container: ${SOURCE_CONTAINER}"
   echo "- Target container: ${TARGET_CONTAINER}"
   echo "- Keyspaces: ${KEYSPACES_CSV}"
+  echo "- keyspacesRequested: ${keyspaces_requested}"
+  echo "- keyspacesDiscovered: ${keyspaces_discovered}"
+  echo "- keyspaceDiscoveryFailures: ${keyspace_discovery_failures}"
   echo "- truncateTarget: ${TRUNCATE_TARGET}"
   echo "- totalTables: ${total_tables}"
   echo "- importedTablesOk: ${imported_tables}"

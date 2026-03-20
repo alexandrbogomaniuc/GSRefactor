@@ -33,7 +33,7 @@ public class DBLinkCache implements IDistributedCache<Long, IDBLink> {
     private static final NonBlockingHashMapLong<IDBLink> dbLinks = new NonBlockingHashMapLong<>(2048, false);
     private static long cleanerTotalCount = 0;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    private final CassandraTransactionDataPersister transactionDataPersister;
+    private volatile CassandraTransactionDataPersister transactionDataPersister;
 
     static {
         StatisticsManager.getInstance()
@@ -54,9 +54,6 @@ public class DBLinkCache implements IDistributedCache<Long, IDBLink> {
 
     private DBLinkCache() {
         scheduler.scheduleAtFixedRate(new Cleaner(), SLEEPTIME, SLEEPTIME, TimeUnit.MILLISECONDS);
-        CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getApplicationContext()
-                .getBean("persistenceManager", CassandraPersistenceManager.class);
-        transactionDataPersister = persistenceManager.getPersister(CassandraTransactionDataPersister.class);
     }
 
     public static DBLinkCache getInstance() {
@@ -64,7 +61,7 @@ public class DBLinkCache implements IDistributedCache<Long, IDBLink> {
     }
 
     public void registerTDInvalidationListener() {
-        transactionDataPersister.registerInvalidationListener(new TransactionDataInvalidatedListener() {
+        getTransactionDataPersister().registerInvalidationListener(new TransactionDataInvalidatedListener() {
             @Override
             public void invalidate(ITransactionData td) {
                 try {
@@ -78,6 +75,26 @@ public class DBLinkCache implements IDistributedCache<Long, IDBLink> {
                 }
             }
         });
+    }
+
+    private CassandraTransactionDataPersister getTransactionDataPersister() {
+        CassandraTransactionDataPersister persister = transactionDataPersister;
+        if (persister != null) {
+            return persister;
+        }
+        synchronized (this) {
+            persister = transactionDataPersister;
+            if (persister == null) {
+                if (ApplicationContextHelper.getApplicationContext() == null) {
+                    throw new IllegalStateException("Spring applicationContext is not initialized for DBLinkCache");
+                }
+                CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getApplicationContext()
+                        .getBean("persistenceManager", CassandraPersistenceManager.class);
+                persister = persistenceManager.getPersister(CassandraTransactionDataPersister.class);
+                transactionDataPersister = persister;
+            }
+        }
+        return persister;
     }
 
     public boolean isExist(long gameSessionId) {

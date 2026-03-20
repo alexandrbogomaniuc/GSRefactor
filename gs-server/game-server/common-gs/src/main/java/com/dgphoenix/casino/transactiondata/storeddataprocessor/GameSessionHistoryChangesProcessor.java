@@ -26,7 +26,7 @@ public class GameSessionHistoryChangesProcessor implements IStoredDataProcessor<
     }
 
     @Override
-    public void process(StoredItem<GameSession, StoredItemInfo<GameSession>> item, HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+    public void process(StoredItem<GameSession, StoredItemInfo<GameSession>> item, HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         gameSessionPersister.prepareToPersist(statementsMap, item.getItem());
     }
 }

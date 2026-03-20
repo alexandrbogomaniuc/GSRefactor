@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.cassandra.persist.engine.configuration.Compression;
@@ -11,13 +12,27 @@ import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.managers.payment.wallet.CommonGameWallet;
 import com.abs.casino.gs.managers.payment.wallet.CommonWallet;
 import com.abs.casino.gs.managers.payment.wallet.IWalletPersister;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cboolean;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cdouble;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import com.datastax.driver.core.querybuilder.Batch;
+import com.datastax.driver.core.querybuilder.Delete;
+import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.querybuilder.Select;
+import com.abs.casino.cassandra.persist.engine.SchemaCql;
+
+
+
+
+
 
 /**
  * User: flsh
@@ -47,39 +62,39 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
     private static final TableDefinition TABLE = new TableDefinition(COMMON_GAME_WALLET_CF,
             Arrays.asList(
                     //key is accountId_gameId
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(ROUND_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(WIN_AMOUNT_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(BET_AMOUNT_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(LAST_NEGATIVE_BET_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(NEGATIVE_BET_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(NEW_ROUND_FIELD, com.datastax.driver.core.DataType.cboolean(), false, false, false),
-                    new ColumnDefinition(ROUND_FINISHED_FIELD, com.datastax.driver.core.DataType.cboolean(), false, false, false),
-                    new ColumnDefinition(ADDITIONAL_ROUND_INFO, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(JP_CONTRIBUTION, com.datastax.driver.core.DataType.cdouble(), false, false, false),
-                    new ColumnDefinition(JP_WIN, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(TEMP_TOKEN, com.datastax.driver.core.DataType.text(), false, false, false),
-                    new ColumnDefinition(CLIENT_TYPE, com.datastax.driver.core.DataType.text(), false, false, false)
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(ROUND_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(WIN_AMOUNT_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(BET_AMOUNT_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(LAST_NEGATIVE_BET_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(NEGATIVE_BET_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(NEW_ROUND_FIELD, cboolean(), false, false, false),
+                    new ColumnDefinition(ROUND_FINISHED_FIELD, cboolean(), false, false, false),
+                    new ColumnDefinition(ADDITIONAL_ROUND_INFO, text(), false, false, false),
+                    new ColumnDefinition(JP_CONTRIBUTION, cdouble(), false, false, false),
+                    new ColumnDefinition(JP_WIN, bigint(), false, false, false),
+                    new ColumnDefinition(TEMP_TOKEN, text(), false, false, false),
+                    new ColumnDefinition(CLIENT_TYPE, text(), false, false, false)
             ), ACCOUNT_ID_FIELD)
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toSeconds(1))
             .compression(Compression.NONE)
-            .speculativeRetry(com.datastax.driver.core.schemabuilder.SchemaBuilder.always());
+            .speculativeRetry(SchemaCql.always());
 
     private CassandraCommonGameWalletPersister() {
     }
 
     public void persistCommonWallet(CommonWallet wallet) {
         IWallet oldWallet = getWallet(wallet.getAccountId());
-        com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
+        Batch batch = Cql.batch();
         //first remove not existing in actual wallet
         Set<Integer> oldGameWallets = oldWallet.getWalletGamesIds();
         for (Integer gameId : oldGameWallets) {
             CommonGameWallet gameWallet = wallet.getGameWallet(gameId);
             if (gameWallet == null) {
-                com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(getMainColumnFamilyName());
+                Delete query = Cql.delete().from(getMainColumnFamilyName());
                 query.where(eq(ACCOUNT_ID_FIELD, wallet.getAccountId())).and(eq(GAME_ID_FIELD, gameId));
                 batch.add(query);
             }
@@ -92,12 +107,12 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
         execute(batch, "persistCommonWallet");
     }
 
-    private com.datastax.driver.core.querybuilder.Insert getInsertQuery(long accountId, CommonGameWallet gameWallet) {
+    private Insert getInsertQuery(long accountId, CommonGameWallet gameWallet) {
         ClientType clientType = gameWallet.getClientType();
         LOG.debug("createOrUpdate: accountId={}, gameId={}, roundId={}, bet={}, win={}, negativeBet={}, isRoundFinished={}, clientType={}",
                 accountId, gameWallet.getGameId(), gameWallet.getRoundId(), gameWallet.getBetAmount(), gameWallet.getWinAmount(),
                 gameWallet.getNegativeBet(), gameWallet.isRoundFinished(), clientType);
-        com.datastax.driver.core.querybuilder.Insert query = getInsertQuery();
+        Insert query = getInsertQuery();
         query.value(ACCOUNT_ID_FIELD, accountId);
         query.value(GAME_ID_FIELD, gameWallet.getGameId());
         query.value(ROUND_ID_FIELD, gameWallet.getRoundId() == null ? 0 : gameWallet.getRoundId());
@@ -127,20 +142,20 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
     }
 
     public CommonGameWallet getById(long accountId, int gameId) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().from(getMainColumnFamilyName());
+        Select query = Cql.select().from(getMainColumnFamilyName());
         query.where().and(eq(ACCOUNT_ID_FIELD, accountId)).and(eq(GAME_ID_FIELD, gameId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getById");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getById");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         return row == null ? null : extractFromResult(row);
     }
 
     @Override
     public IWallet getWallet(long accountId) {
-        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select().from(getMainColumnFamilyName());
+        Select query = Cql.select().from(getMainColumnFamilyName());
         query.where().and(eq(ACCOUNT_ID_FIELD, accountId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getWallet", 2);
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getWallet", 2);
         CommonWallet wallet = new CommonWallet(accountId);
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             CommonGameWallet gameWallet = extractFromResult(row);
             wallet.addGameWallet(gameWallet);
         }
@@ -150,7 +165,7 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
     @Override
     public void removeWallet(long accountId) {
         LOG.debug("removeWallet: {}", accountId);
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(getMainColumnFamilyName());
+        Delete query = Cql.delete().from(getMainColumnFamilyName());
         query.where(eq(ACCOUNT_ID_FIELD, accountId));
         execute(query, "removeWallet");
     }
@@ -158,12 +173,12 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
     @Override
     public void removeGameWallet(long accountId, int gameId) {
         LOG.debug("removeGameWallet: {}, gameId={}", accountId, gameId);
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(getMainColumnFamilyName());
+        Delete query = Cql.delete().from(getMainColumnFamilyName());
         query.where(eq(ACCOUNT_ID_FIELD, accountId)).and(eq(GAME_ID_FIELD, gameId));
         execute(query, "removeGameWallet");
     }
 
-    private CommonGameWallet extractFromResult(com.datastax.driver.core.Row result) {
+    private CommonGameWallet extractFromResult(com.abs.casino.cassandra.persist.engine.Row result) {
         long roundId = result.getLong(ROUND_ID_FIELD);
         long gameSessionId = result.getLong(GAME_SESSION_ID_FIELD);
         long winAmount = result.getLong(WIN_AMOUNT_FIELD);

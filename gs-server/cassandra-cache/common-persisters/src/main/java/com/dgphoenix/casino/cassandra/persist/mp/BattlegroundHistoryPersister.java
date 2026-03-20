@@ -1,6 +1,9 @@
 package com.abs.casino.cassandra.persist.mp;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.CassandraDataTypes;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
@@ -8,6 +11,17 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.ByteBuffer;
 import java.util.*;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+import com.datastax.driver.core.querybuilder.Batch;
+import com.datastax.driver.core.querybuilder.Delete;
+import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.querybuilder.Select;
+import com.abs.casino.cassandra.persist.engine.SchemaCql.Direction;
+
 
 public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(BattlegroundHistoryPersister.class);
@@ -28,31 +42,31 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(DATE_TIME, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID, com.datastax.driver.core.DataType.cint(), false, true, false),
-                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(GAMESESSION_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID, bigint(), false, false, true),
+                    new ColumnDefinition(DATE_TIME, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID, cint(), false, true, false),
+                    new ColumnDefinition(ROUND_ID, bigint(), false, true, false),
+                    new ColumnDefinition(GAMESESSION_ID, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), ACCOUNT_ID)
-            .clusteringOrder(DATE_TIME, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
+            .clusteringOrder(DATE_TIME, Direction.DESC);
 
     private static final TableDefinition PARTICIPANT_ROUND_TABLE = new TableDefinition(
             CF_PARTICIPANT_NAME,
             Arrays.asList(
-                    new ColumnDefinition(SID, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAMESESSION_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(ACCOUNT_IDS, com.datastax.driver.core.DataType.set(com.datastax.driver.core.DataType.bigint())),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(SID, text(), false, false, true),
+                    new ColumnDefinition(ROUND_ID, bigint(), false, false, true),
+                    new ColumnDefinition(GAMESESSION_ID, bigint(), false, true, false),
+                    new ColumnDefinition(ACCOUNT_IDS, CassandraDataTypes.set(bigint())),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), SID);
 
     public void create(long accountId, BattlegroundRound battlegroundRound) {
         String json = TABLE.serializeToJson(battlegroundRound);
         ByteBuffer buffer = TABLE.serializeToBytes(battlegroundRound);
-        com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery()
+        Insert insert = getInsertQuery()
                 .value(ACCOUNT_ID, accountId)
                 .value(DATE_TIME, battlegroundRound.getDateTime())
                 .value(GAME_ID, battlegroundRound.getGameId())
@@ -66,14 +80,14 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
 
     public void update(long accountId, BattlegroundRound battlegroundRound) {
 
-        com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(DATE_TIME, GAME_ID, ROUND_ID, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        Select select = getSelectColumnsQuery(DATE_TIME, GAME_ID, ROUND_ID, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID, accountId))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.eq(DATE_TIME, battlegroundRound.getDateTime()))
+                .and(Cql.eq(DATE_TIME, battlegroundRound.getDateTime()))
                 .limit(1);
 
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "update:: select before");
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(select, "update:: select before");
 
-        com.datastax.driver.core.Row existRow = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.Row existRow = resultSet.one();
 
         if (existRow != null) {
 
@@ -86,10 +100,10 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
 
             select = getSelectColumnsQuery(DATE_TIME, GAME_ID, ROUND_ID, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                     .where(eq(ACCOUNT_ID, accountId))
-                    .and(com.datastax.driver.core.querybuilder.QueryBuilder.eq(ROUND_ID, battlegroundRound.getRoundId()))
+                    .and(Cql.eq(ROUND_ID, battlegroundRound.getRoundId()))
                     .limit(1);
 
-            resultSet = execute(select, "update:: select before");
+            resultSet = executeWrapped(select, "update:: select before");
 
             existRow = resultSet.one();
 
@@ -106,22 +120,22 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     }
 
     public void remove(long accountId, long date) {
-        com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(getMainColumnFamilyName());
+        Delete query = Cql.delete().from(getMainColumnFamilyName());
         query.where(eq(ACCOUNT_ID, accountId)).and(eq(DATE_TIME, date));
         execute(query, "remove");
     }
 
     public List<BattlegroundRound> getBattlegroundHistoryByAccountIdAndPeriod(long accountId, long startTime,
                                                                               long endTime) {
-        com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(DATE_TIME, GAME_ID, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        Select select = getSelectColumnsQuery(DATE_TIME, GAME_ID, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID, accountId))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(DATE_TIME, startTime))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.lt(DATE_TIME, endTime))
+                .and(Cql.gte(DATE_TIME, startTime))
+                .and(Cql.lt(DATE_TIME, endTime))
                 .limit(PAGE_SIZE);
-        com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByAccountIdAndPeriod");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(select, "getBattlegroundHistoryByAccountIdAndPeriod");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (com.datastax.driver.core.Row row : result) {
+            for (com.abs.casino.cassandra.persist.engine.Row row : result) {
                 battlegroundRounds.add(deserialize(row));
             }
         }
@@ -130,16 +144,16 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
 
     public List<BattlegroundRound> getBattlegroundHistoryByAccountIdAndPeriodAndGameId(long accountId, long startTime,
                                                                                        long endTime, int gameId) {
-        com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(DATE_TIME, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        Select select = getSelectColumnsQuery(DATE_TIME, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID, accountId))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(DATE_TIME, startTime))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.lt(DATE_TIME, endTime))
+                .and(Cql.gte(DATE_TIME, startTime))
+                .and(Cql.lt(DATE_TIME, endTime))
                 .and(eq(GAME_ID, gameId))
                 .limit(PAGE_SIZE);
-        com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByAccountIdAndPeriodAndGameId");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(select, "getBattlegroundHistoryByAccountIdAndPeriodAndGameId");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (com.datastax.driver.core.Row row : result) {
+            for (com.abs.casino.cassandra.persist.engine.Row row : result) {
                 battlegroundRounds.add(deserialize(row));
             }
         }
@@ -147,12 +161,12 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     }
 
     public List<BattlegroundRound> getBattlegroundHistoryByGameSessionId(long gameSessionId) {
-        com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
+        Select select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         select.where(eq(GAMESESSION_ID, gameSessionId));
-        com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByGameSessionId");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(select, "getBattlegroundHistoryByGameSessionId");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (com.datastax.driver.core.Row row : result) {
+            for (com.abs.casino.cassandra.persist.engine.Row row : result) {
                 battlegroundRounds.add(deserialize(row));
             }
         }
@@ -178,7 +192,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
         return LOG;
     }
 
-    private BattlegroundRound deserialize(com.datastax.driver.core.Row row) {
+    private BattlegroundRound deserialize(com.abs.casino.cassandra.persist.engine.Row row) {
         BattlegroundRound br =
                 TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME), BattlegroundRound.class);
         if (br == null) {
@@ -194,12 +208,12 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     }
 
     public List<BattlegroundRound> getBattlegroundHistoryByGameIdAndRoundId(long roundId) {
-        com.datastax.driver.core.querybuilder.Select select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
+        Select select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         select.where(eq(ROUND_ID, roundId));
-        com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByGameIdAndRoundId");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(select, "getBattlegroundHistoryByGameIdAndRoundId");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (com.datastax.driver.core.Row row : result) {
+            for (com.abs.casino.cassandra.persist.engine.Row row : result) {
                 battlegroundRounds.add(deserialize(row));
             }
         }
@@ -208,7 +222,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
 
     public void addParticipantsWithBatch(List<BattlegroundRoundParticipant> rounds, Set<Long> accountIds) {
         if(rounds != null && !rounds.isEmpty()) {
-            com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
+            Batch batch = Cql.batch();
             int BATCH_SIZE = 10;
             int count = 0;
 
@@ -216,7 +230,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
                 String json = PARTICIPANT_ROUND_TABLE.serializeToJson(round);
                 ByteBuffer buffer = PARTICIPANT_ROUND_TABLE.serializeToBytes(round);
 
-                com.datastax.driver.core.querybuilder.Insert insert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(PARTICIPANT_ROUND_TABLE.getTableName())
+                Insert insert = Cql.insertInto(PARTICIPANT_ROUND_TABLE.getTableName())
                         .value(SID, round.getSid())
                         .value(ROUND_ID, round.getRoundId())
                         .value(GAMESESSION_ID, round.getGameSessionId())
@@ -229,7 +243,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
 
                 if (count == BATCH_SIZE) {
                     execute(batch, "addParticipantsWithBatch");
-                    batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch(); // start a new batch
+                    batch = Cql.batch(); // start a new batch
                     count = 0;
                 }
             }
@@ -244,7 +258,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     public void addParticipants(BattlegroundRoundParticipant battlegroundRoundParticipant, Set<Long> accountIds) {
         ByteBuffer buffer = PARTICIPANT_ROUND_TABLE.serializeToBytes(battlegroundRoundParticipant);
         String json = PARTICIPANT_ROUND_TABLE.serializeToJson(battlegroundRoundParticipant);
-        com.datastax.driver.core.querybuilder.Insert insert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(PARTICIPANT_ROUND_TABLE.getTableName())
+        Insert insert = Cql.insertInto(PARTICIPANT_ROUND_TABLE.getTableName())
                 .value(SID, battlegroundRoundParticipant.getSid())
                 .value(ROUND_ID, battlegroundRoundParticipant.getRoundId())
                 .value(GAMESESSION_ID, battlegroundRoundParticipant.getGameSessionId())
@@ -256,12 +270,12 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     }
 
     public Set<Long> getParticipantsBySID(String sessionId) {
-        com.datastax.driver.core.querybuilder.Select select = com.datastax.driver.core.querybuilder.QueryBuilder.select(ACCOUNT_IDS).from(PARTICIPANT_ROUND_TABLE.getTableName());
+        Select select = Cql.select(ACCOUNT_IDS).from(PARTICIPANT_ROUND_TABLE.getTableName());
         select.where(eq(SID, sessionId));
-        com.datastax.driver.core.ResultSet result = execute(select, "getParticipantsByGameSessionId");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(select, "getParticipantsByGameSessionId");
         Set<Long> participantsIds = new HashSet<>();
         if (result != null) {
-            for (com.datastax.driver.core.Row row : result) {
+            for (com.abs.casino.cassandra.persist.engine.Row row : result) {
                 participantsIds.addAll(row.getSet(ACCOUNT_IDS, Long.class));
             }
         }
@@ -269,20 +283,20 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     }
 
     public List<BattlegroundRoundParticipant> getBattlegroundRoundParticipantByGameSessionId(long gameSessionId) {
-        com.datastax.driver.core.querybuilder.Select select = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        Select select = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(PARTICIPANT_ROUND_TABLE.getTableName());
         select.where(eq(GAMESESSION_ID, gameSessionId));
-        com.datastax.driver.core.ResultSet result = execute(select, "getParticipantsByGameSessionId");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(select, "getParticipantsByGameSessionId");
         List<BattlegroundRoundParticipant> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (com.datastax.driver.core.Row row : result) {
+            for (com.abs.casino.cassandra.persist.engine.Row row : result) {
                 battlegroundRounds.add(deserializeBattlegroundRoundParticipant(row));
             }
         }
         return battlegroundRounds;
     }
 
-    private BattlegroundRoundParticipant deserializeBattlegroundRoundParticipant(com.datastax.driver.core.Row row) {
+    private BattlegroundRoundParticipant deserializeBattlegroundRoundParticipant(com.abs.casino.cassandra.persist.engine.Row row) {
         BattlegroundRoundParticipant p = PARTICIPANT_ROUND_TABLE.deserializeFromJson(
                 row.getString(JSON_COLUMN_NAME), BattlegroundRoundParticipant.class);;
 

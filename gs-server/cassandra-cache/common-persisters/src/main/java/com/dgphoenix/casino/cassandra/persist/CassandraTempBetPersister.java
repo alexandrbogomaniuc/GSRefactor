@@ -2,17 +2,21 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Cql;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.cache.data.bet.PlayerBet;
 import com.abs.casino.common.web.statistics.StatisticsManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.*;
+
+
+
 
 /**
  * User: flsh
@@ -26,10 +30,10 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BET_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(BET_ID_FIELD, cint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), GAME_SESSION_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.getSizeTired(true, TimeUnit.HOURS.toSeconds(1), 0.0))
@@ -45,12 +49,12 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
 
     public PlayerBet getPlayerBet(long gameSessionId, long betId) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
                 .and(eq(BET_ID_FIELD, (int) betId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getPlayerBet");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getPlayerBet");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
 
         PlayerBet playerBet = null;
         if (row != null) {
@@ -66,17 +70,17 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
         return playerBet;
     }
 
-    com.datastax.driver.core.ResultSet getResultSetByGameSessionId(long gameSessionId) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(BET_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+    com.abs.casino.cassandra.persist.engine.ResultSet getResultSetByGameSessionId(long gameSessionId) {
+        com.datastax.driver.core.Statement query = Cql.select(BET_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(COLUMN_FAMILY_NAME)
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
-        return execute(query, "getResultSetByGameSessionId get from temp Table");
+        return executeWrapped(query, "getResultSetByGameSessionId get from temp Table");
     }
 
     public List<PlayerBet> getOnlinePayerBets(long gameSessionId) {
         Map<Integer, PlayerBet> betsMap = new HashMap<>();
-        com.datastax.driver.core.ResultSet resultSet = getResultSetByGameSessionId(gameSessionId);
-        for (com.datastax.driver.core.Row row : resultSet) {
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = getResultSetByGameSessionId(gameSessionId);
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             if (row != null) {
                 int betId = row.getInt(BET_ID_FIELD);
                 if (!betsMap.containsKey(betId)) {
@@ -102,20 +106,20 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
         return new ArrayList<>(betsMap.values());
     }
 
-    com.datastax.driver.core.ResultSet getResultSetByGameSessionIdAndRounds(long gameSessionId, Set<Long> betIds) {
-        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+    com.abs.casino.cassandra.persist.engine.ResultSet getResultSetByGameSessionIdAndRounds(long gameSessionId, Set<Long> betIds) {
+        com.datastax.driver.core.Statement query = Cql.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(COLUMN_FAMILY_NAME)
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
-                .and(com.datastax.driver.core.querybuilder.QueryBuilder.in(BET_ID_FIELD, betIds.toArray()));
-        return execute(query, "getResultSetByGameSessionIdAndRounds from temp Table");
+                .and(Cql.in(BET_ID_FIELD, betIds.toArray()));
+        return executeWrapped(query, "getResultSetByGameSessionIdAndRounds from temp Table");
     }
 
-    void addDeleteStatement(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId) {
+    void addDeleteStatement(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId) {
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         statements.add(addItemDeletion(COLUMN_FAMILY_NAME, gameSessionId));
     }
 
-    public void prepareToPersistBet(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId, PlayerBet bet,
+    public void prepareToPersistBet(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId, PlayerBet bet,
                                     List<ByteBuffer> byteBuffersCollector) {
         if (bet == null) {
             getLog().warn("persist: empty bet, gameSessionId={}", gameSessionId);

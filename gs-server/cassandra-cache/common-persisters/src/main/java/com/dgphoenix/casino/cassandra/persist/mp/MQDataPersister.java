@@ -2,6 +2,7 @@ package com.abs.casino.cassandra.persist.mp;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.mp.MQData;
 import org.apache.logging.log4j.LogManager;
@@ -9,6 +10,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 public class MQDataPersister extends AbstractCassandraPersister<Long, String> {
     private static final Logger LOG = LogManager.getLogger(MQDataPersister.class);
@@ -19,21 +24,21 @@ public class MQDataPersister extends AbstractCassandraPersister<Long, String> {
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), ACCOUNT_ID_COLUMN);
 
     public void persist(MQData data) {
         ByteBuffer buffer = TABLE.serializeToBytes(data);
         String json = TABLE.serializeToJson(data);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(ACCOUNT_ID_COLUMN, data.getAccountId())
                     .value(GAME_ID_COLUMN, data.getGameId())
                     .value(SERIALIZED_COLUMN_NAME, buffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(buffer);
@@ -41,11 +46,11 @@ public class MQDataPersister extends AbstractCassandraPersister<Long, String> {
     }
 
     public MQData load(long accountId, long gameId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_COLUMN, accountId))
                 .and(eq(GAME_ID_COLUMN, gameId))
-                .limit(1);
-        com.datastax.driver.core.Row row = execute(query, "load").one();
+                .limit(1));
+        Row row = executeWrapped(query, "load").one();
         if (row == null) {
             return null;
         }

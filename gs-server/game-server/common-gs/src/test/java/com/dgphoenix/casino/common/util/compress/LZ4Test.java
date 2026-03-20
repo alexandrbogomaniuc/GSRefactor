@@ -1,6 +1,7 @@
 package com.abs.casino.common.util.compress;
 
 import org.junit.Test;
+import org.junit.Assume;
 
 import java.nio.ByteBuffer;
 
@@ -24,6 +25,7 @@ public class LZ4Test {
 
 
     private void testCompressor(String testString) throws Exception {
+        Assume.assumeTrue("LZ4 native library unavailable in current runtime", isLz4Available());
         byte[] data = testString.getBytes("UTF-8");
         //System.out.println("data size=" + data.length);
         ByteBuffer sourceBuffer = ByteBuffer.allocateDirect(data.length);
@@ -39,5 +41,14 @@ public class LZ4Test {
         String restoredString = new String(restored, "UTF-8");
         //System.out.println("restored=" + restoredString + "'");
         assertEquals(testString, restoredString);
+    }
+
+    private boolean isLz4Available() {
+        try {
+            com.abs.casino.common.util.LZ4Compressor.getInstance();
+            return true;
+        } catch (Throwable ignored) {
+            return false;
+        }
     }
 }

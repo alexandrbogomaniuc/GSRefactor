@@ -6,8 +6,7 @@ import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import javax.annotation.PostConstruct;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -22,6 +21,8 @@ import org.apache.kafka.connect.json.JsonDeserializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import com.abs.casino.gs.GameServer;
@@ -52,6 +53,7 @@ public class KafkaRecieverService {
     private final KafkaProperties kafkaProperties;
 
     private final ExecutorService consumerExecutorService = Executors.newFixedThreadPool(50);
+    private final AtomicBoolean receiversInitScheduled = new AtomicBoolean(false);
 
     @Autowired
     public KafkaRecieverService(KafkaOuterRequestHandlerFactory kafkaOuterRequestHandlerFactory,
@@ -62,14 +64,26 @@ public class KafkaRecieverService {
         this.kafkaProperties = kafkaProperties;
     }
 
-    @PostConstruct
+    @EventListener(ContextRefreshedEvent.class)
+    public void onContextRefreshed() {
+        if (!receiversInitScheduled.compareAndSet(false, true)) {
+            return;
+        }
+        consumerExecutorService.submit(this::init);
+    }
+
     void init() {
         long timeoutMillis = 30_000;
         long intervalMillis = 5_000;
         long startTime = System.currentTimeMillis();
 
         while (System.currentTimeMillis() - startTime < timeoutMillis) {
-            boolean result = GameServer.getInstance().isInitialized();
+            boolean result = false;
+            try {
+                result = GameServer.getInstance().isInitialized();
+            } catch (Throwable t) {
+                LOGGER.info("GS singleton is not ready yet, waiting...");
+            }
             if (result) {
                 LOGGER.info("GS is initialized. Initializing kafka receivers.");
                 break;

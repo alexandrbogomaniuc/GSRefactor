@@ -10,6 +10,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.ascii;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * Created by vladislav on 12/14/16.
  */
@@ -31,10 +34,10 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
     private static final String ITEM = "it";
     private static final String LOCALIZATION = "loc";
     private static final TableDefinition TABLE = new TableDefinition(LOCALIZATIONS_CF, Arrays.asList(
-            new ColumnDefinition(KEY, com.datastax.driver.core.DataType.ascii(), false, false, true),
-            new ColumnDefinition(LANG, com.datastax.driver.core.DataType.ascii(), false, false, true),
-            new ColumnDefinition(ITEM, com.datastax.driver.core.DataType.ascii(), false, false, true),
-            new ColumnDefinition(LOCALIZATION, com.datastax.driver.core.DataType.text(), false, false, false)
+            new ColumnDefinition(KEY, ascii(), false, false, true),
+            new ColumnDefinition(LANG, ascii(), false, false, true),
+            new ColumnDefinition(ITEM, ascii(), false, false, true),
+            new ColumnDefinition(LOCALIZATION, text(), false, false, false)
     ), KEY);
 
     public void persistPromoLocalizations(long campaignId, Map<String, String> localizedItems) {
@@ -91,13 +94,13 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
 
     public LocalizationTitles getNetworkPromoLocalizations(long networkPromoCampaignId, String lang) {
         String key = PROMO_TYPE + IDENTIFIER_DELIMITER + networkPromoCampaignId;
-        List<com.datastax.driver.core.Row> rows = execute(getSelectColumnsQuery(ITEM, LOCALIZATION)
+        List<com.abs.casino.cassandra.persist.engine.Row> rows = execute(getSelectColumnsQuery(ITEM, LOCALIZATION)
                 .where(eq(KEY, key))
                 .and(eq(LANG, lang.toLowerCase())), "getNetworkPromoLocalizations").all();
         String tournamentRules = "";
         String prizeAllocation = "";
         String howToWin = "";
-        for (com.datastax.driver.core.Row row : rows) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : rows) {
             String item = row.getString(ITEM);
             String localization = row.getString(LOCALIZATION);
             switch (item) {
@@ -120,7 +123,7 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
     public String getLocalizedPromoTitle(long campaignId, String lang) {
         String key = PROMO_TYPE + IDENTIFIER_DELIMITER + campaignId;
         String item = TITLE;
-        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(LOCALIZATION)
+        com.abs.casino.cassandra.persist.engine.Row result = execute(getSelectColumnsQuery(LOCALIZATION)
                 .where(eq(KEY, key))
                 .and(eq(LANG, lang.toLowerCase()))
                 .and(eq(ITEM, item)), "getLocalizedPromoTitle").one();

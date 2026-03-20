@@ -23,6 +23,10 @@ import com.google.common.cache.LoadingCache;
 import java.util.*;
 import java.util.concurrent.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * Created by grien on 17.02.15.
  */
@@ -102,10 +106,10 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     public TableDefinition getMainTableDefinition() {
         return new TableDefinition(getMainColumnFamilyName(),
                 Arrays.asList(
-                        new ColumnDefinition(LOCK_ID, com.datastax.driver.core.DataType.text(), false, false, true),
-                        new ColumnDefinition(LOCKER, com.datastax.driver.core.DataType.cint(), false, true, false),
-                        new ColumnDefinition(LAST_LOCKER, com.datastax.driver.core.DataType.cint()),
-                        new ColumnDefinition(LOCK_TIME, com.datastax.driver.core.DataType.bigint())
+                        new ColumnDefinition(LOCK_ID, text(), false, false, true),
+                        new ColumnDefinition(LOCKER, cint(), false, true, false),
+                        new ColumnDefinition(LAST_LOCKER, cint()),
+                        new ColumnDefinition(LOCK_TIME, bigint())
                 ), LOCK_ID)
                 .caching(Caching.ACTUAL_DATA)
                 .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
@@ -155,8 +159,8 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
         long now = System.currentTimeMillis();
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(LOCK_TIME, LOCKER, LAST_LOCKER).
                 where(eq(LOCK_ID, id)).limit(1);
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "getCurrentLocker");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(select, "getCurrentLocker");
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         if (row == null) {
             return null;
         }
@@ -169,7 +173,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     }
 
     private boolean persist(String id, ServerLockInfo currentLocker, long newLockTime) {
-        com.datastax.driver.core.ResultSet resultSet;
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet;
         if (currentLocker == null) {
             com.datastax.driver.core.Statement query = getInsertQuery().
                     value(LOCK_ID, id).
@@ -177,7 +181,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                     value(LOCK_TIME, newLockTime).
                     value(LAST_LOCKER, getLockerId()).
                     ifNotExists();
-            resultSet = executeWithCheckTimeout(query, "persist: insert");
+            resultSet = executeWithCheckTimeoutWrapped(query, "persist: insert");
         } else {
             com.datastax.driver.core.Statement updateQuery =
                     getUpdateQuery(eq(LOCK_ID, id)).
@@ -186,7 +190,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                             and(set(LOCKER, getLockerId())).
                             and(set(LAST_LOCKER, getLockerId())).
                             onlyIf(eq(LOCK_TIME, currentLocker.getLockTime()));
-            resultSet = executeWithCheckTimeout(updateQuery, "persist: update");
+            resultSet = executeWithCheckTimeoutWrapped(updateQuery, "persist: update");
         }
         return resultSet.wasApplied();
     }
@@ -207,7 +211,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                         getUpdateQuery(eq(LOCK_ID, lockId)).
                                 with(set(LOCKER, -1)).
                                 onlyIf(eq(LOCKER, getLockerId()));
-                com.datastax.driver.core.ResultSet resultSet = execute(query, "delete");
+                com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "delete");
                 success = resultSet.wasApplied();
                 break;
             } catch (InterruptedException e) {
@@ -513,8 +517,8 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
             int countFailed = 0;
             int total = 0;
             try {
-                com.datastax.driver.core.ResultSet resultSet = getLockIds();
-                for (com.datastax.driver.core.Row row : resultSet) {
+                com.abs.casino.cassandra.persist.engine.ResultSet resultSet = getLockIds();
+                for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
                     long lastUpdateTime = row.getLong(LOCK_TIME);
                     if (System.currentTimeMillis() - lastUpdateTime > CHECK_LOCK_TIME) {
                         String lockId = row.getString(LOCK_ID);
@@ -551,10 +555,10 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
         }
     }
 
-    private com.datastax.driver.core.ResultSet getLockIds() {
+    private com.abs.casino.cassandra.persist.engine.ResultSet getLockIds() {
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(getMainTableDefinition(), LOCK_ID, LOCK_TIME)
                 .where(eq(LOCKER, getLockerId()));
         select.setFetchSize(1000);
-        return execute(select, "getLockIds");
+        return executeWrapped(select, "getLockIds");
     }
 }

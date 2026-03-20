@@ -7,6 +7,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 public class PlayerHistoryPersister {
 
@@ -24,14 +27,14 @@ public class PlayerHistoryPersister {
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(PLAYER_ROUND_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ROOM_ROUND_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(VERSION_COLUMN, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(BANK_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(PLAYER_ROUND_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(ROOM_ROUND_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(VERSION_COLUMN, bigint()),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), BANK_ID_COLUMN, GAME_ID_COLUMN, ACCOUNT_ID_COLUMN, PLAYER_ROUND_ID_COLUMN, ROOM_ROUND_ID_COLUMN)
             .compaction(CompactionStrategy.LEVELED);
 

@@ -12,6 +12,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 30.06.15.
@@ -22,9 +26,9 @@ public class CassandraFRBonusWinPersister extends AbstractCassandraPersister<Lon
     private static final Logger LOG = LogManager.getLogger(CassandraFRBonusWinPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(FRBONUS_WIN_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), KEY)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED);
@@ -42,9 +46,9 @@ public class CassandraFRBonusWinPersister extends AbstractCassandraPersister<Lon
         String json = TABLE.serializeToJson(win);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(win);
         try {
-            com.datastax.driver.core.Statement query = getUpdateQuery(win.getAccountId())
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getUpdateQuery(win.getAccountId())
                     .with(set(SERIALIZED_COLUMN_NAME, byteBuffer))
-                    .and(set(JSON_COLUMN_NAME, json));
+                    .and(set(JSON_COLUMN_NAME, json)));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);

@@ -5,11 +5,10 @@ package com.datastax.driver.core.schemabuilder;
  * Use for Cassandra 3.x+
  */
 public class CompressionOptions3 extends TableOptions.CompressionOptions {
-    // Cassandra 2.x requires 'sstable_compression', Cassandra 3.x+ expects 'class'.
-    // Keep 2.x as default for local baseline; set JVM flag
-    // -Dcassandra.compression.useClassOption=true when running on Cassandra 3.x+.
+    // Cassandra 3.x+ (including 5.x) expects 'class'; keep a JVM escape hatch
+    // for legacy compatibility testing with older clusters.
     private static final boolean USE_CLASS_OPTION =
-            Boolean.parseBoolean(System.getProperty("cassandra.compression.useClassOption", "false"));
+            Boolean.parseBoolean(System.getProperty("cassandra.compression.useClassOption", "true"));
 
     private Algorithm algorithm;
 

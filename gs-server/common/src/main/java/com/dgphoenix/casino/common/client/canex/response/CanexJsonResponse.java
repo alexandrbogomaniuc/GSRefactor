@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
 import java.util.function.BiConsumer;
 
 /**
- * Common response body for all responses from Canex
+ * Common response body for all wallet-service responses.
  */
 public class CanexJsonResponse {
     private static final Logger LOG = LogManager.getLogger(CanexJsonResponse.class);

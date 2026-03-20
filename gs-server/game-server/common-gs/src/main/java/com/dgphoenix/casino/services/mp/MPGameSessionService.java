@@ -33,20 +33,18 @@ import java.util.concurrent.TimeUnit;
 public class MPGameSessionService {
     private static final Logger LOG = LogManager.getLogger(MPGameSessionService.class);
     private final BankInfoCache bankInfoCache;
-    private final GameServer gameServer;
+    private volatile GameServer gameServer;
     private final SessionHelper sessionHelper;
     private final KafkaRequestMultiPlayer kafkaRequestMultiPlayer;
     private final BattlegroundService battlegroundService;
     private final CassandraCurrentPlayerSessionStatePersister playerSessionStatePersister;
 
     public MPGameSessionService(BankInfoCache bankInfoCache,
-                                GameServer gameServer,
                                 SessionHelper sessionHelper,
                                 KafkaRequestMultiPlayer kafkaRequestMultiPlayer,
                                 BattlegroundService battlegroundService,
                                 CassandraPersistenceManager cpm) {
         this.bankInfoCache = bankInfoCache;
-        this.gameServer = gameServer;
         this.sessionHelper = sessionHelper;
         this.kafkaRequestMultiPlayer = kafkaRequestMultiPlayer;
         this.battlegroundService = battlegroundService;
@@ -146,7 +144,7 @@ public class MPGameSessionService {
             }
 
             Pair<GameSession, Boolean> result;
-            if (gameServer.needCloseMultiplayerGame(gameSession, bankInfo, -1)) {
+            if (getGameServer().needCloseMultiplayerGame(gameSession, bankInfo, -1)) {
                 LOG.debug("finishGameSessionAndMakeSitOut: needCloseMultiplayerGame and SitOut account: {}",
                     account);
                 sessionHelper.commitTransaction();
@@ -185,5 +183,19 @@ public class MPGameSessionService {
                 LOG.warn("finishGameSessionAndMakeSitOut: Exception:{} ", e.getMessage(), e);
             }
         }
+    }
+
+    private GameServer getGameServer() {
+        GameServer local = gameServer;
+        if (local == null) {
+            synchronized (this) {
+                local = gameServer;
+                if (local == null) {
+                    local = GameServer.getInstance();
+                    gameServer = local;
+                }
+            }
+        }
+        return local;
     }
 }

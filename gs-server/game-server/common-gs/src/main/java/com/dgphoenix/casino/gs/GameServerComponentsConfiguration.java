@@ -174,8 +174,9 @@ public class GameServerComponentsConfiguration {
     RemoteCallHelper remoteCallHelper(IWebSocketSessionsController webSocketSessionsController,
                                       IPromoCampaignManager promoCampaignManager,
                                       InServiceServiceHandler serviceHandler,
-                                      KafkaMessageService kafkaMessageService) {
-        return new RemoteCallHelper(webSocketSessionsController, promoCampaignManager, serviceHandler, kafkaMessageService);
+                                      KafkaMessageService kafkaMessageService,
+                                      CassandraPersistenceManager persistenceManager) {
+        return new RemoteCallHelper(webSocketSessionsController, promoCampaignManager, serviceHandler, kafkaMessageService, persistenceManager);
     }
 
     @Bean
@@ -392,7 +393,6 @@ public class GameServerComponentsConfiguration {
                                                      KafkaRequestMultiPlayer kafkaRequestMultiPlayer) {
         return new MPGameSessionService(
                 BankInfoCache.getInstance(),
-                GameServer.getInstance(),
                 SessionHelper.getInstance(),
                 kafkaRequestMultiPlayer,
                 battlegroundService,

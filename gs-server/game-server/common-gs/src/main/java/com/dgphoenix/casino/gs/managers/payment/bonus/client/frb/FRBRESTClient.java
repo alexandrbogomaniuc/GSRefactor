@@ -45,7 +45,7 @@ public class FRBRESTClient extends AbstractBonusClient implements IFRBonusClient
         super(bankId);
 
         specialRequestHeaders = bankInfo.getCWSpecialRequestHeaders();
-        if (!com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders)) {
+        if (!com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders)) {
             try {
                 specialRequestHeadersMap = CollectionUtils.stringToMap(specialRequestHeaders);
             } catch (Exception e) {
@@ -133,7 +133,7 @@ public class FRBRESTClient extends AbstractBonusClient implements IFRBonusClient
             Map<String, String> betParams = prepareBonusBetParams(extUserId, bonusId, IdGenerator.getInstance().getNext(FRBWinOperation.class),
                     extGameId, roundId, gameSessionId, isRoundFinished);
             String betUrl = bankInfo.getSendZeroBetFrbUrl();
-            if (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(betUrl)) {
+            if (com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty(betUrl)) {
                 betUrl = getFRBonusWinURL();
             }
             IXmlRequestResult output = request(betParams, betUrl);
@@ -148,7 +148,7 @@ public class FRBRESTClient extends AbstractBonusClient implements IFRBonusClient
             frbonusWin.setNewRound(gameId, false);
         }
         if (FRBonusWinRequestFactory.getInstance().getFRBonusWinManager(bankInfo.getId()) instanceof IDescriptionProducer
-                && !com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(operation.getDescription())) {
+                && !com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty(operation.getDescription())) {
             params.put(CBonus.PARAM_DESCRIPTION, operation.getDescription());
         }
         IXmlRequestResult output = request(params, getFRBonusWinURL());
@@ -164,7 +164,7 @@ public class FRBRESTClient extends AbstractBonusClient implements IFRBonusClient
 
         long balance = 0;
         String balanceStr = (String) output.getResponseParameters().get(CBonus.BALANCE);
-        if (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(balanceStr)) {
+        if (com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty(balanceStr)) {
             LOG.warn("balance tag in not found");
         } else {
             try {
@@ -248,7 +248,7 @@ public class FRBRESTClient extends AbstractBonusClient implements IFRBonusClient
 
             if (LOG.isDebugEnabled()) {
                 LOG.debug("request, response from url:" + url + " bankId:" + getBankId() + " is:" + sb +
-                        (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders) ?
+                        (com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty(specialRequestHeaders) ?
                                 "" : " specialRequestHeaders:" + specialRequestHeaders));
 
             }

@@ -2,6 +2,7 @@ package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.config.ClusterConfig;
 import com.abs.casino.cassandra.config.ColumnFamilyConfig;
+import com.abs.casino.cassandra.persist.engine.ConsistencyLevel;
 import com.abs.casino.common.configuration.ConfigHelper;
 import com.abs.casino.common.util.NtpTimeProvider;
 import org.apache.logging.log4j.LogManager;
@@ -26,15 +27,16 @@ public class KeyspaceConfiguration {
     private final ConfigHelper configHelper;
     private final NtpTimeProvider timeProvider;
     private ClusterConfig clusterConfig;
-    private com.datastax.driver.core.ConsistencyLevel readConsistencyLevel;
-    private com.datastax.driver.core.ConsistencyLevel writeConsistencyLevel;
-    private com.datastax.driver.core.ConsistencyLevel serialConsistencyLevel = com.datastax.driver.core.ConsistencyLevel.LOCAL_SERIAL;
+    private ConsistencyLevel readConsistencyLevel;
+    private ConsistencyLevel writeConsistencyLevel;
+    private ConsistencyLevel serialConsistencyLevel = ConsistencyLevel.LOCAL_SERIAL;
 
     public KeyspaceConfiguration(String filename, ConfigHelper configHelper, NtpTimeProvider timeProvider) {
         this.filename = filename;
         this.configHelper = configHelper;
         this.timeProvider = timeProvider;
         configHelper.registerAlias(ClusterConfig.class);
+        configHelper.allowTypesByWildcard("com.dgphoenix.casino.cassandra.config.**", "com.abs.casino.cassandra.config.**");
     }
 
     public void load() {
@@ -42,10 +44,10 @@ public class KeyspaceConfiguration {
         checkNotNull(clusterConfig, "Unparsable config file: %s. File may not exists", filename);
         checkState(isNotBlank(clusterConfig.getKeySpace()), "Config must contain keyspace name: %s", filename);
         checkState(!clusterConfig.getParsedHosts().isEmpty(), "Config contains unparsable host list: %s", clusterConfig.getHosts());
-        readConsistencyLevel = com.datastax.driver.core.ConsistencyLevel.valueOf(clusterConfig.getReadConsistencyLevel());
-        writeConsistencyLevel = com.datastax.driver.core.ConsistencyLevel.valueOf(clusterConfig.getWriteConsistencyLevel());
+        readConsistencyLevel = ConsistencyLevel.fromName(clusterConfig.getReadConsistencyLevel());
+        writeConsistencyLevel = ConsistencyLevel.fromName(clusterConfig.getWriteConsistencyLevel());
         if (clusterConfig.getSerialConsistencyLevel() != null) {
-            serialConsistencyLevel = com.datastax.driver.core.ConsistencyLevel.valueOf(clusterConfig.getSerialConsistencyLevel());
+            serialConsistencyLevel = ConsistencyLevel.fromName(clusterConfig.getSerialConsistencyLevel());
             checkState(serialConsistencyLevel.isSerial(), "Keyspace serial consistency level can be only SERIAL or LOCAL_SERIAL not %s", serialConsistencyLevel);
         }
     }
@@ -64,7 +66,7 @@ public class KeyspaceConfiguration {
                     clusterConfig.getClusterName(), clusterConfig.isValidateClusterName());
         }
         com.datastax.driver.core.QueryOptions options = new com.datastax.driver.core.QueryOptions();
-        options.setConsistencyLevel(writeConsistencyLevel);
+        options.setConsistencyLevel(writeConsistencyLevel.toDriver());
         clusterBuilder.withQueryOptions(options);
         clusterBuilder.addContactPointsWithPorts(clusterConfig.getParsedHosts());
         clusterBuilder.withTimestampGenerator(new NtpTimeGenerator(timeProvider));
@@ -103,15 +105,15 @@ public class KeyspaceConfiguration {
         LOG.info("Enabled DC-aware Cassandra load balancing for localDataCenterName={}", localDc);
     }
 
-    public com.datastax.driver.core.ConsistencyLevel getReadConsistencyLevel() {
+    public ConsistencyLevel getReadConsistencyLevel() {
         return readConsistencyLevel;
     }
 
-    public com.datastax.driver.core.ConsistencyLevel getWriteConsistencyLevel() {
+    public ConsistencyLevel getWriteConsistencyLevel() {
         return writeConsistencyLevel;
     }
 
-    public com.datastax.driver.core.ConsistencyLevel getSerialConsistencyLevel() {
+    public ConsistencyLevel getSerialConsistencyLevel() {
         return serialConsistencyLevel;
     }
 

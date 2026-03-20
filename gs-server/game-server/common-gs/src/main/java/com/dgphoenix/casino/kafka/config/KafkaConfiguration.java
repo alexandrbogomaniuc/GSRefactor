@@ -12,6 +12,8 @@ import com.abs.casino.kafka.config.KafkaProperties;
 
 @Configuration
 @ComponentScan({
+        "com.abs.casino.kafka.handler",
+        "com.abs.casino.kafka.service",
         "com.dgphoenix.casino.kafka.handler",
         "com.dgphoenix.casino.kafka.service"
 })

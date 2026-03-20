@@ -195,7 +195,7 @@ public class PlayerBetPersistenceManager {
         getPersister().persist(gameSessionId, bets);
     }
 
-    public void prepareToPersistGameSessionBets(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId,
+    public void prepareToPersistGameSessionBets(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId,
                                                 int maxPlayerBetId, List<ByteBuffer> byteBuffersCollector) {
         if (isUseBigStoragePersister()) {
             bigStorageBetPersister.prepareToPersistGameSessionBets(statementsMap, gameSessionId,

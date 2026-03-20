@@ -1962,7 +1962,7 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
 
     public String getCustomerSettingsUrl() {
         String settingUrl = PropertyUtils.getStringProperty(properties, KEY_CUSTOMER_SETTINGS_URL);
-        if (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(settingUrl)) {
+        if (StringUtils.isTrimmedEmpty(settingUrl)) {
             settingUrl = "/common/standard/settings/customerspec_descriptor.xml";
         }
         return settingUrl;
@@ -1970,7 +1970,7 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
 
     public String getCustomerSettingsHtml5Pc() {
         String settingPath = PropertyUtils.getStringProperty(properties, KEY_CUSTOMER_SETTINGS_HTML5PC);
-        if (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(settingPath)) {
+        if (StringUtils.isTrimmedEmpty(settingPath)) {
             settingPath = "/html5pc/common/_standard/settings/";
         }
         return settingPath;
@@ -3054,7 +3054,12 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
             allowedRefererDomains = new RefererDomains(input.readString());
             forbiddenRefererDomains = new RefererDomains(input.readString());
         }
-        pgsType = kryo.readObject(input, PlayerGameSettingsType.class);
+        try {
+            pgsType = kryo.readObject(input, PlayerGameSettingsType.class);
+        } catch (Exception e) {
+            LOG.error("read error: invalid pgsType for bankId=" + id, e);
+            pgsType = PlayerGameSettingsType.NONE;
+        }
         pgsTTL = input.readInt();
     }
 

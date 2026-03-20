@@ -4,9 +4,7 @@
     <value class="com.dgphoenix.casino.common.config.GameServerConfigTemplate">
       <serverId>1</serverId>
       <systemId>16</systemId>
-      <!-- <host>games-mqb.maxquest.com</host> -->
 	  <host>localhost</host>
-      <!-- <gsDomain>-mqb.maxquest.com</gsDomain> -->
 	  <gsDomain>.localhost</gsDomain>
       <name>GS_1</name>
 
@@ -41,7 +39,6 @@
       <reportsUploadUrl>http://games/reports/upload.php</reportsUploadUrl>
       <exportCachePath>/www/html/gs/ROOT/export/</exportCachePath>
       <smtpServer>report</smtpServer>
-      <!-- <fromSupportEmail>support@report-mqb.maxquest.com</fromSupportEmail> -->
 	  <fromSupportEmail>support@maxquest.com</fromSupportEmail>
       <ignoreCloseGameAction>true</ignoreCloseGameAction>
       <useDistributedLocks>true</useDistributedLocks>
@@ -56,7 +53,6 @@
       <sshStaticLobbyPass>MfSlyrKNgflG9r</sshStaticLobbyPass>
       <winnerFeedBanks>
       </winnerFeedBanks>
-      <!-- <domain>-mqb.maxquest.com</domain> -->
 	  <domain>localhost</domain>
       <requestTimeout>90000</requestTimeout>
       <httpProxyHost></httpProxyHost>
@@ -190,7 +186,6 @@
         </entry>
         <entry>
           <string>MQ_CLUSTERS_CONFIG</string>
-            <!-- <string>{clusters:{&apos;games-mp-mqb.maxquest.com&apos;: {&apos;1&apos;: {&apos;host&apos;: &apos;gs1&apos;, port: 6300}, &apos;2&apos;: {&apos;host&apos;: &apos;gs2&apos;, port: 6300}, &apos;3&apos;: {&apos;host&apos;: &apos;gs3&apos;, port: 6300}, &apos;4&apos;: {&apos;host&apos;: &apos;gs4&apos;, port: 6300}}}}</string> -->
 			<string>{clusters:{&#39;127.0.0.1:16300&#39;: {&#39;1&#39;: {&#39;host&#39;: &#39;gs1&#39;, port: 6300}, &#39;2&#39;: {&#39;host&#39;: &#39;gs2&#39;, port: 6300}, &#39;3&#39;: {&#39;host&#39;: &#39;gs3&#39;, port: 6300}}}}</string>
         </entry>
         <entry>
@@ -228,7 +223,6 @@
         </entry>
         <entry>
           <string>MP_LOBBY_WS_HOST</string>
-          <!-- <string>games-mp-mqb.maxquest.com</string> -->
 		  <string>127.0.0.1:16300</string>
         </entry>
         <entry>

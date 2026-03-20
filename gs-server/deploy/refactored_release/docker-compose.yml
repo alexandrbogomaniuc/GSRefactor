@@ -1,0 +1,136 @@
+services:
+  fullstack-cassandra:
+    image: ${TARGET_CASSANDRA_IMAGE:-cassandra:5.0.6}
+    environment:
+      MAX_HEAP_SIZE: "512M"
+      HEAP_NEWSIZE: "128M"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/cassandra/bin/cqlsh -e \"DESCRIBE KEYSPACES\" >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    ports:
+      - "${TARGET_CASSANDRA_PORT:-9143}:9042"
+    networks:
+      release-net:
+        aliases:
+          - fullstack-cassandra
+          - c1.gsmp.lan
+          - c2.gsmp.lan
+          - c3.gsmp.lan
+
+  fullstack-zookeeper:
+    image: ${ZOOKEEPER_IMAGE:-zookeeper:3.9}
+    ports:
+      - "${ZOOKEEPER_PORT:-12181}:2181"
+    networks:
+      release-net:
+        aliases:
+          - fullstack-zookeeper
+
+  fullstack-kafka:
+    image: ${KAFKA_IMAGE:-confluentinc/cp-kafka:7.6.1}
+    depends_on:
+      - fullstack-zookeeper
+    environment:
+      KAFKA_BROKER_ID: "1"
+      KAFKA_ZOOKEEPER_CONNECT: fullstack-zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://fullstack-kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: "1"
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: "1"
+    networks:
+      release-net:
+        aliases:
+          - fullstack-kafka
+
+  cassandra-init:
+    image: ${TARGET_CASSANDRA_IMAGE:-cassandra:5.0.6}
+    depends_on:
+      fullstack-cassandra:
+        condition: service_healthy
+    entrypoint:
+      - /bin/bash
+      - -lc
+      - >
+        /opt/cassandra/bin/cqlsh fullstack-cassandra -e "CREATE KEYSPACE IF NOT EXISTS RCasinoKS WITH replication = {'class':'SimpleStrategy','replication_factor':1};" &&
+        /opt/cassandra/bin/cqlsh fullstack-cassandra -e "CREATE KEYSPACE IF NOT EXISTS RCasinoSCKS WITH replication = {'class':'SimpleStrategy','replication_factor':1};" &&
+        /opt/cassandra/bin/cqlsh fullstack-cassandra -e "ALTER KEYSPACE RCasinoKS WITH replication = {'class':'SimpleStrategy','replication_factor':1};" &&
+        /opt/cassandra/bin/cqlsh fullstack-cassandra -e "ALTER KEYSPACE RCasinoSCKS WITH replication = {'class':'SimpleStrategy','replication_factor':1};"
+    networks:
+      - release-net
+    restart: "no"
+
+  webgs-static:
+    image: ${STATIC_IMAGE:-nginx:1.27-alpine}
+    depends_on:
+      fullstack-cassandra:
+        condition: service_healthy
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/games.override.conf:/etc/nginx/sites-enabled/games:ro
+      - ${STATIC_HTML5_PATH:-./runtime/static_html5}:/usr/share/nginx/html/html5pc:ro
+    ports:
+      - "${STATIC_PORT:-18080}:80"
+    networks:
+      - release-net
+
+  webgs:
+    image: ${WEBGS_IMAGE:-tomcat:9-jdk11}
+    depends_on:
+      cassandra-init:
+        condition: service_completed_successfully
+      fullstack-zookeeper:
+        condition: service_started
+      fullstack-kafka:
+        condition: service_started
+    environment:
+      CATALINA_OPTS: >-
+        -Dcassandra.hosts=${CASSANDRA_HOSTS:-fullstack-cassandra:9042}
+        -Dzookeeper.connect=${ZOOKEEPER_CONNECT:-fullstack-zookeeper:2181}
+        -Dzookeeper.hosts=${ZOOKEEPER_CONNECT:-fullstack-zookeeper:2181}
+        -Dkafka.hosts=${KAFKA_BOOTSTRAP:-fullstack-kafka:9092}
+        -Dkafka.bootstrap.servers=${KAFKA_BOOTSTRAP:-fullstack-kafka:9092}
+    volumes:
+      - ${WEBGS_WAR_PATH:-./runtime/ROOT.patched.war}:/usr/local/tomcat/webapps/ROOT.war:ro
+      - ${EXPORT_BUNDLE_PATH:-./runtime/export_localmachine}:/www/html/gs/ROOT/export:ro
+    ports:
+      - "${HEALTH_PORT:-8080}:8080"
+    networks:
+      - release-net
+
+  cassandra-legacy:
+    profiles: ["migration"]
+    image: ${LEGACY_CASSANDRA_IMAGE:-cassandra:3.11}
+    environment:
+      MAX_HEAP_SIZE: "512M"
+      HEAP_NEWSIZE: "128M"
+    ports:
+      - "${LEGACY_CASSANDRA_PORT:-9042}:9042"
+    networks:
+      - release-net
+
+  cassandra-target:
+    profiles: ["migration"]
+    image: ${TARGET_CASSANDRA_IMAGE:-cassandra:5.0.6}
+    environment:
+      MAX_HEAP_SIZE: "512M"
+      HEAP_NEWSIZE: "128M"
+    ports:
+      - "${TARGET_CASSANDRA_PORT:-9143}:9042"
+    networks:
+      - release-net
+
+  zookeeper-smoke:
+    profiles: ["migration"]
+    image: ${ZOOKEEPER_IMAGE:-zookeeper:3.9}
+    ports:
+      - "${ZOOKEEPER_PORT:-12181}:2181"
+    networks:
+      - release-net
+
+networks:
+  release-net:
+    name: gsrefactor-release-net

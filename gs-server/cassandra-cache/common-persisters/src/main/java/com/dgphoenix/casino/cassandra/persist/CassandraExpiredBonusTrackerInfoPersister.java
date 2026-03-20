@@ -2,12 +2,16 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.Date;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 /**
  * User: flsh
@@ -22,8 +26,8 @@ public class CassandraExpiredBonusTrackerInfoPersister extends AbstractCassandra
 
     private final static TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(LAST_PROCESSED_DATE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(LAST_PROCESSED_DATE_COLUMN, bigint(), false, false, false)
             ), KEY);
 
     private CassandraExpiredBonusTrackerInfoPersister() {
@@ -59,14 +63,14 @@ public class CassandraExpiredBonusTrackerInfoPersister extends AbstractCassandra
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist: " + key + "=" + new Date(lastProcessedDate));
         }
-        com.datastax.driver.core.Statement query = getInsertQuery()
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                 .value(KEY, key)
-                .value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate);
+                .value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate));
         execute(query, "persist");
     }
 
     public Long getLastProcessedDate(String key) {
-        com.datastax.driver.core.Row row = getAsRow(key, LAST_PROCESSED_DATE_COLUMN);
+        Row row = getAsWrappedRow(key, LAST_PROCESSED_DATE_COLUMN);
         return row != null ? row.getLong(LAST_PROCESSED_DATE_COLUMN) : null;
     }
 }

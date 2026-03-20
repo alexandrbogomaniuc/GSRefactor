@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.common.SharedCrashGameState;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.room.IMultiNodeRoom;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.RNG;
 import com.hazelcast.core.HazelcastInstance;
 import org.apache.logging.log4j.LogManager;

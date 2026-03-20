@@ -14,6 +14,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.ByteBuffer;
 import java.util.*;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 12.01.17.
@@ -27,10 +31,10 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
 
     private static final TableDefinition TOURNAMENT_RANK_TABLE = new TableDefinition(TOURNAMENT_RANK_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(CAMPAIGN_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), CAMPAIGN_ID_FIELD)
             .compaction(CompactionStrategy.LEVELED);
 
@@ -39,7 +43,7 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
         return TOURNAMENT_RANK_TABLE;
     }
 
-    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, TournamentMemberRanks ranks,
+    public void prepareToPersist(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, TournamentMemberRanks ranks,
                                  List<ByteBuffer> byteBuffersCollector) {
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         for (TournamentMemberRank rank : ranks.getRanks()) {
@@ -103,10 +107,10 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
     }
 
     public TournamentMemberRank getForAccount(long campaignId, long accountId) {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(CAMPAIGN_ID_FIELD, campaignId))
                 .and(eq(ACCOUNT_ID_FIELD, accountId)), "getForAccount");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         TournamentMemberRank result = null;
         if (row != null) {
             result = getMainTableDefinition()
@@ -121,10 +125,10 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
     }
 
     public List<TournamentMemberRank> getByCampaign(long campaignId) {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(CAMPAIGN_ID_FIELD, campaignId)), "getByCampaign");
         List<TournamentMemberRank> result = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             TournamentMemberRank rank = 
                     getMainTableDefinition().deserializeFromJson(row.getString(JSON_COLUMN_NAME),
                             TournamentMemberRank.class);

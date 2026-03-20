@@ -59,6 +59,6 @@ public class CassandraPersistenceContextConfiguration {
 
     @Bean("jsonHelper")
     public JsonHelper jsonHelper() {
-        return new JsonHelper("com.dgphoenix.casino.*");
+        return new JsonHelper("com.abs.casino", "com.dgphoenix.casino");
     }
 }

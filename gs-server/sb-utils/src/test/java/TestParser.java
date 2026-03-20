@@ -1,4 +1,4 @@
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.google.common.base.Splitter;
 
 import java.io.FileInputStream;

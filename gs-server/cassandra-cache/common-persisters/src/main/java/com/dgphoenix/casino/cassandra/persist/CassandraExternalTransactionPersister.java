@@ -2,6 +2,8 @@ package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.data.payment.PaymentMode;
 import com.abs.casino.common.cache.data.payment.transfer.ExternalPaymentTransaction;
@@ -10,6 +12,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 
 /**
@@ -24,10 +29,10 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
     private static final Logger LOG = LogManager.getLogger(CassandraExternalTransactionPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(EXTERNAL_TRANSACTION_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(INTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, text(), false, false, true),
+                    new ColumnDefinition(INTERNAL_ID_FIELD, text(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             KEY);
 
@@ -64,10 +69,10 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
 
     public ExternalPaymentTransaction getByInternalId(PaymentMode mode, long internalOperationId) {
         String key = getInternalId(mode, internalOperationId);
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(INTERNAL_ID_FIELD, key));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByInternalId");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(INTERNAL_ID_FIELD, key)));
+        ResultSet resultSet = executeWrapped(query, "getByInternalId");
+        Row row = resultSet.one();
         if (row == null) {
             return null;
         }
@@ -90,19 +95,19 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
         String json = TABLE.serializeToJson(transaction);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
         try {
-            com.datastax.driver.core.Statement query = transaction.getInternalOperationId() == null
-                    ? getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = transaction.getInternalOperationId() == null
+                    ? com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                             .value(KEY, key)
                             .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                            .value(JSON_COLUMN_NAME, json)
-                    : getInsertQuery()
+                            .value(JSON_COLUMN_NAME, json))
+                    : com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                             .value(KEY, key)
                             .value(SERIALIZED_COLUMN_NAME, byteBuffer)
                             .value(JSON_COLUMN_NAME, json)
                             .value(INTERNAL_ID_FIELD, getInternalId(
                                     transaction.getPaymentMode(),
                                     transaction.getInternalOperationId()
-                            ));
+                            )));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);

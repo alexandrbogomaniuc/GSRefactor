@@ -10,9 +10,7 @@
         <long>6275</long>
       </bankIds>
       <domainNames>
-<!--        <string>lobby-gp3.maxquest.com</string>-->
-          <!-- <string>default-stress.betsoftgaming.com</string> -->
-		  <string>default.mqbase.com</string>
+			  <string>default.mqbase.com</string>
       </domainNames>
     </value>
   </com.abs.casino.common.cache.ExportableCacheEntry>

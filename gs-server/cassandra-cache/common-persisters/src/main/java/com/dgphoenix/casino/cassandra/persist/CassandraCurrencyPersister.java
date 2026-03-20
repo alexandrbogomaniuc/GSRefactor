@@ -1,6 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.ICachePersister;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.common.cache.AbstractDistributedCache;
 import com.abs.casino.common.cache.CurrencyCache;
 import com.abs.casino.common.cache.data.currency.Currency;
@@ -75,14 +76,14 @@ public class CassandraCurrencyPersister extends AbstractStringDistributedConfigE
 
     @Override
     public void processAll(TableProcessor<Pair<String, Currency>> tableProcessor) throws IOException {
-        Iterator<com.datastax.driver.core.Row> iterator = getAll();
+        Iterator<Row> iterator = getAllWrapped();
         while (iterator.hasNext()) {
-            com.datastax.driver.core.Row row = iterator.next();
+            Row row = iterator.next();
             processRow(row, tableProcessor);
         }
     }
 
-    private void processRow(com.datastax.driver.core.Row row, TableProcessor<Pair<String, Currency>> tableProcessor) throws IOException {
+    private void processRow(Row row, TableProcessor<Pair<String, Currency>> tableProcessor) throws IOException {
         String key = row.getString(KEY);
         Currency value = _getTableDefinition().deserializeFromJson(row.getString(JSON_COLUMN_NAME), Currency.class);
 

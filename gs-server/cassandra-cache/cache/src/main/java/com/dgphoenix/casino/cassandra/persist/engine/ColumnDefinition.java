@@ -9,12 +9,12 @@ import java.util.Objects;
  */
 public class ColumnDefinition {
     private final String name;
-    private final com.datastax.driver.core.DataType type;
+    private final DataType type;
     private final boolean staticField;
     private final boolean indexed;
     private final boolean primaryKeyPart;
 
-    public ColumnDefinition(String name, com.datastax.driver.core.DataType type, boolean staticField, boolean indexed, boolean primaryKeyPart) {
+    public ColumnDefinition(String name, DataType type, boolean staticField, boolean indexed, boolean primaryKeyPart) {
         this.name = name.trim();
         this.type = type;
         this.staticField = staticField;
@@ -25,7 +25,7 @@ public class ColumnDefinition {
         }
     }
 
-    public ColumnDefinition(String name, com.datastax.driver.core.DataType type) {
+    public ColumnDefinition(String name, DataType type) {
         this(name, type, false, false, false);
     }
 
@@ -33,7 +33,7 @@ public class ColumnDefinition {
         return name;
     }
 
-    public com.datastax.driver.core.DataType getType() {
+    public DataType getType() {
         return type;
     }
 

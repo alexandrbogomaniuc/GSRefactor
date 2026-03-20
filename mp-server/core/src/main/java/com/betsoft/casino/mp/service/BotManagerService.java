@@ -15,7 +15,7 @@ import com.betsoft.casino.mp.model.room.IRoomInfo;
 import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
 import com.betsoft.casino.mp.web.IGameSocketClient;
 import com.betsoft.casino.mp.web.ILobbySocketClient;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
 import com.abs.casino.common.util.RNG;
 import com.abs.casino.common.util.string.StringUtils;

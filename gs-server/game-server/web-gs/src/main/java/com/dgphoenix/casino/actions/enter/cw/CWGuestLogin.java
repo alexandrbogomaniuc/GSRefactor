@@ -66,6 +66,8 @@ public class CWGuestLogin extends BaseStartGameAction<CWGuestLoginForm> {
                     return mapping.findForward(ERROR_FORWARD);
                 }
                 AccountManager.getInstance().setFreeBalance(accountInfo, gameId);
+                SessionHelper.getInstance().getTransactionData().setAccount(accountInfo);
+                SessionHelper.getInstance().getDomainSession().persistAccount();
                 SessionHelper.getInstance().commitTransaction();
                 SessionHelper.getInstance().markTransactionCompleted();
                 return getMultiPlayerForward(actionForm, request, GameMode.FREE, bankInfo,

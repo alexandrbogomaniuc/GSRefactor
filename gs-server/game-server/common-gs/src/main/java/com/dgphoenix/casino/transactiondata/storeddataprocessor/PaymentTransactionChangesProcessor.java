@@ -27,7 +27,7 @@ public class PaymentTransactionChangesProcessor implements IStoredDataProcessor<
 
     @Override
     public void process(StoredItem<PaymentTransaction, StoredItemInfo<PaymentTransaction>> item,
-                        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+                        HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         paymentTransactionPersister.prepareToPersist(statementsMap, item.getItem(),
                 byteBuffersCollector);
     }

@@ -484,7 +484,7 @@ public class ArchiveBetTools {
     public static int getRoundNumberByBetID (String gameID, String userID, String betID, String startTime, String endTime) {
         int result = 1;
         try {
-//        	com.dgphoenix.casino.gs.singlegames.tools.db.IResultList list = com.dgphoenix.casino.gs.singlegames.tools.db.DBLink.getInstance ().executeSQL ("pl_GetRoundNo @GameId=" + gameID + ", @AccountId=" + userID + ", @BetArchiveId=" + betID + (startTime == null ? "" : ", @StartTime='" + startTime + "'") + (endTime == null ? "" : ", @EndTime='" + endTime + "'"), com.dgphoenix.casino.gs.singlegames.tools.db.CDatabasePool.PLAYERDB_ID);
+//        	com.abs.casino.gs.singlegames.tools.db.IResultList list = com.abs.casino.gs.singlegames.tools.db.DBLink.getInstance ().executeSQL ("pl_GetRoundNo @GameId=" + gameID + ", @AccountId=" + userID + ", @BetArchiveId=" + betID + (startTime == null ? "" : ", @StartTime='" + startTime + "'") + (endTime == null ? "" : ", @EndTime='" + endTime + "'"), com.abs.casino.gs.singlegames.tools.db.CDatabasePool.PLAYERDB_ID);
 //            if (list.nextRecord ())
 //                result = list.getInteger ("RoundNo");
         } catch (Exception ex) {

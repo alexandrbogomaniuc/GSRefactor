@@ -23,13 +23,13 @@ public interface ICassandraPersister {
         return Collections.singletonList(getMainTableDefinition());
     }
 
-    void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition);
+    void createTable(Session session, TableDefinition tableDefinition);
 
-    void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata);
+    void updateTable(Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata);
 
     Logger getLog();
 
-    void initSession(com.datastax.driver.core.Session session);
+    void initSession(Session session);
 
     void init();
 
@@ -39,5 +39,5 @@ public interface ICassandraPersister {
 
     Integer getTtl();
 
-    void setConsistencyLevels(com.datastax.driver.core.ConsistencyLevel readConsistency, com.datastax.driver.core.ConsistencyLevel writeConsistency, com.datastax.driver.core.ConsistencyLevel serialConsistency);
+    void setConsistencyLevels(ConsistencyLevel readConsistency, ConsistencyLevel writeConsistency, ConsistencyLevel serialConsistency);
 }

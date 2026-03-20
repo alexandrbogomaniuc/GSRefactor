@@ -225,7 +225,7 @@ public class ServerConfigurationAction extends Action {
      *
      * @param config Server configuration
      * @return Map properties for server configuration
-     * @throws com.dgphoenix.casino.common.exception.CommonException
+     * @throws com.abs.casino.common.exception.CommonException
      */
     private Map<String, String> getMapProperties(IDistributedCacheEntry config) throws CommonException {
         if (config.getClass().getSimpleName().equalsIgnoreCase(GameServerConfigTemplate.class.getSimpleName())) {
@@ -240,7 +240,7 @@ public class ServerConfigurationAction extends Action {
      *
      * @param config Game server configuration
      * @return Value of property
-     * @throws com.dgphoenix.casino.common.exception.CommonException
+     * @throws com.abs.casino.common.exception.CommonException
      */
     private Map<String, String> getMapProperties(GameServerConfigTemplate config) throws CommonException {
         return config.getProperties();
@@ -293,7 +293,7 @@ public class ServerConfigurationAction extends Action {
      *
      * @param config Server configuration
      * @return Field properties
-     * @throws com.dgphoenix.casino.common.exception.CommonException
+     * @throws com.abs.casino.common.exception.CommonException
      */
     private Map<String, Pair<String, ServerConfigurationFieldType>> getFieldProperties(IDistributedCacheEntry config) throws CommonException {
         Map<String, Pair<String, ServerConfigurationFieldType>> properties =
@@ -399,7 +399,7 @@ public class ServerConfigurationAction extends Action {
     }
 
     /**
-     * Getter for field property "trustedIp" in {@link com.dgphoenix.casino.common.config.GameServerConfig}
+     * Getter for field property "trustedIp" in {@link com.abs.casino.common.config.GameServerConfig}
      *
      * @param config Game server configuration
      * @return Value for field
@@ -423,7 +423,7 @@ public class ServerConfigurationAction extends Action {
     }
 
     /**
-     * Getter for field property "casinoSystemType" in {@link com.dgphoenix.casino.common.config.GameServerConfig}
+     * Getter for field property "casinoSystemType" in {@link com.abs.casino.common.config.GameServerConfig}
      *
      * @param config Game server configuration
      * @return Value for property
@@ -438,7 +438,7 @@ public class ServerConfigurationAction extends Action {
      * @param config     Server configuration
      * @param properties Field properties
      * @return List of updater field properties (only updated)
-     * @throws com.dgphoenix.casino.common.exception.CommonException
+     * @throws com.abs.casino.common.exception.CommonException
      */
     private List<String> setFieldProperties(IDistributedCacheEntry config, Map<String, Object> properties) throws CommonException {
         List<String> updatedFields = new LinkedList<String>();
@@ -550,7 +550,7 @@ public class ServerConfigurationAction extends Action {
      *                   this value does not must equal DEFAULT_TEMPLATE_SERVER_ID
      * @param serverType Type of adding server configuration
      * @return Server configuration existing or default
-     * @throws com.dgphoenix.casino.common.exception.CommonException
+     * @throws com.abs.casino.common.exception.CommonException
      */
     private GameServerConfigTemplate getConfiguration(Short serverId, String serverType) throws CommonException {
         GameServerConfigTemplate config = null;

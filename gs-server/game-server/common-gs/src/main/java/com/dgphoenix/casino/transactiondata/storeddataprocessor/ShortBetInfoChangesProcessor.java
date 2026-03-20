@@ -31,7 +31,7 @@ public class ShortBetInfoChangesProcessor implements IStoredDataProcessor<ShortB
 
     @Override
     public void process(StoredItem<ShortBetInfo, StoredItemInfo<ShortBetInfo>> item,
-                        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+                        HashMap<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         BankInfo bankInfo = bankInfoCache.getBankInfo(item.getItem().getBankId());
         shortBetInfoPersister.prepareToPersist(statementsMap, item.getItem(), byteBuffersCollector, bankInfo.getShortBetInfoTtl());
     }

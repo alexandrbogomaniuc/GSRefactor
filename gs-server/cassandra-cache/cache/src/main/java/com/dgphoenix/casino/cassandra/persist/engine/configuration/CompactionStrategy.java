@@ -1,7 +1,8 @@
 package com.abs.casino.cassandra.persist.engine.configuration;
 
 
-import static com.datastax.driver.core.schemabuilder.SchemaBuilder.*;
+import static com.abs.casino.cassandra.persist.engine.SchemaCql.*;
+import com.abs.casino.cassandra.persist.engine.SchemaCql;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>

@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * Created by quant on 28.12.17.
  */
@@ -27,11 +31,11 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
 
     private static final TableDefinition PENDING_DATA_ARCHIVE_TABLE = new TableDefinition(PENDING_DATA_ARCH_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(DATA_NAME_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(CREATION_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(DATA_NAME_FIELD, text(), false, false, true),
+                    new ColumnDefinition(CREATION_TIME_FIELD, bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), ACCOUNT_ID_FIELD);
 
     private CassandraPendingDataArchivePersister() {
@@ -52,12 +56,12 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
         String json = PENDING_DATA_ARCHIVE_TABLE.serializeToJson(operation);
         ByteBuffer byteBuffer = PENDING_DATA_ARCHIVE_TABLE.serializeToBytes(operation);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(ACCOUNT_ID_FIELD, operation.getAccountId())
                     .value(DATA_NAME_FIELD, WALLET_DATA_NAME)
                     .value(CREATION_TIME_FIELD, operation.getStartTime())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "saveWalletOperation");
             LOG.debug("CommonWalletOperation={} was saved successfully", operation);
         } finally {
@@ -66,12 +70,12 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
     }
 
     public List<CommonWalletOperation> getWalletOperations(long accountId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_FIELD, accountId))
-                .and(eq(DATA_NAME_FIELD, WALLET_DATA_NAME));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getWalletOperations");
+                .and(eq(DATA_NAME_FIELD, WALLET_DATA_NAME)));
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getWalletOperations");
         List<CommonWalletOperation> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String json = row.getString(SERIALIZED_COLUMN_NAME);
             CommonWalletOperation operation = PENDING_DATA_ARCHIVE_TABLE.deserializeFromJson(json, CommonWalletOperation.class);
 
@@ -88,12 +92,12 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
         String json = PENDING_DATA_ARCHIVE_TABLE.serializeToJson(operation);
         ByteBuffer byteBuffer = PENDING_DATA_ARCHIVE_TABLE.serializeToBytes(operation);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery()
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery()
                     .value(ACCOUNT_ID_FIELD, operation.getAccountId())
                     .value(DATA_NAME_FIELD, FRB_WIN_DATA_NAME)
                     .value(CREATION_TIME_FIELD, operation.getStartTime())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
+                    .value(JSON_COLUMN_NAME, json));
             execute(query, "saveFrbWinOperation");
             LOG.debug("FrbWinOperation={} was saved successfully", operation);
         } finally {
@@ -102,12 +106,12 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
     }
 
     public List<FRBWinOperation> getFrbWinOperations(long accountId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_FIELD, accountId))
-                .and(eq(DATA_NAME_FIELD, FRB_WIN_DATA_NAME));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getFrbWinOperations");
+                .and(eq(DATA_NAME_FIELD, FRB_WIN_DATA_NAME)));
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getFrbWinOperations");
         List<FRBWinOperation> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             FRBWinOperation operation = PENDING_DATA_ARCHIVE_TABLE.deserializeFromJson(json, FRBWinOperation.class);
 

@@ -1,6 +1,8 @@
 package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.Host;
+import com.abs.casino.cassandra.persist.engine.Session;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +36,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
 
     private boolean initialized;
     private com.datastax.driver.core.Cluster cluster;
-    private com.datastax.driver.core.Session session;
+    private Session session;
 
     public KeyspaceManagerImpl(KeyspaceConfiguration configuration, PersistersFactory persistersFactory,
                                String schemaUpdateFilename) {
@@ -55,7 +57,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     /**
      * Internal/legacy accessor retained for persister engine compatibility.
      */
-    public com.datastax.driver.core.Session getSession() {
+    public Session getSession() {
         return session;
     }
 
@@ -90,12 +92,13 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     /**
      * Internal/legacy host view retained for cache-module compatibility tests.
      */
-    public Set<com.datastax.driver.core.Host> getDownHosts() {
+    public Set<Host> getDownHosts() {
         if (!initialized) {
             return Collections.emptySet();
         }
 
         return cluster.getMetadata().getAllHosts().stream()
+                .map(Host::wrap)
                 .filter(host -> !host.isUp())
                 .collect(Collectors.toSet());
     }
@@ -107,6 +110,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
         }
 
         return cluster.getMetadata().getAllHosts().stream()
+                .map(Host::wrap)
                 .filter(host -> !host.isUp())
                 .map(this::extractHostAddress)
                 .filter(StringUtils::isNotBlank)
@@ -120,6 +124,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
         }
 
         return cluster.getMetadata().getAllHosts().stream()
+                .map(Host::wrap)
                 .map(this::extractHostAddress)
                 .filter(StringUtils::isNotBlank)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
@@ -143,7 +148,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
 
         cluster = configuration.buildCluster(com.datastax.driver.core.Cluster.builder());
         com.datastax.driver.core.KeyspaceMetadata metadata = cluster.getMetadata().getKeyspace(keyspaceName);
-        try (com.datastax.driver.core.Session schemaSession = cluster.connect()) {
+        try (Session schemaSession = new Session(StringUtils.defaultString(keyspaceName), cluster.connect())) {
             List<ICassandraPersister> persisters = persistersFactory.getAllPersisters();
             if (metadata == null) {
                 checkState(configuration.isCreateSchema(), "Cassandra schema not found and schema creation disabled");
@@ -153,7 +158,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
             }
         }
 
-        session = new com.abs.casino.cassandra.persist.engine.Session(keyspaceName, cluster.connect(keyspaceName));
+        session = new Session(StringUtils.defaultString(keyspaceName), cluster.connect(keyspaceName));
 
         try {
             awaitOnlineHosts(configuration.getMinimumOnlineHosts(), configuration.getLocalDataCenterName());
@@ -183,20 +188,21 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     }
 
     private int getOnlineHostsCount(String localDataCenter) {
-        Predicate<com.datastax.driver.core.Host> isRequiredDataCenterHost = host -> StringUtils.isBlank(localDataCenter) || localDataCenter.equals(host.getDatacenter());
+        Predicate<Host> isRequiredDataCenterHost = host -> StringUtils.isBlank(localDataCenter) || localDataCenter.equals(host.getDatacenter());
         return (int) cluster.getMetadata().getAllHosts().stream()
+                .map(Host::wrap)
                 .filter(isRequiredDataCenterHost)
                 .filter(host -> {
                     boolean hostUp = host.isUp();
                     if (!hostUp) {
-                        LOG.debug("Cassandra. com.datastax.driver.core.Host {} is down", host);
+                        LOG.debug("Cassandra. Host {} is down", host);
                     }
                     return hostUp;
                 })
                 .count();
     }
 
-    private String extractHostAddress(com.datastax.driver.core.Host host) {
+    private String extractHostAddress(Host host) {
         if (host == null) {
             return null;
         }

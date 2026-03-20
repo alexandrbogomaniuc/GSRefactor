@@ -16,6 +16,10 @@ import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
+
 /**
  * User: flsh
  * Date: 17.11.16.
@@ -31,22 +35,22 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
     private static final String CAMPAIGN_MEMBER_DATA = "memData";
     private static final TableDefinition CAMPAIGN_MEMBER_TABLE = new TableDefinition(PROMO_CAMPAIGN_MEMBER_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(CAMPAIGN_MEMBER_DATA, com.datastax.driver.core.DataType.blob(), false, false, false),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text(), false, false, false)
+                    new ColumnDefinition(CAMPAIGN_ID, bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID, bigint(), false, false, true),
+                    new ColumnDefinition(CAMPAIGN_MEMBER_DATA, blob(), false, false, false),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text(), false, false, false)
             ), CAMPAIGN_ID)
             .compaction(CompactionStrategy.LEVELED);
     private static final TableDefinition PROMO_MEMBER_ALIASES_TABLE = new TableDefinition(PROMO_MEMBER_ALIASES_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ALIAS_NAME, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(CAMPAIGN_ID, bigint(), false, false, true),
+                    new ColumnDefinition(BANK_ID, bigint(), false, false, true),
+                    new ColumnDefinition(ALIAS_NAME, text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID, bigint(), false, false, false)
             ), CAMPAIGN_ID)
             .compaction(CompactionStrategy.LEVELED);
 
-    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, PromoCampaignMemberInfos members,
+    public void prepareToPersist(Map<com.abs.casino.cassandra.persist.engine.Session, List<com.datastax.driver.core.Statement>> statementsMap, PromoCampaignMemberInfos members,
                                  List<ByteBuffer> byteBuffersCollector) {
         List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         members.getPromoMembers().forEach((campaignId, member) -> {
@@ -92,7 +96,7 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
     }
 
     private void persistAlias(PromoCampaignMember member) throws CommonException {
-        com.datastax.driver.core.ResultSet resultSet = execute(getInsertQuery(PROMO_MEMBER_ALIASES_TABLE, getTtl())
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getInsertQuery(PROMO_MEMBER_ALIASES_TABLE, getTtl())
                 .value(CAMPAIGN_ID, member.getCampaignId())
                 .value(BANK_ID, member.getBankId())
                 .value(ALIAS_NAME, member.getDisplayName())
@@ -115,30 +119,30 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
     }
 
     public Map<Long, String> getAllPromoAliases(long promoId) {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ALIAS_NAME, ACCOUNT_ID)
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ALIAS_NAME, ACCOUNT_ID)
                 .where(eq(CAMPAIGN_ID, promoId)), "getAllPromoAliases");
         return convert(resultSet);
     }
 
     public Long getPromoAccountId(long promoId, long bankId, String alias) {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ACCOUNT_ID)
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ACCOUNT_ID)
                 .where(eq(CAMPAIGN_ID, promoId))
                 .and(eq(BANK_ID, bankId))
                 .and(eq(ALIAS_NAME, alias)), "getPromoAccountId");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.Row row = resultSet.one();
         return row == null ? null : row.getLong(ACCOUNT_ID);
     }
 
     public Map<Long, String> getAllBankAliases(long promoId, long bankId) {
-        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ALIAS_NAME, ACCOUNT_ID)
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = execute(getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ALIAS_NAME, ACCOUNT_ID)
                 .where(eq(CAMPAIGN_ID, promoId))
                 .and(eq(BANK_ID, bankId)), "getAllPromoAliases");
         return convert(resultSet);
     }
 
-    private Map<Long, String> convert(com.datastax.driver.core.ResultSet resultSet) {
+    private Map<Long, String> convert(com.abs.casino.cassandra.persist.engine.ResultSet resultSet) {
         Map<Long, String> aliasesMap = new HashMap<>();
-        for (com.datastax.driver.core.Row row : resultSet) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : resultSet) {
             String alias = row.getString(ALIAS_NAME);
             long accountId = row.getLong(ACCOUNT_ID);
             aliasesMap.put(accountId, alias);
@@ -147,7 +151,7 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
     }
 
     public PromoCampaignMember getPromoMember(long accountId, long campaignId) {
-        com.datastax.driver.core.Row campaignMemberResult = execute(getSelectColumnsQuery(CAMPAIGN_MEMBER_TABLE, CAMPAIGN_MEMBER_DATA, JSON_COLUMN_NAME)
+        com.abs.casino.cassandra.persist.engine.Row campaignMemberResult = execute(getSelectColumnsQuery(CAMPAIGN_MEMBER_TABLE, CAMPAIGN_MEMBER_DATA, JSON_COLUMN_NAME)
                 .where(eq(CAMPAIGN_ID, campaignId))
                 .and(eq(ACCOUNT_ID, accountId)), "getOrCreatePromoMember:: selectCampaignMember").one();
         PromoCampaignMember campaignMember = null;

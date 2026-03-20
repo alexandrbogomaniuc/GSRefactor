@@ -1,7 +1,11 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.ResultSet;
+import com.abs.casino.cassandra.persist.engine.Row;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.BankInfoCache;
 import com.abs.casino.common.cache.data.bank.BankInfo;
@@ -11,6 +15,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 
 public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<String, String> {
 
@@ -24,9 +31,9 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TOKEN_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
-                    new ColumnDefinition(ROUND_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(EXP_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false)
+                    new ColumnDefinition(TOKEN_FIELD, text(), false, false, true),
+                    new ColumnDefinition(ROUND_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(EXP_TIME, bigint(), false, false, false)
             ), TOKEN_FIELD);
 
     @Override
@@ -47,10 +54,10 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
         long startTime = System.currentTimeMillis();
         BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(bankId);
         int ttl = (ttlSeconds != null) ? (int) TimeUnit.SECONDS.toMillis(ttlSeconds) : bankInfo.getHistoryTokenTTL();
-        com.datastax.driver.core.Statement insert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(TABLE.getTableName())
+        com.abs.casino.cassandra.persist.engine.Statement insert = com.abs.casino.cassandra.persist.engine.Statement.of(Cql.insertInto(TABLE.getTableName())
                 .value(TOKEN_FIELD, token)
                 .value(ROUND_ID_FIELD, roundId)
-                .value(EXP_TIME, ((ttl != 0) ? ttl + startTime : Long.MAX_VALUE));
+                .value(EXP_TIME, ((ttl != 0) ? ttl + startTime : Long.MAX_VALUE)));
         execute(insert, "persist");
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " persist",
                 System.currentTimeMillis() - startTime);
@@ -58,10 +65,10 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
 
     public Long getRoundId(String token) {
         long now = System.currentTimeMillis();
-        com.datastax.driver.core.Statement select = getSelectColumnsQuery(ROUND_ID_FIELD, EXP_TIME)
-                .where(eq(TOKEN_FIELD, token));
-        com.datastax.driver.core.ResultSet resultSet = execute(select, "getRoundId");
-        com.datastax.driver.core.Row row = resultSet.one();
+        com.abs.casino.cassandra.persist.engine.Statement select = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(ROUND_ID_FIELD, EXP_TIME)
+                .where(eq(TOKEN_FIELD, token)));
+        ResultSet resultSet = executeWrapped(select, "getRoundId");
+        Row row = resultSet.one();
         if (row != null) {
             long expTime = row.getLong(EXP_TIME);
             if (expTime > now) {

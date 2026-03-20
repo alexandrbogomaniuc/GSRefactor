@@ -36,10 +36,10 @@ import java.util.Map;
  * <string>en</string>
  * </languages>
  * <coins>
- * <com.dgphoenix.casino.common.cache.data.bank.Coin>
+ * <com.abs.casino.common.cache.data.bank.Coin>
  * <id>4</id>
  * <value>100</value>
- * </com.dgphoenix.casino.common.cache.data.bank.Coin>
+ * </com.abs.casino.common.cache.data.bank.Coin>
  * </coins>
  * <p>
  * New format:

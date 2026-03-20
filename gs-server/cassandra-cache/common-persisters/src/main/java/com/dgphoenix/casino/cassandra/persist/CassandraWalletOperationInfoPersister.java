@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -17,6 +19,9 @@ import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static java.util.Collections.emptyList;
 
 /**
@@ -33,12 +38,12 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
                     //key is walletOperation.id
-                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
-                    new ColumnDefinition(DAY_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(ROUND_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(KEY, bigint(), false, false, true),
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, bigint(), false, false, false),
+                    new ColumnDefinition(DAY_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(ROUND_ID_FIELD, bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ),
             Collections.singletonList(KEY));
 
@@ -57,13 +62,13 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         String json = TABLE.serializeToJson(info);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(info);
         try {
-            com.datastax.driver.core.Statement query = getInsertQuery(ttl).
+            com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getInsertQuery(ttl).
                     value(KEY, info.getId()).
                     value(DAY_FIELD, getDay(info.getEndTime())).
                     value(GAME_SESSION_ID_FIELD, info.getGameSessionId()).
                     value(ROUND_ID_FIELD, info.getRoundId()).
                     value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                    value(JSON_COLUMN_NAME, json);
+                    value(JSON_COLUMN_NAME, json));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -80,9 +85,9 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
     }
 
     public List<WalletOperationInfo> getByRoundId(long roundId) {
-        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(ROUND_ID_FIELD, roundId));
-        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByRoundId");
+        com.abs.casino.cassandra.persist.engine.Statement query = com.abs.casino.cassandra.persist.engine.Statement.of(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(ROUND_ID_FIELD, roundId)));
+        com.abs.casino.cassandra.persist.engine.ResultSet resultSet = executeWrapped(query, "getByRoundId");
         if (resultSet.isExhausted()) {
             return emptyList();
         }
@@ -111,8 +116,8 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
                 KeySpaceManager.bytesArraySerializer);
         WalletOperationInfo[] result = new WalletOperationInfo[2];
         if(rows != null) {
-            List<com.datastax.driver.core.Row<Long, String, byte[]>> rowsList = rows.getList();
-            for (com.datastax.driver.core.Row<Long, String, byte[]> row : rowsList) {
+            List<com.abs.casino.cassandra.persist.engine.Row> rowsList = rows.getList();
+            for (com.abs.casino.cassandra.persist.engine.Row row : rowsList) {
                 ColumnSlice<String, byte[]> rowColumnSlice = row.getColumnSlice();
                 List<HColumn<String, byte[]>> columns = rowColumnSlice.getColumns();
                 for (HColumn<String, byte[]> column : columns) {
@@ -161,9 +166,9 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         CqlRows<Long, String, byte[]> rows = executeCQL(cql, KeySpaceManager.bytesArraySerializer);
         List<WalletOperationInfo> result = new ArrayList<WalletOperationInfo>();
         if(rows != null) {
-            List<com.datastax.driver.core.Row<Long, String, byte[]>> rowsList = rows.getList();
+            List<com.abs.casino.cassandra.persist.engine.Row> rowsList = rows.getList();
             LOG.debug("getRecords: rowsList.size()" + rowsList.size());
-            for (com.datastax.driver.core.Row<Long, String, byte[]> row : rowsList) {
+            for (com.abs.casino.cassandra.persist.engine.Row row : rowsList) {
                 ColumnSlice<String, byte[]> rowColumnSlice = row.getColumnSlice();
                 List<HColumn<String, byte[]>> columns = rowColumnSlice.getColumns();
                 for (HColumn<String, byte[]> column : columns) {
@@ -266,10 +271,10 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         if (walletOperationIds.length == 0) {
             return;
         }
-        com.datastax.driver.core.Statement query =
-                com.datastax.driver.core.querybuilder.QueryBuilder.delete().
+        com.abs.casino.cassandra.persist.engine.Statement query =
+                com.abs.casino.cassandra.persist.engine.Statement.of(Cql.delete().
                         from(getMainColumnFamilyName()).
-                        where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, walletOperationIds));
+                        where(Cql.in(KEY, walletOperationIds)));
         execute(query, "delete walletOperations");
     }
 

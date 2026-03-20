@@ -1,5 +1,7 @@
 package com.abs.casino.cassandra.persist.mp;
 
+import com.abs.casino.cassandra.persist.engine.Cql;
+
 import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
 import com.abs.casino.cassandra.persist.engine.TableDefinition;
@@ -13,7 +15,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.bigint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.blob;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.cint;
+import static com.abs.casino.cassandra.persist.engine.CassandraDataTypes.text;
 import static com.abs.casino.common.mp.LeaderboardStatus.SCHEDULED;
+import com.datastax.driver.core.querybuilder.Delete;
+import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.querybuilder.Update;
+
 
 public class TicketedDrawConfigPersister extends AbstractCassandraPersister<String, Long> {
     private static final Logger LOG = LogManager.getLogger(TicketedDrawConfigPersister.class);
@@ -28,20 +39,20 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
 
     private static final TableDefinition CONFIG_TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(DRAW_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
-                    new ColumnDefinition(STATUS_COLUMN, com.datastax.driver.core.DataType.cint(), false, true, false),
-                    new ColumnDefinition(START_DATE, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(END_DATE, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(CONFIG_COLUMN, com.datastax.driver.core.DataType.blob()),
-                    new ColumnDefinition(UPDATE_DATE, com.datastax.driver.core.DataType.bigint()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
+                    new ColumnDefinition(DRAW_ID_COLUMN, bigint(), false, false, true),
+                    new ColumnDefinition(STATUS_COLUMN, cint(), false, true, false),
+                    new ColumnDefinition(START_DATE, bigint()),
+                    new ColumnDefinition(END_DATE, bigint()),
+                    new ColumnDefinition(CONFIG_COLUMN, blob()),
+                    new ColumnDefinition(UPDATE_DATE, bigint()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, text())
             ), DRAW_ID_COLUMN);
 
     public void addConfig(TicketedDrawConfig config) {
         ByteBuffer configBuffer = CONFIG_TABLE.serializeWithClassToBytes(config);
         String json = CONFIG_TABLE.serializeWithClassToJson(config);
         try {
-            com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery(CONFIG_TABLE, null)
+            Insert insert = getInsertQuery(CONFIG_TABLE, null)
                     .value(DRAW_ID_COLUMN, config.getId())
                     .value(START_DATE, config.getStartDate())
                     .value(END_DATE, config.getEndDate())
@@ -57,11 +68,11 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
     }
 
     public TicketedDrawConfig getConfig(long id) {
-        com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
+        Select query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
                 .where(eq(DRAW_ID_COLUMN, id))
                 .limit(1);
 
-        com.datastax.driver.core.ResultSet result = execute(query, "getConfig");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(query, "getConfig");
         if (result != null) {
             TicketedDrawConfig tdc = CONFIG_TABLE.deserializeWithClassFromJson(result.one().getString(JSON_COLUMN_NAME));
             if (tdc == null) {
@@ -73,12 +84,12 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
     }
 
     public void removeConfig(long id) {
-        com.datastax.driver.core.querybuilder.Delete.Where delete = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(CF_NAME).where(eq(DRAW_ID_COLUMN, id));
+        Delete.Where delete = Cql.delete().from(CF_NAME).where(eq(DRAW_ID_COLUMN, id));
         execute(delete, "removeConfig");
     }
 
     public void updateStatus(long id, LeaderboardStatus status) {
-        com.datastax.driver.core.querybuilder.Update.Assignments update = getUpdateQuery()
+        Update.Assignments update = getUpdateQuery()
                 .where(eq(DRAW_ID_COLUMN, id))
                 .with(set(STATUS_COLUMN, status.getCode()));
 
@@ -86,7 +97,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
     }
 
     public void updateDate(long id, long date) {
-        com.datastax.driver.core.querybuilder.Update.Assignments update = getUpdateQuery()
+        Update.Assignments update = getUpdateQuery()
                 .where(eq(DRAW_ID_COLUMN, id))
                 .with(set(UPDATE_DATE, date));
 
@@ -94,13 +105,13 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
     }
 
     public List<TicketedDrawConfig> getTicketedDraws(LeaderboardStatus status) {
-        com.datastax.driver.core.querybuilder.Select.Where query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
+        Select.Where query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
                 .where(eq(STATUS_COLUMN, status.getCode()));
 
-        com.datastax.driver.core.ResultSet result = execute(query, "getTicketedDraws");
+        com.abs.casino.cassandra.persist.engine.ResultSet result = executeWrapped(query, "getTicketedDraws");
 
         List<TicketedDrawConfig> configs = new ArrayList<>();
-        for (com.datastax.driver.core.Row row : result) {
+        for (com.abs.casino.cassandra.persist.engine.Row row : result) {
             TicketedDrawConfig tdc = CONFIG_TABLE.deserializeWithClassFromJson(row.getString(JSON_COLUMN_NAME));
             if (tdc == null) {
                 tdc = CONFIG_TABLE.deserializeWithClassFrom(row.getBytes(CONFIG_COLUMN));
