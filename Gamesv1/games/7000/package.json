@@ -10,8 +10,6 @@
     "dev": "vite",
     "dev:benchmark": "vite --host 127.0.0.1 --port 8081 --strictPort",
     "dev:oneport": "vite --host 127.0.0.1 --port 8081 --strictPort",
-    "dev:openai": "VITE_ASSET_PROVIDER=openai vite --host 127.0.0.1 --port 8081 --strictPort",
-    "dev:nanobanana": "VITE_ASSET_PROVIDER=nanobanana vite --host 127.0.0.1 --port 8082",
     "donorlocal:lock-assets": "bash ./scripts/lock-donorlocal-assets.sh",
     "dev:donorlocal": "bash ./scripts/lock-donorlocal-assets.sh && VITE_ASSET_PROVIDER=donorlocal vite --host 127.0.0.1 --port 8091 --strictPort"
   },

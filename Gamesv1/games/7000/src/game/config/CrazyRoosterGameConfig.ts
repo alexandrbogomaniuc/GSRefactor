@@ -1,8 +1,6 @@
 import { GameConfig } from "@gamesv1/ui-kit";
 
 export const CRAZY_ROOSTER_SUPPORTED_ASSET_PROVIDERS = [
-  "openai",
-  "nanobanana",
   "donorlocal",
 ] as const;
 
@@ -15,10 +13,10 @@ export const CRAZY_ROOSTER_LAYOUT = {
   numReels: 3,
   rowCount: 4,
   numRows: 4,
-  symbolWidth: 172,
+  symbolWidth: 222,
   symbolHeight: 148,
-  reelSpacing: 14,
-  rowSpacing: 14,
+  reelSpacing: 12,
+  rowSpacing: 12,
   symbolCount: 11,
   extraSymbols: 2,
   minSpinMs: 1300,
@@ -146,7 +144,7 @@ export const CRAZY_ROOSTER_BRAND = {
   primaryColor: "#000000",
   accentColor: "#C7141A",
   surfaceColor: "#FFFFFF",
-  defaultProvider: "openai" as CrazyRoosterAssetProvider,
+  defaultProvider: "donorlocal" as CrazyRoosterAssetProvider,
 };
 
 export const CRAZY_ROOSTER_BRAND_NAME = CRAZY_ROOSTER_BRAND.brandName;

@@ -1,39 +1,15 @@
 import sharedWordmarkUrl from "../../../raw-assets/preload{m}/logo.svg?url";
 import { Assets, Spritesheet, Texture, type SpritesheetData } from "pixi.js";
 
-import openaiBackgroundDesktopUrl from "../../../assets/providers/openai/runtime/background-desktop-1920x1080.png?url";
-import openaiBackgroundLandscapeUrl from "../../../assets/providers/openai/runtime/background-landscape-safe-1600x900.png?url";
-import openaiBackgroundPortraitUrl from "../../../assets/providers/openai/runtime/background-portrait-1080x1920.png?url";
-import openaiSymbolsAtlasUrl from "../../../assets/providers/openai/runtime/atlas_symbols.png?url";
-import openaiSymbolsAtlasData from "../../../assets/providers/openai/runtime/atlas_symbols.json";
-import openaiUiAtlasUrl from "../../../assets/providers/openai/runtime/atlas_ui.png?url";
-import openaiUiAtlasData from "../../../assets/providers/openai/runtime/atlas_ui.json";
-import openaiVfxAtlasUrl from "../../../assets/providers/openai/runtime/atlas_vfx.png?url";
-import openaiVfxAtlasData from "../../../assets/providers/openai/runtime/atlas_vfx.json";
-
-import nanobananaBackgroundDesktopUrl from "../../../assets/providers/nanobanana/runtime/background-desktop-1920x1080.png?url";
-import nanobananaBackgroundLandscapeUrl from "../../../assets/providers/nanobanana/runtime/background-landscape-safe-1600x900.png?url";
-import nanobananaBackgroundPortraitUrl from "../../../assets/providers/nanobanana/runtime/background-portrait-1080x1920.png?url";
-import nanobananaSymbolsAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_symbols.png?url";
-import nanobananaSymbolsAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_symbols.json";
-import nanobananaUiAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_ui.png?url";
-import nanobananaUiAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_ui.json";
-import nanobananaVfxAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_vfx.png?url";
-import nanobananaVfxAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_vfx.json";
-import nanobananaHeroUiAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_hero_ui.png?url";
-import nanobananaHeroUiAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_hero_ui.json";
-import nanobananaHeroVfxAtlasUrl from "../../../assets/providers/nanobanana/runtime/atlas_hero_vfx.png?url";
-import nanobananaHeroVfxAtlasData from "../../../assets/providers/nanobanana/runtime/atlas_hero_vfx.json";
-
 import {
   CRAZY_ROOSTER_BRAND,
   resolveExplicitAssetProvider,
   type CrazyRoosterAssetProvider,
 } from "../../game/config/CrazyRoosterGameConfig";
+import { resolveMappedSourceTexture } from "./mappedSourceTextureResolver";
 
 declare const __DONORLOCAL_MANIFEST_FS_PATH__: string;
 
-type CommittedProvider = Exclude<CrazyRoosterAssetProvider, "donorlocal">;
 type AtlasFrames = Record<string, unknown>;
 type AtlasData = {
   frames?: AtlasFrames;
@@ -110,20 +86,14 @@ const isSpritesheetAtlasData = (atlas: AtlasData | undefined): atlas is AtlasDat
   meta: Record<string, unknown>;
 } => Boolean(atlas?.meta && typeof atlas.meta === "object");
 
-const normalizeKeyMappedSourceUrl = (
-  source: string | undefined,
-  atlasUrl: string,
-): string | undefined => {
-  if (!source?.trim()) {
-    return undefined;
+const pickMappedSource = (source: unknown): string | undefined => {
+  if (typeof source === "string" && source.trim()) {
+    return source;
   }
-
-  const resolved = new URL(source, atlasUrl).toString();
-  const sourceLower = source.toLowerCase();
-  if (/\.(png|jpg|jpeg|webp|svg)(\?|$)/.test(sourceLower)) {
-    return resolved;
+  if (Array.isArray(source)) {
+    const first = source.find((entry) => typeof entry === "string" && entry.trim());
+    return typeof first === "string" ? first : undefined;
   }
-
   return undefined;
 };
 
@@ -141,21 +111,25 @@ const loadKeyMappedTextures = async (
       continue;
     }
 
-    const sourceUrl = normalizeKeyMappedSourceUrl(
-      (frameValue as { source?: string }).source,
-      atlas.url,
+    const source = pickMappedSource(
+      (frameValue as { source?: string | string[] }).source,
     );
-    if (!sourceUrl) {
+    if (!source) {
       continue;
     }
 
-    try {
-      await Assets.load(sourceUrl);
-      textures[frameKey] = Texture.from(sourceUrl);
-    } catch (error) {
+    const texture = await resolveMappedSourceTexture({
+      source,
+      baseUrl: atlas.url,
+      cachePrefix: `provider-pack:${atlas.url}:${frameKey}`,
+      atlasOrigin: "top-left",
+      rasterizeFrame: true,
+    });
+    if (texture) {
+      textures[frameKey] = texture;
+    } else {
       console.warn(
-        `[ProviderPack] Failed to load mapped texture for ${frameKey} from ${sourceUrl}:`,
-        error,
+        `[ProviderPack] Failed to load mapped texture for ${frameKey} from ${source}.`,
       );
     }
   }
@@ -163,64 +137,9 @@ const loadKeyMappedTextures = async (
   return textures;
 };
 
-const PROVIDER_PACKS: Record<CommittedProvider, ProviderPackDefinition> = {
-  openai: {
-    provider: "openai",
-    wordmarkUrl: sharedWordmarkUrl,
-    backgrounds: {
-      desktop: openaiBackgroundDesktopUrl,
-      landscape: openaiBackgroundLandscapeUrl,
-      portrait: openaiBackgroundPortraitUrl,
-    },
-    symbolAtlas: {
-      url: openaiSymbolsAtlasUrl,
-      data: openaiSymbolsAtlasData as AtlasData,
-    },
-    uiAtlas: {
-      url: openaiUiAtlasUrl,
-      data: openaiUiAtlasData as AtlasData,
-    },
-    vfxAtlas: {
-      url: openaiVfxAtlasUrl,
-      data: openaiVfxAtlasData as AtlasData,
-    },
-  },
-  nanobanana: {
-    provider: "nanobanana",
-    wordmarkUrl: sharedWordmarkUrl,
-    backgrounds: {
-      desktop: nanobananaBackgroundDesktopUrl,
-      landscape: nanobananaBackgroundLandscapeUrl,
-      portrait: nanobananaBackgroundPortraitUrl,
-    },
-    symbolAtlas: {
-      url: nanobananaSymbolsAtlasUrl,
-      data: nanobananaSymbolsAtlasData as AtlasData,
-    },
-    uiAtlas: {
-      url: nanobananaUiAtlasUrl,
-      data: nanobananaUiAtlasData as AtlasData,
-    },
-    vfxAtlas: {
-      url: nanobananaVfxAtlasUrl,
-      data: nanobananaVfxAtlasData as AtlasData,
-    },
-    heroUiAtlas: {
-      url: nanobananaHeroUiAtlasUrl,
-      data: nanobananaHeroUiAtlasData as AtlasData,
-    },
-    heroVfxAtlas: {
-      url: nanobananaHeroVfxAtlasUrl,
-      data: nanobananaHeroVfxAtlasData as AtlasData,
-    },
-  },
-};
-
 let cachedProviderPackStatus: ProviderPackStatus | null = null;
 let cachedDonorLocalPack: ProviderPackDefinition | null = null;
 const atlasTextureCache = new Map<string, Promise<Record<string, Texture>>>();
-
-const getFallbackPack = (): ProviderPackDefinition => PROVIDER_PACKS.openai;
 
 const getPackForProvider = (
   provider: CrazyRoosterAssetProvider,
@@ -228,8 +147,7 @@ const getPackForProvider = (
   if (provider === "donorlocal") {
     return cachedDonorLocalPack ?? undefined;
   }
-
-  return PROVIDER_PACKS[provider];
+  return undefined;
 };
 
 const validatePack = (pack: ProviderPackDefinition): string[] => {
@@ -456,50 +374,33 @@ const loadDonorLocalPack = async (): Promise<{
 export const initializeProviderPackStatus = async (
   queryParams = new URLSearchParams(window.location.search),
 ): Promise<ProviderPackStatus> => {
+  const donorLocalStrictMode = queryParams.get("donorlocalStrict") !== "0";
   const explicitProvider = resolveExplicitAssetProvider(queryParams);
-  const usedDevBenchmarkDefault = import.meta.env.DEV && !explicitProvider;
-  const requestedProvider =
-    explicitProvider ??
-    (usedDevBenchmarkDefault ? "donorlocal" : CRAZY_ROOSTER_BRAND.defaultProvider);
-
-  let status: ProviderPackStatus;
-  if (requestedProvider === "donorlocal") {
-    const donorLocalPack = await loadDonorLocalPack();
-    if (!donorLocalPack.pack || donorLocalPack.missingKeys.length > 0) {
-      cachedDonorLocalPack = donorLocalPack.pack ?? null;
-      const fallbackPack = getFallbackPack();
-      const fallbackMissingKeys = validatePack(fallbackPack);
-      status = buildStatus(
-        requestedProvider,
-        "openai",
-        fallbackPack,
-        donorLocalPack.missingKeys,
-        buildDonorLocalFallbackReason(
-          donorLocalPack.fallbackReason,
-          usedDevBenchmarkDefault,
-        ),
-        fallbackMissingKeys.length > 0,
-      );
-      status.manifestUrl = donorLocalPack.pack?.manifestUrl ?? DONORLOCAL_MANIFEST_URL;
-    } else {
-      status = buildStatus(
-        requestedProvider,
-        requestedProvider,
-        donorLocalPack.pack,
-        donorLocalPack.missingKeys,
-      );
-      cachedDonorLocalPack = donorLocalPack.pack;
-    }
-  } else {
-    cachedDonorLocalPack = null;
-    const pack = PROVIDER_PACKS[requestedProvider];
-    status = buildStatus(
-      requestedProvider,
-      requestedProvider,
-      pack,
-      validatePack(pack),
+  const requestedProvider = explicitProvider ?? CRAZY_ROOSTER_BRAND.defaultProvider;
+  const donorLocalPack = await loadDonorLocalPack();
+  if (!donorLocalPack.pack || donorLocalPack.missingKeys.length > 0) {
+    cachedDonorLocalPack = donorLocalPack.pack ?? null;
+    const donorLocalFallbackReason = buildDonorLocalFallbackReason(
+      donorLocalPack.fallbackReason,
+      false,
     );
+    const detail = donorLocalPack.missingKeys.length
+      ? `missing keys: ${donorLocalPack.missingKeys.join(", ")}`
+      : "missing keys: none reported";
+    if (donorLocalStrictMode) {
+      throw new Error(
+        `[7000] donorlocal requested but unavailable. ${donorLocalFallbackReason} (${detail})`,
+      );
+    }
+    throw new Error(`[7000] donorlocal-only mode: ${donorLocalFallbackReason} (${detail})`);
   }
+  const status = buildStatus(
+    requestedProvider,
+    "donorlocal",
+    donorLocalPack.pack,
+    donorLocalPack.missingKeys,
+  );
+  cachedDonorLocalPack = donorLocalPack.pack;
 
   logStatus(status);
   cachedProviderPackStatus = status;
@@ -509,10 +410,17 @@ export const initializeProviderPackStatus = async (
 export const getProviderPackStatus = (): ProviderPackStatus =>
   cachedProviderPackStatus ??
   buildStatus(
-    CRAZY_ROOSTER_BRAND.defaultProvider,
-    CRAZY_ROOSTER_BRAND.defaultProvider,
-    getFallbackPack(),
-    validatePack(getFallbackPack()),
+    "donorlocal",
+    "donorlocal",
+    {
+      provider: "donorlocal",
+      wordmarkUrl: sharedWordmarkUrl,
+      backgrounds: {},
+      manifestUrl: DONORLOCAL_MANIFEST_URL,
+    },
+    ["manifest.file"],
+    "donorlocal pack is not initialized yet.",
+    true,
   );
 
 export const resolveProviderWordmarkUrl = (): string => getProviderPackStatus().wordmarkUrl;
@@ -585,26 +493,20 @@ export const resolveProviderFrameTexture = async (
   frameKey: string,
   preferredProvider = getProviderPackStatus().effectiveProvider,
 ): Promise<ProviderResolvedTexture> => {
-  const providerChain = Array.from(
-    new Set<CrazyRoosterAssetProvider>([preferredProvider, "openai"]),
-  );
-
-  for (const provider of providerChain) {
-    const textures = await loadAtlasTextures(provider, atlasKind);
-    const texture = textures[frameKey];
-    if (texture) {
-      return {
-        texture,
-        resolvedProvider: provider,
-        fallbackUsed: provider !== preferredProvider,
-      };
-    }
+  const textures = await loadAtlasTextures(preferredProvider, atlasKind);
+  const texture = textures[frameKey];
+  if (texture) {
+    return {
+      texture,
+      resolvedProvider: preferredProvider,
+      fallbackUsed: false,
+    };
   }
 
   return {
     texture: null,
     resolvedProvider: null,
-    fallbackUsed: preferredProvider !== "openai",
+    fallbackUsed: false,
   };
 };
 

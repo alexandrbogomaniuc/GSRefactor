@@ -104,10 +104,10 @@ export class CrazyRoosterSymbol extends Container {
   constructor() {
     super();
 
-    this.sprite.width = CRAZY_ROOSTER_LAYOUT.symbolWidth - 8;
-    this.sprite.height = CRAZY_ROOSTER_LAYOUT.symbolHeight - 8;
-    this.sprite.x = 4;
-    this.sprite.y = 4;
+    this.sprite.anchor.set(0.5);
+    this.sprite.x = CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5;
+    this.sprite.y = CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5;
+    this.layoutSpriteForTexture(Texture.WHITE, false);
     this.sprite.alpha = 1;
 
     const centerX = CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5;
@@ -301,8 +301,7 @@ export class CrazyRoosterSymbol extends Container {
       18,
     );
     this.highlight.fill({ color: 0xffffff, alpha: 0.06 });
-    this.sprite.texture = Texture.WHITE;
-    this.sprite.tint = palette.fill;
+    this.setSpriteTexture(Texture.WHITE, palette.fill, false);
     this.labelText.text =
       isDonorlocal && normalized === 4
         ? "MELON"
@@ -322,8 +321,7 @@ export class CrazyRoosterSymbol extends Container {
         this.donorVariantOverride === "mini" ||
         this.donorVariantOverride === "grand")
     ) {
-      this.sprite.texture = Texture.EMPTY;
-      this.sprite.tint = 0xffffff;
+      this.setSpriteTexture(Texture.EMPTY);
       this.shadow.visible = false;
       this.backing.visible = false;
       this.highlight.visible = false;
@@ -332,8 +330,7 @@ export class CrazyRoosterSymbol extends Container {
     }
 
     if (isDonorlocal && normalized === 9) {
-      this.sprite.texture = Texture.EMPTY;
-      this.sprite.tint = 0xffffff;
+      this.setSpriteTexture(Texture.EMPTY);
       this.shadow.visible = false;
       this.backing.visible = false;
       this.highlight.visible = false;
@@ -351,14 +348,23 @@ export class CrazyRoosterSymbol extends Container {
     this.donorVariantOverride = variant;
   }
 
+  public applyDonorVariantOverride(variant: DonorMultiplierVariantKey | null): void {
+    if (this.donorVariantOverride === variant) {
+      return;
+    }
+    this.donorVariantOverride = variant;
+    if (this.symbolId === 7 || this.symbolId === 8 || this.symbolId === 9) {
+      this.setSymbol(this.symbolId);
+    }
+  }
+
   private resolvePalette(symbolId: number): {
     frame: number;
     fill: number;
     border: number;
     text: number;
   } {
-    const isNanobanana = getProviderPackStatus().effectiveProvider === "nanobanana";
-    const openAiPalette = [
+    const donorFallbackPalette = [
       0xa1171f,
       0xd36c11,
       0xdb8b1c,
@@ -370,24 +376,12 @@ export class CrazyRoosterSymbol extends Container {
       0x8e0d13,
       0xf3d24e,
     ];
-    const nanoPalette = [
-      0x93181c,
-      0xe07d19,
-      0x3e7d2d,
-      0x7f49b7,
-      0x16887a,
-      0x335dd2,
-      0x666666,
-      0xd24f2b,
-      0xb4171d,
-      0xf0cf5c,
-    ];
-    const fill = (isNanobanana ? nanoPalette : openAiPalette)[symbolId] ?? 0x404040;
+    const fill = donorFallbackPalette[symbolId] ?? 0x404040;
 
     return {
-      frame: isNanobanana ? 0x0f0a08 : 0x15080a,
+      frame: 0x15080a,
       fill,
-      border: isNanobanana ? 0xf6dfaa : 0xc7141a,
+      border: 0xc7141a,
       text: 0xffffff,
     };
   }
@@ -447,8 +441,7 @@ export class CrazyRoosterSymbol extends Container {
       if (requestToken !== this.textureRequestToken || this.symbolId !== symbolId) {
         return;
       }
-      this.sprite.texture = Texture.EMPTY;
-      this.sprite.tint = 0xffffff;
+      this.setSpriteTexture(Texture.EMPTY);
       this.shadow.visible = false;
       this.backing.visible = false;
       this.highlight.visible = false;
@@ -459,7 +452,6 @@ export class CrazyRoosterSymbol extends Container {
         ? await resolveProviderFrameTexture("symbolAtlas", frameKey)
         : { texture: null };
     }
-
     if (provider === "donorlocal" && (symbolId === 7 || symbolId === 8)) {
       const donorCoinImages = [
         "../image/img_bonus_coin.2529fcb8.png",
@@ -515,17 +507,15 @@ export class CrazyRoosterSymbol extends Container {
     }
 
     if (resolved.texture) {
-      this.sprite.texture = resolved.texture;
-      this.sprite.tint = 0xffffff;
+      this.setSpriteTexture(resolved.texture);
       this.shadow.visible = false;
       this.backing.visible = false;
       this.highlight.visible = false;
       return;
     }
 
-    this.sprite.texture = Texture.WHITE;
-    this.sprite.tint = fallbackTint;
-    const keepGenericBacking = provider !== "donorlocal";
+    this.setSpriteTexture(Texture.WHITE, fallbackTint, false);
+    const keepGenericBacking = provider !== "donorlocal" || !resolved.texture;
     this.shadow.visible = keepGenericBacking;
     this.backing.visible = keepGenericBacking;
     this.highlight.visible = keepGenericBacking;
@@ -556,8 +546,7 @@ export class CrazyRoosterSymbol extends Container {
     }
 
     this.disableRoosterCoinFx();
-    this.sprite.texture = Texture.from(donorUrl);
-    this.sprite.tint = 0xffffff;
+    this.setSpriteTexture(Texture.from(donorUrl));
     this.shadow.visible = false;
     this.backing.visible = false;
     this.highlight.visible = false;
@@ -570,17 +559,12 @@ export class CrazyRoosterSymbol extends Container {
 
     const fx = await CrazyRoosterSymbol.loadDonorRoosterCoinFx();
     if (!fx) {
-      const frameKey = CRAZY_ROOSTER_SYMBOL_FRAME_KEYS[symbolId];
-      const fallback = frameKey
-        ? await resolveProviderFrameTexture("symbolAtlas", frameKey, "openai")
-        : { texture: null };
-      if (this.symbolId !== symbolId || symbolId !== 9 || !fallback.texture) {
+      if (this.symbolId !== symbolId || symbolId !== 9) {
         return;
       }
       this.roosterCoinFxActive = false;
       this.roosterCoinLayer.visible = false;
-      this.sprite.texture = fallback.texture;
-      this.sprite.tint = 0xffffff;
+      this.setSpriteTexture(Texture.EMPTY);
       this.shadow.visible = false;
       this.backing.visible = false;
       this.highlight.visible = false;
@@ -594,8 +578,7 @@ export class CrazyRoosterSymbol extends Container {
     this.roosterCoinFxActive = true;
     this.roosterCoinLightFrames = fx.lightFrames;
     this.roosterCoinHeadGlowFrames = fx.headGlowFrames;
-    this.sprite.texture = fx.coinBase;
-    this.sprite.tint = 0xffffff;
+    this.setSpriteTexture(fx.coinBase);
     this.roosterCoinHead.texture = fx.head;
     this.roosterCoinLayer.visible = true;
     this.shadow.visible = false;
@@ -612,8 +595,7 @@ export class CrazyRoosterSymbol extends Container {
 
     this.roosterCoinFxActive = false;
     this.roosterCoinLayer.visible = false;
-    this.sprite.texture = Texture.EMPTY;
-    this.sprite.tint = 0xffffff;
+    this.setSpriteTexture(Texture.EMPTY);
     this.shadow.visible = false;
     this.backing.visible = false;
     this.highlight.visible = false;
@@ -643,6 +625,43 @@ export class CrazyRoosterSymbol extends Container {
       this.donorMultiplierSpine.visible = false;
       this.hideDonorMultiplierSuppressedSlots();
     }
+  }
+
+  private setSpriteTexture(
+    texture: Texture,
+    tint = 0xffffff,
+    preserveAspect = true,
+  ): void {
+    this.sprite.texture = texture;
+    this.sprite.tint = tint;
+    this.layoutSpriteForTexture(texture, preserveAspect);
+  }
+
+  private layoutSpriteForTexture(texture: Texture, preserveAspect: boolean): void {
+    const inset = 4;
+    const maxWidth = CRAZY_ROOSTER_LAYOUT.symbolWidth - inset * 2;
+    const maxHeight = CRAZY_ROOSTER_LAYOUT.symbolHeight - inset * 2;
+    this.sprite.x = CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5;
+    this.sprite.y = CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5;
+
+    if (texture === Texture.EMPTY) {
+      this.sprite.width = 0;
+      this.sprite.height = 0;
+      return;
+    }
+
+    if (!preserveAspect) {
+      this.sprite.width = maxWidth;
+      this.sprite.height = maxHeight;
+      return;
+    }
+
+    const sourceWidth = texture.orig.width > 0 ? texture.orig.width : maxWidth;
+    const sourceHeight = texture.orig.height > 0 ? texture.orig.height : maxHeight;
+    const fitScale = Math.min(maxWidth / sourceWidth, maxHeight / sourceHeight);
+
+    this.sprite.width = sourceWidth * fitScale;
+    this.sprite.height = sourceHeight * fitScale;
   }
 
   private resolveDonorMultiplierVariant(symbolId: number): DonorMultiplierVariantKey {

@@ -251,6 +251,13 @@ const formatLineMultiplier = (value: number): string => {
 
 const formatMinorCurrency = (valueMinor: number): string => `$${(valueMinor / 100).toFixed(2)}`;
 
+const DONOR_VIDEO_TIMING = {
+  lineMinStandardMs: 1900,
+  lineMinFeatureMs: 1600,
+  boostChargeWindowMs: 1700,
+  jackpotImpactWindowMs: 2100,
+} as const;
+
 const PREVIEW_PROOF_COLUMNS: Partial<Record<string, number[][]>> = {
   symbols: [
     [3, 1, 2, 0],
@@ -361,6 +368,61 @@ export class MainScreen extends Container {
   private readonly jackpotPlaques = new JackpotPlaqueController();
   private readonly slotMachine = new CrazyRoosterSlotMachine(resolveProviderSymbolRoot());
   private readonly layeredFx = new LayeredFxController();
+  private readonly startupPaylineMap = new Graphics();
+  private readonly startupPaylineLabels = new Container();
+  private readonly runtimePaylineMap = new Graphics();
+  private readonly runtimePaylineCallout = new Container();
+  private readonly runtimePaylineCalloutShadow = new Graphics();
+  private readonly runtimePaylineCalloutBase = new Graphics();
+  private readonly runtimePaylineCalloutAccent = new Graphics();
+  private readonly runtimePaylineBadge = new Graphics();
+  private readonly runtimePaylineSequenceChip = new Graphics();
+  private readonly runtimePaylineTitle = new Text({
+    text: "",
+    style: {
+      fontFamily: "Trebuchet MS, Arial, sans-serif",
+      fontSize: 16,
+      fontWeight: "900",
+      fill: 0xfff1d1,
+      stroke: { color: 0x220508, width: 4 },
+      align: "center",
+      letterSpacing: 0.6,
+    },
+  });
+  private readonly runtimePaylineBadgeText = new Text({
+    text: "",
+    style: {
+      fontFamily: "Trebuchet MS, Arial, sans-serif",
+      fontSize: 24,
+      fontWeight: "900",
+      fill: 0xfff4d5,
+      stroke: { color: 0x2a080b, width: 5 },
+      align: "center",
+    },
+  });
+  private readonly runtimePaylineMainText = new Text({
+    text: "",
+    style: {
+      fontFamily: "Trebuchet MS, Arial, sans-serif",
+      fontSize: 24,
+      fontWeight: "900",
+      fill: 0xffffff,
+      stroke: { color: 0x1d0608, width: 5 },
+      align: "center",
+      letterSpacing: 0.4,
+    },
+  });
+  private readonly runtimePaylineSequenceText = new Text({
+    text: "",
+    style: {
+      fontFamily: "Trebuchet MS, Arial, sans-serif",
+      fontSize: 18,
+      fontWeight: "900",
+      fill: 0xfff0cf,
+      stroke: { color: 0x250709, width: 4 },
+      align: "center",
+    },
+  });
   private readonly paylineOverlay = new PaylineOverlay();
   private readonly paylineHighlight = new WinHighlight();
   private readonly winHighlight = new WinHighlight();
@@ -369,6 +431,19 @@ export class MainScreen extends Container {
   private readonly featureIntroOverlay = new DonorFeatureIntroOverlay();
   private readonly donorCountdownOverlay = new Container();
   private readonly donorCountdownBackdrop = new Graphics();
+  private readonly donorCountdownGuide = new Graphics();
+  private readonly donorCountdownCaption = new Text({
+    text: "",
+    style: {
+      fontFamily: "Trebuchet MS, Arial, sans-serif",
+      fontSize: 28,
+      fontWeight: "800",
+      fill: 0xfff1be,
+      stroke: { color: 0x2a0811, width: 5 },
+      align: "center",
+      letterSpacing: 1,
+    },
+  });
   private readonly donorCountdownValue = new Text({
     text: "",
     style: {
@@ -437,6 +512,9 @@ export class MainScreen extends Container {
   private lastKnownMasterVolume = 0.8;
   private pendingRound: PendingRoundResolution | null = null;
   private jackpotFeatureCueConsumed = false;
+  private startupPaylineGuideDismissed = false;
+  private startupPaylineGlowElapsedMs = 0;
+  private runtimePaylineGlowElapsedMs = 0;
 
   constructor() {
     super();
@@ -474,8 +552,12 @@ export class MainScreen extends Container {
       {
         onAudioCue: (cue) => this.applySoundCue(cue),
         onAnimationCue: (cue) => this.applyAnimationCue(cue),
-        showWinCounter: (amountMinor, title, tier) =>
-          this.winCounter.showWin(amountMinor, title, this.resolveTierStyleHook(tier)),
+        showWinCounter: (amountMinor, title, tier) => {
+          if (!this.shouldShowWinCounter(amountMinor, tier)) {
+            return;
+          }
+          this.winCounter.showWin(amountMinor, title, this.resolveTierStyleHook(tier));
+        },
         hideWinCounter: () => this.winCounter.hideNow(),
         showHeavyWinFx: (symbols, tier) =>
           this.winHighlight.showWin(
@@ -515,14 +597,47 @@ export class MainScreen extends Container {
     this.reelsLayer.addChild(this.topperMascot);
     this.reelsLayer.addChild(this.jackpotPlaques);
     this.fxLayer.addChild(this.layeredFx);
-    this.fxLayer.addChild(this.paylineOverlay);
+    this.startupPaylineMap.visible = false;
+    this.startupPaylineLabels.visible = false;
+    this.startupPaylineLabels.eventMode = "none";
+    this.runtimePaylineMap.visible = false;
+    this.runtimePaylineMap.eventMode = "none";
+    this.runtimePaylineMap.blendMode = "add";
+    this.runtimePaylineCallout.visible = false;
+    this.runtimePaylineCallout.eventMode = "none";
+    this.runtimePaylineTitle.anchor.set(0.5);
+    this.runtimePaylineBadgeText.anchor.set(0.5);
+    this.runtimePaylineMainText.anchor.set(0.5);
+    this.runtimePaylineSequenceText.anchor.set(0.5);
+    this.runtimePaylineCallout.addChild(
+      this.runtimePaylineCalloutShadow,
+      this.runtimePaylineCalloutBase,
+      this.runtimePaylineCalloutAccent,
+      this.runtimePaylineBadge,
+      this.runtimePaylineSequenceChip,
+      this.runtimePaylineTitle,
+      this.runtimePaylineBadgeText,
+      this.runtimePaylineMainText,
+      this.runtimePaylineSequenceText,
+    );
+    this.fxLayer.addChild(this.startupPaylineMap);
+    this.fxLayer.addChild(this.startupPaylineLabels);
+    this.fxLayer.addChild(this.runtimePaylineMap);
     this.fxLayer.addChild(this.paylineHighlight);
     this.fxLayer.addChild(this.winHighlight);
+    this.fxLayer.addChild(this.paylineOverlay);
+    this.fxLayer.addChild(this.runtimePaylineCallout);
     this.fxLayer.addChild(this.particleBurst);
     this.donorCountdownValue.anchor.set(0.5);
+    this.donorCountdownCaption.anchor.set(0.5);
     this.donorCountdownOverlay.visible = false;
     this.donorCountdownOverlay.eventMode = "none";
-    this.donorCountdownOverlay.addChild(this.donorCountdownBackdrop, this.donorCountdownValue);
+    this.donorCountdownOverlay.addChild(
+      this.donorCountdownBackdrop,
+      this.donorCountdownGuide,
+      this.donorCountdownCaption,
+      this.donorCountdownValue,
+    );
     this.fxLayer.addChild(this.donorCountdownOverlay);
     this.layeredFx.setOverlayLayer(this.fxOverlayLayer);
 
@@ -570,6 +685,7 @@ export class MainScreen extends Container {
     this.uiLayer.addChild(this.donorBuyBonusModal);
 
     this.slotMachine.onSpinComplete = () => this.handleSpinComplete();
+    this.slotMachine.onReelStop = (reelIndex) => this.handleRuntimeReelStopCue(reelIndex);
     this.connectSpinHoldGesture();
     this.applyPreviewState();
     this.refreshHudState(0);
@@ -580,7 +696,28 @@ export class MainScreen extends Container {
 
   public update(ticker: { deltaMS: number }): void {
     if (this.paused) return;
+    if (
+      !this.startupPaylineGuideDismissed &&
+      !this.isSpinning &&
+      !this.isPresentingWin &&
+      !this.startupPaylineMap.visible
+    ) {
+      this.showStartupPaylineGuideOnLoad();
+    }
     const deltaMs = Math.max(0, ticker.deltaMS);
+    this.startupPaylineGlowElapsedMs += deltaMs;
+    if (this.startupPaylineMap.visible) {
+      const pulse = 0.82 + Math.sin(this.startupPaylineGlowElapsedMs * 0.012) * 0.08;
+      this.startupPaylineMap.alpha = pulse;
+      this.startupPaylineLabels.alpha = 0.92 + Math.sin(this.startupPaylineGlowElapsedMs * 0.01) * 0.03;
+    }
+    this.runtimePaylineGlowElapsedMs += deltaMs;
+    if (this.runtimePaylineMap.visible) {
+      const pulse = 0.9 + Math.sin(this.runtimePaylineGlowElapsedMs * 0.015) * 0.05;
+      this.runtimePaylineMap.alpha = pulse;
+      this.runtimePaylineCallout.alpha =
+        0.96 + Math.sin(this.runtimePaylineGlowElapsedMs * 0.012) * 0.03;
+    }
     this.layeredFx.update(deltaMs);
     this.featureIntroOverlay.update(deltaMs);
     this.donorBuyBonusModal.update(deltaMs);
@@ -600,6 +737,9 @@ export class MainScreen extends Container {
     this.clearAutoplayTimeout();
     this.clearWinPresentationTimeout();
     this.clearSpinHoldTimeout();
+    this.startupPaylineGuideDismissed = false;
+    this.clearStartupPaylineGuide();
+    this.clearRuntimePaylinePresentation();
     this.clearMathBridgeTimeouts();
     this.layeredFx.clearPresentation();
     this.topperMascot.setState("idle");
@@ -612,6 +752,7 @@ export class MainScreen extends Container {
     this.activeIntroPreviewGrid = null;
     this.featureIntroOverlay.clear();
     this.donorBuyBonusModal.clear();
+    this.showStartupPaylineGuideOnLoad();
   }
 
   public resize(width: number, height: number): void {
@@ -757,6 +898,7 @@ export class MainScreen extends Container {
   }
 
   public async show(): Promise<void> {
+    this.showStartupPaylineGuideOnLoad();
     try {
       await engine().audio.bgm.play(AppAssetKeys.BGM_MAIN, {
         volume: userSettings.getBgmVolume(),
@@ -770,6 +912,8 @@ export class MainScreen extends Container {
     this.clearAutoplayTimeout();
     this.clearWinPresentationTimeout();
     this.clearSpinHoldTimeout();
+    this.clearStartupPaylineGuide();
+    this.clearRuntimePaylinePresentation();
     this.clearMathBridgeTimeouts();
     this.layeredFx.clearPresentation();
     this.topperMascot.setState("idle");
@@ -1008,7 +1152,12 @@ export class MainScreen extends Container {
 
     const dominantFeatureCue = this.resolveDominantFeatureCue(mathBridgeHints);
     if (cue.startsWith("feature.") && dominantFeatureCue && cue !== dominantFeatureCue) {
-      return true;
+      const allowBoostBeforeJackpot =
+        dominantFeatureCue === "feature.jackpot.attached" &&
+        cue === "feature.boost.triggered";
+      if (!allowBoostBeforeJackpot) {
+        return true;
+      }
     }
 
     return (
@@ -1052,6 +1201,12 @@ export class MainScreen extends Container {
 
     const dominantFeatureCue = this.resolveDominantFeatureCue(mathBridgeHints);
     if (cue.startsWith("feature.")) {
+      const allowBoostBeforeJackpot =
+        dominantFeatureCue === "feature.jackpot.attached" &&
+        cue === "feature.boost.triggered";
+      if (allowBoostBeforeJackpot) {
+        return false;
+      }
       return dominantFeatureCue !== null && cue !== dominantFeatureCue;
     }
 
@@ -1146,6 +1301,7 @@ export class MainScreen extends Container {
     }
     this.layeredFx.clearPresentation();
     this.topperMascot.setState("idle");
+    this.clearRuntimePaylinePresentation();
     this.paylineOverlay.clear();
     this.paylineHighlight.clear();
     this.activeIntroPreviewGrid = null;
@@ -1153,10 +1309,41 @@ export class MainScreen extends Container {
     this.clearDonorCountdownPhase();
   }
 
+  private resolveReelStopCue(
+    reelIndex: number,
+    mathBridgeHints: MathBridgePresentationHints,
+  ): "round.reel.stop.1" | "round.reel.stop.2" | "round.reel.stop.3" | "round.reel.stop.3.bonusHold" | null {
+    if (reelIndex === 0) {
+      return "round.reel.stop.1";
+    }
+    if (reelIndex === 1) {
+      return "round.reel.stop.2";
+    }
+    if (reelIndex !== 2) {
+      return null;
+    }
+    return mathBridgeHints.timingHints.reelStopDelaysMs[2] >= 3000
+      ? "round.reel.stop.3.bonusHold"
+      : "round.reel.stop.3";
+  }
+
+  private handleRuntimeReelStopCue(reelIndex: number): void {
+    const mathBridgeHints = this.activeMathBridgeHints;
+    if (!mathBridgeHints) {
+      return;
+    }
+    const cue = this.resolveReelStopCue(reelIndex, mathBridgeHints);
+    if (!cue) {
+      return;
+    }
+    this.applyAnimationCue(cue);
+  }
+
   private clearFeatureScenePresentation(): void {
     this.layeredFx.clearPresentation();
     this.particleBurst.clear();
     this.winHighlight.clear();
+    this.clearRuntimePaylinePresentation();
     this.paylineOverlay.clear();
     this.paylineHighlight.clear();
     this.clearDonorCountdownPhase();
@@ -1171,48 +1358,95 @@ export class MainScreen extends Container {
       width: 3,
       alpha: 0.62,
     });
+    this.donorCountdownGuide.clear();
+    this.donorCountdownCaption.x = machineWidth * 0.5;
+    this.donorCountdownCaption.y = machineHeight * 0.28;
     this.donorCountdownValue.x = machineWidth * 0.5;
     this.donorCountdownValue.y = machineHeight * 0.5;
   }
 
   private playDonorCountdownPhase(
     values: number[] = [0, 1, 2, 3],
-    stepMs = 420,
-    tailMs = 220,
+    stepMs: number | number[] = 250,
+    tailMs = 2200,
+    options: {
+      mode?: "countdown" | "lineCount";
+      caption?: string;
+      guideYRatio?: number;
+    } = {},
   ): number {
     if (getProviderPackStatus().effectiveProvider !== "donorlocal") {
       return 0;
     }
 
+    const mode = options.mode ?? "countdown";
+    const boardWidth =
+      CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
+      (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing;
+    const boardHeight =
+      CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
+      (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing;
     this.clearDonorCountdownPhase();
     this.donorCountdownOverlay.visible = true;
     this.donorCountdownOverlay.alpha = 1;
+    this.donorCountdownCaption.text =
+      options.caption ?? (mode === "lineCount" ? "TOP LINE COUNT" : "");
+    this.donorCountdownCaption.visible = this.donorCountdownCaption.text.length > 0;
+    this.donorCountdownValue.scale.set(mode === "lineCount" ? 0.86 : 1);
+    this.donorCountdownValue.y = mode === "lineCount" ? boardHeight * 0.46 : boardHeight * 0.5;
+    this.donorCountdownGuide.clear();
+    if (mode === "lineCount") {
+      const guideY = boardHeight * Math.max(0.08, Math.min(0.92, options.guideYRatio ?? 0.22));
+      this.donorCountdownGuide.moveTo(24, guideY);
+      this.donorCountdownGuide.lineTo(boardWidth - 24, guideY);
+      this.donorCountdownGuide.stroke({
+        color: 0xffca54,
+        width: 5,
+        alpha: 0.92,
+        cap: "round",
+      });
+      this.donorCountdownGuide.moveTo(24, guideY);
+      this.donorCountdownGuide.lineTo(boardWidth - 24, guideY);
+      this.donorCountdownGuide.stroke({
+        color: 0xfff6d5,
+        width: 2.4,
+        alpha: 0.86,
+        cap: "round",
+      });
+    }
 
+    let elapsedMs = 0;
     values.forEach((value, index) => {
+      const stepValue = Array.isArray(stepMs)
+        ? stepMs[Math.min(index, stepMs.length - 1)] ?? 250
+        : stepMs;
       const timeout = window.setTimeout(() => {
         this.donorCountdownValue.text = `${value}`;
-        const flashAlpha = value >= values[values.length - 1] ? 0.88 : 0.78;
+        const flashAlpha =
+          mode === "lineCount"
+            ? value >= values[values.length - 1]
+              ? 0.74
+              : 0.64
+            : value >= values[values.length - 1]
+              ? 0.88
+              : 0.78;
         this.donorCountdownBackdrop.clear();
-        this.donorCountdownBackdrop.roundRect(
-          0,
-          0,
-          CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
-            (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing,
-          CRAZY_ROOSTER_LAYOUT.rowCount * CRAZY_ROOSTER_LAYOUT.symbolHeight +
-            (CRAZY_ROOSTER_LAYOUT.rowCount - 1) * CRAZY_ROOSTER_LAYOUT.rowSpacing,
-          18,
-        );
-        this.donorCountdownBackdrop.fill({ color: 0x0b0615, alpha: flashAlpha });
-        this.donorCountdownBackdrop.stroke({
-          color: value >= 2 ? 0xeb4b2b : 0xd8b15a,
-          width: 4,
-          alpha: 0.68,
+        this.donorCountdownBackdrop.roundRect(0, 0, boardWidth, boardHeight, 18);
+        this.donorCountdownBackdrop.fill({
+          color: mode === "lineCount" ? 0x12071f : 0x0b0615,
+          alpha: flashAlpha,
         });
-      }, index * stepMs);
+        this.donorCountdownBackdrop.stroke({
+          color: mode === "lineCount" ? 0xffb036 : value >= 2 ? 0xeb4b2b : 0xd8b15a,
+          width: mode === "lineCount" ? 3 : 4,
+          alpha: mode === "lineCount" ? 0.58 : 0.68,
+        });
+      }, elapsedMs);
       this.mathBridgeTimeouts.push(timeout);
+      elapsedMs += Math.max(80, Math.floor(stepValue));
     });
 
-    const totalMs = values.length * stepMs + tailMs;
+    const totalMs = elapsedMs + tailMs;
     const hideTimeout = window.setTimeout(() => {
       this.clearDonorCountdownPhase();
     }, totalMs);
@@ -1223,7 +1457,39 @@ export class MainScreen extends Container {
 
   private clearDonorCountdownPhase(): void {
     this.donorCountdownOverlay.visible = false;
+    this.donorCountdownGuide.clear();
+    this.donorCountdownCaption.text = "";
+    this.donorCountdownCaption.visible = false;
+    this.donorCountdownValue.scale.set(1);
     this.donorCountdownValue.text = "";
+  }
+
+  private shouldUseDonorCountdownPrelude(
+    mathBridgeHints: MathBridgePresentationHints | null = this.activeMathBridgeHints,
+  ): boolean {
+    if (!this.isDonorFeatureScenario(mathBridgeHints)) {
+      return false;
+    }
+    if ((mathBridgeHints?.mode ?? "base") !== "base") {
+      return false;
+    }
+    const countdownParam = new URLSearchParams(window.location.search).get("donorCountdownPrelude");
+    // Keep countdown prelude explicit to avoid unintended full-screen counting on normal rounds.
+    return countdownParam === "1";
+  }
+
+  private shouldUseDonorLineCountPrelude(
+    mathBridgeHints: MathBridgePresentationHints | null = this.activeMathBridgeHints,
+  ): boolean {
+    if (!this.isDonorFeatureScenario(mathBridgeHints)) {
+      return false;
+    }
+    if ((mathBridgeHints?.mode ?? "base") !== "base") {
+      return false;
+    }
+    // Keep line-count prelude explicit to avoid broad full-screen counting in normal donorlocal flow.
+    const lineCountParam = new URLSearchParams(window.location.search).get("donorLineCountPrelude");
+    return lineCountParam === "1";
   }
 
   private scheduleMathBridgeFeatureCues(
@@ -1239,6 +1505,7 @@ export class MainScreen extends Container {
       Math.max(0, mathBridgeHints.timingHints.featureStartDelayMs),
       lineTiming.sequenceEndDelayMs + 80,
     );
+    const boostCueDelay = featureDelay + 90;
     const summaryDelay =
       lineCount > 0
         ? Math.max(lineTiming.delayMs, lineTiming.sequenceEndDelayMs - Math.round(lineTiming.durationMs * 0.4))
@@ -1258,7 +1525,8 @@ export class MainScreen extends Container {
         continue;
       }
       if (
-        (mathBridgeHints.triggers.bonus || mathBridgeHints.triggers.jackpot) &&
+        mathBridgeHints.triggers.bonus &&
+        !mathBridgeHints.triggers.jackpot &&
         cue === "feature.boost.triggered"
       ) {
         continue;
@@ -1270,11 +1538,15 @@ export class MainScreen extends Container {
       } else if (cue === "feature.collect.triggered") {
         delay = featureDelay;
       } else if (cue === "feature.boost.triggered") {
-        delay = featureDelay + 90;
+        delay = boostCueDelay;
       } else if (cue === "feature.bonus.enter") {
         delay = featureDelay + 170;
       } else if (cue === "feature.jackpot.attached") {
-        delay = featureDelay + 250;
+        delay =
+          getProviderPackStatus().effectiveProvider === "donorlocal" &&
+          mathBridgeHints.triggers.boost
+            ? boostCueDelay + DONOR_VIDEO_TIMING.boostChargeWindowMs
+            : featureDelay + 250;
       } else if (cue === "overlay.winTier.enter") {
         delay = featureDelay + 330;
       }
@@ -1287,18 +1559,62 @@ export class MainScreen extends Container {
     mathBridgeHints: MathBridgePresentationHints | null,
     linePresentations: ResolvedLinePresentation[],
   ): void {
-    if (!mathBridgeHints || linePresentations.length === 0) {
+    if (linePresentations.length === 0) {
       return;
     }
 
-    if (this.isDonorFeatureScenario(mathBridgeHints)) {
-      this.paylineOverlay.clear();
-      this.paylineHighlight.clear();
+    if (!mathBridgeHints) {
+      const isDonorlocal = getProviderPackStatus().effectiveProvider === "donorlocal";
+      const durationMs = isDonorlocal ? 1600 : 760;
+      const gapMs = isDonorlocal ? 160 : 100;
+      const hideTailMs = isDonorlocal ? 140 : 80;
+      const flashWindowMs = Math.max(
+        980,
+        linePresentations.length * (durationMs + gapMs) + 320,
+      );
+      this.slotMachine.flashPaylines(flashWindowMs);
+      linePresentations.forEach((linePresentation, index) => {
+        const startDelay = index * (durationMs + gapMs);
+        const showTimeout = window.setTimeout(() => {
+          const styleHook = isDonorlocal ? "neon" : "subtle";
+          this.paylineHighlight.showWin(linePresentation.symbols, styleHook, null);
+          if (isDonorlocal) {
+            this.showRuntimePaylinePresentation(
+              linePresentation,
+              "standard",
+              index,
+              linePresentations.length,
+            );
+          } else {
+            this.fxLayer.addChild(this.paylineOverlay);
+            this.paylineOverlay.showLine(linePresentation, {
+              durationMs,
+              sequenceCount: linePresentations.length,
+              sequenceIndex: index,
+              styleHook,
+              tone: "standard",
+            });
+          }
+        }, startDelay);
+        const hideTimeout = window.setTimeout(() => {
+          this.clearRuntimePaylinePresentation();
+          this.paylineOverlay.clear();
+          this.paylineHighlight.clear();
+        }, startDelay + durationMs + hideTailMs);
+        this.mathBridgeTimeouts.push(showTimeout, hideTimeout);
+      });
       return;
     }
 
     const timing = this.resolveLineSequenceTiming(mathBridgeHints, linePresentations.length);
+    const hideTailMs =
+      getProviderPackStatus().effectiveProvider === "donorlocal" ? 140 : 80;
     const tone = this.resolveLineTone(mathBridgeHints);
+    const flashWindowMs = Math.max(
+      980,
+      timing.sequenceEndDelayMs + Math.round(timing.durationMs * 0.75),
+    );
+    this.slotMachine.flashPaylines(flashWindowMs);
 
     linePresentations.forEach((linePresentation, index) => {
       const startDelay = timing.delayMs + index * (timing.durationMs + timing.gapMs);
@@ -1315,13 +1631,23 @@ export class MainScreen extends Container {
             linePresentations.length,
           ),
         );
-        this.paylineOverlay.showLine(linePresentation, {
-          durationMs: timing.durationMs,
-          sequenceCount: linePresentations.length,
-          sequenceIndex: index,
-          styleHook,
-          tone,
-        });
+        if (getProviderPackStatus().effectiveProvider === "donorlocal") {
+          this.showRuntimePaylinePresentation(
+            linePresentation,
+            tone,
+            index,
+            linePresentations.length,
+          );
+        } else {
+          this.fxLayer.addChild(this.paylineOverlay);
+          this.paylineOverlay.showLine(linePresentation, {
+            durationMs: timing.durationMs,
+            sequenceCount: linePresentations.length,
+            sequenceIndex: index,
+            styleHook,
+            tone,
+          });
+        }
         this.playLinePresentationChoreography(
           linePresentation,
           mathBridgeHints,
@@ -1331,9 +1657,10 @@ export class MainScreen extends Container {
         );
       }, startDelay);
       const hideTimeout = window.setTimeout(() => {
+        this.clearRuntimePaylinePresentation();
         this.paylineOverlay.clear();
         this.paylineHighlight.clear();
-      }, startDelay + timing.durationMs);
+      }, startDelay + timing.durationMs + hideTailMs);
       this.mathBridgeTimeouts.push(showTimeout, hideTimeout);
     });
   }
@@ -1385,11 +1712,32 @@ export class MainScreen extends Container {
     gapMs: number;
     sequenceEndDelayMs: number;
   } {
-    const delayMs = Math.max(0, mathBridgeHints.timingHints.lineHighlightDelayMs);
-    const durationMs = Math.max(360, mathBridgeHints.timingHints.lineHighlightDurationMs);
-    const gapMs = Math.min(180, Math.max(70, Math.round(durationMs * 0.18)));
+    const isDonorlocal = getProviderPackStatus().effectiveProvider === "donorlocal";
+    const delayMs = Math.max(
+      isDonorlocal ? 80 : 0,
+      mathBridgeHints.timingHints.lineHighlightDelayMs,
+    );
+    const hasFeatureTone =
+      mathBridgeHints.triggers.collect ||
+      mathBridgeHints.triggers.boost ||
+      mathBridgeHints.triggers.bonus ||
+      mathBridgeHints.triggers.jackpot;
+    const minDurationMs = isDonorlocal
+      ? hasFeatureTone
+        ? DONOR_VIDEO_TIMING.lineMinFeatureMs
+        : DONOR_VIDEO_TIMING.lineMinStandardMs
+      : 360;
+    const durationMs = Math.max(minDurationMs, mathBridgeHints.timingHints.lineHighlightDurationMs);
+    const gapMs = isDonorlocal
+      ? Math.min(280, Math.max(140, Math.round(durationMs * 0.18)))
+      : Math.min(180, Math.max(70, Math.round(durationMs * 0.18)));
     const sequenceEndDelayMs =
-      lineCount > 0 ? delayMs + lineCount * durationMs + Math.max(0, lineCount - 1) * gapMs : delayMs;
+      lineCount > 0
+        ? delayMs +
+          lineCount * durationMs +
+          Math.max(0, lineCount - 1) * gapMs +
+          (isDonorlocal ? 180 : 0)
+        : delayMs;
     return {
       delayMs,
       durationMs,
@@ -1433,7 +1781,7 @@ export class MainScreen extends Container {
     if (lineCount > 1 && lineIndex === lineCount - 1) {
       return "neon";
     }
-    return mathBridgeHints.winTier === "none" ? "subtle" : "neon";
+    return "neon";
   }
 
   private resolveLineMotionProfile(
@@ -1453,13 +1801,14 @@ export class MainScreen extends Container {
       tone === "jackpot" ? 0.66 : tone === "boost" || tone === "bonus" ? 0.78 : 1;
     const escalatedScale = this.isEscalatedWinTier(mathBridgeHints.winTier) ? 1.08 : 1;
     const cherryScale = isCherryLine ? 1.25 : 1;
-    const intensity = lineScale * toneScale * escalatedScale * cherryScale;
+    const donorMotionGain = tone === "standard" ? 1.18 : 1.08;
+    const intensity = lineScale * toneScale * escalatedScale * cherryScale * donorMotionGain;
 
     return {
-      amplitudePx: 1.2 * intensity,
-      liftPx: 1.5 * intensity,
-      scalePulse: 0.018 * intensity,
-      frequencyHz: isCherryLine ? 2.45 : 2.1,
+      amplitudePx: (isCherryLine ? 2 : 1.35) * intensity,
+      liftPx: (isCherryLine ? 2.4 : 1.8) * intensity,
+      scalePulse: (isCherryLine ? 0.026 : 0.02) * intensity,
+      frequencyHz: isCherryLine ? 2.58 : 2.16,
       phaseStep: isCherryLine ? 0.62 : 0.84,
     };
   }
@@ -1473,13 +1822,25 @@ export class MainScreen extends Container {
   private shouldUseBigWinMascot(
     mathBridgeHints: MathBridgePresentationHints | null | undefined,
   ): boolean {
-    if (!mathBridgeHints || !this.isEscalatedWinTier(mathBridgeHints.winTier)) {
+    if (!mathBridgeHints) {
       return false;
     }
-    if (mathBridgeHints.winTier === "mega" || mathBridgeHints.triggers.jackpot) {
+    const donorlocal = getProviderPackStatus().effectiveProvider === "donorlocal";
+    if (donorlocal) {
+      return mathBridgeHints.triggers.jackpot || mathBridgeHints.winTier === "mega";
+    }
+    if (mathBridgeHints.triggers.jackpot || mathBridgeHints.winTier === "mega") {
       return true;
     }
-    return mathBridgeHints.totalWinMultiplier >= 10;
+    if (mathBridgeHints.winTier === "huge") {
+      return true;
+    }
+    // Keep donorlocal eyes stable for normal/small wins. "big" can happen at low bet
+    // via provisional multipliers, so require a stronger threshold before big-win eyes.
+    if (mathBridgeHints.winTier === "big") {
+      return mathBridgeHints.totalWinMultiplier >= 15;
+    }
+    return false;
   }
 
   private resolveLineMascotState(
@@ -1498,12 +1859,12 @@ export class MainScreen extends Container {
       case "boost":
         return lineIndex === 0 ? "react_boost_start" : "react_boost_loop";
       case "bonus":
-        return this.shouldUseBigWinMascot(mathBridgeHints) ? "react_bigwin" : "react_collect";
+        return "react_collect";
       case "jackpot":
         return "react_jackpot";
       case "standard":
       default:
-        return this.shouldUseBigWinMascot(mathBridgeHints) ? "react_bigwin" : "react_collect";
+        return this.shouldUseBigWinMascot(mathBridgeHints) ? "react_bigwin" : null;
     }
   }
 
@@ -1759,14 +2120,7 @@ export class MainScreen extends Container {
   }
 
   private resolveBenchmarkReadyStatus(): string {
-    const provider = getProviderPackStatus().effectiveProvider;
-    if (provider === "donorlocal") {
-      return "DONORLOCAL BENCHMARK READY";
-    }
-    if (provider === "openai") {
-      return "OPENAI FALLBACK READY";
-    }
-    return `${provider.toUpperCase()} READY`;
+    return "DONORLOCAL BENCHMARK READY";
   }
 
   private resolveTierStyleHook(tier: PresentationWinTier): string | undefined {
@@ -1896,6 +2250,7 @@ export class MainScreen extends Container {
 
       this.isSpinning = true;
       this.pendingRound = null;
+      this.clearRuntimePaylinePresentation();
       this.winHighlight.clear();
       this.paylineHighlight.clear();
       this.paylineOverlay.clear();
@@ -1965,6 +2320,9 @@ export class MainScreen extends Container {
 
     this.isSpinning = true;
     this.pendingRound = null;
+    this.startupPaylineGuideDismissed = true;
+    this.clearStartupPaylineGuide();
+    this.clearRuntimePaylinePresentation();
     this.winHighlight.clear();
     this.paylineHighlight.clear();
     this.paylineOverlay.clear();
@@ -2001,10 +2359,38 @@ export class MainScreen extends Container {
     timing: ReturnType<AnimationPolicyEngine["resolveSpinTiming"]>,
     mathBridgeHints: MathBridgePresentationHints | null,
   ): void {
+    const spinTiming = this.resolveDonorSpinTiming(timing, mathBridgeHints);
     this.clearMathBridgeTimeouts();
     this.activeMathBridgeHints = mathBridgeHints;
     this.jackpotFeatureCueConsumed = false;
-    this.activeIntroPreviewGrid = presentation.symbolGrid.map((row) => [...row]);
+    const resolvedStopColumns = this.resolvePresentationColumns(
+      presentation.reels.stopColumns,
+      mathBridgeHints,
+    );
+    const resolvedPresentation =
+      resolvedStopColumns === presentation.reels.stopColumns
+        ? presentation
+        : {
+            ...presentation,
+            reels: {
+              ...presentation.reels,
+              stopColumns: resolvedStopColumns,
+            },
+            symbolGrid: buildGridFromColumns(resolvedStopColumns),
+          };
+    const presentationVariants = this.resolvePresentationVariants(
+      resolvedPresentation.symbolGrid,
+      mathBridgeHints,
+    );
+    const reelStopVariants = Array.from(
+      { length: CRAZY_ROOSTER_LAYOUT.reelCount },
+      (_, reelIndex) =>
+        Array.from({ length: CRAZY_ROOSTER_LAYOUT.rowCount }, (_, rowIndex) =>
+          presentationVariants[`${reelIndex}-${rowIndex}`] ?? null,
+        ),
+    );
+
+    this.activeIntroPreviewGrid = resolvedPresentation.symbolGrid.map((row) => [...row]);
     this.debugOverlay.setMathBridgeSummary(
       mathBridgeHints
         ? {
@@ -2014,35 +2400,20 @@ export class MainScreen extends Container {
           }
         : null,
     );
-    const featureFrame = this.featureModules.resolve(presentation);
+    const featureFrame = this.featureModules.resolve(resolvedPresentation);
     this.pendingRound = {
-      presentation,
+      presentation: resolvedPresentation,
       featureFrame,
       mathBridgeHints,
     };
 
-    if (mathBridgeHints) {
-      const reelCueBase = Math.max(0, timing.minSpinMs);
-      const reelCueMap = [
-        "round.reel.stop.1",
-        "round.reel.stop.2",
-        mathBridgeHints.timingHints.reelStopDelaysMs[2] >= 3000
-          ? "round.reel.stop.3.bonusHold"
-          : "round.reel.stop.3",
-      ] as const;
-      reelCueMap.forEach((cue, index) => {
-        const offset =
-          mathBridgeHints.timingHints.reelStopDelaysMs[index] ??
-          (index + 1) * timing.spinStaggerMs;
-        this.scheduleMathBridgeCue(cue, reelCueBase + Math.max(0, offset));
-      });
-    }
-
     this.slotMachine.spin({
-      minSpinDurationMs: timing.minSpinMs,
-      spinStaggerMs: timing.spinStaggerMs,
-      speedMultiplier: timing.speedMultiplier,
-      reelStopColumns: presentation.reels.stopColumns,
+      minSpinDurationMs: spinTiming.minSpinMs,
+      spinStaggerMs: spinTiming.spinStaggerMs,
+      speedMultiplier: spinTiming.speedMultiplier,
+      finalReelHoldMs: spinTiming.finalReelHoldMs,
+      reelStopColumns: resolvedPresentation.reels.stopColumns,
+      reelStopVariants,
     });
     this.layeredFx.beginSpinCycle();
     this.topperMascot.setState("idle");
@@ -2053,6 +2424,38 @@ export class MainScreen extends Container {
       statusText: "ROUND_REQUESTED",
     });
     this.showStatus("ROUND REQUESTED");
+  }
+
+  private resolveDonorSpinTiming(
+    timing: ReturnType<AnimationPolicyEngine["resolveSpinTiming"]>,
+    mathBridgeHints: MathBridgePresentationHints | null,
+  ): {
+    minSpinMs: number;
+    spinStaggerMs: number;
+    speedMultiplier: number;
+    finalReelHoldMs: number;
+  } {
+    const baseTiming = {
+      minSpinMs: timing.minSpinMs,
+      spinStaggerMs: timing.spinStaggerMs,
+      speedMultiplier: timing.speedMultiplier,
+      finalReelHoldMs: 0,
+    };
+    if (getProviderPackStatus().effectiveProvider !== "donorlocal") {
+      return baseTiming;
+    }
+
+    const hasHeavyFeatureTrigger = Boolean(
+      mathBridgeHints?.triggers.bonus || mathBridgeHints?.triggers.jackpot,
+    );
+    const hasBoostTrigger = Boolean(mathBridgeHints?.triggers.boost);
+
+    return {
+      minSpinMs: Math.max(1360, timing.minSpinMs),
+      spinStaggerMs: 66,
+      speedMultiplier: Math.max(0.9, timing.speedMultiplier),
+      finalReelHoldMs: hasHeavyFeatureTrigger ? 240 : hasBoostTrigger ? 120 : 0,
+    };
   }
 
   private handleSpinComplete(): void {
@@ -2070,25 +2473,17 @@ export class MainScreen extends Container {
     this.pendingRound = null;
 
     const { presentation, featureFrame, mathBridgeHints } = resolution;
-    const settledColumns = this.resolvePresentationColumns(
-      presentation.reels.stopColumns,
+    const settledPresentation = presentation;
+    const presentationVariants = this.resolvePresentationVariants(
+      settledPresentation.symbolGrid,
       mathBridgeHints,
     );
-    const settledPresentation =
-      settledColumns === presentation.reels.stopColumns
-        ? presentation
-        : {
-            ...presentation,
-            reels: {
-              ...presentation.reels,
-              stopColumns: settledColumns,
-            },
-            symbolGrid: buildGridFromColumns(settledColumns),
-          };
-    this.slotMachine.setPresentationColumns(
-      settledPresentation.reels.stopColumns,
-      this.resolvePresentationVariants(settledPresentation.symbolGrid, mathBridgeHints),
-    );
+    const hasPresentationVariants = Object.keys(presentationVariants).length > 0;
+    const shouldReapplyPresentationVariants =
+      hasPresentationVariants && getProviderPackStatus().effectiveProvider !== "donorlocal";
+    if (shouldReapplyPresentationVariants) {
+      this.slotMachine.applyPresentationVariants(presentationVariants);
+    }
     this.applyDynamicControlVisibility(featureFrame);
 
     const mergedMessages = [
@@ -2109,7 +2504,10 @@ export class MainScreen extends Container {
     }
 
     const winSymbols = this.resolveWinningSymbols(settledPresentation, mathBridgeHints);
-    const linePresentations = this.resolveLinePresentations(mathBridgeHints);
+    const linePresentations = this.resolveLinePresentations(
+      settledPresentation,
+      mathBridgeHints,
+    );
     const winAmount = settledPresentation.winAmount;
     const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
     const animationCues = this.resolveWinPresentationAnimationCues(
@@ -2248,6 +2646,10 @@ export class MainScreen extends Container {
   private shouldUseDonorStableJackpotLayout(
     mathBridgeHints: MathBridgePresentationHints | null,
   ): boolean {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("donorStableJackpotLayout") !== "1") {
+      return false;
+    }
     if (
       getProviderPackStatus().effectiveProvider !== "donorlocal" ||
       !mathBridgeHints?.jackpotTier
@@ -2261,19 +2663,44 @@ export class MainScreen extends Container {
     );
   }
 
+  private shouldShowWinCounter(
+    amountMinor: number,
+    tier: PresentationWinTier,
+  ): boolean {
+    if (amountMinor <= 0) {
+      return false;
+    }
+    if (tier === "none") {
+      return false;
+    }
+    if (getProviderPackStatus().effectiveProvider === "donorlocal") {
+      // Donor normal/small wins should not trigger the full-screen counter.
+      return tier === "mega" || tier === "huge";
+    }
+    // Keep large center counter for material wins only.
+    return tier === "big" || tier === "huge" || tier === "mega" || amountMinor >= 100;
+  }
+
   private resolveLinePresentations(
+    presentation: RoundPresentationModel,
     mathBridgeHints: MathBridgePresentationHints | null,
   ): ResolvedLinePresentation[] {
-    if (!mathBridgeHints || mathBridgeHints.lineWins.length === 0) {
-      return [];
-    }
-
     const reels = this.slotMachine.getReels();
-    return mathBridgeHints.lineWins
+    const fromMathBridge = (mathBridgeHints?.lineWins ?? [])
       .map((lineWin) => {
-        const symbols = lineWin.positions
+        let symbols = lineWin.positions
           .map((position) => reels[position.reelIndex]?.getVisibleSymbols()[position.rowIndex])
           .filter(Boolean) as HighlightSymbolLike[];
+
+        if (symbols.length === 0) {
+          const payline =
+            CRAZY_ROOSTER_PAYLINES[Math.max(0, (lineWin.lineId ?? 1) - 1)] ?? null;
+          if (payline) {
+            symbols = payline
+              .map((rowIndex, reelIndex) => reels[reelIndex]?.getVisibleSymbols()[rowIndex])
+              .filter(Boolean) as HighlightSymbolLike[];
+          }
+        }
 
         if (symbols.length === 0) {
           return null;
@@ -2289,14 +2716,540 @@ export class MainScreen extends Container {
         };
       })
       .filter((entry): entry is ResolvedLinePresentation => Boolean(entry));
+
+    if (fromMathBridge.length > 0) {
+      return fromMathBridge;
+    }
+
+    if (presentation.winAmount <= 0) {
+      return [];
+    }
+
+    return this.resolveFallbackLinePresentations(presentation, reels);
+  }
+
+  private resolveFallbackLinePresentations(
+    presentation: RoundPresentationModel,
+    reels: ReturnType<CrazyRoosterSlotMachine["getReels"]>,
+  ): ResolvedLinePresentation[] {
+    const baseLineWins = CRAZY_ROOSTER_PAYLINES.map((payline, index) => {
+      const symbolsOnLine = payline.map(
+        (rowIndex, reelIndex) => presentation.symbolGrid[rowIndex]?.[reelIndex],
+      );
+      const first = symbolsOnLine[0];
+      if (first === undefined || first === 7 || first === 8 || first === 9) {
+        return null;
+      }
+      if (!symbolsOnLine.every((symbol) => symbol === first)) {
+        return null;
+      }
+      return {
+        lineId: index + 1,
+        symbolId: first,
+        payline,
+      };
+    }).filter(
+      (entry): entry is { lineId: number; symbolId: number; payline: number[] } =>
+        Boolean(entry),
+    );
+
+    if (baseLineWins.length === 0) {
+      const fallbackPayline = CRAZY_ROOSTER_PAYLINES[1] ?? [1, 1, 1];
+      const symbols = fallbackPayline
+        .map((rowIndex, reelIndex) => reels[reelIndex]?.getVisibleSymbols()[rowIndex])
+        .filter(Boolean) as HighlightSymbolLike[];
+      if (symbols.length === 0) {
+        return [];
+      }
+      const symbolId =
+        presentation.symbolGrid[fallbackPayline[0] ?? 1]?.[0] ??
+        presentation.symbolGrid[1]?.[0] ??
+        presentation.symbolGrid[0]?.[0] ??
+        0;
+      const amountMinor = Math.max(1, Math.round(presentation.winAmount));
+      const defaultBet = Math.max(0.1, ResolvedRuntimeConfigStore.limits.defaultBet);
+      const multiplier = Math.max(
+        1,
+        amountMinor / Math.max(1, Math.round(defaultBet * 100)),
+      );
+      return [
+        {
+          lineId: 2,
+          symbolId,
+          multiplier,
+          amountMinor,
+          points: symbols.map((symbol) => this.resolveFxLayerCenter(symbol)),
+          symbols,
+        },
+      ];
+    }
+
+    const perLineAmountMinor = Math.max(
+      1,
+      Math.round(presentation.winAmount / baseLineWins.length),
+    );
+    const defaultBet = Math.max(0.1, ResolvedRuntimeConfigStore.limits.defaultBet);
+    const perLineMultiplier = Math.max(
+      1,
+      perLineAmountMinor / Math.max(1, Math.round(defaultBet * 100)),
+    );
+
+    return baseLineWins
+      .map((lineWin) => {
+        const symbols = lineWin.payline
+          .map((rowIndex, reelIndex) => reels[reelIndex]?.getVisibleSymbols()[rowIndex])
+          .filter(Boolean) as HighlightSymbolLike[];
+        if (symbols.length === 0) {
+          return null;
+        }
+        return {
+          lineId: lineWin.lineId,
+          symbolId: lineWin.symbolId,
+          multiplier: perLineMultiplier,
+          amountMinor: perLineAmountMinor,
+          points: symbols.map((symbol) => this.resolveFxLayerCenter(symbol)),
+          symbols,
+        };
+      })
+      .filter((entry): entry is ResolvedLinePresentation => Boolean(entry));
+  }
+
+  private showStartupPaylineGuideOnLoad(): void {
+    if (this.startupPaylineGuideDismissed) {
+      return;
+    }
+    if (this.startupPaylineMap.visible || this.startupPaylineLabels.visible) {
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("startupPaylines") === "0") {
+      return;
+    }
+    this.drawStartupPaylineGuide();
+  }
+
+  private clearStartupPaylineGuide(): void {
+    this.startupPaylineMap.clear();
+    this.startupPaylineMap.visible = false;
+    this.startupPaylineLabels.removeChildren();
+    this.startupPaylineLabels.visible = false;
+  }
+
+  private clearRuntimePaylinePresentation(): void {
+    this.runtimePaylineMap.clear();
+    this.runtimePaylineMap.visible = false;
+    this.runtimePaylineCallout.visible = false;
+    this.runtimePaylineTitle.text = "";
+    this.runtimePaylineBadgeText.text = "";
+    this.runtimePaylineMainText.text = "";
+    this.runtimePaylineSequenceText.text = "";
+    this.runtimePaylineGlowElapsedMs = 0;
+  }
+
+  private showRuntimePaylinePresentation(
+    linePresentation: ResolvedLinePresentation,
+    tone: "standard" | "collect" | "boost" | "bonus" | "jackpot",
+    sequenceIndex: number,
+    sequenceCount: number,
+  ): void {
+    this.clearRuntimePaylinePresentation();
+    const points = linePresentation.points;
+    if (points.length < 2) {
+      return;
+    }
+
+    const style = this.resolveRuntimePaylineStyle(tone);
+    const first = points[0];
+    const second = points[Math.min(1, points.length - 1)];
+    const last = points[points.length - 1];
+    const lineExtensionPx = 16;
+    const startDirection = this.normalizeVector(first.x - second.x, first.y - second.y);
+    const endDirection = this.normalizeVector(last.x - second.x, last.y - second.y);
+    const pathPoints = [
+      {
+        x: first.x + startDirection.x * lineExtensionPx,
+        y: first.y + startDirection.y * lineExtensionPx,
+      },
+      ...points.slice(1, -1),
+      {
+        x: last.x + endDirection.x * lineExtensionPx,
+        y: last.y + endDirection.y * lineExtensionPx,
+      },
+    ];
+
+    this.drawRuntimePaylineStroke(pathPoints, 11, style.outerGlow, 0.14);
+    this.drawRuntimePaylineStroke(pathPoints, 7.2, style.midGlow, 0.34);
+    this.drawRuntimePaylineStroke(pathPoints, 4.4, style.innerGlow, 0.72);
+    this.drawRuntimePaylineStroke(pathPoints, 2.2, 0xfffff0, 0.84);
+
+    points.forEach((point) => {
+      this.runtimePaylineMap.circle(point.x, point.y, 11);
+      this.runtimePaylineMap.fill({ color: style.midGlow, alpha: 0.26 });
+      this.runtimePaylineMap.circle(point.x, point.y, 5.2);
+      this.runtimePaylineMap.fill({ color: 0xfffff2, alpha: 0.9 });
+    });
+
+    const reelAreaWidth =
+      CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
+      (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing;
+    const minY = Math.min(...points.map((point) => point.y));
+    const minX = Math.min(...points.map((point) => point.x));
+    const maxX = Math.max(...points.map((point) => point.x));
+    const calloutWidth = 268;
+    const calloutHeight = 66;
+    const halfWidth = calloutWidth * 0.5;
+    const calloutX = Math.max(
+      halfWidth + 8,
+      Math.min(reelAreaWidth - halfWidth - 8, (minX + maxX) * 0.5),
+    );
+    const calloutY = Math.max(84, minY - 30);
+
+    this.runtimePaylineCalloutShadow.clear();
+    this.runtimePaylineCalloutShadow.roundRect(
+      -halfWidth,
+      -calloutHeight * 0.5 + 5,
+      calloutWidth,
+      calloutHeight,
+      18,
+    );
+    this.runtimePaylineCalloutShadow.fill({ color: 0x050102, alpha: 0.46 });
+
+    this.runtimePaylineCalloutBase.clear();
+    this.runtimePaylineCalloutBase.roundRect(
+      -halfWidth,
+      -calloutHeight * 0.5,
+      calloutWidth,
+      calloutHeight,
+      18,
+    );
+    this.runtimePaylineCalloutBase.fill({ color: style.panelFill, alpha: 0.95 });
+    this.runtimePaylineCalloutBase.stroke({ color: style.panelStroke, width: 4, alpha: 0.98 });
+
+    this.runtimePaylineCalloutAccent.clear();
+    this.runtimePaylineCalloutAccent.roundRect(
+      -halfWidth + 10,
+      -calloutHeight * 0.5 + 8,
+      calloutWidth - 20,
+      14,
+      8,
+    );
+    this.runtimePaylineCalloutAccent.fill({ color: style.accentFill, alpha: 0.94 });
+
+    this.runtimePaylineBadge.clear();
+    this.runtimePaylineBadge.circle(-halfWidth + 36, 4, 20);
+    this.runtimePaylineBadge.fill({ color: style.badgeFill, alpha: 0.98 });
+    this.runtimePaylineBadge.stroke({ color: style.badgeStroke, width: 3, alpha: 0.98 });
+
+    this.runtimePaylineSequenceChip.clear();
+    if (sequenceCount > 1) {
+      this.runtimePaylineSequenceChip.roundRect(
+        halfWidth - 70,
+        -calloutHeight * 0.5 + 10,
+        56,
+        24,
+        12,
+      );
+      this.runtimePaylineSequenceChip.fill({ color: style.badgeFill, alpha: 0.95 });
+      this.runtimePaylineSequenceChip.stroke({ color: style.badgeStroke, width: 2, alpha: 0.96 });
+    }
+
+    this.runtimePaylineTitle.text =
+      tone === "jackpot"
+        ? "JACKPOT LINE"
+        : tone === "boost"
+          ? "BOOST LINE"
+          : tone === "collect"
+            ? "COLLECT LINE"
+            : "WINNING LINE";
+    this.runtimePaylineTitle.x = 0;
+    this.runtimePaylineTitle.y = -18;
+
+    this.runtimePaylineBadgeText.text = `L${linePresentation.lineId}`;
+    this.runtimePaylineBadgeText.x = -halfWidth + 36;
+    this.runtimePaylineBadgeText.y = 4;
+
+    this.runtimePaylineMainText.text = `${formatLineMultiplier(linePresentation.multiplier)} PAY ${formatMinorCurrency(linePresentation.amountMinor)}`;
+    this.runtimePaylineMainText.x = 22;
+    this.runtimePaylineMainText.y = 7;
+
+    this.runtimePaylineSequenceText.text =
+      sequenceCount > 1 ? `${sequenceIndex + 1}/${sequenceCount}` : "";
+    this.runtimePaylineSequenceText.visible = sequenceCount > 1;
+    this.runtimePaylineSequenceText.x = halfWidth - 42;
+    this.runtimePaylineSequenceText.y = -13;
+
+    this.runtimePaylineCallout.x = calloutX;
+    this.runtimePaylineCallout.y = calloutY;
+    this.runtimePaylineCallout.alpha = 0.98;
+    this.runtimePaylineCallout.visible = true;
+    this.runtimePaylineMap.alpha = 0.94;
+    this.runtimePaylineMap.visible = true;
+  }
+
+  private drawRuntimePaylineStroke(
+    points: Array<{ x: number; y: number }>,
+    width: number,
+    color: number,
+    alpha: number,
+  ): void {
+    if (points.length < 2) {
+      return;
+    }
+    this.runtimePaylineMap.moveTo(points[0].x, points[0].y);
+    for (let index = 1; index < points.length; index += 1) {
+      this.runtimePaylineMap.lineTo(points[index].x, points[index].y);
+    }
+    this.runtimePaylineMap.stroke({
+      color,
+      width,
+      alpha,
+      cap: "round",
+      join: "round",
+    });
+  }
+
+  private resolveRuntimePaylineStyle(
+    tone: "standard" | "collect" | "boost" | "bonus" | "jackpot",
+  ): {
+    outerGlow: number;
+    midGlow: number;
+    innerGlow: number;
+    panelFill: number;
+    panelStroke: number;
+    accentFill: number;
+    badgeFill: number;
+    badgeStroke: number;
+  } {
+    switch (tone) {
+      case "collect":
+        return {
+          outerGlow: 0xff860d,
+          midGlow: 0xffb93d,
+          innerGlow: 0xffef9f,
+          panelFill: 0x5b1a10,
+          panelStroke: 0xffd497,
+          accentFill: 0x8b3313,
+          badgeFill: 0x6b240d,
+          badgeStroke: 0xffd59c,
+        };
+      case "boost":
+        return {
+          outerGlow: 0xff9d32,
+          midGlow: 0xffd25a,
+          innerGlow: 0xffffd8,
+          panelFill: 0x5d200a,
+          panelStroke: 0xffe0a8,
+          accentFill: 0x9d4c15,
+          badgeFill: 0x7a340b,
+          badgeStroke: 0xffe0ac,
+        };
+      case "bonus":
+        return {
+          outerGlow: 0xffa03a,
+          midGlow: 0xffd667,
+          innerGlow: 0xffffde,
+          panelFill: 0x4f180a,
+          panelStroke: 0xffd79f,
+          accentFill: 0x8f3913,
+          badgeFill: 0x72270d,
+          badgeStroke: 0xffddaa,
+        };
+      case "jackpot":
+        return {
+          outerGlow: 0xffd168,
+          midGlow: 0xffec9a,
+          innerGlow: 0xfffff3,
+          panelFill: 0x4c1a06,
+          panelStroke: 0xffefbc,
+          accentFill: 0xa06f17,
+          badgeFill: 0x70440a,
+          badgeStroke: 0xffefbd,
+        };
+      case "standard":
+      default:
+        return {
+          outerGlow: 0xff7a00,
+          midGlow: 0xffb11f,
+          innerGlow: 0xffdf73,
+          panelFill: 0x5b141b,
+          panelStroke: 0xf6dd9d,
+          accentFill: 0x9c2127,
+          badgeFill: 0x63151b,
+          badgeStroke: 0xf5d99b,
+        };
+    }
+  }
+
+  private drawStartupPaylineGuide(): void {
+    this.clearStartupPaylineGuide();
+    const reelStep = CRAZY_ROOSTER_LAYOUT.symbolWidth + CRAZY_ROOSTER_LAYOUT.reelSpacing;
+    const rowStep = CRAZY_ROOSTER_LAYOUT.symbolHeight + CRAZY_ROOSTER_LAYOUT.rowSpacing;
+    const lineExtensionPx = 84;
+
+    this.startupPaylineMap.clear();
+    this.startupPaylineMap.blendMode = "add";
+    this.startupPaylineGlowElapsedMs = 0;
+    CRAZY_ROOSTER_PAYLINES.forEach((payline, lineIndex) => {
+      const points = payline.map((rowIndex, reelIndex) => ({
+        x: reelIndex * reelStep + CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5,
+        y: rowIndex * rowStep + CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5,
+      }));
+      const [first, second, third] = points;
+      const startDirection = this.normalizeVector(first.x - second.x, first.y - second.y);
+      const endDirection = this.normalizeVector(third.x - second.x, third.y - second.y);
+      const extendedFirst = {
+        x: first.x + startDirection.x * lineExtensionPx,
+        y: first.y + startDirection.y * lineExtensionPx,
+      };
+      const extendedThird = {
+        x: third.x + endDirection.x * lineExtensionPx,
+        y: third.y + endDirection.y * lineExtensionPx,
+      };
+      const labelPlacement = this.resolveStartupPaylineLabelPlacement(first, third, lineIndex);
+
+      this.startupPaylineMap.moveTo(extendedFirst.x, extendedFirst.y);
+      this.startupPaylineMap.lineTo(second.x, second.y);
+      this.startupPaylineMap.lineTo(extendedThird.x, extendedThird.y);
+      this.startupPaylineMap.stroke({
+        color: 0xff7a00,
+        width: 12,
+        alpha: 0.12,
+      });
+
+      this.startupPaylineMap.moveTo(extendedFirst.x, extendedFirst.y);
+      this.startupPaylineMap.lineTo(second.x, second.y);
+      this.startupPaylineMap.lineTo(extendedThird.x, extendedThird.y);
+      this.startupPaylineMap.stroke({
+        color: 0xffa116,
+        width: 7.4,
+        alpha: 0.32,
+      });
+
+      this.startupPaylineMap.moveTo(extendedFirst.x, extendedFirst.y);
+      this.startupPaylineMap.lineTo(second.x, second.y);
+      this.startupPaylineMap.lineTo(extendedThird.x, extendedThird.y);
+      this.startupPaylineMap.stroke({
+        color: 0xffd247,
+        width: 4.8,
+        alpha: 0.65,
+      });
+
+      this.startupPaylineMap.moveTo(extendedFirst.x, extendedFirst.y);
+      this.startupPaylineMap.lineTo(second.x, second.y);
+      this.startupPaylineMap.lineTo(extendedThird.x, extendedThird.y);
+      this.startupPaylineMap.stroke({
+        color: 0xffffd2,
+        width: 2.7,
+        alpha: 0.78,
+      });
+
+      this.startupPaylineMap.moveTo(extendedFirst.x, extendedFirst.y);
+      this.startupPaylineMap.lineTo(second.x, second.y);
+      this.startupPaylineMap.lineTo(extendedThird.x, extendedThird.y);
+      this.startupPaylineMap.stroke({
+        color: 0xffffff,
+        width: 1.25,
+        alpha: 0.78,
+      });
+
+      const label = new Text({
+        text: `${lineIndex + 1}`,
+        style: {
+          fontFamily: "Trebuchet MS, Arial, sans-serif",
+          fontSize: 52,
+          fontWeight: "900",
+          fill: 0xfff2b8,
+          stroke: { color: 0x311103, width: 10 },
+          dropShadow: {
+            color: 0x000000,
+            blur: 3,
+            distance: 2,
+          },
+          align: "center",
+        },
+      });
+      label.anchor.set(0.5);
+      label.x = labelPlacement.label.x;
+      label.y = labelPlacement.label.y;
+      this.startupPaylineLabels.addChild(label);
+    });
+
+    this.startupPaylineMap.alpha = 0.92;
+    this.startupPaylineMap.visible = true;
+    this.startupPaylineLabels.alpha = 0.98;
+    this.startupPaylineLabels.visible = true;
+  }
+
+  private resolveStartupPaylineLabelPlacement(
+    first: { x: number; y: number },
+    third: { x: number; y: number },
+    lineIndex: number,
+  ): { label: { x: number; y: number }; anchor: { x: number; y: number } } {
+    const reelAreaWidth =
+      CRAZY_ROOSTER_LAYOUT.reelCount * CRAZY_ROOSTER_LAYOUT.symbolWidth +
+      (CRAZY_ROOSTER_LAYOUT.reelCount - 1) * CRAZY_ROOSTER_LAYOUT.reelSpacing;
+    const isHorizontalBand = lineIndex < 4;
+    const label = {
+      x: isHorizontalBand ? -48 : reelAreaWidth + 48,
+      y: isHorizontalBand ? first.y : third.y,
+    };
+    if (!isHorizontalBand) {
+      const topRowY = 0.5 * CRAZY_ROOSTER_LAYOUT.symbolHeight;
+      const secondRowY =
+        CRAZY_ROOSTER_LAYOUT.symbolHeight +
+        CRAZY_ROOSTER_LAYOUT.rowSpacing +
+        0.5 * CRAZY_ROOSTER_LAYOUT.symbolHeight;
+      const thirdRowY =
+        CRAZY_ROOSTER_LAYOUT.symbolHeight * 2 +
+        CRAZY_ROOSTER_LAYOUT.rowSpacing * 2 +
+        0.5 * CRAZY_ROOSTER_LAYOUT.symbolHeight;
+      const fourthRowY =
+        CRAZY_ROOSTER_LAYOUT.symbolHeight * 3 +
+        CRAZY_ROOSTER_LAYOUT.rowSpacing * 3 +
+        0.5 * CRAZY_ROOSTER_LAYOUT.symbolHeight;
+      // Right-side sequence tuned to match the user-marked arrow spacing:
+      // 7 (highest), 8 (upper-mid), 5 (lower-mid), 6 (lowest).
+      if (lineIndex === 6) {
+        label.y = topRowY - 34;
+      } else if (lineIndex === 7) {
+        label.y = secondRowY - 18;
+      } else if (lineIndex === 4) {
+        label.y = thirdRowY + 18;
+      } else if (lineIndex === 5) {
+        label.y = fourthRowY + 34;
+      }
+    }
+    return { label, anchor: isHorizontalBand ? first : third };
+  }
+
+  private normalizeVector(x: number, y: number): { x: number; y: number } {
+    const length = Math.hypot(x, y);
+    if (length <= 0.0001) {
+      return { x: 0, y: 0 };
+    }
+    return { x: x / length, y: y / length };
   }
 
   private resolveFxLayerCenter(symbol: HighlightSymbolLike): { x: number; y: number } {
-    const globalPoint = symbol.getGlobalPosition();
+    const symbolLike = symbol as unknown as {
+      x?: number;
+      y?: number;
+      parent?: {
+        toGlobal?: (point: { x: number; y: number }) => { x: number; y: number };
+      };
+    };
+    const fallbackPoint = symbol.getGlobalPosition();
+    const globalPoint =
+      symbolLike.parent?.toGlobal && typeof symbolLike.x === "number" && typeof symbolLike.y === "number"
+        ? symbolLike.parent.toGlobal({
+            x: symbolLike.x + CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5,
+            y: symbolLike.y + CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5,
+          })
+        : fallbackPoint;
     const localPoint = this.fxLayer.toLocal(globalPoint);
     return {
-      x: localPoint.x + CRAZY_ROOSTER_LAYOUT.symbolWidth * 0.5,
-      y: localPoint.y + CRAZY_ROOSTER_LAYOUT.symbolHeight * 0.5,
+      x: localPoint.x,
+      y: localPoint.y,
     };
   }
 
@@ -2389,10 +3342,19 @@ export class MainScreen extends Container {
     }
 
     const finishDelayMs =
-      Math.max(280, mathBridgeHints.timingHints.featureLoopDurationMs) +
+      Math.max(
+        getProviderPackStatus().effectiveProvider === "donorlocal"
+          ? DONOR_VIDEO_TIMING.boostChargeWindowMs
+          : 280,
+        mathBridgeHints.timingHints.featureLoopDurationMs,
+      ) +
       Math.max(0, startDelayMs);
     const settleDelayMs =
-      finishDelayMs + Math.max(140, mathBridgeHints.timingHints.featureFinishDelayMs);
+      finishDelayMs +
+      Math.max(
+        getProviderPackStatus().effectiveProvider === "donorlocal" ? 220 : 140,
+        mathBridgeHints.timingHints.featureFinishDelayMs,
+      );
 
     const finishTimeout = window.setTimeout(() => {
       this.topperMascot.setState("react_boost_finish");
@@ -2401,8 +3363,13 @@ export class MainScreen extends Container {
     }, finishDelayMs);
     const settleTimeout = window.setTimeout(() => {
       this.layeredFx.playCoinFlyBurst([focusPoint], {
-        durationMs: Math.max(420, mathBridgeHints.timingHints.coinFlyDurationMs - 160),
-        countPerOrigin: 2,
+        durationMs: Math.max(
+          getProviderPackStatus().effectiveProvider === "donorlocal"
+            ? DONOR_VIDEO_TIMING.jackpotImpactWindowMs
+            : 420,
+          mathBridgeHints.timingHints.coinFlyDurationMs - 160,
+        ),
+        countPerOrigin: getProviderPackStatus().effectiveProvider === "donorlocal" ? 1 : 2,
         startSpreadX: 16,
         startSpreadY: 12,
         endSpreadX: 18,
@@ -2551,15 +3518,14 @@ export class MainScreen extends Container {
     }
 
     if (cue === "feature.boost.triggered") {
-      const introHoldMs = 1620;
+      const introHoldMs = this.isDonorFeatureScenario() ? 2920 : 1620;
       this.clearFeatureScenePresentation();
-      const useCountdownPrelude =
-        this.isDonorFeatureScenario() && (this.activeMathBridgeHints?.mode ?? "base") === "base";
+      const useCountdownPrelude = this.shouldUseDonorCountdownPrelude(this.activeMathBridgeHints);
       const countdownDelayMs = useCountdownPrelude
-        ? this.playDonorCountdownPhase([0, 1, 2, 3], 420, 160)
+        ? this.playDonorCountdownPhase([0, 1, 2, 3], [200, 300, 350, 350], 4250)
         : 0;
       const boostHandoffDelayMs = this.isDonorFeatureScenario()
-        ? Math.max(120, countdownDelayMs + (useCountdownPrelude ? 80 : 0))
+        ? Math.max(140, countdownDelayMs + (useCountdownPrelude ? 260 : 0))
         : 0;
       this.showStatus("BOOST CHARGE");
       this.topperMascot.setState("react_boost_loop");
@@ -2595,13 +3561,13 @@ export class MainScreen extends Container {
         if (!this.isDonorFeatureScenario()) {
           this.particleBurst.play(featureFocus.x, Math.max(24, featureFocus.y - 14));
         }
+        this.scheduleBoostFinish(this.activeMathBridgeHints, featureFocus);
       };
       if (boostHandoffDelayMs > 0) {
         this.scheduleAfterDonorFeatureIntro(startBoostHandoff, boostHandoffDelayMs);
       } else {
         startBoostHandoff();
       }
-      this.scheduleBoostFinish(this.activeMathBridgeHints, featureFocus, boostHandoffDelayMs);
       this.applySoundCue("feature-boost-enter");
       return;
     }
@@ -2612,21 +3578,33 @@ export class MainScreen extends Container {
         introVariant === "blitz" ? 1320 : introVariant === "power" ? 1760 : 2820;
       this.clearFeatureScenePresentation();
       const useCountdownPrelude =
-        this.isDonorFeatureScenario() &&
-        (this.activeMathBridgeHints?.mode ?? "base") === "base" &&
+        this.shouldUseDonorCountdownPrelude(this.activeMathBridgeHints) &&
         introVariant !== "blitz";
       const countdownDelayMs = useCountdownPrelude
-        ? this.playDonorCountdownPhase([0, 1, 2, 3], 420, 220)
+        ? this.playDonorCountdownPhase([0, 1, 2, 3], [200, 300, 350, 350], 3850)
         : 0;
+      const lineCountPreludeMs =
+        this.shouldUseDonorLineCountPrelude(this.activeMathBridgeHints) &&
+        !useCountdownPrelude
+          ? this.playDonorCountdownPhase(
+              [0, 2, 5, 7, 10, 12, 14, 16, 19, 21, 24],
+              [140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 180],
+              3280,
+              {
+                mode: "lineCount",
+                caption: "LINE COUNT",
+                guideYRatio: 0.22,
+              },
+            )
+          : 0;
       const bonusHandoffDelayMs = this.isDonorFeatureScenario()
-        ? Math.max(120, countdownDelayMs + (useCountdownPrelude ? 100 : 0))
+        ? Math.max(
+            140,
+            Math.max(countdownDelayMs, lineCountPreludeMs) + (useCountdownPrelude ? 280 : 240),
+          )
         : 0;
       this.showStatus("HOLD & WIN");
-      this.topperMascot.setState(
-        this.shouldUseBigWinMascot(this.activeMathBridgeHints)
-          ? "react_bigwin"
-          : "react_collect",
-      );
+      this.topperMascot.setState("react_collect");
       this.jackpotPlaques.clear();
       if (!useCountdownPrelude) {
         void this.featureIntroOverlay.play(introVariant, {
@@ -2725,14 +3703,38 @@ export class MainScreen extends Container {
         return;
       }
       this.jackpotFeatureCueConsumed = true;
-      this.clearFeatureScenePresentation();
-      const useCountdownPrelude =
-        this.isDonorFeatureScenario() && (this.activeMathBridgeHints?.mode ?? "base") === "base";
+      const preserveBoostPhase =
+        this.isDonorFeatureScenario() &&
+        Boolean(this.activeMathBridgeHints?.triggers.boost);
+      if (preserveBoostPhase) {
+        this.clearDonorCountdownPhase();
+        this.featureIntroOverlay.clear();
+      } else {
+        this.clearFeatureScenePresentation();
+      }
+      const useCountdownPrelude = this.shouldUseDonorCountdownPrelude(this.activeMathBridgeHints);
       const countdownDelayMs = useCountdownPrelude
-        ? this.playDonorCountdownPhase([0, 1, 2, 3], 420, 220)
+        ? this.playDonorCountdownPhase([0, 1, 2, 3], [200, 300, 350, 350], 3850)
         : 0;
+      const lineCountPreludeMs =
+        this.shouldUseDonorLineCountPrelude(this.activeMathBridgeHints) &&
+        !useCountdownPrelude
+          ? this.playDonorCountdownPhase(
+              [0, 1, 2, 3],
+              [220, 260, 320, 360],
+              3380,
+              {
+                mode: "lineCount",
+                caption: "JACKPOT CHARGE",
+                guideYRatio: 0.52,
+              },
+            )
+          : 0;
       const jackpotHandoffDelayMs = this.isDonorFeatureScenario()
-        ? Math.max(180, countdownDelayMs + (useCountdownPrelude ? 120 : 0))
+        ? Math.max(
+            200,
+            Math.max(countdownDelayMs, lineCountPreludeMs) + (useCountdownPrelude ? 320 : 240),
+          )
         : 0;
       const startJackpotHandoff = () => {
         this.showStatus("JACKPOT CALL");
@@ -2885,7 +3887,12 @@ export class MainScreen extends Container {
         jackpotTier: this.activeMathBridgeHints?.jackpotTier ?? null,
       });
       if (this.isEscalatedWinTier(tier)) {
-        this.layeredFx.playWinPulse(tier);
+        // Keep line visibility through win-tier pulse on donorlocal so
+        // paylines remain readable instead of dropping out mid-sequence.
+        const pulseTimeout = window.setTimeout(() => {
+          this.layeredFx.playWinPulse(tier);
+        }, 80);
+        this.mathBridgeTimeouts.push(pulseTimeout);
       }
       this.applySoundCue("feature-win-tier");
       return;
@@ -2949,6 +3956,7 @@ export class MainScreen extends Container {
   private applyPreviewState(): void {
     const preview = buildPreviewPresentation();
     this.slotMachine.setPresentationColumns(preview.reels.stopColumns);
+    this.clearRuntimePaylinePresentation();
     this.paylineOverlay.clear();
     this.paylineHighlight.clear();
     this.debugOverlay.setMathBridgeSummary(null);
@@ -2969,6 +3977,7 @@ export class MainScreen extends Container {
       statusText: preview.labels.state ?? "idle",
     });
     this.showStatus(formatMessages([...preview.messages, ...featureFrame.messages]));
+    this.showStartupPaylineGuideOnLoad();
   }
 
   private syncHudChrome(): void {
@@ -3143,6 +4152,7 @@ export class MainScreen extends Container {
     this.layeredFx.clearPresentation();
     this.topperMascot.setState("idle");
     this.jackpotPlaques.clear();
+    this.clearRuntimePaylinePresentation();
     this.paylineOverlay.clear();
     this.paylineHighlight.clear();
     this.isPresentingWin = false;
