@@ -46,9 +46,9 @@ Benchmark path used: `http://127.0.0.1:8092/?allowDevFallback=1&assetProvider=do
 
 ### Repeated boards
 - Confirmed: repeated boards are excessive in no-preset provisional run.
-- 100-spin sample:
-  - repeated-board flagged spins: `97`
-  - unique visible boards: `3`
+- Fresh 100-spin sample:
+  - repeated-board flagged spins: `95`
+  - unique visible boards: `5`
 
 ### Win frequency
 - 100-spin sample win frequency: `100/100` (`100%`).
