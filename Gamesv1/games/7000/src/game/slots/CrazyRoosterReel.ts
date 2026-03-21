@@ -27,6 +27,7 @@ export class CrazyRoosterReel extends Container {
   private settleBounceMs = 0;
   private settleBounceDurationMs = DEFAULT_REEL_MOTION.settleBounceDurationMs;
   private pendingResult: number[] | null = null;
+  private pendingVariants: Array<DonorMultiplierVariantKey | null> | null = null;
   private nextGeneratedSymbolId = 0;
   private reelTimeSeconds = 0;
 
@@ -58,14 +59,19 @@ export class CrazyRoosterReel extends Container {
     this.speed = DEFAULT_REEL_MOTION.startSpeed;
     this.positionY = 0;
     this.pendingResult = null;
+    this.pendingVariants = null;
     this.nextGeneratedSymbolId = (this.id + 1) % CRAZY_ROOSTER_LAYOUT.symbolCount;
     this.maxSpeed = DEFAULT_REEL_MOTION.maxSpeed * Math.max(0.74, speedMultiplier);
     this.settleBounceDurationMs = DEFAULT_REEL_MOTION.settleBounceDurationMs;
     this.reelTimeSeconds = 0;
+    for (const symbol of this.symbols) {
+      symbol.setDonorVariantOverride(null);
+    }
   }
 
-  public stop(column: number[]): void {
+  public stop(column: number[], variants: Array<DonorMultiplierVariantKey | null> = []): void {
     this.pendingResult = [...column];
+    this.pendingVariants = [...variants];
   }
 
   public tick(deltaSeconds: number): void {
@@ -105,8 +111,14 @@ export class CrazyRoosterReel extends Container {
       }
 
       if (this.pendingResult && this.pendingResult.length > 0) {
+        const variant =
+          this.pendingVariants && this.pendingVariants.length > 0
+            ? this.pendingVariants.pop() ?? null
+            : null;
+        recycled.setDonorVariantOverride(variant);
         recycled.setSymbol(this.pendingResult.pop() ?? 0);
       } else {
+        recycled.setDonorVariantOverride(null);
         recycled.setSymbol(this.consumeGeneratedSymbolId());
       }
 
@@ -116,6 +128,7 @@ export class CrazyRoosterReel extends Container {
         this.isSpinning = false;
         this.positionY = 0;
         this.settleBounceMs = this.settleBounceDurationMs;
+        this.pendingVariants = null;
         this.updateSymbolPositions();
         this.onStopSettled(this.id);
         return;
@@ -158,6 +171,7 @@ export class CrazyRoosterReel extends Container {
     this.positionY = 0;
     this.settleBounceMs = 0;
     this.pendingResult = null;
+    this.pendingVariants = null;
     this.isSpinning = false;
     this.updateSymbolPositions();
   }

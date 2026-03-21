@@ -1,0 +1,4212 @@
+[
+  {
+    "spinIndex": 1,
+    "visibleMatrix": [
+      [
+        4,
+        5,
+        2,
+        9
+      ],
+      [
+        5,
+        10,
+        6,
+        4
+      ],
+      [
+        3,
+        2,
+        0,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 5,
+        "multiplier": 1.875,
+        "amountMinor": 2,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 6,
+    "collectTriggered": true,
+    "boostTriggered": true,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 2,
+    "visibleMatrix": [
+      [
+        10,
+        6,
+        3,
+        5
+      ],
+      [
+        5,
+        6,
+        1,
+        3
+      ],
+      [
+        5,
+        3,
+        6,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 10,
+        "multiplier": 2.5,
+        "amountMinor": 3,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 3,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 3,
+    "visibleMatrix": [
+      [
+        4,
+        6,
+        0,
+        1
+      ],
+      [
+        3,
+        4,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 4,
+    "visibleMatrix": [
+      [
+        0,
+        0,
+        0,
+        4
+      ],
+      [
+        5,
+        5,
+        10,
+        1
+      ],
+      [
+        4,
+        1,
+        2,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 5,
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        3,
+        4
+      ],
+      [
+        3,
+        10,
+        1,
+        5
+      ],
+      [
+        1,
+        2,
+        1,
+        0
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 6,
+    "visibleMatrix": [
+      [
+        3,
+        10,
+        4,
+        2
+      ],
+      [
+        10,
+        4,
+        2,
+        2
+      ],
+      [
+        1,
+        3,
+        10,
+        6
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 4,
+        "rowsByReel": [
+          3,
+          3,
+          3
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 7,
+    "visibleMatrix": [
+      [
+        6,
+        10,
+        5,
+        2
+      ],
+      [
+        1,
+        1,
+        10,
+        3
+      ],
+      [
+        0,
+        0,
+        7,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 8,
+    "visibleMatrix": [
+      [
+        3,
+        5,
+        0,
+        4
+      ],
+      [
+        1,
+        3,
+        5,
+        5
+      ],
+      [
+        1,
+        4,
+        5,
+        10
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 9,
+    "visibleMatrix": [
+      [
+        1,
+        2,
+        1,
+        6
+      ],
+      [
+        4,
+        1,
+        3,
+        4
+      ],
+      [
+        0,
+        2,
+        2,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 10,
+    "visibleMatrix": [
+      [
+        4,
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        3,
+        2,
+        10
+      ],
+      [
+        7,
+        5,
+        4,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 11,
+    "visibleMatrix": [
+      [
+        7,
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        2,
+        2
+      ],
+      [
+        3,
+        5,
+        7,
+        10
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 12,
+    "visibleMatrix": [
+      [
+        7,
+        2,
+        3,
+        5
+      ],
+      [
+        0,
+        1,
+        4,
+        1
+      ],
+      [
+        6,
+        0,
+        5,
+        10
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 13,
+    "visibleMatrix": [
+      [
+        3,
+        2,
+        6,
+        4
+      ],
+      [
+        6,
+        6,
+        2,
+        2
+      ],
+      [
+        3,
+        6,
+        3,
+        0
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 1,
+        "rowsByReel": [
+          0,
+          0,
+          0
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      },
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 14,
+    "visibleMatrix": [
+      [
+        1,
+        4,
+        6,
+        2
+      ],
+      [
+        6,
+        4,
+        4,
+        2
+      ],
+      [
+        2,
+        2,
+        5,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 15,
+    "visibleMatrix": [
+      [
+        4,
+        10,
+        0,
+        7
+      ],
+      [
+        4,
+        5,
+        1,
+        0
+      ],
+      [
+        2,
+        5,
+        0,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 16,
+    "visibleMatrix": [
+      [
+        3,
+        4,
+        5,
+        1
+      ],
+      [
+        2,
+        2,
+        3,
+        4
+      ],
+      [
+        2,
+        0,
+        0,
+        6
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 17,
+    "visibleMatrix": [
+      [
+        1,
+        0,
+        4,
+        2
+      ],
+      [
+        0,
+        1,
+        0,
+        4
+      ],
+      [
+        3,
+        0,
+        2,
+        0
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 18,
+    "visibleMatrix": [
+      [
+        3,
+        0,
+        6,
+        4
+      ],
+      [
+        3,
+        0,
+        2,
+        6
+      ],
+      [
+        1,
+        1,
+        2,
+        0
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 19,
+    "visibleMatrix": [
+      [
+        3,
+        2,
+        4,
+        6
+      ],
+      [
+        1,
+        4,
+        3,
+        5
+      ],
+      [
+        7,
+        1,
+        0,
+        0
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 20,
+    "visibleMatrix": [
+      [
+        4,
+        3,
+        3,
+        0
+      ],
+      [
+        3,
+        10,
+        4,
+        4
+      ],
+      [
+        4,
+        5,
+        1,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 21,
+    "visibleMatrix": [
+      [
+        3,
+        3,
+        2,
+        1
+      ],
+      [
+        3,
+        4,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 22,
+    "visibleMatrix": [
+      [
+        0,
+        2,
+        2,
+        3
+      ],
+      [
+        2,
+        3,
+        4,
+        6
+      ],
+      [
+        7,
+        1,
+        4,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 23,
+    "visibleMatrix": [
+      [
+        0,
+        4,
+        1,
+        3
+      ],
+      [
+        2,
+        3,
+        0,
+        5
+      ],
+      [
+        3,
+        6,
+        0,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 24,
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        5,
+        7
+      ],
+      [
+        3,
+        0,
+        4,
+        3
+      ],
+      [
+        1,
+        1,
+        1,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 25,
+    "visibleMatrix": [
+      [
+        2,
+        1,
+        3,
+        7
+      ],
+      [
+        2,
+        6,
+        3,
+        5
+      ],
+      [
+        0,
+        3,
+        10,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 26,
+    "visibleMatrix": [
+      [
+        6,
+        3,
+        10,
+        1
+      ],
+      [
+        5,
+        8,
+        2,
+        4
+      ],
+      [
+        4,
+        3,
+        3,
+        4
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 6,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 27,
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        4,
+        5
+      ],
+      [
+        1,
+        0,
+        3,
+        1
+      ],
+      [
+        7,
+        5,
+        0,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 28,
+    "visibleMatrix": [
+      [
+        10,
+        4,
+        2,
+        3
+      ],
+      [
+        3,
+        6,
+        2,
+        3
+      ],
+      [
+        1,
+        4,
+        3,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 29,
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        5,
+        1
+      ],
+      [
+        0,
+        3,
+        1,
+        3
+      ],
+      [
+        5,
+        4,
+        0,
+        7
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 30,
+    "visibleMatrix": [
+      [
+        6,
+        1,
+        1,
+        4
+      ],
+      [
+        2,
+        2,
+        6,
+        1
+      ],
+      [
+        7,
+        10,
+        1,
+        10
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 31,
+    "visibleMatrix": [
+      [
+        0,
+        6,
+        2,
+        0
+      ],
+      [
+        0,
+        6,
+        1,
+        5
+      ],
+      [
+        4,
+        2,
+        7,
+        1
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      },
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 32,
+    "visibleMatrix": [
+      [
+        2,
+        1,
+        3,
+        2
+      ],
+      [
+        0,
+        5,
+        5,
+        1
+      ],
+      [
+        0,
+        4,
+        5,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 33,
+    "visibleMatrix": [
+      [
+        4,
+        2,
+        1,
+        4
+      ],
+      [
+        0,
+        1,
+        0,
+        2
+      ],
+      [
+        6,
+        6,
+        2,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 34,
+    "visibleMatrix": [
+      [
+        2,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        4
+      ],
+      [
+        2,
+        0,
+        3,
+        0
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 35,
+    "visibleMatrix": [
+      [
+        0,
+        1,
+        6,
+        10
+      ],
+      [
+        2,
+        4,
+        6,
+        0
+      ],
+      [
+        3,
+        4,
+        4,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 36,
+    "visibleMatrix": [
+      [
+        2,
+        0,
+        7,
+        3
+      ],
+      [
+        1,
+        4,
+        2,
+        1
+      ],
+      [
+        0,
+        5,
+        10,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 37,
+    "visibleMatrix": [
+      [
+        2,
+        3,
+        6,
+        3
+      ],
+      [
+        4,
+        3,
+        0,
+        3
+      ],
+      [
+        1,
+        0,
+        2,
+        5
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 38,
+    "visibleMatrix": [
+      [
+        0,
+        0,
+        3,
+        5
+      ],
+      [
+        2,
+        5,
+        6,
+        0
+      ],
+      [
+        5,
+        4,
+        10,
+        6
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 39,
+    "visibleMatrix": [
+      [
+        5,
+        1,
+        3,
+        3
+      ],
+      [
+        4,
+        0,
+        0,
+        5
+      ],
+      [
+        0,
+        0,
+        3,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 40,
+    "visibleMatrix": [
+      [
+        1,
+        7,
+        3,
+        6
+      ],
+      [
+        2,
+        2,
+        5,
+        6
+      ],
+      [
+        2,
+        4,
+        3,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 4,
+        "rowsByReel": [
+          3,
+          3,
+          3
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 41,
+    "visibleMatrix": [
+      [
+        6,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        4,
+        5,
+        3
+      ],
+      [
+        7,
+        7,
+        0,
+        6
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 42,
+    "visibleMatrix": [
+      [
+        5,
+        1,
+        2,
+        4
+      ],
+      [
+        1,
+        8,
+        5,
+        2
+      ],
+      [
+        0,
+        3,
+        2,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 1,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 43,
+    "visibleMatrix": [
+      [
+        3,
+        6,
+        1,
+        1
+      ],
+      [
+        4,
+        3,
+        3,
+        1
+      ],
+      [
+        2,
+        0,
+        10,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 44,
+    "visibleMatrix": [
+      [
+        1,
+        6,
+        10,
+        4
+      ],
+      [
+        3,
+        2,
+        10,
+        0
+      ],
+      [
+        0,
+        10,
+        4,
+        0
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 45,
+    "visibleMatrix": [
+      [
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        1,
+        4,
+        0,
+        5
+      ],
+      [
+        2,
+        1,
+        0,
+        0
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 46,
+    "visibleMatrix": [
+      [
+        2,
+        5,
+        2,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        5,
+        7,
+        10
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 47,
+    "visibleMatrix": [
+      [
+        7,
+        10,
+        7,
+        5
+      ],
+      [
+        1,
+        5,
+        2,
+        4
+      ],
+      [
+        3,
+        1,
+        2,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 48,
+    "visibleMatrix": [
+      [
+        1,
+        4,
+        4,
+        0
+      ],
+      [
+        0,
+        6,
+        3,
+        10
+      ],
+      [
+        1,
+        6,
+        5,
+        1
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 49,
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        3,
+        10
+      ],
+      [
+        3,
+        4,
+        4,
+        3
+      ],
+      [
+        1,
+        4,
+        10,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 50,
+    "visibleMatrix": [
+      [
+        7,
+        10,
+        0,
+        3
+      ],
+      [
+        5,
+        3,
+        2,
+        5
+      ],
+      [
+        5,
+        1,
+        1,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 51,
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        3,
+        2
+      ],
+      [
+        6,
+        2,
+        0,
+        4
+      ],
+      [
+        5,
+        3,
+        0,
+        10
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 52,
+    "visibleMatrix": [
+      [
+        0,
+        4,
+        1,
+        5
+      ],
+      [
+        6,
+        2,
+        6,
+        1
+      ],
+      [
+        10,
+        0,
+        0,
+        7
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 53,
+    "visibleMatrix": [
+      [
+        0,
+        1,
+        1,
+        5
+      ],
+      [
+        3,
+        8,
+        0,
+        2
+      ],
+      [
+        2,
+        3,
+        1,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 2,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 54,
+    "visibleMatrix": [
+      [
+        0,
+        1,
+        1,
+        7
+      ],
+      [
+        10,
+        0,
+        0,
+        5
+      ],
+      [
+        4,
+        3,
+        0,
+        2
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 55,
+    "visibleMatrix": [
+      [
+        10,
+        5,
+        1,
+        3
+      ],
+      [
+        4,
+        1,
+        1,
+        1
+      ],
+      [
+        7,
+        4,
+        4,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 56,
+    "visibleMatrix": [
+      [
+        7,
+        3,
+        4,
+        2
+      ],
+      [
+        1,
+        1,
+        0,
+        10
+      ],
+      [
+        7,
+        6,
+        3,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 57,
+    "visibleMatrix": [
+      [
+        1,
+        0,
+        6,
+        3
+      ],
+      [
+        2,
+        4,
+        4,
+        3
+      ],
+      [
+        1,
+        5,
+        4,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 58,
+    "visibleMatrix": [
+      [
+        2,
+        0,
+        0,
+        4
+      ],
+      [
+        2,
+        1,
+        2,
+        3
+      ],
+      [
+        3,
+        0,
+        0,
+        5
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 59,
+    "visibleMatrix": [
+      [
+        5,
+        1,
+        7,
+        5
+      ],
+      [
+        2,
+        0,
+        1,
+        6
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 60,
+    "visibleMatrix": [
+      [
+        3,
+        6,
+        2,
+        1
+      ],
+      [
+        0,
+        6,
+        5,
+        0
+      ],
+      [
+        10,
+        6,
+        3,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 6,
+        "multiplier": 3.75,
+        "amountMinor": 4,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 61,
+    "visibleMatrix": [
+      [
+        10,
+        3,
+        6,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        5,
+        7,
+        7
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 62,
+    "visibleMatrix": [
+      [
+        0,
+        0,
+        1,
+        3
+      ],
+      [
+        4,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        6,
+        3,
+        10
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 63,
+    "visibleMatrix": [
+      [
+        4,
+        4,
+        5,
+        2
+      ],
+      [
+        10,
+        4,
+        2,
+        0
+      ],
+      [
+        2,
+        0,
+        7,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 64,
+    "visibleMatrix": [
+      [
+        1,
+        5,
+        10,
+        5
+      ],
+      [
+        6,
+        10,
+        0,
+        10
+      ],
+      [
+        6,
+        5,
+        0,
+        2
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 1,
+        "rowsByReel": [
+          0,
+          0,
+          0
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 10,
+        "multiplier": 2.5,
+        "amountMinor": 3,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 3,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 65,
+    "visibleMatrix": [
+      [
+        0,
+        2,
+        4,
+        0
+      ],
+      [
+        0,
+        1,
+        5,
+        6
+      ],
+      [
+        4,
+        5,
+        1,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 66,
+    "visibleMatrix": [
+      [
+        2,
+        10,
+        4,
+        2
+      ],
+      [
+        0,
+        5,
+        4,
+        2
+      ],
+      [
+        10,
+        4,
+        4,
+        3
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 67,
+    "visibleMatrix": [
+      [
+        7,
+        0,
+        1,
+        4
+      ],
+      [
+        4,
+        1,
+        4,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        10
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 68,
+    "visibleMatrix": [
+      [
+        9,
+        2,
+        2,
+        7
+      ],
+      [
+        10,
+        0,
+        2,
+        1
+      ],
+      [
+        4,
+        1,
+        4,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 52,
+    "collectTriggered": true,
+    "boostTriggered": true,
+    "bonusTriggered": false,
+    "jackpotTriggered": true,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 69,
+    "visibleMatrix": [
+      [
+        1,
+        0,
+        2,
+        0
+      ],
+      [
+        4,
+        5,
+        6,
+        0
+      ],
+      [
+        0,
+        10,
+        4,
+        4
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 70,
+    "visibleMatrix": [
+      [
+        0,
+        10,
+        3,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        10
+      ],
+      [
+        0,
+        10,
+        3,
+        0
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 1,
+        "rowsByReel": [
+          0,
+          0,
+          0
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 71,
+    "visibleMatrix": [
+      [
+        0,
+        4,
+        5,
+        4
+      ],
+      [
+        10,
+        1,
+        0,
+        4
+      ],
+      [
+        2,
+        2,
+        10,
+        10
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 72,
+    "visibleMatrix": [
+      [
+        4,
+        6,
+        4,
+        10
+      ],
+      [
+        6,
+        4,
+        1,
+        10
+      ],
+      [
+        10,
+        6,
+        1,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 73,
+    "visibleMatrix": [
+      [
+        0,
+        3,
+        7,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        2,
+        2,
+        6
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 74,
+    "visibleMatrix": [
+      [
+        3,
+        3,
+        0,
+        2
+      ],
+      [
+        5,
+        0,
+        5,
+        6
+      ],
+      [
+        0,
+        5,
+        1,
+        2
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 4,
+        "rowsByReel": [
+          3,
+          3,
+          3
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 75,
+    "visibleMatrix": [
+      [
+        0,
+        7,
+        6,
+        0
+      ],
+      [
+        2,
+        6,
+        5,
+        3
+      ],
+      [
+        2,
+        3,
+        6,
+        2
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 5,
+        "multiplier": 1.875,
+        "amountMinor": 2,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 3,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 76,
+    "visibleMatrix": [
+      [
+        5,
+        0,
+        1,
+        6
+      ],
+      [
+        5,
+        8,
+        2,
+        4
+      ],
+      [
+        4,
+        0,
+        4,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 3,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 77,
+    "visibleMatrix": [
+      [
+        5,
+        3,
+        0,
+        0
+      ],
+      [
+        8,
+        4,
+        4,
+        4
+      ],
+      [
+        3,
+        3,
+        1,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 4,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 78,
+    "visibleMatrix": [
+      [
+        3,
+        8,
+        3,
+        6
+      ],
+      [
+        8,
+        3,
+        0,
+        2
+      ],
+      [
+        2,
+        10,
+        2,
+        7
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 14,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 79,
+    "visibleMatrix": [
+      [
+        5,
+        1,
+        0,
+        5
+      ],
+      [
+        2,
+        0,
+        4,
+        0
+      ],
+      [
+        6,
+        4,
+        2,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 80,
+    "visibleMatrix": [
+      [
+        6,
+        2,
+        5,
+        2
+      ],
+      [
+        2,
+        10,
+        0,
+        6
+      ],
+      [
+        4,
+        0,
+        4,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 81,
+    "visibleMatrix": [
+      [
+        2,
+        3,
+        0,
+        5
+      ],
+      [
+        4,
+        0,
+        4,
+        1
+      ],
+      [
+        2,
+        5,
+        5,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 82,
+    "visibleMatrix": [
+      [
+        1,
+        1,
+        6,
+        1
+      ],
+      [
+        2,
+        8,
+        3,
+        0
+      ],
+      [
+        2,
+        6,
+        0,
+        10
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 1,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 83,
+    "visibleMatrix": [
+      [
+        0,
+        1,
+        4,
+        6
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ],
+      [
+        10,
+        0,
+        3,
+        0
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 8,
+        "rowsByReel": [
+          3,
+          2,
+          1
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 84,
+    "visibleMatrix": [
+      [
+        0,
+        5,
+        3,
+        3
+      ],
+      [
+        0,
+        1,
+        4,
+        4
+      ],
+      [
+        10,
+        0,
+        4,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 85,
+    "visibleMatrix": [
+      [
+        1,
+        7,
+        7,
+        7
+      ],
+      [
+        2,
+        5,
+        0,
+        3
+      ],
+      [
+        2,
+        0,
+        4,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 86,
+    "visibleMatrix": [
+      [
+        1,
+        10,
+        0,
+        4
+      ],
+      [
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        7,
+        2,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 87,
+    "visibleMatrix": [
+      [
+        3,
+        6,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        2,
+        2
+      ],
+      [
+        10,
+        5,
+        1,
+        2
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 88,
+    "visibleMatrix": [
+      [
+        3,
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        2,
+        6,
+        0
+      ],
+      [
+        6,
+        5,
+        0,
+        7
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 89,
+    "visibleMatrix": [
+      [
+        7,
+        7,
+        6,
+        3
+      ],
+      [
+        2,
+        6,
+        0,
+        4
+      ],
+      [
+        10,
+        3,
+        4,
+        1
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 10,
+        "multiplier": 2.5,
+        "amountMinor": 3,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 3,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 90,
+    "visibleMatrix": [
+      [
+        3,
+        4,
+        2,
+        0
+      ],
+      [
+        3,
+        10,
+        1,
+        2
+      ],
+      [
+        7,
+        4,
+        2,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 91,
+    "visibleMatrix": [
+      [
+        1,
+        1,
+        1,
+        3
+      ],
+      [
+        10,
+        2,
+        4,
+        10
+      ],
+      [
+        2,
+        7,
+        1,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 92,
+    "visibleMatrix": [
+      [
+        10,
+        5,
+        4,
+        3
+      ],
+      [
+        2,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        3
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 93,
+    "visibleMatrix": [
+      [
+        7,
+        3,
+        6,
+        1
+      ],
+      [
+        6,
+        0,
+        5,
+        5
+      ],
+      [
+        3,
+        3,
+        1,
+        7
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 94,
+    "visibleMatrix": [
+      [
+        1,
+        4,
+        1,
+        1
+      ],
+      [
+        10,
+        2,
+        4,
+        0
+      ],
+      [
+        1,
+        7,
+        4,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 95,
+    "visibleMatrix": [
+      [
+        0,
+        4,
+        2,
+        10
+      ],
+      [
+        4,
+        3,
+        10,
+        2
+      ],
+      [
+        6,
+        0,
+        1,
+        2
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 96,
+    "visibleMatrix": [
+      [
+        1,
+        3,
+        5,
+        4
+      ],
+      [
+        2,
+        2,
+        3,
+        4
+      ],
+      [
+        1,
+        3,
+        2,
+        0
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 97,
+    "visibleMatrix": [
+      [
+        5,
+        2,
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        1,
+        3
+      ],
+      [
+        3,
+        7,
+        10,
+        6
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 98,
+    "visibleMatrix": [
+      [
+        2,
+        7,
+        0,
+        4
+      ],
+      [
+        5,
+        4,
+        6,
+        2
+      ],
+      [
+        5,
+        2,
+        1,
+        6
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 99,
+    "visibleMatrix": [
+      [
+        4,
+        0,
+        10,
+        0
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ],
+      [
+        2,
+        2,
+        0,
+        1
+      ]
+    ],
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  },
+  {
+    "spinIndex": 100,
+    "visibleMatrix": [
+      [
+        4,
+        5,
+        6,
+        7
+      ],
+      [
+        2,
+        6,
+        6,
+        5
+      ],
+      [
+        4,
+        2,
+        4,
+        2
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false
+  }
+]

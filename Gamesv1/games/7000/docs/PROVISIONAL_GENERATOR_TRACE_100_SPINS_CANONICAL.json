@@ -1,0 +1,9112 @@
+[
+  {
+    "spinIndex": 1,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 4235558364,
+    "seedStateAfter": 380603147,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        5,
+        2,
+        9
+      ],
+      [
+        5,
+        10,
+        6,
+        4
+      ],
+      [
+        3,
+        2,
+        0,
+        5
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        5,
+        2,
+        9
+      ],
+      [
+        5,
+        10,
+        6,
+        4
+      ],
+      [
+        3,
+        2,
+        0,
+        5
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        5,
+        2,
+        9
+      ],
+      [
+        5,
+        10,
+        6,
+        4
+      ],
+      [
+        3,
+        2,
+        0,
+        5
+      ]
+    ],
+    "boardHash": "4,5,2,9|5,10,6,4|3,2,0,5",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 5,
+        "multiplier": 1.875,
+        "amountMinor": 2,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 6,
+    "collectTriggered": true,
+    "boostTriggered": true,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 2,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 380603147,
+    "seedStateAfter": 884556423,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        10,
+        6,
+        3,
+        5
+      ],
+      [
+        5,
+        6,
+        1,
+        3
+      ],
+      [
+        5,
+        3,
+        6,
+        4
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        10,
+        6,
+        3,
+        5
+      ],
+      [
+        5,
+        6,
+        1,
+        3
+      ],
+      [
+        5,
+        3,
+        6,
+        4
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        10,
+        6,
+        3,
+        5
+      ],
+      [
+        5,
+        6,
+        1,
+        3
+      ],
+      [
+        5,
+        3,
+        6,
+        4
+      ]
+    ],
+    "boardHash": "10,6,3,5|5,6,1,3|5,3,6,4",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 10,
+        "multiplier": 2.5,
+        "amountMinor": 3,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 3,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 3,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 884556423,
+    "seedStateAfter": 1388509699,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        6,
+        0,
+        1
+      ],
+      [
+        3,
+        4,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        6,
+        0,
+        1
+      ],
+      [
+        3,
+        4,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        6,
+        0,
+        1
+      ],
+      [
+        3,
+        4,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "boardHash": "4,6,0,1|3,4,0,2|0,0,0,2",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 4,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1388509699,
+    "seedStateAfter": 1892462975,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        0,
+        0,
+        4
+      ],
+      [
+        5,
+        5,
+        10,
+        1
+      ],
+      [
+        4,
+        1,
+        2,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        0,
+        0,
+        4
+      ],
+      [
+        5,
+        5,
+        10,
+        1
+      ],
+      [
+        4,
+        1,
+        2,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        0,
+        0,
+        4
+      ],
+      [
+        5,
+        5,
+        10,
+        1
+      ],
+      [
+        4,
+        1,
+        2,
+        2
+      ]
+    ],
+    "boardHash": "0,0,0,4|5,5,10,1|4,1,2,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 5,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1892462975,
+    "seedStateAfter": 2396416251,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        1,
+        3,
+        4
+      ],
+      [
+        3,
+        10,
+        1,
+        5
+      ],
+      [
+        1,
+        2,
+        1,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        1,
+        3,
+        4
+      ],
+      [
+        3,
+        10,
+        1,
+        5
+      ],
+      [
+        1,
+        2,
+        1,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        3,
+        4
+      ],
+      [
+        3,
+        10,
+        1,
+        5
+      ],
+      [
+        1,
+        2,
+        1,
+        0
+      ]
+    ],
+    "boardHash": "4,1,3,4|3,10,1,5|1,2,1,0",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 6,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2396416251,
+    "seedStateAfter": 2900369527,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        10,
+        4,
+        2
+      ],
+      [
+        10,
+        4,
+        2,
+        2
+      ],
+      [
+        1,
+        3,
+        10,
+        6
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        10,
+        4,
+        2
+      ],
+      [
+        10,
+        4,
+        2,
+        2
+      ],
+      [
+        1,
+        3,
+        10,
+        6
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        10,
+        4,
+        2
+      ],
+      [
+        10,
+        4,
+        2,
+        2
+      ],
+      [
+        1,
+        3,
+        10,
+        6
+      ]
+    ],
+    "boardHash": "3,10,4,2|10,4,2,2|1,3,10,6",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 4,
+        "rowsByReel": [
+          3,
+          3,
+          3
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 7,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2900369527,
+    "seedStateAfter": 3404322803,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        6,
+        10,
+        5,
+        2
+      ],
+      [
+        1,
+        1,
+        10,
+        3
+      ],
+      [
+        0,
+        0,
+        7,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        6,
+        10,
+        5,
+        2
+      ],
+      [
+        1,
+        1,
+        10,
+        3
+      ],
+      [
+        0,
+        0,
+        7,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        6,
+        10,
+        5,
+        2
+      ],
+      [
+        1,
+        1,
+        10,
+        3
+      ],
+      [
+        0,
+        0,
+        7,
+        2
+      ]
+    ],
+    "boardHash": "6,10,5,2|1,1,10,3|0,0,7,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 8,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3404322803,
+    "seedStateAfter": 3908276079,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        5,
+        0,
+        4
+      ],
+      [
+        1,
+        3,
+        5,
+        5
+      ],
+      [
+        1,
+        4,
+        5,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        5,
+        0,
+        4
+      ],
+      [
+        1,
+        3,
+        5,
+        5
+      ],
+      [
+        1,
+        4,
+        5,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        5,
+        0,
+        4
+      ],
+      [
+        1,
+        3,
+        5,
+        5
+      ],
+      [
+        1,
+        4,
+        5,
+        10
+      ]
+    ],
+    "boardHash": "3,5,0,4|1,3,5,5|1,4,5,10",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 9,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3908276079,
+    "seedStateAfter": 117262059,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        2,
+        1,
+        6
+      ],
+      [
+        4,
+        1,
+        3,
+        4
+      ],
+      [
+        0,
+        2,
+        2,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        2,
+        1,
+        6
+      ],
+      [
+        4,
+        1,
+        3,
+        4
+      ],
+      [
+        0,
+        2,
+        2,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        2,
+        1,
+        6
+      ],
+      [
+        4,
+        1,
+        3,
+        4
+      ],
+      [
+        0,
+        2,
+        2,
+        1
+      ]
+    ],
+    "boardHash": "1,2,1,6|4,1,3,4|0,2,2,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 10,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 117262059,
+    "seedStateAfter": 621215335,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        3,
+        2,
+        10
+      ],
+      [
+        7,
+        5,
+        4,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        3,
+        2,
+        10
+      ],
+      [
+        7,
+        5,
+        4,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        3,
+        2,
+        10
+      ],
+      [
+        7,
+        5,
+        4,
+        3
+      ]
+    ],
+    "boardHash": "4,0,2,1|0,3,2,10|7,5,4,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 11,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 621215335,
+    "seedStateAfter": 1125168611,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        7,
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        2,
+        2
+      ],
+      [
+        3,
+        5,
+        7,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        7,
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        2,
+        2
+      ],
+      [
+        3,
+        5,
+        7,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        7,
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        2,
+        2
+      ],
+      [
+        3,
+        5,
+        7,
+        10
+      ]
+    ],
+    "boardHash": "7,0,1,2|1,0,2,2|3,5,7,10",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 12,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1125168611,
+    "seedStateAfter": 1629121887,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        7,
+        2,
+        3,
+        5
+      ],
+      [
+        0,
+        1,
+        4,
+        1
+      ],
+      [
+        6,
+        0,
+        5,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        7,
+        2,
+        3,
+        5
+      ],
+      [
+        0,
+        1,
+        4,
+        1
+      ],
+      [
+        6,
+        0,
+        5,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        7,
+        2,
+        3,
+        5
+      ],
+      [
+        0,
+        1,
+        4,
+        1
+      ],
+      [
+        6,
+        0,
+        5,
+        10
+      ]
+    ],
+    "boardHash": "7,2,3,5|0,1,4,1|6,0,5,10",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 13,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1629121887,
+    "seedStateAfter": 2133075163,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        2,
+        6,
+        4
+      ],
+      [
+        6,
+        6,
+        2,
+        2
+      ],
+      [
+        3,
+        6,
+        3,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        2,
+        6,
+        4
+      ],
+      [
+        6,
+        6,
+        2,
+        2
+      ],
+      [
+        3,
+        6,
+        3,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        2,
+        6,
+        4
+      ],
+      [
+        6,
+        6,
+        2,
+        2
+      ],
+      [
+        3,
+        6,
+        3,
+        0
+      ]
+    ],
+    "boardHash": "3,2,6,4|6,6,2,2|3,6,3,0",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 1,
+        "rowsByReel": [
+          0,
+          0,
+          0
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      },
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 14,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2133075163,
+    "seedStateAfter": 2637028439,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        4,
+        6,
+        2
+      ],
+      [
+        6,
+        4,
+        4,
+        2
+      ],
+      [
+        2,
+        2,
+        5,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        4,
+        6,
+        2
+      ],
+      [
+        6,
+        4,
+        4,
+        2
+      ],
+      [
+        2,
+        2,
+        5,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        4,
+        6,
+        2
+      ],
+      [
+        6,
+        4,
+        4,
+        2
+      ],
+      [
+        2,
+        2,
+        5,
+        3
+      ]
+    ],
+    "boardHash": "1,4,6,2|6,4,4,2|2,2,5,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 15,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2637028439,
+    "seedStateAfter": 3140981715,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        10,
+        0,
+        7
+      ],
+      [
+        4,
+        5,
+        1,
+        0
+      ],
+      [
+        2,
+        5,
+        0,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        10,
+        0,
+        7
+      ],
+      [
+        4,
+        5,
+        1,
+        0
+      ],
+      [
+        2,
+        5,
+        0,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        10,
+        0,
+        7
+      ],
+      [
+        4,
+        5,
+        1,
+        0
+      ],
+      [
+        2,
+        5,
+        0,
+        1
+      ]
+    ],
+    "boardHash": "4,10,0,7|4,5,1,0|2,5,0,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 16,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3140981715,
+    "seedStateAfter": 3644934991,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        4,
+        5,
+        1
+      ],
+      [
+        2,
+        2,
+        3,
+        4
+      ],
+      [
+        2,
+        0,
+        0,
+        6
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        4,
+        5,
+        1
+      ],
+      [
+        2,
+        2,
+        3,
+        4
+      ],
+      [
+        2,
+        0,
+        0,
+        6
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        4,
+        5,
+        1
+      ],
+      [
+        2,
+        2,
+        3,
+        4
+      ],
+      [
+        2,
+        0,
+        0,
+        6
+      ]
+    ],
+    "boardHash": "3,4,5,1|2,2,3,4|2,0,0,6",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 17,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3644934991,
+    "seedStateAfter": 4148888267,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        0,
+        4,
+        2
+      ],
+      [
+        0,
+        1,
+        0,
+        4
+      ],
+      [
+        3,
+        0,
+        2,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        0,
+        4,
+        2
+      ],
+      [
+        0,
+        1,
+        0,
+        4
+      ],
+      [
+        3,
+        0,
+        2,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        0,
+        4,
+        2
+      ],
+      [
+        0,
+        1,
+        0,
+        4
+      ],
+      [
+        3,
+        0,
+        2,
+        0
+      ]
+    ],
+    "boardHash": "1,0,4,2|0,1,0,4|3,0,2,0",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 18,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 4148888267,
+    "seedStateAfter": 357874247,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        0,
+        6,
+        4
+      ],
+      [
+        3,
+        0,
+        2,
+        6
+      ],
+      [
+        1,
+        1,
+        2,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        0,
+        6,
+        4
+      ],
+      [
+        3,
+        0,
+        2,
+        6
+      ],
+      [
+        1,
+        1,
+        2,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        0,
+        6,
+        4
+      ],
+      [
+        3,
+        0,
+        2,
+        6
+      ],
+      [
+        1,
+        1,
+        2,
+        0
+      ]
+    ],
+    "boardHash": "3,0,6,4|3,0,2,6|1,1,2,0",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 19,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 357874247,
+    "seedStateAfter": 861827523,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        2,
+        4,
+        6
+      ],
+      [
+        1,
+        4,
+        3,
+        5
+      ],
+      [
+        7,
+        1,
+        0,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        2,
+        4,
+        6
+      ],
+      [
+        1,
+        4,
+        3,
+        5
+      ],
+      [
+        7,
+        1,
+        0,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        2,
+        4,
+        6
+      ],
+      [
+        1,
+        4,
+        3,
+        5
+      ],
+      [
+        7,
+        1,
+        0,
+        0
+      ]
+    ],
+    "boardHash": "3,2,4,6|1,4,3,5|7,1,0,0",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 20,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 861827523,
+    "seedStateAfter": 1365780799,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        3,
+        3,
+        0
+      ],
+      [
+        3,
+        10,
+        4,
+        4
+      ],
+      [
+        4,
+        5,
+        1,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        3,
+        3,
+        0
+      ],
+      [
+        3,
+        10,
+        4,
+        4
+      ],
+      [
+        4,
+        5,
+        1,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        3,
+        3,
+        0
+      ],
+      [
+        3,
+        10,
+        4,
+        4
+      ],
+      [
+        4,
+        5,
+        1,
+        2
+      ]
+    ],
+    "boardHash": "4,3,3,0|3,10,4,4|4,5,1,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 21,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1365780799,
+    "seedStateAfter": 1869734075,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        3,
+        2,
+        1
+      ],
+      [
+        3,
+        4,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        3,
+        2,
+        1
+      ],
+      [
+        3,
+        4,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        3,
+        2,
+        1
+      ],
+      [
+        3,
+        4,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "boardHash": "3,3,2,1|3,4,1,1|1,0,2,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 22,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1869734075,
+    "seedStateAfter": 2373687351,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        2,
+        2,
+        3
+      ],
+      [
+        2,
+        3,
+        4,
+        6
+      ],
+      [
+        7,
+        1,
+        4,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        2,
+        2,
+        3
+      ],
+      [
+        2,
+        3,
+        4,
+        6
+      ],
+      [
+        7,
+        1,
+        4,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        2,
+        2,
+        3
+      ],
+      [
+        2,
+        3,
+        4,
+        6
+      ],
+      [
+        7,
+        1,
+        4,
+        2
+      ]
+    ],
+    "boardHash": "0,2,2,3|2,3,4,6|7,1,4,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 23,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2373687351,
+    "seedStateAfter": 2877640627,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        4,
+        1,
+        3
+      ],
+      [
+        2,
+        3,
+        0,
+        5
+      ],
+      [
+        3,
+        6,
+        0,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        4,
+        1,
+        3
+      ],
+      [
+        2,
+        3,
+        0,
+        5
+      ],
+      [
+        3,
+        6,
+        0,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        4,
+        1,
+        3
+      ],
+      [
+        2,
+        3,
+        0,
+        5
+      ],
+      [
+        3,
+        6,
+        0,
+        2
+      ]
+    ],
+    "boardHash": "0,4,1,3|2,3,0,5|3,6,0,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 24,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2877640627,
+    "seedStateAfter": 3381593903,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        1,
+        5,
+        7
+      ],
+      [
+        3,
+        0,
+        4,
+        3
+      ],
+      [
+        1,
+        1,
+        1,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        1,
+        5,
+        7
+      ],
+      [
+        3,
+        0,
+        4,
+        3
+      ],
+      [
+        1,
+        1,
+        1,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        5,
+        7
+      ],
+      [
+        3,
+        0,
+        4,
+        3
+      ],
+      [
+        1,
+        1,
+        1,
+        2
+      ]
+    ],
+    "boardHash": "4,1,5,7|3,0,4,3|1,1,1,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 25,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3381593903,
+    "seedStateAfter": 3885547179,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        1,
+        3,
+        7
+      ],
+      [
+        2,
+        6,
+        3,
+        5
+      ],
+      [
+        0,
+        3,
+        10,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        1,
+        3,
+        7
+      ],
+      [
+        2,
+        6,
+        3,
+        5
+      ],
+      [
+        0,
+        3,
+        10,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        1,
+        3,
+        7
+      ],
+      [
+        2,
+        6,
+        3,
+        5
+      ],
+      [
+        0,
+        3,
+        10,
+        1
+      ]
+    ],
+    "boardHash": "2,1,3,7|2,6,3,5|0,3,10,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 26,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3885547179,
+    "seedStateAfter": 1926098972,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        6,
+        3,
+        10,
+        1
+      ],
+      [
+        5,
+        8,
+        2,
+        4
+      ],
+      [
+        4,
+        3,
+        3,
+        4
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        6,
+        3,
+        10,
+        1
+      ],
+      [
+        5,
+        8,
+        2,
+        4
+      ],
+      [
+        4,
+        3,
+        3,
+        4
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        6,
+        3,
+        10,
+        1
+      ],
+      [
+        5,
+        8,
+        2,
+        4
+      ],
+      [
+        4,
+        3,
+        3,
+        4
+      ]
+    ],
+    "boardHash": "6,3,10,1|5,8,2,4|4,3,3,4",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 6,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 27,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1926098972,
+    "seedStateAfter": 2430052248,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        1,
+        4,
+        5
+      ],
+      [
+        1,
+        0,
+        3,
+        1
+      ],
+      [
+        7,
+        5,
+        0,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        1,
+        4,
+        5
+      ],
+      [
+        1,
+        0,
+        3,
+        1
+      ],
+      [
+        7,
+        5,
+        0,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        4,
+        5
+      ],
+      [
+        1,
+        0,
+        3,
+        1
+      ],
+      [
+        7,
+        5,
+        0,
+        1
+      ]
+    ],
+    "boardHash": "4,1,4,5|1,0,3,1|7,5,0,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 28,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2430052248,
+    "seedStateAfter": 2934005524,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        10,
+        4,
+        2,
+        3
+      ],
+      [
+        3,
+        6,
+        2,
+        3
+      ],
+      [
+        1,
+        4,
+        3,
+        5
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        10,
+        4,
+        2,
+        3
+      ],
+      [
+        3,
+        6,
+        2,
+        3
+      ],
+      [
+        1,
+        4,
+        3,
+        5
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        10,
+        4,
+        2,
+        3
+      ],
+      [
+        3,
+        6,
+        2,
+        3
+      ],
+      [
+        1,
+        4,
+        3,
+        5
+      ]
+    ],
+    "boardHash": "10,4,2,3|3,6,2,3|1,4,3,5",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 29,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2934005524,
+    "seedStateAfter": 3437958800,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        1,
+        5,
+        1
+      ],
+      [
+        0,
+        3,
+        1,
+        3
+      ],
+      [
+        5,
+        4,
+        0,
+        7
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        1,
+        5,
+        1
+      ],
+      [
+        0,
+        3,
+        1,
+        3
+      ],
+      [
+        5,
+        4,
+        0,
+        7
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        5,
+        1
+      ],
+      [
+        0,
+        3,
+        1,
+        3
+      ],
+      [
+        5,
+        4,
+        0,
+        7
+      ]
+    ],
+    "boardHash": "4,1,5,1|0,3,1,3|5,4,0,7",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 30,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3437958800,
+    "seedStateAfter": 3941912076,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        6,
+        1,
+        1,
+        4
+      ],
+      [
+        2,
+        2,
+        6,
+        1
+      ],
+      [
+        7,
+        10,
+        1,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        6,
+        1,
+        1,
+        4
+      ],
+      [
+        2,
+        2,
+        6,
+        1
+      ],
+      [
+        7,
+        10,
+        1,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        6,
+        1,
+        1,
+        4
+      ],
+      [
+        2,
+        2,
+        6,
+        1
+      ],
+      [
+        7,
+        10,
+        1,
+        10
+      ]
+    ],
+    "boardHash": "6,1,1,4|2,2,6,1|7,10,1,10",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 31,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3941912076,
+    "seedStateAfter": 150898056,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        6,
+        2,
+        0
+      ],
+      [
+        0,
+        6,
+        1,
+        5
+      ],
+      [
+        4,
+        2,
+        7,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        6,
+        2,
+        0
+      ],
+      [
+        0,
+        6,
+        1,
+        5
+      ],
+      [
+        4,
+        2,
+        7,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        6,
+        2,
+        0
+      ],
+      [
+        0,
+        6,
+        1,
+        5
+      ],
+      [
+        4,
+        2,
+        7,
+        1
+      ]
+    ],
+    "boardHash": "0,6,2,0|0,6,1,5|4,2,7,1",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      },
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 32,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 150898056,
+    "seedStateAfter": 654851332,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        1,
+        3,
+        2
+      ],
+      [
+        0,
+        5,
+        5,
+        1
+      ],
+      [
+        0,
+        4,
+        5,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        1,
+        3,
+        2
+      ],
+      [
+        0,
+        5,
+        5,
+        1
+      ],
+      [
+        0,
+        4,
+        5,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        1,
+        3,
+        2
+      ],
+      [
+        0,
+        5,
+        5,
+        1
+      ],
+      [
+        0,
+        4,
+        5,
+        1
+      ]
+    ],
+    "boardHash": "2,1,3,2|0,5,5,1|0,4,5,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 33,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 654851332,
+    "seedStateAfter": 1158804608,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        2,
+        1,
+        4
+      ],
+      [
+        0,
+        1,
+        0,
+        2
+      ],
+      [
+        6,
+        6,
+        2,
+        5
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        2,
+        1,
+        4
+      ],
+      [
+        0,
+        1,
+        0,
+        2
+      ],
+      [
+        6,
+        6,
+        2,
+        5
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        2,
+        1,
+        4
+      ],
+      [
+        0,
+        1,
+        0,
+        2
+      ],
+      [
+        6,
+        6,
+        2,
+        5
+      ]
+    ],
+    "boardHash": "4,2,1,4|0,1,0,2|6,6,2,5",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 34,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1158804608,
+    "seedStateAfter": 1662757884,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        4
+      ],
+      [
+        2,
+        0,
+        3,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        4
+      ],
+      [
+        2,
+        0,
+        3,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        4
+      ],
+      [
+        2,
+        0,
+        3,
+        0
+      ]
+    ],
+    "boardHash": "2,2,2,1|1,0,0,4|2,0,3,0",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 35,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1662757884,
+    "seedStateAfter": 2166711160,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        1,
+        6,
+        10
+      ],
+      [
+        2,
+        4,
+        6,
+        0
+      ],
+      [
+        3,
+        4,
+        4,
+        4
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        1,
+        6,
+        10
+      ],
+      [
+        2,
+        4,
+        6,
+        0
+      ],
+      [
+        3,
+        4,
+        4,
+        4
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        1,
+        6,
+        10
+      ],
+      [
+        2,
+        4,
+        6,
+        0
+      ],
+      [
+        3,
+        4,
+        4,
+        4
+      ]
+    ],
+    "boardHash": "0,1,6,10|2,4,6,0|3,4,4,4",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 36,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2166711160,
+    "seedStateAfter": 2670664436,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        0,
+        7,
+        3
+      ],
+      [
+        1,
+        4,
+        2,
+        1
+      ],
+      [
+        0,
+        5,
+        10,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        0,
+        7,
+        3
+      ],
+      [
+        1,
+        4,
+        2,
+        1
+      ],
+      [
+        0,
+        5,
+        10,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        0,
+        7,
+        3
+      ],
+      [
+        1,
+        4,
+        2,
+        1
+      ],
+      [
+        0,
+        5,
+        10,
+        2
+      ]
+    ],
+    "boardHash": "2,0,7,3|1,4,2,1|0,5,10,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 37,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2670664436,
+    "seedStateAfter": 3174617712,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        3,
+        6,
+        3
+      ],
+      [
+        4,
+        3,
+        0,
+        3
+      ],
+      [
+        1,
+        0,
+        2,
+        5
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        3,
+        6,
+        3
+      ],
+      [
+        4,
+        3,
+        0,
+        3
+      ],
+      [
+        1,
+        0,
+        2,
+        5
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        3,
+        6,
+        3
+      ],
+      [
+        4,
+        3,
+        0,
+        3
+      ],
+      [
+        1,
+        0,
+        2,
+        5
+      ]
+    ],
+    "boardHash": "2,3,6,3|4,3,0,3|1,0,2,5",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 38,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3174617712,
+    "seedStateAfter": 3678570988,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        0,
+        3,
+        5
+      ],
+      [
+        2,
+        5,
+        6,
+        0
+      ],
+      [
+        5,
+        4,
+        10,
+        6
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        0,
+        3,
+        5
+      ],
+      [
+        2,
+        5,
+        6,
+        0
+      ],
+      [
+        5,
+        4,
+        10,
+        6
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        0,
+        3,
+        5
+      ],
+      [
+        2,
+        5,
+        6,
+        0
+      ],
+      [
+        5,
+        4,
+        10,
+        6
+      ]
+    ],
+    "boardHash": "0,0,3,5|2,5,6,0|5,4,10,6",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 39,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3678570988,
+    "seedStateAfter": 4182524264,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        5,
+        1,
+        3,
+        3
+      ],
+      [
+        4,
+        0,
+        0,
+        5
+      ],
+      [
+        0,
+        0,
+        3,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        5,
+        1,
+        3,
+        3
+      ],
+      [
+        4,
+        0,
+        0,
+        5
+      ],
+      [
+        0,
+        0,
+        3,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        5,
+        1,
+        3,
+        3
+      ],
+      [
+        4,
+        0,
+        0,
+        5
+      ],
+      [
+        0,
+        0,
+        3,
+        3
+      ]
+    ],
+    "boardHash": "5,1,3,3|4,0,0,5|0,0,3,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 40,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 4182524264,
+    "seedStateAfter": 391510244,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        7,
+        3,
+        6
+      ],
+      [
+        2,
+        2,
+        5,
+        6
+      ],
+      [
+        2,
+        4,
+        3,
+        4
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        7,
+        3,
+        6
+      ],
+      [
+        2,
+        2,
+        5,
+        6
+      ],
+      [
+        2,
+        4,
+        3,
+        4
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        7,
+        3,
+        6
+      ],
+      [
+        2,
+        2,
+        5,
+        6
+      ],
+      [
+        2,
+        4,
+        3,
+        4
+      ]
+    ],
+    "boardHash": "1,7,3,6|2,2,5,6|2,4,3,4",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 4,
+        "rowsByReel": [
+          3,
+          3,
+          3
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 41,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 391510244,
+    "seedStateAfter": 895463520,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        6,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        4,
+        5,
+        3
+      ],
+      [
+        7,
+        7,
+        0,
+        6
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        6,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        4,
+        5,
+        3
+      ],
+      [
+        7,
+        7,
+        0,
+        6
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        6,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        4,
+        5,
+        3
+      ],
+      [
+        7,
+        7,
+        0,
+        6
+      ]
+    ],
+    "boardHash": "6,2,2,1|1,4,5,3|7,7,0,6",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 42,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 895463520,
+    "seedStateAfter": 3230982609,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        5,
+        1,
+        2,
+        4
+      ],
+      [
+        1,
+        8,
+        5,
+        2
+      ],
+      [
+        0,
+        3,
+        2,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        5,
+        1,
+        2,
+        4
+      ],
+      [
+        1,
+        8,
+        5,
+        2
+      ],
+      [
+        0,
+        3,
+        2,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        5,
+        1,
+        2,
+        4
+      ],
+      [
+        1,
+        8,
+        5,
+        2
+      ],
+      [
+        0,
+        3,
+        2,
+        2
+      ]
+    ],
+    "boardHash": "5,1,2,4|1,8,5,2|0,3,2,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 1,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 43,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3230982609,
+    "seedStateAfter": 3734935885,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        6,
+        1,
+        1
+      ],
+      [
+        4,
+        3,
+        3,
+        1
+      ],
+      [
+        2,
+        0,
+        10,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        6,
+        1,
+        1
+      ],
+      [
+        4,
+        3,
+        3,
+        1
+      ],
+      [
+        2,
+        0,
+        10,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        6,
+        1,
+        1
+      ],
+      [
+        4,
+        3,
+        3,
+        1
+      ],
+      [
+        2,
+        0,
+        10,
+        2
+      ]
+    ],
+    "boardHash": "3,6,1,1|4,3,3,1|2,0,10,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 44,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3734935885,
+    "seedStateAfter": 4238889161,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        6,
+        10,
+        4
+      ],
+      [
+        3,
+        2,
+        10,
+        0
+      ],
+      [
+        0,
+        10,
+        4,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        6,
+        10,
+        4
+      ],
+      [
+        3,
+        2,
+        10,
+        0
+      ],
+      [
+        0,
+        10,
+        4,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        6,
+        10,
+        4
+      ],
+      [
+        3,
+        2,
+        10,
+        0
+      ],
+      [
+        0,
+        10,
+        4,
+        0
+      ]
+    ],
+    "boardHash": "1,6,10,4|3,2,10,0|0,10,4,0",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 45,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 4238889161,
+    "seedStateAfter": 447875141,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        1,
+        4,
+        0,
+        5
+      ],
+      [
+        2,
+        1,
+        0,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        1,
+        4,
+        0,
+        5
+      ],
+      [
+        2,
+        1,
+        0,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        1,
+        4,
+        0,
+        5
+      ],
+      [
+        2,
+        1,
+        0,
+        0
+      ]
+    ],
+    "boardHash": "0,0,3,0|1,4,0,5|2,1,0,0",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 46,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 447875141,
+    "seedStateAfter": 951828417,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        5,
+        2,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        5,
+        7,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        5,
+        2,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        5,
+        7,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        5,
+        2,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        5,
+        7,
+        10
+      ]
+    ],
+    "boardHash": "2,5,2,1|1,1,1,0|2,5,7,10",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 47,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 951828417,
+    "seedStateAfter": 1455781693,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        7,
+        10,
+        7,
+        5
+      ],
+      [
+        1,
+        5,
+        2,
+        4
+      ],
+      [
+        3,
+        1,
+        2,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        7,
+        10,
+        7,
+        5
+      ],
+      [
+        1,
+        5,
+        2,
+        4
+      ],
+      [
+        3,
+        1,
+        2,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        7,
+        10,
+        7,
+        5
+      ],
+      [
+        1,
+        5,
+        2,
+        4
+      ],
+      [
+        3,
+        1,
+        2,
+        1
+      ]
+    ],
+    "boardHash": "7,10,7,5|1,5,2,4|3,1,2,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 48,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1455781693,
+    "seedStateAfter": 1959734969,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        4,
+        4,
+        0
+      ],
+      [
+        0,
+        6,
+        3,
+        10
+      ],
+      [
+        1,
+        6,
+        5,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        4,
+        4,
+        0
+      ],
+      [
+        0,
+        6,
+        3,
+        10
+      ],
+      [
+        1,
+        6,
+        5,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        4,
+        4,
+        0
+      ],
+      [
+        0,
+        6,
+        3,
+        10
+      ],
+      [
+        1,
+        6,
+        5,
+        1
+      ]
+    ],
+    "boardHash": "1,4,4,0|0,6,3,10|1,6,5,1",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 49,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1959734969,
+    "seedStateAfter": 2463688245,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        1,
+        3,
+        10
+      ],
+      [
+        3,
+        4,
+        4,
+        3
+      ],
+      [
+        1,
+        4,
+        10,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        1,
+        3,
+        10
+      ],
+      [
+        3,
+        4,
+        4,
+        3
+      ],
+      [
+        1,
+        4,
+        10,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        3,
+        10
+      ],
+      [
+        3,
+        4,
+        4,
+        3
+      ],
+      [
+        1,
+        4,
+        10,
+        3
+      ]
+    ],
+    "boardHash": "4,1,3,10|3,4,4,3|1,4,10,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 50,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2463688245,
+    "seedStateAfter": 2967641521,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        7,
+        10,
+        0,
+        3
+      ],
+      [
+        5,
+        3,
+        2,
+        5
+      ],
+      [
+        5,
+        1,
+        1,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        7,
+        10,
+        0,
+        3
+      ],
+      [
+        5,
+        3,
+        2,
+        5
+      ],
+      [
+        5,
+        1,
+        1,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        7,
+        10,
+        0,
+        3
+      ],
+      [
+        5,
+        3,
+        2,
+        5
+      ],
+      [
+        5,
+        1,
+        1,
+        1
+      ]
+    ],
+    "boardHash": "7,10,0,3|5,3,2,5|5,1,1,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 51,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2967641521,
+    "seedStateAfter": 3471594797,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        1,
+        3,
+        2
+      ],
+      [
+        6,
+        2,
+        0,
+        4
+      ],
+      [
+        5,
+        3,
+        0,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        1,
+        3,
+        2
+      ],
+      [
+        6,
+        2,
+        0,
+        4
+      ],
+      [
+        5,
+        3,
+        0,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        1,
+        3,
+        2
+      ],
+      [
+        6,
+        2,
+        0,
+        4
+      ],
+      [
+        5,
+        3,
+        0,
+        10
+      ]
+    ],
+    "boardHash": "4,1,3,2|6,2,0,4|5,3,0,10",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 52,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3471594797,
+    "seedStateAfter": 3975548073,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        4,
+        1,
+        5
+      ],
+      [
+        6,
+        2,
+        6,
+        1
+      ],
+      [
+        10,
+        0,
+        0,
+        7
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        4,
+        1,
+        5
+      ],
+      [
+        6,
+        2,
+        6,
+        1
+      ],
+      [
+        10,
+        0,
+        0,
+        7
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        4,
+        1,
+        5
+      ],
+      [
+        6,
+        2,
+        6,
+        1
+      ],
+      [
+        10,
+        0,
+        0,
+        7
+      ]
+    ],
+    "boardHash": "0,4,1,5|6,2,6,1|10,0,0,7",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 53,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3975548073,
+    "seedStateAfter": 2016099866,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        1,
+        1,
+        5
+      ],
+      [
+        3,
+        8,
+        0,
+        2
+      ],
+      [
+        2,
+        3,
+        1,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        1,
+        1,
+        5
+      ],
+      [
+        3,
+        8,
+        0,
+        2
+      ],
+      [
+        2,
+        3,
+        1,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        1,
+        1,
+        5
+      ],
+      [
+        3,
+        8,
+        0,
+        2
+      ],
+      [
+        2,
+        3,
+        1,
+        2
+      ]
+    ],
+    "boardHash": "0,1,1,5|3,8,0,2|2,3,1,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 2,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 54,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2016099866,
+    "seedStateAfter": 2520053142,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        1,
+        1,
+        7
+      ],
+      [
+        10,
+        0,
+        0,
+        5
+      ],
+      [
+        4,
+        3,
+        0,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        1,
+        1,
+        7
+      ],
+      [
+        10,
+        0,
+        0,
+        5
+      ],
+      [
+        4,
+        3,
+        0,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        1,
+        1,
+        7
+      ],
+      [
+        10,
+        0,
+        0,
+        5
+      ],
+      [
+        4,
+        3,
+        0,
+        2
+      ]
+    ],
+    "boardHash": "0,1,1,7|10,0,0,5|4,3,0,2",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 55,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2520053142,
+    "seedStateAfter": 3024006418,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        10,
+        5,
+        1,
+        3
+      ],
+      [
+        4,
+        1,
+        1,
+        1
+      ],
+      [
+        7,
+        4,
+        4,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        10,
+        5,
+        1,
+        3
+      ],
+      [
+        4,
+        1,
+        1,
+        1
+      ],
+      [
+        7,
+        4,
+        4,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        10,
+        5,
+        1,
+        3
+      ],
+      [
+        4,
+        1,
+        1,
+        1
+      ],
+      [
+        7,
+        4,
+        4,
+        3
+      ]
+    ],
+    "boardHash": "10,5,1,3|4,1,1,1|7,4,4,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 56,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3024006418,
+    "seedStateAfter": 3527959694,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        7,
+        3,
+        4,
+        2
+      ],
+      [
+        1,
+        1,
+        0,
+        10
+      ],
+      [
+        7,
+        6,
+        3,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        7,
+        3,
+        4,
+        2
+      ],
+      [
+        1,
+        1,
+        0,
+        10
+      ],
+      [
+        7,
+        6,
+        3,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        7,
+        3,
+        4,
+        2
+      ],
+      [
+        1,
+        1,
+        0,
+        10
+      ],
+      [
+        7,
+        6,
+        3,
+        1
+      ]
+    ],
+    "boardHash": "7,3,4,2|1,1,0,10|7,6,3,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 57,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3527959694,
+    "seedStateAfter": 4031912970,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        0,
+        6,
+        3
+      ],
+      [
+        2,
+        4,
+        4,
+        3
+      ],
+      [
+        1,
+        5,
+        4,
+        5
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        0,
+        6,
+        3
+      ],
+      [
+        2,
+        4,
+        4,
+        3
+      ],
+      [
+        1,
+        5,
+        4,
+        5
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        0,
+        6,
+        3
+      ],
+      [
+        2,
+        4,
+        4,
+        3
+      ],
+      [
+        1,
+        5,
+        4,
+        5
+      ]
+    ],
+    "boardHash": "1,0,6,3|2,4,4,3|1,5,4,5",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 58,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 4031912970,
+    "seedStateAfter": 240898950,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        0,
+        0,
+        4
+      ],
+      [
+        2,
+        1,
+        2,
+        3
+      ],
+      [
+        3,
+        0,
+        0,
+        5
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        0,
+        0,
+        4
+      ],
+      [
+        2,
+        1,
+        2,
+        3
+      ],
+      [
+        3,
+        0,
+        0,
+        5
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        0,
+        0,
+        4
+      ],
+      [
+        2,
+        1,
+        2,
+        3
+      ],
+      [
+        3,
+        0,
+        0,
+        5
+      ]
+    ],
+    "boardHash": "2,0,0,4|2,1,2,3|3,0,0,5",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 59,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 240898950,
+    "seedStateAfter": 744852226,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        5,
+        1,
+        7,
+        5
+      ],
+      [
+        2,
+        0,
+        1,
+        6
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        5,
+        1,
+        7,
+        5
+      ],
+      [
+        2,
+        0,
+        1,
+        6
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        5,
+        1,
+        7,
+        5
+      ],
+      [
+        2,
+        0,
+        1,
+        6
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ]
+    ],
+    "boardHash": "5,1,7,5|2,0,1,6|5,3,0,1",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 60,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 744852226,
+    "seedStateAfter": 1248805502,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        6,
+        2,
+        1
+      ],
+      [
+        0,
+        6,
+        5,
+        0
+      ],
+      [
+        10,
+        6,
+        3,
+        4
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        6,
+        2,
+        1
+      ],
+      [
+        0,
+        6,
+        5,
+        0
+      ],
+      [
+        10,
+        6,
+        3,
+        4
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        6,
+        2,
+        1
+      ],
+      [
+        0,
+        6,
+        5,
+        0
+      ],
+      [
+        10,
+        6,
+        3,
+        4
+      ]
+    ],
+    "boardHash": "3,6,2,1|0,6,5,0|10,6,3,4",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 6,
+        "multiplier": 3.75,
+        "amountMinor": 4,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 3,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 61,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1248805502,
+    "seedStateAfter": 1752758778,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        10,
+        3,
+        6,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        5,
+        7,
+        7
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        10,
+        3,
+        6,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        5,
+        7,
+        7
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        10,
+        3,
+        6,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        5,
+        7,
+        7
+      ]
+    ],
+    "boardHash": "10,3,6,2|0,2,1,2|3,5,7,7",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 62,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1752758778,
+    "seedStateAfter": 2256712054,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        0,
+        1,
+        3
+      ],
+      [
+        4,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        6,
+        3,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        0,
+        1,
+        3
+      ],
+      [
+        4,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        6,
+        3,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        0,
+        1,
+        3
+      ],
+      [
+        4,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        6,
+        3,
+        10
+      ]
+    ],
+    "boardHash": "0,0,1,3|4,0,0,2|2,6,3,10",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 63,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2256712054,
+    "seedStateAfter": 2760665330,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        4,
+        5,
+        2
+      ],
+      [
+        10,
+        4,
+        2,
+        0
+      ],
+      [
+        2,
+        0,
+        7,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        4,
+        5,
+        2
+      ],
+      [
+        10,
+        4,
+        2,
+        0
+      ],
+      [
+        2,
+        0,
+        7,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        4,
+        5,
+        2
+      ],
+      [
+        10,
+        4,
+        2,
+        0
+      ],
+      [
+        2,
+        0,
+        7,
+        3
+      ]
+    ],
+    "boardHash": "4,4,5,2|10,4,2,0|2,0,7,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 64,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2760665330,
+    "seedStateAfter": 3264618606,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        5,
+        10,
+        5
+      ],
+      [
+        6,
+        10,
+        0,
+        10
+      ],
+      [
+        6,
+        5,
+        0,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        5,
+        10,
+        5
+      ],
+      [
+        6,
+        10,
+        0,
+        10
+      ],
+      [
+        6,
+        5,
+        0,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        5,
+        10,
+        5
+      ],
+      [
+        6,
+        10,
+        0,
+        10
+      ],
+      [
+        6,
+        5,
+        0,
+        2
+      ]
+    ],
+    "boardHash": "1,5,10,5|6,10,0,10|6,5,0,2",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 1,
+        "rowsByReel": [
+          0,
+          0,
+          0
+        ],
+        "symbolId": 1,
+        "multiplier": 0.125,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 10,
+        "multiplier": 2.5,
+        "amountMinor": 3,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 3,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 65,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3264618606,
+    "seedStateAfter": 3768571882,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        2,
+        4,
+        0
+      ],
+      [
+        0,
+        1,
+        5,
+        6
+      ],
+      [
+        4,
+        5,
+        1,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        2,
+        4,
+        0
+      ],
+      [
+        0,
+        1,
+        5,
+        6
+      ],
+      [
+        4,
+        5,
+        1,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        2,
+        4,
+        0
+      ],
+      [
+        0,
+        1,
+        5,
+        6
+      ],
+      [
+        4,
+        5,
+        1,
+        1
+      ]
+    ],
+    "boardHash": "0,2,4,0|0,1,5,6|4,5,1,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 66,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3768571882,
+    "seedStateAfter": 4272525158,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        10,
+        4,
+        2
+      ],
+      [
+        0,
+        5,
+        4,
+        2
+      ],
+      [
+        10,
+        4,
+        4,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        10,
+        4,
+        2
+      ],
+      [
+        0,
+        5,
+        4,
+        2
+      ],
+      [
+        10,
+        4,
+        4,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        10,
+        4,
+        2
+      ],
+      [
+        0,
+        5,
+        4,
+        2
+      ],
+      [
+        10,
+        4,
+        4,
+        3
+      ]
+    ],
+    "boardHash": "2,10,4,2|0,5,4,2|10,4,4,3",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 67,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 4272525158,
+    "seedStateAfter": 481511138,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        7,
+        0,
+        1,
+        4
+      ],
+      [
+        4,
+        1,
+        4,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        7,
+        0,
+        1,
+        4
+      ],
+      [
+        4,
+        1,
+        4,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        7,
+        0,
+        1,
+        4
+      ],
+      [
+        4,
+        1,
+        4,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        10
+      ]
+    ],
+    "boardHash": "7,0,1,4|4,1,4,0|0,5,0,10",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 68,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 481511138,
+    "seedStateAfter": 1553358887,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        9,
+        2,
+        2,
+        7
+      ],
+      [
+        10,
+        0,
+        2,
+        1
+      ],
+      [
+        4,
+        1,
+        4,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        9,
+        2,
+        2,
+        7
+      ],
+      [
+        10,
+        0,
+        2,
+        1
+      ],
+      [
+        4,
+        1,
+        4,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        9,
+        2,
+        2,
+        7
+      ],
+      [
+        10,
+        0,
+        2,
+        1
+      ],
+      [
+        4,
+        1,
+        4,
+        1
+      ]
+    ],
+    "boardHash": "9,2,2,7|10,0,2,1|4,1,4,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 52,
+    "collectTriggered": true,
+    "boostTriggered": true,
+    "bonusTriggered": false,
+    "jackpotTriggered": true,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 69,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1553358887,
+    "seedStateAfter": 2057312163,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        0,
+        2,
+        0
+      ],
+      [
+        4,
+        5,
+        6,
+        0
+      ],
+      [
+        0,
+        10,
+        4,
+        4
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        0,
+        2,
+        0
+      ],
+      [
+        4,
+        5,
+        6,
+        0
+      ],
+      [
+        0,
+        10,
+        4,
+        4
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        0,
+        2,
+        0
+      ],
+      [
+        4,
+        5,
+        6,
+        0
+      ],
+      [
+        0,
+        10,
+        4,
+        4
+      ]
+    ],
+    "boardHash": "1,0,2,0|4,5,6,0|0,10,4,4",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 70,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2057312163,
+    "seedStateAfter": 2561265439,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        10,
+        3,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        10
+      ],
+      [
+        0,
+        10,
+        3,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        10,
+        3,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        10
+      ],
+      [
+        0,
+        10,
+        3,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        10,
+        3,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        10
+      ],
+      [
+        0,
+        10,
+        3,
+        0
+      ]
+    ],
+    "boardHash": "0,10,3,1|0,2,0,10|0,10,3,0",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 1,
+        "rowsByReel": [
+          0,
+          0,
+          0
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 71,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2561265439,
+    "seedStateAfter": 3065218715,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        4,
+        5,
+        4
+      ],
+      [
+        10,
+        1,
+        0,
+        4
+      ],
+      [
+        2,
+        2,
+        10,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        4,
+        5,
+        4
+      ],
+      [
+        10,
+        1,
+        0,
+        4
+      ],
+      [
+        2,
+        2,
+        10,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        4,
+        5,
+        4
+      ],
+      [
+        10,
+        1,
+        0,
+        4
+      ],
+      [
+        2,
+        2,
+        10,
+        10
+      ]
+    ],
+    "boardHash": "0,4,5,4|10,1,0,4|2,2,10,10",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 72,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3065218715,
+    "seedStateAfter": 3569171991,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        6,
+        4,
+        10
+      ],
+      [
+        6,
+        4,
+        1,
+        10
+      ],
+      [
+        10,
+        6,
+        1,
+        5
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        6,
+        4,
+        10
+      ],
+      [
+        6,
+        4,
+        1,
+        10
+      ],
+      [
+        10,
+        6,
+        1,
+        5
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        6,
+        4,
+        10
+      ],
+      [
+        6,
+        4,
+        1,
+        10
+      ],
+      [
+        10,
+        6,
+        1,
+        5
+      ]
+    ],
+    "boardHash": "4,6,4,10|6,4,1,10|10,6,1,5",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 2,
+        "rowsByReel": [
+          1,
+          1,
+          1
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 73,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3569171991,
+    "seedStateAfter": 4073125267,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        3,
+        7,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        2,
+        2,
+        6
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        3,
+        7,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        2,
+        2,
+        6
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        3,
+        7,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        2,
+        2,
+        6
+      ]
+    ],
+    "boardHash": "0,3,7,1|0,1,1,0|1,2,2,6",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 74,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 4073125267,
+    "seedStateAfter": 282111247,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        3,
+        0,
+        2
+      ],
+      [
+        5,
+        0,
+        5,
+        6
+      ],
+      [
+        0,
+        5,
+        1,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        3,
+        0,
+        2
+      ],
+      [
+        5,
+        0,
+        5,
+        6
+      ],
+      [
+        0,
+        5,
+        1,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        3,
+        0,
+        2
+      ],
+      [
+        5,
+        0,
+        5,
+        6
+      ],
+      [
+        0,
+        5,
+        1,
+        2
+      ]
+    ],
+    "boardHash": "3,3,0,2|5,0,5,6|0,5,1,2",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 4,
+        "rowsByReel": [
+          3,
+          3,
+          3
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 75,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 282111247,
+    "seedStateAfter": 786064523,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        7,
+        6,
+        0
+      ],
+      [
+        2,
+        6,
+        5,
+        3
+      ],
+      [
+        2,
+        3,
+        6,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        7,
+        6,
+        0
+      ],
+      [
+        2,
+        6,
+        5,
+        3
+      ],
+      [
+        2,
+        3,
+        6,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        7,
+        6,
+        0
+      ],
+      [
+        2,
+        6,
+        5,
+        3
+      ],
+      [
+        2,
+        3,
+        6,
+        2
+      ]
+    ],
+    "boardHash": "0,7,6,0|2,6,5,3|2,3,6,2",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 5,
+        "multiplier": 1.875,
+        "amountMinor": 2,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 3,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 76,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 786064523,
+    "seedStateAfter": 3121583612,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        5,
+        0,
+        1,
+        6
+      ],
+      [
+        5,
+        8,
+        2,
+        4
+      ],
+      [
+        4,
+        0,
+        4,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        5,
+        0,
+        1,
+        6
+      ],
+      [
+        5,
+        8,
+        2,
+        4
+      ],
+      [
+        4,
+        0,
+        4,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        5,
+        0,
+        1,
+        6
+      ],
+      [
+        5,
+        8,
+        2,
+        4
+      ],
+      [
+        4,
+        0,
+        4,
+        3
+      ]
+    ],
+    "boardHash": "5,0,1,6|5,8,2,4|4,0,4,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 3,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 77,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3121583612,
+    "seedStateAfter": 1162135405,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        5,
+        3,
+        0,
+        0
+      ],
+      [
+        8,
+        4,
+        4,
+        4
+      ],
+      [
+        3,
+        3,
+        1,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        5,
+        3,
+        0,
+        0
+      ],
+      [
+        8,
+        4,
+        4,
+        4
+      ],
+      [
+        3,
+        3,
+        1,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        5,
+        3,
+        0,
+        0
+      ],
+      [
+        8,
+        4,
+        4,
+        4
+      ],
+      [
+        3,
+        3,
+        1,
+        3
+      ]
+    ],
+    "boardHash": "5,3,0,0|8,4,4,4|3,3,1,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 4,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 78,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1162135405,
+    "seedStateAfter": 402417341,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        8,
+        3,
+        6
+      ],
+      [
+        8,
+        3,
+        0,
+        2
+      ],
+      [
+        2,
+        10,
+        2,
+        7
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        8,
+        3,
+        6
+      ],
+      [
+        8,
+        3,
+        0,
+        2
+      ],
+      [
+        2,
+        10,
+        2,
+        7
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        8,
+        3,
+        6
+      ],
+      [
+        8,
+        3,
+        0,
+        2
+      ],
+      [
+        2,
+        10,
+        2,
+        7
+      ]
+    ],
+    "boardHash": "3,8,3,6|8,3,0,2|2,10,2,7",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 14,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 79,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 402417341,
+    "seedStateAfter": 906370617,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        5,
+        1,
+        0,
+        5
+      ],
+      [
+        2,
+        0,
+        4,
+        0
+      ],
+      [
+        6,
+        4,
+        2,
+        5
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        5,
+        1,
+        0,
+        5
+      ],
+      [
+        2,
+        0,
+        4,
+        0
+      ],
+      [
+        6,
+        4,
+        2,
+        5
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        5,
+        1,
+        0,
+        5
+      ],
+      [
+        2,
+        0,
+        4,
+        0
+      ],
+      [
+        6,
+        4,
+        2,
+        5
+      ]
+    ],
+    "boardHash": "5,1,0,5|2,0,4,0|6,4,2,5",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 80,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 906370617,
+    "seedStateAfter": 1410323893,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        6,
+        2,
+        5,
+        2
+      ],
+      [
+        2,
+        10,
+        0,
+        6
+      ],
+      [
+        4,
+        0,
+        4,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        6,
+        2,
+        5,
+        2
+      ],
+      [
+        2,
+        10,
+        0,
+        6
+      ],
+      [
+        4,
+        0,
+        4,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        6,
+        2,
+        5,
+        2
+      ],
+      [
+        2,
+        10,
+        0,
+        6
+      ],
+      [
+        4,
+        0,
+        4,
+        1
+      ]
+    ],
+    "boardHash": "6,2,5,2|2,10,0,6|4,0,4,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 81,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1410323893,
+    "seedStateAfter": 1914277169,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        3,
+        0,
+        5
+      ],
+      [
+        4,
+        0,
+        4,
+        1
+      ],
+      [
+        2,
+        5,
+        5,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        3,
+        0,
+        5
+      ],
+      [
+        4,
+        0,
+        4,
+        1
+      ],
+      [
+        2,
+        5,
+        5,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        3,
+        0,
+        5
+      ],
+      [
+        4,
+        0,
+        4,
+        1
+      ],
+      [
+        2,
+        5,
+        5,
+        2
+      ]
+    ],
+    "boardHash": "2,3,0,5|4,0,4,1|2,5,5,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 82,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1914277169,
+    "seedStateAfter": 4249796258,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        1,
+        6,
+        1
+      ],
+      [
+        2,
+        8,
+        3,
+        0
+      ],
+      [
+        2,
+        6,
+        0,
+        10
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        1,
+        6,
+        1
+      ],
+      [
+        2,
+        8,
+        3,
+        0
+      ],
+      [
+        2,
+        6,
+        0,
+        10
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        1,
+        6,
+        1
+      ],
+      [
+        2,
+        8,
+        3,
+        0
+      ],
+      [
+        2,
+        6,
+        0,
+        10
+      ]
+    ],
+    "boardHash": "1,1,6,1|2,8,3,0|2,6,0,10",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 1,
+    "collectTriggered": true,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 83,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 4249796258,
+    "seedStateAfter": 458782238,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        1,
+        4,
+        6
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ],
+      [
+        10,
+        0,
+        3,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        1,
+        4,
+        6
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ],
+      [
+        10,
+        0,
+        3,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        1,
+        4,
+        6
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ],
+      [
+        10,
+        0,
+        3,
+        0
+      ]
+    ],
+    "boardHash": "0,1,4,6|5,3,0,1|10,0,3,0",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 8,
+        "rowsByReel": [
+          3,
+          2,
+          1
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 3
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 1
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 84,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 458782238,
+    "seedStateAfter": 962735514,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        5,
+        3,
+        3
+      ],
+      [
+        0,
+        1,
+        4,
+        4
+      ],
+      [
+        10,
+        0,
+        4,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        5,
+        3,
+        3
+      ],
+      [
+        0,
+        1,
+        4,
+        4
+      ],
+      [
+        10,
+        0,
+        4,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        5,
+        3,
+        3
+      ],
+      [
+        0,
+        1,
+        4,
+        4
+      ],
+      [
+        10,
+        0,
+        4,
+        1
+      ]
+    ],
+    "boardHash": "0,5,3,3|0,1,4,4|10,0,4,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 85,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 962735514,
+    "seedStateAfter": 1466688790,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        7,
+        7,
+        7
+      ],
+      [
+        2,
+        5,
+        0,
+        3
+      ],
+      [
+        2,
+        0,
+        4,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        7,
+        7,
+        7
+      ],
+      [
+        2,
+        5,
+        0,
+        3
+      ],
+      [
+        2,
+        0,
+        4,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        7,
+        7,
+        7
+      ],
+      [
+        2,
+        5,
+        0,
+        3
+      ],
+      [
+        2,
+        0,
+        4,
+        3
+      ]
+    ],
+    "boardHash": "1,7,7,7|2,5,0,3|2,0,4,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 86,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1466688790,
+    "seedStateAfter": 1970642066,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        10,
+        0,
+        4
+      ],
+      [
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        7,
+        2,
+        6,
+        5
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        10,
+        0,
+        4
+      ],
+      [
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        7,
+        2,
+        6,
+        5
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        10,
+        0,
+        4
+      ],
+      [
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        7,
+        2,
+        6,
+        5
+      ]
+    ],
+    "boardHash": "1,10,0,4|0,3,0,0|7,2,6,5",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 0,
+        "multiplier": 1,
+        "amountMinor": 1,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 87,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1970642066,
+    "seedStateAfter": 2474595342,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        6,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        2,
+        2
+      ],
+      [
+        10,
+        5,
+        1,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        6,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        2,
+        2
+      ],
+      [
+        10,
+        5,
+        1,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        6,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        2,
+        2
+      ],
+      [
+        10,
+        5,
+        1,
+        2
+      ]
+    ],
+    "boardHash": "3,6,0,3|0,3,2,2|10,5,1,2",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 88,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2474595342,
+    "seedStateAfter": 2978548618,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        2,
+        6,
+        0
+      ],
+      [
+        6,
+        5,
+        0,
+        7
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        2,
+        6,
+        0
+      ],
+      [
+        6,
+        5,
+        0,
+        7
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        2,
+        6,
+        0
+      ],
+      [
+        6,
+        5,
+        0,
+        7
+      ]
+    ],
+    "boardHash": "3,1,2,3|4,2,6,0|6,5,0,7",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 2,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 89,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2978548618,
+    "seedStateAfter": 3482501894,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        7,
+        7,
+        6,
+        3
+      ],
+      [
+        2,
+        6,
+        0,
+        4
+      ],
+      [
+        10,
+        3,
+        4,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        7,
+        7,
+        6,
+        3
+      ],
+      [
+        2,
+        6,
+        0,
+        4
+      ],
+      [
+        10,
+        3,
+        4,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        7,
+        7,
+        6,
+        3
+      ],
+      [
+        2,
+        6,
+        0,
+        4
+      ],
+      [
+        10,
+        3,
+        4,
+        1
+      ]
+    ],
+    "boardHash": "7,7,6,3|2,6,0,4|10,3,4,1",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 10,
+        "multiplier": 2.5,
+        "amountMinor": 3,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 3,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 90,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3482501894,
+    "seedStateAfter": 3986455170,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        3,
+        4,
+        2,
+        0
+      ],
+      [
+        3,
+        10,
+        1,
+        2
+      ],
+      [
+        7,
+        4,
+        2,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        3,
+        4,
+        2,
+        0
+      ],
+      [
+        3,
+        10,
+        1,
+        2
+      ],
+      [
+        7,
+        4,
+        2,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        3,
+        4,
+        2,
+        0
+      ],
+      [
+        3,
+        10,
+        1,
+        2
+      ],
+      [
+        7,
+        4,
+        2,
+        2
+      ]
+    ],
+    "boardHash": "3,4,2,0|3,10,1,2|7,4,2,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 91,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3986455170,
+    "seedStateAfter": 195441150,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        1,
+        1,
+        3
+      ],
+      [
+        10,
+        2,
+        4,
+        10
+      ],
+      [
+        2,
+        7,
+        1,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        1,
+        1,
+        3
+      ],
+      [
+        10,
+        2,
+        4,
+        10
+      ],
+      [
+        2,
+        7,
+        1,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        1,
+        1,
+        3
+      ],
+      [
+        10,
+        2,
+        4,
+        10
+      ],
+      [
+        2,
+        7,
+        1,
+        1
+      ]
+    ],
+    "boardHash": "1,1,1,3|10,2,4,10|2,7,1,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 92,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 195441150,
+    "seedStateAfter": 699394426,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        10,
+        5,
+        4,
+        3
+      ],
+      [
+        2,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        3
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        10,
+        5,
+        4,
+        3
+      ],
+      [
+        2,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        3
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        10,
+        5,
+        4,
+        3
+      ],
+      [
+        2,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        3
+      ]
+    ],
+    "boardHash": "10,5,4,3|2,0,1,1|1,0,1,3",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 93,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 699394426,
+    "seedStateAfter": 1203347702,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        7,
+        3,
+        6,
+        1
+      ],
+      [
+        6,
+        0,
+        5,
+        5
+      ],
+      [
+        3,
+        3,
+        1,
+        7
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        7,
+        3,
+        6,
+        1
+      ],
+      [
+        6,
+        0,
+        5,
+        5
+      ],
+      [
+        3,
+        3,
+        1,
+        7
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        7,
+        3,
+        6,
+        1
+      ],
+      [
+        6,
+        0,
+        5,
+        5
+      ],
+      [
+        3,
+        3,
+        1,
+        7
+      ]
+    ],
+    "boardHash": "7,3,6,1|6,0,5,5|3,3,1,7",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 94,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1203347702,
+    "seedStateAfter": 1707300978,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        4,
+        1,
+        1
+      ],
+      [
+        10,
+        2,
+        4,
+        0
+      ],
+      [
+        1,
+        7,
+        4,
+        4
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        4,
+        1,
+        1
+      ],
+      [
+        10,
+        2,
+        4,
+        0
+      ],
+      [
+        1,
+        7,
+        4,
+        4
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        4,
+        1,
+        1
+      ],
+      [
+        10,
+        2,
+        4,
+        0
+      ],
+      [
+        1,
+        7,
+        4,
+        4
+      ]
+    ],
+    "boardHash": "1,4,1,1|10,2,4,0|1,7,4,4",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 6,
+        "rowsByReel": [
+          1,
+          2,
+          3
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 3
+          }
+        ]
+      }
+    ],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 95,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 1707300978,
+    "seedStateAfter": 2211254254,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        0,
+        4,
+        2,
+        10
+      ],
+      [
+        4,
+        3,
+        10,
+        2
+      ],
+      [
+        6,
+        0,
+        1,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        0,
+        4,
+        2,
+        10
+      ],
+      [
+        4,
+        3,
+        10,
+        2
+      ],
+      [
+        6,
+        0,
+        1,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        0,
+        4,
+        2,
+        10
+      ],
+      [
+        4,
+        3,
+        10,
+        2
+      ],
+      [
+        6,
+        0,
+        1,
+        2
+      ]
+    ],
+    "boardHash": "0,4,2,10|4,3,10,2|6,0,1,2",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 96,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2211254254,
+    "seedStateAfter": 2715207530,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        1,
+        3,
+        5,
+        4
+      ],
+      [
+        2,
+        2,
+        3,
+        4
+      ],
+      [
+        1,
+        3,
+        2,
+        0
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        1,
+        3,
+        5,
+        4
+      ],
+      [
+        2,
+        2,
+        3,
+        4
+      ],
+      [
+        1,
+        3,
+        2,
+        0
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        1,
+        3,
+        5,
+        4
+      ],
+      [
+        2,
+        2,
+        3,
+        4
+      ],
+      [
+        1,
+        3,
+        2,
+        0
+      ]
+    ],
+    "boardHash": "1,3,5,4|2,2,3,4|1,3,2,0",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 97,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 2715207530,
+    "seedStateAfter": 3219160806,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        5,
+        2,
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        1,
+        3
+      ],
+      [
+        3,
+        7,
+        10,
+        6
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        5,
+        2,
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        1,
+        3
+      ],
+      [
+        3,
+        7,
+        10,
+        6
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        5,
+        2,
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        1,
+        3
+      ],
+      [
+        3,
+        7,
+        10,
+        6
+      ]
+    ],
+    "boardHash": "5,2,0,1|2,3,1,3|3,7,10,6",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 98,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3219160806,
+    "seedStateAfter": 3723114082,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        2,
+        7,
+        0,
+        4
+      ],
+      [
+        5,
+        4,
+        6,
+        2
+      ],
+      [
+        5,
+        2,
+        1,
+        6
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        2,
+        7,
+        0,
+        4
+      ],
+      [
+        5,
+        4,
+        6,
+        2
+      ],
+      [
+        5,
+        2,
+        1,
+        6
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        2,
+        7,
+        0,
+        4
+      ],
+      [
+        5,
+        4,
+        6,
+        2
+      ],
+      [
+        5,
+        2,
+        1,
+        6
+      ]
+    ],
+    "boardHash": "2,7,0,4|5,4,6,2|5,2,1,6",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 99,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 3723114082,
+    "seedStateAfter": 4227067358,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        0,
+        10,
+        0
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ],
+      [
+        2,
+        2,
+        0,
+        1
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        0,
+        10,
+        0
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ],
+      [
+        2,
+        2,
+        0,
+        1
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        0,
+        10,
+        0
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ],
+      [
+        2,
+        2,
+        0,
+        1
+      ]
+    ],
+    "boardHash": "4,0,10,0|5,3,0,1|2,2,0,1",
+    "repeatedBoard": false,
+    "lineWins": [],
+    "totalWin": 0,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  },
+  {
+    "spinIndex": 100,
+    "mode": "base",
+    "preset": "normal",
+    "requestedPreset": null,
+    "effectivePreset": null,
+    "seedStateBefore": 4227067358,
+    "seedStateAfter": 436053338,
+    "sourcePathUsed": "weighted-reel-rng",
+    "rawGeneratedMatrix": [
+      [
+        4,
+        5,
+        6,
+        7
+      ],
+      [
+        2,
+        6,
+        6,
+        5
+      ],
+      [
+        4,
+        2,
+        4,
+        2
+      ]
+    ],
+    "finalPresentedMatrix": [
+      [
+        4,
+        5,
+        6,
+        7
+      ],
+      [
+        2,
+        6,
+        6,
+        5
+      ],
+      [
+        4,
+        2,
+        4,
+        2
+      ]
+    ],
+    "visibleMatrix": [
+      [
+        4,
+        5,
+        6,
+        7
+      ],
+      [
+        2,
+        6,
+        6,
+        5
+      ],
+      [
+        4,
+        2,
+        4,
+        2
+      ]
+    ],
+    "boardHash": "4,5,6,7|2,6,6,5|4,2,4,2",
+    "repeatedBoard": false,
+    "lineWins": [
+      {
+        "lineId": 3,
+        "rowsByReel": [
+          2,
+          2,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 5,
+        "rowsByReel": [
+          0,
+          1,
+          2
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 0
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 2
+          }
+        ]
+      },
+      {
+        "lineId": 7,
+        "rowsByReel": [
+          2,
+          1,
+          0
+        ],
+        "symbolId": 4,
+        "multiplier": 0.25,
+        "amountMinor": 0,
+        "positions": [
+          {
+            "reelIndex": 0,
+            "rowIndex": 2
+          },
+          {
+            "reelIndex": 1,
+            "rowIndex": 1
+          },
+          {
+            "reelIndex": 2,
+            "rowIndex": 0
+          }
+        ]
+      }
+    ],
+    "totalWin": 1,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "postGenerationRewrite": false
+  }
+]

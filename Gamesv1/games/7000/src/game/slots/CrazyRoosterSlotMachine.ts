@@ -29,6 +29,7 @@ export interface CrazyRoosterSpinOptions {
   speedMultiplier?: number;
   finalReelHoldMs?: number;
   reelStopColumns: number[][];
+  reelStopVariants?: Array<Array<DonorMultiplierVariantKey | null>>;
 }
 
 export type PresentationVariantMap = Partial<
@@ -190,6 +191,14 @@ export class CrazyRoosterSlotMachine extends Container {
     if (options.reelStopColumns.length !== CRAZY_ROOSTER_LAYOUT.reelCount) {
       throw new Error("CrazyRoosterSlotMachine.spin requires a stop column for every reel.");
     }
+    if (
+      options.reelStopVariants &&
+      options.reelStopVariants.length !== CRAZY_ROOSTER_LAYOUT.reelCount
+    ) {
+      throw new Error(
+        "CrazyRoosterSlotMachine.spin requires stop variants for every reel when provided.",
+      );
+    }
 
     this.isSpinning = true;
     this.settledReels = 0;
@@ -215,12 +224,26 @@ export class CrazyRoosterSlotMachine extends Container {
         const extraDelay =
           index === this.reels.length - 1 ? Math.max(0, finalReelHoldMs) : 0;
         const stopTimeout = window.setTimeout(() => {
-          reel.stop(options.reelStopColumns[index] ?? []);
+          reel.stop(
+            options.reelStopColumns[index] ?? [],
+            options.reelStopVariants?.[index] ?? [],
+          );
         }, index * spinStaggerMs + extraDelay);
         this.spinTimeouts.push(stopTimeout);
       });
     }, minSpinDurationMs);
     this.spinTimeouts.push(startTimeout);
+  }
+
+  public applyPresentationVariants(variants: PresentationVariantMap): void {
+    this.reels.forEach((reel, reelIndex) => {
+      const visibleSymbols = reel.getVisibleSymbols();
+      for (let rowIndex = 0; rowIndex < visibleSymbols.length; rowIndex += 1) {
+        visibleSymbols[rowIndex]?.applyDonorVariantOverride(
+          variants[`${reelIndex}-${rowIndex}`] ?? null,
+        );
+      }
+    });
   }
 
   public getReels(): CrazyRoosterReel[] {
