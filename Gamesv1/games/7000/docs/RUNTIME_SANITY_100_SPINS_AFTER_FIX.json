@@ -1,0 +1,4602 @@
+[
+  {
+    "spinIndex": 1,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 2,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 3,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 4,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 5,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 6,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 7,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 8,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 9,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 10,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 11,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 12,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 13,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 14,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 15,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 16,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 17,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 18,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 19,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 20,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 21,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 22,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 23,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 24,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 25,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 26,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 27,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 28,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 29,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 30,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 31,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 32,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 33,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 34,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 35,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 36,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 37,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 38,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 39,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 40,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 41,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 42,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 43,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 44,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 45,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 46,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 47,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 48,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 49,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 50,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 51,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 52,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 53,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 54,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 55,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 56,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 57,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 58,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 59,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 60,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 61,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 62,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 63,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 64,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 65,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 66,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 67,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 68,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 69,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 70,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 71,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 72,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 73,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 74,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 75,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 76,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 77,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 78,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 79,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 80,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 81,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 82,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 83,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 84,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 85,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 86,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 87,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 88,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 89,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 90,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 91,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 92,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        0
+      ],
+      [
+        3,
+        4,
+        6,
+        4
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": false,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 93,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 94,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 95,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 96,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 97,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 98,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 99,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  },
+  {
+    "spinIndex": 100,
+    "visibleMatrix": [
+      [
+        6,
+        5,
+        1,
+        8
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        5
+      ]
+    ],
+    "lineWins": [
+      {
+        "lineId": 5,
+        "amountMinor": 0,
+        "multiplier": 0.25,
+        "matchedCount": 0,
+        "symbolId": 4
+      },
+      {
+        "lineId": 6,
+        "amountMinor": 4,
+        "multiplier": 3.75,
+        "matchedCount": 0,
+        "symbolId": 6
+      }
+    ],
+    "totalWinMinor": 4,
+    "collectTriggered": false,
+    "boostTriggered": false,
+    "bonusTriggered": false,
+    "jackpotTriggered": false,
+    "repeatedBoard": true,
+    "totalWin": 4
+  }
+]

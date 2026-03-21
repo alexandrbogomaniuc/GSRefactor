@@ -4,6 +4,7 @@ export class WinCounter extends Container {
   private countText: Text;
   private targetValue: number = 0;
   private currentValue: number = 0;
+  private reportedTotalValue: number = 0;
   private isCounting: boolean = false;
   private countDuration: number = 1.2; // seconds
   private title: string = "WIN";
@@ -56,7 +57,7 @@ export class WinCounter extends Container {
 
   public showWin(amount: number, title = "WIN", styleHook?: string) {
     this.title = title;
-    this.targetValue = Math.max(0, amount);
+    this.reportWin(amount);
     this.currentValue = 0;
     this.isCounting = true;
     this.visible = true;
@@ -68,11 +69,24 @@ export class WinCounter extends Container {
     this.scale.set(0.1);
   }
 
+  public reportWin(amount: number) {
+    const normalized = Math.max(0, Math.round(amount));
+    this.reportedTotalValue = normalized;
+    this.targetValue = normalized;
+    if (!this.isCounting) {
+      this.currentValue = normalized;
+    }
+  }
+
+  public getReportedTotal(): number {
+    return this.reportedTotalValue;
+  }
+
   public hideNow() {
     this.isCounting = false;
     this.visible = false;
-    this.currentValue = 0;
-    this.targetValue = 0;
+    this.currentValue = this.reportedTotalValue;
+    this.targetValue = this.reportedTotalValue;
   }
 
   private tick(dt: number) {

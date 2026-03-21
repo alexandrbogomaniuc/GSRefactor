@@ -553,6 +553,7 @@ export class MainScreen extends Container {
         onAudioCue: (cue) => this.applySoundCue(cue),
         onAnimationCue: (cue) => this.applyAnimationCue(cue),
         showWinCounter: (amountMinor, title, tier) => {
+          this.winCounter.reportWin(amountMinor);
           if (!this.shouldShowWinCounter(amountMinor, tier)) {
             return;
           }
@@ -2508,7 +2509,17 @@ export class MainScreen extends Container {
       settledPresentation,
       mathBridgeHints,
     );
-    const winAmount = settledPresentation.winAmount;
+    const hintedLineWinAmountMinor = Math.max(
+      0,
+      Math.round(
+        (mathBridgeHints?.lineWins ?? []).reduce(
+          (sum, lineWin) => sum + Math.max(0, lineWin.amountMinor),
+          0,
+        ),
+      ),
+    );
+    const winAmount = Math.max(settledPresentation.winAmount, hintedLineWinAmountMinor);
+    this.winCounter.reportWin(winAmount);
     const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
     const animationCues = this.resolveWinPresentationAnimationCues(
       mathBridgeHints,
