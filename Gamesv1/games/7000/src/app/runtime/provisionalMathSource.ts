@@ -6,7 +6,15 @@ import buyBonusTablesData from "../../../math/buy-bonus-tables.json";
 import jackpotsData from "../../../math/jackpots.json";
 import winThresholdsData from "../../../math/win-thresholds.json";
 
-import { buildGridFromColumns } from "../../game/config/CrazyRoosterGameConfig";
+const PROVISIONAL_REEL_COUNT = 3;
+const PROVISIONAL_ROW_COUNT = 4;
+
+const buildGridFromColumns = (columns: number[][]): number[][] =>
+  Array.from({ length: PROVISIONAL_ROW_COUNT }, (_, rowIndex) =>
+    Array.from({ length: PROVISIONAL_REEL_COUNT }, (_, reelIndex) => {
+      return columns[reelIndex]?.[rowIndex] ?? 0;
+    }),
+  );
 
 export type ProvisionalMathMode = "base" | "buy75" | "buy200" | "buy300";
 export type ProvisionalMathPreset =
@@ -128,6 +136,20 @@ export type ProvisionalMathOutcome = {
   messages: string[];
   soundCues: string[];
   animationCues: string[];
+  generatorTrace: ProvisionalGeneratorTrace;
+};
+
+export type ProvisionalGeneratorTrace = {
+  mode: ProvisionalMathMode;
+  requestedPreset: ProvisionalMathPreset | null;
+  effectivePreset: ProvisionalMathPreset | null;
+  sourcePath: "weighted-reel-rng" | "canned-preset-override";
+  seedStateBefore: number;
+  seedStateAfter: number;
+  rawGeneratedMatrix: number[][];
+  finalPresentedMatrix: number[][];
+  boardHash: string;
+  postGenerationRewrite: boolean;
 };
 
 export type MathBridgePresentationHints = {
@@ -143,6 +165,7 @@ export type MathBridgePresentationHints = {
   lineWinMultiplier: number;
   bonusWinMultiplier: number;
   totalWinMultiplier: number;
+  generatorTrace: ProvisionalGeneratorTrace;
 };
 
 export type ProvisionalMathAdaptedResult = {
@@ -572,15 +595,32 @@ const createDefaultTimingHints = (bonusTriggered: boolean): ProvisionalMathTimin
   coinFlyDurationMs: 880,
 });
 
-const createMulberry32 = (seedInput: number): (() => number) => {
-  let state = seedInput >>> 0;
-  return () => {
-    state += 0x6d2b79f5;
-    let value = Math.imul(state ^ (state >>> 15), state | 1);
-    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
-    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
-  };
+const cloneColumns = (columns: number[][]): number[][] =>
+  columns.map((column) => [...column]);
+
+const sameColumns = (left: number[][], right: number[][]): boolean => {
+  if (left.length !== right.length) {
+    return false;
+  }
+  for (let columnIndex = 0; columnIndex < left.length; columnIndex += 1) {
+    const leftColumn = left[columnIndex] ?? [];
+    const rightColumn = right[columnIndex] ?? [];
+    if (leftColumn.length !== rightColumn.length) {
+      return false;
+    }
+    for (let rowIndex = 0; rowIndex < leftColumn.length; rowIndex += 1) {
+      if (leftColumn[rowIndex] !== rightColumn[rowIndex]) {
+        return false;
+      }
+    }
+  }
+  return true;
 };
+
+const createBoardHash = (columns: number[][]): string =>
+  columns
+    .map((column) => column.map((symbolId) => String(symbolId)).join(","))
+    .join("|");
 
 type HoldAndWinSimulationInput = {
   mode: ProvisionalMathMode;
@@ -945,16 +985,27 @@ const resolveHighestJackpotTier = (
 };
 
 export class ProvisionalMathSource {
-  private readonly random: () => number;
+  private rngState: number;
 
   constructor(seedInput: number) {
-    this.random = createMulberry32(seedInput);
+    this.rngState = seedInput >>> 0;
+  }
+
+  private nextRandom = (): number => {
+    this.rngState = (this.rngState + 0x6d2b79f5) >>> 0;
+    let value = Math.imul(this.rngState ^ (this.rngState >>> 15), this.rngState | 1);
+    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  };
+
+  private getRngState(): number {
+    return this.rngState >>> 0;
   }
 
   private spinRandomColumns(): number[][] {
     return REEL_WEIGHTS.map((weightsBySymbol) =>
       Array.from({ length: 4 }, () =>
-        Number(weightedPick(weightsBySymbol, this.random)) || 0,
+        Number(weightedPick(weightsBySymbol, this.nextRandom)) || 0,
       ),
     );
   }
@@ -1006,13 +1057,23 @@ export class ProvisionalMathSource {
   }
 
   public nextOutcome(input: NextOutcomeInput): ProvisionalMathOutcome {
-    const preset = input.requestedPreset ?? "normal";
-    const presetOverride = PRESET_OVERRIDES[preset] ?? null;
+    const requestedPreset = input.requestedPreset ?? null;
+    const preset = requestedPreset ?? "normal";
+    const presetOverride = requestedPreset ? PRESET_OVERRIDES[requestedPreset] ?? null : null;
+    const sourcePath: ProvisionalGeneratorTrace["sourcePath"] = presetOverride
+      ? "canned-preset-override"
+      : "weighted-reel-rng";
+    const seedStateBefore = this.getRngState();
     const mode = presetOverride?.modeOverride ?? input.mode;
     const totalBetMinor = Math.max(1, Math.round(input.totalBetMinor));
+    const rawGeneratedMatrix = cloneColumns(presetOverride?.columns ?? this.spinRandomColumns());
     const columns = normalizeColumns(
-      presetOverride?.columns ?? this.spinRandomColumns(),
+      cloneColumns(rawGeneratedMatrix),
     );
+    const finalPresentedMatrix = cloneColumns(columns);
+    const postGenerationRewrite =
+      sourcePath === "canned-preset-override" || !sameColumns(rawGeneratedMatrix, finalPresentedMatrix);
+    const boardHash = createBoardHash(finalPresentedMatrix);
     const symbolGrid = buildGridFromColumns(columns);
     const counts = columns.flat().reduce(
       (acc, symbolId) => {
@@ -1047,7 +1108,7 @@ export class ProvisionalMathSource {
       ? simulateHoldAndWin({
           mode,
           board: mode === "base" ? columns : null,
-          randomFn: this.random,
+          randomFn: this.nextRandom,
           forcedJackpotTier: presetOverride?.forcedJackpotTier,
         })
       : {
@@ -1067,7 +1128,7 @@ export class ProvisionalMathSource {
       !bonusTriggered && collectTriggered
         ? simulateBaseCollectFromBoard(
             columns,
-            this.random,
+            this.nextRandom,
             presetOverride?.forcedJackpotTier,
           )
       : {
@@ -1201,9 +1262,14 @@ export class ProvisionalMathSource {
     messages.push(`TOTAL ${formatCurrencyMinor(totalWinAmountMinor)}`);
 
     const labels: Record<string, string> = {
-      state: preset === "normal" ? "provisional" : `provisional-${preset}`,
+      state:
+        requestedPreset === null
+          ? "provisional-random"
+          : preset === "normal"
+            ? "provisional"
+            : `provisional-${preset}`,
       mathSource: "provisional",
-      mathPreset: preset,
+      mathPreset: requestedPreset ?? "none",
       collectFeatureActive: toBoolLabel(effectiveCollectTriggered),
       boostFeatureActive: toBoolLabel(boostTriggered),
       bonusGameActive: toBoolLabel(bonusTriggered),
@@ -1226,6 +1292,8 @@ export class ProvisionalMathSource {
     if (jackpotLevel !== null) {
       counters.jackpotLevel = jackpotLevel;
     }
+
+    const seedStateAfter = this.getRngState();
 
     return {
       mode,
@@ -1254,6 +1322,18 @@ export class ProvisionalMathSource {
       messages,
       soundCues,
       animationCues,
+      generatorTrace: {
+        mode,
+        requestedPreset,
+        effectivePreset: requestedPreset,
+        sourcePath,
+        seedStateBefore,
+        seedStateAfter,
+        rawGeneratedMatrix,
+        finalPresentedMatrix,
+        boardHash,
+        postGenerationRewrite,
+      },
     };
   }
 }
@@ -1286,6 +1366,11 @@ export const adaptProvisionalMathOutcome = (
     lineWinMultiplier: outcome.lineWinMultiplier,
     bonusWinMultiplier: outcome.bonusWinMultiplier,
     totalWinMultiplier: outcome.totalWinMultiplier,
+    generatorTrace: {
+      ...outcome.generatorTrace,
+      rawGeneratedMatrix: outcome.generatorTrace.rawGeneratedMatrix.map((row) => [...row]),
+      finalPresentedMatrix: outcome.generatorTrace.finalPresentedMatrix.map((row) => [...row]),
+    },
   },
 });
 

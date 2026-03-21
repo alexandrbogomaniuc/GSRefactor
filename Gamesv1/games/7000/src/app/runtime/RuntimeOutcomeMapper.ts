@@ -36,6 +36,21 @@ const asString = (value: unknown): string | null =>
 const asNumber = (value: unknown): number | null =>
   typeof value === "number" && Number.isFinite(value) ? value : null;
 
+const asNumberMatrix = (value: unknown): number[][] | null => {
+  if (!Array.isArray(value)) {
+    return null;
+  }
+  const matrix = value.map((column) => {
+    if (!Array.isArray(column)) {
+      return [];
+    }
+    return column
+      .map((entry) => asNumber(entry))
+      .filter((entry): entry is number => entry !== null);
+  });
+  return matrix;
+};
+
 export const readMathBridgeHints = (
   result: PlayRoundResponse,
 ): MathBridgePresentationHints | null => {
@@ -121,6 +136,48 @@ export const readMathBridgeHints = (
       ): entry is MathBridgePresentationHints["lineWins"][number] => Boolean(entry),
     );
 
+  const generatorTraceRaw = isRecord(bridge.generatorTrace)
+    ? bridge.generatorTrace
+    : null;
+  const generatorTrace =
+    generatorTraceRaw &&
+    (asString(generatorTraceRaw.sourcePath) === "weighted-reel-rng" ||
+      asString(generatorTraceRaw.sourcePath) === "canned-preset-override")
+      ? {
+          mode:
+            (asString(generatorTraceRaw.mode) as MathBridgePresentationHints["generatorTrace"]["mode"]) ??
+            "base",
+          requestedPreset:
+            (asString(generatorTraceRaw.requestedPreset) as MathBridgePresentationHints["generatorTrace"]["requestedPreset"]) ??
+            null,
+          effectivePreset:
+            (asString(generatorTraceRaw.effectivePreset) as MathBridgePresentationHints["generatorTrace"]["effectivePreset"]) ??
+            null,
+          sourcePath: asString(generatorTraceRaw.sourcePath) as
+            | "weighted-reel-rng"
+            | "canned-preset-override",
+          seedStateBefore: asNumber(generatorTraceRaw.seedStateBefore) ?? 0,
+          seedStateAfter: asNumber(generatorTraceRaw.seedStateAfter) ?? 0,
+          rawGeneratedMatrix:
+            asNumberMatrix(generatorTraceRaw.rawGeneratedMatrix) ?? [],
+          finalPresentedMatrix:
+            asNumberMatrix(generatorTraceRaw.finalPresentedMatrix) ?? [],
+          boardHash: asString(generatorTraceRaw.boardHash) ?? "",
+          postGenerationRewrite: generatorTraceRaw.postGenerationRewrite === true,
+        }
+      : {
+          mode: mode as MathBridgePresentationHints["generatorTrace"]["mode"],
+          requestedPreset: null,
+          effectivePreset: null,
+          sourcePath: "weighted-reel-rng" as const,
+          seedStateBefore: 0,
+          seedStateAfter: 0,
+          rawGeneratedMatrix: [],
+          finalPresentedMatrix: [],
+          boardHash: "",
+          postGenerationRewrite: false,
+        };
+
   return {
     source: "provisional",
     mode: mode as MathBridgePresentationHints["mode"],
@@ -149,6 +206,7 @@ export const readMathBridgeHints = (
     lineWinMultiplier,
     bonusWinMultiplier,
     totalWinMultiplier,
+    generatorTrace,
   };
 };
 
